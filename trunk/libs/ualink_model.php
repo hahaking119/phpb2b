@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:07:36 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: ualink_model.php 452 2009-07-15 16:17:12Z stevenchow811 $
+ * @version $Id$
  */
 class UaModel extends UaObject
 {

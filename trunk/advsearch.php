@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:06:28 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: advsearch.php 438 2009-07-07 14:28:27Z stevenchow811 $
+ * @version $Id$
  */
 $inc_path = "./";
 require("global.php");

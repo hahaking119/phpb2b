@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:06:18 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: tag.php 448 2009-07-14 14:35:56Z stevenchow811 $
+ * @version $Id$
  */
 $inc_path = "./";
 $li = "";

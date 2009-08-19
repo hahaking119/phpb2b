@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:06:32 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: ajax.php 448 2009-07-14 14:35:56Z stevenchow811 $
+ * @version $Id$
  */
 if(!defined('IN_UALINK')) exit('Access Denied');
 function getIndustryList($arg, $name)

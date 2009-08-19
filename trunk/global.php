@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:05:24 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: global.php 488 2009-08-15 13:38:40Z stevenchow811 $
+ * @version $Id$
  */
 define('IN_UALINK', TRUE);
 define('DEBUG', '0');

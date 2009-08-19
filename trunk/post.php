@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:05:56 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: post.php 491 2009-08-16 07:00:21Z stevenchow811 $
+ * @version $Id$
  */
 $inc_path = "./";
 require("global.php");

@@ -26,6 +26,6 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:06:02 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: search.php 426 2009-06-22 14:04:32Z stevenchow811 $
+ * @version $Id$
  */
 ?>

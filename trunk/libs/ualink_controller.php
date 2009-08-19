@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:07:31 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: ualink_controller.php 426 2009-06-22 14:04:32Z stevenchow811 $
+ * @version $Id$
  */
 class UaController extends UaObject
 {
