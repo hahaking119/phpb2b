@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pageTitle}></title>
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="您正在查找<{$AreaName}>的市场库"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<style>
+.corhui {
+	background:#f7f7f7
+}
+.font12,a:link,.menu:link,.linkwhite12:link,.linkred12:link,td,.font12white,.time,.btn,.font12yellow {
+	font-size:12px
+}
+</style>
+</head>
+
+<body>
+<{assign var="market_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="25" bgcolor="#F3F4F8">&nbsp;<img src="<{$tpl_img_path}>default/star.gif" width="15" height="13" align="absmiddle"> 您当前位置：<{$pagePosition}></td>
+  </tr>
+  <tr>
+    <td height="5"></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr align="center" valign="top">
+    <td width="180" class="corhui"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="center">
+		  <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <tbody>
+                <tr> 
+                  <td>
+				  <table height=30 cellSpacing=0 cellPadding=0 width=240 
+                  background="<{$tpl_img_path}>default/pro_title01.gif" 
+                  border=0>
+                      <tbody>
+                        <tr> 
+                          <td width=190 height="18" class=font12white>&nbsp;<strong>&nbsp;市场行业分类</strong></td>
+                          <td width=50><a href="#"><img height=20 alt="" src="<{$tpl_img_path}>default/pro_title02.gif" 
+                        width=41 border=0></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+					</td>
+                </tr>
+                <tr> 
+                  <td class=td_01 vAlign=top height=200>
+				  <{include file="`$ThemeName`/market_industry.html"}>
+				  </td>
+                </tr>
+              </tbody>
+            </table>
+			</td>
+        </tr>
+    </table>
+	</td>
+    <td>
+	<table width="96%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td valign="top">
+		  <table width="100%" height="34" border="0" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>default/bt_bg2.gif">
+              <tr> 
+                <td width="23%" align="center"><img src="<{$tpl_img_path}>default/search_old.gif" width="105" height="34"></td>
+                <td width="77%">
+				<table width="100%" border="0" cellspacing="3" cellpadding="2">
+                    <tr> 
+                      <form action="<{$smarty.server.PHP_SELF}>" name="market_search_frm" method="get">
+                        <td width="34%" align="center"><input name="market[keyword]" type="text" size="23" value="请输入关键字"> 
+                        </td>
+                        <td width="19%">
+						<select name="type_id">
+                            <option value="1">网上市场</option>
+                            <option value="2">市场库</option>
+                            <option value="3">商铺商品</option>
+                          </select></td>
+                        <td width="22%"><input type="image" src="<{$tpl_img_path}>default/search.gif" name="search" alt="快速搜索"></td>
+                      </form>
+                    </tr>
+                  </table>
+				  </td>
+              </tr>
+            </table>
+			</td>
+        </tr>
+          <{if $SubAreas}>
+        <tr> 
+          <td height="88">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td align="center" height=3></td>
+              </tr>
+              <tr> 
+                <td align="center">
+				<table width="85%" border="0" align="center" cellpadding="3" cellspacing="5">
+                    <tr> 
+                      <td height="6">
+					  <table width="160" border="0" cellspacing="0" cellpadding="0">
+                          <tr> 
+                            <td width="11"><img src="<{$tpl_img_path}>default/bt_bg1a.gif" width="11" height="24"></td>
+                            <td width="138" align="center" background="<{$tpl_img_path}>default/bt_bg1c.gif"><strong><{$ProvinceName}></strong></td>
+                            <td width="11"><img src="<{$tpl_img_path}>default/bt_bg1b.gif" width="11" height="24"></td>
+                          </tr>
+                        </table>
+						</td>
+                    </tr>
+                    <tr> 
+                      <td style="line-height: 220%;">
+					  <{foreach from=$SubAreas name=sub_area item=a}>&nbsp;·&nbsp;<a href="<{$SiteUrl}>market/list.php?filter=city,id,<{$a.id}>"><{$a.name}></a>
+					  <{if $smarty.foreach.sub_area.iteration is div by 4}></br><{/if}>
+					  <{foreachelse}>
+					  <div align="center" style="display:none">目前没有任何数据</div>
+					  <{/foreach}>
+						</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+			</td>
+        </tr>
+        <{/if}>           
+        <tr> 
+          <td>
+		  <table width="100%" height="34" border="0" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>default/bt_bg2.gif">
+              <tr> 
+                <td>
+				<table width="492" border="0" cellspacing="3" cellpadding="0">
+                    <tr> 
+                      <td width="5" class="text1">&nbsp;</td>
+                      <td width="300" class="text1"> <strong>〖 <font color="#FF6600">市场库大全</font> 
+                        〗市场:&nbsp;&nbsp;<font color="#FF6600"><{$AreaName}></font></strong></td>
+                      <td width="169" class="text1" align="right"></td>
+                    </tr>
+                  </table>
+				  </td>
+              </tr>
+            </table>
+			</td>
+        </tr>
+        <tr> 
+          <td>
+          <{if $AreaMarkets}>
+		  <table width="100%" border="0" cellspacing="8" cellpadding="0">
+			  <!-- market -->
+			  <{foreach from=$AreaMarkets name=sub_markets item=m}>
+              <tr valign="top"> 
+                <td height="18">
+				<table width="476" border="0" cellspacing="2" cellpadding="2">
+                    <tr bgcolor="F3F3F3"> 
+                      <td colspan="2">
+					  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                          <tr> 
+                            <td width="83%"><img src="<{$tpl_img_path}>default/dot5.gif"><{$m.MarketName|replace:$SearchKey:$ReplaceKey}>
+                              (<{$m.MarketCreated|date_format:"%Y-%m-%d"|default:"0000-00-00"}>)</td>
+                            <td width="17%">[ <a href="./detail.php?id=<{$m.MarketId}>" class="link2">查看</a>]</td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td width="1">&nbsp;</td>
+                      <td width="461" class="lh15"><{$m.MarketContent|truncate:150|strip_tags}></td>
+                    </tr>
+                    <tr class="lh15"> 
+                      <td>&nbsp;</td>
+                      <td>[<a href="./detail.php?id=<{$m.MarketId}>" class="link2">详细信息</a>]</td>
+                    </tr>
+                  </table>
+				  </td>
+              </tr>
+			  <{/foreach}>
+			  <!-- market -->
+              <tr valign="top"> 
+                <td height="18">
+				<table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="CCF4B9">
+                    <tr> 
+                      <td width="72%" align="center">如果您确认不存在您的市场，请直接点击告诉我们</td>
+                      <td width="28%" align="center"><a href="<{$SiteUrl}>market/add.php">补充市场</a></td>
+                    </tr>
+                  </table>
+				  </td>
+              </tr>
+              <tr valign="top"> 
+                <td height="18" align="center"><table align="center" width="100%">
+                      <tr> 
+                        <td class=link3><div align="center"><{$ByPages}></div></td>
+                      </tr>
+                  </table>
+				  </td>
+              </tr>
+            </table>
+          <{else}>
+          <div align="center"><h2>该分类下还没有任何市场,是否<a href="<{$SiteUrl}>market/add.php">补充市场</a>?</h2></div>
+          <{/if}>
+		  </td>
+        </tr>
+        <tr> 
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+	  </td>
+  </tr>
+</table>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

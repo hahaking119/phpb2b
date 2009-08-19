@@ -1,0 +1,57 @@
+<div class="wd h_login">
+	<div class="h_f_sear">
+		<form action="<{$HeaderFormAction}>" method="get" name="formsearch" title="搜索">			
+					  <input type="hidden" name="searchkeywords" value="1" />
+					  <input type="hidden" name="ac" value="list" />
+					  <input name="skeyword" type="text" id="skeyword" value="<{$smarty.get.keyword|default:"输入关键字"}>" alt="输入关键字搜索信息" onfocus="if(this.value == '输入关键字'){this.value = ''}" onblur="if(this.value == ''){this.value = '输入关键字'}" class="gjz" onmouseover="this.select();" />
+			<input type="submit" value="搜索" class="ss str" onclick="return check_keywords();" />
+		</form>
+	</div>
+	<{loginbar}>
+	<div class="h_f_login">
+			<!--登录前 end-->
+			<{if $UalinkUser.username!=""}>
+			<form>
+			<em>你好,<{$UalinkUser.username}>！ <a href="<{$UrlContainer.common}>room/" class="blue">[进入商务室]</a>&nbsp;<{if $UalinkUser.user_level==9}>&nbsp;<a class="blue" href="<{$UrlContainer.common}>pb-admin/login.php" target="_blank">[控制台]</a><{/if}><a href="<{$SiteUrl}>user/logging.php?action=logout">[退出]</a></em>
+			</form>
+			<{else}>
+					<form id="tblogin" action="<{$SiteUrl}>user/logging.php" method="post" target="_parent">
+						<input type="hidden" name="loginbtn" value="1">
+						<!--登录前-->
+						<label for="m_name">用户名：</label><p></p><input type="text" id="login_name_banner" name="login_name" class="yhm" />
+						<label for="m_pass">密码：</label><p></p><input type="password" id="login_pass_banner" name="login_pass" class="mm" />
+						<input type="submit" value="登录" class="dl" name="submitButton" onclick="return login(this);" />
+						<a href="<{$UrlContainer.common}>user/getpass.php">忘记密码</a>
+						<a href="<{$UrlContainer.user}>" class="str">我还没有注册</a>
+					</form>
+			<{/if}>
+	</div>
+	<{/loginbar}>
+</div>
+<script language="JavaScript">
+<!--
+function check_keywords(){
+	var keywords = document.formsearch.skeyword.value;
+	if(keywords=="" || keywords=="输入关键字"){
+		alert("请输入搜索关键字");
+		document.formsearch.skeyword.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+function login(frm){
+	if(document.getElementById('login_name_banner').value == ""){
+			alert("请输入登陆名");
+			document.getElementById('login_name_banner').focus();
+			return false;
+		}else if(document.getElementById('login_pass_banner').value == ""){
+			alert("请输入登陆密码");
+			document.getElementById('login_pass_banner').focus();
+			return false;
+		}else{
+			return true;
+			}
+}
+//-->
+</script>

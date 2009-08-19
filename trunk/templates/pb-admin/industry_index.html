@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<style>
+.id { font-weight:bold; font-family:Arial, Helvetica, sans-serif;}
+.action { color:#990000; }
+.name { text-decoration:underline}
+</style>
+<script>
+function updateIdPrior(id,prior){
+xajax_updatePriority(id,prior);
+}
+</script>
+<{$xajax_javascript}>
+</head>
+<body>
+<!-- :~位置导航 -->
+<br />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="98%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;行业类别管理</div></td></tr>
+</table>
+<br />
+<div id="updateDIV" align="right"></div>
+<!-- 位置导航 -->
+<form name="frm1" action="industry.php" method="post">
+<table width="98%" border="1" cellpadding="5" cellspacing="2" class="tableborder" align="center" summary="for industry list.">
+<tr class="header"><td colspan="3"><div><{$IndustryPosition}></div>
+<br />
+<div style="text-align:right"><a name="a1" href="./industry.php?action=truncate" onClick="if(window.confirm('是否删除所有类别?')) return true;else return false;">点击清空所有类别</a></div></td></tr>
+<tr>
+<{foreach from=$IndustryList item=il name=industry}>
+	<td><span class="id"><a href="industry.php?action=list&pid=<{$il.id}>" title="查看<{$il.name}>子分类" class="name"><{$il.id}></a>.</span><input type="checkbox" name="chk_id[]" value="<{$il.id}>" title="显示/隐藏" <{if $il.ifshow==1}>checked="checked"<{/if}> /><input type="text" name="names[]" value="<{$il.name}>" size="14" />(序:<input type="hidden" name="id[]" value="<{$il.id}>" /><input type="text" style="height:18px" size="1" name="priority[]" id="priority_<{$il.id}>" value="<{$il.priority|default:0}>" onblur="updateIdPrior(<{$il.id}>,document.frm1.priority_<{$il.id}>.value);"/>)  <a href="industry.php?action=mod&id=<{$il.id}>&pid=<{$il.parentid}>" class="action"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="修改"></a> <a href="industry.php?action=del&id=<{$il.id}>" class="action"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="删除"></a> <a href="industry.php?action=list&pid=<{$il.id}>" title="查看<{$il.name}>子分类" class="name"><img src="<{$tpl_img_path}>admin/preview.gif" border="0" alt="查看子分类"></a></td>
+    <{if $smarty.foreach.industry.iteration is div by 3}>
+    </tr><tr>
+    <{/if}>
+	<{foreachelse}>
+	<td align="center">目前没有任何数据</td>
+    <{/foreach}>
+	</tr>
+<tr>
+  <td colspan="3"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="update_prior" value="立即更新"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

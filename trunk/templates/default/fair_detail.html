@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>" />
+<meta name="description" content="<{$ExpoRes.ExpoEl|replace:"\r\n":""|truncate:150}>" /> 
+<title><{$pageTitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script type="text/javascript" src="<{$JS_PATH}>js/swfobject.js"></script>
+<script type="text/javascript">
+swfobject.embedSWF("<{$SiteUrl}>data/default/forsale.swf", "flashcontent", "760", "90", "8.0.0", "expressInstall.swf", null);
+</script>
+</head>
+<body>
+<{assign var="room_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="25" class="corhui">&nbsp;<img src="<{$tpl_img_path}>default/star.gif" width="15" height="13" align="absmiddle">您当前位置：<a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">展会库</a> &raquo; <{$ExpoRes.ExpoEa}></td>
+  </tr>
+  <tr>
+    <td height="5"></td>
+  </tr>
+</table>
+<div class="clear9"></div>
+<div class="wd rg_wd1">
+	<div class="rg_left1">
+		<table align="center" bgColor=#ffffff border=0 cellPadding=0 cellSpacing=0 
+		height=373 width=760>
+		  <tbody>
+		  <tr>
+			<td colSpan=2 height=30>
+			  <table border=0 cellPadding=0 cellSpacing=0 width="100%">
+				<tbody>
+				<tr>
+				  <td width=140><img height=30 src="<{$tpl_img_path}>default/MB_12.gif" 
+				  width=150></td>
+
+				  <th align=middle background="<{$tpl_img_path}>default/MB_17.gif" width=586></th>
+				  <td align=right background="<{$tpl_img_path}>default/MB_17.gif" width=24><img 
+					height=30 src="<{$tpl_img_path}>default/MB_19.gif" 
+			width=12></td></tr></tbody></table></td></tr>
+		  <tr>
+			<td background="<{$tpl_img_path}>default/MB_38.gif" vAlign="top" width="167"><img height=123 
+			  src="<{$tpl_img_path}>default/MB_21.gif" width=150>
+			  <div align="center"><strong>已经报名参加的会员</strong></div>
+			  <div align="left">
+			  <ul>
+			  <{foreach from=$FairCompany name=ApplyFair item=fc key=fk}>
+			  <li><a href="<{$SiteUrl}>member/index.php?userid=<{$fk}>" title="访问主页" target="_blank"><{$fc}></a></li>
+			  <{/foreach}>
+			  </ul>
+			  </div>
+			  </td>
+			<td rowSpan=2 vAlign=top width=611>
+			  <table align=right border=0 cellPadding=0 cellSpacing=0 width="83%">
+				<tbody>
+				<tr>
+				  <td>&nbsp;</td></tr>
+				<tr>
+				  <td><img height=12 src="<{$tpl_img_path}>default/MB_26.gif" 
+		width=601></td></tr>
+				<tr>
+				  <td background="<{$tpl_img_path}>default/MB_28.gif" height=50>
+					<table bgColor=#cccccc border=0 cellPadding=4 
+					cellSpacing=0 width="97%">
+					  <tbody>
+					  <tr>
+						<td width="105" align=right valign="top" bgColor=#b1e5fe>会展名称：</td>
+						<td width="460" align=left bgColor=#b1e5fe><strong><{$ExpoRes.ExpoEa}></strong></td>
+					  </tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">会展类别：</td>
+					  <td width="460" align=left><a href="list.php?type=<{$ExpoRes.ExpoTypeId}>"><{$ExpoRes.ExpotypeName}></a></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">所在省市：</td>
+					  <td width="460" align=left><a href="list.php?province_code=<{$ExpoRes.ExpoCountryId}>"><{$ExpoRes.ProvinceName}></a>  <a href="list.php?city_code=<{$ExpoRes.ExpoProvinceId}>"><{$ExpoRes.CityName}></a></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">详细地址：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEc}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">布展时间：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEd|date_format:"%Y-%m-%d"}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">展出时间：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEf|date_format:"%Y-%m-%d"}>～<{$ExpoRes.ExpoEg|date_format:"%Y-%m-%d"}></td>
+					</tr>
+
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">撤展时间：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEg|date_format:"%Y-%m-%d"}></td>
+					</tr>
+
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">展会周期：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEh}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">展馆名称：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEi}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">涉及行业：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEj}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">主办单位：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEk}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">展会简介：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEl}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">联系方法：</td>
+					  <td width="460" align=left>
+					地址：<{$ExpoRes.ExpoEm}><br />
+					邮编：<{$ExpoRes.ExpoEo}><br />
+					电话：<{$ExpoRes.ExpoEp}><br />
+					传真：<{$ExpoRes.ExpoEq}><br />
+					电邮：<{$ExpoRes.ExpoEmail}><br />
+					联系人：<{$ExpoRes.ExpoEr}><br />			  </td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">承办单位：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEs}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">协办单位：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEt}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">参展费用：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEu}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">广告费用：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEv}></td>
+					</tr>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">展会规模：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEx}></td>
+					</tr>
+					<{if $ExpoRes.ExpoEy!=""}>
+					<tr bgColor=#ffffff>
+					  <td width="105" align=right valign="top">报名办法：</td>
+					  <td width="460" align=left><{$ExpoRes.ExpoEy}></td>
+					</tr>
+					<{/if}>
+					<tr align=center>              
+					   <td height=25 valign="top" bgColor=#f5f5f5 colspan="2">
+					   <button class="btn_xp" onclick="location.href='<{$UrlContainer.common}>room/fair.php?join=<{$ExpoRes.ExpoId}>,<{$ExpoRes.ExpoEa|urlencode}>';">报名参加这个展会</button></td>
+					</tr>
+		</tbody>
+		</table>
+		<br />
+		</td>
+		</tr>
+		<tr>
+		<td><img height=41 src="<{$tpl_img_path}>default/MB_31.gif" 
+		width=601></td></tr>
+		</tbody>
+		</table>
+		<p>　
+		</td>
+		</tr>
+		<tr>
+		<td align=middle background="<{$tpl_img_path}>default/MB_38.gif" height="100%" vAlign=top 
+		width=140><br />
+		<br /></td></tr>
+		</tbody>
+		</table>
+	</div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body></html>

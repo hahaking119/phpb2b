@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pageTitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+</head>
+
+<body>
+<{assign var="fair_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rmgjz mbx">
+	<p><span class="str">您当前位置：</span><{$pagePosition}>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="cp_left2">
+		<div class="cp_tab4">
+			<ul class="cp_ul3">所有<{$ExpotypeName|default:"展会列表"}>
+			</ul>
+<{foreach from=$ListFairs name=fairlist item=f}>
+<ul class="">
+				<li class=""><SPAN class=count><{$f.FairCreated|date_format:"%Y-%m-%d"}></SPAN>&nbsp;</li>
+				<li>·<a href="<{$UrlContainer.common}>fair/detail.php?id=<{$f.FairId}>"><{$f.Title|strip_tags}></a></li>
+				<li class="li3"></li>
+				<li class="li3"></li>
+			</ul>
+<{/foreach}>
+			<div class="cp_page f14"><{$ByPages}></div>
+		</div>
+	</div>
+</div>
+<div class="clear15"></div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title>登录&laquo;<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+</head>
+
+<body onload="javascript:document.loginfrm.login_name.focus();">
+<{assign var="room_li" value="cor over"}>
+<{assign var="if_searchbar" value="n"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd lg_wd1">
+	<p class="lg_txt1">尊敬的用户，为了更好的保护您个人信息的安全，我们对网站的安全性进行了升级，这需要较高版本的浏览器支持，如果您无法正常登录我们的网站，请升级您的浏览器，如果您不升级浏览器版本，您也可以点击这里按照我们的建议操作，为此给您带来的不便，请您谅谅解！</p>
+</div>
+<div class="clear9"></div>
+<div class="wd lg_wd1">
+	<div class="lg_left1">
+		<h2>已经是会员，马上登录</h2>
+		<form name="loginfrm" method="post" action="<{$smarty.server.PHP_SELF}>?referer=<{$smarty.get.referer}>" onSubmit="$('LogIn').disabled=true;">
+				<input type="hidden" name="loginbtn" value="W#23K">
+		<input type="hidden" name="forward" value="<{$smarty.get.forward}>" />
+			<p class="lg_p1">
+				<label for="lg_name" class="str">用户名：</label>
+				<input type="text" name="login_name" id="login_name" size="14" maxLength="20" value="<{$smarty.post.login_name}>">
+				<em><{if $LoginError}><font color="red"><strong><{$LoginError}></strong></font><{else}>你的登录帐号<{/if}></em>
+			</p>
+			<p class="lg_p1">
+				<label for="lg_pass" class="str">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+				<input name="login_pass" type="password" id="login_pass" size="14" maxLength="20" value="<{$smarty.post.login_pass|default:""}>">
+				<{if !$LoginError}><em>你的登录密码</em><{/if}>
+			</p>
+<{if $IfLoginPicture}>
+			<p class="lg_p1">
+				<label for="lg_pass" class="str">验证码：</label>
+				<input name="login_auth" id="login_auth" type="text" value="" size="4" maxlength="4">  
+		  <img src="../auth_image.php">
+				<em></em>
+			</p>
+<{/if}>
+			<p class="lg_p2">
+				<a href="getpass.php">忘了密码？</a>
+			</p>
+			<p class="lg_p3">
+				<input type="button" name="log_in" id="LogIn" value="登 陆" class="str">
+				<span>如果有任何疑问，请您联系热线：<{$servicetel}></span>
+			</p>
+		</form>
+		<div class="lg_bot"></div>
+	</div>
+	<div class="lg_right1">
+		<h2>还不是会员，马上注册</h2>
+		<form class="lg_f1">
+			<h3 class="f12">新用户请立刻注册，马上享受以下服务：</h3>
+			<ul class="ul21">
+				<li>发布产品供求信息，让生意自动找上门</li>
+				<li>发布公司介绍，提升企业知名度</li>
+			</ul>
+			<p>
+				<a href="<{$SiteUrl}>user/register.php?ob=personal">个人会员</a>
+				<br />
+				<a href="<{$SiteUrl}>user/register.php?ob=company">企业会员</a>
+			</p>
+		</form>
+		<div class="lg_bot1"></div>
+	</div>
+</div>
+<script>
+<!-- 
+function login(){
+	if(document.loginfrm.login_name.value == ""){
+			alert("请输入登陆名");
+			document.loginfrm.login_name.focus();
+			return false;
+		}else if(document.loginfrm.login_pass.value == ""){
+			alert("请输入登陆密码");
+			document.loginfrm.login_pass.focus();
+			return false;
+		}
+	<{if $IfLoginPicture}>
+	if($F('login_auth') == ""){
+		alert("请输入验证码，不区分大小写");
+		$('login_auth').focus();
+		return false;
+	}
+	<{/if}>
+	$("LogIn").value='登录中...';
+	$("LogIn").disabled = true;
+	document.loginfrm.submit();
+	return true;
+}
+addEvent($("LogIn"), "click", function doLogin(){
+	return login();
+});
+//-->
+</script>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

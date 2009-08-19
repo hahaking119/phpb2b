@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content=""> 
+<title><{$pf.ProductName|strip_tags}>&laquo;询价&laquo;<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<style>
+table th{padding:2px;font-size:12px;text-align:left}
+</style>
+<script>
+function checkinput(){
+	return true;
+}
+</script>
+</head>
+
+<body>
+<{assign var="product_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<script language="javascript" src="<{$UrlContainer.common}>js/adv.php?zid=2"></script>
+<table width="960" height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
+  <tbody>
+    <tr> 
+      <td width="100%"><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
+      width=14> 您当前位置： <a class=link12 href="<{$SiteUrl}>"><{$sitename}></a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>product/">产品库</a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>product/list.php?sid=<{$pf.IndustryId}>"><{$pf.IndustryName}></a> 
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table width="960" border="0" align="center" cellpadding="1" cellspacing="1" class="linegreen">
+  <tr> 
+    <td height="25"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td height="35" class="corgreen03"><div align="center" class="font18">【<{$pf.ProductName|strip_tags}>】</div></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="2" class="corgreen03"></td>
+  </tr>
+  <tr> 
+    <td height="25" class="corgreen02"> <div align="center" class="font14blak"></div></td>
+  </tr>
+  <tr> 
+    <td>
+	<form name="xunjiafrm" action="<{$smarty.env.PHP_SELF}>" method="post">
+	<input type="hidden" name="id" value="<{$smarty.get.id}>">
+	<input type="hidden" name="query[to_member_id]" value="<{$pf.MemberId}>">
+	<input type="hidden" name="query[to_company_id]" value="<{$pf.CompanyId}>">
+	<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="30"><div align="center"><strong>询 价 单</strong></div></td>
+        <td height="30"><div align="right"><span"><a href="../product/content.php?id=<{$pf.ProductId}>">查看产品详细信息</a></span><br>
+        </div></td>
+      </tr>
+      <tr>
+        <td width="460"><table width="450" height="120" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top"><table width="450" border="0" cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td><div align="right">发送给：</div></td>
+                    <td height="30"><{if $pf.MemberEmail!=""}><{mailto address=$pf.MemberEmail encode="javascript" subject="Hello" text=$pf.MemberEmail|default:"NONE"}><{/if}>（<a href="../space.php?userid=<{$pf.MemberUserName}>">查看对方联系方式</a>）</td>
+                  </tr>
+                  <tr>
+                    <td><div align="right">询价标题：</div></td>
+                    <td height="30"><input name="query[title]" type="text" value="我对您在<{$sitename}>发布的产品<{$pf.ProductName}>很感兴趣" size="45"></td>
+                  </tr>
+                  <tr>
+                    <td><div align="right">订货总量：</div></td>
+                    <td height="30"><input name="query[exp_quantity]" type="text">
+                      (单位)</td>
+                  </tr>
+                  <tr>
+                    <td><div align="right">期望价格：</div></td>
+                    <td><input name="query[exp_price]" type="text">
+                      (元/单位)</td>
+                  </tr>
+                  <tr>
+                    <td><div align="right">补充信息：
+                    <br />
+                    （在此填写您要补充的内容）<BR>
+                    </div></td>
+                    <td><textarea name="query[content]" cols="40" rows="6" wrap="VIRTUAL" id="content"></textarea></td>
+                  </tr>
+				  <{**If user have been logined.**}>
+				  <{if $smarty.session.MemberName}>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td height="30"><input name="query[send_achive]" id="send_achive" type="checkbox" value="1" checked><label for="send_achive">向对方发送我的商业通档案(<a href="<{$SiteUrl}>room/card.php">点此检查联系信息，确保对方能联系到我</a>！)</label></td>
+                  </tr>
+				  <{/if}>
+              </table></td>
+            </tr>
+        </table></td>
+        <td width="300" valign="top"></td>
+      </tr>
+      
+      <tr>
+        <td height="20" colspan="2" class="C"><table width="100%" height="115" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="3" class="style">
+                  <tr class="line">
+                    <td height="30" colspan="3" class="corbule2">　<strong>我需要进一步了解的信息</strong>（请在需要了解的信息前选中方框
+                        <input type="checkbox" name="qidAll" id="qid_all" onClick="uaCheckAll(this, 'qid[]')" title="全选"><label for="qid_all">全选</label></td>
+                  </tr>
+                  <tr>
+                    <td width="31%"><input type="checkbox" name="qid[]" id="qid_1" value="1" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_1">产品规格、型号</label></td>
+                    <td width="35%" height="30"><input type="checkbox" name="qid[]" id="qid_2" value="2" onClick="uaCheckItem(this, 'qidAll')">
+                  <label for="qid_2">单价</label></td>
+                    <td width="34%"><input type="checkbox" name="qid[]" id="qid_3" value="3" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_3">价格条款</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="qid[]" id="qid_4" value="4" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_4">原产地</label></td>
+                    <td height="30"><input type="checkbox" name="qid[]" id="qid_5" value="5" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_5">供货能力</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_6" value="6" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_6">销售条款及附加条件</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="qid[]" id="qid_7" value="7" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_7">最小订货量</label></td>
+                    <td height="30"><input type="checkbox" name="qid[]" id="qid_8" value="8" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_8">交货期</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_9" value="9" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_9">能否提供样品</label></td>
+                  </tr>
+                  <tr>
+                    <td height="22"><input type="checkbox" name="qid[]" id="qid_10" value="10" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_10">产品担保</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_11" value="11" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_11">包装方式</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_12" value="12" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_12">质量/安全认证</label></td>
+                  </tr>
+                  <tr>
+                    <td height="21" colspan="3">&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="30" colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="30" colspan="2">
+		<table width="100%" border="0" cellpadding="0" cellspacing="3" class="style">
+          <tr class="line">
+            <td height="30" colspan="2" class="corbule2">　<strong>填写您的联系方式</strong> （很重要：请仔细填写，确保对方能联系到您）</td>
+          </tr>
+          <tr>
+            <th width="31%">姓名：</th>
+            <td height="30"><input type="text" name="link[name]" />
+            &nbsp;</td>
+            </tr>
+          <tr>
+            <th>首选电话联系方式：</th>
+            <td height="30"><select name="link[tel_type]" id="tel_type"><{html_options options=$TelTypes}></select>&nbsp;              <input type="text" name="link[tel_number]" /></td>
+            </tr>
+          <tr>
+            <th>首选即时通讯账号：</th>
+            <td height="30"><select name="link[im_type]" id="im_type"><{html_options options=$ImTypes}></select>&nbsp;              <input type="text" name="link[im_number]" /></td>
+            </tr>
+          <tr>
+            <th height="22">Email：</th>
+            <td><input type="text" name="link[email]" id="link_email" />
+            &nbsp;</td>
+            </tr>
+          <tr>
+            <td height="21" colspan="2">&nbsp;</td>
+          </tr>
+        </table>
+		</td>
+      </tr>
+      <tr>
+        <td height="5" colspan="2"><div align="center">
+		<input type="submit" class="btn_xp" border="0" value="我要询价" onClick="return checkinput();">
+		<input type="button" name="resetbtn" id=ResetBtn value="取消" class="btn_xp" onClick="document.xunjiafrm.reset();"></a><br>
+                <br>
+        </div></td>
+      </tr>
+    </table>
+	</form>
+	</td>
+  </tr>
+</table>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>注册成功&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="用户注册完成"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script type="text/javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<{assign var="room_li" value="cor over"}>
+<{assign var="if_searchbar" value="n"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rg_wd1">
+	<div class="rg_left1">
+	<table width="711" height="372" border="0" align="center" cellpadding="0" cellspacing="0">
+	  <tr> 
+		<td valign="top" class="C"> 
+		  <div align="center">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr> 
+				<td height="50">&nbsp;</td>
+			  </tr>
+			  <tr> 
+				<td height="174"> 
+				<div align="center"> 
+					<p><img src="<{$tpl_img_path}>default/reg_n1.gif" width="233" height="29"></p>
+					<p align="left">您好,<strong class="fontred"><{$UalinkUser.username|default:$NewMemberName}></strong>,您已经是我们<{$sitename}>的<strong class="fontred">注册会员</strong>了。</p>
+				<{if $smarty.get.check==1}>
+				<p>
+				请等待管理员审核!
+				</p>
+				<{else}>
+					<p align="left"> 从现在起您可以：<{if $UalinkUser.user_level==2}><a href="<{$SiteUrl}>room/company.php">发布公司</a> <a href="<{$SiteUrl}>room/productedit.php">发布产品</a><{/if}><a href="<{$SiteUrl}>room/tradeedit.php">发布供求信息</a>                
+					</p>
+					<{if $ForumSet.switch}>
+					<p align="left"> 同时,您还可以<a href="<{$ForumSet.url}>" target="_blank">进入商业论坛</a>,同更多的人交流您的经验.</p>
+					<{/if}>
+					<{/if}>
+					</div>
+				</td>
+			  </tr>
+			  <tr> 
+				<td height="66"><p align="center"><a href="upgrade.php"><img src="<{$tpl_img_path}>default/succeed-zi.gif" width="254" height="34" border="0"></a></strong></font></p></td>
+			  </tr>
+			</table>
+		  </div>
+		  <div align="center"></div></td>
+	  </tr>
+	</table>
+	</div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

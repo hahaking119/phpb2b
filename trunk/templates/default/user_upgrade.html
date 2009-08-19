@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>高级会员申请&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="">
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script>
+function checkUpgrade(){
+	if($F('last_membertype')==$F('upgrade_membertype')){
+		alert("您已经是该会员类型");
+		$('upgrade_membertype').focus();
+		return false;
+	}
+	if($F('member_tel')==""){
+		alert("请输入您的联系电话");
+		$('member_tel').focus();
+		return false;
+	}
+	if($F('member_email')==""){
+		alert("请输入您的联系Email");
+		$('member_email').focus();
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<{assign var="room_li" value="cor over"}>
+<{assign var="if_searchbar" value="n"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rg_wd1">
+	<div class="rg_left1">
+		<table width="960"  border="0" align="center" cellpadding="0" cellspacing="5" >
+		  <tr class="corhui"> 
+			<td height="32"><div align="right"> 
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr> 
+					<td width="515" height="37" valign="middle"><span class="font15"> 
+					<img src="<{$tpl_img_path}>default/vip.gif">  <{$sitename}>高级会员申请：</span>　　　　　　　　　　　</td>
+					<td width="235"><div align="right">带<font class=S><span class="fontred">*</span><span class="style6"></span></font>号的为必填信息</div></td>
+				  </tr>
+				</table>
+			  </div></td>
+		  </tr>
+		  
+		  <tr> 
+			<td height="45" class="font12"><div align="center"><span class="font12yellow">* 请详细填写下表，我们的工作人员在收到你的订单后会第一时间与您取得联系.</span></div></td>
+		  </tr>
+		  <tr> 
+			<td> 
+			  <table width="100%" height="33" border="0" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>default/loginbj.jpg">
+				<tr> 
+				  <td><img src="<{$tpl_img_path}>default/btn_online.gif" width="118" height="33"></td>
+				</tr>
+			  </table>
+			  <form method="post" name="applyfrm" action="<{$smarty.server.PHP_SELF}>" />
+			  <input type="hidden" name="member[id]" value="<{$UalinkUser.id}>" />
+			  <input type="hidden" name="company[id]" value="<{$MemberInfo.CompanyId}>" />
+			  <input type="hidden" name="last_membertype" id="last_membertype" value="<{$UalinkUser.user_type}>" />
+			  <table width="100%"  border="0" cellpadding="5" cellspacing="2">
+				<tr> 
+				  <td width="40%" align="right" class="corred">公司名称：</td>
+				  <td width="60%"><{if $MemberInfo.CompanyName}><{$MemberInfo.CompanyName}><{else}><input name="company[name]" type="text" class="linehui" id="company_name" size="30" maxlength="20">
+				  <{/if}></td>
+				</tr>
+				<tr> 
+				  <td align="right" class="corred">用户ID：</td>
+				  <td><{if $UalinkUser.id}><{$smarty.session.MemberName}><{else}><input name="member[username]" type="text" class="linehui" id="member[username]" size="30" maxlength="20">
+					<span class="fontred">*<span class="time"><br>
+					（4-20个字符（A-Z， a-z， 0-9，下划线）</span><{/if}> </td>
+				</tr>
+				<tr> 
+				  <td align="right" class="corred">申请会员类型：</td>
+				  <td>
+					  <select name="order[product_id]" id="upgrade_membertype">
+					  <{foreach from=$Membertypes name=member_types item=t}>
+					  <option value="<{$t.MembertypeId}>"><{$t.MembertypeName}>
+					  <{/foreach}>
+					</select>
+					<span class="fontred">*</span>
+					</td>
+				</tr>
+				<tr> 
+				  <td align="right" class="corred">申请年限：</td>
+				  <td> <select name="order[year_option]" id="year_option">
+					<option value="1">1年</option>
+					<option value="2">2年</option>
+					<option value="3">3年</option>
+					<option value="4">4年</option>
+					<option value="5">5年</option>
+							</select> 
+					<span class="fontred">*</span></td>
+				</tr>
+				<tr>
+				  <td height="26" align="right" class="corred">联系电话：</td>
+				  <td><input name="member[tel]" type="text" class="linehui" id="member_tel" value="<{$MemberInfo.Tel}>" size="30" maxlength="20">
+					  <span class="fontred">*</span></td>
+				</tr>
+				<tr>
+				  <td height="26" align="right" class="corred">E-mail：</td>
+				  <td><input name="member[email]" type="text" class="linehui" id="member_email" value="<{$MemberInfo.Email}>" size="30" maxlength="20">
+					  <span class="fontred">*</span></td>
+				</tr>
+				<tr class="corhui"> 
+					<td height="50" align="center" colspan="2"> 
+					  <div align="center"><input type="submit" name="apply" value=" 立即申请 " onclick="return checkUpgrade();" class="btn_xp"></div></td>
+				  </tr>      
+				 </table>
+			  </form>
+			  </td>
+		  </tr>
+		</table>
+	</div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

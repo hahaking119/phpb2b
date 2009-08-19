@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$prodInfo.ProductName|strip_tags}><{if $prodInfo.picture!=""}>(有图片)<{/if}>&laquo;产品库&laquo;<{$sitetitle}></title>
+<meta name="Author" content="PHPB2B2.4Final" />
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name="keywords" content="友邻,友邻电子商务,B2B电子商务演示,最新产品,关键词">
+<meta name="description" content="找<{$prodInfo.ProductName|replace:"\r\n":""}>在<{$sitename}>"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script>
+$(document).ready(function(){        //DOM的onload事件处理函数     
+  $("#favor").click(function(){          //当按钮button被点击时的处理函数     
+    postdata();                                      //button被点击时执行postdata函数     
+  });     
+});
+function postdata(){                             //提交数据函数     
+  $.ajax({                                                 //调用jquery的ajax方法     
+    type: "POST",                                     //设置ajax方法提交数据的形式     
+    url: "detail.php",                                      //把数据提交到ok.php     
+    data: "action=favor&type_id=<{$tradeInfo.trade_type}>&id=<{$tradeInfo.TradeId}>",    //输入框writer中的值作为提交的数据     
+    success: function(msg){                 //提交成功后的回调，msg变量是ok.php输出的内容。     
+      alert("已经加入收藏夹");                     //如果有必要，可以把msg变量的值显示到某个DIV元素中     
+    }     
+  });     
+}
+</script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript">
+function extendDiv(id) {
+	if($('div_' + id).style.display == 'none') {
+		$('div_' + id).style.display = '';
+		$('img_' + id).src = '<{$tpl_img_path}>default/div_plus.gif';
+	} else {
+		$('div_' + id).style.display = 'none';
+		$('img_' + id).src = '<{$tpl_img_path}>default/div_extend.gif';
+	}
+}
+</script>
+</head>
+
+<body>
+<{assign var="product_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rmgjz mbx">
+	<p><span class="str"><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
+      width=14> 您当前位置： <a class="link12" href="<{$SiteUrl}>"><{$sitename}></a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>product/">产品库</a> 
+        &raquo; <a class=link12  href="<{$SiteUrl}>product/list.php"><{$prodInfo.IndustryName}></a> &raquo; <{$prodInfo.ProductName|strip_tags}></p>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="cp_bt1"><em class="cp_em1"></em><h2><{$tradeInfo.Name|strip_tags}></h2><em class="cp_em2"></em></div>
+	<div class="cp_c1">
+		<div class="cp_d1">
+			<img src="<{if $prodInfo.picture!=''}><{$SiteUrl}>attachment/<{$prodInfo.picture}><{else}><{$SiteUrl}>images/<{$ThemeName}>/no-big.jpg<{/if}>" alt="" />
+			<em><a href="<{$SiteUrl}>attachment.php?source=<{$prodInfo.picture}>">放大图片</a></em>
+		</div>
+		<ul class="cp_ul1">
+			<li><em class="str">产品名称：</em><{$prodInfo.ProductName|strip_tags}></li>
+			<li><em class="str">发布时间：</em><{$prodInfo.created|date_format:"%Y-%m-%d"}></li>
+			<li><em class="str">关键词：</em><{foreach from=$ProductKeywords item=item}><a href="<{$SiteUrl}>tag.php?type=products&keyword=<{$item.ItemTitle|urlencode}>"><{$item.ItemTitle}></a>&nbsp;<{/foreach}></li>
+			<li><em class="str">所属地区：</em><{$tradeInfo.AreaZone}></li>
+			<li><a href="query.php?id=<{$prodInfo.id}>" class="xj">我要询价</a></li>
+		</ul>
+		<div class="cp_d2">
+			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>
+			<{include file="`$ThemeName`/element.showcompanyinfo.html"}>
+			<{else}>
+			<{include file="`$ThemeName`/element.loginform.html"}>
+			<{/if}>
+		</div>
+		<div class="clear9"></div>
+	</div>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="cp_left1">
+		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>详细说明</h2><em class="cp_em2"></em></div>
+		<div class="cp_c3">
+			<div><{$prodInfo.Content|strip_tags|nl2br}></div>
+		</div>
+	</div>
+	<div class="cp_right1">
+		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>本产品其他同类产品信息</h2><em class="cp_em2"></em></div>
+		<div class="cp_c5">
+			<{if $FineProducts}>
+			<{include file="`$ThemeName`/element.fineproducts.html"}>
+			<{/if}>
+			<div class="clear9"></div>
+		</div>
+	</div>
+</div>
+<div class="clear9"></div>
+<div class="wd cpk_ad1"><img src="<{$tpl_img_path}>default/in_960x93.jpg" alt="" /></div>
+<div class="clear15"></div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

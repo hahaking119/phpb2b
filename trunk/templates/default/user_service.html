@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>客服中心&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="<{$sitename}>客户服务中心,请提交您的宝贵意见在这里"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<style>
+body{text-align:center;}
+td {font-size: 12px;line-height:160%}
+th {font-size: 14px;}
+h4 {font-size:14px; font-weight:bold; color:#CC0000; background-color:#FFFFCC}
+.dotline{background-image:url(<{$tpl_img_path}>default/dot_line.gif);background-repeat: repeat-x;background-position: bottom;}
+</style>
+<script language="javascript">
+/**
+onpropertychange()方法在非IE浏览器中很多都不支持，以后可能要用其他代替。
+**/
+var number=<{$ServicePageAmount}>; //定义条目数
+
+function LMYC() {
+var lbmc;
+    for (i=1;i<=number;i++) {
+        lbmc = eval('LM' + i);
+        lbmc.style.display = 'none';
+    }
+}
+ 
+function ShowFLT(i) {
+    lbmc = eval('LM' + i);
+    if (lbmc.style.display == 'none') {
+        LMYC();
+        lbmc.style.display = '';
+    }
+    else {
+        lbmc.style.display = 'none';
+    }
+}
+function init(){
+	//alert("asdfasfd");
+	document.servicefrm.save.disabled=true;
+}
+function checkform() {
+	document.servicefrm.save.disabled=true;
+	var title = document.getElementById("title").value;
+	var content = document.getElementById("content").value;
+	if(title=="" || content==""){
+		alert("请输入标题或内容");
+		return false;
+	}else{
+		document.servicefrm.submit();
+	}
+}
+function d(){
+	document.servicefrm.save.disabled=false;
+	document.servicefrm.save.value="提交";
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0">
+<{assign var="room_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rg_wd1">
+	<div class="rg_left1">
+		<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+		  <tr>
+			<td><table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+				<tr> 
+				  <td> 
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					  <tr> 
+						<td><img src="<{$tpl_img_path}>default/service.jpg" width="960" height="91"></td>
+					  </tr>
+					</table>
+					<table width="100%"  border="0" align="center" cellpadding="5" cellspacing="2">
+					  <tr class="corhei"> 
+						<td colspan="4" height="1"></td>
+					  </tr>
+					  <tr class="coryellow" align="center"> 
+						<th width="50">问/答</th>
+						<th width="500">标 题：内 容</th>
+						<th width="50">名称</th>
+						<th width="60">时间</th>
+					  </tr>
+					  
+					  <!--service -->
+					  <{foreach from=$ServiceList name=listservice item=sl}>
+					  <tr> 
+						<td class="dotline"><img src="<{$tpl_img_path}>default/ico_q.gif" width="47" height="29"></td>
+						<td class="dotline"><a onClick=javascript:ShowFLT(<{$smarty.foreach.listservice.iteration}>) href="javascript:void(null)"><h4><{if $sl.Title|lower eq "index"}><{else}><{$sl.Title|strip_tags}><{/if}></h4><{$sl.Content}></a></td>
+						<td class="dotline"><div align="center"><{if $sl.NickName eq ""}>匿名<{else}><{$sl.NickName}><{/if}></div></td>
+						<td class="dotline"><div align="center" class="time"><{$sl.CreateTime|date_format:"%Y-%m-%d"}></div></td>
+					  </tr>
+					  <tr id="LM<{$smarty.foreach.listservice.iteration}>" style="DISPLAY: none; background-color:#f5f9ed"> 
+						<td width="50"><img src="<{$tpl_img_path}>default/ico_a.gif" width="14" height="14" hspace="5"></td>
+						<td colspan="3"><{$sl.Revert}></td>
+					  </tr>
+					  <{/foreach}>
+					  <!--:~service -->
+					</table>
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+					  <tr> 
+						<td height="1" background="<{$tpl_img_path}>default/dian.gif"></td>
+					  </tr>
+					  <tr> 
+						<td> <table width=100% cellpadding=0 cellspacing="0" class="corhui">
+							<tr  > 
+							  <td align="center" valign="baseline"><{$ByPages}></td>
+							</tr>
+						</table></td>
+					  </tr>
+					</table>
+					<br> 
+					<table width="100%" height="106" border="0" cellpadding="0" cellspacing="0" class="linered">
+					  <tr> 
+						<td valign="top" class="corred"> 
+						<a name="post">
+						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+							<tr> 
+							  <td class="coryellow" height="8"></td>
+							</tr>
+							<tr> 
+							  <td class="corhei" height="2"></td>
+							</tr>
+						  </table>
+						  <table width="100%" border="0" cellspacing="5" cellpadding="5">
+							<tr> 
+							  <td class="font14blak">
+							  
+							  <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11">给我们留言</td>
+							</tr>
+							<tr class="linehui"> 
+							  <td class="corwhite"><span class="time">尊敬的用户：请您认真填写以下资料，我们尽可能在三个工作日之内给您答复，请留意您的联系邮箱并认真阅读邮件的内容。 
+								</span> 
+								<form name="servicefrm" action="./service.php" method="post" onSubmit="return checkform()">
+								<input type="hidden" name="s" value="1">
+								<table width="100%"  border="0" cellpadding="5" cellspacing="2">
+								  <tr> 
+									<td width="36%" align="right" class="corred"><span class="fontred">* 
+									  </span>反馈类别：</td>
+									<td width="64%"><{html_radios name="service[type_id]" options=$ServiceTypes checked="1" separator=" "}></td>
+								  </tr>
+								  
+								  <tr> 
+									<td align="right" class="corred"><span class="fontred">*</span> 
+									  标题：</td>
+									<td> <input name="service[title]" type="text" class="linehui" id="title" size="40" onFocus="d();">                            
+									</td>
+								  </tr>
+								  <tr> 
+									<td align="right" class="corred"><span class="fontred">*</span> 
+									  您的Email：</td>
+									<td> 
+									<input name="service[email]" type="text" class="linehui" id="email" size="40" maxlength="20" value="">
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="26" align="right" class="corred"><span class="fontred">*</span> 
+									  您的称呼：</td>
+									<td> <input name="service[nick_name]" type="text" class="linehui" id="nick_name" size="40" maxlength="20">                            
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="26" align="right" class="corred"><span class="fontred">*</span> 
+									  反馈内容：</td>
+									<td><textarea name="service[content]" cols="40" rows="6" wrap="VIRTUAL" id="content" onFocus="d();"></textarea>
+									</td>
+								  </tr>
+								  <tr> 
+									<td height="26" colspan="2" align="right" class="corhui"> 
+									  <div align="center"> 
+										<input type="submit" name="save" id="save" value="输入标题后可提交" class="btn_xp">
+										<input type="reset" name="reset" value="重置" class="btn_xp">
+									  </div></td>
+								  </tr>
+								</table>
+								</form>
+								</td>
+							</tr>
+						  </table></td>
+					  </tr>
+					</table>
+					<br> <table width="100%" border="0" cellpadding="0" cellspacing="0" class="linehui">
+					  <tr> 
+						<td valign="top" class="corred"> 
+						  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+							<tr> 
+							  <td class="coryellow" height="8"></td>
+							</tr>
+							<tr> 
+							  <td class="corhei" height="2"></td>
+							</tr>
+						  </table>
+						  <table width="100%" border="0" cellspacing="5" cellpadding="5">
+							<tr> 
+							  <td class="font14blak">
+							  <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11"> 
+								温馨提醒
+								</td>
+							</tr>
+							<tr class="linehui"> 
+							  <td class="corwhite"><span class="time"> </span> 
+							  <table width="100%"  border="0" cellpadding="5" cellspacing="2">
+								  <tr> 
+									<td><p class="font12">这里您可以像发送邮件一样给我们提交问题，我们会尽快于三个工作日内给您答复，请您注意查收邮件！<br>
+										客服热线：<{$servicetel}>　Email:<a href="mailto:<{$serviceemail}>"><{$serviceemail}></a></p>
+									  </td>
+								  </tr>
+								</table></td>
+							</tr>
+						  </table></td>
+					  </tr>
+					</table>
+					
+				  </td>
+				</tr>
+			  </table></td>
+		  </tr>
+		</table>
+	</div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>
+<script language="javascript">
+init();//必须放在最后，才能对按钮生效。
+</script>

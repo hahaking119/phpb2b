@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$p.ProductName}>-产品查看-<{$cinfo.CompanyName}>&nbsp;<{$sitetitle}></title>
+<style type="text/css">
+<!--
+body {
+	margin-top: 3px;
+}
+-->
+</style>
+<link href="<{$I_PATH}>css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<{include file="$TplPath/top.html"}>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0"><tr><td align="center"><table width="778" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7">&nbsp;</td>
+        <td width="538" valign="top" style="padding-bottom:5px;padding-top:5px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="55"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="left"><img src="<{$I_PATH}>images/cptu.gif" width="41" height="36" /><img src="<{$I_PATH}>images/product.gif" width="81" height="20" hspace="5" /></td>
+                  </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td bgcolor="#F8F8F8" style="padding-top:5px;">
+            <table width="95%" border="0" align="center" cellpadding="0" cellspacing="5" class="style">
+        <tr> 
+          <td valign="top" bordercolor="#CCCCCC"> 
+            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+              <tr> 
+                <td height="30"> <div align="center"><span class="tile2"><strong><{$p.ProductName|strip_tags}></strong></span> 
+                    <hr size=1 style="border:1px dotted #cccccc;">
+                  </div></td>
+              </tr>
+            </table>
+            <table width="95%" height="28" border="0" align="center" cellpadding="1" cellspacing="1" class="corhui">
+              <tr> 
+                <td class="font14"> <strong>　该 
+                    产 品 详 细 介 绍：</strong></td>
+              </tr>
+            </table>
+            <table width="95%" border="0" align="center" cellpadding="5" cellspacing="5" class="cor04">
+              <tr> 
+                <td><span class="style"><{$p.ProductContent|strip_tags|nl2br}></span> </td>
+              </tr>
+            </table>
+            <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td> <hr size=1 style="border:1px dotted #cccccc;"> <br> 
+                  <table width="400" height="350" border="0" align="center" cellpadding="0" cellspacing="1" class="line">
+                    <tr> 
+                      <td class="corwhite"> 
+                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                          <tr> 
+                            <td> <div align="center"><img width="400" height="300" src="<{$attachment_dir}>big/<{$p.ProductPicture|default:"big_default.jpg"}>"></div></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellpadding="5" cellspacing="5" class="style">
+                    <tr> 
+                      <td><div align="center">
+                          <a href="../product/query.php?id=<{$p.ProductId}>"><img src="<{$I_PATH}>images/query.gif" width="119" height="24" border="0" alt=""></a></div></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br> <table width="100%" border="0" cellpadding="3" cellspacing="3" class="style">
+              <tr> 
+                <td colspan="4" background="<{$I_PATH}>images/bj1.gif"> <strong>　同系列商品：</strong></td>
+              </tr>
+              <tr> 
+                <td colspan="4"><div align="center"> 
+                    <table width="100%" height="100" border="0" align="center" cellpadding="3" cellspacing="3">
+                      <tr>
+					  	<{foreach from=$SimilarProducts name=similar item=sp}>
+                        <td width="25%" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr> 
+                              <td height="16"> <table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+                                  <tr> 
+                                    <td><div align="center"> 
+                                        <table width="90" border="0" cellpadding="0" cellspacing="1" class="line">
+                                          <tr> 
+                                            <td  class="corwhite"><table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                <tr> 
+                                                  <td> <div align="center"><img src="<{$attachment_dir}><{$sp.ProductPicture}>.small.jpg" width="72" height="68"></div></td>
+                                                </tr>
+                                              </table></td>
+                                          </tr>
+                                        </table>
+                                      </div></td>
+                                  </tr>
+                                  <tr> 
+                                    <td class="style"><div align="center"><a href="./product.php?id=<{$sp.ProductId}>&userid=<{$smarty.get.userid}>"><{$sp.ProductName|strip_tags|truncate:15}></a><br>
+                                        <span class="time"><{$sp.ProductCreated|date_format:"%Y/%m/%d"}></span>
+                                      </div></td>
+                                  </tr>
+                                </table></td>
+                              <td width="1" background="<{$I_PATH}>images/img_bg_1x8.gif"></td>
+                            </tr>
+                          </table></td>
+						<{foreachelse}>
+						<td>无同类产品</td>
+						<{/foreach}>
+                      </tr>
+                    </table>
+                  </div></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+            </td>
+          </tr>
+        </table></td>
+        <td align="right" valign="top"><{include file="$TplPath/menu.html"}></td>
+      </tr>
+    </table></td>
+</tr>
+<{include file="$TplPath/foot.html"}>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pageTitle|default:"资讯"}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<style>
+/*---------------资讯:列表页:列表区域*/
+.newslist{
+	border:1px solid #ccc;
+	margin-top:5px;
+	padding-bottom:10px;
+	background:url(<{$tpl_img_path}>default/images/place_bg.jpg) 1px 1px repeat-x;
+}
+.newslist dl{
+	margin:10px auto 0px;
+	display:block;
+	border-bottom:1px dotted #DDD;
+}
+.newslist dl dt{
+	margin:0px auto 0px;
+	background:url(<{$tpl_img_path}>default/images/ico_2.gif) 18px 9px no-repeat;
+}	
+.newslist dl dt a{
+	color:#039;
+	line-height:22px;
+	font-size:14px;
+	margin-left:20px;
+	letter-spacing:1px;
+}
+.newslist dl dt span{
+	color:#039;
+	float:right;
+	position:relative;
+	margin:-22px 5px 0px 0px;
+}
+.newslist dl dd{
+	margin:0px auto 0px;
+}
+.newslist dl dd.preview{
+	line-height:19px;
+	color:#777;
+	text-indent:14px;
+}
+.newslist dl dd.info{
+	line-height:31px;
+	color:#999;
+}
+.newslist dl dd.info span{
+	color:#F60;
+	margin-right:20px;
+}
+.newslist dl dd.info a{
+	color:#039;
+	float:right;
+	position:relative;
+	margin:-30px 5px 0px 0px;
+}
+
+/*---------------资讯:内容页*/
+</style>
+</head>
+
+<body>
+<{assign var="news_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rmgjz mbx">
+	<p><span class="str">您当前位置：</span><{$pagePosition}>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="cp_left2">
+		<!--新闻列表-->
+		<div class="newslist">
+		<{foreach from=$ListNews name=news item=n}>
+        <dl>
+			<dt>·<a href="<{$UrlContainer.common}>news/detail.php?id=<{$n.NewsId}>"><{$n.NewsTitle|strip_tags}></a> <span><{$n.NewsCreated|date_format:"%Y-%m-%d"}></span></dt>
+		</dl>
+		<{/foreach}>
+		</div>
+		<div align="center"><{$ByPages}></div>
+	</div>
+	<div class="cp_right2">
+		<div class="bt cp_bt5"><h2>资讯排行</h2></div>
+		<div class="cp_tab5">
+          	<{foreach from=$HotNews item=ht name=hot}>
+			<p><a href="<{$UrlContainer.common}>news/detail.php?id=<{$ht.NewsId}>" target="_blank" Title="<{$ht.NewsTitle}>"><img src="<{if $ht.picture}>../attachment/<{$ht.picture}>.small.jpg<{else}>../data/default/small.gif<{/if}>" alt="<{$ht.NewsTitle}>" width="65" height="40" /></a></p>
+			<{/foreach}>
+			<div class="clear9"></div>
+		</div>
+	</div>
+</div>
+<div class="clear15"></div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

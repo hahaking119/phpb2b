@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title>求购&laquo;<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<{$xajax_javascript}>
+<script language="javascript">
+xajax_rebuildHTML("buy/index.php");
+</script>
+</head>
+
+<body>
+<{assign var="buy_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd">
+	<div class="cg_left1">
+		<div class="bt gs_bt4 cg_bt1"><h2><a href="<{$UrlContainer.common}>offer/list.php?filter=求购">最新求购信息</a></h2><p><a href="<{$UrlContainer.common}>offer/list.php?filter=求购">进入</a></p></div>
+		<div class="cg_c1">
+			<div class="cg_ad1"><img src="<{$tpl_img_path}>default/cg_265x57.jpg" /></div>
+			<ul class="ul21 ula">
+				<{offer max=8 type_id="1"}>
+			</ul>
+		</div>
+	</div>
+	<div class="cg_left2">
+		<div class="cg_hot"><a href="<{$SiteUrl}>news/list.php?type_id=1"><img src="<{$tpl_img_path}>default/cg_382x153.jpg" alt="" /></a></div>
+		<div class="clear9"></div>
+		<div class="cg_tab1">
+			<div class="bt"><h2 class="f12">价格行情资讯</h2></div>
+			<a href="#"><img src="<{$tpl_img_path}>default/cg_105x68.jpg" alt="" />
+			<ul class="ul21">
+				<{news type_id=1 max=8}>
+			</ul>
+		</div>
+	</div>
+	<div class="cg_right1">
+		<div class="bt gs_bt4 cg_bt1 cg_bt5"><h2><a href="<{$UrlContainer.common}>offer/list.php?type=company">企业发布</a></h2><p><a href="<{$UrlContainer.common}>offer/list.php?type=company">进入</a></p></div>
+		<div class="cg_c1 cg_c2">
+			<ul class="ul21 ula">
+				<{offer type="company" max=11}>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="clear9"></div>
+<div class="wd cg_ad2"><{ad type_id=1}></div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="hyfl">
+		<div class="bt in_bt6"><h2>行业分类大全</h2><p class="padright10 none"><a href="<{$UrlContainer.common}>room/tradeedit.php" class="a">发布供求信息</a></p></div>
+		<div class="hyfl_c"><{$IndustryList}></div>
+	</div>
+	<div class="cg_right2">
+		<div class="cg_tab2">
+			<a href="#"><img src="<{$tpl_img_path}>default/cg_302x44.jpg" alt="" /></a>
+			<a href="#"><img src="<{$tpl_img_path}>default/cg_302x44_1.jpg" alt="" /></a>
+			<a href="#"><img src="<{$tpl_img_path}>default/cg_302x44_2.jpg" alt="" /></a>
+			<a href="#"><img src="<{$tpl_img_path}>default/cg_302x44_3.jpg" alt="" /></a>
+		</div>
+		<div class="clear9"></div>
+		<div class="bt gs_bt4 cg_bt1 cg_bt2"><h2><a href="<{$UrlContainer.common}>product/list.php?sort_id=3">库存商品</a></h2><p><a href="<{$UrlContainer.common}>product/list.php?sort_id=3">更多</a></p></div>
+		<div class="cg_c1 cg_c3">
+			<ul class="ul21 ula"><{product sort=3 max=6}></ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="bt gs_bt4 cg_bt1 cg_bt2 cg_bt3"><h2><a href="<{$UrlContainer.common}>offer/list.php?filter=求购">热门采购信息</a></h2><p><a href="<{$UrlContainer.common}>offer/list.php?filter=求购">更多</a></p></div>
+		<div class="cg_c1 cg_c3">
+			<ul class="ul21 ula">
+				<{offer type="buy" max=6 orderby="clicked desc"}>
+			</ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="bt gs_bt4 cg_bt1 cg_bt2 cg_bt3"><h2><a href="<{$UrlContainer.common}>offer/list.php?filter=招商">招商</a></h2><p><a href="<{$UrlContainer.common}>offer/list.php?filter=招商">更多</a></p></div>
+		<div class="cg_c1 cg_c3">
+			<ul class="ul21 ula">
+				<{offer type_id="5" max=6}>
+			</ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="bt gs_bt4 cg_bt1 cg_bt2 cg_bt3"><h2><a href="<{$UrlContainer.common}>offer/list.php?filter=合作">合作</a></h2><p><a href="<{$UrlContainer.common}>offer/list.php?filter=合作">更多</a></p></div>
+		<div class="cg_c1 cg_c3">
+			<ul class="ul21 ula">
+				<{offer type_id="4" max=6}>
+			</ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="bt gs_bt4 cg_bt1 cg_bt2 cg_bt4"><h2><a href="<{$UrlContainer.common}>company.php?ac=list&type=commend">推荐供应商</a></h2><p><a href="<{$UrlContainer.common}>company.php?ac=list&type=commend">更多</a></p></div>
+		<div class="cg_c1 cg_c3">
+			<ul><{company showarea="no" max=6}></ul>
+		</div>
+	</div>
+</div>
+<div class="clear9"></div>
+<div class="wd cpk_ad1"><{ad type_id=1}></div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" id="css" href="<{$tpl_img_path}>admin/admincp.css">
+<style>
+/**.topmenubg {background-image:url(<{$tpl_img_path}>admin/BG.jpg);}**/
+#header{width:100%;height:45px;}
+/*links*/
+a:link,a:visited{color: #666666;text-decoration:none;}
+a:hover{color: #3078d8; text-decoration:underline;}
+
+a.links:link,a.links:visited{color: #3078d8;text-decoration:none;}
+a.links:hover{color: #333333; text-decoration:underline;}
+.tabs{PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 1px; PADDING-TOP: -1px;height:24px;overflow:hidden;}
+.left  {float:left;}
+.right {float:right;}
+.clear {clear:both;font-size:1px;width:1px;visibility:hidden;}
+.hidden{display: none;}
+.txtcen{text-align:center;}
+.txtrig{text-align: right;}
+.strong{font-weight: bold;}
+#main  {width:auto;height:auto;}
+.qlink {text-decoration:none}
+.editiontext {font-weight:bold; color:#CC0033}
+/*links*/
+/**.anyforlogo, .anysalelogo, .btnNormal, .btnOver{background:url(images.gif) no-repeat;}
+.anyforlogo{float:right;width:100px;height:45px;background-position:-91px -5px;}
+**/
+</style>
+<style type="text/css">
+/* common styling */
+.menu {font-family: arial, sans-serif; width:750px; position:relative; margin:0; font-size:11px; margin:50px 0;}
+.menu ul li a, .menu ul li a:visited {display:block; text-decoration:none; color:#000;width:104px; height:20px; text-align:center; color:#fff; border:1px solid #fff; background:#710069; line-height:20px; font-size:11px; overflow:hidden;}
+.menu ul {padding:0; margin:0;list-style-type: none; }
+.menu ul li {float:left; margin-right:1px; position:relative;}
+.menu ul li ul {display: none;}
+
+/* specific to non IE browsers */
+.menu ul li:hover a {color:#fff; background:#36f;}
+.menu ul li:hover ul {display:block; position:absolute; top:21px; left:0; width:105px;}
+.menu ul li:hover ul li a.hide {background:#6a3; color:#fff;}
+.menu ul li:hover ul li:hover a.hide {background:#6fc; color:#000;}
+.menu ul li:hover ul li ul {display: none;}
+.menu ul li:hover ul li a {display:block; background:#ddd; color:#000;}
+.menu ul li:hover ul li a:hover {background:#6fc; color:#000;}
+.menu ul li:hover ul li:hover ul {display:block; position:absolute; left:105px; top:0;}
+.menu ul li:hover ul li:hover ul.left {left:-105px;}
+
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+.menu ul li a.hide, .menu ul li a:visited.hide {display:none;}
+.menu ul li a:hover ul li a.hide {display:none;}
+
+.menu ul li a:hover {color:#fff; background:#36f;}
+.menu ul li a:hover ul {display:block; position:absolute; top:21px; left:0; width:105px;}
+.menu ul li a:hover ul li a.sub {background:#6a3; color:#fff;}
+.menu ul li a:hover ul li a {display:block; background:#ddd; color:#000;}
+.menu ul li a:hover ul li a ul {visibility:hidden;}
+.menu ul li a:hover ul li a:hover {background:#6fc; color:#000;}
+.menu ul li a:hover ul li a:hover ul {visibility:visible; position:absolute; left:105px; top:0; color:#000;}
+.menu ul li a:hover ul li a:hover ul.left {left:-105px;}
+
+</style>
+<![endif]-->
+<script>
+var menus = new Array(<{$ToogleMenus}>);
+function togglemenu(id) {
+	if(parent.menu) {
+		for(k in menus) {
+			if(parent.menu.document.getElementById(menus[k])) {
+				parent.menu.document.getElementById(menus[k]).style.display = menus[k] == id ? '' : 'none';
+			}
+		}
+	}
+}
+function findtags(parentobj, tag) {
+	if(typeof parentobj.getElementsByTagName != 'undefined') {return parentobj.getElementsByTagName(tag);}
+	else if(parentobj.all && parentobj.all.tags) {return parentobj.all.tags(tag);}
+	else {return null;}
+}
+function sethighlight(n) {
+	var lis = findtags(document, 'li');
+	for(var i = 0; i < lis.length; i++) {
+		lis[i].id = '';
+	}
+	lis[n].id = 'menuon';
+}
+togglemenu("home");
+</script>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="topmenubg">
+<tr>
+<td rowspan="2" width="160px">
+<div class="logo">
+<br />
+<span class="editiontext">PHP B2B <span class="editionnumber"><{$smarty.const.UALINK_VERSION}></span></span>
+</div>
+</td>
+<td>
+<div class="topmenu">
+<ul>
+<{foreach from=$ActionMenus key=key name=top_menu item=te}>
+<li><span><a href="#" onclick="sethighlight(<{$key}>); togglemenu('<{$te.ename}>'); parent.main.location='<{$te.url}>';return false;" title="<{$te.cname}>"><{$te.cname}></a></span></li>
+<{/foreach}>
+</ul>
+</div>
+<!-- 帐号信息 -->
+<div id="header" style="display:inline">
+	<div style="float:left;padding:15px 0 0 8px;">欢迎您，<strong><{$smarty.session.admin.current_adminer}></strong>
+	 [&nbsp;<a class="links" href="login.php?action=dereg" target="_parent" title="用其他帐号重新登录">注销</a>，&nbsp;<a class="links" href="../user/logging.php?action=logout&fr=cp" target="_parent" title="返回登陆首页">退出</a>，<a class="links" href="./adminer.php?action=password" target="main" title="设置密码等个人信息">帐户设置</a>&nbsp;]
+	 </div>
+	<br />
+</div>
+<!-- 快速导航 -->
+
+<div id="main"}>
+<div class=tabs id=tabs unselectable="on"> 
+<ul class=right style="line-height: 26px"> 
+<li><a href="http://bbs.ualink.org/" style="text-decoration:none" target="_blank">PHP B2B论坛</a> | <a  style="text-decoration:none" href="http://doc.phpb2b.com/" target="_blank">文档</a> | <a  style="text-decoration:none" href="http://demo.phpb2b.com/" target="_blank">演示</a></li>
+</ul> 
+</ul>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

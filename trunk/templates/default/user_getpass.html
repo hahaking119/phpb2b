@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>取回密码&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>,取回密码,登录名">
+<meta name="description" content="请输入您的会员登录名以便取回丢失的密码..."> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript">
+<!-- 
+function login(frm){
+	if($F('LoginName') == ""){
+			alert("请输入登陆名");
+			$('LoginName').focus();
+			return false;
+		}else if($F('UserEmail') == ""){
+			alert("请输入Email地址");
+			$('UserEmail').focus();
+			return false;
+		}
+		document.getpassfrm.submit();
+}
+//-->
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<{assign var="if_searchbar" value="n"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<table width="960"  border="0" align="center" cellpadding="0" cellspacing="5" >
+  <tr class="corhui"> 
+    <td height="32"><div align="right"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      
+          <tr> 
+            <td width="80%" height="37">　　　　　　　　　　　　　　　　　　 
+              <div align="left"><span class="time">如果有问题， 请拨打紧急求救热线！</span><span class="fontred"><{$servicetel}></span></div></td>
+            <td width="100"><div align="right"></div></td>
+          </tr>
+        </table>
+      </div></td>
+  </tr>
+  <tr> 
+    <td> <table width="100%" height="33" border="0" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>default/loginbj.jpg">
+        <tr> 
+          <td><img src="<{$tpl_img_path}>default/password.jpg" width="137" height="33"></td>
+          <td align="left"><!-- <img src="<{$tpl_img_path}>default/password.jpg" width="137" height="33"> --></td>
+        </tr>
+      </table>
+	  <form name="getpassfrm" method="post" action="<{$smarty.server.PHP_SELF}>" onsubmit="$('GoNext').disabled=true;">
+	  	  <input type="hidden" name="get_password" id="GetPassword" value="1" />
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td height="56" valign="bottom" class="corred"><span class="font14blak">请输入您的会员登录名:</td>
+        </tr>
+        <tr>
+          <td align="center" class="corred"><div><strong>会员登录名：</strong> 
+              <input name="login_name" type="text" class="linehui" id="LoginName" size="30" maxlength="50" value="<{$postLoginName}>"></div></td>
+        </tr>
+        <tr>
+          <td align="center" class="corred"><div><strong>会员的邮箱：</strong> 
+              <input name="user_email" type="text" class="linehui" id="UserEmail" size="30" maxlength="50" value="<{$postUserEmail}>"></div>&nbsp;
+		</td>
+        </tr>
+        <tr>
+          <td align="center" class="corred"><div id="error_message"><font color="red"><strong><{$ERRORS}></strong></font></div>&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="57" align="center" class="corred">
+              <input name="go_next" class="btn_xp" type="submit" id="GoNext" value="下一步" onClick="return login(this);"></td>
+        </tr>
+      </table>
+	  </form>
+	  </td>
+  </tr>
+</table>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>
