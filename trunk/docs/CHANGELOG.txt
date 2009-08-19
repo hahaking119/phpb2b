@@ -1,0 +1,21 @@
+﻿项目正式改名为 php-b2b
+ualink b2b renamed php-b2b
+
+[database] newses表增加require_membertype字段
+
+2.4Final(2.4WithSP2)
+[database] favorites 增加了member_id字段，同时增加联合索引(member_id,target_id)
+[CHG] 修正由于原图过小上传时无法水印、生成缩略图等BUG
+[CHG] 修正前台广告的调用问题
+[CHG] 修正商务室发布信息时，水印是否添加的判断
+[CHG] 修正在控制台重发了供求后，供求到期时间没有自动增加的问题
+[CHG] 解决了行业分类统计数据更新不同步的问题， 即在商务室更新供求、产品等信息， 同时更新统计数据。
+[CHG] 修正了STATIC_HTML_LEVEL参数， 使之默认不生成静态文件，不启动静态化。
+[CHG] 修正了收藏供求信息的BUG
+[CHG] 修正了后台修改供求信息后，公司名称丢失的BUG
+[CHG] 企业注册时，加入填写行业类别、所在地区资料选项
+[CHG] 企业可以上传Logo图片
+[CHG] 改进了高级搜索页面
+
+2009-5-31
+[CHG] 默认模板改成蓝色风格
