@@ -9,10 +9,10 @@
  * --
  * Copyright (c) 2006-2009 Ualink (http://www.phpb2b.com/)
  *
- * All rights granted under this License are granted for the term of copyright on 
- * the Program, and are irrevocable provided the stated conditions are met. This 
- * License explicitly affirms your unlimited permission to run the unmodified Program. 
- * The output from running a covered work is covered by this License only if the 
+ * All rights granted under this License are granted for the term of copyright on
+ * the Program, and are irrevocable provided the stated conditions are met. This
+ * License explicitly affirms your unlimited permission to run the unmodified Program.
+ * The output from running a covered work is covered by this License only if the
  * output, given its content, constitutes a covered work.
  * This License acknowledges your rights of fair use or other equivalent, as provided
  * by copyright law.
@@ -49,7 +49,7 @@ function smarty_function_company($params){
 	    $member = new Members();
 	}
 	$conditions[] = "Company.status=1";
-	$fields = "Company.id as Id, Company.name as LinkTitle,Member.username as LinkId,Company.city_code_id as CityCodeId";
+	$fields = "Company.id as Id, Company.name as LinkTitle,Member.username as LinkId,Company.city_code_id as CityCodeId,picture as CompanyLogo";
 	if(isset($params['id'])){
 		$result = $news->read($fields, intval($params['id']));
 	}else{
@@ -62,8 +62,29 @@ function smarty_function_company($params){
 		if(isset($params['city_id'])){
 			$conditions[] = "Company.city_code_id=".$params['city_id'];
 		}
-		if (isset($params['commend'])) {
-			$conditions[] = "Company.if_commend=1";
+		if (isset($params['type'])) {
+		    //commend,vip,image
+		    if (strpos($params['type'], ",")>0) {
+		        $type_s = explode(",", $params['type']);
+		        foreach ($type_s as $key=>$val){
+		            if ($val=="commend") {
+		            	$conditions[] = "Company.if_commend=1";
+		            }elseif ($val=="image"){
+		                $conditions[] = "Company.picture!=''";
+		            }
+		        }
+		    }else{
+		        switch ($params['type']) {
+		        	case "commend":
+		        		$conditions[] = "Company.if_commend=1";
+		        		break;
+		        	case "image":
+		        	    $conditions[] = "Company.picture!=''";
+		        		break;
+		        	default:
+		        		break;
+		        }
+		    }
 		}
 		if (isset($params['member_type'])) {
 			$conditions[] = "Member.user_type=".$params['member_type'];
@@ -95,7 +116,7 @@ function smarty_function_company($params){
 	        $area_name = "[".$UL_DBCACHE_AREAS[$result[$i]['CityCodeId']]."]";
 	    }
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $op = str_replace(array("[link:title]", "[field:title]", "[field:typename]"), array($url, utf_substr($result[$i]['LinkTitle'],24), $area_name), $op);
+	    $op = str_replace(array("[link:title]", "[field:title]", "[field:typename]", "[field:imageurl]"), array($url, utf_substr($result[$i]['LinkTitle'],24), $area_name, URL."attachment/".$result[$i]['CompanyLogo']), $op);
 	    //$output.=$company->checkTerminal($i);
 	    $output.=$op;
 	}
