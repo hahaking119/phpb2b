@@ -52,7 +52,7 @@ function smarty_function_ad($params){
 	       $zone_res = $g_db->GetRow("select width,height from ".$tb_prefix."adzones where id=".$params['type_id']);
 	       //$max_width = "100%";
 		   //Set width to container width, posted by bingyun.
-	       $max_width = $max_width = $zone_res['width'];
+	       $max_width = $zone_res['width'];
 	       $max_height = $zone_res['height'];
 	       unset($zone_res);
 	    }
