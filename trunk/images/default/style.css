@@ -114,6 +114,7 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .sws_bt p a{color:#fcc;}.sws_bt p a:hover{color:#fff;}
 .sws_c{width:314px; height:727px; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;}
 .sws_c form{width:304px; height:100px; margin:0 auto; display:block; background:url(f_bg_304x8.gif) bottom no-repeat; padding:15px 0 0;}
+.sws_c div img{float:left;border:1px solid #DDD;margin-right:1px}
 .f_line1,.f_line2{width:217px; height:100px; float:left; display:inline; text-align:right;}
 .f_line2{width:55px;}
 .f_line1 label,.f_line1 em,.f_line1 input{float:left; display:inline; line-height:19px; margin-top:8px;}
