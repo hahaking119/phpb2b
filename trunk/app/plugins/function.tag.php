@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:42:22 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: function.ul_get_tag.php 426 2009-06-22 14:04:32Z stevenchow811 $
+ * @version $Id$
  */
 function smarty_function_tag($params){
 	global $g_db,$smarty, $theme_name;

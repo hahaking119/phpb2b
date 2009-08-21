@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:41:00 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: function.ul_get_ad.php 462 2009-07-19 14:12:14Z stevenchow811 $
+ * @version $Id$
  */
 function smarty_function_ad($params){
 	global $g_db, $tb_prefix;
@@ -50,7 +50,9 @@ function smarty_function_ad($params){
 	       $conditions[] = "adzone_id=".$params['type_id'];
 	       //取得该zone的高度和宽度。
 	       $zone_res = $g_db->GetRow("select width,height from ".$tb_prefix."adzones where id=".$params['type_id']);
-	       $max_width = "100%";
+	       //$max_width = "100%";
+		   //Set width to container width, posted by bingyun.
+	       $max_width = $max_width = $zone_res['width'];
 	       $max_height = $zone_res['height'];
 	       unset($zone_res);
 	    }
