@@ -170,5 +170,8 @@ $ul_lang = array(
 "have_expired"=>"已过期",
 "page_header"=>"共<strong><span style=\"COLOR: #ff6600\">%s</span></strong>页&nbsp;&nbsp;每页显示<strong><span style=\"COLOR: #ff6600\">%s</span></strong>条记录,目前显示的是第<strong><span style=\"COLOR: #ff6600\">%s</span></strong>页.",
 "adzone_position"=>"广告位置#%s",
+"hr_channel"=>"人才",
+"site_closed"=>"网站关闭了注册",
+"invite_code_error"=>"邀请码错误",
 );
 ?>

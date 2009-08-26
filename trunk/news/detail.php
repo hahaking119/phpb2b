@@ -26,7 +26,7 @@ if (!empty($nid)) {
 	}
 	$similiaradd.= "News.title='".$info['NewsTitle']."' ";
 	setvar("SimiliarNews",$news->findAll($news->common_cols,$similiaradd,"News.id DESC",0,10));
-	//$info['Keywords'] = implode(" ",$tmpkeys);
+	$info['NewstypeName'] = $UL_DBCACHE_NEWSTYPE[$info['TypeID']];
 	setvar("NewsInfo",$info);
 	$_titles[] = $info['NewsTitle'];
 	$_positions[] = $info['NewsTitle'];
@@ -35,10 +35,11 @@ if (!empty($nid)) {
 }else{
     alert(lgg("data_not_exists"));
 }
-$_titles[] = "行业资讯";
+$_titles[] = lgg("info_center");
 $news->setPageTitle($_titles, $_positions);
 uaAssign(array("pageTitle"=>$news->title, "pagePosition"=>$news->position));
 $hotnews = $news->findAll($news->common_cols,$conditions,"News.clicked DESC",0,10);
 setvar("latestnews",$hotnews);
+setvar("Newstypes",$UL_DBCACHE_NEWSTYPE);
 template($theme_name."/news_detail");
 ?>

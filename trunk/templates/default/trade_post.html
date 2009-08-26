@@ -1,8 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<meta name="generator" content="<{$UaVersion}>" />
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>游客发布供求信息&laquo;<{$sitetitle}></title>
 <meta name ="keywords" content="游客,发布,供应,求购,招商,加盟,库存,代理,批发">
 <meta name ="description" content="<{$sitename}>允许游客在遵守网站协议的基础上自由发布商业信息,请详细填写信息以便让客户迅速找到你。"> 
@@ -49,183 +48,123 @@ xajax_rebuildHTML("post.php");
 </script>
 </head>
 
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body>
+<!--head-->
 <{assign var="sell_li" value="cor over"}>
 <{include file="`$ThemeName`/element.header.html"}>
-<table width="960"  border="0" align="center" cellpadding="0" cellspacing="0" >
-  <tr> 
-    <td height="32" valign="bottom"><div align="right">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td width="10"><img src="<{$tpl_img_path}>default/bg_left.jpg" width="10" height="26" alt=""></td>
-          <td width="672" background="<{$tpl_img_path}>default/bg_mid.jpg"><img src="<{$tpl_img_path}>default/bg_mid.jpg" width="10" height="11" alt=""><span class="font15"><img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11">免费发布供求信息</span></td>
-          <td width="68" align="right" background="<{$tpl_img_path}>default/bg_mid.jpg"><a href="./room/tradeedit.php">去商务室&raquo;&raquo;</a></td>
-          <td width="10" align="right"><img src="<{$tpl_img_path}>default/bg_right.jpg" width="10" height="26" alt=""></td>
-        </tr>
-      </table>
-    </div></td>
-  </tr>
-  <tr> 
-    <td valign="top" background="<{$tpl_img_path}>default/bg_border.jpg">
-	  <table width="85%"  border="0" align="center" cellpadding="0" cellspacing="0">
-        <TR>
-          <TD width=15 height="18"><IMG height=18 src="<{$tpl_img_path}>default/table_up_left.gif" width=15></TD>
-          <TD width="732" background="<{$tpl_img_path}>default/table_up_bg.gif"></TD>
-          <TD width=13 height="18"><IMG height=18 src="<{$tpl_img_path}>default/table_up_right.gif" width=13></TD>
-        </TR>
-        <tr>
-        <TD align=middle background="<{$tpl_img_path}>default/table_left_bg.gif"></TD>
-        <td align="center">
+<!--head end-->
+<div class="wd crumb">
+	<p><strong>一分钟免费发布供应信息，让买主主动找上门</strong></p><em class="str"><a href="<{$UrlContainer.common}>room/">去商务室&gt;&gt;</a></em>
+</div>
+<div class="clear9"></div>
+<div class="wd free_c">
+	<p class="a_line8"></p>
+	<div class="zh_left">
+		<div class="free_info">
+			<img src="<{$tpl_img_path}>default/free.jpg" />
+			<p>
+				<span>(详细准确的信息可以吸引更多的客户!)</span><br /><br />
+				<em class="str">注意事项：</em><br />
+				1,为方便客户联系你, 以下"<em class="red"> </em>"内容均为必填项<br />
+				2,请及时关注您的邮箱或电话, 不要错过任何商机
+			</p>
+		</div>
+	</div>
+	<div class="zh_right">
 		<form name="TradeFrm" enctype="multipart/form-data" method="post" action="<{$smarty.server.PHP_SELF}>" onsubmit="$('Post').disabled=true;">
-		<input type="hidden" name="visit_post" value="visit_post" />
-            <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td height="35"><span class="gray">&nbsp;（提示:带<font color="#FF6600"> * </font>号的为必填项）</span></td>
-                    </tr>
-                    <tr>
-                      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td width="100" class="bgblue"></td>
-                            <td align="right" valign="top" class="tdright"></td>
-                          </tr>
-                      </table></td>
-                    </tr>
-                    <tr>
-                      <td><table width="100%" border="0" cellspacing="0" cellpadding="5">
-                          <tr>
-                            <td width="90" align="right" class="tdleft"><font color="#FF6600">*</font> 供求方向:</td>
-                            <td class="tdright"><{html_radios name="type_id" options=$TradeTypes checked=$t.TradeTypeId|default:"1" separator=" "}></td>
-                          </tr>
-                          <tr>
-                            <td align="right" class="tdleft"><font color="#FF6600">*</font> 信息标题:</td>
-                            <td class="tdright"><input name="trade[topic]" id="trade_topic" type="text" size="32" value=""></td>
-                          </tr>
-                          <tr>
-                            <td align="right" class="tdleft"><font color="#FF6600">*</font> 关 键 词:</td>
-                            <td class="tdright"><input name="trade[keywords]" id="trade_keywords" type="text" size="32" value="">
-                              (多个关键词请用“,”号隔开)</td>
-                          </tr>
-                          <tr>
-                            <td align="right" class="tdleft"><font color="#FF6600">*</font> 有效期:</td>
-                            <td class="tdright"><{html_radios name="expire_days" options=$OfferExpires checked=$t.TradeExpireDays|default:"30" separator=" "}></td>
-                          </tr>
-                          <tr>
-                            <td align="right" class="tdleft"><font color="#FF6600">*</font>所在地区:</td>
-                            <td class="tdright"><select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
+		<div class="bt gs_bt4 h_tt4 free_bt"><h2>基本信息内容</h2><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label class="free_must">供求方向：</label>
+				<p class="free_p5"><{html_radios name="type_id" options=$TradeTypes checked=$t.TradeTypeId|default:"1" separator=" "}></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">信息标题：</label>
+				<p class="free_p1"><input name="trade[topic]" id="trade_topic" type="text" size="32" value=""></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">有 效 期：</label>
+				<p class="free_p5"><{html_radios name="expire_days" options=$OfferExpires checked=$t.TradeExpireDays|default:"30" separator=" "}></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">所在地区：</label>
+				<p><select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
                           </select>&nbsp;<select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2"></select>&nbsp;<select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
-                          </select></td>
-                          </tr>
-                          <tr>
-                            <td align="right" class="tdleft"> 所属行业:</td>
-                            <td class="tdright"><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
+                          </select></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">详细说明：</label>
+				<p class="free_p4"><textarea name="trade[content]" id="trade_content" cols="60" rows="8" wrap="virtual"></textarea></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>选填信息内容</h3><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label>关 键 词：</label>
+				<p class="free_p1"><input name="trade[keywords]" id="trade_keywords" type="text" size="32" value=""></p>
+				<em>(多个关键词请用”,“号隔开)</em>
+			</div>
+			<div class="free_l">
+				<label>所在行业：</label>
+				<p><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
                               </select>
                                 <select name="bindustry" id="bindustry" USEDATA="dataSrc" SUBCLASS="2">
-                                </select></td>
-                          </tr>
-
-                          <tr>
-                            <td align="right" class="tdleft"><font color="#FF6600"> *</font> 详细说明:</td>
-                            <td class="tdright"><p>
-                                <textarea name="trade[content]" id="trade_content" cols="60" rows="8" wrap="virtual"></textarea>
-                                <font color="#FF3300"><br>
-                            </font></p></td>
-                          </tr>
-                          
-                      </table></td>
-                    </tr>
-                    
-                  </table>
-                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td><table width="100%" border="0" cellpadding="8" cellspacing="1" class="bgblue">
-                            <tr>
-                              <td align="center" bgcolor="#0099CC" class="zi"><h1>请在下面补充您的联系信息</h1>
-                              <a href="./card.php" target="_self" class="font14b_org"><strong></strong></a></td>
-                            </tr>
-                        </table></td>
-                      </tr>
-                      <tr>
-                        <td>&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td><table width="100%" border="0" align="center" cellpadding="8" cellspacing="1" class="bgblue">
-                            <tr>
-                              <td><table width="100%" border="0" cellpadding="2" cellspacing="1">
-                                  <tr>
-                                    <td width="21%" align="right"><span class="tdleft"><font color="#FF6600">*</font> </span>联系人:</td>
-                                    <td width="35%"><input type="text" name="offer[link_man]" id="link_man" value=""></td>
-                                    <td width="44%"><{html_radios name="offer[gender]" options=$Genders checked="1" separator=" "}>
-                                    <font color="#999999">（全名）</font></td>
-                                  </tr>
-                                  <tr>
-                                    <td align="right">公司名称:</td>
-                                    <td><input name="offer[company_name]" id="OfferCompanyName" type="text"></td>
-                                    <td><font color="#999999">（公司全称）</font></td>
-                                  </tr>
-                                  <tr>
-                                    <td align="right">详细联系地址:</td>
-                                    <td><input name="offer[address]" id="OfferAddress" type="text"></td>
-                                    <td>&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td align="right"><span class="tdleft"><font color="#FF6600">*</font> </span>首选联系电话:</td>
-                                    <td><select name="offer[prim_tel]" id="OfferPrimTel">
+                                </select></p>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>联系方式</h3><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label class="free_must">联 系 人：</label>
+				<p class="free_p1"><input type="text" name="offer[link_man]" id="link_man" value=""></p>
+				<p class="free_p5"><{html_radios name="offer[gender]" options=$Genders checked="1" separator=" "}></p>
+			</div>
+			<div class="free_l">
+				<label>公司全称：</label>
+				<p class="free_p1"><input name="offer[company_name]" id="OfferCompanyName" type="text"></p>
+				<em>(公司全称)</em>
+			</div>
+			<div class="free_l">
+				<label>详细联系地址：</label>
+				<p class="free_p1"><input name="offer[address]" id="OfferAddress" type="text"></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">首选联系电话：</label>
+				<p><select name="offer[prim_tel]" id="OfferPrimTel">
                 <{html_options options=$PhoneTypes selected="1"}>
-              </select></td>
-                                    <td>号码:<input type="text" name="offer[prim_telnumber]" id="prim_telnumber" value=""></td>
-                                  </tr>
-                                  <tr>
-                                    <td align="right">首选即时通讯:</td>
-                                    <td><select name="offer[prim_im]">
+              </select>号码:<p class="free_p1"><input type="text" name="offer[prim_telnumber]" id="prim_telnumber" value=""></p>
+			</div>
+			<div class="free_l">
+				<label>首选即时通讯：</label>
+				<p><select name="offer[prim_im]">
                 <{html_options options=$ImTypes selected="1"}>
-              </select></td>
-                                    <td>号码:<input type="text" name="offer[prim_imaccount]"></td>
-                                  </tr>
-                                  <tr>
-                                    <td align="right">电子邮件:</td>
-                                    <td><input name="offer[email]" id="OfferEmail" type="text"></td>
-                                    <td>&nbsp;</td>
-                                  </tr>
+              </select></p>
+				<label class="free_must1">号码：</label>
+				<p class="free_p3"><input name="" type="text" value="" /></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">电子邮件：</label>
+				<p class="free_p1"><input name="offer[email]" id="OfferEmail" type="text"></p>
+			</div>
 <{if $IfVisPostPicture}>
-								  <tr>
-                                    <td align="right">请输入验证码:</td>
-                                    <td><a name="inputAuthNumber" /><input type="text" name="visit_auth_num" id="VisitAuthNumber" size="4" maxlength="4" value="">(<a href="#inputAuthNumber" onclick="$('VisitAuthPicture').src='<{$SiteUrl}>auth_image.php';">看不清楚换一张</a>)</td>
-                                    <td><img name="visit_auth_picture" id="VisitAuthPicture" src="<{$SiteUrl}>auth_image.php"></td>
-                                  </tr>
+			<div class="free_l">
+				<label class="free_must">验 证 码：</label>
+				<p class="free_p2"><a name="inputAuthNumber" /><input type="text" name="visit_auth_num" id="VisitAuthNumber" size="4" maxlength="4" value=""></p>
+				<em>(<a href="#inputAuthNumber" onclick="$('VisitAuthPicture').src='<{$SiteUrl}>auth_image.php';">看不清楚换一张</a>)</em>
+				<img name="visit_auth_picture" id="VisitAuthPicture" src="<{$SiteUrl}>auth_image.php">
+			</div>
 <{/if}>                                  
-                              </table></td>
-                            </tr>
-                        </table></td>
-                      </tr>
-                  </table></td>
-              </tr>
-              <tr>
-                <td height="40" align="center"><br>
-                    <input type="submit" name="post" id="Post" value="一切完成,请发布！" class="btn_xp" onclick="this.value='正在提交您的请求...';return check();">
-                </td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-              </tr>
-            </table>
-          </form></td>
-        <TD align="middle" background="<{$tpl_img_path}>default/table_right_bg.gif"></TD>
-        </tr>
-    <TR>
-      <TD width="15" height="12"><img src="<{$tpl_img_path}>default/table_down_left.gif" width="15" height="12"></TD>
-      <TD background="<{$tpl_img_path}>default/table_down_bg.gif"></TD>
-      <TD width="13" height="12"><img src="<{$tpl_img_path}>default/table_down_right.gif" width="13" height="12"></TD>
-    </TR>
-      </table>
-    </td>
-  </tr>
-          <tr><td colspan="3"><img src="<{$tpl_img_path}>default/bg_bottom.jpg" width="960" height="10" alt=""></td></tr>
-</table>
+			<div class="free_l free_l1">
+				<input type="submit" value="一切完成，请发布" name="post" id="Post" class="free_btn1 f14 str" onclick="return check();" />
+				<input type="reset" value="取 消" class="free_btn2 f14 str" />
+			</div>
+		</div>
+		</form>
+	</div>
+	<p class="a_line7"></p>
+</div>
 <{include file="`$ThemeName`/element.foot.html"}>
-</body>
-</html>
 <script language="javascript">
 var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
 linkage.BLANK_SELECT = "请选择";
@@ -234,3 +173,5 @@ var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
 linkage2.BLANK_SELECT = "请选择地区";
 linkage2.init();
 </script>
+</body>
+</html>

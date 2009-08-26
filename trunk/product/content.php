@@ -11,15 +11,17 @@ $member = new Members();
 $product = new Products();
 $tmp_status = explode(",",lgg('product_status'));
 $smarty->register_function("format_keywords","SplitKeywords");
-
+include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
 $pid = intval($_GET['id']);
 $fields = $product->industry_cols.",Product.status as ProductStatus,company_id";
 $table['product'] = $product->getTable();
 $table['area']	= $area->getTable();
 $table['industry'] = $industry->getTable();
-$sql = "select ".$fields." ,Member.username as MemberUsername from ".$product->getTable(true)." left join ".$table['industry']." as Industry on Product.industry_id=Industry.id left join ".$member->getTable(true)." on Product.member_id=Member.id  where Product.state=1 and Product.id=".$pid;
+$sql = "select ".$fields." ,Member.username as MemberUsername from ".$product->getTable(true)." left join ".$member->getTable(true)." on Product.member_id=Member.id  where Product.state=1 and Product.id=".$pid;
 $res = $g_db->GetRow($sql);
 $member_id = $res['MemberId'];
+
+$res['IndustryName'] = $UL_DBCACHE_INDUSTRIES[$res['IndustryID']];
 if($res['ProductStatus']!=1){
 	$tmp_key = intval($res['ProductStatus']);
 	alert(urlencode(sprintf(lgg("record_status"),$res['Name'],$tmp_status[$tmp_key])));

@@ -1,6 +1,6 @@
 <?php
 $inc_path = "../";
-$li = 8;
+$li = 7;
 require($inc_path."global.php");
 require(SITE_ROOT.'./app/include/page.php');
 uses("expo", "expotype");
@@ -31,5 +31,6 @@ $latest_fairs = $expo->findAll("id as FairId,ea as Title,eb as FairCreated", nul
 $type_fairs = $expo->findAll("id as FairId,ea as Title,eb as FairCreated", $conditions, "id desc", $firstcount, $displaypg);
 uaAssign(array("pageTitle"=>$expo->title, "pagePosition"=>$expo->position));
 setvar("ListFairs", $type_fairs);
+setvar("LatesFairs", $latest_fairs);
 template($theme_name."/fair_list");
 ?>

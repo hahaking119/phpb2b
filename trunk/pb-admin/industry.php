@@ -148,7 +148,7 @@ if($_GET['action'] == "mod"){
 		}
 	   if ($result) {
 	    	$datas_options = uaIndustryMainXML();
-	    	$fp = fopen("..".DS."media".DS."xml".DS."industry_option.xml","w");
+	    	$fp = fopen("..".DS."data".DS."xml".DS."industry_option.xml","w");
 	    	if (!fwrite($fp, $datas_options)) {
 	    	    die("Error:when create industry select xml datas.");
 	    	}else{
@@ -186,7 +186,7 @@ if($_GET['action'] == "mod"){
 }
 if ($_GET['action'] == "industryxml") {
 	$datas_options = uaIndustryMainXML();
-	$fp = fopen("..".DS."media".DS."xml".DS."industry_option.xml","w");
+	$fp = fopen("..".DS."data".DS."xml".DS."industry_option.xml","w");
 	if (!fwrite($fp, $datas_options)) {
 		die("Error:when create industry select xml datas.");
 	}else{
@@ -209,7 +209,7 @@ if ($_GET['action'] == "listindustry"){
 			$x.= "</node>\n";
 		}
 		$x.= "</root>\n";
-		$fp = fopen("..".DS."media".DS."xml".DS."industry_list.xml","w");
+		$fp = fopen("..".DS."data".DS."xml".DS."industry_list.xml","w");
 		if (!fwrite($fp, $x)) {
 			die("Error: when create industry xml file.");
 		}else{
@@ -247,7 +247,7 @@ if ($_GET['action'] == "areaxml") {
 		return $sub_areas;
 	}
 	$area_content = uaAreaMainXML();
-	$fp = fopen("..".DS."media".DS."xml".DS."area.xml","w");
+	$fp = fopen("..".DS."data".DS."xml".DS."area.xml","w");
 	if (!fwrite($fp, $area_content)) {
 		die("Error: when create area file.");
 	}else{

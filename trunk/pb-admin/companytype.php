@@ -23,7 +23,7 @@ if ($_POST['quickadd'] && !empty($_POST['companytype']['name'])) {
 	if (!$result) {
 		flash("./alert.php","./companytype.php",null,0);
 	}else{
-		goto("./companytype.php");
+		PB_goto("./companytype.php");
 	}
 }
 if ($_POST['save'] && !empty($_POST['c']['name'])) {
@@ -34,7 +34,7 @@ if ($_POST['save'] && !empty($_POST['c']['name'])) {
 	}else{
 		$result = $companytype->save($vals);
 	}
-	goto("./companytype.php");
+	PB_goto("./companytype.php");
 }
 if ($_GET['action']=="mod") {
 	if($_GET['id']){

@@ -18,7 +18,7 @@ setvar("IfLoginPicture",intval($if_set_login_picture));
 if(isset($_POST['loginbtn'])){
 	$back_forward = null;
 	$auth_check = uaStrCompare(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
-	if (!$auth_check) {
+	if (!$auth_check && $if_set_login_picture) {
 		session_destroy();
 		setvar("LoginError",lgg('wrong_validate'));
 	}elseif(!empty($_POST['login_name']) && !empty($_POST['login_pass'])){
@@ -100,7 +100,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "logout")){
 	}
 	session_destroy();
 	if (!empty($_GET['forward'])) {
-		goto($_GET['forward']);
+		PB_goto($_GET['forward']);
 	}else{
 		header("Location:".$gopage);
 	}

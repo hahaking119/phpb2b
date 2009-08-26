@@ -29,7 +29,7 @@
  * @version $Id$
  */
 $inc_path = "./";
-$li = "";
+$li = 99;
 require("global.php");
 require(SITE_ROOT.'./app/include/page.php');
 uses("trade","industry","company","product","keyword");
@@ -39,11 +39,11 @@ $keyword = new Keywords();
 $trade = new Trades();
 $tpl_file = "index";
 $conditions = null;
-if (isset($_GET['keyword'])) {
-	$searchkeywords = urldecode($_GET['keyword']);
+if (isset($_GET['skeyword'])) {
+	$searchkeywords = urldecode($_GET['skeyword']);
 }
 
-$tag_modules = array('index','trades','companies','newses','markets','expoes','products');
+$tag_modules = array('index','trades','companies','newses','markets','expoes','products', 'jobs');
 if(!empty($searchkeywords)) {
 	$tpl_file = "search";
 	if (isset($_GET['type'])) {

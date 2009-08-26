@@ -377,7 +377,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 		$fp = fopen(INSTALL_ROOT."../data/install.lock", 'w');
 		$fw = fwrite($fp, " ");
 		fclose($fp);
-		goto("install.php?step=done&adminer=".$_POST['forum']['admin']."&rightmsg=".urlencode($rightmsg));
+		PB_goto("install.php?step=done&adminer=".$_POST['forum']['admin']."&rightmsg=".urlencode($rightmsg));
 	}else {
 		$errmsg[] = $lang['install_false'];
 	}

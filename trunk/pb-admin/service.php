@@ -56,7 +56,7 @@ if (isset($_REQUEST['del'])){
 	if(!empty($_GET['id'])){
 		$deleted = $service->del($_GET['id']);
 	}
-	if($deleted) goto("./service.php");
+	if($deleted) PB_goto("./service.php");
 	else
 	{
 		flash("./alert.php","./service.php",null,0);

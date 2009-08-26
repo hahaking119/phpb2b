@@ -149,7 +149,7 @@ tempobj.disabled=true
                       </tr>
                       <tr>
                         <td valign="middle" class="tdleft"><font color="#FF6600">　</font>关键字：</td>
-                        <td class="tdright"><{foreach from=$ProductInfo.ProductKeywords item=item}><a href="<{$SiteUrl}>tag.php?keyword=<{$item.title|urlencode}>" target="_blank" title="搜索含有该关键字的产品"><{$item.title}></a>&nbsp;<{/foreach}></td>
+                        <td class="tdright"><{foreach from=$ProductInfo.ProductKeywords item=item}><a href="<{$SiteUrl}>tag.php?type=products&keyword=<{$item.title|urlencode}>" target="_blank" title="搜索含有该关键字的产品"><{$item.title}></a>&nbsp;<{/foreach}></td>
                       </tr>
                       <tr>
                         <td valign="middle" class="tdleft"><font color="#FF6600">　</font>添加关键字：</td>

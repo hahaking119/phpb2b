@@ -2,85 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title><{$PageTitle|default:"公司简介"}>-<{$sitetitle}></title>
+<title><{$PageTitle|default:"关于"}>-<{$sitetitle}></title>
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name ="keywords" content="帮助,疑问,使用说明">
 <meta name="description" content="<{$PageTitle|truncate:150}>.您好,这里是<{$sitename}>的帮助中心,有关<{$sitename}>的一切疑问,你均可以在此找到解答."> 
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
-<style type="text/css">
-<!--
-a.link9:link {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 9pt;
-	color: #FF3333; 
-	text-decoration:underline;
-}
-a.link9:visited {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 9pt;
-	color: #FF3333; 
-	text-decoration:underline;
-}
-a.link9:hover {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 9pt;
-	color: #0000FF;
-	text-decoration:underline;
-}
-a {
-	font-size: 8pt;
-}
-body,td,th {
-	font-size: 9pt;
-}
--->
-</style>
 </head>
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td><{include file="`$ThemeName`/element.header.html"}></td>
-  </tr>
-</table>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td colspan="2"></td>
-  </tr>
-  <tr> 
-    <td bgcolor="E9E9E9"> 
-	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td width="179" height="129" valign="top" bgcolor="A1A1A1"> 
-            <table width="100%" height="300" border="0" cellpadding="0" cellspacing="0" class="leftbj">
-              <tr> 
-                <td width="33">&nbsp;</td>
-                <td width="146" valign="top"></br>
-                  <table width="146" border="0" align="center" cellpadding="0" cellspacing="0">
-                    <tr> 
-                      <td><{include file="`$ThemeName`/about_left.html"}></td>
-                    </tr>
-                  </table>
-                  </br>
-                </td>
-              </tr>
-            </table></td>
-          <td width="636" valign="top" bgcolor="F0F0F0"><div><{$info|nl2br}></div></td>
-        </tr>
-      </table>
-	  </td>
-    <td bgcolor="E9E9E9">&nbsp;</td>
-  </tr>
-  <tr> 
-    <td height="8" colspan="2" bgcolor="FF6600"></td>
-  </tr>
-</table>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td height="16"> <{include file="`$ThemeName`/element.foot.html"}></td>
-  </tr>
-</table>
+
+<body>
+<!--head-->
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p><span class="str">您当前位置：</span><{$PageTitle}></p>
 </div>
+<div class="clear9"></div>
+<div class="wd a_c">
+	<div class="w_left1">
+		<p class="a_line"></p>
+		<div class="a_c1">
+			<h2><{$PageTitle}></h2>
+			<div class="a_text f14">
+				<p><{$info|nl2br}></p>
+			</div>
+		</div>
+	</div>
+	<{include file="`$ThemeName`/about_left.html"}>
+	<div class="clear"></div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
 </body>
 </html>

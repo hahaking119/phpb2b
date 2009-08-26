@@ -80,7 +80,7 @@
                 </tr>
                 <tr align="right">
                   <td colspan="3" class="btn-input">
-				  <{if $pd.ProductState eq 1}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=down&id=<{$pd.ID}>">从网上下架</a><{else}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=up&id=<{$pd.ID}>">把商品上架</a><{/if}>&nbsp;<a href="productedit.php?action=mod&id=<{$pd.ID}>">修改</a>&nbsp;<a href="tradeedit.php?action=pro2offer&proid=<{$pd.ID}>"><b>发布为供应信息</b></a>&nbsp;<a href="<{$smarty.server.PHP_SELF}>?act=del&id=<{$pd.ID}>">删除</a>				  </td>
+				  <{if $pd.ProductState eq 1}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=down&id=<{$pd.ID}>">从网上下架</a><{else}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=up&id=<{$pd.ID}>">把商品上架</a><{/if}>&nbsp;<a href="productedit.php?action=mod&id=<{$pd.ID}>">修改</a>&nbsp;<a href="tradeedit.php?action=pro2offer&proid=<{$pd.ID}>"><b>[作为供应发布]</b></a>&nbsp;<a href="<{$smarty.server.PHP_SELF}>?act=del&id=<{$pd.ID}>">删除</a>				  </td>
                   </tr>
                 <tr>
                   <td height="1" colspan="3" background="image/index_trade_line.gif"></td>

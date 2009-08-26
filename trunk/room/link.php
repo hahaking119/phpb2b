@@ -31,9 +31,9 @@ if (isset($_POST['save'])) {
 	if (!empty($_POST['id'])) {
 		if($companylink->checkID($_POST['id'],$_SESSION['MemberID'])){
 			$companylink->update($record,"companylinks","update",$_POST['id']);
-			goto("./tip.php?id=1000");
+			PB_goto("./tip.php?id=1000");
 		}else {
-			goto("./tip.php?id=1004");
+			PB_goto("./tip.php?id=1004");
 		}
 	}
 }

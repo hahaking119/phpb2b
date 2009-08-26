@@ -86,7 +86,10 @@ function CheckInput(){
 				<{else}>
                       <tr>
                         <td width="90" class="tdleft"><font color="#FF6600">*</font> 方 向：</td>
-                        <td class="tdright"><{html_radios name="type_id" options=$TradeTypes checked=$row.TradeTypeId|default:"1" separator=" "}><input type="checkbox" name="trade[if_urgent]" <{if $row.TradeIfUrgent=="1"}>checked<{/if}> />
+                        <td class="tdright">
+						<{foreach from=$TradeTypes name=TradeTypes item=item key=key}>
+						<input type="radio" name="type_id" value="<{$key}>" onclick="javascript:$('trade_topic').value=$('TypeId<{$key}>').innerHTML+$('trade_topic').value;" <{if $row.TradeTypeId==$key}>checked="checked"<{/if}> /><label id="TypeId<{$key}>"><{$item}></label>
+						<{/foreach}><input type="checkbox" name="trade[if_urgent]" <{if $row.TradeIfUrgent=="1"}>checked<{/if}> />
                         紧急 !</td>
                       </tr>
                       <tr>

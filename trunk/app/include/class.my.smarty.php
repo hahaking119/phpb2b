@@ -100,7 +100,7 @@ class MySmarty extends Smarty {
 		global $htmlcache;
 		global $_GET, $ua_user;
 		if(!uaStrCompare(md5(AUTH_KEY), $_GET['token'])){
-			goto(URL."message.php?message=".urlencode(sprintf(lgg("token_error"), $file_name)));
+			PB_goto(URL."message.php?message=".urlencode(sprintf(lgg("token_error"), $file_name)));
 		}
 		unset($ua_user);
 		if(!$fp = fopen($file_name, "w")){
@@ -115,8 +115,8 @@ class MySmarty extends Smarty {
 		chmod($file_name,0666);
 		if ($cache_check) {
 			$htmlcache->updateCacheTime($cache_php);
-			if(STATIC_HTML_LEVEL>0) goto($file_name);else {
-				goto($_SERVER['PHP_SELF']);
+			if(STATIC_HTML_LEVEL>0) PB_goto($file_name);else {
+				PB_goto($_SERVER['PHP_SELF']);
 			}
 		}
 		return true;

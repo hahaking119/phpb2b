@@ -3,7 +3,7 @@
 		<form action="<{$HeaderFormAction}>" method="get" name="formsearch" title="搜索">			
 					  <input type="hidden" name="searchkeywords" value="1" />
 					  <input type="hidden" name="ac" value="list" />
-					  <input name="skeyword" type="text" id="skeyword" value="<{$smarty.get.keyword|default:"输入关键字"}>" alt="输入关键字搜索信息" onfocus="if(this.value == '输入关键字'){this.value = ''}" onblur="if(this.value == ''){this.value = '输入关键字'}" class="gjz" onmouseover="this.select();" />
+					  <input name="skeyword" type="text" id="skeyword" value="<{$smarty.get.skeyword|default:"输入关键字"}>" alt="输入关键字搜索信息" onfocus="if(this.value == '输入关键字'){this.value = ''}" onblur="if(this.value == ''){this.value = '输入关键字'}" class="gjz" onmouseover="this.select();" />
 			<input type="submit" value="搜索" class="ss str" onclick="return check_keywords();" />
 		</form>
 	</div>

@@ -24,7 +24,7 @@ if (isset($_POST['save'])) {
 	    $attachment->out_file_name = $_SESSION['MemberID']."_".$pid."_".$time_stamp;
 		$attach['title'] = $_POST['honour']['title'];
 		$attach['description'] = $_POST['honour']['description'];
-		$attach['company_id'] = $company->field("id", "member_id=".$vals['member_id']);
+		$attach['company_id'] = $company->field("id", "member_id=".$_SESSION['MemberID']);
 		$attach['type_id'] = 9;
 	    $attachment->upload_process();
 	    if ( $attachment->error_no )

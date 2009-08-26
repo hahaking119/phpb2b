@@ -19,7 +19,7 @@ if($argc>0){
 setvar("backUrl",$referer);
 setvar("pauseTime",$_GET['pause']);
 if ($_GET['pause'] ===0) {
-	goto($referer);
+	PB_goto($referer);
 }
 if ($_GET['result']) {
 	$alert_img = "action_success.gif";

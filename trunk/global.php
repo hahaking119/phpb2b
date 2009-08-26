@@ -109,6 +109,16 @@ if(isset($li)){
 		$headerFrmAction = URL."company.php";
 	}elseif($li==4){
 		$headerFrmAction = URL."product/list.php";
+	}elseif($li==5){
+		$headerFrmAction = URL."news/list.php";
+	}elseif($li==6){
+		$headerFrmAction = URL."market/list.php";
+	}elseif($li==7){
+		$headerFrmAction = URL."fair/list.php";
+	}elseif($li==8){
+		$headerFrmAction = URL."hr.php";
+	}elseif($li==99){
+		$headerFrmAction = URL."tag.php";
 	}else{
 		$headerFrmAction = URL."offer/list.php";
 	}

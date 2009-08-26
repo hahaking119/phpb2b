@@ -13,11 +13,11 @@ $tpl_file = "adminer_index";
 if ($_GET['action'] == "logout") {
 	unset($_SESSION['admin']);
 	session_destroy();
-	goto("index.html");
+	PB_goto("index.html");
 }
 if ($_GET['action'] == "del" && !empty($_GET['id'])) {
 	if (uaStrCompare($_GET['id'],$current_adminer_id)) {
-		goto("./alert.php");
+		PB_goto("./alert.php");
 	}else {
 		$result = $adminer->del(intval($_GET['id']));
 	}
@@ -27,9 +27,9 @@ if (isset($_POST['changepass']) && !empty($_POST['adminer'])) {
 	$tmp_userid = $adminer->find($current_adminer,"id","user_name");
 	$result = $adminer->save($vals, "update", $tmp_userid, null, " AND user_name='".$current_adminer."'");
 	if($result) {
-		goto("./alert.php");
+		PB_goto("./alert.php");
 	}else {
-		goto("./alert.php?r=2");
+		PB_goto("./alert.php?r=2");
 	}
 }
 if (isset($_POST['save']) && !empty($_POST['adminer'])) {
@@ -41,7 +41,7 @@ if (isset($_POST['save']) && !empty($_POST['adminer'])) {
 	}
 	$result = $adminer->save($vals);
 	if(!$result){
-		goto("./alert.php?r=3");
+		PB_goto("./alert.php?r=3");
 	}
 }
 if ($_GET['action'] == "mod") {

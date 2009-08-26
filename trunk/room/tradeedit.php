@@ -34,6 +34,23 @@ if(!empty($company_info)){
     $tmp_personalinfo['MemberTel'] = $company_info['CompanyTel'];
     $tmp_personalinfo['ContactEmail'] = $company_info['ContactEmail']?$company_info['ContactEmail']:$tmp_personalinfo['ContactEmail'];
 }
+$prod_info = array();
+//product2offer
+if(isset($_GET['action'])){
+    if($_GET['action']=="pro2offer" && !empty($_GET['proid'])){
+        $product = new products();
+        $fields = "2 as TradeTypeId,NAME as TradeTopic,content as TradeContent,KEYWORDS as TradeKeywords,picture as TradeRemotePicture";
+        $prod_info = $product->read($fields, $_GET['proid'], null, " and member_id=".$_SESSION['MemberID']);
+        $trade_info['TradeTypeId'] = $prod_info['TradeTypeId'];
+        $trade_info['TradeTopic'] = $prod_info['TradeTopic'];
+        $trade_info['TradeContent'] = $prod_info['TradeContent'];
+        if(!empty($prod_info['TradeKeywords'])){
+            $_k = $g_db->Execute("select title from ".$tb_prefix."keywords where id in (".$prod_info['TradeKeywords'].")");
+            $trade_info['TradeKeywords'] = $_k;
+        }
+        $trade_info['TradeRemotePicture'] = $prod_info['TradeRemotePicture'];
+    }
+}
 if($_GET['id']){
     $get_id = intval($_GET['id']);
     $trade_pri_info = $trade->read(null,$get_id,null," and member_id=".$_SESSION['MemberID']);
@@ -47,7 +64,6 @@ if($_GET['id']){
         $_k = $g_db->Execute("select title from ".$tb_prefix."keywords where id in (".$trade_info['TradeKeywords'].")");
         $trade_info['TradeKeywords'] = $_k;
     }
-    setvar("row",$trade_info);
     if (empty($trade_info) || !$trade_info) {
         flash("./tip.php","./trade.php", lgg('data_not_exists'));
     }
@@ -56,6 +72,9 @@ if($_GET['id']){
         $search_industry_ids = implode(",",$current_industry);
         setvar("CurrentIndustry",$g_db->GetArray("SELECT name AS IndustryName FROM ".$industry->getTable(true)." WHERE id in (".$search_industry_ids.")"));
     }
+}
+if (!empty($trade_info)) {
+    setvar("row",$trade_info);
 }
 setvar("MemberInfo", $tmp_personalinfo);
 $expires = $trade->offer_expires;
@@ -171,21 +190,11 @@ if (isset($_POST['edit_trade'])) {
     }
 }
 if (!empty($company_id)) {
-    //setvar("ProvinceName", $area->field("name", "code_id=".intval($company_info['ProvinceCode'])));
     setvar("AreaName", $area->field("name", "code_id=".intval($company_info['AreaCode'])));
 }else{
-    //setvar("ProvinceName", $area->field("name", "code_id=".intval($tmp_personalinfo['ProvinceCode'])));
     setvar("AreaName", $area->field("name", "code_id=".intval($tmp_personalinfo['AreaCode'])));
 }
-if(isset($_GET['action'])){
-    if($_GET['action']=="pro2offer" && !empty($_GET['proid'])){
-        $product = new products();
-        $fields = "2 as TradeTypeId,NAME as TradeTopic,content as TradeContent,KEYWORDS as TradeKeywords,picture as TradeRemotePicture";
-        //echo $product->getTable();
-        $prod_info = $product->read($fields, $_GET['proid'], null, " and member_id=".$_SESSION['MemberID']);
-        setvar("t",$prod_info);
-    }
-}
+
 setvar("TradeTypes",$trade->getTradeTypes());
 setvar("PhoneTypes", $member->phone_types);
 setvar("ImTypes", $member->im_types);

@@ -50,7 +50,7 @@ if($_GET['action'] == "mod"){
 	if($jid){
 		$res = $job->read(null, $jid, null, " AND Job.member_id=".$_SESSION['MemberID']);
 		if (empty($res)) {
-			goto("./tip.php?id=1004");
+			PB_goto("./tip.php?id=1004");
 		}
 		setvar("j",$res);
 	}

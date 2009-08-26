@@ -96,6 +96,9 @@ class Industries extends UaModel {
 	    	case "product":
 	    	    $url = URL."product/list.php?";
 	    	    break;
+	    	case "hr":
+	    	    $url = URL."hr.php?ac=list&";
+	    	    break;
 	    	default:
 	    		break;
 	    }
@@ -158,10 +161,10 @@ class Industries extends UaModel {
 	    return true;
 	}
 
-	function updateCache($filename, $inputstr, $extra = "w")
+	function updateCache($filename, $extra = "w")
 	{
-	    global $g_db, $trade;
-		$industry_ids = $this->findAll("id AS IndustryId,name AS IndustryName", " ia=1");
+	    global $g_db, $trade, $tb_prefix;
+		$industry_ids = $this->findAll("id AS IndustryId,name AS IndustryName");
 		$mysql_v = $this->getMysqlVersion();
 		$str = "<?php
 \$UL_DBCACHE_INDUSTRIES = array(\n";
@@ -175,12 +178,12 @@ class Industries extends UaModel {
 				$sql = "update ".$tb_prefix."industries set product_amount='$product_amount',sell_amount='$sell_amount',buy_amount='$buy_amount',company_amount='$company_amount' where id=".$val['IndustryId'];
 				$result = $g_db->Execute($sql);
 			}else{
-				$sql = "update ".$tb_prefix."industries set product_amount = (SELECT count(Product.id) from ".$tb_prefix."products where Product.industry_id=".$val['IndustryId']."),sell_amount = (SELECT count(Trade.id) FROM ".$tb_prefix."trades where Trade.type_id in ".$trade->getTradeTypeKeys("sell")."  and Trade.industry_id=".$val['IndustryId']."),buy_amount = (SELECT count(Trade.id) FROM ".$tb_prefix."trades where Trade.type_id in ".$trade->getTradeTypeKeys("buy")."  and Trade.industry_id=".$val['IndustryId']."),company_amount = (SELECT count(Company.id) FROM ".$tb_prefix."companies where Company.industry_id=".$val['IndustryId'].") where Industry.id=".$val['IndustryId'];
+				$sql = "update ".$tb_prefix."industries set product_amount = (SELECT count(Product.id) from ".$tb_prefix."products as Product where Product.industry_id=".$val['IndustryId']."),sell_amount = (SELECT count(Trade.id) FROM ".$tb_prefix."trades as Trade where Trade.type_id in ".$trade->getTradeTypeKeys("sell")."  and Trade.industry_id=".$val['IndustryId']."),buy_amount = (SELECT count(Trade.id) FROM ".$tb_prefix."trades Trade where Trade.type_id in ".$trade->getTradeTypeKeys("buy")."  and Trade.industry_id=".$val['IndustryId']."),company_amount = (SELECT count(Company.id) FROM ".$tb_prefix."companies Company where Company.industry_id=".$val['IndustryId'].") where id=".$val['IndustryId'];
 				$g_db->Execute($sql);
 			}
 		}
 		$str.=");\n?>";
-		$this->writeCache($filename, $inputstr, $extra);
+		$this->writeCache($filename, $str, $extra);
 	}
 }
 ?>

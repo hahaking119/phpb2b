@@ -36,9 +36,9 @@ if ($_POST['save']) {
 	$vals['friendlogo'] = $_POST['companylink']['logo'];
 	$result = $companylink->save($vals, "update", $_POST['id'], null, " AND CompanyID1=".$company_id);
 	if ($result) {
-		goto("./tip.php?id=1000");
+		PB_goto("./tip.php?id=1000");
 	}else {
-		goto("./tip.php?id=1004");
+		PB_goto("./tip.php?id=1004");
 	}
 }
 if (!empty($_GET['id'])) {
@@ -46,7 +46,7 @@ if (!empty($_GET['id'])) {
 	$sql = "SELECT ".$fields." FROM ".$companylink->getTable(true)." LEFT JOIN ".$company->getTable(true)." ON Companylink.CompanyID2=Company.id WHERE Companylink.CompanyID1=".$company_id." AND Companylink.id=".$_GET['id'];
 	$linkinfo = $g_db->GetRow($sql);
 	if (empty($linkinfo)) {
-		goto("./tip.php?id=1004");
+		PB_goto("./tip.php?id=1004");
 	}
 	setvar("LinkInfo",$linkinfo);
 }

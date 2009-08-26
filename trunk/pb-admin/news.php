@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("news","newstype", "membertype","attachment", "keyword");
-require("./fckeditor/fckeditor.php") ;
+require("fckeditor/fckeditor.php") ;
 require(SITE_ROOT.'./app/include/page.php');
 require("session_cp.inc.php");
 $keyword = new Keywords();
@@ -26,7 +26,12 @@ if (isset($_POST['update']) && !empty($_POST['if_focus'])) {
 	$g_db->Execute("update ".$news->getTable()." set if_focus=1 where id=".intval($_POST['if_focus']));
 }
 if (isset($_POST['del']) && is_array($_POST['id'])) {
+	foreach ($_POST['id'] as $key=>$val){
+	    $attach_filename = $g_db->GetOne("select picture from ".$tb_prefix."newses where id=".$val);
+	    $attachment->delete($attach_filename);
+	}
 	$deleted = $news->del($_POST['id']);
+
 	if ($deleted) {
 		flash("./alert.php");
 	}else {
@@ -34,7 +39,10 @@ if (isset($_POST['del']) && is_array($_POST['id'])) {
 	}
 }
 if ($_GET['action'] == "del" && !empty($_GET['id'])) {
+	$sql = "select picture from ".$tb_prefix."newses where id=".$_GET['id'];
+	$attach_filename = $g_db->GetOne($sql);
 	$news->del($_GET['id']);
+	$attachment->delete($attach_filename);
 }
 if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
 	$_POST['news']['content'] = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;', '\"'), array('&', '"', '<', '>', '"'), $_POST['news']['content']);
@@ -52,6 +60,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
         include("../app/include/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;
+        $attachment->module_id = 5;//News
         $attachment->upload_process();
         if ( $attachment->error_no )
         {
@@ -85,6 +94,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
         $keyword->setKeywordId($vals['keywords'], $new_id, 'newses');
         $g_db->Execute("update ".$tb_prefix."newses set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
 	}
+	exit;
 	if ($result) {
 		flash("./alert.php","./news.php",null);
 	}else{

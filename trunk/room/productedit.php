@@ -20,7 +20,7 @@ $list = $producttype->findAll($producttype->common_cols, "member_id=".$_SESSION[
 if (($_GET['action']=="mod") && (!empty($_GET['id']))) {
 	$productinfo = $product->read(null,$_GET['id'],null,$conditions);
 	if (empty($productinfo)) {
-		goto("./tip.php?id=1005");
+		PB_goto("./tip.php?id=1005");
 	}else {
 		$current_industry = $industry->searchParentIndustry($productinfo['ProductIndustryId']);
 		if (is_array($current_industry)) {

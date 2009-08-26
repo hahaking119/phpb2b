@@ -23,20 +23,20 @@ if ($_POST['save']) {
 		$vals['created'] = $time_stamp;
 		$now_link_amount = $companyoutlink->findCount($conditions);
 		if ($ua_user['user_type'] == 1 && $now_link_amount>=3) {
-			goto("./tip.php?id=1013");
+			PB_goto("./tip.php?id=1013");
 		}
 		$result = $companyoutlink->save($vals);
 	}
 	if ($result) {
-		goto("./tip.php?id=1000");
+		PB_goto("./tip.php?id=1000");
 	}else {
-		goto("./tip.php?id=1004");
+		PB_goto("./tip.php?id=1004");
 	}
 }
 if (!empty($_GET['id'])) {
 	$linkinfo = $companyoutlink->read(null, $_GET['id'], null, $conditions);
 	if (empty($linkinfo)) {
-		goto("./tip.php?id=1004");
+		PB_goto("./tip.php?id=1004");
 	}
 	setvar("LinkInfo",$linkinfo);
 }

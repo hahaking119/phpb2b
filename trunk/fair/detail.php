@@ -1,6 +1,6 @@
 <?php
 $inc_path = "../";
-$li = 8;
+$li = 7;
 require($inc_path."global.php");
 uses("expo", "expotype", "area");
 $fair = new Expoes();
@@ -19,7 +19,6 @@ if (empty($fid)) {
 $fields = $fair->getFieldAliasNames();
 
 $result = $g_db->GetRow("select ".$fields.",Expotype.name as ExpotypeName from ".$fair->getTable(true)." left join ".$fairtype->getTable(true)." on Expo.type_id=Expotype.id where Expo.id=".$fid);
-
 if(!empty($result)){
 	if(!empty($result['ExpoEw'])) {
 		$fair_companies = unserialize($result['ExpoEw']);
@@ -35,6 +34,7 @@ if(!empty($result)){
 }
 $_titles[] = lgg("expo_channel");
 $fair->setPageTitle($_titles);
+setvar("pageTitle", $fair->title);
 setvar("pageTitle", $fair->title);
 template($theme_name."/fair_detail");
 ?>

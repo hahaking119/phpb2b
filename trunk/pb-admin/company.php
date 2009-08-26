@@ -170,8 +170,8 @@ if (isset($_POST['edit_company'])) {
 	$vals['site_url'] = $_POST['company']['site_url'];
 	$vals['style_id'] = $_POST['company']['style_id'];
 	$vals['email'] = $_POST['company']['email'];
-	$vals['province_code_id'] = $_POST['provinceid'];
-	$vals['city_code_id'] = $_POST['cityid'];
+	$vals['province_code_id'] = $_POST['countryid'];
+	$vals['city_code_id'] = $_POST['provinceid'];
 	if($_POST['company']['main_market']) $mainmarket = implode(",",$_POST['company']['main_market']);
 	$vals['main_market'] = $mainmarket;
 	array_walk($vals,"uatrim");

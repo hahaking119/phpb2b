@@ -10,10 +10,28 @@ $offer = new Offers();
 $company = new Companies();
 $industry = new Industries();
 $trade = new Trades();
-//$trade_type = $trade->getTradeTypeKeys("buy");
+include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
+include(SITE_ROOT."./data/tmp/data/".$cookiepre."area.inc.php");
+$areas = $industrys = array();
+foreach ($UL_DBCACHE_AREAS as $key=>$val){
+    if ('0000' == substr($key, -4, 4)) {
+        $areas[$key] = $val;
+    }
+}
+foreach ($UL_DBCACHE_INDUSTRIES as $key=>$val){
+    if ($key<100) {
+    	$industrys[$key] = $val;
+    }
+}
 $tpl_file = "list";
 $conditions = null;
-
+if (!empty($_GET['sid'])) {
+	$sid = intval($_GET['sid']);
+	$conditions.= " and Trade.industry_id=".$sid;
+}
+if (isset($_GET['areaid'])) {
+	$conditions.= " and Trade.area_id =".intval($_GET['areaid']);
+}
 if (!empty($_GET['industryname'])) {
 	$ind_res = $g_db->GetRow("select id,parentid,name from ".$tb_prefix."industries where name='".urldecode($_GET['industryname'])."'");
 	$_titles[] = $_positions[] = $ind_res['name'];
@@ -73,11 +91,11 @@ $ListAmount = $trade->findCount(" 1 ".$conditions);
 pageft($ListAmount,10);
 $joins["Member"] =array("fullTableName"=>$member->getTable(true),"foreignKey"=>"member_id","fields"=>"Member.user_type as Membertype,Member.username as MemberUsername");
 $joins["Offer"] =array("fullTableName"=>$offer->getTable(true),"foreignKey"=>"id","PrimaryKey"=>"trade_id","fields"=>"prim_im,prim_imaccount,Offer.company_name as OfferCompanyName,prim_tel as PrimTel");
-setvar("Lists",$trade->findAll($trade->mini_trade_cols," 1 ".$conditions,"Trade.id desc",$firstcount,$displaypg));
+setvar("Lists",$trade->findAll($trade->mini_trade_cols," 1 ".$conditions,"Member.user_type desc,Trade.id desc",$firstcount,$displaypg));
 $trade->setPageTitle($_titles, $_positions);
 uaAssign(array("pageTitle"=>$trade->getTitle(), "pagePosition"=>$trade->getPosition()));
 
-uaAssign(array("ByPages"=>$pagenav,"Li"=>$li, "OtherIndustry"=>$subs));
+uaAssign(array("ByPages"=>$pagenav,"Li"=>$li, "OtherIndustry"=>$subs, "Industries"=>$industrys, "Areas"=>$areas));
 unset($subs);
 template($theme_name."/trade_".$tpl_file);
 ?>

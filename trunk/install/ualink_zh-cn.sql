@@ -755,7 +755,7 @@ CREATE TABLE eos_jobs (
   salary_id tinyint(2) default NULL,
   worktype_id tinyint(1) default NULL,
   status tinyint(1) default '0',
-  clicked int(5) default NULL,
+  clicked int(5) default '0',
   created int(10) default NULL,
   expire_time int(10) default NULL,
   PRIMARY KEY  (id)

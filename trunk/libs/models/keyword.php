@@ -23,7 +23,7 @@
 
 	function setKeywordId($keys, $prim_id, $type_id)
 	{
-	    global $g_db, $tb_prefix;
+	    global $g_db, $tb_prefix, $_SESSION;
 	    if(!empty($keys)){
 	        $words = str_replace(array("，", " ", "　"), ",", $keys);
 	        $words = explode(",", $words);
@@ -47,7 +47,7 @@
 	                    $this->exist_keyword_id[] = $kid;
 	                }
 	            }else{
-	                $g_db->Execute("insert into ".$tb_prefix."keywords (title,primary_id,type,created) values ('$val','$prim_id','$type_id','".date("Y-m-d H:i:s")."')");
+	                $g_db->Execute("insert into ".$tb_prefix."keywords (title,primary_id,member_id,type,created) values ('$val','$prim_id','".$_SESSION['MemberID']."','$type_id','".date("Y-m-d H:i:s")."')");
 	                $this->inserted_keyword_id[] = $g_db->Insert_ID();
 	            }
 	        }

@@ -34,7 +34,11 @@ function smarty_function_ad($params){
 	$conditions = array();
 	$limit = null;
 	$conditions[] = "status=1";
-	//$tpl_file = (isset($params['templet']))?$params['templet']:"block.default.image.html";
+	if (isset($params['templet'])) {
+		$op = $smarty->fetch($theme_name."/".$params['templet'], null, null, false);
+		echo $op;
+		return;
+	}
 	extract($params);
 	if (!class_exists("Adses")) {
 		uses("ad");

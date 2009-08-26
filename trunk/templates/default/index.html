@@ -14,11 +14,6 @@
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
-<script type="text/javascript" src="<{$JS_PATH}>js/swfobject.js"></script>
-<script type="text/javascript">
-var flashvars = {};
-swfobject.embedSWF("swf/ht6.swf", "flashcontent", "513", "242", "8.0.0", "expressInstall.swf", flashvars);
-</script>
 <{$xajax_javascript}>
 <script type="text/javascript">
 xajax_rebuildHTML("index.php");
@@ -30,11 +25,7 @@ xajax_rebuildHTML("index.php");
 <{include file="`$ThemeName`/element.header.html"}>
 <div class="wd">
 	<!--焦点图轮换-->
-	<div class="in_hotimg">
-		<!-- Flash图片轮播 begin -->
-		<div id="flashcontent"></div>
-		<!-- Flash图片轮播 end -->
-	</div>
+	<{ad templet="block.index.flash.html"}>
 	<!--焦点图轮换 end-->
 	<!--最新供求信息-->
 	<div class="new_gq">
@@ -106,7 +97,7 @@ xajax_rebuildHTML("index.php");
 	<div class="bt in_bt4">
 		<h2>最新产品</h2>
 		<p class="none">
-			<a href="<{$UrlContainer.common}>product/list.php" class="ck f">查看推荐产品</a>
+			<a href="<{$UrlContainer.common}>product/list.php?type=commend" class="ck f">查看推荐产品</a>
 			<a href="<{$SiteUrl}>room/productedit.php" class="fb f">发布产品信息</a>
 			<em></em>
 		</p>
@@ -124,7 +115,7 @@ xajax_rebuildHTML("index.php");
 		<div class="bt in_bt5"><h2><a href="<{$UrlContainer.common}>company.php?ac=list" title="VIP企业" class="f">VIP企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company.php?ac=list" class="f">更多&raquo;&raquo;</a></p></div>
 		<div class="vipqy_c">
 			<div>
-				<{ad type_id=1}>
+				<{company type="image" templet="company.image" max=3}>
 			</div>
 		</div>
 	</div>

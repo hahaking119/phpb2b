@@ -39,8 +39,6 @@ xajax_rebuildHTML("news/index.php");
 			</ul>
 		</div>
 		<div class="clear9"></div>
-		<div class="zx_ad1"><img src="<{$tpl_img_path}>default/in_395x73.jpg" alt="" /></div>
-		<div class="clear9"></div>
 		<div class="zx_tab1 zx_tab2">
 			<div class="bt zx_bt1">
 				<h2 class="over"><a href="<{$SiteUrl}>news/list.php?type_id=1"><{newstype id=1}></a></h2>
@@ -60,15 +58,13 @@ xajax_rebuildHTML("news/index.php");
 			<div class="bt zx_bt2"><h2><a href="<{$SiteUrl}>news/list.php?type_id=2">企业动态</a></h2><p class="padright10"><a href="<{$SiteUrl}>news/list.php?type_id=2">更多</a></p></div>
 			<ul class="ul21 ula"><{news templet="title_with_time" type_id=2}></ul>
 		</div>
-		<div class="clear9"></div>
-		<div class="zx_ad2"><img src="<{$tpl_img_path}>default/in_350x92.jpg" alt="" /></div>	
 	</div>
 	<div class="w_right2">
 		<{news type="image" col="1" imgwidth="180" imgheight="65"}>
 		<div class="clear9"></div>
 		<div class="zx_tab5">
 		<div class="zx_tab5 zx_tab6">
-			<div class="bt zx_bt3"><h2 class="f12"><a href="<{$UrlContainer.common}>news/list.php">热点新闻</a></h2></div>
+			<div class="bt zx_bt3"><h2 class="f12"><a href="<{$UrlContainer.common}>news/list.php?type=hot">热点新闻</a></h2></div>
 			<ul class="ul21"><{news max=9}></ul>
 		</div>
 	</div>

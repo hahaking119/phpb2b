@@ -17,18 +17,18 @@
 <!-- 标题 -->
 <form name="listfrm" action="" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
-<tr class="header" align="center"><td><input type="checkbox" name="newstypeidAll" onClick="uaCheckAll(this, 'newstypeid[]')" title="全选"></td>
-<td><span>类别名称</span></td>
-<td>添加新闻</td>
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="全选"></td>
+<td><span>标题</span></td>
+<td>&nbsp;</td>
 <td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
-<tbody id="menu_1" style="display: yes"><{foreach from=$NewstypeList item=v name=newstypes}>
+<tbody id="menu_1" style="display: yes"><{foreach from=$AnnounceList item=v name=AnnounceList}>
 <tr bgcolor="<{cycle values="#eeeeee,#ffffff"}>" align="center">
-<td><input type="checkbox" name="newstypeid[]" value="<{$v.NewstypeId}>" onClick="uaCheckItem(this, 'newstypeidAll')"></td>
-<td><a href="./newstype.php?action=view&id=<{$v.NewstypeId}>" title="查看或者修改">
-  <{$v.NewstypeName|truncate:35}>
+<td><input type="checkbox" name="id[]" value="<{$v.id}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><a href="<{$UrlContainer.common}>announce.php?id=<{$v.id}>" target="_blank" title="预览">
+  <{$v.LinkTitle}>
 </a></td>
-<td><a href="./news.php?action=mod&sid=<{$v.NewstypeId}>">添加</a></td>
-<td><a href="./newstype.php?action=mod&id=<{$v.NewstypeId}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="修改"></a>  <a href="./newstype.php?action=del&id=<{$v.NewstypeId}>"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="删除"></a></td>
+<td>&nbsp;</td>
+<td><a href="./announce.php?action=mod&id=<{$v.id}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="修改"></a>  <a href="./announce.php?action=del&id=<{$v.id}>"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="删除"></a></td>
 </tr>
 <{foreachelse}>
 <tr bgcolor="#ffffff">
@@ -47,23 +47,5 @@
 </td>
 </tr>
 </table>
-<!-- 快速添加 -->
-<form name="quickaddfrm" action="" method="post">
-<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
-<tr class="header"><td colspan="5"><div align="left">快速添加</div></td></tr>
-<tr>
-	<td width="9%"><div align="right">类别名称 :</div></td>
-	<td width="15%"><input name="newstype[name]" type="text" id="newstype_name"></td>
-	<td width="10%"><div align="right">上级类别 :</div></td>
-	<td><select name="newstype[parent_id]" id="parent_id">
-		  <option value="0">根目录</option>
-		  <{html_options options=$AllParents selected=$n.NewstypeParentId}>
-		  </select></td>
-	<td><input name="save" type="submit" id="save" value="添加" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
-  </tr>
-</table>
-</form>
-<!-- 结束new -->
-
 </body>
 </html>

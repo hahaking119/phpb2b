@@ -1,64 +1,30 @@
-<table width="207" height="600" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td valign="top">
-	<table width="207" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td><img src="<{$tpl_img_path}>default/title01.gif" width="207" height="31"></td>
-        </tr>
-        <tr> 
-          <td><table width="88%" height="100%" border="0" align="center" cellpadding="2" cellspacing="2">
-		  <{foreach from=$HelpParents name=helpp item=hp}>
-              <tr> 
-                <td width="13%"><img src="<{$tpl_img_path}>default/icon.gif" width="16" height="16"></td>
-                <td width="87%"><a href="<{$SiteUrl}>help.php?sid=<{$hp.HelptypeId}>" target="_top"><{$hp.HelptypeTitle}></a></td>
-              </tr>
-			<{/foreach}>
-            </table></td>
-        </tr>
-      </table>
-      <table width="207" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td><img src="<{$tpl_img_path}>default/title02.gif" width="207" height="31"></td>
-        </tr>
-        <tr> 
-          <td>
-		  <table width="100%" height="73" border="0" cellpadding="2" cellspacing="2">
-              <tr> 
-                <td width="13%"><div align="center" class="font12yellow">客户服务电话<br><{$servicetel}></div></td>
-              <td width="13%"><{announce}></td>
-			  </tr>
-            </table>
-			</td>
-        </tr>
-      </table>
-      <table width="207" border="0" cellspacing="0" cellpadding="0">
-        <tr> 
-          <td><img src="<{$tpl_img_path}>default/title03.gif" width="207" height="31"></td>
-        </tr>
-        <tr> 
-          <td>
-            <form action="mailto:<{$serviceemail}>">
-              <br>
-              <table width="89%" height="73" border="0" align="center" cellpadding="2" cellspacing="2">
-              <tr> 
-                <td width="13%">
-				<div align="left" class="font14blak"> 
-                    <textarea name="user_question" rows="5" wrap="VIRTUAL" class="linehui">如有问题，请给我们留言！</textarea>
-                  </div></td>
-              </tr>
-              <tr> 
-                <td> 
-				<div align="left"> 
-                    <input name="user_email" type="text" class="linehui" value="输入邮箱地址">
-                  </div></td>
-              </tr>
-              <tr> 
-                <td><div align="left"> 
-                    <input type="submit" name="mail_question" value="提交">
-                  </div></td>
-              </tr>
-            </table></form></td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
+	<div class="leftbar">
+		<div class="h_tt1"><h2>公告中心</h2></div>
+		<div class="h_c1">
+			<ul>
+				<{announce max=10}>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="clear13"></div>
+		<div class="h_tt1 h_tt2"><h2>服务中心</h2></div>
+		<div class="h_c1">
+			<div class="str f13">客户服务电话<br /><{$servicetel}></div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear13"></div>
+		<div class="h_tt1 h_tt3"><h2>建议与留言</h2></div>
+		<div class="h_c1">
+			<form action="mailto:<{$serviceemail}>">
+			<p class="h_line1">
+				<textarea name="user_question" rows="5" wrap="VIRTUAL" class="linehui">如有问题，请给我们留言！</textarea>
+			</p>
+			<p class="h_line1 h_line2">
+				<input type="text" name="user_email" value="您的Email:" />
+			</p>
+			<p class="h_line3">
+				<input type="submit" value="提 交" name="mail_question" class="str" />
+			</p>
+			</form>
+		</div>
+	</div>

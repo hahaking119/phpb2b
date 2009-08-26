@@ -24,6 +24,7 @@ $menus = array(
 		"ename"=>"basic","url"=>"setting.php?action=basic","cname"=>"系统设置","items"=>array(
 			array("ename"=>"setting","show"=>false,"cname"=>"系统设置","items"=>array(
 				array("cname"=>"基本设置","url"=>"setting.php?action=basic"),
+				array("cname"=>"注册与访问","url"=>"setting.php?action=permission"),
 				array("cname"=>"计划任务","url"=>"backup.php?action=home"),
 				array("cname"=>"Google Sitemap","url"=>"sitemap.php?action=set"),
 			)),
@@ -151,6 +152,7 @@ $menus = array(
 			)),
 			array("ename"=>"area","cname"=>"地区管理","items"=>array(
 				array("cname"=>"地区列表","url"=>"area.php?action=list"),
+				array("cname"=>"生成省市下拉数据","url"=>"industry.php?action=areaxml"),
 				array("cname"=>"更新地区缓存","url"=>"area.php?action=update"),
 			)),
 			array("ename"=>"announce","cname"=>"公告管理<img src=\"images/new2.gif\" border=0 />","items"=>array(

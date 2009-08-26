@@ -1,4 +1,4 @@
-<?
+<?php
 class Image {
 
 	var $attachinfo = '';
@@ -90,3 +90,4 @@ class Image {
 	}
 
 }
+?>

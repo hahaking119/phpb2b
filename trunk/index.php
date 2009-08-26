@@ -81,11 +81,11 @@ $xajax->register(XAJAX_FUNCTION, "addServiceQuestion");
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 if (STATIC_HTML_LEVEL>0 && (!isset($_GET['action']))) {
-	//goto(URL."htmls/index.html");
+	//PB_goto(URL."htmls/index.html");
 }
 if (isset($searchkeywords)) {
 	$action_page = strtolower($nav[$_GET['searchtype']]['ename'])."/list.php?keyword=".urlencode($_GET['keyword']);
-	goto($action_page);
+	PB_goto($action_page);
 }
 
 unset($industries,$res,$buys,$sells);

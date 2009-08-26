@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link href="<{$tpl_img_path}>admin/admincp.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+<style type="text/css">
+.input150{
+	background-image: url(<{$tpl_img_path}>admin/bg_input150.gif);
+	background-repeat: no-repeat;
+	height: 17px;
+	width: 150px;
+	border: 1px solid #3B92D5;
+	padding:3px 4px 0;
+}
+.input300{
+	background-image: url(<{$tpl_img_path}>admin/bg_input150.gif);
+	background-repeat: no-repeat;
+	height: 17px;
+	width: 150px;
+	border: 1px solid #3B92D5;
+	padding:3px 4px 0;
+}
+</style>
+<script language="JavaScript">
+function fEvent(sType,oInput){
+	switch (sType){
+		case "focus" :
+			oInput.isfocus = true;
+		case "mouseover" :
+			oInput.style.borderColor = '#CC0033';
+			break;
+		case "blur" :
+			oInput.isfocus = false;
+		case "mouseout" :
+			if(!oInput.isfocus){
+				oInput.style.borderColor='#84a1bd';
+			}
+			break;
+	}
+}
+</script>
+</head>
+
+<body leftmargin="10" topmargin="10" onkeydown="refreshmainframe(event)">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td>
+<!-- 位置设置 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr>
+<td><a href="#" onClick="parent.main.location='home.php';return false;">系统设置首页</a>&raquo;<{$CurrentPos}></td>
+</tr>
+</table>
+<!-- :~位置设置 -->
+<!-- 访问设置 -->
+<form name="basicfrm" action="./setting.php" method="post">
+<input type="hidden" name="u[lastbackup]" value="<{$smarty.now}>" />
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header">
+<td colspan="2">网站基本设置<a href="#" onclick="collapse_change('1')"><img id="menuimg_1" src="<{$tpl_img_path}>admin/menu_reduce.gif" border="0" style="float: right; margin-top: -12px; margin-right: 8px;"></a></td>
+</tr>
+<tbody id="menu_1" style="display: yes">
+<tr>
+  <td class="altbg1"><strong>允许新用户注册:</strong>
+  <br />设置是否允许游客注册成为网站会员，您可以根据安全性能选择注册方式</td>
+  <td class="altbg2">关闭注册：<input type="radio" name="u[register_type]" id="close_register" value="close_register" <{if $U.REGISTER_TYPE=="close_register"}>checked="checked"<{/if}> />
+  <br />
+  开放普通注册：<input type="radio" name="u[register_type]" id="open_common_reg" value="open_common_reg" <{if $U.REGISTER_TYPE=="open_common_reg"}>checked="checked"<{/if}> />
+  <br />
+  开放邀请注册：<input type="radio" name="u[register_type]" id="open_invite_reg" value="open_invite_reg" <{if $U.REGISTER_TYPE=="open_invite_reg"}>checked="checked"<{/if}> /> 
+  </td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>注册文件名</strong><br />设置网站注册的文件名称,默认为"register.php",<br />如果您更改了此设置，那么您需要使用“FTP工具”手动重命名文件名称</td>
+  <td class="altbg2"><input type="text" name="u[reg_filename]" value="<{$U.REG_FILENAME|default:'register.php'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/</td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>免费发布供求文件名</strong><br />设置网站免费发布供求页的文件名称,默认为"post.php",<br />如果您更改了此设置，那么您需要使用“FTP工具”手动重命名文件名称</td>
+  <td class="altbg2"><input type="text" name="u[post_filename]" value="<{$U.POST_FILENAME|default:'post.php'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>同一 IP 注册间隔限制(小时):</strong></td>
+  <td class="altbg2"><input name="u[ip_reg_sep]" type="text" id="IP_REG_SEP" size="30" value="<{$U.IP_REG_SEP|default:0}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
+</tr>
+</tbody>
+<tr>
+  <td colspan="2" valign="top" class="altbg1"><center><input type="submit" name="savepermission" value="保存" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'">
+</center></td>
+  </tr>
+</table>
+<!-- :~访问设置 -->
+<{$editor}>
+</form>
+</td></tr>
+</table>
+</body>
+</html>

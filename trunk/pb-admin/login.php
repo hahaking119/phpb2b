@@ -35,7 +35,7 @@ if ($_POST['login'] && !empty($_POST['a']['username']) && (!empty($_POST['a']['u
 			//$_SESSION['admin']['current_adminer_id'] = $adminer->field("id", "user_name='".$uname."'");
 			//$_SESSION['admin']['current_pass'] = md5($upass);
 
-			goto("./index.php");
+			PB_goto("./index.php");
 		}else{
 			setvar("LoginError",lgg('login_false').",ErrorCode:".$r_check);
 		}

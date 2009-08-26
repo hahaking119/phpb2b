@@ -1,11 +1,5 @@
-<table cellspacing="5" cellpadding="3" width="85%" align="center" border="0">
-  <tbody>
-	<tr>
-	<{foreach from=$ListIndustry name=show_industry item=data}>
-	<td><img height=5 src="<{$tpl_img_path}>default/dot2.gif" width="3"> <a class="link12" href="./list.php?industryid=<{$data.IndustryId}>" title="<{$data.IndustryName}>"><{$data.IndustryName|truncate:12}></a></td>
-	<{if $smarty.foreach.show_industry.iteration is div by 2}>
-	</tr><tr>
-	<{/if}>
-	<{/foreach}>
-  </tbody>
-</table>
+			<div class="sc_c1">
+				<{foreach from=$ListIndustry name=show_industry item=data}>
+				<a class="link12" href="./list.php?industryid=<{$data.IndustryId}>" title="<{$data.IndustryName}>"><{$data.IndustryName|truncate:12}></a> |
+				<{/foreach}>
+			</div>

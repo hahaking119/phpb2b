@@ -36,6 +36,9 @@ class Userpages extends UaModel {
 			case 8:
 				$this->current_li = "current_li_name_fair";
 				break;
+			case 9:
+				$this->current_li = "current_li_name_hr";
+				break;
 			default:
 				$this->current_li = "current_li_name_start";
 				break;
@@ -44,7 +47,11 @@ class Userpages extends UaModel {
 
 	function setUrlContainer($static_level){
 		$tmp_contain = array();
-		global $media_paths;
+		global $media_paths, $g_db, $tb_prefix;
+		$reg_filename = $g_db->GetOne($sql = "select ab from ".$tb_prefix."settings where aa='reg_filename'");
+		$reg_filename = (empty($reg_filename))?"register.php":$reg_filename;
+		$post_filename = $g_db->GetOne("select ab from ".$tb_prefix."settings where aa='post_filename'");
+		$post_filename = (empty($post_filename['ab']))?"post.php":$post_filename;
 		$inc_path = $media_paths['INC_PATH'];
 		switch ($static_level) {
 			case 1:
@@ -54,6 +61,7 @@ class Userpages extends UaModel {
 				$tmp_contain['company'] = URL."htmls/company/";
 				$tmp_contain['product'] = URL."htmls/product/";
 				$tmp_contain['news'] = URL."htmls/news/";
+				$tmp_contain['hr'] = URL."htmls/hr/";
 				$tmp_contain['market'] = URL."htmls/market/";
 				$tmp_contain['fair'] = URL."htmls/fair/";
 				$tmp_contain['user'] = URL."htmls/user/";
@@ -71,14 +79,15 @@ class Userpages extends UaModel {
 				$tmp_contain['company'] = URL."company.php";
 				$tmp_contain['product'] = URL."product/";
 				$tmp_contain['news'] = URL."news/";
+				$tmp_contain['hr'] = URL."hr.php";
 				$tmp_contain['market'] = URL."market/";
 				$tmp_contain['fair'] = URL."fair/";
 				$tmp_contain['user'] = URL."user/";
 				$tmp_contain['apply_friendlink'] = URL."user/apply_friendlink.php";
-				$tmp_contain['register'] = URL."user/register.php";
+				$tmp_contain['register'] = URL."user/".$reg_filename;
 				$tmp_contain['artical'] = URL."user/announcement.php";
 				$tmp_contain['logging'] = URL."user/logging.php";
-				$tmp_contain['post'] = URL."post.php";
+				$tmp_contain['post'] = URL.$post_filename;
 				$tmp_contain['common'] = URL;
 				break;
 		}

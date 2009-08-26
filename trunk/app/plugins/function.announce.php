@@ -62,7 +62,7 @@ function smarty_function_announce($params){
 	$output = $format_date = null;
 	for($i=0; $i<count($result); $i++) {
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $url = URL."page.php?q=announce&id=".$result[$i]['AnnouncementId'];
+	    $url = URL."announce.php?id=".$result[$i]['AnnouncementId'];
 	    if (!empty($result[$i]['CreateDate'])) {
 	        $a = $time_stamp-$result[$i]['CreateDate'];
 	        if ($a < 40)

@@ -23,16 +23,16 @@ switch ($_GET['type']) {
 if (isset($_POST['del'])) {
 	$result = $companymessage->del($_POST['messageid']," from_member_id=".$_SESSION['MemberID']." or to_member_id=".$_SESSION['MemberID']);
 	if ($result) {
-		goto("./tip.php?id=1000");
+		PB_goto("./tip.php?id=1000");
 	}else {
-		goto("./tip.php?id=1004");
+		PB_goto("./tip.php?id=1004");
 	}
 }
 $tplname = "message";
 if($_GET['action'] == "view" && !empty($_GET['id'])){
 	$message_info = $companymessage->read(null, $_GET['id'], null, $conditions_amount);
 	if(empty($message_info)){
-		goto("./tip.php?id=1004");
+		PB_goto("./tip.php?id=1004");
 	}else{
 		setvar("m",$message_info);
 		$tplname = "message_detail";

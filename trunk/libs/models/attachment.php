@@ -1,6 +1,7 @@
 <?php
  class Attachments extends UaModel {
  	var $name = "Attachment";
+ 	var $module_id = 0;
     var $upload_form_field = 'pic';
     var $out_file_name    = '';
     var $out_file_dir     = './';
@@ -133,6 +134,7 @@
             @chmod( $this->saved_upload_name, 0777 );
             //$attach = array();
             $attach['is_image'] = $this->is_image;
+            $attach['type_id'] = $this->module_id;
             $attach['attachment'] = gmdate("Ym")."/".$this->parsed_file_name;
             $attach['remote'] = URL."attachment/".$attach['attachment'];
             $attach['created'] = $_SERVER['REQUEST_TIME'];
@@ -373,6 +375,30 @@
 	  if(isset($water_im)) imagedestroy($water_im);
 	  unset($ground_info);
 	  imagedestroy($ground_im);
+	}
+
+	function delete($attachments = null, $id = null)
+	{
+	    global $g_db;
+	    $tmpIdCondition = $tmpAttachments = null;
+	    if (!empty($attachments)) {
+                $tmpIdCondition = " attachment = '".$attachments."'";
+                @unlink(BASE_DIR."attachment/".$attachments);
+                @unlink(BASE_DIR."attachment/".$attachments.".small.jpg");
+	    }else{
+    	    if ($id && is_array($id)) {
+    	    	$tmpIdCondition = " id in (".implode(",", $id).")";
+
+    	       $tmpAttachments = $g_db->GetArray("select attachment from ".$this->getTable()." where ".$tmpIdCondition);
+    	    }
+    	    if (!empty($tmpAttachments)) {
+    	    	foreach ($tmpAttachments as $key=>$val){
+    	    	    @unlink(BASE_DIR."attachment/".$val['attachment'].".small.jpg");
+    	    	}
+    	    }
+	    }
+	    $g_db->Execute("delete from ".$this->getTable()." where ".$tmpIdCondition);
+	    return true;
 	}
 }
 ?>

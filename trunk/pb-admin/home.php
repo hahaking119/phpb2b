@@ -40,7 +40,7 @@ if ($when_to_backup == 2) {
 			$sqldump.=data2sql($names['table_name']);
 		}
 	}
-	$file_path = "..".DS."media".DS."backup".DS;
+	$file_path = "..".DS."data".DS."backup".DS;
 	if(function_exists("gzwrite")){
 		$zip_file_name = $file_path."db_".date("Ymd")."_".getRadomStr().".gz";
 		$zip_fp = gzopen($zip_file_name, "w9");

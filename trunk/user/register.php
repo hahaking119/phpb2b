@@ -7,6 +7,7 @@ require($inc_path .APP_NAME. 'include/inc.discuz.php');
 require($inc_path .APP_NAME. 'include/inc.phpwind.php');
 uses("member","company","membertype","companytype","access","setting", "htmlcache", "industry");
 $cfg['reg_time_seperate'] = 3*60;
+$cfg['register_type'] = array("close_register", "open_common_reg", "open_invite_reg");
 $industry = new Industries();
 $htmlcache = new Htmlcaches();
 $member = new Members();
@@ -15,7 +16,19 @@ $access = new Accesses();
 $membertype = new Membertypes();
 $companytype = new Companytypes();
 $company = new Companies();
+$check_invite_code = false;
 $if_set_register_picture = $setting->field("ab", "aa='register_picture'");
+$register_type = $setting->field("ab", "aa='register_type'");
+$ip_reg_sep = $setting->field("ab", "aa='ip_reg_sep'");
+if (!empty($ip_reg_sep)) {
+	$cfg['reg_time_seperate'] = $ip_reg_sep*60*60;
+}
+if ($register_type=="close_register") {
+	alert(lgg("site_closed"));
+}elseif ($register_type=="open_invite_reg"){
+    setvar("IfInviteCode", true);
+    $check_invite_code = true;
+}
 setvar("IfRegisterPicture",intval($if_set_register_picture));
 /**xajax**/
 $xajax = new xajax();
@@ -43,18 +56,26 @@ if(isset($_POST['register'])){
 	$auth_check = uaStrCompare(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
 	if ($if_set_register_picture && !$auth_check) {
 		session_destroy();
-		goto(URL."message.php?message=".urlencode(lgg('auth_error')));
+		PB_goto(URL."message.php?message=".urlencode(lgg('auth_error')));
 	}else{
 	    unset($_SESSION['authnum_session']);
+	}
+	if ($check_invite_code) {
+		//检查邀请码
+		$decode_authcode = authcode($_POST['data']['invite_code'], 'DECODE');
+		//检查邀请人是否存在
+		if (empty($decode_authcode)) {
+			alert(lgg('invite_code_error'));
+		}
 	}
 	$member_datas = $_POST['data']['Member'];
 	$checked = $member->checkUserExist($member_datas['username']);
 	$uip = uaIp2Long($_SERVER['REMOTE_ADDR']);
 	if(empty($uip)){
-		goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
 	}
 	if($cfg['reg_time_seperate']>($time_stamp-$_SESSION['last_reg_time'])){
-		goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
 	}
 	if(!empty($checked)){
 		die(lgg('member_exists'));
@@ -159,7 +180,7 @@ if(isset($_POST['register'])){
 					'yahoo'	=> $vars['yahoo'],
 					);
 					$gopage = DZ_API($member_reg,"login",URL."user/regdone.php?name=".rawurlencode($tmp_username).$CheckRegisterUser);
-					goto($gopage);
+					PB_goto($gopage);
 				}elseif($forums['type']=="phpwind"){
 					$member_reg = array
 					(
@@ -169,10 +190,10 @@ if(isset($_POST['register'])){
 					'email'		=> $vars['email'],
 					);
 					$gopage = PW_API($member_reg,"login",URL."user/regdone.php?name=".rawurlencode($tmp_username).$CheckRegisterUser);
-					goto($gopage);
+					PB_goto($gopage);
 				}
 			}
-			goto($gopage);
+			PB_goto($gopage);
 		}
 	}
 }

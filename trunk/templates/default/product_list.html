@@ -29,13 +29,35 @@
 			</ul>
 		</div>
 		<div class="clear9"></div>
+		<div class="cp_tab2">
+              <form name="product_search_frm" action="./list.php?sid=<{$smarty.get.sid}>" method="get">
+			  <input type="hidden" name="industryname" value="<{$smarty.get.industryname}>" />
+			<p class="cp_p7">
+				<em>按行业</em>
+				<select name="sid" onchange="location.href='list.php?sid='+this.options[this.selectedIndex].value+'&areaid=<{$smarty.get.areaid}>'">
+					<option value="0">不限</option>
+					<{foreach from=$Industries name=Industries item=item key=key}>
+					<option value="<{$key}>" <{if $key==$smarty.get.sid}>selected="selected"<{/if}>><{$item}></option>
+					<{/foreach}>
+				</select>
+				<em>按地区</em>
+				<select name="areaid" onchange="location.href='list.php?industryname=<{$smarty.get.sid}>&areaid='+this.options[this.selectedIndex].value;">
+					<option value="0">不限</option>
+					<{foreach from=$Areas name=Areas item=item key=key}>
+					<option value="<{$key}>" <{if $key==$smarty.get.areaid}>selected="selected"<{/if}>><{$item}></option>
+					<{/foreach}>
+				</select>
+			</p>
+			</form>
+		</div>
+		<div class="clear9"></div>
 		<div class="cp_tab4">
 			<ul class="cp_ul3">
 				<li class="li1">图例</li>
 				<li class="li2"><p>商品信息</p></li>
 				<li class="li3">信誉度指数</li>
 				<li class="li3">在线联系</li>
-				<li class="li3">选择比较</li>
+				<li class="li3">&nbsp;</li>
 			</ul>
 <!-- 列表供求 -->
 <{foreach item=prod from=$Lists key=count}>
@@ -48,7 +70,7 @@
 				</li>
 				<li class="li3"><img src="<{$tpl_img_path}>default/type/<{$prod.Membertype|default:"default"}>.gif"></li>
 				<li class="li3"><em class="str"><a href="<{$UrlContainer.common}>space.php?do=feedback&userid=<{$prod.UserName}>" title="联系对方">给我留言</a></li>
-				<li class="li3"><input type="checkbox" name="product_id[]" id="product_id_<{$prod.ID}>" /></li>
+				<li class="li3"></li>
 			</ul>
 <{/foreach}>
 <!-- 列表供求结束 -->

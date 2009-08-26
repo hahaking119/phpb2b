@@ -1,6 +1,6 @@
 <?php
 $inc_path = "../";
-$li = 8;
+$li = 7;
 $expo_newstype_id = 13;
 require($inc_path."global.php");
 require(INC_PATH .'xajax/xajaxAIO.inc.php');

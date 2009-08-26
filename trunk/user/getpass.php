@@ -38,7 +38,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 				unset($_POST);
 				if(!$sended)
 				{
-				   alert(sprintf(lgg("email_send_false", $mail->ErrorInfo)), true);
+				   alert(sprintf(lgg("email_send_false"), $mail->ErrorInfo), true);
 				}else{
 					$sql = "update ".$member->getTable()." set userpass='".$new_passwd_md5."' where id=".$memberinfo['id']." and status='1'";
 					$g_db->Execute($sql);

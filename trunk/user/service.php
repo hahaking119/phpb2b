@@ -19,9 +19,9 @@ if ($_POST['s'] && !empty($_POST['service'])) {
 	$vals['created'] = $time_stamp;
 	array_walk($vals,"uatrim");
 	if($service->save($vals)){
-		goto("../message.php?r=1");
+		PB_goto("../message.php?r=1");
 	}else {
-		goto("../message.php");
+		PB_goto("../message.php");
 	}
 }
 $amount = $service->findCount($conditions);

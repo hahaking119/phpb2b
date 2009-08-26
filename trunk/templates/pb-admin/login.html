@@ -1,50 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
 <title>控制台_<{$sitetitle}></title>
-<link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
 <script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+<title>管理中心-登陆</title>
 <style>
-.errhandler {color:#FF0000; text-align:center; font-weight:bold}
-.login_btn_mouseout {
-BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
-}
-.login_btn_mouseover {
-BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#D7E7FA); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
-}
-.login_btn_mousedown
-{
-BORDER-RIGHT: #FFE400 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #FFE400 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #FFE400 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #FFE400 1px solid
-}
-.login_btn_mouseup {
-BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
-}
-textarea, input, select{
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    color: #000000;
-    font-family: verdana, tahoma, sans-serif;
-    font-size: 0.95em;}
-.username{
-    background-image:url(images/username.gif);
-	background-position: 1px 1px;
-	background-repeat:no-repeat;
-	padding-left:20px;
-	height:20px;
-	font-size: 13px;
-	font-weight:bold;
-	font-family:Arial;
-	}
-.password{
-    background-image:url(images/password.gif);
-	background-position: 1px 1px;
-	background-repeat:no-repeat;
-	padding-left:20px;
-	height:20px;
-	font-size: 13px;
-	font-family:Arial;
-}
+body{background:#edf5ff;}
 </style>
 <script language="javascript">
 <!-- 
@@ -77,60 +41,25 @@ window.onload="javascript:$('username').focus();";
 </script>
 </head>
 
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#FFFFFF">
-<br>
-<br>
-<br>
-<table width="613" height="380" border="0" align="center" cellpadding="0" cellspacing="1" background="<{$tpl_img_path}>admin/login.jpg">
-  <tr> 
-    <td height="100" align="center" valign="bottom" class="font12"> 
-      <div align="left"> </div></td>
-  </tr>
-  <tr>
-    <td height="100" align="center" class="font12"><div align="center"><strong class="title"><font color="#FFFFFF"><a href="<{$SiteUrl}>" target="_blank"><{$sitename}></a> 控制台_<{$sitename}></font></strong></div></td>
-  </tr>
-  <tr>
-    <td height="160" align="center" valign="bottom" class="font12">
-	<form name="loginfrm" action="<{$smarty.env.PHP_SELF}>" method="post" autocomplete="off" target="_parent">
-        <table width="75%" border="0" align="center" cellpadding="2" cellspacing="2" class="font12">
-        <tr> 
-          <td width="46%"><{$Content1}><img src="<{$tpl_img_path}>admin/icon03.gif" width="11" height="11"> 
-            <label for="username">用户名</label>
-            <{if $smarty.session.is_admin}><{$smarty.session.is_admin}><input type="hidden" name=a[username] class="username" id="username2" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{else}><input tabindex="1" type="text" name=a[username] class="username" id="username" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{/if}>			</td>
-          <td colspan="2"><img src="<{$tpl_img_path}>admin/icon03.gif" width="11" height="11"> 
-            <label for="userpass">密　码</label> 
-            <input tabindex="2" type="password" name="a[userpass]" class="password" id="userpass" size=15 maxLength=20>			</td>
-          <td><input class="login_btn_mouseout" onMouseOver="this.className='login_btn_mouseover'" onMouseOut="this.className='login_btn_mouseout'" onMouseDown="this.className='login_btn_mousedown'" onMouseUp="this.className='login_btn_mouseup'" name="login" type="submit" value="登 陆" onClick="return logined();"></td>
-        </tr>
-<{if $IfCpPicture}>        
-        <tr> 
-          <td colspan="2"><img src="<{$tpl_img_path}>admin/icon03.gif" width="11" height="11"> 输入四位数验证码： <input name="login_auth" tabindex="3" id="login_auth" type="text" value="" size="4" maxlength="4">  
-		  <img src="../auth_image.php">		  
-		  </td>
-          <td valign="bottom" width="24%" colspan="2"></td>
-        </tr>
-<{/if}>
-        <tr> 
-          <td colspan="4"><!--忘记了您的密码？--><div id="errhandler" class="errhandler"><{$LoginError}>
-          </div></td>
-        </tr>
-        <tr> 
-          <td colspan="4">&nbsp;</td>
-        </tr>
-      </table>
-	
-	</form>
-	</td>
-  </tr>
-</table>
-<table width="613" height="90" border="0" align="center" cellpadding="0" cellspacing="1">
-  <tr> 
-    <td height="75" align="center" valign="top" class="font12"> <br>
-      <div align="center"><font color="#999999">(1)建议用户使用IE 6.0(或以上)版本的浏览器 <br>
-	  (2)如有问题，请联系<{mailto address="`$serviceemail`" encode="javascript" subject="你好:" text="`$serviceemail`"}> <br>
-        友邻php电子商务版权所有 2007(C)<br>
-        <a href="http://www.miibeian.gov.cn/ " target="_blank" class="link12_red"><{$IcpNumber}></a></font></div></td>
-  </tr>
-</table>
+<body>
+<div class="s_login">
+<form action="" method="post" name="" class="s_lo_f">
+	<img src="<{$tpl_img_path}>default/center.gif" alt="UALINK 管理中心" class="s_img" />
+	<p><label for="username2">用户 名：</label><{if $smarty.session.is_admin}><{$smarty.session.is_admin}><input type="hidden" name=a[username] id="username2" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{else}><input tabindex="1" type="text" name=a[username] id="username" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{/if}>	<label><{$LoginError}></label>
+</p>
+	<p>
+		<label for="userpass">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input tabindex="2" type="password" name="a[userpass]" id="userpass" size=15 maxLength=20>
+		<{if $IfCpPicture}>        
+		<label for="s_yzm">验证码：</label><input type="text" value="" name="login_auth" tabindex="3" id="s_yzm" /><img src="../auth_image.php">
+		<{/if}>
+	</p>
+	<p class="s_p1">
+		<input type="submit" name="login" value="登陆" class="s_dl" onclick="return logined();" />
+		<a href="<{$SiteUrl}>" class="s_a1">返回首页</a>
+		<a href="<{$SiteUrl}>user/getpass.php" class="s_a1 s_a2">忘记密码</a>
+	</p>
+	<p class="s_p2">如有问题，请联系<{mailto address="`$serviceemail`" encode="javascript" subject="你好:" text="`$serviceemail`"}></p>
+</form>
+</div>
 </body>
 </html>

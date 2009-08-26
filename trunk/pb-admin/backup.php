@@ -59,7 +59,7 @@ if ($_GET['action'] == "backup_now") {
 			}
 		}
 	}
-	$file_path = "..".DS."media".DS."backup".DS;
+	$file_path = "..".DS."data".DS."backup".DS;
 	if(function_exists("gzwrite")){
 		$file_name = "db_".date("Ymd")."_".getRadomStr().".gz";
 		$zip_file_name = $file_path.$file_name;

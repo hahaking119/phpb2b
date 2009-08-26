@@ -30,7 +30,7 @@ if (isset($_POST['apply']) && !empty($_POST['site'])) {
 	$data['Friendlink']['created'] =$time_stamp;
 	$result = $friendlink->save($data['Friendlink']);
 	if ($result) {
-		goto("../message.php", 1, lgg('wait_apply'));
+		PB_goto("../message.php", 1, lgg('wait_apply'));
 	}
 }
 setvar("SiteDescription", $setting->field("ab", "aa='site_description'"));

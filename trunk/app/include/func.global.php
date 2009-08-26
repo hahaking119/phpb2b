@@ -78,7 +78,7 @@
 	/**
 	* @ifbackward if create back btn
 	*/
-	function goto($url = "./index.php", $result = false, $msg = null, $otherparams = null, $ifbackward = true)
+	function PB_goto($url = "./index.php", $result = false, $msg = null, $otherparams = null, $ifbackward = true)
 	{
 		if ($result) {
 			$url.="?result=success";
@@ -262,7 +262,7 @@
 				}
 			}else{
 				$goto_page = $forward;
-				goto($goto_page);
+				PB_goto($goto_page);
 				exit;
 			}
 			unset($tmp_memberinfo);
@@ -462,7 +462,7 @@
 	function uaCheckAdminSession()
 	{
 		if(empty($_SESSION['admin']['current_adminer']) || empty($_SESSION['admin']['current_pass'])){
-			goto("login.php");
+			PB_goto("login.php");
 		}
 	}
 

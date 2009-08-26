@@ -95,6 +95,10 @@
   <td align="left" class="altbg2"><input type="text" name="access[max_room_favor]" value="<{$a.max_room_favor}>"></td>
 </tr>
 <tr>
+  <td class="altbg1"><strong>新手见习期：</strong></td>
+  <td align="left" class="altbg2"><input type="text" name="access[new_user_time]" value="<{$a.new_user_time|default:"0"}>">小时</td>
+</tr>
+<tr>
   <td class="altbg1"><strong>默认商业服务期限</strong></td>
   <td align="left" class="altbg2"><{html_radios name="access[default_livetime]" options=$LiveTimes checked=$a.default_livetime|default:"1" separator=" "}>
   <input type="hidden" name="old_defaultlivetime" value="<{$a.default_livetime}>" /></td>

@@ -9,13 +9,6 @@
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
-<style>
-body{text-align:center;}
-td {font-size: 12px;line-height:160%}
-th {font-size: 14px;}
-h4 {font-size:14px; font-weight:bold; color:#CC0000; background-color:#FFFFCC}
-.dotline{background-image:url(<{$tpl_img_path}>default/dot_line.gif);background-repeat: repeat-x;background-position: bottom;}
-</style>
 <script language="javascript">
 /**
 onpropertychange()方法在非IE浏览器中很多都不支持，以后可能要用其他代替。
@@ -61,171 +54,107 @@ function d(){
 }
 </script>
 </head>
-<body leftmargin="0" topmargin="0">
+
+<body>
+<!--head-->
 <{assign var="room_li" value="cor over"}>
 <{include file="`$ThemeName`/element.header.html"}>
-<div class="wd rg_wd1">
-	<div class="rg_left1">
-		<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
-		  <tr>
-			<td><table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
-				<tr> 
-				  <td> 
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-					  <tr> 
-						<td><img src="<{$tpl_img_path}>default/service.jpg" width="960" height="91"></td>
-					  </tr>
-					</table>
-					<table width="100%"  border="0" align="center" cellpadding="5" cellspacing="2">
-					  <tr class="corhei"> 
-						<td colspan="4" height="1"></td>
-					  </tr>
-					  <tr class="coryellow" align="center"> 
-						<th width="50">问/答</th>
-						<th width="500">标 题：内 容</th>
-						<th width="50">名称</th>
-						<th width="60">时间</th>
-					  </tr>
-					  
-					  <!--service -->
-					  <{foreach from=$ServiceList name=listservice item=sl}>
-					  <tr> 
-						<td class="dotline"><img src="<{$tpl_img_path}>default/ico_q.gif" width="47" height="29"></td>
-						<td class="dotline"><a onClick=javascript:ShowFLT(<{$smarty.foreach.listservice.iteration}>) href="javascript:void(null)"><h4><{if $sl.Title|lower eq "index"}><{else}><{$sl.Title|strip_tags}><{/if}></h4><{$sl.Content}></a></td>
-						<td class="dotline"><div align="center"><{if $sl.NickName eq ""}>匿名<{else}><{$sl.NickName}><{/if}></div></td>
-						<td class="dotline"><div align="center" class="time"><{$sl.CreateTime|date_format:"%Y-%m-%d"}></div></td>
-					  </tr>
-					  <tr id="LM<{$smarty.foreach.listservice.iteration}>" style="DISPLAY: none; background-color:#f5f9ed"> 
-						<td width="50"><img src="<{$tpl_img_path}>default/ico_a.gif" width="14" height="14" hspace="5"></td>
-						<td colspan="3"><{$sl.Revert}></td>
-					  </tr>
-					  <{/foreach}>
-					  <!--:~service -->
-					</table>
-					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-					  <tr> 
-						<td height="1" background="<{$tpl_img_path}>default/dian.gif"></td>
-					  </tr>
-					  <tr> 
-						<td> <table width=100% cellpadding=0 cellspacing="0" class="corhui">
-							<tr  > 
-							  <td align="center" valign="baseline"><{$ByPages}></td>
-							</tr>
-						</table></td>
-					  </tr>
-					</table>
-					<br> 
-					<table width="100%" height="106" border="0" cellpadding="0" cellspacing="0" class="linered">
-					  <tr> 
-						<td valign="top" class="corred"> 
-						<a name="post">
-						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-							<tr> 
-							  <td class="coryellow" height="8"></td>
-							</tr>
-							<tr> 
-							  <td class="corhei" height="2"></td>
-							</tr>
-						  </table>
-						  <table width="100%" border="0" cellspacing="5" cellpadding="5">
-							<tr> 
-							  <td class="font14blak">
-							  
-							  <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11">给我们留言</td>
-							</tr>
-							<tr class="linehui"> 
-							  <td class="corwhite"><span class="time">尊敬的用户：请您认真填写以下资料，我们尽可能在三个工作日之内给您答复，请留意您的联系邮箱并认真阅读邮件的内容。 
-								</span> 
+<!--head end-->
+<div class="wd crumb">
+	<p><span class="str">您当前位置：</span><a href="#" title="">Ualink PHP B2B官方演示网站</a> &gt; 客服中心</p>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="w_left1">
+		<p class="cs_ad"><img src="<{$tpl_img_path}>default/service.jpg" /></p>
+		<div class="clear9"></div>
+		<p class="a_line"></p>
+		<div class="cs_c1">
+			<table width="690" border="0" cellspacing="0" cellpadding="0">
+			  <thead>
+				<th width="80">问/答</th>
+				<th width="400">问题/内容</th>
+				<th width="105">提交者</th>
+				<th width="105">时间</th>
+			  </thead>
+			  <{foreach from=$ServiceList name=listservice item=sl}>
+			  <tr>
+				<td><em>Q</em></td>
+				<td><a onClick=javascript:ShowFLT(<{$smarty.foreach.listservice.iteration}>) href="javascript:void(null)"><h4><{if $sl.Title|lower eq "index"}><{else}><{$sl.Title|strip_tags}><{/if}></h4><{$sl.Content}></a></td>
+				<td><{if $sl.NickName eq ""}>匿名<{else}><{$sl.NickName}><{/if}></td>
+				<td><{$sl.CreateTime|date_format:"%Y-%m-%d"}></td>
+			  </tr>
+			  <tr id="LM<{$smarty.foreach.listservice.iteration}>" style="DISPLAY: none;">
+				<td><em>A</em></td>
+				<td><{$sl.Revert}></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <{/foreach}>
+			  <tr>
+				<td colspan="4"><{$ByPages}></td>
+			  </tr>
+			</table>
+			<p class="a_line3"></p>
 								<form name="servicefrm" action="./service.php" method="post" onSubmit="return checkform()">
 								<input type="hidden" name="s" value="1">
-								<table width="100%"  border="0" cellpadding="5" cellspacing="2">
-								  <tr> 
-									<td width="36%" align="right" class="corred"><span class="fontred">* 
-									  </span>反馈类别：</td>
-									<td width="64%"><{html_radios name="service[type_id]" options=$ServiceTypes checked="1" separator=" "}></td>
-								  </tr>
-								  
-								  <tr> 
-									<td align="right" class="corred"><span class="fontred">*</span> 
-									  标题：</td>
-									<td> <input name="service[title]" type="text" class="linehui" id="title" size="40" onFocus="d();">                            
-									</td>
-								  </tr>
-								  <tr> 
-									<td align="right" class="corred"><span class="fontred">*</span> 
-									  您的Email：</td>
-									<td> 
-									<input name="service[email]" type="text" class="linehui" id="email" size="40" maxlength="20" value="">
-									</td>
-								  </tr>
-								  <tr> 
-									<td height="26" align="right" class="corred"><span class="fontred">*</span> 
-									  您的称呼：</td>
-									<td> <input name="service[nick_name]" type="text" class="linehui" id="nick_name" size="40" maxlength="20">                            
-									</td>
-								  </tr>
-								  <tr> 
-									<td height="26" align="right" class="corred"><span class="fontred">*</span> 
-									  反馈内容：</td>
-									<td><textarea name="service[content]" cols="40" rows="6" wrap="VIRTUAL" id="content" onFocus="d();"></textarea>
-									</td>
-								  </tr>
-								  <tr> 
-									<td height="26" colspan="2" align="right" class="corhui"> 
-									  <div align="center"> 
-										<input type="submit" name="save" id="save" value="输入标题后可提交" class="btn_xp">
-										<input type="reset" name="reset" value="重置" class="btn_xp">
-									  </div></td>
-								  </tr>
-								</table>
-								</form>
-								</td>
-							</tr>
-						  </table></td>
-					  </tr>
-					</table>
-					<br> <table width="100%" border="0" cellpadding="0" cellspacing="0" class="linehui">
-					  <tr> 
-						<td valign="top" class="corred"> 
-						  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-							<tr> 
-							  <td class="coryellow" height="8"></td>
-							</tr>
-							<tr> 
-							  <td class="corhei" height="2"></td>
-							</tr>
-						  </table>
-						  <table width="100%" border="0" cellspacing="5" cellpadding="5">
-							<tr> 
-							  <td class="font14blak">
-							  <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11"> 
-								温馨提醒
-								</td>
-							</tr>
-							<tr class="linehui"> 
-							  <td class="corwhite"><span class="time"> </span> 
-							  <table width="100%"  border="0" cellpadding="5" cellspacing="2">
-								  <tr> 
-									<td><p class="font12">这里您可以像发送邮件一样给我们提交问题，我们会尽快于三个工作日内给您答复，请您注意查收邮件！<br>
-										客服热线：<{$servicetel}>　Email:<a href="mailto:<{$serviceemail}>"><{$serviceemail}></a></p>
-									  </td>
-								  </tr>
-								</table></td>
-							</tr>
-						  </table></td>
-					  </tr>
-					</table>
-					
-				  </td>
-				</tr>
-			  </table></td>
-		  </tr>
-		</table>
+			<div class="cs_d">
+				<label>反馈类别：</label>
+				<p><{html_radios name="service[type_id]" options=$ServiceTypes checked="1" separator=" "}></p>
+			</div>
+			<div class="cs_d cs_d1">
+				<label for="title">标题：</label>
+				<p><input name="service[title]" type="text" value="" id="title" size="40" onFocus="d();"/></p>
+			</div>
+			<div class="cs_d cs_d1">
+				<label for="nick_name">您的称呼：</label>
+				<p><input name="service[nick_name]" type="text" value="" id="nick_name" size="40" maxlength="20"/></p>
+			</div>
+			<div class="cs_d cs_d1">
+				<label for="mail">您的Email：</label>
+				<p><input name="service[email]" type="text" value="" id="mail" size="40" maxlength="20"/></p>
+			</div>
+			<div class="cs_d cs_d2">
+				<label for="content">反馈内容：</label>
+				<p><textarea name="service[content]" cols="40" rows="6" wrap="VIRTUAL" id="content" onFocus="d();"></textarea></textarea></p>
+			</div>
+			<div class="cs_d cs_d3"><input type="submit" name="save" id="save" value="提交" alt="输入标题后可提交" /></div>
+			</form>
+		</div>
+		
 	</div>
+	<div class="w_right1">
+		<div class="cpk_t1"></div>
+		<div class="cpk_c2 cs_c2">
+			<div class="bt cpk_bt1"><h2><a href="#">最新公告</a></h2></div>
+			<ul class="ul21">
+				<li><p><a title="" href="#">供应纽约牌环保手提袋供应纽约牌环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌环应纽约牌环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌环保环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌环保手环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌环保手保手提袋</a></p></li>
+				<li><p><a title="" href="#">保手提袋供应纽约牌环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌环保手提袋供保手提袋</a></p>
+				<li><p><a title="" href="#">供应纽约牌环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌应纽约牌环保手提袋</a></p></li>
+				<li><p><a title="" href="#">供应纽约牌环环保手提袋</a></p></li>
+			</ul>
+			<div class="cs_c3">
+				<em>给我们留言:</em><br />
+				尊敬的用户:请您认真填写以下资料,我们尽可能在三个工作日之内给您答复,请留意您的历史那次邮箱认真阅读邮件内容.<br />
+				<br />
+				<em>温馨提醒:</em><br />
+				这里您可以像发送一样给我们提交问题,我们会尽快于三个工作日内给您答复,请您注意查收邮件!<br />
+				客服热线:<{$servicetel}><br />
+				Email:<a href="mailto:<{$serviceemail}>"><{$serviceemail}></a>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
 </div>
 <{include file="`$ThemeName`/element.foot.html"}>
-</body>
-</html>
 <script language="javascript">
 init();//必须放在最后，才能对按钮生效。
 </script>
+</body>
+</html>

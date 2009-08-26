@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title>人才招聘&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>,PHP库存">
+<meta name="description" content="找工作上<{$sitename}>"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+</head>
+
+<body>
+<{assign var="hr_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd">
+	<div class="gy_left1">
+		<div class="bt in_bt6"><h2>职位分类</h2></div>
+		<div class="hyfl_c gy_c1"><{$IndustryList}></div>
+	</div>
+	<div class="gy_left2">
+		<div class="bt gs_bt4 gy_bt3"><h2><a href="<{$SiteUrl}>offer/list.php">最新招聘信息</a></h2><p>&nbsp;</p></div>
+		<div class="gy_c4">
+			<ul class="ul21 ula">
+				<{job max="11"}>
+			</ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="cpk_c2 cs_c2">
+			<div class="bt cpk_bt1"><h2><label>按地区分类</label></h2></div>
+			<div class="sc_c1">
+			<{foreach from=$Areas name=Areas item=item key=key}>
+				<a href="hr.php?ac=list&areaid=<{$key}>" title="<{$item}>"><{$item}></a> |
+			<{/foreach}>
+			</div>
+		</div>
+	</div>
+	<div class="gy_right1">
+		<div class="cp_bt1 cp_bt3 gy_bt5"><em class="cp_em1"></em><h2><a href="<{$UrlContainer.common}>company.php?ac=list">热门职位</a></h2><em class="cp_em2"></em></div>
+		<div class="gy_c4 gy_c5">
+			<ul class="ul21 ula"><{job max=13 orderby="clicked desc"}></ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="cp_bt1 cp_bt3 gy_bt5 gy_bt6"><em class="cp_em1"></em><h2><a href="<{$UrlContainer.common}>company.php?ac=list&type=commend">VIP企业</a></h2><em class="cp_em2"></em></div>
+		<div class="gy_c4 gy_c6">
+			<ul class="ul21 ula"><{company max=8 commend="y"}></ul>
+		</div>
+	</div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

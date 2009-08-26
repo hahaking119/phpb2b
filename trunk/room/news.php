@@ -12,7 +12,7 @@ $tpl_file = "news";
 $company_id = $company->field("id", "member_id=".$_SESSION['MemberID']);
 $conditions = "company_id=".$company_id;
 if (empty($company_id)){
-	goto("./company.php");
+	PB_goto("./company.php");
 }
 $company->checkStatus($company_id);
 if ($_GET['action'] == "mod") {
@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
 	if(!empty($_POST['newsid'])){
 		$vals['modified'] = $time_stamp;
 		$companynews->save($vals, "update",$_POST['newsid'],null, " and member_id=".$_SESSION['MemberID']);
-		goto("./news.php?action=list");
+		PB_goto("./news.php?action=list");
 	}else {
 		$vals['created'] = $time_stamp;
 		$vals['member_id'] = $_SESSION['MemberID'];

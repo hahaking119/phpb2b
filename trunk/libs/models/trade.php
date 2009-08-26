@@ -107,8 +107,8 @@
 
 	function checkAccess($trade_info_un){
 		$trade_info = unserialize($trade_info_un);
-		global $tmp_status;
-		global $ua_user;
+		global $tmp_status,$g_db;
+		global $ua_user,$tb_prefix;
 		if($trade_info['TradeStatus']!=1){
 			$tmp_key = intval($trade_info['TradeStatus']);
 			alert(urlencode($trade_info['Name'].$tmp_status[$tmp_key]));
@@ -118,8 +118,15 @@
 		if($trade_info['require_membertype']>0){
 			if(empty($ua_user['user_type'])) alert(urlencode(lgg("no_permission")));
 		}
-		if($trade_info['require_point']>0){
-			if($ua_user['credit_point']<$trade_info['require_point']) alert(urlencode(lgg("point_not_enough")));
+		$t_point = intval($trade_info['require_point']);
+		if($t_point>0){
+			if($ua_user['credit_point']<$t_point){
+			    alert(urlencode(lgg("point_not_enough")));
+			}else{
+			    //reduce user's point
+			    $sql = "update ".$tb_prefix."members set credit_point=credit_point-".$t_point;
+			    $g_db->Execute($sql);
+			}
 		}
 	}
 }

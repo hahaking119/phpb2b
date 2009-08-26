@@ -47,6 +47,12 @@
 					<input type="radio" name="join_forum" value="1" checked="checked" class="rg_in1">是<input type="radio" name="join_forum" value="0" class="rg_in1">否
 				</p>
 				<{/if}>
+<{if $IfInviteCode}>
+				<p class="rg_p3">
+					<label for="">邀请码：</label>
+					<input name=data[invite_code] class="linehui" id=invite_code size="30" maxLength=15>
+				</p>
+<{/if}>
 				<div class="clear15"></div>
 				<div class="bt rg_bt4"><h2 class="f12">个人基本信息及联系方式</h2><p></p></div>
 				<div class="clear15"></div>

@@ -14,9 +14,9 @@ if (isset($_POST['delete'])) {
 	if (is_array($_POST['id'])) {
 		$result = $companyoutlink->del($_POST['id'], $conditions);
 		if($result){
-			goto("./tip.php?id=1000");
+			PB_goto("./tip.php?id=1000");
 		}else{
-			goto("./tip.php?id=1004");
+			PB_goto("./tip.php?id=1004");
 		}
 	}else{
 		$errmsg = lgg('no_data_deleted');

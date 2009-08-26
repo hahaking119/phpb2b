@@ -112,7 +112,7 @@ function smarty_function_company($params){
 	        $url = "http://".$result[$i]['LinkId'].$config_subdomain."/";
 	    }
 	    $area_name = "";
-	    if (!isset($params['showarea'])) {
+	    if (!isset($params['showarea']) && !empty($UL_DBCACHE_AREAS[$result[$i]['CityCodeId']])) {
 	        $area_name = "[".$UL_DBCACHE_AREAS[$result[$i]['CityCodeId']]."]";
 	    }
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
