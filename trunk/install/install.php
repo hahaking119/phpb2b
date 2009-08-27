@@ -22,7 +22,7 @@ if(isset($_GET['language']) && $_GET['language']=="zh-tw"){
 }
 require(INSTALL_ROOT."./lang_".$lang_name.".php");
 error_reporting(E_ERROR ^ E_WARNING);
-set_time_limit(600);
+@set_time_limit(600);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,7 +57,7 @@ BORDER-RIGHT: #7b9ebd 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7b9ebd 1px sol
 <!--
 function check_install(){
 	if($F('forum_adminpass') == ""){
-		alert("<?php echo $language['not_empty_passwd'];?>");
+		alert("<?php echo $lang['not_empty_passwd'];?>");
 		$('forum_adminpass').focus();
 		return false;
 	}else if($F('db_name') == ""){
@@ -94,6 +94,9 @@ if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) 
 $local_url = $ul_protocol."://".$_SERVER["HTTP_HOST"].$_SERVER["PHP_SELF"];
 $local_url = substr($local_url,0,-(strlen($installfile)+8));
 require($core_sample_file);
+if (!defined('UALINK_VERSION')) {
+	require("../phpb2b_version.php");
+}
 $errmsg = null;
 $right_files = array(
 "media"=>"../data/",
@@ -200,8 +203,20 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 			if(!@mysql_connect($dbhost, $dbuser, $dbpw)) {
 				$COMPLETE_INSTALL = false;
 				$errmsg[] = $lang['db_error'].mysql_error();
-				die("<font color=red>Error: ".mysql_error()."</font>");
-				//这里如果出错,根据php的不同配置,又可能直接终止了,所以这里必须设置一个断点
+				$error_number = mysql_errno();
+				switch ($error_number) {
+					case 1049:
+					    $db_err_info = $lang['db1049'];
+						break;
+					case 1045:
+					    $db_err_info = $lang['db1045'];
+					    break;
+					default:
+					    $db_err_info = mysql_error();
+						break;
+				}
+				die("<font color=red>Error: ".$db_err_info."<a href='install.php?language=".$_GET['language']."'>".$lang['retry_install']."</a></font>");
+				//这里如果出错,根据php的不同配置,有可能直接终止了,所以这里必须设置一个断点
 			} else {
 				$fp2 = fopen("db.sample.php", 'r');
 				if (!$fp2) {
@@ -315,8 +330,6 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 					$COMPLETE_INSTALL = false;
 					$UA_INSTALLING = false;
 				}
-				@fwrite($fp_core, trim($configfile));
-				@fclose($fp_core);
 				if (!empty($_POST['forum']['admin']) && !empty($_POST['forum']['adminpass']) && $UA_INSTALLING) {
 					$nowtime = time();
 					$exp_time = $nowtime+10*86400;
@@ -343,6 +356,8 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 					$UA_INSTALLING = false;
 				}else{
 					mysql_close();
+    				@fwrite($fp_core, trim($configfile));
+    				@fclose($fp_core);
 				}
 				if ($UA_INSTALLING) $COMPLETE_INSTALL = true;
 			}
@@ -450,7 +465,7 @@ function goUrl(language){
         <tr>
           <th><?php echo $lang['site_name'];?></th>
           <td colspan="2"><div align="left">
-            <input name="site[name]" type="text" size="35" value="<?php echo $site_name = (empty($_POST['site']['name']))?($lang['ualinkphp']." PHP B2B System_".UALINK_VERSION):($_POST['site']['name']);?>" class="input" onfocus="if(this.value == '<?php echo $lang['ualinkphp']." PHP B2B System_".UALINK_VERSION;?>'){this.value = ''}" onblur="if(this.value == ''){this.value = '<?php echo $lang['ualinkphp']." PHP B2B System_".UALINK_VERSION;?>'}" />
+            <input name="site[name]" type="text" size="35" value="<?php echo $site_name = (empty($_POST['site']['name']))?($lang['a_new_b2b_site']." By ".$lang['ualinkphp'].UALINK_VERSION):($_POST['site']['name']);?>" class="input" onfocus="if(this.value == '<?php echo $lang['ualinkphp']." PHP B2B System_".UALINK_VERSION;?>'){this.value = ''}" onblur="if(this.value == ''){this.value = '<?php echo $lang['ualinkphp']." PHP B2B System_".UALINK_VERSION;?>'}" />
           </div></td>
         </tr>
         <tr>
