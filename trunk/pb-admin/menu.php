@@ -24,6 +24,7 @@ $menus = array(
 		"ename"=>"basic","url"=>"setting.php?action=basic","cname"=>"系统设置","items"=>array(
 			array("ename"=>"setting","show"=>false,"cname"=>"系统设置","items"=>array(
 				array("cname"=>"基本设置","url"=>"setting.php?action=basic"),
+				array("cname"=>"邮件设置","url"=>"setting.php?action=mail"),
 				array("cname"=>"注册与访问","url"=>"setting.php?action=permission"),
 				array("cname"=>"计划任务","url"=>"backup.php?action=home"),
 				array("cname"=>"Google Sitemap","url"=>"sitemap.php?action=set"),

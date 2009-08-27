@@ -16,9 +16,12 @@ if (isset($_GET['action'])) {
         $position_path = array(array("name"=>"Basic","url"=>"setting.php?action=basic"));
 	}
 	if ($_GET['action']=="permission") {
-
         $position_path = array(array("name"=>"Register","url"=>"setting.php?action=permission"));
 		$tpl_file = "permission";
+	}
+	if ($_GET['action']=="mail") {
+		$tpl_file = "mail";
+        $position_path = array(array("name"=>"Mail","url"=>"setting.php?action=mail"));
 	}
 }
 if ($_POST['savebasic']) {
@@ -74,7 +77,22 @@ if ($_POST['savepermission']) {
 		flash("alert.php", "setting.php?action=permission");
 	}
 }
-
+if (isset($_POST['savemail'])) {
+	$updated = false;
+	foreach($_POST['u'] as $vname=>$vval){
+		$exists = $setting->find($vname,"id","aa");
+		if($exists){
+			$sql = "update ".$setting->getTable()." set ab='$vval' where aa='$vname'";
+		}else{
+			$sql = "insert into ".$setting->getTable()." (aa,ab) values ('$vname','$vval')";
+		}
+		$g_db->Execute($sql);
+		$updated = true;
+	}
+	if($updated){
+		flash("alert.php", "setting.php?action=mail");
+	}
+}
 setvar("CurrentPos",uaFormatPositionPath($position_path));
 setvar("U",$ua_sets);
 template("pb-admin/".$tpl_file);

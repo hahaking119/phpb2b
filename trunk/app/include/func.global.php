@@ -9,10 +9,10 @@
  * --
  * Copyright (c) 2006-2009 Ualink (http://www.phpb2b.com/)
  *
- * All rights granted under this License are granted for the term of copyright on 
- * the Program, and are irrevocable provided the stated conditions are met. This 
- * License explicitly affirms your unlimited permission to run the unmodified Program. 
- * The output from running a covered work is covered by this License only if the 
+ * All rights granted under this License are granted for the term of copyright on
+ * the Program, and are irrevocable provided the stated conditions are met. This
+ * License explicitly affirms your unlimited permission to run the unmodified Program.
+ * The output from running a covered work is covered by this License only if the
  * output, given its content, constitutes a covered work.
  * This License acknowledges your rights of fair use or other equivalent, as provided
  * by copyright law.
@@ -757,20 +757,21 @@ function utf_substr($str,$len, $left = true)
 
 function uaMailTo($to_address, $to_name, $subject, $body, $redirect_url = null)
 {
-    global $mail, $_SETTINGS, $charset;
+    global $mail, $mail_set, $charset;
     $result = false;
 	$mail->CharSet = $charset; // 这里指定字符集！
 	$mail->Encoding = "base64";
 	$mail->IsHTML(true); // send as HTML
-	/**
-	$mail->IsSMTP(); // telling the class to use SMTP
-	$mail->Host       = "smtp.21cn.com"; // SMTP server
-	$mail->SMTPAuth = true; // 启用SMTP验证功能
-	$mail->Username = "phpknilau@21cn.com"; // 邮局用户名(请填写完整的email地址)
-	$mail->Password = "ki^xll(k)ty"; // 邮局密码
-	**/
+	if ($mail_set['mail_sendtype']==2) {
+    	$mail->IsSMTP(); // telling the class to use SMTP
+    	$mail->Host       = $mail_set['smtp_servername']; // SMTP server
+    	$mail->Port       = $mail_set['smtp_port'];
+    	if($mail_set['smtp_ifauth']) $mail->SMTPAuth = true; // 启用SMTP验证功能
+    	$mail->Username = $mail_set['smtp_username']; // 邮局用户名(请填写完整的email地址)
+    	$mail->Password = $mail_set['smtp_userpass']; // 邮局密码
+	}
 	$mail->From     = URL;
-	$mail->FromName = "Administrator";
+	$mail->FromName = $mail_set['mail_from'];
 	$mail->Subject = $subject;
 	$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
 	$mail->MsgHTML($body);
