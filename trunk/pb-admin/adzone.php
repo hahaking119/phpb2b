@@ -17,6 +17,9 @@ if ($_GET['action'] == "makejs" && isset($_GET['id'])) {
 if (isset($_POST['save'])) {
 	$vals = $_POST['adzone'];
 	$zone_id = $_POST['id'];
+	if (empty($vals['what'])) {
+		$vals['what'] = 1;
+	}
 	if (!empty($zone_id)) {
 		$result = $adzone->save($vals, "update", $zone_id);
 	}else{
@@ -34,7 +37,6 @@ if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$adzone->del($_POST['id']);
 }
 if ($_GET['action'] == "mod") {
-
 	if (!empty($_GET['id'])) {
 		$result = $adzone->read(null, $_GET['id']);
 		setvar("info",$result);

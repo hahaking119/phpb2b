@@ -21,6 +21,15 @@
                   <td class="altbg2"><input name="templet[title]" type="text" id="templet_title" value="<{$t.TempletTitle}>"></td>
                 </tr>
                 <tr>
+                  <td align="center" class="altbg1"> 适用会员类型 </td>
+                  <td class="altbg2"><select multiple name="require_membertype[]" id="RequireMembertype">
+			<option value="0">不限</option>
+			<{foreach from=$Membertypes name=membertype key=key item=item}>
+			<option value="<{$key}>"><{$item}></option>
+			<{/foreach}>
+			</select>(按住Ctrl键可多选, 如果不想改动请不要选择)</td>
+                </tr>
+                <tr>
                   <td align="center" class="altbg1">简单描述</td>
                   <td class="altbg2"><textarea name="textarea" id="textarea"><{$t.TempletDescription}>
             </textarea></td>

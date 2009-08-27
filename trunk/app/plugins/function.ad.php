@@ -30,12 +30,12 @@
  */
 function smarty_function_ad($params){
 	global $g_db, $tb_prefix;
-	global $smarty, $theme_name;
+	global $smarty, $theme_name, $time_stamp;
 	$conditions = array();
 	$limit = null;
-	$conditions[] = "status=1";
+	$conditions[] = "status=1 and end_date>".$time_stamp;
 	if (isset($params['templet'])) {
-		$op = $smarty->fetch($theme_name."/".$params['templet'], null, null, false);
+		$op = $smarty->fetch($theme_name."/block.".$params['templet'].".html", null, null, false);
 		echo $op;
 		return;
 	}
@@ -53,7 +53,11 @@ function smarty_function_ad($params){
 	    if (isset($params['type_id'])) {
 	       $conditions[] = "adzone_id=".$params['type_id'];
 	       //取得该zone的高度和宽度。
-	       $zone_res = $g_db->GetRow("select width,height from ".$tb_prefix."adzones where id=".$params['type_id']);
+	       $zone_res = $g_db->GetRow("select width,height,what,additional_adwords from ".$tb_prefix."adzones where id=".$params['type_id']);
+	       if ($zone_res['what']==2) {
+	           echo stripcslashes($zone_res['additional_adwords']);
+	           return;
+	       }
 	       //$max_width = "100%";
 		   //Set width to container width, posted by bingyun.
 	       $max_width = $zone_res['width'];
@@ -75,11 +79,11 @@ function smarty_function_ad($params){
 	for($i=0; $i<count($result); $i++) {
 	    $url = $result[$i]['TargetUrl'];
 	    if ($result[$i]['SourceType']==2) {
-	    	$tpl_file = 'block.default.swf.html';
+	    	$tpl_file = 'default.swf';
 	    }else{
-	        $tpl_file = 'block.default.image.html';
+	        $tpl_file = 'default.image';
 	    }
-	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
+	    $op = $smarty->fetch($theme_name."/block.".$tpl_file.".html", null, null, false);
 	    if (empty($max_width)) {
 	    $op = str_replace(array("[link:title]", "[field:title]", "[img:src]"), array($url, $result[$i]['LinkTitle'], $result[$i]['ItemPicture']), $op);
 	    }else{
