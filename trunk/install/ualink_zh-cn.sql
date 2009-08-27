@@ -163,6 +163,7 @@ CREATE TABLE eos_adzones (
   what varchar(10) default NULL,
   name varchar(100) default NULL,
   description text,
+  additional_adwords text,
   price varchar(50) default NULL,
   file_name varchar(100) default NULL,
   width smallint(6) default NULL,
