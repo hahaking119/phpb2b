@@ -5,5 +5,5 @@
 User-agent: *
 
 Disallow: /room/
-Disallow: /ua-admin/
+Disallow: /pb-admin/
 Disallow: /app/
