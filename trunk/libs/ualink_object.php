@@ -22,6 +22,7 @@
  * --
  *
  * @package phpb2b
+ * @subpackage phpb2b.libs
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:07:40 CST 2009
