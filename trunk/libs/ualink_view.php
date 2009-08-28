@@ -31,5 +31,14 @@
  */
 class UaView extends UaObject
 {
+	var $themePath = null;
+	var $themeUrl = null;
+
+	function UaView(){
+	}
+
+	function __construct(){
+		$this->UaView();
+	}
 }
 ?>
