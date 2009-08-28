@@ -27,6 +27,7 @@ CREATE TABLE eos_accesses (
   check_job_update tinyint(1) default '1',
   check_news_update tinyint(1) default '1',
   check_keyword_update tinyint(1) default NULL,
+  new_user_time smallint(6) default '0',
   max_room_favor tinyint(2) default '3',
   can_organize_groupbuy tinyint(1) default NULL,
   if_googlemap tinyint(1) default '0',
@@ -1346,6 +1347,7 @@ CREATE TABLE eos_templets (
   description varchar(200) default NULL,
   picture varchar(100) default NULL,
   status tinyint(1) default '1',
+  require_membertype varchar(25) NOT NULL default '',
   created int(11) default NULL,
   PRIMARY KEY  (id)
 ) TYPE=MyISAM ;

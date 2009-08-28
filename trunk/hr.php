@@ -35,8 +35,9 @@ $conditions = null;
 $tpl_file = "hr_index";
 include(SITE_ROOT.'./app/include/page.php');
 include(SITE_ROOT."./data/tmp/data/".$cookiepre."area.inc.php");
-uses("industry", "area", "job", "company");
+uses("industry", "area", "job", "company", "member");
 $industry = new Industries();
+$member = new Members();
 $area = new Areas();
 $company = new Companies();
 $job = new Jobs();
@@ -87,7 +88,8 @@ pageft($ListAmount,10);
 $sql = "select Job.name as JobName,Job.id as JobId,Company.name as CompanyName,Company.member_id as MemberId,Company.id as CompanyId from ".$job->getTable(true)." ,".$company->getTable(true)." where Company.member_id=Job.member_id and Job.status=1 ".$conditions." order by Job.id desc limit $firstcount,$displaypg";
 
 $result = $g_db->GetAll($sql);
-
+//select personal that find job,photo, age.
+$arrResumes = $g_db->GetArray("select firstname,lastname,country_id,province_code_id,city_code_id,gender from ".$member->getTable()." where user_level=1 limit 0,10");
 uaAssign(array("pageTitle"=>$job->title, "pagePosition"=>$job->position, "lists"=>$result,"ByPages"=>$pagenav, "Areas"=>$areas));
 template($theme_name."/".$tpl_file);
 ?>

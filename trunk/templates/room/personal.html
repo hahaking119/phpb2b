@@ -141,6 +141,14 @@ function checkinput(){
                         <td class="tdleft">联系Email：</td>
                         <td class="tdright"><input name="member[email]" type="text" id="memberemail" value="<{$p.MemberEmail}>" size="32" disabled>(<a name="mod" href="#mod" onclick="javascript:$('memberemail').disabled=false;">修改</a>)</td>
                       </tr>
+                      <tr>
+                        <td class="tdleft">求职状态：</td>
+                        <td class="tdright"><input type="radio" name="member[resume_status]" value="1">我想求职<input type="radio" name="member[resume_status]" value="0">我不想求职</td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">个人头像：</td>
+                        <td class="tdright"><input type="file" name="member[photo]" id="MemberPhoto"></td>
+                      </tr>
                        <tr>
                         <td class="tdleft">登录后跳转页面：</td>
                         <td class="tdright"><select name="member[office_redirect]" id="MemberOfficeRedirect">
