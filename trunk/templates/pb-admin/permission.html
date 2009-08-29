@@ -73,14 +73,24 @@ function fEvent(sType,oInput){
 </tr>
 <tr>
   <td class="altbg1"><strong>注册文件名</strong><br />设置网站注册的文件名称,默认为"register.php",<br />如果您更改了此设置，那么您需要使用“FTP工具”手动重命名文件名称</td>
-  <td class="altbg2"><input type="text" name="u[reg_filename]" value="<{$U.REG_FILENAME|default:'register.php'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/</td>
+  <td class="altbg2"><input type="text" name="u[reg_filename]" value="<{$U.REG_FILENAME|default:'register.php'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>新用户注册验证:</strong><br />选择“无”用户可直接注册成功；<br />选择“Email 验证”将向用户注册 Email 发送一封验证邮件以确认邮箱的有效性；<br />选择“人工审核”将由管理员人工逐个确定是否允许新用户注册,不发送邮件</td>
+  <td class="altbg2">
+  <select name="u[new_userauth]" id="NewUserauth">
+  <option value="0" <{if $U.NEW_USERAUTH==0}>selected="selected"<{/if}>>无</option>
+  <option value="1" <{if $U.NEW_USERAUTH==1}>selected="selected"<{/if}>>Email验证</option>
+  <option value="2" <{if $U.NEW_USERAUTH==2}>selected="selected"<{/if}>>人工审核</option>
+  </select>
+  </td>
 </tr>
 <tr>
   <td class="altbg1"><strong>免费发布供求文件名</strong><br />设置网站免费发布供求页的文件名称,默认为"post.php",<br />如果您更改了此设置，那么您需要使用“FTP工具”手动重命名文件名称</td>
   <td class="altbg2"><input type="text" name="u[post_filename]" value="<{$U.POST_FILENAME|default:'post.php'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>同一 IP 注册间隔限制(小时):</strong></td>
+  <td class="altbg1"><strong>同一 IP 注册间隔限制(小时):</strong><br />同一 IP 在本时间间隔内将只能注册一个帐号，0 为不限制</td>
   <td class="altbg2"><input name="u[ip_reg_sep]" type="text" id="IP_REG_SEP" size="30" value="<{$U.IP_REG_SEP|default:0}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
 </tr>
 </tbody>

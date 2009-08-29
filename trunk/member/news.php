@@ -6,9 +6,9 @@ $companynews = new Companynewses();
 require("member/menu.php");
 $conditions = " Companynews.company_id=".$companyinfo['ID'];
 $tpl_file = "news";
-if ($_GET['id']) {
+if ($_GET['news_id']) {
 	$tpl_file = "news_detail";
-	$info = $companynews->read("*", intval($_GET['id'], $conditions));
+	$info = $companynews->read("*", intval($_GET['news_id'], $conditions));
 	if (empty($info)) {
 		alert(lgg('data_not_exists'));
 	}

@@ -757,11 +757,22 @@ function utf_substr($str,$len, $left = true)
 
 function uaMailTo($to_address, $to_name, $subject, $body, $redirect_url = null)
 {
-    global $mail, $mail_set, $charset;
+    global $charset, $g_db, $setting;
+    require_once(INC_PATH."phpmailer/class.phpmailer.php");
+    $mail = new PHPMailer();
     $result = false;
+    $mail_set = array();
+    $mail_set['mail_sendtype'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_sendtype'");
+    if ($mail_set['mail_sendtype']==2) {
+        $mail_set['smtp_servername'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_sendtype'");
+        $mail_set['smtp_port'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_port'");
+        $mail_set['smtp_ifauth'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_ifauth'");
+        $mail_set['mail_from'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_from'");
+        $mail_set['smtp_username'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_username'");
+        $mail_set['smtp_userpass'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_userpass'");
+    }
 	$mail->CharSet = $charset; // 这里指定字符集！
 	$mail->Encoding = "base64";
-	$mail->IsHTML(true); // send as HTML
 	if ($mail_set['mail_sendtype']==2) {
     	$mail->IsSMTP(); // telling the class to use SMTP
     	$mail->Host       = $mail_set['smtp_servername']; // SMTP server

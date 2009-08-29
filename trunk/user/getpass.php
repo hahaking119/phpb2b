@@ -23,19 +23,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 		}
 			$memberinfo = $g_db->GetRow("select id,email,firstname,lastname from ".$tb_prefix."members where username='$login_name'");
 			if(ua_checkEmail($memberinfo['email'])){
-				require_once(INC_PATH."phpmailer/class.phpmailer.php");
-        		$mail_set = array();
         		if ($ifexists  && !empty($email_exists)) {
-        		    $mail_set['mail_sendtype'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_sendtype'");
-        		    if ($mail_set['mail_sendtype']==2) {
-        		        $mail_set['smtp_servername'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_sendtype'");
-        		        $mail_set['smtp_port'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_port'");
-        		        $mail_set['smtp_ifauth'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_ifauth'");
-        		        $mail_set['mail_from'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_from'");
-        		        $mail_set['smtp_username'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_username'");
-        		        $mail_set['smtp_userpass'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_userpass'");
-        		    }
-				$mail = new PHPMailer();
 				$new_passwd = getRadomStr(6);
 				$new_passwd_md5 = md5($new_passwd);
 				$body = $mail->getFile($inc_path.'templates/'.$theme_name.'/element.getpass.html');

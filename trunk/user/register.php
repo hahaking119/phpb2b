@@ -112,11 +112,17 @@ if(isset($_POST['register'])){
 		$vars['service_end_date'] = $access->getExpireTime($time_limits['default_livetime']);
 		$vars['user_level'] = ($is_company)?2:1;
 		$member_reg_check = $setting->field("ab","aa='regcheck'");
-		if($member_reg_check=="1"){
+		$member_reg_auth = $setting->field("ab","aa='new_userauth'");
+		if($member_reg_check=="1" || $member_reg_auth!=0){
 			$vars['status'] = 0;
 			$CheckRegisterUser = "&check=1";
 		}else{
 			$vars['status'] = 1;
+		}
+		if ($member_reg_auth==1) {
+		    $exp_time = $time_stamp+86400;
+		    $str = "Please active it through : ".URL."user/pending.php?hash=".authcode($tmp_username."|".$exp_time, "ENCODE");
+		    $sended = uaMailTo($vars['email'], $tmp_username, URL, $str);
 		}
 		array_walk($vars,"uaset");
 		$updated =  false;

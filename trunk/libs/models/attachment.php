@@ -134,7 +134,7 @@
             @chmod( $this->saved_upload_name, 0777 );
             //$attach = array();
             $attach['is_image'] = $this->is_image;
-            $attach['type_id'] = $this->module_id;
+            if($this->module_id) $attach['type_id'] = $this->module_id;
             $attach['attachment'] = gmdate("Ym")."/".$this->parsed_file_name;
             $attach['remote'] = URL."attachment/".$attach['attachment'];
             $attach['created'] = $_SERVER['REQUEST_TIME'];

@@ -56,7 +56,7 @@
 			</div>
 			<p class="a_line6"></p>
 			<div class="news_info f14">
-			<{if $NewsInfo.picture!=""}><img src="<{$SiteUrl}>attachment/<{$NewsInfo.picture}>" width="400" height="255" border="0" alt="<{$NewsInfo.NewsTitle}>" align="right"/><{/if}><{$NewsInfo.Content}>
+			<{if $NewsInfo.picture!=""}><img src="<{$SiteUrl}>attachment/<{$NewsInfo.picture}>.small.jpg" width="400" height="255" border="0" alt="<{$NewsInfo.NewsTitle}>" align="right"/><{/if}><{$NewsInfo.Content}>
 				<div class="news_kz f12">
 					分类：<a href="<{$UrlContainer.common}>news/list.php?type_id=<{$NewsInfo.TypeID}>" class="cur"><{$NewsInfo.NewstypeName}></a> <span>|</span>
 					浏览：<em><{$NewsInfo.Click}></em> <span>|</span>

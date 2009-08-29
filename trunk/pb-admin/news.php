@@ -67,7 +67,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
             flash("./alert.php","./news.php", lgg("upload_error").$attachment->error_no,0);
         }
         $img = new Image($attachment->saved_upload_name, $attachment->saved_upload_name);
-        $img->Thumb(180,65);
+        $img->Thumb(400,255);
         $attachment->imageWaterMark($attachment->saved_upload_name, "../images/watermark.png");
         $vals['picture'] = gmdate("Ym")."/".$attachment->parsed_file_name;
 	}

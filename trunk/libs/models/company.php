@@ -76,16 +76,30 @@
     		$tmp_menus['contact'] = "http://".$user_id.$config_subdomain."/contact/";
     		$tmp_menus['feedback'] = "http://".$user_id.$config_subdomain."/feedback/";
 		}else{
-    		$user_id = $_GET['userid'];
-    		$tmp_menus['index'] = URL."space.php?do=home&userid=".$user_id;
-    		$tmp_menus['intro'] = URL."space.php?do=intro&userid=".$user_id;
-    		$tmp_menus['product'] = URL."space.php?do=product&userid=".$user_id;
-    		$tmp_menus['trade'] = URL."space.php?do=trade&userid=".$user_id;
-    		$tmp_menus['news'] = URL."space.php?do=news&userid=".$user_id;
-    		$tmp_menus['honour'] = URL."space.php?do=honour&userid=".$user_id;
-    		$tmp_menus['hr'] = URL."space.php?do=hr&userid=".$user_id;
-    		$tmp_menus['contact'] = URL."space.php?do=contact&userid=".$user_id;
-    		$tmp_menus['feedback'] = URL."space.php?do=feedback&userid=".$user_id;
+		    if (isset($_GET['userid'])) {
+
+		        $user_id = $_GET['userid'];
+		        $tmp_menus['index'] = URL."space.php?do=home&userid=".$user_id;
+		        $tmp_menus['intro'] = URL."space.php?do=intro&userid=".$user_id;
+		        $tmp_menus['product'] = URL."space.php?do=product&userid=".$user_id;
+		        $tmp_menus['trade'] = URL."space.php?do=trade&userid=".$user_id;
+		        $tmp_menus['news'] = URL."space.php?do=news&userid=".$user_id;
+		        $tmp_menus['honour'] = URL."space.php?do=honour&userid=".$user_id;
+		        $tmp_menus['hr'] = URL."space.php?do=hr&userid=".$user_id;
+		        $tmp_menus['contact'] = URL."space.php?do=contact&userid=".$user_id;
+		        $tmp_menus['feedback'] = URL."space.php?do=feedback&userid=".$user_id;
+		    }elseif (isset($_GET['id'])){
+		        $user_id = intval($_GET['id']);
+		        $tmp_menus['index'] = URL."space.php?do=home&id=".$user_id;
+		        $tmp_menus['intro'] = URL."space.php?do=intro&id=".$user_id;
+		        $tmp_menus['product'] = URL."space.php?do=product&id=".$user_id;
+		        $tmp_menus['trade'] = URL."space.php?do=trade&id=".$user_id;
+		        $tmp_menus['news'] = URL."space.php?do=news&id=".$user_id;
+		        $tmp_menus['honour'] = URL."space.php?do=honour&id=".$user_id;
+		        $tmp_menus['hr'] = URL."space.php?do=hr&id=".$user_id;
+		        $tmp_menus['contact'] = URL."space.php?do=contact&id=".$user_id;
+		        $tmp_menus['feedback'] = URL."space.php?do=feedback&id=".$user_id;
+		    }
 		}
 		$this->menu = $tmp_menus;
 	}

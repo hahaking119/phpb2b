@@ -41,6 +41,35 @@ function smarty_function_companynews($params){
 	    uses("Companynews");
 	    $companynews = new Companynewses();
 	}
+	$conditions[] = "status=1";
+	$fields = "id as LinkId,company_id as CompanyId,member_id as MemberId,title as LinkTitle";
+	if(isset($params['id'])){
+		$result = $companynews->read($fields, intval($params['id']));
+	}else{
+		if(isset($params['company_id'])){
+			$conditions[] = "company_id=".$params['company_id'];
+		}
+		if(isset($params['member_id'])){
+			$conditions[] = "member_id=".$params['member_id'];
+		}
+		if (isset($params['orderby'])) {
+			$orderby = " order by ".trim($params['orderby']);
+		}else{
+		    $orderby = " order by id desc";
+		}
+		$company->setLimit($params['row'], $params['col'], $params['max']);
+		$tmp_cond = implode(" and ", $conditions);
+		$sql = "select ".$fields." from ".$companynews->getTable(true)." where ".$tmp_cond.$orderby.$companynews->getLimit();
+		$result = $g_db->GetArray($sql);
+	}
+	$output = null;
+	for($i=0; $i<count($result); $i++) {
+		$url = URL."space.php?do=news&id=".$result[$i]['LinkId'];
+	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
+	    $op = str_replace(array("[link:title]", "[field:title]"), array($url, utf_substr($result[$i]['LinkTitle'],24)), $op);
+	    //$output.=$company->checkTerminal($i);
+	    $output.=$op;
+	}
 	echo $output;
 }
 ?>

@@ -22,7 +22,7 @@ function FunStringExist($StrFiltrate,$ArrFiltrate){
 }
 
 //合并$_POST 和 $_GET
-if(function_exists(array_merge)){
+if(function_exists("array_merge")){
     $ArrPostAndGet=array_merge($_POST,$_GET);
 }else{
     foreach($_POST as $key=>$value){

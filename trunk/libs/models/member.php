@@ -26,8 +26,15 @@
 					alert("本站提醒:你的会员服务期已经过期,请重新激活", true, URL."room/");
 					break;
 				case 2:
-				    alert("本站提醒:由于会员有效期已过,被禁止登录");
+				    alert("本站提醒:由于会员有效期已过,被禁止登录", true, URL."user/logging.php");
+				    session_destroy();
 				    break;
+				case 3:
+					alert("本站提醒:你的会员服务期已经过期,禁止发布任何信息", true, URL."room/");
+					break;
+				case 4:
+					uaMailTo($tmpUser['email'], $tmpUser['LoginName'], URL, "本站提醒:你的会员服务器已经到期,请尽快重新激活");
+					break;
 				default:
 					continue;
 			}
