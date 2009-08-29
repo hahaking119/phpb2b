@@ -90,6 +90,10 @@ function fEvent(sType,oInput){
   <td class="altbg2"><input type="text" name="u[post_filename]" value="<{$U.POST_FILENAME|default:'post.php'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
 </tr>
 <tr>
+  <td class="altbg1"><strong>禁止注册IP地址:</strong><br />每行写一个IP地址,阻止某些IP注册</td>
+  <td class="altbg2"><textarea name="u[forbid_ip]" rows="5" cols="25"><{$U.FORBID_IP}></textarea></td>
+</tr>
+<tr>
   <td class="altbg1"><strong>同一 IP 注册间隔限制(小时):</strong><br />同一 IP 在本时间间隔内将只能注册一个帐号，0 为不限制</td>
   <td class="altbg2"><input name="u[ip_reg_sep]" type="text" id="IP_REG_SEP" size="30" value="<{$U.IP_REG_SEP|default:0}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
 </tr>

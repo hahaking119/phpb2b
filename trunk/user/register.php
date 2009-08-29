@@ -20,6 +20,7 @@ $check_invite_code = false;
 $if_set_register_picture = $setting->field("ab", "aa='register_picture'");
 $register_type = $setting->field("ab", "aa='register_type'");
 $ip_reg_sep = $setting->field("ab", "aa='ip_reg_sep'");
+$forbid_ip = $setting->field("ab", "aa='forbid_ip'");
 if (!empty($ip_reg_sep)) {
 	$cfg['reg_time_seperate'] = $ip_reg_sep*60*60;
 }
@@ -73,6 +74,15 @@ if(isset($_POST['register'])){
 	$uip = uaIp2Long($_SERVER['REMOTE_ADDR']);
 	if(empty($uip)){
 		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+	}elseif(!empty($forbid_ip)){
+	    $forbid_ips = explode("\r\n", $forbid_ip);
+	    if (!empty($forbid_ips)) {
+	    	foreach ($forbid_ips as $key=>$val){
+	    	    if (checkip($val, $val)) {
+	    	      PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+	    	    }
+	    	}
+	    }
 	}
 	if($cfg['reg_time_seperate']>($time_stamp-$_SESSION['last_reg_time'])){
 		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
@@ -113,13 +123,16 @@ if(isset($_POST['register'])){
 		$vars['user_level'] = ($is_company)?2:1;
 		$member_reg_check = $setting->field("ab","aa='regcheck'");
 		$member_reg_auth = $setting->field("ab","aa='new_userauth'");
+		$if_need_check = false;
 		if($member_reg_check=="1" || $member_reg_auth!=0){
 			$vars['status'] = 0;
 			$CheckRegisterUser = "&check=1";
+			$if_need_check = true;
 		}else{
 			$vars['status'] = 1;
 		}
 		if ($member_reg_auth==1) {
+		    $if_need_check = true;
 		    $exp_time = $time_stamp+86400;
 		    $str = "Please active it through : ".URL."user/pending.php?hash=".authcode($tmp_username."|".$exp_time, "ENCODE");
 		    $sended = uaMailTo($vars['email'], $tmp_username, URL, $str);
@@ -135,17 +148,16 @@ if(isset($_POST['register'])){
 		}
 		if($updated){
 			$last_member_id = $g_db->Insert_ID();
-			if ($member_reg_check=="0") {
-			uaSetLoginSession(array("MemberID"=>$last_member_id,"MemberName"=>$tmp_username,
-			"MemberPass"=>$vars['userpass']));
+			if (!$if_need_check) {
+			    uaSetLoginSession(array("MemberID"=>$last_member_id,"MemberName"=>$tmp_username,"MemberPass"=>$vars['userpass']));
+    			usetcookie("auth",
+    			authcode($last_member_id, "ENCODE")."|".
+    			authcode($tmp_username, "ENCODE")."|".
+    			authcode($vars['userpass'], "ENCODE")."|".
+    			authcode($vars['user_type'], "ENCODE")."|".
+    			authcode($vars['email'], "ENCODE")."|".
+    			authcode($vars['user_level'], "ENCODE"));
 			}
-			usetcookie("auth",
-			authcode($last_member_id, "ENCODE")."|".
-			authcode($tmp_username, "ENCODE")."|".
-			authcode($vars['userpass'], "ENCODE")."|".
-			authcode($vars['user_type'], "ENCODE")."|".
-			authcode($vars['email'], "ENCODE")."|".
-			authcode($vars['user_level'], "ENCODE"));
 			if($is_company && !empty($_POST['company']['name'])){
 				require($inc_path .APP_NAME. 'include/inc.topinyin.php');
 				$comp_vars = null;

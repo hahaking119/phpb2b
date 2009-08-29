@@ -794,4 +794,17 @@ function uaMailTo($to_address, $to_name, $subject, $body, $redirect_url = null)
 	    return $result;
 	}
 }
+
+function checkip($minIpAddress, $maxIpAddress) {
+    global $_SERVER;
+    $onlineip = empty($_SERVER['REMOTE_ADDR']) ? getenv('REMOTE_ADDR') : $_SERVER['REMOTE_ADDR'];
+    $longip = ip2long($onlineip);
+    if(isInRange($longip, $minIpAddress, $maxIpAddress)) {
+        die("IP FOBIDDEN!");
+    }
+}
+
+function isInRange($x, $min, $max) {
+    return $x >= $min && $x <= $max;
+}
 ?>

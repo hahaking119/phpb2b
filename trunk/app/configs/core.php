@@ -9,7 +9,7 @@ define('UALINK_VERSION', '2.4Final');
 define('DS', DIRECTORY_SEPARATOR);
 define('BASE_DIR', substr(dirname(__FILE__), 0, -11));
 if(!defined('INC_PATH')) define('INC_PATH',BASE_DIR.APP_NAME.'source'.DS);
-if(!defined('LIB_PATH')) define('LIB_PATH',BASE_DIR.'libs'.DS);
+if(!defined('LIB_PATH')) define('LIB_PATH',BASE_DIR.APP_NAME.'libs'.DS);
 if(!defined('URL')) define('URL','http://www.yourdomain.com/');
 define('SMARTY_DIR', INC_PATH . 'smarty'.DS);
 define('ADODB_DIR', INC_PATH . 'adodb'.DS);
