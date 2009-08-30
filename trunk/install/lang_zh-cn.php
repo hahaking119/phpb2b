@@ -73,5 +73,6 @@ $lang = array(
 "a_new_b2b_site"=>"一个新的B2B电子商务网",
 "db1049"=>"数据库不存在",
 "db1045"=>"数据库用户名或者密码错误",
+"delete_and_install"=>"您必须先删除 data 目录下的 install.lock 文件才能继续进行安装,如果已经删除请点击 <a href='install.php?language=".$_GET['language']."'>继续安装</a>.",
 );
 ?>

@@ -4,6 +4,7 @@ header("Content-Type: text/html; charset=".$charset);
 define('INSTALL_ROOT', dirname(__FILE__)."/");
 $lang_name = (!empty($_GET['language']))?trim($_GET['language']):"zh-cn";
 $sqlfile = INSTALL_ROOT."./ualink_zh-cn.sql";
+
 if(empty($_GET['language'])){
 	if($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-cn"){
 		$lang_name = "zh-cn";
@@ -74,6 +75,9 @@ function check_install(){
 </head>
 <body>
 <?php
+if (file_exists("../data/install.lock")) {
+	die($lang['delete_and_install']);
+}
 $UA_INSTALLING = true;
 $rightmsg = null;
 $errmsg = null;

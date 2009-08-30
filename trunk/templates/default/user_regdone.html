@@ -28,11 +28,10 @@
 			  <tr> 
 				<td height="174"> 
 				<div align="center"> 
-					<p><img src="<{$tpl_img_path}>default/reg_n1.gif" width="233" height="29"></p>
-					<p align="left">您好,<strong class="fontred"><{$UalinkUser.username|default:$NewMemberName}></strong>,您已经是我们<{$sitename}>的<strong class="fontred">注册会员</strong>了。</p>
+					<p align="left">您好,<strong class="fontred"><{$UalinkUser.username|default:$NewMemberName}></strong>,欢迎您成为<{$sitename}>的<strong class="fontred">注册会员</strong>。</p>
 				<{if $smarty.get.check==1}>
 				<p>
-				请等待管理员审核!
+				<{$RegTips}>
 				</p>
 				<{else}>
 					<p align="left"> 从现在起您可以：<{if $UalinkUser.user_level==2}><a href="<{$SiteUrl}>room/company.php">发布公司</a> <a href="<{$SiteUrl}>room/productedit.php">发布产品</a><{/if}><a href="<{$SiteUrl}>room/tradeedit.php">发布供求信息</a>                

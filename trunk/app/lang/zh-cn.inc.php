@@ -173,5 +173,7 @@ $ul_lang = array(
 "hr_channel"=>"人才",
 "site_closed"=>"网站关闭了注册",
 "invite_code_error"=>"邀请码错误",
+"pls_wait_for_check"=>"请等待管理员审核!",
+"pls_active_your_account"=>"请登录您的邮箱激活您的帐号!",
 );
 ?>

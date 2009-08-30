@@ -35,7 +35,7 @@ $inc_path = "../";
 require($inc_path."global.php");
 uses("member");
 $member = new Members();
-$hash = $_GET['hash'];
+$hash = trim($_GET['hash']);
 if (empty($hash)) {
 	die("Please reset hash value.");
 }
@@ -49,14 +49,15 @@ if (!empty($validate_str)) {
     $tmpUserName = $tmpValidateStr[0];
     $userExists = $member->checkUserExist($tmpUserName);
     if ($userExists) {
-    	$sql = "update ".$member->getTable()." set status=1 where username='".$tmpUserName."' and status=0;";
+    	$sql = "update ".$member->getTable()." set status='1' where username='".$tmpUserName."' and status='0'";
     	$result = $g_db->Execute($sql);
     	if ($result) {
-    		alert("Activity successed, please login.", true, URL."user/logging.php");
+    		alert("Activity successed please login", true, URL."user/logging.php");
     	}
+    }else{
+        die("User not exists");
     }
 }
 //判断随机码， 密钥是否符合
 //判断用户名是否存在
-template($theme_name."/user_service");
 ?>

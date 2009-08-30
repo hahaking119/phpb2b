@@ -21,6 +21,7 @@ $if_set_register_picture = $setting->field("ab", "aa='register_picture'");
 $register_type = $setting->field("ab", "aa='register_type'");
 $ip_reg_sep = $setting->field("ab", "aa='ip_reg_sep'");
 $forbid_ip = $setting->field("ab", "aa='forbid_ip'");
+
 if (!empty($ip_reg_sep)) {
 	$cfg['reg_time_seperate'] = $ip_reg_sep*60*60;
 }
@@ -43,10 +44,6 @@ if (isset($_GET['ob'])) {
 function uaset($val)
 {
 	$val = strip_tags(trim($val));
-}
-function forbidIp($params)
-{
-
 }
 if(isset($_POST['register'])){
     $is_company = false;
@@ -126,6 +123,11 @@ if(isset($_POST['register'])){
 		$if_need_check = false;
 		if($member_reg_check=="1" || $member_reg_auth!=0){
 			$vars['status'] = 0;
+			if ($member_reg_auth==1) {
+    			$CheckRegisterUser = "&check=1";
+			}elseif ($member_reg_auth==2){
+			    $CheckRegisterUser = "&check=2";
+			}
 			$CheckRegisterUser = "&check=1";
 			$if_need_check = true;
 		}else{
@@ -134,8 +136,9 @@ if(isset($_POST['register'])){
 		if ($member_reg_auth==1) {
 		    $if_need_check = true;
 		    $exp_time = $time_stamp+86400;
-		    $str = "Please active it through : ".URL."user/pending.php?hash=".authcode($tmp_username."|".$exp_time, "ENCODE");
-		    $sended = uaMailTo($vars['email'], $tmp_username, URL, $str);
+		    $hash = authcode($tmp_username."|".$exp_time, "ENCODE");
+		    $str = "Please active it through : <a href='".URL."user/pending.php?hash=".$hash."'>".URL."user/pending.php?hash=".$hash."</a>";
+		    $sended = uaMailTo($vars['email'], $tmp_username, 'Please active your account', $str);
 		}
 		array_walk($vars,"uaset");
 		$updated =  false;

@@ -84,7 +84,11 @@ function fEvent(sType,oInput){
 </tr>
 <tr>
   <td class="altbg1"><strong>发信人邮件地址:</strong></td>
-  <td class="altbg2"><input type="text" name="u[mail_from]" value="<{$U.MAIL_FROM|default:'PHPB2B <username@163.com>'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
+  <td class="altbg2"><input type="text" name="u[mail_from]" value="<{$U.MAIL_FROM|default:'phpb2b@qq.com'}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>发信人名称:</strong></td>
+  <td class="altbg2"><input type="text" name="u[mail_fromname]" value="<{$U.MAIL_FROMNAME|default:$sitetitle}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
 </tr>
 <tr>
   <td class="altbg1"><strong>SMTP 身份验证用户名:</strong></td>
@@ -92,7 +96,7 @@ function fEvent(sType,oInput){
 </tr>
 <tr>
   <td class="altbg1"><strong>SMTP 身份验证密码:</strong></td>
-  <td class="altbg2"><input name="u[smtp_userpass]" type="text" id="smtp_userpass" size="30" value="<{$U.SMTP_USERPASS|default:'password'}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
+  <td class="altbg2"><input name="u[smtp_userpass]" type="password" id="smtp_userpass" size="30" value="<{$U.SMTP_USERPASS|default:'password'}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
 </tr>
 </tbody>
 </tbody>
