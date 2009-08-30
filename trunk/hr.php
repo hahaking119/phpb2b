@@ -89,11 +89,13 @@ $sql = "select Job.name as JobName,Job.id as JobId,Company.name as CompanyName,C
 
 $result = $g_db->GetAll($sql);
 //select personal that find job,photo, age.
-$sqlResume = "select firstname,lastname,country_id,province_code_id,city_code_id,gender,photo from ".$member->getTable()." where status='1' and user_level='1' limit 0,10";
-
+$sqlResume = "select firstname,lastname,country_id,province_code_id,city_code_id,gender,photo,max_education from ".$member->getTable()." where status='1' and user_level='1' limit 0,10";
+unset($job->educations[0]);
+$Eduations = $job->educations;
 $arrResumes = $g_db->GetArray($sqlResume);
 if (!empty($arrResumes)) {
 	$smarty->assign("Resumes", $arrResumes);
+	$smarty->assign("Educations", $Eduations);
 }
 uaAssign(array("pageTitle"=>$job->title, "pagePosition"=>$job->position, "lists"=>$result,"ByPages"=>$pagenav, "Areas"=>$areas));
 template($theme_name."/".$tpl_file);

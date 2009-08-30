@@ -1,36 +1,38 @@
+/* CSS Document */
+.logo_bor,.h_login,.menu{height:84px; overflow:hidden;}
+.logo_bor img{float:left; display:inline;}
+.logo_bor p{float:right; text-align:right; padding:20px 10px 0 0;}
+.logo_bor p a{background:url(background.gif) 0 3px no-repeat;*background:url(background.gif) 0 1px no-repeat; padding-left:12px; margin-left:5px;}
+.logo_bor p a:hover{background:url(background.gif) 0 -17px no-repeat;*background:url(background.gif) 0 -19px no-repeat; text-decoration:none;}
+.menu{height:31px;}
+.menu ul{width:700px; height:31px;}
+.menu ul li{width:66px; height:24px; line-height:24px; margin:3px 10px 0 0;}/*margin:3px 10px 0 0;*/
+.menu ul li a{display:block; width:auto; height:24px; font-size:14px; font-weight:bold; color:#fff; text-align:center;}/*66px*/
+.menu ul li a.cor{color:#cff;}
+.menu ul li a.about{width:75px;}
+.menu ul li a.over,.menu ul li a:hover{background:url(background.gif) -72px 0 no-repeat; color:#cff; text-decoration:none;}
+.menu ul li a.over1,.menu ul li a.about:hover{background:url(background.gif) -143px 0 no-repeat; color:#cff; text-decoration:none;}
+.menu p{float:right; display:inline;width:218px; height:21px; background:url(background.gif) 0 -41px no-repeat; line-height:21px; text-align:right; margin:5px 40px 0 0;}
+.menu p a{color:#cff; margin-right:12px;}
+.menu p a:hover{color:#fff;}
+.h_login{height:45px;}
+.h_f_sear,.h_f_login{width:310px; height:45px; float:left; display:inline; background:url(background.gif) -220px 5px no-repeat;}
+.h_f_sear input.gjz{width:205px; height:19px; border:1px #d4d0c8 solid; border-left:1px #808080 solid; border-top:1px #808080 solid; color:#3a8bbf; line-height:19px; text-align:center; margin:7px 6px 0 40px;}
+.h_f_sear input.ss{width:36px; height:22px; background:url(background.gif) -223px -41px no-repeat; color:#f8841d; cursor:pointer; margin-top:7px;}
+.h_f_login{width:650px;background:url(background.gif) 0 -66px no-repeat; text-align:center;}
+.h_f_login form{display:block; width:520px; height:20px; background:url(background.gif) -281px -37px no-repeat; margin:0 auto; padding:5px 0 0 20px; text-align:left;}
+.h_f_login p,.h_f_login label,.h_f_login a,.h_f_login input,.h_f_login em{float:left; display:inline; height:19px; margin-left:5px; line-height:19px;}
+.h_f_login input.yhm,.h_f_login input.mm{width:90px; height:17px; background:url(x_1px_2.gif) 0 0 repeat-x; border:1px #b0b0b0 solid; border-left:0; margin-left:0;}
+.h_f_login input.dl{width:46px; height:20px;background:url(background.gif) -544px 0 no-repeat; color:#fff; line-height:20px; cursor:pointer;}
+.h_f_login p{width:6px; height:19px; background:url(background.gif) -268px -42px no-repeat; margin-left:0;}
+.h_f_login a{color:#f18321;}
+.h_f_login em a{float:none;}
+.h_f_login em a.blue{color:#0b4d90;}
 
-/* CSS Document*/.logo_bor,.h_login,.menu{height: 84px;overflow: hidden;}
-.logo_bor img{float: left;display: inline;}
-.logo_bor p{float: right;text-align: right;padding: 20px 10px 0 0;}
-.logo_bor p a{background: url(background.gif) 0 3px no-repeat;*background: url(background.gif) 0 1px no-repeat;padding-left: 12px;margin-left: 5px;}
-.logo_bor p a: hover{background: url(background.gif) 0 -17px no-repeat;*background: url(background.gif) 0 -19px no-repeat;text-decoration: none;}
-.menu{height: 31px;}
-.menu ul{width: 700px;height: 31px;}
-.menu ul li{width: auto;height: 24px;line-height: 24px;margin: 3px 10px 0 0;}
-.menu ul li a{display: block;width: 66px;height: 24px;font-size: 14px;font-weight: bold;color: #fff;text-align: center;}
-.menu ul li a.cor{color: #cff;}
-.menu ul li a.about{width: 75px;}
-.menu ul li a.over,.menu ul li a: hover{background: url(background.gif) -72px 0 no-repeat;color: #cff;text-decoration: none;}
-.menu ul li a.over1,.menu ul li a.about: hover{background: url(background.gif) -143px 0 no-repeat;color: #cff;text-decoration: none;}
-.menu p{float: right;display: inline;width: 218px;height: 21px;background: url(background.gif) 0 -41px no-repeat;line-height: 21px;text-align: right;margin: 5px 40px 0 0;}
-.menu p a{color: #cff;margin-right: 12px;}
-.menu p a: hover{color: #fff;}
-.h_login{height: 45px;}
-.h_f_sear,.h_f_login{width: 310px;height: 45px;float: left;display: inline;background: url(background.gif) -220px 5px no-repeat;}
-.h_f_sear input.gjz{width: 205px;height: 19px;border: 1px #d4d0c8 solid;border-left: 1px #808080 solid;border-top: 1px #808080 solid;color: #3a8bbf;line-height: 19px;text-align: center;margin: 7px 6px 0 40px;}
-.h_f_sear input.ss{width: 36px;height: 22px;background: url(background.gif) -223px -41px no-repeat;color: #f8841d;cursor: pointer;margin-top: 7px;}
-.h_f_login{width: 650px;background: url(background.gif) 0 -66px no-repeat;text-align: center;}
-.h_f_login form{display: block;width: 520px;height: 20px;background: url(background.gif) -281px -37px no-repeat;margin: 0 auto;padding: 5px 0 0 20px;text-align: left;}
-.h_f_login p,.h_f_login label,.h_f_login a,.h_f_login input,.h_f_login em{float: left;display: inline;height: 19px;margin-left: 5px;line-height: 19px;}
-.h_f_login input.yhm,.h_f_login input.mm{width: 90px;height: 17px;background: url(x_1px_2.gif) 0 0 repeat-x;border: 1px #b0b0b0 solid;border-left: 0;margin-left: 0;}
-.h_f_login input.dl{width: 46px;height: 20px;background: url(background.gif) -544px 0 no-repeat;color: #fff;line-height: 20px;cursor: pointer;}
-.h_f_login p{width: 6px;height: 19px;background: url(background.gif) -268px -42px no-repeat;margin-left: 0;}
-.h_f_login a{color: #f18321;}
-.h_f_login em a{float: none;}
-.h_f_login em a.blue{color: #0b4d90;}
-/*foot*/.foot{width: 100%;border-top: 3px #ccc solid;}
-.foot div{clear: both;text-align: center;line-height: 30px;}
-.foot div a{margin: 0 11px;*margin: 0 10px;}
-.foot_p1,.foot_p2{width: 200px;line-height: 17px;float: left;display: inline;margin: 5px 0 40px;padding-left: 5px;}
-.foot_p1{font-family: Verdana;}
-.foot_p2{width: 550px;float: right;text-align: right;padding-right: 5px;}
+/*foot*/
+.foot{width:100%; border-top:3px #ccc solid;}
+.foot div{clear:both; text-align:center; line-height:30px;}
+.foot div a{margin:0 11px;*margin:0 10px;}
+.foot_p1,.foot_p2{width:200px; line-height:17px; float:left; display:inline; margin:5px 0 40px; padding-left:5px;}
+.foot_p1{font-family:Verdana;}
+.foot_p2{width:550px; float:right; text-align:right; padding-right:5px;}

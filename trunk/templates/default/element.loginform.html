@@ -2,17 +2,12 @@
 <input type="hidden" name="id" value="<{$smarty.get.id}>">
 <input type="hidden" name="loginbtn" value="1">
 <input type="hidden" name="referer" value="<{$smarty.server.REQUEST_URI}>">
-			<div class="bt cp_bt2"><h2 class="f13">请登陆后查看联系信息</h2></div>
-			<div class="cp_c2">
-				<ul>
-					<li><em class="str">登录名称：</em><input name="login_name" type="text" class="lineblack" id="login_name" size="20" value="<{$smarty.post.login_name}>"></li>
-					<li><em class="str">登录密码：</em><input name="login_pass" type="password" class="lineblack" id="login_pass" size="20" value="<{$smarty.post.login_pass}>"></li>
-					<div align="center">
-					<br />
-<input name="loginbtn" type="submit" id="loginbtn" value="提交" class="btn_xp">
-<input name="resetbtn" type="reset" id="resetbtn" value="重置" class="btn_xp"></div>
-					<li><em class="str"><a href="<{$SiteUrl}>user/getpass.php">忘记密码？</a>(您还不是会员？马上... <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11"><a href="<{$UrlContainer.register}>" class="linkred12">免费注册</a>)</em></li>
-				</ul>
+			<div class="bt cp_bt2"><h2>请登陆后查看联系信息</h2></div>
+					<p><em class="str">登录名称：</em><input name="login_name" type="text" id="login_name" size="20" value="<{$smarty.post.login_name}>"></p>
+					<p><em class="str">登录密码：</em><input name="login_pass" type="password" id="login_pass" size="20" value="<{$smarty.post.login_pass}>"></p>
+					<p class="cp_p8">
+<input name="loginbtn" type="submit" id="loginbtn" value="提交">
+<input name="resetbtn" type="reset" id="resetbtn" value="重置"></p>
+					<p><em class="str"><a href="<{$SiteUrl}>user/getpass.php">忘记密码？</a>(您还不是会员？马上... <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11"><a href="<{$UrlContainer.register}>" class="linkred12">免费注册</a>)</em></p>
 				<div class="clear9"></div>
-			</div>
 </form>

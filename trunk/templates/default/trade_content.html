@@ -74,7 +74,7 @@ function getExpireStr(exp_date){
 			<li><a href="#" class="cp_a1" id="favor">我要收藏</a></li>
 			<{if $tradeInfo.OfferUserName==$UalinkUser.username}><li><a href="../room/tradeedit.php?id=<{$tradeInfo.TradeId}>$&action=mod" class="cp_a1" id="favor">我要编辑</a></li><{/if}>
 		</ul>
-		<div class="cp_d2">
+		<div class="cp_c2 cp_c6">
 			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>
 			<{include file="`$ThemeName`/element.showcompanyinfo.html"}>
 			<{else}>

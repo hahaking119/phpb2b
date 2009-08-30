@@ -28,7 +28,7 @@ if ($_POST['save']) {
 	    }
 	    $img = new Image($attachment->saved_upload_name, $attachment->saved_upload_name);
 	    $img->Thumb(116, 150);
-	    $vals['photo'] = gmdate("Ym")."/".$attachment->out_file_name.".".$attchment->file_extension;
+	    $vals['photo'] = gmdate("Ym")."/".$attachment->parsed_file_name;
 	}
 	$result = $member->save($vals, "update", $_SESSION['MemberID']);
 	if(!$result){
@@ -41,6 +41,8 @@ $fields = "Member.ID AS MemberId,resume_status as ResumeStatus,photo as Personal
 $sql = "SELECT ".$fields." FROM ".$member->getTable(true)." LEFT JOIN ".$area->getTable()." AS AreaProvince ON Member.province_code_id=AreaProvince.code_id LEFT JOIN ".$area->getTable()." AS AreaCity ON Member.city_code_id=AreaCity.code_id WHERE Member.id=".$_SESSION['MemberID'];
 $info = $g_db->GetRow($sql);
 setvar("Genders",$member->genders);
+unset($member->educations[0]);
+setvar("Educations",$member->educations);
 setvar("OfficeRedirects", $member->office_redirects);
 setvar("p",$info);
 template($office_theme_name."/"."personal");

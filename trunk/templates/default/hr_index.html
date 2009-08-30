@@ -27,7 +27,7 @@
 			</ul>
 		</div>
 		<div class="clear9"></div>
-		<div class="cpk_c2 cs_c2">
+		<div class="cpk_c2 cs_c2 hr_area">
 			<div class="bt cpk_bt1"><h2><label>按地区分类</label></h2></div>
 			<div class="sc_c1">
 			<{foreach from=$Areas name=Areas item=item key=key}>
@@ -48,9 +48,9 @@
 		</div>
 		<div class="clear9"></div>
 		<div class="cp_bt1 cp_bt3 gy_bt5"><em class="cp_em1"></em><h2><a href="<{$UrlContainer.common}>company.php?ac=list">人才推荐</a></h2><em class="cp_em2"></em></div>
-		<div class="gy_c4 gy_c5">
+		<div class="gy_c4 gy_c5 hr_commend">
 			<{foreach from=$Resumes name=Resumes item=item}>
-			<p><img src="attachment/<{$item.photo}>.small.jpg" width="116" height="93" alt="<{$item.lastname}>" /><{$item.lastname}></p>
+			<p><{$item.lastname}> [<{$Educations[$item.max_education]|default:"未填写最高学历"}>]</p>
 			<{/foreach}>
 		</div>
 	</div>

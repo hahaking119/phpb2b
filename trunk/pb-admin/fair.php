@@ -35,7 +35,7 @@ if ($_POST['save'] && !empty($_POST['Expo']['ea'])) {
             flash("./alert.php","./product.php", lgg("upload_error").$attachment->error_no,0);
         }
         $img = new Image($attachment->saved_upload_name, $attachment->saved_upload_name);
-        $img->Thumb();
+        $img->Thumb(201, 150);
         $attachment->imageWaterMark($attachment->saved_upload_name, "../images/watermark.png");
         $vals['picture'] = gmdate("Ym")."/".$attachment->parsed_file_name;
 	}

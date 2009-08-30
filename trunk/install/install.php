@@ -371,7 +371,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
         $str.="\"sitename\"=>'".$_POST['site']['name']."',\n";
         $str.="\"sitetitle\"=>'".$_POST['site']['name']."',\n";
         $str.="\"companyname\"=>'请到控制台更新公司名称',\n";
-        $str.="\"icpnumber\"=>'ICP备案号',\n";
+        $str.="\"icpnumber\"=>'ICP备案中',\n";
         $str.="\"servicetel\"=>'12345678',\n";
         $str.="\"saletel\"=>'12345678',\n";
         $str.="\"serviceqq\"=>'12345678',\n";

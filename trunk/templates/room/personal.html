@@ -147,6 +147,16 @@ function checkinput(){
                         <td class="tdright"><input type="radio" name="member[resume_status]" value="1" <{if $p.ResumeStatus==1}>checked="checked"<{/if}>>我想求职<input type="radio" name="member[resume_status]" value="0" <{if $p.ResumeStatus==0}>checked="checked"<{/if}>>我不想求职</td>
                       </tr>
                       <tr>
+                        <td class="tdleft">最高学历</td>
+                        <td class="tdright">
+						<select name="member[max_education]" id="MaxEducation">
+						<{foreach from=$Educations name=Educations item=item key=key}>
+						<option value="<{$key}>" <{if $p.MemberMaxEducation==$key}>selected<{/if}>><{$item}></option>
+						<{/foreach}>
+						</select>
+						</td>
+                      </tr>
+                      <tr>
                         <td class="tdleft">个人头像：</td>
                         <td class="tdright"><input type="file" name="photo" id="MemberPhoto">
 						<{if $p.PersonalPhoto}><br /><img src="../attachment/<{$p.PersonalPhoto}>.small.jpg" /><{/if}>

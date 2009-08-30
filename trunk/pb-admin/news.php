@@ -94,7 +94,18 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
         $keyword->setKeywordId($vals['keywords'], $new_id, 'newses');
         $g_db->Execute("update ".$tb_prefix."newses set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
 	}
-	exit;
+	//reset swf pictures.
+	if (isset($_POST['set_to_swf'])) {
+    	$allPictureNews = $g_db->GetArray("select picture,title,id from ".$tb_prefix."newses where status='1' and picture!=''");
+    	$outFileName = "../swf/imgList.xml";
+    	$smarty->assign("PictureNews", $allPictureNews);
+    	$output = $smarty->fetch("pb-admin/element.swf.html");
+    	$fp = fopen($outFileName, 'w') or die("Can't open file : ".$outFileName);
+    	if($fp){
+    	    fwrite($fp, $output);
+    	    fclose($fp);
+    	}
+	}
 	if ($result) {
 		flash("./alert.php","./news.php",null);
 	}else{
