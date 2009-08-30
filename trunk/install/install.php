@@ -94,7 +94,7 @@ if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) 
 $local_url = $ul_protocol."://".$_SERVER["HTTP_HOST"].$_SERVER["PHP_SELF"];
 $local_url = substr($local_url,0,-(strlen($installfile)+8));
 require($core_sample_file);
-if (!defined('UALINK_VERSION')) {
+if (!defined('PHPB2B_VERSION')) {
 	require("../phpb2b_version.php");
 }
 $errmsg = null;
@@ -465,7 +465,7 @@ function goUrl(language){
         <tr>
           <th><?php echo $lang['site_name'];?></th>
           <td colspan="2"><div align="left">
-            <input name="site[name]" type="text" size="35" value="<?php echo $site_name = (empty($_POST['site']['name']))?($lang['a_new_b2b_site']." By ".$lang['ualinkphp'].UALINK_VERSION):($_POST['site']['name']);?>" class="input" onfocus="if(this.value == '<?php echo $lang['ualinkphp']." PHP B2B System_".UALINK_VERSION;?>'){this.value = ''}" onblur="if(this.value == ''){this.value = '<?php echo $lang['ualinkphp']." PHP B2B System_".UALINK_VERSION;?>'}" />
+            <input name="site[name]" type="text" size="35" value="<?php echo $site_name = (empty($_POST['site']['name']))?($lang['a_new_b2b_site']." By ".$lang['ualinkphp'].PHPB2B_VERSION):($_POST['site']['name']);?>" class="input" onfocus="if(this.value == '<?php echo $lang['ualinkphp']." PHP B2B System_".PHPB2B_VERSION;?>'){this.value = ''}" onblur="if(this.value == ''){this.value = '<?php echo $lang['ualinkphp']." PHP B2B System_".PHPB2B_VERSION;?>'}" />
           </div></td>
         </tr>
         <tr>

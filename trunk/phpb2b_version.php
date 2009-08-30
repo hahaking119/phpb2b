@@ -1,3 +1,3 @@
 <?php
-define('UALINK_VERSION', '2.5Beta');
+define('PHPB2B_VERSION', '2.5');
 ?>
