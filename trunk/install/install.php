@@ -75,8 +75,10 @@ function check_install(){
 </head>
 <body>
 <?php
-if (file_exists("../data/install.lock")) {
-	die($lang['delete_and_install']);
+if (!("done"==trim($_GET['step']))) {
+    if (file_exists("../data/install.lock")) {
+    	die($lang['delete_and_install']);
+    }
 }
 $UA_INSTALLING = true;
 $rightmsg = null;
