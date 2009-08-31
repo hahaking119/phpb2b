@@ -111,7 +111,8 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .sws_bt h2{color:#c00; width:110px; text-align:right; line-height:35px;}
 .sws_bt p{float:left; width:190px; text-align:right; line-height:34px;}
 .sws_bt p a{color:#fcc;}.sws_bt p a:hover{color:#fff;}
-.sws_c{width:314px; height:727px; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;}
+.sws_c{width:314px; height:727px; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;padding:4px 0px 3px 4px;}
+.sws_c div img{float:left;border:1px solid #DDD;margin-right:1px}
 .sws_c form{width:304px; height:100px; margin:0 auto; display:block; background:url(f_bg_304x8.gif) bottom no-repeat; padding:15px 0 0;}
 .f_line1,.f_line2{width:217px; height:100px; float:left; display:inline; text-align:right;}
 .f_line2{width:55px;}
