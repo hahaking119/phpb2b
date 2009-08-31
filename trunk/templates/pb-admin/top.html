@@ -98,7 +98,7 @@ togglemenu("home");
 <td rowspan="2" width="160px">
 <div class="logo">
 <br />
-<span class="editiontext">PHP B2B <span class="editionnumber"><{$smarty.const.PHPB2B_VERSION}></span></span>
+<span class="editiontext">PHPB2B Version.<span class="editionnumber"><{$smarty.const.PHPB2B_VERSION}></span></span>
 </div>
 </td>
 <td>
@@ -111,7 +111,7 @@ togglemenu("home");
 </div>
 <!-- 帐号信息 -->
 <div id="header" style="display:inline">
-	<div style="float:left;padding:15px 0 0 8px;">欢迎您，<strong><{$smarty.session.admin.current_adminer}></strong>
+	<div style="float:left;padding:15px 0 0 8px;">欢迎您，<strong><{$current_adminer}></strong>
 	 [&nbsp;<a class="links" href="login.php?action=dereg" target="_parent" title="用其他帐号重新登录">注销</a>，&nbsp;<a class="links" href="../user/logging.php?action=logout&fr=cp" target="_parent" title="返回登陆首页">退出</a>，<a class="links" href="./adminer.php?action=password" target="main" title="设置密码等个人信息">帐户设置</a>&nbsp;]
 	 </div>
 	<br />
