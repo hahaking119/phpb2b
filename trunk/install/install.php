@@ -103,6 +103,12 @@ require($core_sample_file);
 if (!defined('PHPB2B_VERSION')) {
 	require("../phpb2b_version.php");
 }
+if(empty($dbcharset)){
+	$dbcharset = "utf8";
+}
+if(empty($cookiepre)){
+	$cookiepre = "EUA_";
+}
 $errmsg = null;
 $right_files = array(
 "media"=>"../data/",
