@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;市场库管理</div></td></tr>
+</table>
+<br />
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="全选"></td>
+<td>名称</td>
+<td>行业类别</td>
+<td>是否显示</td>
+<td>所在地区</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$MarketList item=m name=markets}>
+<tr bgcolor="<{cycle values="#eeeeee,#ffffff"}>" align="center">
+<td><input type="checkbox" name="id[]" value="<{$m.MarketId}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><{$m.MarketName}></td>
+<td><{$m.IndustryName}></td>
+<td><{if $m.MarketStatus==0}>不显示<{else}>显示<{/if}></td>
+<td><{$m.CountryName}><{$m.ProvinceName}><{$m.CityName}></td>
+<td><a href="<{$smarty.server.PHP_SELF}>?action=mod&id=<{$m.MarketId}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="修改"></a>&nbsp;<a href="<{$smarty.server.PHP_SELF}>?action=del&id=<{$m.MarketId}>"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="删除"></a>&nbsp;<a href="<{$SiteUrl}>market/detail.php?id=<{$m.MarketId}>" target="_blank"><img src="<{$tpl_img_path}>admin/preview.gif" border="0" alt="预览"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="6" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="6"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="4"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="删除" onClick="return confirmAction('确定删除吗?');">&nbsp;<input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="check" value="设置显示">&nbsp;<input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="uncheck" value="设置不显示"></td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<!-- 快速添加 -->
+<form name="quickaddfrm" action="" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="5"><div align="left">快速添加</div></td></tr>
+<tr>
+	<td width="9%"><div align="right">市场名称:</div></td>
+	<td width="15%"><input name="market[name]" type="text" id="market_name"></td>
+	<td width="10%"><div align="right">所在地区:</div></td>
+	<td><select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
+                        </select><select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2">
+                        </select><select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
+                        </select></td>
+	<td><input name="save" type="submit" id="save" value="添加" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</table>
+</form>
+<!-- 结束new -->
+</body>
+</html>
+<script language="javascript">
+var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
+linkage2.BLANK_SELECT = "请选择";
+linkage2.init();
+</script>

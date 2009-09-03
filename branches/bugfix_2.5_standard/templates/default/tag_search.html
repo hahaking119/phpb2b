@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content=""> 
+<title><{$titleKeyword}>&laquo;<{$sitetitle}></title>
+<link rel="Shortcut Icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><{include file="`$ThemeName`/element.header.html"}></td>
+  </tr>
+</table>
+<table width="960" height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
+  <tbody>
+    <tr> 
+      <td width=785><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
+      width=14> 您当前位置： <a class=link12 href="<{$SiteUrl}>"><{$sitename}></a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>tag.php">关键词搜索</a> 
+        &raquo; <{$smarty.get.skeyword}></td>
+    </tr>
+  </tbody>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td align="left"><a href="<{$SiteUrl}>tag.php?type=trades&skeyword=<{$smarty.get.skeyword|urlencode}>">供求信息</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=companies&skeyword=<{$smarty.get.skeyword|urlencode}>">公司</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=products&skeyword=<{$smarty.get.skeyword|urlencode}>">产品</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=newses&skeyword=<{$smarty.get.skeyword|urlencode}>">资讯</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=markets&skeyword=<{$smarty.get.skeyword|urlencode}>">市场</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=expoes&skeyword=<{$smarty.get.skeyword|urlencode}>">展会</a></td>
+    <td width="5%"></td>
+    <td align="right"><{$ByPages}></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
+  <tr class="corgreen"> 
+    <td width="90" height="30" align="center"><strong>图　片</strong></td>
+    <td width="385" align="center"><strong>主题</strong></td>
+  </tr>
+<!-- 列表关键词 -->
+<{foreach from=$KeyItems name=BuyKeyItems item=item}>
+  <tr class="corhui"> 
+    <td width="90"> 
+	<table width="64" height="55" border="0" align="center" cellPadding="0" cellSpacing="1" class="bghui">
+        <tbody>
+          <tr> 
+            <td><a href="<{$SiteUrl}><{$DirName}>?id=<{$item.ItemId}>" class="font14blak" title="<{$item.ItemTitle}>" target="_blank"><img src="<{if $item.ItemPicture}>attachment/<{$item.ItemPicture}>.small.jpg<{else}><{$INC_PATH}>data/<{$ThemeName}>/small.gif<{/if}>" width="72" height="72" border="0" alt="<{$item.ItemTitle}>"></a></td>
+          </tr>
+        </tbody>
+      </table></td>
+    <td width="385"> <a href="<{$SiteUrl}><{$DirName}>?id=<{$item.ItemId}>" class="font14blak" title="<{$item.ItemTitle}>" target="_blank"><{$item.ItemTitle}></a> 
+            <span class="time"><{$item.CreateDate|date_format:"%Y-%m-%d"}></span><{if $item.ItemPrior}><img src="<{$INC_PATH}>images/recommend.gif" border="0" alt="推荐" /><{/if}>
+            <br />
+            <span class="time"><{$item.ItemInfo|strip_tags|truncate:100}></span>            </td>
+  </tr>
+<{foreachelse}>
+  <tr> 
+    <td align="center" colspan="2">还没有关于该关键词的任何记录，是否现在就<a href="javascript:window.location.href='<{$SiteUrl}>room/productedit.php?keyword=<{$smarty.get.keyword}>'">添加相关产品</a>？</td>
+  </tr>
+</table>
+<{/foreach}>
+<!-- 列表结束 -->
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+
+  <tr> 
+    <td height="1" background="<{$tpl_img_path}>default/dian.gif"></td>
+  </tr>
+  <tr> 
+    <td> 
+      <table width=100% cellpadding=3 cellspacing="3" class="corgreenlower">
+        <tr  > 
+          <td valign="baseline"><{$ByPages}></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><{include file="`$ThemeName`/element.foot.html"}></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pageTitle}></title>
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="您正在查找<{$AreaName}>的市场库"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+</head>
+
+<body>
+<!--head-->
+<{assign var="market_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p><span class="str">您当前位置：</span><{$pagePosition}></p>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="w_left1">
+		<p class="a_line"></p>
+		<div class="cs_c1">
+		<form action="<{$smarty.server.PHP_SELF}>" name="market_search_frm" method="get">
+		<p class="sc_ss">
+				<input type="text" value="搜索关键字..." name="market[keyword]" id="" class="sc_ss_in1" />
+				<input type="submit" value="搜索" class="sc_ss_in2" />
+			</p>
+			</form>
+			<p class="a_line3"></p>
+<{if $AreaMarkets}>
+<{foreach from=$AreaMarkets name=sub_markets item=m}>
+			<div class="sc_s<{if $smarty.foreach.sub_markets.iteration is div by 2}> sc_s1<{/if}>">
+				<h2><a href="./detail.php?id=<{$m.MarketId}>" class="link2"><{$m.MarketName|replace:$SearchKey:$ReplaceKey}></a>(<{$m.MarketCreated|date_format:"%Y-%m-%d"|default:"0000-00-00"}>)</h2><em>[<a href="./detail.php?id=<{$m.MarketId}>" class="link2">查看</a>]</em>
+				<p><{$m.MarketContent|truncate:150|strip_tags}></p>
+			</div>
+<{/foreach}>
+<{else}>
+          <div align="right"><h2>该分类下还没有任何市场,是否<a href="<{$SiteUrl}>market/add.php">补充市场</a>?</h2></div>
+          <{/if}>
+			<p class="a_line3"></p>
+			<div class="zh_page">
+				<{$ByPages}>
+			</div>
+		</div>
+	</div>
+	<div class="w_right1">
+		<div class="cpk_t1"></div>
+		<div class="cpk_c2 cs_c2">
+			<div class="bt cpk_bt1"><h2><label>按行业分类</label></h2></div>
+			<{include file="`$ThemeName`/market_industry.html"}>
+		</div>
+		<div class="clear9"></div>
+		<div class="cpk_t1"></div>
+		<div class="cpk_c2 cs_c2">
+			<div class="bt cpk_bt1"><h2><label title="按<{$AreaName}>地区分类"><{$AreaName}></label></h2></div>
+			<{if $SubAreas}>
+			<div class="sc_c1">
+<{foreach from=$SubAreas name=sub_area item=a}>
+				<a href="<{$SiteUrl}>market/list.php?filter=city,id,<{$a.id}>"><{$a.name}></a> |
+				<{/foreach}>
+			</div>
+			<{/if}>
+		</div>
+		<div class="clear9"></div>
+		<div class="cpk_t1"></div>
+		<div class="cpk_c2 cs_c2">
+			<div class="sc_c2 f14 str">
+				如果您确认不存在您的市场,<br />请直接点击告诉我们.
+				<a href="<{$SiteUrl}>market/add.php">补充市场</a>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

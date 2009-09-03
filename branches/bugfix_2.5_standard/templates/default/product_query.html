@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pf.ProductName|strip_tags}>&laquo;询价&laquo;<{$sitetitle}></title>
+<meta name ="keywords" content="游客,发布,供应,求购,招商,加盟,库存,代理,批发">
+<meta name ="description" content="<{$sitename}>允许游客在遵守网站协议的基础上自由发布商业信息,请详细填写信息以便让客户迅速找到你。"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script>
+function checkinput(){
+	return true;
+}
+</script>
+</head>
+
+<body>
+<!--head-->
+<{assign var="product_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p>您当前位置： <a class=link12 href="<{$SiteUrl}>"><{$sitename}></a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>product/">产品库</a> 
+        &raquo; 询价</p>
+</div>
+<div class="clear9"></div>
+<div class="wd free_c">
+	<p class="a_line8"></p>
+	<div class="zh_left">
+		<div class="free_info">
+			<p>
+				<em class="str">注意事项：</em><br />
+				为方便客户联系你, 以下"<em class="red"> </em>"内容均为必填项<br />
+			</p>
+		</div>
+	</div>
+	<div class="zh_right">
+	<form name="xunjiafrm" action="<{$smarty.env.PHP_SELF}>" method="post">
+	<input type="hidden" name="id" value="<{$smarty.get.id}>">
+	<input type="hidden" name="query[to_member_id]" value="<{$pf.MemberId}>">
+	<input type="hidden" name="query[to_company_id]" value="<{$pf.CompanyId}>">
+		<div class="bt gs_bt4 h_tt4 free_bt"><h2>基本信息内容</h2><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label>发送给：</label>
+				<p class="free_p5"><{if $pf.MemberEmail!=""}><{mailto address=$pf.MemberEmail encode="javascript" subject="Hello" text=$pf.MemberEmail|default:"NONE"}><{/if}>（<a href="../space.php?userid=<{$pf.MemberUserName}>">查看对方联系方式</a>）</p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">询价标题：</label>
+				<p class="free_p1"><input name="query[title]" type="text" value="我对您在<{$sitename}>发布的产品<{$pf.ProductName}>很感兴趣" size="45"></p>
+			</div>
+			<div class="free_l">
+				<label>订货总量：</label>
+				<p class="free_p1"><input name="query[exp_quantity]" type="text" size="15">
+                      (单位)</p>
+			</div>
+			<div class="free_l">
+				<label>期望价格：</label>
+				<p class="free_p1"><input name="query[exp_price]" type="text">
+                      (元/单位)</p>
+			</div>
+			<div class="free_l">
+				<label>补充信息：</label>
+				<p class="free_p4"><textarea name="query[content]" cols="40" rows="6" wrap="VIRTUAL" id="content"></textarea></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>我需要进一步了解的信息（请在需要了解的信息前选中方框
+                        <input type="checkbox" name="qidAll" id="qid_all" onClick="uaCheckAll(this, 'qid[]')" title="全选"><label for="qid_all">全选</label></h3></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<table>
+				                  <tr>
+                    <td width="31%"><input type="checkbox" name="qid[]" id="qid_1" value="1" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_1">产品规格、型号</label></td>
+                    <td width="35%" height="30"><input type="checkbox" name="qid[]" id="qid_2" value="2" onClick="uaCheckItem(this, 'qidAll')">
+                  <label for="qid_2">单价</label></td>
+                    <td width="34%"><input type="checkbox" name="qid[]" id="qid_3" value="3" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_3">价格条款</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="qid[]" id="qid_4" value="4" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_4">原产地</label></td>
+                    <td height="30"><input type="checkbox" name="qid[]" id="qid_5" value="5" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_5">供货能力</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_6" value="6" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_6">销售条款及附加条件</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="qid[]" id="qid_7" value="7" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_7">最小订货量</label></td>
+                    <td height="30"><input type="checkbox" name="qid[]" id="qid_8" value="8" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_8">交货期</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_9" value="9" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_9">能否提供样品</label></td>
+                  </tr>
+                  <tr>
+                    <td height="22"><input type="checkbox" name="qid[]" id="qid_10" value="10" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_10">产品担保</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_11" value="11" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_11">包装方式</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_12" value="12" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_12">质量/安全认证</label></td>
+                  </tr>
+				</table>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>联系方式（很重要：请仔细填写，确保对方能联系到您） </h3><p></p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label>联 系 人：</label>
+				<p class="free_p1"><input type="text" name="link[name]" /></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">首选联系电话：</label>
+				<p><select name="link[tel_type]" id="tel_type">
+                <{html_options options=$TelTypes selected="1"}>
+              </select>号码:<p class="free_p1"><input type="text" name="link[tel_number]" id="telnumber" value=""></p>
+			</div>
+			<div class="free_l">
+				<label>首选即时通讯：</label>
+				<p><select name="link[im_type]">
+                <{html_options options=$ImTypes selected="1"}>
+              </select></p>
+				<label class="free_must1">号码：</label>
+				<p class="free_p3"><input name="link[im_number]" type="text" value="" /></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">电子邮件：</label>
+				<p class="free_p1"><input name="link[email]" id="LinkEmail" type="text"></p>
+			</div>
+			<div class="free_l free_l1">
+				<input type="submit" value="我要询价" name="post" id="Post" class="free_btn1 f14 str"  onClick="return checkinput();"/>
+				<input type="reset" value="取 消" class="free_btn2 f14 str" onclick="document.xunjiafrm.reset();" />
+			</div>
+		</div>
+		</form>
+	</div>
+	<p class="a_line7"></p>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>
