@@ -5,7 +5,7 @@ if (!defined('DIRECTORY_SEPARATOR')) {
 	*/
 	define('DIRECTORY_SEPARATOR','/');
 }
-define('PHPB2B_VERSION', '2.5');
+define('PHPB2B_VERSION', '3.0 Dev');
 define('DS', DIRECTORY_SEPARATOR);
 define('BASE_DIR', substr(dirname(__FILE__), 0, -11));
 if(!defined('INC_PATH')) define('INC_PATH',BASE_DIR.APP_NAME.'source'.DS);
