@@ -2,24 +2,19 @@
 $charset = "utf-8";
 header("Content-Type: text/html; charset=".$charset);
 define('INSTALL_ROOT', dirname(__FILE__)."/");
-$lang_name = (!empty($_GET['language']))?trim($_GET['language']):"zh-cn";
-$sqlfile = INSTALL_ROOT."./ualink_zh-cn.sql";
+$lang_name = (!empty($_GET['language']))?trim($_GET['language']):"en";
+$sqlfile = INSTALL_ROOT."./ualink_en.sql";
 
 if(empty($_GET['language'])){
 	if($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-cn"){
 		$lang_name = "zh-cn";
 	}elseif($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-tw"){
 		$lang_name = "zh-tw";
-	}elseif($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="en"){
-		$lang_name = "en";
 	}else{
-		$lang_name = "zh-cn";
+		$lang_name = "en";
 	}
 }else{
 	$lang_name = trim($_GET['language']);
-}
-if(isset($_GET['language']) && $_GET['language']=="zh-tw"){
-	$sqlfile = INSTALL_ROOT."./ualink_zh-tw.sql";
 }
 require(INSTALL_ROOT."./lang_".$lang_name.".php");
 error_reporting(E_ERROR ^ E_WARNING);
@@ -39,7 +34,7 @@ body{background:#dcdcdc url(images/bg.jpg) no-repeat top;text-align:center;}
 a:link,a:visited{color:#0049d3;text-decoration:none;}
 a:hover,a:active{color:#f70;text-decoration:underline;}
 .ft { font-weight:bold; font-size:14px; line-height:22px;}
-.errmsg { font-family:arial Bold,宋体;color:red;background:#ccc; }
+.errmsg { font-family:arial Bold,arial;color:red;background:#ccc; }
 .input {background:transparent;border:1px solid #ffffff}
 .emsg {text-align: left; width:400px; height:200px; margin:-100px 0px 0px -100px;position: absolute; top:50%; left:50%; color: #330000;font-size: 12pt; font-family: "Arial bold","Courier";}
 h4 {
@@ -382,8 +377,8 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 \$_SETTINGS = array(\n";
         $str.="\"sitename\"=>'".$_POST['site']['name']."',\n";
         $str.="\"sitetitle\"=>'".$_POST['site']['name']."',\n";
-        $str.="\"companyname\"=>'请到控制台更新公司名称',\n";
-        $str.="\"icpnumber\"=>'ICP备案中',\n";
+        $str.="\"companyname\"=>'Go to Control Panel Update Company Names',\n";
+        $str.="\"icpnumber\"=>'ICP for the record in the',\n";
         $str.="\"servicetel\"=>'12345678',\n";
         $str.="\"saletel\"=>'12345678',\n";
         $str.="\"serviceqq\"=>'12345678',\n";
@@ -414,8 +409,8 @@ if ($_GET['step'] == "done") {
 	if (!empty($_GET['rightmsg'])) {
 			echo "<li>" .urldecode($_GET['rightmsg'])."</li>";
 	}
-	echo "<li>安装完成，<font color=red>请务必删除 <strong>install</strong> 目录以及 <strong>install.php</strong></font>，你现在可以<a href='".URL."' target='_blank'>访问</a>你的网站了</li>";
-	echo "<li>您可以用账户 <strong>".$_GET['adminer']."</strong> 进行<a href='../user/logging.php' target='_blank'>登陆</a>或者进入<a href='../pb-admin/' target='_blank'>控制台</a>了，请保管好您的管理员账户以及密码</li>";
+	echo "<li>The installation is complete,<font color=red>Please be sure to remove the <strong>install</strong> Directory and <strong>install.php</strong></font>, You can now<a href='".URL."' target='_blank'>Visit</a>your site.</li>";
+	echo "<li>You can use the account <strong>".$_GET['adminer']."</strong> to <a href='../user/logging.php' target='_blank'>login</a> or enter <a href='../pb-admin/' target='_blank'>Console</a>, Please keep up your administrator account and password.</li>";
 	echo "</ul></div>";
 	exit;
 }

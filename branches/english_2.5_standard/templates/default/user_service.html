@@ -61,7 +61,7 @@ function d(){
 <{include file="`$ThemeName`/element.header.html"}>
 <!--head end-->
 <div class="wd crumb">
-	<p><span class="str">您当前位置：</span><a href="#" title="">Ualink PHP B2B官方演示网站</a> &gt; 客服中心</p>
+	<p><span class="str">Your current position:</span><a href="#" title="">Ualink PHP B2B官方演示网站</a> &gt; 客服中心</p>
 </div>
 <div class="clear9"></div>
 <div class="wd">
@@ -72,16 +72,16 @@ function d(){
 		<div class="cs_c1">
 			<table width="690" border="0" cellspacing="0" cellpadding="0">
 			  <thead>
-				<th width="80">问/答</th>
-				<th width="400">问题/内容</th>
-				<th width="105">提交者</th>
-				<th width="105">时间</th>
+				<th width="80">Q / A</th>
+				<th width="400">Issues / content</th>
+				<th width="105">Submitted</th>
+				<th width="105">Time</th>
 			  </thead>
 			  <{foreach from=$ServiceList name=listservice item=sl}>
 			  <tr>
 				<td><em>Q</em></td>
 				<td><a onClick=javascript:ShowFLT(<{$smarty.foreach.listservice.iteration}>) href="javascript:void(null)"><h4><{if $sl.Title|lower eq "index"}><{else}><{$sl.Title|strip_tags}><{/if}></h4><{$sl.Content}></a></td>
-				<td><{if $sl.NickName eq ""}>匿名<{else}><{$sl.NickName}><{/if}></td>
+				<td><{if $sl.NickName eq ""}>Anonymous<{else}><{$sl.NickName}><{/if}></td>
 				<td><{$sl.CreateTime|date_format:"%Y-%m-%d"}></td>
 			  </tr>
 			  <tr id="LM<{$smarty.foreach.listservice.iteration}>" style="DISPLAY: none;">
@@ -99,26 +99,26 @@ function d(){
 								<form name="servicefrm" action="./service.php" method="post" onSubmit="return checkform()">
 								<input type="hidden" name="s" value="1">
 			<div class="cs_d">
-				<label>反馈类别：</label>
+				<label>Feedback category:</label>
 				<p><{html_radios name="service[type_id]" options=$ServiceTypes checked="1" separator=" "}></p>
 			</div>
 			<div class="cs_d cs_d1">
-				<label for="title">标题：</label>
+				<label for="title">Title:</label>
 				<p><input name="service[title]" type="text" value="" id="title" size="40" onFocus="d();"/></p>
 			</div>
 			<div class="cs_d cs_d1">
-				<label for="nick_name">您的称呼：</label>
+				<label for="nick_name">Your name:</label>
 				<p><input name="service[nick_name]" type="text" value="" id="nick_name" size="40" maxlength="20"/></p>
 			</div>
 			<div class="cs_d cs_d1">
-				<label for="mail">您的Email：</label>
+				<label for="mail">Your Email:</label>
 				<p><input name="service[email]" type="text" value="" id="mail" size="40" maxlength="20"/></p>
 			</div>
 			<div class="cs_d cs_d2">
-				<label for="content">反馈内容：</label>
+				<label for="content">Feedback content:</label>
 				<p><textarea name="service[content]" cols="40" rows="6" wrap="VIRTUAL" id="content" onFocus="d();"></textarea></textarea></p>
 			</div>
-			<div class="cs_d cs_d3"><input type="submit" name="save" id="save" value="提交" alt="输入标题后可提交" /></div>
+			<div class="cs_d cs_d3"><input type="submit" name="save" id="save" value="提交" alt="Enter a title may be submitted after focus." /></div>
 			</form>
 		</div>
 		
@@ -126,17 +126,17 @@ function d(){
 	<div class="w_right1">
 		<div class="cpk_t1"></div>
 		<div class="cpk_c2 cs_c2">
-			<div class="bt cpk_bt1"><h2><a href="#">最新公告</a></h2></div>
+			<div class="bt cpk_bt1"><h2><a href="#">Latest Announcement</a></h2></div>
 			<ul class="ul21">
 				<{announce max=10}>
 			</ul>
 			<div class="cs_c3">
-				<em>给我们留言:</em><br />
-				尊敬的用户:请您认真填写以下资料,我们尽可能在三个工作日之内给您答复,请留意您的历史那次邮箱认真阅读邮件内容.<br />
+				<em>Give us the message:</em><br />
+				Dear User: Please fill in the following information, we have as far as possible within three working days to you reply, please refer to your mail carefully read the history of that message content.<br />
 				<br />
-				<em>温馨提醒:</em><br />
-				这里您可以像发送一样给我们提交问题,我们会尽快于三个工作日内给您答复,请您注意查收邮件!<br />
-				客服热线:<{$servicetel}><br />
+				<em>Warm reminder:</em><br />
+				Here you can send the same to us as to submit questions, we will as soon as you reply within three working days, please note that check e-mail!<br />
+				Customer Service Hotline:<{$servicetel}><br />
 				Email:<a href="mailto:<{$serviceemail}>"><{$serviceemail}></a>
 			</div>
 		</div>
@@ -145,7 +145,7 @@ function d(){
 </div>
 <{include file="`$ThemeName`/element.foot.html"}>
 <script language="javascript">
-init();//必须放在最后，才能对按钮生效。
+init();
 </script>
 </body>
 </html>

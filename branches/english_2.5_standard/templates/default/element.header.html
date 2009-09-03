@@ -1,22 +1,22 @@
 <!--head-->
 <div class="wd logo_bor">
 	<a href="<{$SiteUrl}>index.php?action=index" title="<{$sitebannerword}>"><img src="<{$tpl_img_path}>logo.gif" alt="<{$sitebannerword}>" /></a>
-	<p><a href="<{$SiteUrl}>advsearch.php" target="_self">高级搜索</a><a href="javascript: myAddPanel(document.title,location.href,document.title);" rel="sidebar" title="<{$sitename}>">加入收藏</a><a href="<{$SiteUrl}>help.php">帮助中心</a><a href="<{$UrlContainer.post}>">免费发布</a><a href="<{$UrlContainer.common}>user/service.php">客服中心</a></p>
+	<p><a href="<{$SiteUrl}>advsearch.php" target="_self">Search</a><a href="javascript: myAddPanel(document.title,location.href,document.title);" rel="sidebar" title="<{$sitename}>">Favorite</a><a href="<{$SiteUrl}>help.php">Help</a><a href="<{$UrlContainer.post}>">Free Post</a><a href="<{$UrlContainer.common}>user/service.php">Service</a></p>
 </div>
 <div class="wd menu">
 	<ul>
-		<li><a class="<{$index_li}>" href="<{$UrlContainer.index}>" title="首页">首页</a></li>
-		<li><a class="<{$buy_li}>" href="<{$UrlContainer.buy}>" title="求购">求购</a></li>
-		<li><a class="<{$sell_li}>" href="<{$UrlContainer.sell}>" title="供应">供应</a></li>
-		<li><a class="<{$company_li}>" href="<{$UrlContainer.company}>" title="公司库">公司库</a></li>
-		<li><a class="<{$product_li}>" href="<{$UrlContainer.product}>" title="产品">产品</a></li>
-		<li><a class="<{$news_li}>" href="<{$UrlContainer.news}>" title="资讯">资讯</a></li>
-		<li><a class="<{$market_li}>" href="<{$UrlContainer.market}>" title="市场库">市场库</a></li>
-		<li><a class="<{$fair_li}>" href="<{$UrlContainer.fair}>" title="展会">展会</a></li>
+		<li><a class="<{$index_li}>" href="<{$UrlContainer.index}>" title="Home">Home</a></li>
+		<li><a class="<{$buy_li}>" href="<{$UrlContainer.buy}>" title="Buy">Buy</a></li>
+		<li><a class="<{$sell_li}>" href="<{$UrlContainer.sell}>" title="Sale">Sale</a></li>
+		<li><a class="<{$company_li}>" href="<{$UrlContainer.company}>" title="Company">Company</a></li>
+		<li><a class="<{$product_li}>" href="<{$UrlContainer.product}>" title="Product">Product</a></li>
+		<li><a class="<{$news_li}>" href="<{$UrlContainer.news}>" title="Info">Info</a></li>
+		<li><a class="<{$market_li}>" href="<{$UrlContainer.market}>" title="Market">Market</a></li>
+		<li><a class="<{$fair_li}>" href="<{$UrlContainer.fair}>" title="Fair">Fair</a></li>
 		<{if $ForumSet.url}>
-		<li><a href="<{$ForumSet.url}>" class="<{$room_li}>" title="论坛交流区" target="_blank">论坛</a></li>
+		<li><a href="<{$ForumSet.url}>" class="<{$room_li}>" title="Forum" target="_blank">BBS</a></li>
 		<{else}>
-		<li><a href="<{$UrlContainer.hr}>" class="<{$hr_li}>" title="人才">人才</a></li>
+		<li><a href="<{$UrlContainer.hr}>" class="<{$hr_li}>" title="Job">Job</a></li>
 		<{/if}>
 	</ul>
 	<p class="none"><a title="<{$sitebannerword}>"><{$sitebannerword}></a></p>

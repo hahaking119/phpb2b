@@ -14,7 +14,7 @@
 <{include file="`$ThemeName`/element.header.html"}>
 <!--head end-->
 <div class="wd crumb">
-	<p><span class="str">您当前位置：</span><{$pagePosition}></p>
+	<p><span class="str">Your current position:</span><{$pagePosition}></p>
 </div>
 <div class="clear9"></div>
 <div class="wd">
@@ -23,8 +23,8 @@
 		<div class="cs_c1 zh_c2">
 			<table width="690" border="0" cellspacing="0" cellpadding="0">
 			  <thead>
-				<th width="350">招聘职位</th>
-				<th width="120">公司名称</th>
+				<th width="350">Job</th>
+				<th width="120">Name</th>
 			  </thead>
 			  <{foreach from=$lists name=lists item=f}>
 			  <tr <{if $smarty.foreach.fairlist.iteration is div by 2}> class="cs_tr"<{/if}>>
