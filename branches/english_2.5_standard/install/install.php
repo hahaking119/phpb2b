@@ -6,13 +6,8 @@ $lang_name = (!empty($_GET['language']))?trim($_GET['language']):"en";
 $sqlfile = INSTALL_ROOT."./ualink_en.sql";
 
 if(empty($_GET['language'])){
-	if($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-cn"){
-		$lang_name = "zh-cn";
-	}elseif($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-tw"){
-		$lang_name = "zh-tw";
-	}else{
-		$lang_name = "en";
-	}
+	$lang_name = "en";
+	$_GET['language'] = "en";
 }else{
 	$lang_name = trim($_GET['language']);
 }
@@ -378,7 +373,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
         $str.="\"sitename\"=>'".$_POST['site']['name']."',\n";
         $str.="\"sitetitle\"=>'".$_POST['site']['name']."',\n";
         $str.="\"companyname\"=>'Go to Control Panel Update Company Names',\n";
-        $str.="\"icpnumber\"=>'ICP for the record in the',\n";
+        $str.="\"icpnumber\"=>'ICP Number',\n";
         $str.="\"servicetel\"=>'12345678',\n";
         $str.="\"saletel\"=>'12345678',\n";
         $str.="\"serviceqq\"=>'12345678',\n";
@@ -409,8 +404,8 @@ if ($_GET['step'] == "done") {
 	if (!empty($_GET['rightmsg'])) {
 			echo "<li>" .urldecode($_GET['rightmsg'])."</li>";
 	}
-	echo "<li>The installation is complete,<font color=red>Please be sure to remove the <strong>install</strong> Directory and <strong>install.php</strong></font>, You can now<a href='".URL."' target='_blank'>Visit</a>your site.</li>";
-	echo "<li>You can use the account <strong>".$_GET['adminer']."</strong> to <a href='../user/logging.php' target='_blank'>login</a> or enter <a href='../pb-admin/' target='_blank'>Console</a>, Please keep up your administrator account and password.</li>";
+	echo "<li>The installation is complete,<font color=red>Please be sure to remove the <strong>install</strong> Directory and <strong>install.php</strong></font>, You can now<a href='".URL."' target='_blank'> Visit </a>your site.</li>";
+	echo "<li>You can use the account <strong>".$_GET['adminer']."</strong> to <a href='../user/logging.php' target='_blank'>Login</a> or enter <a href='../pb-admin/' target='_blank'>Console Platform</a>, Please keep up your administrator account and password.</li>";
 	echo "</ul></div>";
 	exit;
 }

@@ -56,9 +56,9 @@ class UaModel extends UaObject
      *
      * @var unknown_type
      */
- 	var $offer_expires = array("10"=>"10天","30"=>"一个月","90"=>"三个月","180"=>"六个月");
-	var $buy_types = array("1"=>"求购", "4"=>"合作", "5"=>"招商");
-	var $sell_types = array("2"=>"供应", "3"=>"代理", "6"=>"加盟", "7"=>"批发", "8"=>"库存");
+ 	var $offer_expires = array("10"=>"10 days","30"=>"1 month","90"=>"3 Months","180"=>"6 Months");
+	var $buy_types = array("1"=>"Buyer", "4"=>"Corp", "5"=>"Merchants");
+	var $sell_types = array("2"=>"Seller", "3"=>"Agent", "6"=>"Join", "7"=>"Wholesale", "8"=>"Inventory");
  	var $params = array(
  	"1"=>array("title"=>"产品数量", "name"=>"quantity", "size"=>"10", "max_length"=>10),
  	"2"=>array("title"=>"包装说明", "name"=>"package", "size"=>"10", "max_length"=>100),
@@ -87,44 +87,44 @@ class UaModel extends UaObject
 		8=>"人民币 1000万-5000万/年",9=>"人民币 5000万以上/年",
 		9=>"其他",
 		);
-	var $economic_type = array("请选择","国有企业",
-		"集体企业",
-		"股份合作企业",
-		"联营企业",
-		"国有联营企业",
-		"集体联营企业",
-		"国有与集体联营企业",
-		"其他联营企业",
-		"有限责任公司",
-		"国有独资的有限责任公司",
-		"其他有限责任公司",
-		"股份有限公司",
-		"私营企业",
-		"私营独资企业",
-		"私营合作企业",
-		"私营有限责任公司",
-		"私营股份有限公司",
-		"个人独资企业",
-		"与港、澳、台商合资经营企业",
-		"与港、澳、台商合作经营企业",
-		"港、澳、台商独资经营企业",
-		"港、澳、台商投资股份有限公司",
-		"中外合资经营企业",
-		"中外合作经营企业",
-		"外商独资企业",
-		"外商投资股份有限公司",
-		"非盈利组织",
-		"其他",
-		);
-	var $company_status = array("0"=>"无效","1"=>"有效","2"=>"等待审核","3"=>"审核不通过");
+	var $economic_type = array("Select","State-owned enterprises",
+	"Collective enterprise", 
+	"Joint-stock cooperative enterprises", 
+	"Joint ventures", 
+	"State-owned joint ventures", 
+	"Collective joint ventures", 
+	"State-owned and collective joint ventures", 
+	"Other joint ventures", 
+	"Limited liability company", 
+	"State-owned limited liability company", 
+	"Other limited liability company", 
+	"Limited", 
+	"Private enterprise", 
+	"Private-owned enterprises", 
+	"Private cooperative enterprises", 
+	"Private limited liability company", 
+	"Private Limited", 
+	"Individual-owned enterprises", 
+	"And Hong Kong, Macao and Taiwan joint ventures", 
+	"And Hong Kong, Macao and Taiwan cooperative enterprises", 
+	"Hong Kong, Macao and Taiwan sole proprietorship enterprises", 
+	"Hong Kong, Macao and Taiwan Investment Corporation", 
+	"Sino-foreign joint ventures", 
+	"Sino-foreign cooperative enterprises", 
+	"Foreign-owned enterprises", 
+	"Foreign Investment Corporation", 
+	"Non-profit organization" 
+	"Other",
+	);
+	var $company_status = array("0"=>"Invalid","1"=>"Effective","2"=>"Pending","3"=>"Not passed");
 	var $employee_amount = array(
 	0=>"**不公开**",
 	1=>"5 人以下",2=>"5 - 10 人",3=>"11 - 50 人",4=>"51 - 100 人",5=>"101 -500 人",6=>"501- 1000 人",7=>"1000 人以上");
     /**
      * Service
      */
- 	var $status = array("0"=>"无效","1"=>"有效");
- 	var $types = array("1"=>"咨询","2"=>"建议","3"=>"投诉");
+ 	var $status = array("0"=>"Invalid","1"=>"Effective");
+ 	var $types = array("1"=>"Consulting","2"=>"Advise","3"=>"Complaints");
  	/**
  	 * Orders
  	 */
@@ -151,16 +151,16 @@ class UaModel extends UaObject
     /**
      * Member
      */
- 	var $ua_positions = array(0=>"请选择",1=>"董事长、总裁及副职，企业主、企业合伙人，总经理/副总经理",
- 	2=>"行政部门经理/行政人员",3=>"技术部门经理/技术人员",4=>"生产部门经理/生产人员",
- 	5=>"市场部门经理/市场人员",6=>"采购部门经理/采购人员",7=>"销售部门经理/销售人员",8=>"其他",
+ 	var $ua_positions = array(0=>"Select",1=>"Chairman, president and deputies, business owners, business partners, the general manager/vice president",
+ 	2=>"Administration Manager/administrative staff",3=>"Technical department manager/technical staff",4=>"Production Manager/Production staff",
+ 	5=>"Marketing manager/marketing people",6=>"Purchasing Manager/Procurement staff",7=>"Sales Manager/Sales",8=>"Others",
  	);
  	var $ua_member_types = array(0=>"会员类型",1=>"免费企业会员",2=>"收费企业会员");
 	var $genders = array("1"=>"先生","2"=>"女士","0"=>"保密");
  	var $member_status = array("0"=>"无效","1"=>"有效","2"=>"等待审核","3"=>"审核不通过","4"=>"被禁用");
  	var $im_types = array("1"=>"QQ","2"=>"ICQ","3"=>"Msn Messenger","4"=>"Yahoo Messenger","5"=>"Skype");
- 	var $phone_types = array("1"=>"移动电话","2"=>"住宅电话","3"=>"商务电话","4"=>"其他电话");
-	var $office_redirects = array("返回上一页", "网站首页", "商务室首页", "我的供求信息", "我收到的留言");
+ 	var $phone_types = array("1"=>"Mobile","2"=>"Residential","3"=>"商务电话","4"=>"其他电话");
+	var $office_redirects = array("Back to Previous Page", "Homepage", "Business Office Home", "My Leads", "My Messages");
 
 	function setPageTitle($titles = null, $positions = null, $left = "&laquo;", $right = "&raquo;")
 	{
