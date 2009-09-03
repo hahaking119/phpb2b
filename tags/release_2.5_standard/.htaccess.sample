@@ -1,0 +1,21 @@
+# BEGIN REWRITE
+ErrorDocument 404 http://www.yourdomain.com/404.php
+ErrorDocument 403 http://www.yourdomain.com/404.php
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^(www.)?(?!/.|www|bbs|demo)(.*)\.yourdomain.com$
+RewriteRule ^/?$ /%{HTTP_HOST}
+RewriteRule ([^.]+)\.yourdomain.com(.*) /space.php?userid=$1
+#RewriteRule ^(.*)/offer/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(.*)/$ /offer/detail.php?id=1 [QSA]
+#RewriteRule ^(.*)/offer/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/$ /offer/list.php?year=$2&month=$3&day=$4 [QSA]
+#RewriteRule ^(.*)/offer/([0-9]{4})/([0-9]{1,2})/$ /offer/list.php?year=$2&month=$3 [QSA]
+#RewriteRule ^(.*)/offer/([0-9]{4})/$ /offer/list.php?year=$2 [QSA]
+#RewriteRule ^(.*)/product/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(.*)/$ /product/content.php?id=1 [QSA]
+#RewriteRule ^(.*)/news/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(.*)/$ /news/detail.php?id=1 [QSA]
+#RewriteRule ^(.*)/market/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(.*)/$ /market/detail.php?id=1 [QSA]
+#RewriteRule ^(.*)/fair/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(.*)/$ /fair/detail.php?id=1 [QSA]
+#RewriteRule ^(.*)/tag/(.*)/$ /tag.php?keyword=$2 [L]
+#RewriteRule ^(.*)/member/(.*)/$ /space.php?userid=$2 [L]
+</IfModule>
+# END REWRITE

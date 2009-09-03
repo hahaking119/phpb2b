@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title>游客发布供求信息&laquo;<{$sitetitle}></title>
+<meta name ="keywords" content="游客,发布,供应,求购,招商,加盟,库存,代理,批发">
+<meta name ="description" content="<{$sitename}>允许游客在遵守网站协议的基础上自由发布商业信息,请详细填写信息以便让客户迅速找到你。"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/mixselect.js"></script>
+<script language="javascript">
+<!-- 
+function check(frm){
+	if($F('trade_topic') == ""){
+		alert("请输入供求信息标题");
+		$('trade_topic').focus();
+		return false;
+	}
+	if($F('trade_content') == ""){
+		alert("请输入该信息的介绍");
+		$('trade_content').focus();
+		return false;
+	}
+	if($F('link_man') == ""){
+		alert("请输入联系人姓名");
+		$('link_man').focus();
+		return false;
+	}
+	if($F('prim_telnumber') == ""){
+		alert("请输入联系电话");
+		$('prim_telnumber').focus();
+		return false;
+	}
+	if($F('countryid') == "" && $F('countryid')==0){
+		alert("请输入所在地区");
+		$('countryid').focus();
+		return false;
+	}
+	return true;
+}
+//-->
+</script>
+<{$xajax_javascript}>
+<script language="javascript">
+xajax_rebuildHTML("post.php");
+</script>
+</head>
+
+<body>
+<!--head-->
+<{assign var="sell_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p><strong>一分钟免费发布供应信息，让买主主动找上门</strong></p><em class="str"><a href="<{$UrlContainer.common}>room/">去商务室&gt;&gt;</a></em>
+</div>
+<div class="clear9"></div>
+<div class="wd free_c">
+	<p class="a_line8"></p>
+	<div class="zh_left">
+		<div class="free_info">
+			<img src="<{$tpl_img_path}>default/free.jpg" />
+			<p>
+				<span>(详细准确的信息可以吸引更多的客户!)</span><br /><br />
+				<em class="str">注意事项：</em><br />
+				1,为方便客户联系你, 以下"<em class="red"> </em>"内容均为必填项<br />
+				2,请及时关注您的邮箱或电话, 不要错过任何商机
+			</p>
+		</div>
+	</div>
+	<div class="zh_right">
+		<form name="TradeFrm" enctype="multipart/form-data" method="post" action="<{$smarty.server.PHP_SELF}>" onsubmit="$('Post').disabled=true;">
+		<div class="bt gs_bt4 h_tt4 free_bt"><h2>基本信息内容</h2><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label class="free_must">供求方向：</label>
+				<p class="free_p5"><{html_radios name="type_id" options=$TradeTypes checked=$t.TradeTypeId|default:"1" separator=" "}></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">信息标题：</label>
+				<p class="free_p1"><input name="trade[topic]" id="trade_topic" type="text" size="32" value=""></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">有 效 期：</label>
+				<p class="free_p5"><{html_radios name="expire_days" options=$OfferExpires checked=$t.TradeExpireDays|default:"30" separator=" "}></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">所在地区：</label>
+				<p><select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
+                          </select>&nbsp;<select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2"></select>&nbsp;<select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
+                          </select></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">详细说明：</label>
+				<p class="free_p4"><textarea name="trade[content]" id="trade_content" cols="60" rows="8" wrap="virtual"></textarea></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>选填信息内容</h3><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label>关 键 词：</label>
+				<p class="free_p1"><input name="trade[keywords]" id="trade_keywords" type="text" size="32" value=""></p>
+				<em>(多个关键词请用”,“号隔开)</em>
+			</div>
+			<div class="free_l">
+				<label>所在行业：</label>
+				<p><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
+                              </select>
+                                <select name="bindustry" id="bindustry" USEDATA="dataSrc" SUBCLASS="2">
+                                </select></p>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>联系方式</h3><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label class="free_must">联 系 人：</label>
+				<p class="free_p1"><input type="text" name="offer[link_man]" id="link_man" value=""></p>
+				<p class="free_p5"><{html_radios name="offer[gender]" options=$Genders checked="1" separator=" "}></p>
+			</div>
+			<div class="free_l">
+				<label>公司全称：</label>
+				<p class="free_p1"><input name="offer[company_name]" id="OfferCompanyName" type="text"></p>
+				<em>(公司全称)</em>
+			</div>
+			<div class="free_l">
+				<label>详细联系地址：</label>
+				<p class="free_p1"><input name="offer[address]" id="OfferAddress" type="text"></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">首选联系电话：</label>
+				<p><select name="offer[prim_tel]" id="OfferPrimTel">
+                <{html_options options=$PhoneTypes selected="1"}>
+              </select>号码:<p class="free_p1"><input type="text" name="offer[prim_telnumber]" id="prim_telnumber" value=""></p>
+			</div>
+			<div class="free_l">
+				<label>首选即时通讯：</label>
+				<p><select name="offer[prim_im]">
+                <{html_options options=$ImTypes selected="1"}>
+              </select></p>
+				<label class="free_must1">号码：</label>
+				<p class="free_p3"><input name="" type="text" value="" /></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">电子邮件：</label>
+				<p class="free_p1"><input name="offer[email]" id="OfferEmail" type="text"></p>
+			</div>
+<{if $IfVisPostPicture}>
+			<div class="free_l">
+				<label class="free_must">验 证 码：</label>
+				<p class="free_p2"><a name="inputAuthNumber" /><input type="text" name="visit_auth_num" id="VisitAuthNumber" size="4" maxlength="4" value=""></p>
+				<em>(<a href="#inputAuthNumber" onclick="$('VisitAuthPicture').src='<{$SiteUrl}>auth_image.php';">看不清楚换一张</a>)</em>
+				<img name="visit_auth_picture" id="VisitAuthPicture" src="<{$SiteUrl}>auth_image.php">
+			</div>
+<{/if}>                                  
+			<div class="free_l free_l1">
+				<input type="submit" value="一切完成，请发布" name="post" id="Post" class="free_btn1 f14 str" onclick="return check();" />
+				<input type="reset" value="取 消" class="free_btn2 f14 str" />
+			</div>
+		</div>
+		</form>
+	</div>
+	<p class="a_line7"></p>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+<script language="javascript">
+var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
+linkage.BLANK_SELECT = "请选择";
+linkage.init();
+var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
+linkage2.BLANK_SELECT = "请选择地区";
+linkage2.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title>资讯&laquo;<{$sitetitle}></title>
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="<{$pageDescriptioin}>"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<{$xajax_javascript}>
+<script language="javascript">
+xajax_rebuildHTML("news/index.php");
+</script>
+</head>
+
+<body>
+<{assign var="news_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd rmgjz">
+	<p><span>热门关键字：</span><{tag}></p>
+	<em><a href="<{$SiteUrl}>tag.php">更多...</a></em>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="w_left2">
+		<div class="zx_hot">
+			<{$ImageShow|default:"<strong>这里是图片轮换区</strong>"}>
+			<a href="<{$SiteUrl}>news/detail.php?id=<{$focus_news.NewsId}>" title="" class="zx_bt4"><{$focus_news.NewsTitle|truncate:35|default:"这里放置头条新闻"}></a>
+			<p><{$focus_news.NewsContent|truncate:350}></p>
+		</div>
+		<div class="clear9"></div>
+		<div class="zx_tab1">
+			<div class="bt zx_bt1" id="z_bt">
+				<h2 class="over"><a href="<{$SiteUrl}>news/list.php?type_id=1"><{newstype id=1}></a></h2>
+			</div>
+			<ul class="ul21" id="z_tab0">
+				<{news templet="title_with_time" max=7 type_id=1}>
+			</ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="zx_tab1 zx_tab2">
+			<div class="bt zx_bt1">
+				<h2 class="over"><a href="<{$SiteUrl}>news/list.php?type_id=1"><{newstype id=1}></a></h2>
+			</div>
+			<ul class="ul21"><{news templet="title_with_time" max=5 type_id=1}></ul>
+		</div>
+	</div>
+	<div class="w_left3">
+		<div class="zx_tab3">
+			<div class="bt zx_bt2"><h2>最新资讯</h2></div>
+			<ul class="ul21 ula"><{news}></ul>
+		</div>
+		<div class="clear9"></div>
+		<div class="zx_ad2"><img src="<{$tpl_img_path}>default/in_350x92.jpg" alt="" /></div>
+		<div class="clear9"></div>
+		<div class="zx_tab3 zx_tab4">
+			<div class="bt zx_bt2"><h2><a href="<{$SiteUrl}>news/list.php?type_id=2">企业动态</a></h2><p class="padright10"><a href="<{$SiteUrl}>news/list.php?type_id=2">更多</a></p></div>
+			<ul class="ul21 ula"><{news templet="title_with_time" type_id=2}></ul>
+		</div>
+	</div>
+	<div class="w_right2">
+		<{news type="image" col="1" imgwidth="180" imgheight="65"}>
+		<div class="clear9"></div>
+		<div class="zx_tab5">
+		<div class="zx_tab5 zx_tab6">
+			<div class="bt zx_bt3"><h2 class="f12"><a href="<{$UrlContainer.common}>news/list.php?type=hot">热点新闻</a></h2></div>
+			<ul class="ul21"><{news max=9}></ul>
+		</div>
+	</div>
+</div>
+<div class="clear9"></div>
+<div class="wd cpk_ad1"><{ad type_id=1}></div>
+<script type="text/javascript" src="<{$CSS_PATH}>js/default/ChangeTab.js"></script>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

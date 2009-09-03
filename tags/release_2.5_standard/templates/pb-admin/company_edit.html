@@ -1,0 +1,245 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/popcalendar.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+<style>
+img.framed { 
+padding: 6px; 
+border: 1px solid #CCC; 
+background-color: #FFF; }
+#honourDIV { text-align: left }
+#honour {
+margin: 0px;
+padding: 0px;
+list-style-type: none;
+}
+#honour li {
+display: block;
+width: 100px;
+text-align: left;
+float: left;
+margin: 0px;
+padding-top: 0.2em;
+padding-right: 2px;
+padding-bottom: 0.2em;
+padding-left: 2px;
+cursor: hand;
+}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="2" cellspacing="6">
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+      <tr>
+        <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">
+          控制台
+        </a>&nbsp;&raquo;&nbsp;公司库信息编辑</div></td>
+      </tr>
+    </table>
+        <form name="companyfrm" action="company.php" method="post">
+        <input type="hidden" name="id" value="<{$smarty.get.id}>" />
+        <input type="hidden" name="cid" value="<{$smarty.get.id}>" />
+<table width="100%"  border="0" cellpadding="5" cellspacing="1" class="tableborder">
+            <tr class="header">
+              <td colspan="2">公司库信息</td>
+            </tr>
+                  <tr>
+                    <td align="center" class="altbg1"><font color=red>* </font>公司名称
+                    <td class="altbg2"><input name=company[name] type=text id="company[name]" value="<{$CompanyInfo.name}>" size=35>
+                      归属用户名：
+                      <input name=member[name] type=text id="member[name]" value="<{$CompanyInfo.MemberUserName}>"></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">行业类别 
+                    <td class="altbg2"><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
+                            </select>
+                              <select name="bindustry" id="bindustry" USEDATA="dataSrc" SUBCLASS="2">
+                              </select>
+                      当前行业类别  :
+                      <{foreach from=$CurrentIndustry name=cui item=ci}>
+                      <{$ci.IndustryName}>
+                      <{if !$smarty.foreach.cui.last}>
+                      &rarr;
+                      <{/if}>
+                      <{foreachelse}>
+                      空
+                      <{/foreach}>                          </td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">员工人数 
+                    <td class="altbg2"><{html_options name="company[employee_amount]" id="employee_amount" options=$EmployeeAmounts selected=$CompanyInfo.employee_amount}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 经营模式 
+                    <td class="altbg2"><{html_checkboxes name="manage_type" options=$ManageTypes checked=$SelectedManageType}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 企业类型 
+                    <td class="altbg2"><{html_options name="company[type_id]" id="companytype_id" options=$CompanyTypes selected=$CompanyInfo.type_id}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 企业经济性质 
+                    <td class="altbg2"><{html_options name="company[property]" id="company_property" options=$CompanyProperty selected=$CompanyInfo.property}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 年营业额 
+                    <td class="altbg2"><{html_options name="company[AnnualRevenue]" id="AnnualRevenue" options=$CompanyAnual selected=$CompanyInfo.year_annual}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 主营产品或服务 
+                    <td class="altbg2"><textarea name="company[main_prod]" cols="46" rows="4" id="main_prod"><{$CompanyInfo.main_prod}>
+                        </textarea></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">主要经营地点                  
+                    <td class="altbg2"><input name="company[main_biz_place]" type="text" id="company[main_biz_place]" value="<{$CompanyInfo.main_biz_place}>" size="25"></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 公司注册地 
+                    <td class="altbg2"><input name="company[reg_address]" type="text" id="reg_address" value="<{$CompanyInfo.reg_address}>" size="25"></td>
+                  </tr>
+                  <tr>
+                    <td align="center" valign="top" class="altbg1"> 公司简介
+                    <td class="altbg2"><textarea name="company[description]" cols="55" rows="8" wrap="VIRTUAL" id="description"><{$CompanyInfo.description}>
+                            </textarea>
+                      （1000-1200字符）</td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 公司成立时间 
+                    <td class="altbg2"><input type="text" name="FoundDate" size="10" value='<{$CompanyInfo.found_date|date_format:"%Y-%m-%d"|default:"None"}>' id="date3" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date3"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a>(格式为 年-月-日)</td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">品牌名称                  
+                    <td class="altbg2"><input name=company[brand] type=text id="company[brand]" value="<{$CompanyInfo.main_brand}>" size=35></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 法人代表 
+                    <td class="altbg2"><input name="company[boss_name]" type="text" id="company[boss_name]" value="<{$CompanyInfo.boss_name}>" size="25">
+                      注册资金：
+                      <{html_options name="company[reg_fund]" options=$CompanyFunds selected=$CompanyInfo.reg_fund}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 主要市场
+                    <td border=1 bgcolor=#F7F7F7 ><{html_checkboxes name="company[main_market]" options=$MainMarkets checked=$SelectedMarket}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 主要客户群 
+                    <td class="altbg2"><input name="company[main_customer]" type="text" id="main_customer" value="<{$CompanyInfo.main_customer}>" size="32">
+                      （如超市，包装厂） </td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 开户银行 
+                    <td class="altbg2"><input name=company[bank_from] type=text id="company[bank_from]" value="<{$CompanyInfo.bank_from}>">
+                      
+                      帐号：
+                      <input name=company[bank_account] type=text id="company[bank_account]" value="<{$CompanyInfo.bank_account}>" size=35></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 联系人 
+                    <td class="altbg2"><input name="company[link_man]" type=text id="company[link_man]" value="<{$CompanyInfo.link_man}>">
+                      性别：
+                      <{html_radios name="company[link_man_gender]" options=$Genders checked=$CompanyInfo.link_man_gender|default:0 separator=" "}></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 职　位 
+                    <td class="altbg2"><select name="company[position]" id="company[position]">
+                              <{html_options options=$LinkmanPositions selected=$CompanyInfo.position}>
+                            </select>                          </td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 公司电话 
+                    <td class="altbg2"><input name=tel[code] type=text id="tel[code]" value="<{$CompanyInfo.telcode}>" size=5>
+                              <input name=tel[zone] type=text id="tel[zone]" value="<{$CompanyInfo.telzone}>" size=8>
+                              <input name=tel[number] type=text id="tel[number]" value="<{$CompanyInfo.tel}>" size=15></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">传　真 
+                    <td class="altbg2"><input name=fax[code] type=text id="fax[code]" value="<{$CompanyInfo.faxcode}>" size=5>
+                              <input name=fax[zone] type=text id="fax[zone]" value="<{$CompanyInfo.faxzone}>" size=8>
+                              <input name=fax[number] type=text id="fax[number]" value="<{$CompanyInfo.fax}>" size=15></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">手　机 
+                    <td class="altbg2"><input name=company[mobile] type=text id="company[mobile]" value="<{$CompanyInfo.mobile}>">                          </td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> 地　区 
+                    <td class="altbg2">                      
+					<select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
+                      </select>
+<select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2">
+                            </select>
+                      (省/市)
+                      <select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
+                      </select>
+                      (县/市/区)（如果不选择，则表示不改动）</td>
+                  </tr>
+                  <tr>
+                    <td align="center" class="altbg1"> 地　址 
+                    <td class="altbg2"><input name="company[address]" type="text" id="address" value="<{$CompanyInfo.address}>" size="32"></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">邮政编码                  
+                    <td class="altbg2"><input name=company[zipcode] type=text id="company[zipcode]" value="<{$CompanyInfo.zipcode}>" size=6></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center"> Email 
+                    <td class="altbg2"><input name=company[email] type=text id="company[email]" value="<{$CompanyInfo.email}>">
+                      网址：
+                      <input name=company[site_url] type=text id="company[site_url]" value="<{$CompanyInfo.site_url}>"></td>
+                  </tr>
+                  <tr>
+                    <td class="altbg1" align="center">主页模板                  
+                    <td class="altbg2"><input name=company[style_id] type=text id="company[style_id]" value="<{$CompanyInfo.style_id}>"></td>
+                  </tr>
+            <tr class="header">
+              <td colspan="2">相关荣誉证书</td>
+            </tr>
+                  <tr>
+                  <td colspan="2" class="altbg2"><div id="honourDIV"><ul id="honour">
+                  <{foreach from=$HonourResult name=c_a item=ca}>
+                  <li><img src="<{$attachment_dir}><{$ca.AttachmentFileName}>" alt="" border="1" width="125" height="85" class="framed" /></li>
+                  <{if $smarty.foreach.c_a.iteration is div by 5}>
+                  <br />
+                  <{/if}>
+                  <{foreachelse}>
+                  目前没有任何数据
+                  <{/foreach}>
+                  </ul></div></tr>
+                  <tr class="altbg1">
+                    <td colspan="2" align="center">
+                    <table border="0" cellpadding="5" cellspacing="0" class="button">
+					<{if $smarty.get.id}>                        
+					<tr>
+                          <td><input  name="check[in]" type=submit id="check_in" value=" 审核通过 "  class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" /></td>
+                          <td><input  name="check[out]" type=submit id="check_out" value=" 不通过审核 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" /></td>
+                          <td><input  name="edit_company" type=submit id="edit_company" value=" 修改 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" /></td>
+                        </tr>
+					<{else}>
+					<tr>
+                          <td colspan="3"><input  name="edit_company" type=submit id="edit_company" value=" 保存 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" /></td>
+                        </tr>
+					<{/if}>
+                </table>                </tr>
+              </table>        
+      </form></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>
+<script language="javascript">
+var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
+linkage.BLANK_SELECT = "请选择";
+linkage.init();
+var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
+linkage2.BLANK_SELECT = "请选择";
+linkage2.init();
+</script>

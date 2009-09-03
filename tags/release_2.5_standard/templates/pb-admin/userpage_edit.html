@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body leftmargin="10" topmargin="10">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo; 自定义页面管理</div></td>
+</tr></table>
+      <form name="editfrm" method="post" action="userpage.php" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<{$smarty.get.id}>">
+        <table width="100%"  border="0" cellpadding="8" cellspacing="1" class="tableborder">
+		<tr class="header">
+		  <td colspan="4">自定义页面</td>
+		</tr>
+          <tr>
+            <td align="center" class="altbg1"><div align="left"><strong>网页标题</strong>
+                <br />
+            显示在网页的Title标题里</div>
+            <td width="28%" class="altbg2"><input name=userpage[ua] type="Text" id="userpage_ua" value="<{$n.UserpageUa}>"></td>
+            <td width="18%" align="center" class="altbg1"><div align="left"><strong>缩略名</strong><br />
+            请使用英文</div></td>
+            <td width="30%" class="altbg2"><input name=userpage[ub] type="Text" id="userpage_ub" value="<{$n.UserpageUb}>"></td>
+          </tr>
+          
+          
+          <tr>
+            <td align="center" valign="top" class="altbg1"><div align="left">页面排列次序          
+            </div>
+            <td class="altbg2" border=1 ><input name=userpage[ud] type="Text" id="userpage_ud" value="<{$n.UserpageUd}>">&nbsp;</td>
+            <td class="altbg1" border=1 ><div align="left"><strong>显示名称</strong><br />
+            显示的文字链接</div></td>
+            <td class="altbg2" border=1 ><input name=userpage[uf] type="Text" id="userpage_uf" value="<{$n.UserpageUf}>"></td>
+          </tr>
+          <tr>
+            <td align="center" valign="top" class="altbg1"><div align="left">指向地址</div><td colspan="3" class="altbg2" border=1 ><input name=userpage[ug] type="Text" id="userpage_ug" value="<{$n.UserpageUg}>">
+              (如果为空，则自动从数据库中取得相关内容)</td>
+          </tr>
+          <tr>
+            <td width=24% align="center" valign="top" class="altbg1"><div align="left"><br>
+              详细内容 
+            </div>
+            <td colspan="3" class="altbg2" border=1 ><{$FCK_CONTENT}></td>
+          </tr>
+          
+          
+          <tr>
+            <td colspan="4" align="center">
+			<table border="0" cellpadding="5" cellspacing="0" class="button">
+                <tr>
+                  <td><input  name=save type=submit id="save" value=" 保存 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                  <td><input  name=reset type=reset id="reset" value=" 取消" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                </tr>
+          </table>          </tr>
+        </table>
+      </form></td></tr></table>
+<br /><br />
+</body>
+</html>
+
