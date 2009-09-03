@@ -109,9 +109,7 @@ if(isset($_POST['save'])){
 		if($_POST['submittime']!="None") $vals['submit_time'] = uaDateConvert($_POST['submittime']);
 		if($_POST['expiretime']!="None") $vals['expire_time'] = uaDateConvert($_POST['expiretime']);
 	}
-	if(!empty($offers['picture_remote'])){
-		$offers['picture_remote'] = trim($offers['picture_remote']);
-	}elseif (!empty($_FILES['pic']['name'])) {
+	if (!empty($_FILES['pic']['name'])) {
         include("../app/include/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;
@@ -124,6 +122,8 @@ if(isset($_POST['save'])){
         $img->Thumb();
         $attachment->imageWaterMark($attachment->saved_upload_name, "../images/watermark.png");
         $vals['picture'] = gmdate("Ym")."/".$attachment->parsed_file_name;
+	}elseif(!empty($offers['picture_remote'])){
+		$offers['picture_remote'] = trim($offers['picture_remote']);
 	}
 	//检查是否用户属于公司， 如果是， 则取得company_id后插入
 	if (!empty($offers['user_name'])) {
