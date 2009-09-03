@@ -28,7 +28,6 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id$
  */
-//Start
 $inc_path = "./";
 $li = 99;
 require("global.php");
