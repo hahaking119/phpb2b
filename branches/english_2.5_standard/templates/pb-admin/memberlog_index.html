@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/popcalendar.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;登陆日志管理</div></td></tr>
+</table>
+<br />
+<!-- 搜索 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="6"><div align="left">会员日志搜索</div></td></tr>
+<form name="searchfrm" method="get" action="">
+<tr>
+  <td width="9%">用户名称:</td>
+  <td width="15%"><input name="memberlog[username]" type="text" id="SearchUsername" size="25" value="<{$smarty.get.memberlog.username}>"></td>
+  <td width="10%">登陆时间:</td>
+  <td><input type="text" name="PubFromDate" size="10" value='<{$smarty.get.PubFromDate|default:"None"}>' id="date1" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date1"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
+  <td>到</td>
+  <td><input type="text" name="PubToDate" size="10" value='<{$smarty.get.PubToDate|default:"None"}>' id="date2" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date2"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
+  </tr>
+
+<tr>
+  <td colspan="6"><div align="center">
+    <input name="search" type="submit" id="search" value="搜索" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'">
+  </div></td>
+  </tr>
+</form>
+</table>
+
+<br />
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center">
+  <td>会员名称</td>
+<td>登陆IP地址或位置</td>
+<td>登陆时间</td>
+<td><a href="<{$smarty.server.PHP_SELF}>?action=clear" onClick="return confirmAction('是否删除所有日志记录?');">清空日志？</a></td>
+</tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$LogList item=lg name=memberlogs}>
+<tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
+<td><a href="./member.php?action=mod&id=<{$lg.LogMemberid}>"><{$lg.MemberUsername}></a></td>
+<td><{mask_ip ip=$lg.LogLoginip}></td>
+<td align="left"><{$lg.LogLogintime|date_format:"%Y-%m-%d %H:%M:%S"}><{if $lg.LogLogintime>$Today}>&nbsp;<img src="./images/new2.gif" /><{/if}></td>
+<td>&nbsp;</td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="5" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="5"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="3">&nbsp;</td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+<!-- 结束new -->
+</body>
+</html>

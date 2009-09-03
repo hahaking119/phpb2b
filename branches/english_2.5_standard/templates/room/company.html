@@ -1,0 +1,266 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>商务室 - <{$sitetitle}></title>
+<link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
+<link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/popcalendar.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr> 
+    <td height="83"><{include file="default/element.top.html"}></td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr align="center" valign="top">
+    <td width="180" background="<{$tpl_img_path}>office/left_bg.gif"><{include file="room/menu.html"}></td>
+    <td align="center"><table width="98%"  border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><img src="<{$tpl_img_path}>office/banr_pic.gif" width=570 height=101 alt=""></td>
+        </tr>
+      </table>
+        <table width="95%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>&nbsp;</td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/company.gif" width="15" height="16"> 公司信息 <{$CompanyNotExists}></td>
+                </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="5" valign="top" class="bggray2"></td>
+          </tr>
+      </table>
+	  <form name="companyeditfrm" action="./company.php" method="post" onsubmit="document.getElementById('company_edit').disabled=true;" enctype="multipart/form-data">
+		 <input type="hidden" name="id" value="<{$CompanyInfo.CompanyId}>">        
+		 <table width="95%"  border="0" cellspacing="0" cellpadding="0">          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td height="35"><span class="gray">&nbsp;（提示：带<font color="#FF6600"> * </font>号的为必填项）</span></td>
+                </tr>
+                <tr>
+                  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td class="bgblue"><img src="<{$tpl_img_path}>office/corner_01.gif" width="12" height="12"></td>
+                        <td align="right" valign="top" class="tdright"><img src="<{$tpl_img_path}>office/corner_02.gif" width="12" height="12"></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td>
+				  <table width="100%" border="0" cellspacing="0" cellpadding="5">
+				  <{if $CompanyInfo.CompanyStatus==1}>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 公司名称：</td>
+                        <td class="tdright"><{$CompanyInfo.CompanyName}></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"> 公司英文名称</td>
+                        <td class="tdright"><{$CompanyInfo.CompanyEnglishName}></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 行业类别：</td>
+                        <td class="tdright"><{foreach from=$CurrentIndustry name=cui item=ci}><{$ci.IndustryName}><{if !$smarty.foreach.cui.last}>&rarr;<{/if}><{foreachelse}>空<{/foreach}></td>
+                      </tr>
+				<{else}>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 公司名称：</td>
+                        <td class="tdright"><input name="name" type="text" id="name" value="<{$CompanyInfo.CompanyName}>" size="30"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"> 公司英文名称</td>
+                        <td class="tdright"><input name="english_name" type="text" id="english_name" value="<{$CompanyInfo.CompanyEnglishName}>" size="30"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 行业类别：</td>
+                        <td class="tdright"><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
+                          </select>
+                            <select name="bindustry" id="bindustry" USEDATA="dataSrc" SUBCLASS="2">
+                            </select></td>
+                      </tr>
+				<{/if}>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 员工人数：</td>
+                        <td class="tdright"><{html_options name="EmployeeAmount" options=$EmployeeAmounts selected=$SelectedEmployeeAmount}><font color="#666666">&nbsp;                        </font></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 年营业额：</td>
+                        <td class="tdright"><{html_options name="AnnualRevenue" options=$CompanyAnual selected=$SelectedAnual}></td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 经营模式：</td>
+                        <td class="tdright"><{html_checkboxes name="manage_type" options=$ManageTypes checked=$SelectedProperty}></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 企业经济性质：</td>
+                        <td class="tdright"><{html_options name="company_property" options=$CompanyProperty selected=$SelectedType}>                        <font color="#666666">&nbsp;                          </font></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 主营产品：</td>
+                        <td class="tdright"><textarea name="main_prod" cols="40" rows="4" id="main_prod"><{$CompanyInfo.CompanyMainProd|default:""}></textarea><font class=S><br>
+（100个字符以内）</font></td>
+                      </tr>
+					  <{if $CompanyInfo.CompanyStatus==1}>
+                      <tr>
+                        <td class="tdleft">所在地区：</td>
+                        <td class="tdright"><{$CompanyInfo.ProvinceName}><{$CompanyInfo.CityName}></td>
+                      </tr>
+					  <{else}>
+                      <tr>
+                        <td class="tdleft">所在地区：</td>
+                        <td class="tdright"><select name="countryid" id="country_id" USEDATA="dataSrc2" SUBCLASS="1">
+                          </select>
+						  <select name="provinceid" id="province_id" USEDATA="dataSrc2" SUBCLASS="2">
+                          </select>
+						  <select name="cityid" id="city_id" USEDATA="dataSrc2" SUBCLASS="3">
+                          </select></td>
+                      </tr>
+					  <{/if}>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 详细地址：</td>
+                        <td class="tdright"><input name="address" type="text" id="address" value="<{$CompanyInfo.CompanyAddress}>" size="32">                            </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" class="tdleft"><font color="#FF6600"> <br>
+                        *</font> 公司介绍：</td>
+                        <td class="tdright"><p>
+                            <textarea name="company_des" cols="40" rows="8" wrap="VIRTUAL" id="company_des" onKeyUp="checkLength(this);"><{$CompanyInfo.CompanyDescription}></textarea><br><small>文字最大长度: 250. 还剩: <span id="chLeft">250</span>.</small><br>
+                        </p></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 法人代表：</td>
+                        <td class="tdright"><font color="#666666"> <span class="zi">
+                          <input name="bossname" type="text" id="bossname" value="<{$CompanyInfo.CompanyBossName}>" size="25">
+                        </span> </font></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">公司注册地：</td>
+                        <td class="tdright"><font color="#666666"> <span class="zi">
+                          <input name="reg_address" type="text" id="reg_address" value="<{$CompanyInfo.CompanyRegAddress}>" size="25">
+                        </span> </font></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">注册时间：</td>
+                        <td class="tdright"><input type="text" name="FoundDate" size="20" maxlength="20" value='<{$CompanyInfo.CompanyFoundDate|date_format:"%Y-%m-%d"|default:"None"}>' id="date1" readonly>
+<a href="javascript:;" onclick='showCalendar(this, document.getElementById("date1"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>office/calendar.gif" border="0" alt=""></a></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">注册资金：</td>
+                        <td class="tdright">                          
+						<{html_options name="reg_fund" options=$CompanyFunds selected=$SelectedFund}>（请如实填写）</td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">开户银行：</td>
+                        <td class="tdright"><input name="bank_from" type="text" id="bank_from" value="<{$CompanyInfo.CompanyBankFrom}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">　帐 号：</td>
+                        <td class="tdright"><input name="bank_account" type="text" id="bank_account" value="<{$CompanyInfo.CompanyBankAccount}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">品牌名称：</td>
+                        <td class="tdright"><input name="main_brand" type="text" id="main_brand" value="<{$CompanyInfo.CompanyMainBrand}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft"><font color="#FF6600">*</font> 主要经营地点：</td>
+                        <td class="tdright"><input name="main_biz_place" type="text" id="main_biz_place" value="<{$CompanyInfo.CompanyMainBizPlace}>" size="32"> 
+                        省市名</td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">主要客户群：</td>
+                        <td class="tdright"><input name="main_customer" type="text" id="main_customer" value="<{$CompanyInfo.CompanyMainCustomer}>" size="32">                          
+                        （如超市，包装厂）                       </td>
+                      </tr>
+                      <tr>
+                        <td valign="middle" class="tdleft">主要市场：</td>
+                        <td class="tdright"><{html_checkboxes name="main_market" options=$MainMarkets checked=$SelectedMarket labels=false}></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">联系人：</td>
+                        <td class="tdright"><input name="linkman" type="text" id="linkman" value="<{$CompanyInfo.CompanyLinkMan}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">联系人职位：</td>
+                        <td class="tdright">
+						<select name="position" id="position">
+						<{html_options options=$LinkmanPositions selected=$SelectedPosition labels=false}>
+                       </select></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">联系电话：</td>
+                        <td class="tdright"><input name="telcode" type="text" id="telcode" value="<{$CompanyInfo.CompanyTelcode}>" size="4" maxlength="4">
+                        -
+                          <input name="telzone" type="text" id="telzone" value="<{$CompanyInfo.CompanyTelzone}>" size="4" maxlength="4">
+                        -
+                        <input name="tel" type="text" id="tel" value="<{$CompanyInfo.CompanyTel}>" size="15"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">传真号码：</td>
+                        <td class="tdright"><input name="faxcode" type="text" id="faxcode" value="<{$CompanyInfo.CompanyFaxcode}>" size="4" maxlength="4">
+-
+  <input name="faxzone" type="text" id="faxzone" value="<{$CompanyInfo.CompanyFaxzone}>" size="4" maxlength="4">
+-
+<input name="fax" type="text" id="fax" value="<{$CompanyInfo.CompanyFax}>" size="15"></td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="tdleft">手机号码</td>
+                        <td class="tdright"><input name="mobile" type="text" id="mobile" value="<{$CompanyInfo.CompanyMobile}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">公司主页</td>
+                        <td class="tdright"><input name="site_url" type="text" id="site_url" value="<{$CompanyInfo.CompanySiteUrl}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">业务Email：</td>
+                        <td class="tdright"><input name="email" type="text" id="email" value="<{$CompanyInfo.CompanyEmail}>" size="32"></td>
+                      </tr>
+                      <tr>
+                        <td class="tdleft">企业Logo图片：</td>
+                        <td class="tdright"><input name="picture" type="file" id="Picture" value="" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'"><div id="CompanyLogo" style="width: 117px; height: 63px"><{if $CompanyInfo.CompanyPicture}><img src="../attachment/<{$CompanyInfo.CompanyPicture}>" width="117" height="63" alt="企业标识图片" /><{/if}></div></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="21%" class="tdleft"><img src="<{$tpl_img_path}>office/corner_03.gif" width="12" height="12"></td>
+                        <td align="right" valign="top" class="tdright"><img src="<{$tpl_img_path}>office/corner_04.gif" width="12" height="12"></td>
+                      </tr>
+                  </table></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td height="40" align="center"><br>
+				<input type="hidden" name="edit_company" id="EditCompany" value="y" />
+                <input name="company_edit" type="submit" id="CompanyEdit" value="确认提交">
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+    </table>
+	</form>
+	</td>
+  </tr>
+</table>
+<{include file="room/foot.html"}>
+</body>
+</center>
+</html>
+<script language="javascript">
+var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
+linkage.BLANK_SELECT = "请选择";
+linkage.init();
+var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
+linkage2.BLANK_SELECT = "请选择";
+linkage2.init();
+</script>

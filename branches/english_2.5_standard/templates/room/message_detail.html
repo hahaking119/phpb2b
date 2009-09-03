@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>商务室 - <{$sitetitle}></title>
+<link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
+<link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr> 
+    <td height="83"><{include file="default/element.top.html"}></td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr align="center" valign="top">
+    <td width="180" align="center" background="<{$tpl_img_path}>office/left_bg.gif"><{include file="room/menu.html"}></td>
+    <td><table  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><img src="<{$tpl_img_path}>office/banr_pic.gif" width=570 height=101 alt=""></td>
+      </tr>
+    </table>
+      <table width="95%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>&nbsp;</td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">  <{if $smarty.get.type eq "in"}>收到的留言<{else}>发出的留言<{/if}></td>
+              </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td height="5" valign="top" class="bggray2"></td>
+        </tr>
+      </table>
+      <br>
+	  <form name="messagefrm" action="./sendmessage.php" method="post">
+	  <input type="hidden" name="revert_to_member_id" value="<{$m.CompanymessageFromMemberId}>">
+      <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+        <tr align="center">
+          <td><table width="100%"  border="0" cellpadding="5" cellspacing="2">
+            <tr align="center">
+              <td width="20%" height="30" align="center" class="bgblue">来 源：</td>
+              <td height="30" align="left" class="bggray3"><{$m.CompanymessageFromMemberId}></td>
+              </tr>
+            <tr align="center">
+              <td width="20%" height="30" class="bgblue">时 间：</td>
+              <td align="left" class="bggray3"><{$m.CompanymessageCreated|date_format:"%Y-%m-%d"}></td>
+              </tr>
+            <tr align="center">
+              <td width="20%" height="30" class="bgblue"> 主 题：</td>
+              <td align="left" class="bggray3"><{$m.CompanymessageTitle|strip_tags}></td>
+              </tr>
+            <tr align="center">
+              <td width="20%" valign="top" class="bgblue">                <br>
+                内 容：</td>
+              <td align="left" class="tdright"><{$m.CompanymessageContent|strip_tags}></td>
+              </tr>
+          </table></td>
+        </tr>
+        <tr align="center">
+          <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td><table width="100%"  border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td height="1" background="<{$tpl_img_path}>office/index_trade_line.gif"></td>
+              </tr>
+          </table></td>
+        </tr>
+        <tr align="center" valign="bottom">
+          <td height="40"><input type=submit value=" 回 复 " name=submit onClick="location.href='send_message.html'"> 　
+            <input type=submit value=" 返 回 " name=submit> 
+          </td>
+        </tr>
+      </table>
+	  </form>
+    </td>
+  </tr>
+</table>
+<{include file="room/foot.html"}>
+</body>
+</center>
+ </html>
+

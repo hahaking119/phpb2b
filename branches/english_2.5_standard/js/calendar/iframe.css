@@ -1,0 +1,38 @@
+code {
+	background-color: #E5E5E5;
+	color: #666;
+	display: block;
+	font: normal 10px/14px "Lucida Console", Monaco, monospace;
+	float: left;
+	margin: 9px 0 18px 0;
+	width: 592px;
+	padding: 9px 18px;
+}
+em {
+	font-style: normal;
+}
+form div {
+	clear: both;
+	margin-bottom: 18px;
+	overflow: hidden;
+}
+form input{
+	border:1px #a9a9a9 solid;
+	height:17px;
+	float: left;
+	font: normal 12px Arial, sans-serif;
+	width: 80px;
+	margin-left:5px;
+}
+
+form.long input.alternate,
+form.long input.calendar{
+	width: 80px;
+}
+
+form label {
+	color: #262626;
+	font: normal 12px/18px Arial, sans-serif;
+	float: left;
+	margin-left:5px;
+}

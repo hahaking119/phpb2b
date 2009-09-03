@@ -1,0 +1,10 @@
+<{foreach from=$IndustryList name=n1 item=i1 key=k1}>
+			<fieldset>
+				<h2 class="str f14"><a href="<{$url}>industryname=<{$i1.name|urlencode}>" title="<{$i1.name}>"><{$i1.name}></a></h2>
+				<p>
+					<{foreach from=$i1.subs name=n2 item=i2 key=k2}>
+					<a href="<{$url}>industryname=<{$i2.name|urlencode}>" title="<{$i2.name}>"><{$i2.name}></a> |<{if $smarty.foreach.n2.iteration==5}><{php}>break;<{/php}><{/if}>
+		<{/foreach}>
+				</p>
+			</fieldset>
+<{/foreach}>
