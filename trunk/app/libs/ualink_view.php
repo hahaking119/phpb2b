@@ -31,8 +31,8 @@
  */
 class UaView extends UaObject
 {
-	var $themePath = null;
-	var $themeUrl = null;
+	var $theme_path = "default";
+	var $theme_url = "default/";
 
 	function UaView(){
 	}
