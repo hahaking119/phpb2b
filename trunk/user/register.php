@@ -187,21 +187,56 @@ if(isset($_POST['register'])){
 			if ($forums['switch']==true && ($_POST['join_forum'] == 1))
 			{
 				if($forums['type']=="discuz"){
-					$member_reg = array
-					(
-					'username'	=> $tmp_username,
-					'password'	=> $vars['userpass'],
-					'email'		=> $vars['email'],
-					'regdate'	=> $time_stamp,
-					'regip'		=> $uip,
-					'gender'	=> $vars['gender'],
-					'qq'	=> $vars['qq'],
-					'ICQ'	=> $vars['icq'],
-					'msn'	=> $vars['msn'],
-					'yahoo'	=> $vars['yahoo'],
-					);
-					$gopage = DZ_API($member_reg,"login",URL."user/regdone.php?name=".rawurlencode($tmp_username).$CheckRegisterUser);
-					PB_goto($gopage);
+					$uname = $tmp_username;
+					$upass = $member_datas['memberpass'];
+					$uemail = $vars['email'];
+					//在UCenter注册用户信息
+					if(!empty($_POST['activation']) && ($activeuser = uc_get_user($_POST['activation']))) {
+						list($uuid, $username) = $activeuser;
+					} else {
+						if(uc_get_user($uname) &&  !$member->checkUserExist($uname)) {
+							//判断需要注册的用户如果是需要激活的用户，则需跳转到登录页面验证
+							echo '该用户无需注册，请激活该用户<br><a href="'.URL.'user/logging.php?action=active">继续</a>';
+							exit;
+						}
+
+						$uid = uc_user_register($uname, $upass, $uemail);
+						if($uid <= 0) {
+							if($uid == -1) {
+								echo '用户名不合法';
+							} elseif($uid == -2) {
+								echo '包含要允许注册的词语';
+							} elseif($uid == -3) {
+								echo '用户名已经存在';
+							} elseif($uid == -4) {
+								echo 'Email 格式有误';
+							} elseif($uid == -5) {
+								echo 'Email 不允许注册';
+							} elseif($uid == -6) {
+								echo '该 Email 已经被注册';
+							} else {
+								echo '未定义';
+							}
+						} else {
+							$username = $uname;
+						}
+					}
+					//UC LOGIN 通过接口判断登录帐号的正确性，返回值为数组
+					list($uuid, $username, $password, $email) = uc_user_login($uname, $upass);
+					if($uuid > 0) {
+						//生成同步登录的代码
+						$ucsynlogin = uc_user_synlogin($uuid);
+						echo 'Ucenter:注册成功<br><a href="'.$gopage.'">继续</a>';
+						exit;
+					} elseif($uuid == -1) {
+						echo 'Ucenter:用户不存在,或者被删除';
+					} elseif($uuid == -2) {
+						echo 'Ucenter:密码错误';
+						exit;
+					} else {
+						echo 'Ucenter:未定义';
+					}
+					//END UC LOGIN
 				}elseif($forums['type']=="phpwind"){
 					$member_reg = array
 					(

@@ -19,11 +19,11 @@ if(!empty($LatestPictureNews)){
     $img_count = count($LatestPictureNews);
     $j=0;
 	for($i=1; $i<=$img_count; $i++){
-	    $imgs[] = "img".$i." = new Image ();img".$i.".src='".URL."attachment/".$LatestPictureNews[$j]['picture'].".small.jpg';";
-	    $urls[] = "url".$i." = new Image ();url".$i.".src='".URL."news/detail.php?id=".$LatestPictureNews[$j]['id']."';";
+	    $imgs_src[] = "img".$i." = new Image ();img".$i.".src='".URL."attachment/".$LatestPictureNews[$j]['picture'].".small.jpg';";
+	    $imgs_url[] = "url".$i." = new Image ();url".$i.".src='".URL."news/detail.php?id=".$LatestPictureNews[$j]['id']."';";
 	    $j++;
 	}
-	uaAssign(array("img_count"=>count($LatestPictureNews), "PictureFiles"=>implode("\n", $imgs), "PictureTitles"=>implode("\n", $urls)));
+	uaAssign(array("img_count"=>$img_count, "PictureFiles"=>implode("\n", $imgs_src), "PictureTitles"=>implode("\n", $imgs_url)));
 	setvar("ImageShow", $smarty->fetch($theme_name."/element.img_show.html"));
 }
 require(DATA_PATH.$cookiepre."newstype.inc.php");

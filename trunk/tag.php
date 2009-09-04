@@ -39,8 +39,8 @@ $keyword = new Keywords();
 $trade = new Trades();
 $tpl_file = "index";
 $conditions = null;
-if (isset($_GET['skeyword'])) {
-	$searchkeywords = urldecode($_GET['skeyword']);
+if (isset($_GET['keyword'])) {
+	$searchkeywords = urldecode($_GET['keyword']);
 }
 
 $tag_modules = array('index','trades','companies','newses','markets','expoes','products', 'jobs');
