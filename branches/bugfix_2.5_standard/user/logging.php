@@ -69,6 +69,13 @@ function ua_referer($default = '') {
 if(isset($_GET['action']) && ($_GET['action'] == "logout")){
 	$member_out = null;
 	$referer = ua_referer();
+	uclearcookies();
+	if (isset($_GET['fr'])) {
+		if ($_GET['fr']=="cp") {
+			usetcookie("uladmin", "");
+		}
+	}
+	session_destroy();
 	if($forums['switch']==true){
 		if($forums['type']=="discuz"){
 			$member_out = array
@@ -92,13 +99,6 @@ if(isset($_GET['action']) && ($_GET['action'] == "logout")){
 	}else{
 		$gopage = $referer;
 	}
-	uclearcookies();
-	if (isset($_GET['fr'])) {
-		if ($_GET['fr']=="cp") {
-			usetcookie("uladmin", "");
-		}
-	}
-	session_destroy();
 	if (!empty($_GET['forward'])) {
 		PB_goto($_GET['forward']);
 	}else{
