@@ -29,6 +29,21 @@ if(isset($_POST['loginbtn'])){
 			$back_forward = $_POST['forward'];
 		}
 		$checked = ua_checkLogin($tmpUserName,$tmpUserPass, $back_forward);
+        //UC LOGIN 通过接口判断登录帐号的正确性，返回值为数组
+        list($uid, $username, $password, $email) = uc_user_login($tmpUserName, $tmpUserPass);
+        if($uid > 0) {
+            //生成同步登录的代码
+            $ucsynlogin = uc_user_synlogin($uid);
+            echo '登录成功'.$ucsynlogin.'<br><a href="'.$referer.'">继续</a>';
+            exit;
+        } elseif($uid == -1) {
+            echo '用户不存在,或者被删除';
+        } elseif($uid == -2) {
+            echo '密码错';
+        } else {
+            echo '未定义';
+        }
+        //END UC LOGIN
 		if ($checked > 0) {
 			$errmsg = "";
 		}elseif ($checked == (-2) ) {
@@ -78,14 +93,19 @@ if(isset($_GET['action']) && ($_GET['action'] == "logout")){
 	session_destroy();
 	if($forums['switch']==true){
 		if($forums['type']=="discuz"){
-			$member_out = array
-			(
-				'username'	=> $_SESSION['MemberName'],
-				'password'	=> $_SESSION['MemberPass'],
-				'email'		=> $ua_user['email'],
-				'cookietime'=> $ua_user['keep_online']
-			);
-			$gopage = DZ_API($member_out,"logout",$referer);
+            $member_out = array
+            (
+            'username'	=> $_SESSION['MemberName'],
+            'password'	=> $_SESSION['MemberPass'],
+            'email'		=> $ua_user['email'],
+            'cookietime'=> $ua_user['keep_online']
+            );
+            $gopage = URL;
+            /**UC OUT**/
+            $ucsynlogout = uc_user_synlogout();
+            echo '退出成功'.$ucsynlogout.'<br><a href="'.$referer.'">继续</a>';
+            exit;
+            /**END UC OUT**/
 		}elseif($forums['type']=="phpwind"){
 			$member_out = array
 			(

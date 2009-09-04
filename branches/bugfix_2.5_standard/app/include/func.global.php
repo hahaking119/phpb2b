@@ -249,10 +249,7 @@
 			}
 			if($forums['switch']==true){
 				if($forums['type']=="discuz"){
-					$member_info['cookietime'] = $keep_online;
-					$goto_page = DZ_API($member_info,"login",$forward);
-					header("Location:".$goto_page);
-					exit;
+					return true;
 				}elseif($forums['type']=="phpwind") {
 					$member_info['uid'] = $tmp_memberinfo['id'];
 					$member_info['cktime'] = $keep_online;
