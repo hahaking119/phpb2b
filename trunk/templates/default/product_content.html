@@ -11,23 +11,6 @@
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
-<script>
-$(document).ready(function(){        //DOM的onload事件处理函数     
-  $("#favor").click(function(){          //当按钮button被点击时的处理函数     
-    postdata();                                      //button被点击时执行postdata函数     
-  });     
-});
-function postdata(){                             //提交数据函数     
-  $.ajax({                                                 //调用jquery的ajax方法     
-    type: "POST",                                     //设置ajax方法提交数据的形式     
-    url: "detail.php",                                      //把数据提交到ok.php     
-    data: "action=favor&type_id=<{$tradeInfo.trade_type}>&id=<{$tradeInfo.TradeId}>",    //输入框writer中的值作为提交的数据     
-    success: function(msg){                 //提交成功后的回调，msg变量是ok.php输出的内容。     
-      alert("已经加入收藏夹");                     //如果有必要，可以把msg变量的值显示到某个DIV元素中     
-    }     
-  });     
-}
-</script>
 <script src="<{$JS_PATH}>js/prototype.js"></script>
 <script language="javascript">
 function extendDiv(id) {
