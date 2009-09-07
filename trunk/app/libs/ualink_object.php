@@ -30,8 +30,49 @@
  * @version $Id: ualink_object.php 25 2009-08-28 01:46:55Z stevenchow811@163.com $
  */
 class UaObject{
+
+	function UaObject() {
+		$args = func_get_args();
+		if (method_exists($this, '__destruct')) {
+			register_shutdown_function (array(&$this, '__destruct'));
+		}
+		call_user_func_array(array(&$this, '__construct'), $args);
+	}
+
 	/**
-	 * get the mysql version
+	* Class constructor
+	*/
+	function __construct() {
+	}
+
+	/**
+	 *
+	 * @return string The name of this class
+	 * @access public
+	 */
+	function toString() {
+		$class = get_class($this);
+		return $class;
+	}
+
+	/**
+	 *
+	 * @param array $properties
+	 * @return void
+	 * @access protected
+	 */
+	function _set($properties = array()) {
+		if (is_array($properties) && !empty($properties)) {
+			$vars = get_object_vars($this);
+			foreach ($properties as $key => $val) {
+				if (array_key_exists($key, $vars)) {
+					$this->{$key} = $val;
+				}
+			}
+		}
+	}
+	
+	/**
 	 *
 	 * @return Mysql version.
 	 */
