@@ -13,9 +13,10 @@ $fields.= "Company.id as ID,Company.style_id AS StyleId,Company.name AS CompanyN
 if (!empty($get_user_name)) {
 	$sql = "select ".$fields." from ".$company->getTable(true)." left join ".$member->getTable(true)." on Member.id=Company.member_id where Member.username='$get_user_name'";
 }elseif(!empty($_GET['id'])) {
-	$sql = "select ".$fields." from ".$company->getTable(true)." where Company.id=".intval($_GET['id']);;
+	$sql = "select ".$fields.",Member.user_type,Member.username from ".$company->getTable(true)." left join ".$member->getTable(true)." on Company.member_id=Member.id where Company.id=".intval($_GET['id']);;
 }
 $companyinfo = $g_db->GetRow($sql);
+$get_user_name = $companyinfo['username'];
 setvar("cinfo",$companyinfo);
 
 if (empty($companyinfo) || !$companyinfo) {
@@ -37,7 +38,7 @@ $link_sql.= "(select null as FriendID,Companyoutlink.name as FriendName,Companyo
 $result = $g_db->GetAll($link_sql);
 unset($link_sql, $fields);
 $company->setMenu(intval(PRETEND_HTML_LEVEL));
-$membertype_id = $member->field("user_type", "username='$get_user_name'");
+$membertype_id = $companyinfo['user_type'];
 $membertype_name = $membertype->field("name", "id=".$membertype_id);
 setvar("MembertypeName",$membertype_name);
 setvar("Menus", $company->getMenu());

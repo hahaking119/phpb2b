@@ -15,6 +15,21 @@ if ($_POST['del'] && is_array($_POST['id'])) {
 		flash("./alert.php","./companynews.php",null,0);
 	}
 }
+if ($_POST['check'] && is_array($_POST['id'])) {
+	$strCompanyNewsId = implode(",", $_POST['id']);
+	$strCompanyNewsId = "(".$strCompanyNewsId.")";
+	$arrResult = $g_db->GetArray("select id,status from ".$companynews->getTable()." where id in ".$strCompanyNewsId);
+	if (!empty($arrResult)){
+	    foreach ($arrResult as $key=>$val){
+	        if (1 == $val['status']) {
+	        	$g_db->Execute("update ".$companynews->getTable()." set status='0' where id=".$val['id']);
+	        }else{
+	            $g_db->Execute("update ".$companynews->getTable()." set status='1' where id=".$val['id']);
+	        }
+	    }
+	    flash("./alert.php","./companynews.php",null,1);
+	}
+}
 if ($_GET['action'] == "del" && $_GET['id']) {
 	if (!$companynews->del($_GET['id'])) {
 		flash("./alert.php","./companynews.php",null,0);
