@@ -3,20 +3,14 @@ $CACHE_P_INDUSTRY = array (
   1 => 
   array (
     'id' => '1',
-    'name' => '纺织、皮革',
+    'name' => 'Industrial Supplies',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      102 => 
+      101 => 
       array (
-        'id' => '102',
-        'name' => '床上用品',
-        'amount' => '0|0|0|0',
-      ),
-      103 => 
-      array (
-        'id' => '103',
-        'name' => '纺织、皮革加工',
+        'id' => '101',
+        'name' => 'Industrial',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -24,26 +18,20 @@ $CACHE_P_INDUSTRY = array (
   2 => 
   array (
     'id' => '2',
-    'name' => '服装、服饰',
+    'name' => 'Construction & Real Estate',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      134 => 
+      103 => 
       array (
-        'id' => '134',
-        'name' => '服装辅料',
+        'id' => '103',
+        'name' => 'Real Estate',
         'amount' => '0|0|0|0',
       ),
-      135 => 
+      102 => 
       array (
-        'id' => '135',
-        'name' => '时尚饰品',
-        'amount' => '0|0|0|0',
-      ),
-      136 => 
-      array (
-        'id' => '136',
-        'name' => '内衣',
+        'id' => '102',
+        'name' => 'Construction',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -51,20 +39,14 @@ $CACHE_P_INDUSTRY = array (
   3 => 
   array (
     'id' => '3',
-    'name' => '机械及工业制品',
+    'name' => 'Electrical & Electronics',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      185 => 
+      104 => 
       array (
-        'id' => '185',
-        'name' => '焊接、切割设备与材料',
-        'amount' => '0|0|0|0',
-      ),
-      186 => 
-      array (
-        'id' => '186',
-        'name' => '通用零部件',
+        'id' => '104',
+        'name' => 'Electrical',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -72,26 +54,14 @@ $CACHE_P_INDUSTRY = array (
   4 => 
   array (
     'id' => '4',
-    'name' => '礼品、工艺品',
+    'name' => 'Telecommunications',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      210 => 
+      105 => 
       array (
-        'id' => '210',
-        'name' => '雕塑',
-        'amount' => '0|0|0|0',
-      ),
-      211 => 
-      array (
-        'id' => '211',
-        'name' => '仿古工艺品',
-        'amount' => '0|0|0|0',
-      ),
-      212 => 
-      array (
-        'id' => '212',
-        'name' => '仿生工艺品',
+        'id' => '105',
+        'name' => 'Telecommunication',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -99,32 +69,14 @@ $CACHE_P_INDUSTRY = array (
   5 => 
   array (
     'id' => '5',
-    'name' => '化工',
+    'name' => 'Transportation',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      254 => 
+      106 => 
       array (
-        'id' => '254',
-        'name' => '其他树脂',
-        'amount' => '0|0|0|0',
-      ),
-      255 => 
-      array (
-        'id' => '255',
-        'name' => '医药原料、中间体',
-        'amount' => '0|0|0|0',
-      ),
-      256 => 
-      array (
-        'id' => '256',
-        'name' => '石油及制品',
-        'amount' => '0|0|0|0',
-      ),
-      257 => 
-      array (
-        'id' => '257',
-        'name' => '化工助剂',
+        'id' => '106',
+        'name' => 'Transportation',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -132,26 +84,20 @@ $CACHE_P_INDUSTRY = array (
   6 => 
   array (
     'id' => '6',
-    'name' => '家用电器',
+    'name' => 'Garments & Apparels',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      292 => 
+      107 => 
       array (
-        'id' => '292',
-        'name' => '电扇、排气扇',
+        'id' => '107',
+        'name' => 'Garment',
         'amount' => '0|0|0|0',
       ),
-      293 => 
+      108 => 
       array (
-        'id' => '293',
-        'name' => '电热壶、电热杯',
-        'amount' => '0|0|0|0',
-      ),
-      294 => 
-      array (
-        'id' => '294',
-        'name' => '热水器',
+        'id' => '108',
+        'name' => 'Apparel',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -159,20 +105,14 @@ $CACHE_P_INDUSTRY = array (
   7 => 
   array (
     'id' => '7',
-    'name' => '包装、纸',
+    'name' => 'Footwears',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      332 => 
+      109 => 
       array (
-        'id' => '332',
-        'name' => '复合材料包装用品',
-        'amount' => '0|0|0|0',
-      ),
-      333 => 
-      array (
-        'id' => '333',
-        'name' => '壁纸',
+        'id' => '109',
+        'name' => 'Footwear',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -180,20 +120,26 @@ $CACHE_P_INDUSTRY = array (
   8 => 
   array (
     'id' => '8',
-    'name' => '电子电工',
+    'name' => 'Textiles, Leather & Feather',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      358 => 
+      110 => 
       array (
-        'id' => '358',
-        'name' => '电子电工产品加工',
+        'id' => '110',
+        'name' => 'Textile',
         'amount' => '0|0|0|0',
       ),
-      359 => 
+      111 => 
       array (
-        'id' => '359',
-        'name' => '光电子、激光仪器',
+        'id' => '111',
+        'name' => 'Leather',
+        'amount' => '0|0|0|0',
+      ),
+      112 => 
+      array (
+        'id' => '112',
+        'name' => 'Feather',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -201,20 +147,20 @@ $CACHE_P_INDUSTRY = array (
   9 => 
   array (
     'id' => '9',
-    'name' => '建筑、房地产',
+    'name' => 'Bags & Cases',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      394 => 
+      113 => 
       array (
-        'id' => '394',
-        'name' => '厨房设施',
+        'id' => '113',
+        'name' => 'Bag',
         'amount' => '0|0|0|0',
       ),
-      395 => 
+      114 => 
       array (
-        'id' => '395',
-        'name' => '砖、瓦及砌块',
+        'id' => '114',
+        'name' => 'Case',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -222,26 +168,20 @@ $CACHE_P_INDUSTRY = array (
   10 => 
   array (
     'id' => '10',
-    'name' => '农业',
+    'name' => 'Crafts & Gifts',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      427 => 
+      115 => 
       array (
-        'id' => '427',
-        'name' => '食用菌',
+        'id' => '115',
+        'name' => 'Craft',
         'amount' => '0|0|0|0',
       ),
-      428 => 
+      116 => 
       array (
-        'id' => '428',
-        'name' => '牲畜',
-        'amount' => '0|0|0|0',
-      ),
-      444 => 
-      array (
-        'id' => '444',
-        'name' => '粮食',
+        'id' => '116',
+        'name' => 'Gift',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -249,20 +189,14 @@ $CACHE_P_INDUSTRY = array (
   11 => 
   array (
     'id' => '11',
-    'name' => '冶金、矿产',
+    'name' => 'Toys',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      478 => 
+      117 => 
       array (
-        'id' => '478',
-        'name' => '有色金属制品',
-        'amount' => '0|0|0|0',
-      ),
-      479 => 
-      array (
-        'id' => '479',
-        'name' => '矿业设备',
+        'id' => '117',
+        'name' => 'Toy',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -270,20 +204,14 @@ $CACHE_P_INDUSTRY = array (
   12 => 
   array (
     'id' => '12',
-    'name' => '医药、保养',
+    'name' => 'Office Supplies',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      505 => 
+      118 => 
       array (
-        'id' => '505',
-        'name' => '医用材料',
-        'amount' => '0|0|0|0',
-      ),
-      506 => 
-      array (
-        'id' => '506',
-        'name' => '保健用品',
+        'id' => '118',
+        'name' => 'Office Supplier',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -291,20 +219,20 @@ $CACHE_P_INDUSTRY = array (
   13 => 
   array (
     'id' => '13',
-    'name' => '安全、防护',
+    'name' => 'Jewelry & Ornaments',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      534 => 
+      119 => 
       array (
-        'id' => '534',
-        'name' => '报警装置',
+        'id' => '119',
+        'name' => 'Ornament',
         'amount' => '0|0|0|0',
       ),
-      535 => 
+      120 => 
       array (
-        'id' => '535',
-        'name' => '防盗设施',
+        'id' => '120',
+        'name' => 'Jewelry',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -312,20 +240,14 @@ $CACHE_P_INDUSTRY = array (
   14 => 
   array (
     'id' => '14',
-    'name' => '汽摩及配件',
+    'name' => 'Home Supplies',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      553 => 
+      121 => 
       array (
-        'id' => '553',
-        'name' => '库存汽摩及配件',
-        'amount' => '0|0|0|0',
-      ),
-      554 => 
-      array (
-        'id' => '554',
-        'name' => '停车场、加油站设备',
+        'id' => '121',
+        'name' => 'Home Supplier',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -333,26 +255,20 @@ $CACHE_P_INDUSTRY = array (
   15 => 
   array (
     'id' => '15',
-    'name' => '印刷、出版',
+    'name' => 'Food & Beverage',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      561 => 
+      122 => 
       array (
-        'id' => '561',
-        'name' => '油墨',
+        'id' => '122',
+        'name' => 'Food',
         'amount' => '0|0|0|0',
       ),
-      567 => 
+      123 => 
       array (
-        'id' => '567',
-        'name' => '激光防伪',
-        'amount' => '0|0|0|0',
-      ),
-      568 => 
-      array (
-        'id' => '568',
-        'name' => '媒体和传播',
+        'id' => '123',
+        'name' => 'Beverage',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -360,20 +276,14 @@ $CACHE_P_INDUSTRY = array (
   16 => 
   array (
     'id' => '16',
-    'name' => '食品、饮料',
+    'name' => 'Agriculture',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      585 => 
+      124 => 
       array (
-        'id' => '585',
-        'name' => '食品添加剂',
-        'amount' => '0|0|0|0',
-      ),
-      586 => 
-      array (
-        'id' => '586',
-        'name' => '调味品',
+        'id' => '124',
+        'name' => 'Agriculture',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -381,20 +291,26 @@ $CACHE_P_INDUSTRY = array (
   17 => 
   array (
     'id' => '17',
-    'name' => '电脑、软件',
+    'name' => 'Medicine, Health & Beauty',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      606 => 
+      125 => 
       array (
-        'id' => '606',
-        'name' => 'UPS与电源',
+        'id' => '125',
+        'name' => 'Medicine',
         'amount' => '0|0|0|0',
       ),
-      607 => 
+      126 => 
       array (
-        'id' => '607',
-        'name' => '插卡类',
+        'id' => '126',
+        'name' => 'Health',
+        'amount' => '0|0|0|0',
+      ),
+      127 => 
+      array (
+        'id' => '127',
+        'name' => 'Beauty',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -402,20 +318,14 @@ $CACHE_P_INDUSTRY = array (
   18 => 
   array (
     'id' => '18',
-    'name' => '家居用品',
+    'name' => 'Minerals',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      628 => 
+      128 => 
       array (
-        'id' => '628',
-        'name' => '卫浴设施',
-        'amount' => '0|0|0|0',
-      ),
-      629 => 
-      array (
-        'id' => '629',
-        'name' => '家用塑料制品',
+        'id' => '128',
+        'name' => 'Mineral',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -423,20 +333,14 @@ $CACHE_P_INDUSTRY = array (
   19 => 
   array (
     'id' => '19',
-    'name' => '办公、文教及光仪',
+    'name' => 'Chemicals',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      673 => 
+      129 => 
       array (
-        'id' => '673',
-        'name' => '传真机',
-        'amount' => '0|0|0|0',
-      ),
-      674 => 
-      array (
-        'id' => '674',
-        'name' => '碎纸机',
+        'id' => '129',
+        'name' => 'Chemical',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -444,20 +348,14 @@ $CACHE_P_INDUSTRY = array (
   20 => 
   array (
     'id' => '20',
-    'name' => '能源',
+    'name' => 'Electrical Home Appliances',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      701 => 
+      130 => 
       array (
-        'id' => '701',
-        'name' => '能源产品代理',
-        'amount' => '0|0|0|0',
-      ),
-      702 => 
-      array (
-        'id' => '702',
-        'name' => '电力',
+        'id' => '130',
+        'name' => 'Electrical Home Appliances',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -465,26 +363,20 @@ $CACHE_P_INDUSTRY = array (
   21 => 
   array (
     'id' => '21',
-    'name' => '环保',
+    'name' => 'Sports & Entertainment',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      719 => 
+      131 => 
       array (
-        'id' => '719',
-        'name' => '环保产品代理',
+        'id' => '131',
+        'name' => 'Sport',
         'amount' => '0|0|0|0',
       ),
-      720 => 
+      132 => 
       array (
-        'id' => '720',
-        'name' => '环保产品加工',
-        'amount' => '0|0|0|0',
-      ),
-      721 => 
-      array (
-        'id' => '721',
-        'name' => '其他未分类',
+        'id' => '132',
+        'name' => 'Entertainment',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -492,20 +384,26 @@ $CACHE_P_INDUSTRY = array (
   22 => 
   array (
     'id' => '22',
-    'name' => '通讯产品',
+    'name' => 'Packaging, Printing & Paper',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      733 => 
+      133 => 
       array (
-        'id' => '733',
-        'name' => '天线',
+        'id' => '133',
+        'name' => 'Packaging',
         'amount' => '0|0|0|0',
       ),
-      734 => 
+      134 => 
       array (
-        'id' => '734',
-        'name' => '交换机',
+        'id' => '134',
+        'name' => 'Printing',
+        'amount' => '0|0|0|0',
+      ),
+      135 => 
+      array (
+        'id' => '135',
+        'name' => 'Paper',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -513,20 +411,14 @@ $CACHE_P_INDUSTRY = array (
   23 => 
   array (
     'id' => '23',
-    'name' => '运动、休闲',
+    'name' => 'Energy',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      758 => 
+      136 => 
       array (
-        'id' => '758',
-        'name' => '库存运动休闲产品',
-        'amount' => '0|0|0|0',
-      ),
-      759 => 
-      array (
-        'id' => '759',
-        'name' => '棋类',
+        'id' => '136',
+        'name' => 'Energy',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -534,20 +426,20 @@ $CACHE_P_INDUSTRY = array (
   24 => 
   array (
     'id' => '24',
-    'name' => '商务服务',
+    'name' => 'Integrated Import & Export Trade',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      780 => 
+      137 => 
       array (
-        'id' => '780',
-        'name' => '中介服务',
+        'id' => '137',
+        'name' => 'Integrated Import',
         'amount' => '0|0|0|0',
       ),
-      781 => 
+      138 => 
       array (
-        'id' => '781',
-        'name' => '超市、百货、便利店',
+        'id' => '138',
+        'name' => 'Export Trade',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -555,20 +447,14 @@ $CACHE_P_INDUSTRY = array (
   25 => 
   array (
     'id' => '25',
-    'name' => '交通运输',
+    'name' => 'Business Services',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      812 => 
+      139 => 
       array (
-        'id' => '812',
-        'name' => '废气处理设施',
-        'amount' => '0|0|0|0',
-      ),
-      813 => 
-      array (
-        'id' => '813',
-        'name' => '交通产品代理',
+        'id' => '139',
+        'name' => 'Business Service',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -576,20 +462,20 @@ $CACHE_P_INDUSTRY = array (
   26 => 
   array (
     'id' => '26',
-    'name' => '玩具',
+    'name' => 'Computers & Software',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      831 => 
+      140 => 
       array (
-        'id' => '831',
-        'name' => '玩具配件',
+        'id' => '140',
+        'name' => 'Computer',
         'amount' => '0|0|0|0',
       ),
-      832 => 
+      141 => 
       array (
-        'id' => '832',
-        'name' => '库存玩具',
+        'id' => '141',
+        'name' => 'Software',
         'amount' => '0|0|0|0',
       ),
     ),
@@ -597,26 +483,50 @@ $CACHE_P_INDUSTRY = array (
   27 => 
   array (
     'id' => '27',
-    'name' => '库存商品',
+    'name' => 'Ceramics',
     'amount' => '0|0|0|0',
     'subs' => 
     array (
-      847 => 
+      142 => 
       array (
-        'id' => '847',
-        'name' => '库存安全防护产品',
+        'id' => '142',
+        'name' => 'Ceramic',
         'amount' => '0|0|0|0',
       ),
-      848 => 
+    ),
+  ),
+  28 => 
+  array (
+    'id' => '28',
+    'name' => 'Security & Protection',
+    'amount' => '0|0|0|0',
+    'subs' => 
+    array (
+      143 => 
       array (
-        'id' => '848',
-        'name' => '库存皮革及制品',
+        'id' => '143',
+        'name' => 'Security',
         'amount' => '0|0|0|0',
       ),
-      862 => 
+      144 => 
       array (
-        'id' => '862',
-        'name' => '库存交通产品及用具',
+        'id' => '144',
+        'name' => 'Protection',
+        'amount' => '0|0|0|0',
+      ),
+    ),
+  ),
+  29 => 
+  array (
+    'id' => '29',
+    'name' => 'Environment',
+    'amount' => '0|0|0|0',
+    'subs' => 
+    array (
+      145 => 
+      array (
+        'id' => '145',
+        'name' => 'Environment',
         'amount' => '0|0|0|0',
       ),
     ),

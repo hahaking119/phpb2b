@@ -1,12 +1,12 @@
 <?php
 $UL_DBCACHE_NEWSTYPE = array(
-"1"=>"行业聚焦",
-"2"=>"热点专题",
-"3"=>"焦点关注",
-"4"=>"成功故事",
-"5"=>"业界资讯",
-"6"=>"国际资讯",
-"7"=>"商业宝典",
-"8"=>"外贸专题",
+"1"=>"Industry Focus",
+"2"=>"hot topics",
+"3"=>"Focus",
+"4"=>"success stories",
+"5"=>"Industry News",
+"6"=>"International News",
+"7"=>"Business Collection",
+"8"=>"trade topics",
 );
 ?>
