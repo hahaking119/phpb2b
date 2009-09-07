@@ -7,7 +7,7 @@ $office_theme_name = "room";
  * invite register
  */
 $check_invite_code = false;
-$register_type = $g_db->GetOne("select ab from ".$tb_prefix."settings where aa='register_type'");
+$register_type = $g_db->GetOne("select ab from {$tb_prefix}settings where aa='register_type'");
 if ($register_type=="open_invite_reg"){
     setvar("IfInviteCode", true);
 }

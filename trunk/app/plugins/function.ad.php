@@ -53,7 +53,7 @@ function smarty_function_ad($params){
 	    if (isset($params['type_id'])) {
 	       $conditions[] = "adzone_id=".$params['type_id'];
 	       //取得该zone的高度和宽度。
-	       $zone_res = $g_db->GetRow("select width,height,what,additional_adwords from ".$tb_prefix."adzones where id=".$params['type_id']);
+	       $zone_res = $g_db->GetRow("select width,height,what,additional_adwords from {$tb_prefix}adzones where id=".$params['type_id']);
 	       if ($zone_res['what']==2) {
 	           echo stripcslashes($zone_res['additional_adwords']);
 	           return;

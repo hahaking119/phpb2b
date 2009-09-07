@@ -111,7 +111,7 @@
 	function checkStatus($company_id)
 	{
 		global $g_db, $tb_prefix;
-		$sql = "select status,name from ".$tb_prefix."companies where id=".$company_id;
+		$sql = "select status,name from {$tb_prefix}companies where id=".$company_id;
 		$c_status = $g_db->GetRow($sql);
 		if (!$c_status['status'] || empty($c_status['status'])) {
 			flash(URL."room/tip.php", "./", sprintf(lgg("company_checking"), $c_status['name']), 0);

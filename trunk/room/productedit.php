@@ -28,7 +28,7 @@ if (($_GET['action']=="mod") && (!empty($_GET['id']))) {
 			setvar("CurrentIndustry",$g_db->GetArray("select name AS IndustryName from ".$industry->getTable(true)." where id in (".$search_industry_ids.")"));
 		}
 		if(!empty($productinfo['ProductKeywords'])){
-		$_k = $g_db->Execute("select title from ".$tb_prefix."keywords where id in (".$productinfo['ProductKeywords'].")");
+		$_k = $g_db->Execute("select title from {$tb_prefix}keywords where id in (".$productinfo['ProductKeywords'].")");
 		$productinfo['ProductKeywords'] = $_k;
 		}
 		setvar("ProductInfo",$productinfo);
@@ -107,7 +107,7 @@ if (isset($_POST['action'])) {
 			$result = $product->save($vals);
 			$new_id = $g_db->Insert_ID();
 			$keyword->setKeywordId($_POST['keywords'], $new_id, 'products');
-			$g_db->Execute("update ".$tb_prefix."products set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
+			$g_db->Execute("update {$tb_prefix}products set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
 			uses("stat");
 			$stat = new Stats();
 			$stat->Add("product");

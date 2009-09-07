@@ -27,7 +27,7 @@ if(isset($_POST['save'])){
 	}else{
 		$result = $membertype->save($vals);
 	}
-	$sql = "select id,name,picture from ".$tb_prefix."membertypes";
+	$sql = "select id,name,picture from {$tb_prefix}membertypes";
 	$result = $g_db->GetArray($sql);
 	$str = "<?php
 \$UL_DBCACHE_MEMBERTYPES = array(\n";

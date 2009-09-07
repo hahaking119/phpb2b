@@ -15,7 +15,7 @@ setvar("TradeTypes", $trade->getTradeTypes());
 setvar("TradeNames", $trade->getTradeTypeNames());
 if ($_POST['del'] && !empty($_POST['tradeid'])) {
 	$tRes = $trade->del($_POST['tradeid'], "member_id = ".$_SESSION['MemberID']);
-	if($tRes) $g_db->Execute("delete from ".$tb_prefix."offers where trade_id in (".implode(",",$_POST['tradeid']).")");
+	if($tRes) $g_db->Execute("delete from {$tb_prefix}offers where trade_id in (".implode(",",$_POST['tradeid']).")");
 }
 if ($_GET['action']=="delkeyword" && !empty($_GET['keyid'])) {
 
@@ -26,7 +26,7 @@ if ($_GET['action']=="update" && !empty($_GET['id'])) {
 	$vals['modified'] = $time_stamp;
 	$conditions.= " and status='1'";
 	$tMaxHours = 24;
-	$pre_update_time = $g_db->GetOne("select modified from ".$tb_prefix."trades where id=".$id." and member_id=".$_SESSION['MemberID']);
+	$pre_update_time = $g_db->GetOne("select modified from {$tb_prefix}trades where id=".$id." and member_id=".$_SESSION['MemberID']);
 	if ($pre_update_time>($time_stamp-$tMaxHours*3600)) {
 		flash("./tip.php", null, sprintf(lgg("allow_update_hours"), 24));
 	}
@@ -42,7 +42,7 @@ $tMaxDay = 3;
 if ($_GET['action']=="refresh" && !empty($_GET['id'])) {
 	$id = intval($_GET['id']);
 	$vals = array();
-	$pre_submittime = $g_db->GetOne("select submit_time from ".$tb_prefix."trades where id=".$id." and member_id=".$_SESSION['MemberID']);
+	$pre_submittime = $g_db->GetOne("select submit_time from {$tb_prefix}trades where id=".$id." and member_id=".$_SESSION['MemberID']);
 	if ($pre_submittime>($time_stamp-$tMaxDay*86400)) {
 		flash("./tip.php", null, sprintf(lgg("allow_refresh_day"), $tMaxDay));
 	}
@@ -62,7 +62,7 @@ if ($_GET['action']=="refresh" && !empty($_GET['id'])) {
 if(isset($_POST['refresh'])){
 	if (!empty($_POST['refresh']) && !empty($_POST['tradeid'])) {
 		$vals = array();
-		$pre_submittime = $g_db->GetOne("select submit_time from ".$tb_prefix."trades where id=".$id." and member_id=".$_SESSION['MemberID']);
+		$pre_submittime = $g_db->GetOne("select submit_time from {$tb_prefix}trades where id=".$id." and member_id=".$_SESSION['MemberID']);
 		if ($pre_submittime>($time_stamp-$tMaxDay*86400)) {
 			flash("./tip.php", null, sprintf(lgg("allow_refresh_day"), $tMaxDay));
 		}

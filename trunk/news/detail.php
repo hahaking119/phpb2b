@@ -21,7 +21,7 @@ if (!empty($nid)) {
 		}
 	}
 	if(!empty($info['Keywords'])){
-    	$tmpkeys = $g_db->GetArray("select title from ".$tb_prefix."keywords where id in (".$info['Keywords'].")");
+    	$tmpkeys = $g_db->GetArray("select title from {$tb_prefix}keywords where id in (".$info['Keywords'].")");
     	$info['Keywords'] = $tmpkeys;
 	}
 	$similiaradd.= "News.title='".$info['NewsTitle']."' ";

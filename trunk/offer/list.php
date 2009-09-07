@@ -33,12 +33,12 @@ if (isset($_GET['areaid'])) {
 	$conditions.= " and Trade.area_id =".intval($_GET['areaid']);
 }
 if (!empty($_GET['industryname'])) {
-	$ind_res = $g_db->GetRow("select id,parentid,name from ".$tb_prefix."industries where name='".urldecode($_GET['industryname'])."'");
+	$ind_res = $g_db->GetRow("select id,parentid,name from {$tb_prefix}industries where name='".urldecode($_GET['industryname'])."'");
 	$_titles[] = $_positions[] = $ind_res['name'];
 	if($ind_res['parentid']==0){
 		$conditions = " and Trade.industry_id in (".$industry->getSubIndustries($ind_res['id']).")";
 	}else{
-	    $parent_name = $g_db->GetOne("select name from ".$tb_prefix."industries where id=".$ind_res['parentid']);
+	    $parent_name = $g_db->GetOne("select name from {$tb_prefix}industries where id=".$ind_res['parentid']);
 	    $_titles[] = $_positions[] = $parent_name;
 		$conditions = " and Trade.industry_id=".$ind_res['id'];
 	}

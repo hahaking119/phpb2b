@@ -27,7 +27,7 @@ if (isset($_POST['update']) && !empty($_POST['if_focus'])) {
 }
 if (isset($_POST['del']) && is_array($_POST['id'])) {
 	foreach ($_POST['id'] as $key=>$val){
-	    $attach_filename = $g_db->GetOne("select picture from ".$tb_prefix."newses where id=".$val);
+	    $attach_filename = $g_db->GetOne("select picture from {$tb_prefix}newses where id=".$val);
 	    $attachment->delete($attach_filename);
 	}
 	$deleted = $news->del($_POST['id']);
@@ -39,7 +39,7 @@ if (isset($_POST['del']) && is_array($_POST['id'])) {
 	}
 }
 if ($_GET['action'] == "del" && !empty($_GET['id'])) {
-	$sql = "select picture from ".$tb_prefix."newses where id=".$_GET['id'];
+	$sql = "select picture from {$tb_prefix}newses where id=".$_GET['id'];
 	$attach_filename = $g_db->GetOne($sql);
 	$news->del($_GET['id']);
 	$attachment->delete($attach_filename);
@@ -92,11 +92,11 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
         $stat = new Stats();
         $stat->Add("news");
         $keyword->setKeywordId($vals['keywords'], $new_id, 'newses');
-        $g_db->Execute("update ".$tb_prefix."newses set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
+        $g_db->Execute("update {$tb_prefix}newses set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
 	}
 	//reset swf pictures.
 	if (isset($_POST['set_to_swf'])) {
-    	$allPictureNews = $g_db->GetArray("select picture,title,id from ".$tb_prefix."newses where status='1' and picture!=''");
+    	$allPictureNews = $g_db->GetArray("select picture,title,id from {$tb_prefix}newses where status='1' and picture!=''");
     	$outFileName = "../swf/imgList.xml";
     	$smarty->assign("PictureNews", $allPictureNews);
     	$output = $smarty->fetch("pb-admin/element.swf.html");

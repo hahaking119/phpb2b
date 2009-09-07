@@ -27,7 +27,7 @@ if($res['ProductStatus']!=1){
 	alert(urlencode(sprintf(lgg("record_status"),$res['Name'],$tmp_status[$tmp_key])));
 }
 if (!empty($res['ProductKeywords'])) {
-	$_tags = $g_db->GetArray("select title as ItemTitle from ".$tb_prefix."keywords where id in (".trim($res['ProductKeywords']).")");
+	$_tags = $g_db->GetArray("select title as ItemTitle from {$tb_prefix}keywords where id in (".trim($res['ProductKeywords']).")");
 	$_assigns['ProductKeywords'] = $_tags;
 }
 $sql = "SELECT Company.id AS CompanyId,Company.name AS CompanyName,Company.link_man AS CompanyLinkMan,CONCAT(telcode,'-',telzone,'-',tel) AS CompanyTel,AreaProvince.name as AreaProvinceName,AreaCity.name as AreaCityName FROM ".$company->getTable(true)." left join ".$table['area']." as AreaProvince on Company.province_code_id=AreaProvince.code_id left join ".$table['area']." as AreaCity on Company.city_code_id=AreaCity.code_id WHERE Company.id=".$res['company_id'];

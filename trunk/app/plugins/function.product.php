@@ -64,7 +64,7 @@ function smarty_function_product($params){
 			$conditions[] = "Product.producttype_id=".$params['type_id'];
 		}
 		if (isset($params['companytype_id'])) {
-		    $joins = " left join ".$tb_prefix."companies on Company.id=Product.company_id";
+		    $joins = " left join {$tb_prefix}companies on Company.id=Product.company_id";
 			$conditions[] = "Company.type_id='".$params['companytype_id']."'";
 		}
 		if (isset($params['orderby'])) {

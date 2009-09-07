@@ -59,7 +59,7 @@ function smarty_function_companynews($params){
 		}
 		$companynews->setLimit($params['row'], $params['col'], $params['max']);
 		$tmp_cond = implode(" and ", $conditions);
-		$sql = "select ".$fields.",Company.name as CompanyName from ".$companynews->getTable(true)." left join ".$tb_prefix."companies Company on Companynews.company_id=Company.id where ".$tmp_cond.$orderby.$companynews->getLimit();
+		$sql = "select ".$fields.",Company.name as CompanyName from ".$companynews->getTable(true)." left join {$tb_prefix}companies Company on Companynews.company_id=Company.id where ".$tmp_cond.$orderby.$companynews->getLimit();
 		$result = $g_db->GetArray($sql);
 	}
 	$output = null;

@@ -124,7 +124,7 @@
 			    alert(urlencode(lgg("point_not_enough")));
 			}else{
 			    //reduce user's point
-			    $sql = "update ".$tb_prefix."members set credit_point=credit_point-".$t_point;
+			    $sql = "update {$tb_prefix}members set credit_point=credit_point-".$t_point;
 			    $g_db->Execute($sql);
 			}
 		}

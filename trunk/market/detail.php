@@ -11,7 +11,7 @@ $market = new Markets();
 setvar("TradeTypes", $trade->getTradeTypes());
 $market_id = intval($_GET['id']);
 
-$sql = "select Market.id as MarketId,picture as MarketPicture,Market.status as MarketStatus,Market.content as MarketContent,Market.industry_id,Market.province_id,Market.city_id,Market.country_id,Market.name as MarketName from ".$tb_prefix."markets Market where Market.status=1 and Market.id='".$market_id."'";
+$sql = "select Market.id as MarketId,picture as MarketPicture,Market.status as MarketStatus,Market.content as MarketContent,Market.industry_id,Market.province_id,Market.city_id,Market.country_id,Market.name as MarketName from {$tb_prefix}markets Market where Market.status=1 and Market.id='".$market_id."'";
 $MarketInfo = $g_db->GetRow($sql);
 $fields = "Trade.id AS TradeId,Trade.topic AS TradeTopic,html_file_id AS HtmlFileId,type_id as TradeTypeId";
 $conditions = " Trade.status='1'";

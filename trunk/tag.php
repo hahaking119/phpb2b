@@ -51,9 +51,9 @@ if(!empty($searchkeywords)) {
 	}else{
 		$tType = lgg("buy_and_sell");
 	}
-	$tExists = $g_db->GetArray("select id AS KeywordId,primary_id as ItemIds,type as ItemType,numbers from ".$tb_prefix."keywords where title='".$searchkeywords."'");
+	$tExists = $g_db->GetArray("select id AS KeywordId,primary_id as ItemIds,type as ItemType,numbers from {$tb_prefix}keywords where title='".$searchkeywords."'");
 	if(!empty($tExists)){
-	       $keyword_res = $g_db->GetRow("select id AS KeywordId,primary_id as ItemIds,type as ItemType from ".$tb_prefix."keywords where title='".$searchkeywords."' and type='$tType'");
+	       $keyword_res = $g_db->GetRow("select id AS KeywordId,primary_id as ItemIds,type as ItemType from {$tb_prefix}keywords where title='".$searchkeywords."' and type='$tType'");
 		    switch ($keyword_res['ItemType']) {
 	    	case "trades":
 	    	    $fields = "id as ItemId,topic as ItemTitle,content as ItemInfo,submit_time as CreateDate,picture as ItemPicture";
@@ -96,7 +96,7 @@ if(!empty($searchkeywords)) {
 		$res['numbers'] = 1;
 		$res['status'] = 0;
 		$res['type'] = "index";
-		$sql = "select id from ".$tb_prefix."keywords where title='".$searchkeywords."'";
+		$sql = "select id from {$tb_prefix}keywords where title='".$searchkeywords."'";
 		$if_exists = $g_db->GetOne($sql);
 		if(!$if_exists)
 		$keyword->save($res);

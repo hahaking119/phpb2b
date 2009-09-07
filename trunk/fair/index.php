@@ -40,7 +40,7 @@ if(!empty($picture_expo)){
 if (isset($_GET['action']) && $_GET['action']=="html") {
 	$smarty->MakeHtmlFile('../htmls/fair/index.html',$smarty->fetch($theme_name."/fair_index.html"), true, "fair/index.php");
 }
-$expotype_res = $g_db->GetAll("select id as OptionId,name as OptionName from ".$tb_prefix."expotypes");
+$expotype_res = $g_db->GetAll("select id as OptionId,name as OptionName from {$tb_prefix}expotypes");
 $expotype_res = UaController::generateList($expotype_res);
 setvar("Expotypes", $expotype_res);
 if ($UL_DBCACHE_AREAS) {

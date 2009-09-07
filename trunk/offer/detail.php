@@ -22,7 +22,7 @@ if (isset($_POST['action']) && !empty($ua_user['id'])) {
         die("Login First!")    	;
     }
 	if ($_POST['action']=="favor" && !empty($_POST['id'])) {
-		$sql = "insert into ".$tb_prefix."favorites (member_id,target_id,type_id,created) values (".$ua_user['id'].",".intval($_POST['id']).",".intval($_POST['type_id']).",".$time_stamp.");";
+		$sql = "insert into {$tb_prefix}favorites (member_id,target_id,type_id,created) values (".$ua_user['id'].",".intval($_POST['id']).",".intval($_POST['type_id']).",".$time_stamp.");";
 		$g_db->Execute($sql);
 	}
 	exit;
@@ -45,7 +45,7 @@ $IfTradeOpen = intval($setting->field("ab","aa='".$tradetype."_logincheck'"));
 setvar("IfTradeOpen", $IfTradeOpen);
 $res['TradeExtends'] = unserialize($res['TradeExtends']);
 if (!empty($res['keywords'])) {
-	$tKeys = $g_db->GetArray("select title from ".$tb_prefix."keywords where id in (".$res['keywords'].")");
+	$tKeys = $g_db->GetArray("select title from {$tb_prefix}keywords where id in (".$res['keywords'].")");
 	$rKeys = null;
 	foreach ($tKeys as $val) {
 		$rKeys.="<a href='".URL."tag.php?type=trades&keyword=".urlencode($val['title'])."' target='_blank'>".$val['title']."</a>&nbsp;";

@@ -15,11 +15,11 @@
 	{
 		global $time_stamp, $g_db;
 		global $memberlog, $tb_prefix;
-		$sql = "SELECT id,username AS LoginName,userpass AS LoginPass,status AS MemberStatus,user_type,email,user_level,credit_point,service_end_date,office_redirect FROM ".$tb_prefix."members WHERE username='$uname'";
+		$sql = "SELECT id,username AS LoginName,userpass AS LoginPass,status AS MemberStatus,user_type,email,user_level,credit_point,service_end_date,office_redirect FROM {$tb_prefix}members WHERE username='$uname'";
 		$tmpUser = $g_db->GetRow($sql);
 		if ($tmpUser['service_end_date']<$time_stamp && $tmpUser['user_level']<9) {
 			//get rights from access.
-			$after_livetime = $g_db->GetOne("select after_livetime from ".$tb_prefix."accesses where membertype_id=".$tmpUser['user_type']);
+			$after_livetime = $g_db->GetOne("select after_livetime from {$tb_prefix}accesses where membertype_id=".$tmpUser['user_type']);
 			$after_livetime = intval($after_livetime);
 			switch ($after_livetime) {
 				case 1:
@@ -41,9 +41,9 @@
 		}
 		$true_pass = $tmpUser['LoginPass'];
 		$loginip = uaIp2Long(uaGetClientIP());
-		$sql = "insert into ".$tb_prefix."memberlogs (member_id,login_time,login_ip) values (".$tmpUser['id'].",'$time_stamp','$loginip')";
+		$sql = "insert into {$tb_prefix}memberlogs (member_id,login_time,login_ip) values (".$tmpUser['id'].",'$time_stamp','$loginip')";
 		$g_db->Execute($sql);
-		$g_db->Execute("UPDATE ".$tb_prefix."members SET last_login=".$time_stamp." WHERE username='$uname'");
+		$g_db->Execute("UPDATE {$tb_prefix}members SET last_login=".$time_stamp." WHERE username='$uname'");
 		if (empty($uname) || empty($upass)){
 			return -1;
 		}elseif(!$this->checkUserExist($uname)) {

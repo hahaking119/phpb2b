@@ -19,7 +19,7 @@ setvar('xajax_javascript', $xajax->getJavascript());
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
 $sql = null;
 $res = null;
-$res = $g_db->GetArray("select name from ".$tb_prefix."companies where status='1' order by id desc limit 10");
+$res = $g_db->GetArray("select name from {$tb_prefix}companies where status='1' order by id desc limit 10");
 foreach ($res as $val) {
 	$c[] = $val['name'];
 }

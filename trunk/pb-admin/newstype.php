@@ -17,7 +17,7 @@ if (isset($_POST['save']) && !empty($_POST['newstype']['name'])) {
 		$vals['created'] = $time_stamp;
 		$result = $newstype->save($vals);
 	}
-	$sql = "select id,name from ".$tb_prefix."newstypes";
+	$sql = "select id,name from {$tb_prefix}newstypes";
 	$result = $g_db->GetArray($sql);
 	$str = "<?php
 \$UL_DBCACHE_NEWSTYPE = array(\n";

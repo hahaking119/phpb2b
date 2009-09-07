@@ -29,25 +29,25 @@
 	        $words = explode(",", $words);
 	        foreach ($words as $key=>$val){
 	            $val = trim($val);
-	            $kid = $g_db->GetOne("select id from ".$tb_prefix."keywords where title='".$val."' and type='$type_id'");
+	            $kid = $g_db->GetOne("select id from {$tb_prefix}keywords where title='".$val."' and type='$type_id'");
 	            //关键字是否存在
 	            if ($kid) {
-	                $pid = $g_db->GetOne("select primary_id from ".$tb_prefix."keywords where id=".$kid);
+	                $pid = $g_db->GetOne("select primary_id from {$tb_prefix}keywords where id=".$kid);
 	                if ($pid) {
 	                    //该关键字已经收录了产品
 	                    $exist_ids = explode(",", $pid);
 	                    if(!in_array($prim_id, $exist_ids)) {
 	                        $exist_ids[] = $prim_id;
 	                        $exist_ids = implode(",", $exist_ids);
-	                        $g_db->Execute("update ".$tb_prefix."keywords set primary_id='".$exist_ids."' where id=".$kid);
+	                        $g_db->Execute("update {$tb_prefix}keywords set primary_id='".$exist_ids."' where id=".$kid);
 	                        $this->exist_keyword_id[] = $kid;
 	                    }
 	                }else{
-	                    $g_db->Execute("update ".$tb_prefix."keywords set primary_id='".$prim_id."' where id=".$kid);
+	                    $g_db->Execute("update {$tb_prefix}keywords set primary_id='".$prim_id."' where id=".$kid);
 	                    $this->exist_keyword_id[] = $kid;
 	                }
 	            }else{
-	                $g_db->Execute("insert into ".$tb_prefix."keywords (title,primary_id,member_id,type,created) values ('$val','$prim_id','".$_SESSION['MemberID']."','$type_id','".date("Y-m-d H:i:s")."')");
+	                $g_db->Execute("insert into {$tb_prefix}keywords (title,primary_id,member_id,type,created) values ('$val','$prim_id','".$_SESSION['MemberID']."','$type_id','".date("Y-m-d H:i:s")."')");
 	                $this->inserted_keyword_id[] = $g_db->Insert_ID();
 	            }
 	        }

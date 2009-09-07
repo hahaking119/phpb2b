@@ -20,7 +20,7 @@ if(isset($_GET['action'])){
 		}
 	}
 	if($_GET['action'] == "clearhtmlcache"){
-		$result = $g_db->Execute("truncate TABLE `".$tb_prefix."htmlcaches`");
+		$result = $g_db->Execute("truncate TABLE `{$tb_prefix}htmlcaches`");
 		if($result){
 			flash("alert.php","mkstatic.php",lgg('static_file_clear'),1);
 		}else{

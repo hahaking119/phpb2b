@@ -73,7 +73,7 @@ if (isset($_POST['visit_post']) && isset($_POST['offer']['link_man']) && isset($
 		}
 	}
 	//check today
-	$tVisitLogNum = $g_db->GetOne("select count(id) from ".$tb_prefix."visitlogs where salt='$salt' and  date_line='".date("Ymd")."' and type_name='trades'");
+	$tVisitLogNum = $g_db->GetOne("select count(id) from {$tb_prefix}visitlogs where salt='$salt' and  date_line='".date("Ymd")."' and type_name='trades'");
 	if ($tVisitLogNum>=3) {
 		alert(sprintf(lgg('visit_limit'), 3));
 	}
@@ -130,7 +130,7 @@ if (isset($_POST['visit_post']) && isset($_POST['offer']['link_man']) && isset($
 		}
 		$o_vals['trade_id'] = $last_trade_id;
 		$tmp_result = $offer->save($o_vals);
-		$g_db->Execute("insert into ".$tb_prefix."visitlogs (salt,date_line,type_name) value ('".$salt."','".date("Ymd")."','trades');");
+		$g_db->Execute("insert into {$tb_prefix}visitlogs (salt,date_line,type_name) value ('".$salt."','".date("Ymd")."','trades');");
 		uses("stat");
 		$stat = new Stats();
 		$stat->Add($trade->getTradeCat());

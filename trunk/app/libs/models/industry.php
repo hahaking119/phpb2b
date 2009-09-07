@@ -171,14 +171,14 @@ class Industries extends UaModel {
 		foreach ($industry_ids as $val) {
 		    $str.="\"".$val['IndustryId']."\"=>\"".$val['IndustryName']."\",\n";
 			if ($mysql_v < 5) {
-				$product_amount = $g_db->GetOne("select count(id) from ".$tb_prefix."products where  industry_id=".$val['IndustryId']);
-				$company_amount = $g_db->GetOne("select count(id) from ".$tb_prefix."companies where  industry_id=".$val['IndustryId']);
-				$buy_amount = $g_db->GetOne("select count(id) from ".$tb_prefix."trades where type_id in ".$trade->getTradeTypeKeys("buy")." and industry_id=".$val['IndustryId']);
-				$sell_amount = $g_db->GetOne("select count(id) from ".$tb_prefix."trades where type_id in ".$trade->getTradeTypeKeys("sell")." and industry_id=".$val['IndustryId']);
-				$sql = "update ".$tb_prefix."industries set product_amount='$product_amount',sell_amount='$sell_amount',buy_amount='$buy_amount',company_amount='$company_amount' where id=".$val['IndustryId'];
+				$product_amount = $g_db->GetOne("select count(id) from {$tb_prefix}products where  industry_id=".$val['IndustryId']);
+				$company_amount = $g_db->GetOne("select count(id) from {$tb_prefix}companies where  industry_id=".$val['IndustryId']);
+				$buy_amount = $g_db->GetOne("select count(id) from {$tb_prefix}trades where type_id in ".$trade->getTradeTypeKeys("buy")." and industry_id=".$val['IndustryId']);
+				$sell_amount = $g_db->GetOne("select count(id) from {$tb_prefix}trades where type_id in ".$trade->getTradeTypeKeys("sell")." and industry_id=".$val['IndustryId']);
+				$sql = "update {$tb_prefix}industries set product_amount='$product_amount',sell_amount='$sell_amount',buy_amount='$buy_amount',company_amount='$company_amount' where id=".$val['IndustryId'];
 				$result = $g_db->Execute($sql);
 			}else{
-				$sql = "update ".$tb_prefix."industries set product_amount = (SELECT count(Product.id) from ".$tb_prefix."products as Product where Product.industry_id=".$val['IndustryId']."),sell_amount = (SELECT count(Trade.id) FROM ".$tb_prefix."trades as Trade where Trade.type_id in ".$trade->getTradeTypeKeys("sell")."  and Trade.industry_id=".$val['IndustryId']."),buy_amount = (SELECT count(Trade.id) FROM ".$tb_prefix."trades Trade where Trade.type_id in ".$trade->getTradeTypeKeys("buy")."  and Trade.industry_id=".$val['IndustryId']."),company_amount = (SELECT count(Company.id) FROM ".$tb_prefix."companies Company where Company.industry_id=".$val['IndustryId'].") where id=".$val['IndustryId'];
+				$sql = "update {$tb_prefix}industries set product_amount = (SELECT count(Product.id) from {$tb_prefix}products as Product where Product.industry_id=".$val['IndustryId']."),sell_amount = (SELECT count(Trade.id) FROM {$tb_prefix}trades as Trade where Trade.type_id in ".$trade->getTradeTypeKeys("sell")."  and Trade.industry_id=".$val['IndustryId']."),buy_amount = (SELECT count(Trade.id) FROM {$tb_prefix}trades Trade where Trade.type_id in ".$trade->getTradeTypeKeys("buy")."  and Trade.industry_id=".$val['IndustryId']."),company_amount = (SELECT count(Company.id) FROM {$tb_prefix}companies Company where Company.industry_id=".$val['IndustryId'].") where id=".$val['IndustryId'];
 				$g_db->Execute($sql);
 			}
 		}

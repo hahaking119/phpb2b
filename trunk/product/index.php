@@ -19,7 +19,7 @@ $latest_products = $product->findAll("Product.id AS ID,Product.picture AS Produc
 $recommend_products = $product->findAll("Product.id AS ID,Product.picture AS ProductPicture,Product.name AS ProductName,html_file_id AS HtmlFileId","Product.status=1 and Product.state=1 and Product.ifcommend=1","Product.id DESC",0,18);
 setvar("LatestProducts",$latest_products);
 setvar("RecommendProducts",$recommend_products);
-setvar("ProductAmount", $g_db->GetOne("select sc from ".$tb_prefix."stats where sb='product'"));
+setvar("ProductAmount", $g_db->GetOne("select sc from {$tb_prefix}stats where sb='product'"));
 setvar("IndustryList", $industry->getIndustryPage($li,"product","industry1"));
 if (isset($_GET['action']) && $_GET['action']=="html") {
 	$smarty->MakeHtmlFile('../htmls/product/index.html',$smarty->fetch($theme_name."/product_index.html"), true, "product/index.php");

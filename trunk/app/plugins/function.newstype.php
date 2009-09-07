@@ -45,7 +45,7 @@ function smarty_function_newstype($params){
 		if(!empty($UL_DBCACHE_NEWSTYPE)){
 		    $result = $UL_DBCACHE_NEWSTYPE[$id];
 		}else{
-		    $result = $g_db->GetOne("select name from ".$tb_prefix."newstypes where id=".intval($id));
+		    $result = $g_db->GetOne("select name from {$tb_prefix}newstypes where id=".intval($id));
 		}
 	}
 	if (empty($result)) {

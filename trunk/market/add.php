@@ -12,7 +12,7 @@ if (!isset($_COOKIE[session_name()])) {
 $salt = substr($_COOKIE[session_name()], 0, 10);
 if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
 	//check today
-	$tVisitLogNum = $g_db->GetOne("select count(id) from ".$tb_prefix."visitlogs where salt='$salt' and  date_line='".date("Ymd")."' and type_name='markets'");
+	$tVisitLogNum = $g_db->GetOne("select count(id) from {$tb_prefix}visitlogs where salt='$salt' and  date_line='".date("Ymd")."' and type_name='markets'");
 	if ($tVisitLogNum>=3) {
 		alert(sprintf(lgg('visit_limit'), 3));
 	}
@@ -45,7 +45,7 @@ if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
 	}
 	$result = $market->save($vals);
 	if ($result) {
-		$g_db->Execute("insert into ".$tb_prefix."visitlogs (salt,date_line,type_name) value ('".$salt."','".date("Ymd")."','markets');");
+		$g_db->Execute("insert into {$tb_prefix}visitlogs (salt,date_line,type_name) value ('".$salt."','".date("Ymd")."','markets');");
 		alert(lgg('wait_add'));
 	}else {
 		PB_goto("./add.php");

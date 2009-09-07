@@ -24,14 +24,14 @@ if(isset($_POST['start']) && !empty($_POST['io']['from'])){
 	$conn = mysql_connect($dbinfo['hostname'], $dbinfo['username'], $dbinfo['userpass']) or die(lgg("db_connect_error"));
 
 	if($dbinfo['method'] == "2"){
-		$sql = "truncate `".$db_links['dbname']."`.`".$tb_prefix."members`";
+		$sql = "truncate `".$db_links['dbname']."`.`{$tb_prefix}members`";
 		mysql_query($sql);
 	}
 	$set_membertype_to = intval($_POST['member']['user_type']);
 	if($dbinfo['from']==1){
-		$sql = "replace into `".$db_links['dbname']."`.`".$tb_prefix."members` (`username`,`userpass`,`gender`,`reg_ip`,`last_ip`,`last_login`,`created`,`email`,`user_type`)  select `username`,`password`,`gender`,`regip`,`lastip`,`lastvisit`,`regdate`,`email`,".$set_membertype_to."  from `".$dbinfo['dbname']."`.`".$dbinfo['tbname']."`";
+		$sql = "replace into `".$db_links['dbname']."`.`{$tb_prefix}members` (`username`,`userpass`,`gender`,`reg_ip`,`last_ip`,`last_login`,`created`,`email`,`user_type`)  select `username`,`password`,`gender`,`regip`,`lastip`,`lastvisit`,`regdate`,`email`,".$set_membertype_to."  from `".$dbinfo['dbname']."`.`".$dbinfo['tbname']."`";
 	}elseif($dbinfo['from']==2){
-		$sql = "replace into `".$db_links['dbname']."`.`".$tb_prefix."members` (`username`,`userpass`,`gender`,`created`,`email`,`user_type`)  select `username`,`password`,`gender`,`regdate`,`email`,".$set_membertype_to." from `".$dbinfo['dbname']."`.`".$dbinfo['tbname']."`";;
+		$sql = "replace into `".$db_links['dbname']."`.`{$tb_prefix}members` (`username`,`userpass`,`gender`,`created`,`email`,`user_type`)  select `username`,`password`,`gender`,`regdate`,`email`,".$set_membertype_to." from `".$dbinfo['dbname']."`.`".$dbinfo['tbname']."`";;
 	}
 	$result = mysql_query($sql);
 	if($result){

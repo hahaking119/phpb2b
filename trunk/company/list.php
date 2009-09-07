@@ -31,7 +31,7 @@ if($_GET['skeyword']) {
 }
 $tpl_file = "list";
 if (!empty($_GET['industryname'])) {
-	$ind_res = $g_db->GetRow("select id,parentid,name from ".$tb_prefix."industries where name='".urldecode($_GET['industryname'])."'");
+	$ind_res = $g_db->GetRow("select id,parentid,name from {$tb_prefix}industries where name='".urldecode($_GET['industryname'])."'");
 	if($ind_res['parentid']==0){
 		$conditions.= " and Company.industry_id in (".$ind_res['id'].",".$industry->getSubIndustries($ind_res['id']).")";
 	}else{

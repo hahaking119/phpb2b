@@ -21,7 +21,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 		if(!$email_exists || empty($email_exists)){
 			setvar("ERRORS", lgg("wrong_email_data"));
 		}
-			$memberinfo = $g_db->GetRow("select id,email,firstname,lastname from ".$tb_prefix."members where username='$login_name'");
+			$memberinfo = $g_db->GetRow("select id,email,firstname,lastname from {$tb_prefix}members where username='$login_name'");
 			if(ua_checkEmail($memberinfo['email'])){
         		if ($ifexists  && !empty($email_exists)) {
 				$new_passwd = getRadomStr(6);

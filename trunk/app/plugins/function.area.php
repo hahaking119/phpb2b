@@ -56,7 +56,7 @@ function smarty_function_area($params){
 	$output = null;
 	for($i=0; $i<count($result); $i++) {
 	    if(PRETEND_HTML_LEVEL==0){
-			$sql = "select m.username,c.name as companyname from ".$tb_prefix."members m,".$tb_prefix."companies c where m.id=".$result[$i]['MemberId']." and m.id=c.member_id limit 1";
+			$sql = "select m.username,c.name as companyname from {$tb_prefix}members m,{$tb_prefix}companies c where m.id=".$result[$i]['MemberId']." and m.id=c.member_id limit 1";
 			$user_id = $g_db->GetRow($sql);
 	        $url = URL."space.php?do=hr&userid=".$user_id['username'];
 	    }else{
