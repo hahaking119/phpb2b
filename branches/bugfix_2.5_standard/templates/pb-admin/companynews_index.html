@@ -54,9 +54,9 @@
 <tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
 <td><input name="id[]" type="checkbox" id="id[]" onClick="uaCheckItem(this, 'idAll')" value="<{$nl.ID}>"></td>
 <td><a href="company.php?action=mod&id=<{$nl.CompanyId}>" title="<{$nl.CompanyName}>"><{$nl.CompanyName|truncate:35}></a></td>
-<td><a href="../news/detail.php?action=view&id=<{$nl.ID}>" title="查看前台页面" target="_blank"><{$nl.Topic|truncate:35}>
+<td><a href="../space.php?do=news&id=<{$nl.CompanyId}>" title="查看前台页面" target="_blank"><{$nl.Topic|truncate:35}>
 </a></td>
-<td><{$nl.CompanynewsStatus}></td>
+<td><{if $nl.CompanynewsStatus==1}>正常<{else}>无效<{/if}></td>
 <td><{$nl.Click}></td>
 <td><{$nl.PublishDate|date_format:"%Y-%m-%d"}></td>
 <td colspan="2"><a href="./companynews.php?action=del&id=<{$nl.ID}>"><img src="<{$tpl_img_path}>admin/delete.gif" width="13" height="13" border="0"></a></td>
@@ -70,7 +70,7 @@
 <!-- 分页 -->
 <tr align="center"><td class="altbg1" colspan="8"><{$ByPages}></td></tr>
 <tr class="header" bgcolor="#ffffff">
-<td colspan="6"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="删除"></td>
+<td colspan="6"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="删除">&nbsp;<input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="check" value="审核"></td>
 <td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
 </tr>
 </table>
