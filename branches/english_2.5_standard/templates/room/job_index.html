@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script src="<{$JS_PATH}>js/prototype.js"></script>
@@ -26,7 +26,7 @@
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 企业招聘信息</td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> Recruitment information</td>
                 </tr>
             </table></td>
           </tr>
@@ -42,25 +42,25 @@
             <td align="center" valign="top">
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td align="center" background="<{$tpl_img_path}>office/job1.jpg">招聘职位列表 <a href="job.php?action=mod">添加</a></td>
+                <td align="center" background="<{$tpl_img_path}>office/job1.jpg">Job List <a href="job.php?action=mod">Add</a></td>
               </tr>
                 <tr>
                   <td align="center" valign="top">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
-                        <td height="20" align="center" bgcolor="#E8EFF5"><p align="left"><strong>招聘标题</strong></p></td>
-                        <td  align="center" bgcolor="#E8EFF5"><strong>创建日期</strong></td><td align="center" bgcolor="#E8EFF5"><strong>截止日期</strong></td><td align="center" bgcolor="#E8EFF5"><strong>操&nbsp; 作</strong></td></tr><tr>
+                        <td height="20" align="center" bgcolor="#E8EFF5"><p align="left"><strong>Job Title</strong></p></td>
+                        <td  align="center" bgcolor="#E8EFF5"><strong>Created</strong></td><td align="center" bgcolor="#E8EFF5"><strong>Deadline</strong></td><td align="center" bgcolor="#E8EFF5"><strong>Operation</strong></td></tr><tr>
 		      <td height="5" colspan="4" align="center" valign="middle"></td></tr>
-              <!--招聘信息-->
+              <! - Jobs -->
 			  <{foreach from=$CompanyJobs name=companyjob item=j}>
 			  <tr bgcolor="<{cycle values="#F3F3F3,#ffffff"}>">
               <td height="25" align="left"><{$j.name|truncate:25|strip_tags}></td>
 		      <td align="center" valign="middle"><{$j.created|date_format:"%Y-%m-%d"}></td>
 		      <td align="center" valign="middle"><{$j.expire_time|date_format:"%Y-%m-%d"}></td>
-		      <td align="center" valign="bottom"><a href="job.php?action=mod&id=<{$j.id}>" target="_self">修改</a>&nbsp;<a href="./job.php?action=del&id=<{$j.id}>">删除</a></td>
+		      <td align="center" valign="bottom"><a href="job.php?action=mod&id=<{$j.id}>" target="_self">Changes</a>&nbsp;<a href="./job.php?action=del&id=<{$j.id}>">Remove</a></td>
 		      </tr>
               <{foreachelse}>
-              <tr><td colspan="4"><div align="center">目前没有任何数据</div></td></tr>
+              <tr><td colspan="4"><div align="center">There is no data on</div></td></tr>
 			  <{/foreach}>
 				</table>				</td>
 		      </tr>

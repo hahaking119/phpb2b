@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/general.js"></script>
@@ -26,7 +26,7 @@
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td><a  name="min"></a>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 客户询价信息</td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> Customer Inquiry Information</td>
               </tr>
           </table></td>
         </tr>
@@ -39,8 +39,8 @@
         <tr align="center">
           <td><table width="100%"  border="0" cellpadding="5" cellspacing="1" class="bgblue">
             <tr align="center">
-              <td height="30"><strong>询价商品</strong></td>
-              <td ><strong>询价时间</strong></td>
+              <td height="30"><strong>Inquiry product</strong></td>
+              <td ><strong>Inquiry Time</strong></td>
             </tr>
 			<{foreach from=$Lists name=list1 item=iq}>
             <tr align="center" class="bggray">
@@ -48,7 +48,7 @@
               <td><{$iq.CreateDate|date_format:"%Y-%m-%d"}></td>
             </tr>
 			<{foreachelse}>
-            <tr><td>目前没有任何数据</td></tr>
+            <tr><td>There is no data on</td></tr>
 			<{/foreach}>
           </table>
 		  </td>

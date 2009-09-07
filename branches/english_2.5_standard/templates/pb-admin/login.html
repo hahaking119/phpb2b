@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>控制台_<{$sitetitle}></title>
+<title>Console_<{$sitetitle}></title>
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
 <script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
-<title>管理中心-登陆</title>
+<title>Management Center - Login</title>
 <style>
 body{background:#edf5ff;}
 </style>
@@ -15,19 +15,19 @@ body{background:#edf5ff;}
 function logined(){
 <{if $smarty.session.is_admin==""}>
 	if($F('username') == ""){
-		alert("请输入用户名");
+		alert("Please enter a user name");
 		$('username').focus();
 		return false;
 	}
 <{/if}>
 	if($F('userpass') == ""){
-		alert("请输入密码");
+		alert("Please enter your password");
 		$('userpass').focus();
 		return false;
 	}
 	<{if $IfCpPicture}>
 	if($F('login_auth') == ""){
-		alert("请输入验证码，不区分大小写");
+		alert("Please enter the verification code is not case sensitive");
 		$('login_auth').focus();
 		return false;
 	}
@@ -44,21 +44,21 @@ window.onload="javascript:$('username').focus();";
 <body>
 <div class="s_login">
 <form action="" method="post" name="" class="s_lo_f">
-	<img src="<{$tpl_img_path}>default/center.gif" alt="UALINK 管理中心" class="s_img" />
-	<p><label for="username2">用户 名：</label><{if $smarty.session.is_admin}><{$smarty.session.is_admin}><input type="hidden" name=a[username] id="username2" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{else}><input tabindex="1" type="text" name=a[username] id="username" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{/if}>	<label><{$LoginError}></label>
+	<img src="<{$tpl_img_path}>default/center.gif" alt="UALINK Management Center" class="s_img" />
+	<p><label for="username2">UserName: </label><{if $smarty.session.is_admin}><{$smarty.session.is_admin}><input type="hidden" name=a[username] id="username2" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{else}><input tabindex="1" type="text" name=a[username] id="username" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{/if}>	<label><{$LoginError}></label>
 </p>
 	<p>
-		<label for="userpass">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input tabindex="2" type="password" name="a[userpass]" id="userpass" size=15 maxLength=20>
+		<label for="userpass">Password&nbsp;:</label><input tabindex="2" type="password" name="a[userpass]" id="userpass" size=15 maxLength=20>
 		<{if $IfCpPicture}>        
-		<label for="s_yzm">验证码：</label><input type="text" value="" name="login_auth" tabindex="3" id="s_yzm" /><img src="../auth_image.php">
+		<label for="s_yzm">Verify Code:</label><input type="text" value="" name="login_auth" tabindex="3" id="s_yzm" /><img src="../auth_image.php">
 		<{/if}>
 	</p>
 	<p class="s_p1">
-		<input type="submit" name="login" value="登陆" class="s_dl" onclick="return logined();" />
-		<a href="<{$SiteUrl}>" class="s_a1">返回首页</a>
-		<a href="<{$SiteUrl}>user/getpass.php" class="s_a1 s_a2">忘记密码</a>
+		<input type="submit" name="login" value="Login" class="s_dl" onclick="return logined();" />
+		<a href="<{$SiteUrl}>" class="s_a1">Home</a>
+		<a href="<{$SiteUrl}>user/getpass.php" class="s_a1 s_a2">Forget?</a>
 	</p>
-	<p class="s_p2">如有问题，请联系<{mailto address="`$serviceemail`" encode="javascript" subject="你好:" text="`$serviceemail`"}></p>
+	<p class="s_p2">For questions,please contact this <{mailto address="`$serviceemail`" encode="javascript" subject="Hello, " text="Email"}></p>
 </form>
 </div>
 </body>

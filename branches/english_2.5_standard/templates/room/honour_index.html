@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script src="<{$JS_PATH}>js/prototype.js"></script></head>
@@ -25,7 +25,7 @@
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">企业荣誉</td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">Honor</td>
                 </tr>
             </table></td>
           </tr>
@@ -40,7 +40,7 @@
             <td align="center" valign="top">
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td align="center" background="<{$tpl_img_path}>office/job1.jpg">你可以在这里上传你的营业执照、荣誉证书等 <a href="honour.php?action=mod">点击添加</a></td>
+                <td align="center" background="<{$tpl_img_path}>office/job1.jpg">Here you can upload your business license, honor certificate, etc. <a href="honour.php?action=mod">Click Add</a></td>
               </tr>
                 <tr>
                   <td valign="top">
@@ -54,15 +54,15 @@
                   <td width="62%">
                   <div id="certs" align="left">
                     <ul>
-                    <li>标题：<{$h.AttachmentTitle}></li>
-                    <li>描述:<{$h.AttachmentDescription}></li>
-                    <li style="list-style:none"><a href="honour.php?action=del&id=<{$h.AttachmentId}>">删除</a></li>
+                    <li>Title:<{$h.AttachmentTitle}></li>
+                    <li>Description:<{$h.AttachmentDescription}></li>
+                    <li style="list-style:none"><a href="honour.php?action=del&id=<{$h.AttachmentId}>">Remove</a></li>
                     </ul>
                   </div>
                   </td>
                   </tr>
                   <{foreachelse}>
-                  <tr><td colspan="2"><div align="center">目前没有任何数据</div></td></tr>
+                  <tr><td colspan="2"><div align="center">There is no data on</div></td></tr>
                   <{/foreach}>
                     </table>				
                     </td>

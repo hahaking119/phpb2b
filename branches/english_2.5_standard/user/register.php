@@ -5,6 +5,13 @@ require(SITE_ROOT. './app/configs/db_session.php');
 require(INC_PATH .'xajax/xajaxAIO.inc.php');
 require($inc_path .APP_NAME. 'include/inc.discuz.php');
 require($inc_path .APP_NAME. 'include/inc.phpwind.php');
+include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
+$industrys = array();
+foreach ($UL_DBCACHE_INDUSTRIES as $key=>$val){
+    if ($key<100) {
+    	$industrys[$key] = $val;
+    }
+}
 uses("member","company","membertype","companytype","access","setting", "htmlcache", "industry");
 $cfg['reg_time_seperate'] = 3*60;
 $cfg['register_type'] = array("close_register", "open_common_reg", "open_invite_reg");
@@ -172,8 +179,9 @@ if(isset($_POST['register'])){
 				$comp_vars['telzone'] = $_POST['tel']['area'];
 				$comp_vars['tel'] = $_POST['tel']['number'];
 				$comp_vars['created'] = $time_stamp;
-				$comp_vars['province_code_id'] = intval($_POST['country_id']);
-				$comp_vars['city_code_id'] = intval($_POST['province_id']);
+				$comp_vars['coutry_id'] = intval($_POST['country_id']);
+				$comp_vars['province_code_id'] = intval($_POST['province_id']);
+				$comp_vars['city_code_id'] = intval($_POST['city_id']);
 				$comp_vars['industry_id'] = intval($_POST['aindustry']);
 				$comp_vars['first_letter'] = getFirstPin($comp_vars['name']);
 				array_walk($comp_vars,"uaset");
@@ -312,6 +320,7 @@ foreach ($result as $key=>$val) {
 	$company_types[$val['CompanytypeId']] = $val['CompanytypeName'];
 }
 setvar("CompanyTypes",$company_types);
+setvar("Industries", $industrys);
 if (isset($_GET['action']) && $_GET['action']=="html") {
 	$smarty->MakeHtmlFile('../htmls/user/'.$tpl_file.'.html',$smarty->fetch($theme_name."/".$tpl_file.".html"), true, $urls['register']);
 }

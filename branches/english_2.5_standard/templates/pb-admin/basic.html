@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>控制台_<{$sitetitle}></title>
+<title>Console_<{$sitetitle}></title>
 <link href="<{$tpl_img_path}>admin/admincp.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
 <script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
@@ -46,96 +46,98 @@ function fEvent(sType,oInput){
 
 <body leftmargin="10" topmargin="10" onkeydown="refreshmainframe(event)">
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td>
-<!-- 位置设置 -->
+<!-- Location Settings -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
 <tr>
-<td><a href="#" onClick="parent.main.location='home.php';return false;">系统设置首页</a>&raquo;<{$CurrentPos}></td>
+<td><a href="#" onClick="parent.main.location='home.php';return false;">System Settings page</a>&raquo;<{$CurrentPos}></td>
 </tr>
 </table>
-<!-- :~位置设置 -->
-<!-- 访问设置 -->
+<!-- :~Location Settings -->
+<!-- Access Settings -->
 <form name="basicfrm" action="./setting.php" method="post">
 <input type="hidden" name="u[lastbackup]" value="<{$smarty.now}>" />
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header">
-<td colspan="2">网站基本设置<a href="#" onclick="collapse_change('1')"><img id="menuimg_1" src="<{$tpl_img_path}>admin/menu_reduce.gif" border="0" style="float: right; margin-top: -12px; margin-right: 8px;"></a></td>
+<td colspan="2">Basic settings website<a href="#" onclick="collapse_change('1')"><img id="menuimg_1" src="<{$tpl_img_path}>admin/menu_reduce.gif" border="0" style="float: right; margin-top: -12px; margin-right: 8px;"></a></td>
 </tr>
 <tbody id="menu_1" style="display: yes">
 <tr>
-  <td class="altbg1" ><strong>网站名称:</strong><br>
-    <span class="smalltxt">网站名称，将显示在导航条以及网站介绍中</span></td>
+  <td class="altbg1" ><strong>Site Name:</strong><br>
+    <span class="smalltxt">Web site name, will appear in the navigation bar, as well as web site presentation</span></td>
   <td class="altbg2"><input name="u[site_name]" type="text" id="site_name" value="<{$U.SITE_NAME|default:$sitename}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
   </tr>
 <tr>
-  <td class="altbg1" ><strong>网站标题</strong><br>
-    <span class="smalltxt">该标题将显示在网页的标题中</span></td>
+  <td class="altbg1" ><strong>Website Title</strong><br>
+    <span class="smalltxt">The title will appear in the title of the page</span></td>
   <td class="altbg2"><input name="u[site_title]" type="text" id="site_title" value="<{$U.SITE_TITLE|default:$sitetitle}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1" ><strong>网站标语:</strong><br>
-    <span class="smalltxt">该标语将显示在网站的宣传上</span></td>
+  <td class="altbg1" ><strong>Web site banner:</strong><br>
+    <span class="smalltxt">The banners will be displayed on the site of the propaganda</span></td>
   <td class="altbg2"><input name="u[site_banner_word]" type="text" id="site_banner_word" value="<{$U.SITE_BANNER_WORD|default:$sitebannerword}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
   </tr>
   <tr>
-    <td class="altbg1" ><strong>公司名称：</strong><br>
-    <span class="smalltxt">公司名称，将显示在一些版权信息声明中</span></td>
+    <td class="altbg1" ><strong>Company Name:</strong><br>
+    <span class="smalltxt">公Division names will appear in a number of copyright information statement</span></td>
     <td class="altbg2"><input name="u[company_name]" type="text" id="company_name" value="<{$U.Company_NAME|default:$companyname}>" size="30"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
   </tr>
-  <tr><td class="altbg1" ><strong>网站 URL:</strong><br><span class="smalltxt">网站 URL，将作为链接显示在页面底部</span></td><td class="altbg2"><input name="u[site_url]" type="text" id="site_url" value="<{$U.SITE_URL|default:$smarty.const.URL}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)">
+  <tr><td class="altbg1" ><strong>Website URL:
+</strong><br><span class="smalltxt">Web site URL, will serve as a link displayed in the bottom of the page</span></td><td class="altbg2"><input name="u[site_url]" type="text" id="site_url" value="<{$U.SITE_URL|default:$smarty.const.URL}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)">
 </td></tr>
-<tr><td class="altbg1" ><strong>网站备案信息代码:</strong><br><span class="smalltxt">页面底部可以显示 ICP 备案信息，如果网站已备案，<br/>在此输入您的授权码，它将显示在页面底部，如果没有请留空</span></td><td class="altbg2"><input name="u[icp_number]" type="text" id="icp_number" value="<{$U.ICP_NUMBER|default:$icpnumber}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"></td></tr>
+<tr><td class="altbg1" ><strong>Site record information code:</strong><br><span class="smalltxt">Bottom of the page can display ICP record information, if the site has the record,<br/>Enter your authorization code, which will appear in the bottom of the page, if not please leave blank</span></td><td class="altbg2"><input name="u[icp_number]" type="text" id="icp_number" value="<{$U.ICP_NUMBER|default:$icpnumber}>" size="30"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"></td></tr>
 <tr>
-  <td class="altbg1" valign="top"><strong>网站客服热线</strong></td>
+  <td class="altbg1" valign="top"><strong>Web Customer Service Hotline</strong></td>
   <td class="altbg2"><input name="u[service_tel]" type="text" id="service_tel" size="30" value="<{$U.SERVICE_TEL|default:$servicetel}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>网站销售热线</strong></td>
+  <td class="altbg1"><strong>Web Sales Hotline</strong></td>
   <td class="altbg2"><input name="u[sale_tel]" type="text" id="sale_tel" size="30" value="<{$U.SALE_TEL|default:$saletel}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>网站客服QQ号码</strong></td>
+  <td class="altbg1"><strong>Service QQ ID:</strong></td>
   <td class="altbg2"><input name="u[service_qq]" type="text" id="u[sale_tel]" size="30" value="<{$U.SERVICE_QQ|default:$serviceqq}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>网站客服MSN Messenger帐号</strong></td>
+  <td class="altbg1"><strong>Service MSN ID:</strong></td>
   <td class="altbg2"><input name="u[service_msn]" type="text" id="u[sale_tel]2" size="30" value="<{$U.SERVICE_MSN|default:$servicemsn}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>网站客服Email信箱</strong></td>
+  <td class="altbg1"><strong>Service Email:</strong></td>
   <td class="altbg2"><input name="u[service_email]" type="text" id="service_email" size="30" value="<{$U.SERVICE_EMAIL|default:$serviceemail}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>网站描述:</strong><br>
-    <span class="smalltxt">关于你网站的简单的描述信息，将会显示在相关网站介绍处</span></td><td class="altbg2"><{$FCK_SITE_DESCRIPTION}></td></tr>
+  <td class="altbg1"><strong>Site Description:</strong><br>
+    <span class="smalltxt">With regard to a simple description of your site information will be displayed at the relevant site description</span></td><td class="altbg2"><{$FCK_SITE_DESCRIPTION}></td></tr>
 <tr>
   <td colspan="2" class="altbg1"><hr size="1" noshade style="height:100;width:1;border:1px dotted #000000" /></td>
   </tr>
 <tr>
-  <td class="altbg1"><strong>是否设置图片验证码</strong>
+  <td class="altbg1"><strong>Is set to Image verification code</strong>
   <br />
-  默认均不出现验证码  </td>
-  <td class="altbg2">控 制 台：<{html_radios name="u[cp_picture]" options=$AskAction checked=$U.CP_PICTURE|default:0 separator=""}>
+  By default none of the authentication code  </td>
+  <td class="altbg2">Console:<{html_radios name="u[cp_picture]" options=$AskAction checked=$U.CP_PICTURE|default:0 separator=""}>
   <br />
-  新用户注册：<{html_radios name="u[register_picture]" options=$AskAction checked=$U.REGISTER_PICTURE|default:0 separator=""}>
+  
+New User Registration:<{html_radios name="u[register_picture]" options=$AskAction checked=$U.REGISTER_PICTURE|default:0 separator=""}>
   <br />
-  用户 登陆：<{html_radios name="u[login_picture]" options=$AskAction checked=$U.LOGIN_PICTURE|default:0 separator=""}>  
+  User Login:<{html_radios name="u[login_picture]" options=$AskAction checked=$U.LOGIN_PICTURE|default:0 separator=""}>  
   <br />
-  游客发布供求：<{html_radios name="u[vispost_auth]" options=$AskAction checked=$U.VISPOST_AUTH|default:0 separator=""}>  
+  Published supply and demand of visitors:<{html_radios name="u[vispost_auth]" options=$AskAction checked=$U.VISPOST_AUTH|default:0 separator=""}>  
   </td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>图片水印</strong></td>
+  <td class="altbg1"><strong>Image Watermark</strong></td>
   <td class="altbg2"><{html_radios name="u[watermark]" options=$AskAction checked=$U.WATERMARK|default:0 separator=""}></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>水印文字</strong><br />只能是英文字母，默认为网站地址<{$SiteUrl}></td>
+  <td class="altbg1"><strong>Watermark Text</strong><br />Only in English letters, the default address for the website<{$SiteUrl}></td>
   <td class="altbg2"><input type="text" name="u[watertext]" value="<{$U.WATERTEXT|default:$smarty.const.URL}>"  class="input150" onMouseOver="fEvent('mouseover',this)" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOut="fEvent('mouseout',this)"/></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>水印文字颜色</strong></td>
+  <td class="altbg1"><strong>Watermark Text Color</strong></td>
   <td class="altbg2">
 	<select name="u[watercolor]">
-	<option value="0">请选择</option>
+	<option value="0">Select</option>
 	<script language="javascript">
 	var i, visStr, obj,set;
 	var showHideLayers= new Array("#666666","#999999","#cccccc","#f7f7f7","#990000","#cc0000","#ff0000","#ffff00","#ffff99","#ffffcc","#0066cc","#0099ff","#00ccff","#006633","#009900","#00cc00","#ff6600","#ff9933","#ffcc66","#cc0099","#cc00cc","#cc33ff","yellow","red","orange","black","white","gray","lime","purple","maroon");
@@ -149,53 +151,53 @@ function fEvent(sType,oInput){
 	</select></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>市场库添加审核</strong></td>
+  <td class="altbg1"><strong>Add a review Market Library</strong></td>
   <td class="altbg2"><{html_radios name="u[add_market_check]" options=$AskAction checked=$U.ADD_MARKET_CHECK|default:0 separator=""}></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>注册会员是否必须审核</strong></td>
+  <td class="altbg1"><strong>Registered members is obliged to examine</strong></td>
   <td class="altbg2"><{html_radios name="u[regcheck]" options=$AskAction checked=$U.REGCHECK|default:0 separator=""}></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>是否允许游客发布供求</strong></td>
-  <td class="altbg2"><label><input type="radio" name="u[vis_post]" value="1" onclick="$('check_visit').style.display='block';" <{if $U.VIS_POST==1}>checked="checked"<{/if}> />是</label>
-<label><input type="radio" name="u[vis_post]" value="0" onclick="$('check_visit').style.display='none';" <{if $U.VIS_POST==0}>checked="checked"<{/if}> />否</label></td>
+  <td class="altbg1"><strong>Whether to allow supply and demand of tourists released</strong></td>
+  <td class="altbg2"><label><input type="radio" name="u[vis_post]" value="1" onclick="$('check_visit').style.display='block';" <{if $U.VIS_POST==1}>checked="checked"<{/if}> />Is</label>
+<label><input type="radio" name="u[vis_post]" value="0" onclick="$('check_visit').style.display='none';" <{if $U.VIS_POST==0}>checked="checked"<{/if}> />No</label></td>
 </tr>
 <tbody id="check_visit" style="display:<{if $U.VIS_POST==1}>block<{else}>none<{/if}>;">
 <tr>
-  <td class="altbg1"><strong>游客发布供求必须审核</strong></td>
+  <td class="altbg1"><strong>Published supply and demand must be audited visitor</strong></td>
   <td class="altbg2"><{html_radios name="u[vis_post_check]" options=$AskAction checked=$U.VIS_POST_CHECK|default:0 separator=""}></td>
 </tr>
 </tbody>
 <tr>
-  <td class="altbg1"><strong>开放供应信息</strong></td>
+  <td class="altbg1"><strong>Open the supply of information</strong></td>
   <td class="altbg2"><{html_radios name="u[sell_logincheck]" options=$AskAction checked=$U.SELL_LOGINCHECK|default:0 separator=""}></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>开放求购信息</strong></td>
+  <td class="altbg1"><strong>Open Buying Leads</strong></td>
   <td class="altbg2"><{html_radios name="u[buy_logincheck]" options=$AskAction checked=$U.BUY_LOGINCHECK|default:0 separator=""}></td>
 </tr>
 </tbody>
 <tr class="header">
-<td colspan="2">在线支付设置<a href="#" onclick="collapse_change('2')"><img id="menuimg_2" src="<{$tpl_img_path}>admin/menu_reduce.gif" border="0" style="float: right; margin-top: -12px; margin-right: 8px;"></a></td>
+<td colspan="2">Online Payment Set<a href="#" onclick="collapse_change('2')"><img id="menuimg_2" src="<{$tpl_img_path}>admin/menu_reduce.gif" border="0" style="float: right; margin-top: -12px; margin-right: 8px;"></a></td>
 </tr>
 <tbody id="menu_2" style="display: yes">
 <tr>
-  <td class="altbg1"><strong>网银在线商户编号</strong>
-    <p>如您没有帐号,<a href="http://merchant3.chinabank.com.cn/register.do" target="_blank">请点击这里注册</a></p></td>
+  <td class="altbg1"><strong>Internet Banking Online Merchant Code</strong>
+    <p>If you do not account,<a href="http://merchant3.chinabank.com.cn/register.do" target="_blank">Click here to register</a></p></td>
   <td class="altbg2"><input name="u[chinabank_account]" type="text" id="china_account]" size="30" value="<{$U.CHINABANK_ACCOUNT}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>网银在线密钥</strong></td>
+  <td class="altbg1"><strong>Internet Banking Online Key</strong></td>
   <td class="altbg2"><input name="u[chinabank_key]" type="text" id="chinabank_key" size="30" value="<{$U.CHINABANK_KEY}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
 </tr>
 </tbody>
 <tr>
-  <td colspan="2" valign="top" class="altbg1"><center><input type="submit" name="savebasic" value="保存" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'">
+  <td colspan="2" valign="top" class="altbg1"><center><input type="submit" name="savebasic" value="Save" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'">
 </center></td>
   </tr>
 </table>
-<!-- :~访问设置 -->
+<!-- :~Access Settings -->
 <{$editor}>
 </form>
 </td></tr>

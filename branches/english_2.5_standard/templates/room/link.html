@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
@@ -17,7 +17,7 @@ for (i=0; i<t.length; i++)
 	chked++;
 }
 if(chked<=0){
-	alert("您没有选中任何数据");
+	alert("You do not select any data");
 	return false;
 }else{
 	return true;
@@ -44,7 +44,7 @@ if(chked<=0){
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 站内链接管理</td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> Site Link Management</td>
               </tr>
           </table></td>
         </tr>
@@ -55,8 +55,8 @@ if(chked<=0){
       <br>
       <table width="95%" border="0" cellpadding="2" cellspacing="0" class="bggray">
         <tr>
-          <td height="35" class="gray"><FONT color=#000000><strong>我们的合作伙伴</strong>：</FONT></td>
-          <td align="right" class="btn-input">请在对方主页内添加</td>
+          <td height="35" class="gray"><FONT color=#000000><strong>Our partners</strong>：</FONT></td>
+          <td align="right" class="btn-input">Please add other page,</td>
         </tr>
       </table>      
       <br>
@@ -66,12 +66,12 @@ if(chked<=0){
           <td><table width="100%"  border="0" cellpadding="5" cellspacing="1" class="bgblue">
             <tr align="center">
               <td width="8%" height="30"><input type="checkbox" name="fridAll" onClick="uaCheckAll(this, 'frid[]')" title="全选"></td>
-              <td width="40%" height="30"><strong>公司名称</strong></td>
+              <td width="40%" height="30"><strong>Name</strong></td>
               </tr>
 	  <{foreach from=$FriendLinks item=fl name=MemberLinks}>
             <tr align="center" class="bggray">
               <td><input type="checkbox" name="frid[]" value="<{$fl.CompanylinkId}>" onClick="uaCheckItem(this, 'fridAll')"></td>
-              <td align="center"><a target="_blank" title="访问<{$fl.CompanyName}>主页" href="<{$SiteUrl}>member/index.php?userid=<{$fl.MemberUsername}>"><{$fl.CompanyName}></a></td>
+              <td align="center"><a target="_blank" title="访问<{$fl.CompanyName}>Home" href="<{$SiteUrl}>member/index.php?userid=<{$fl.MemberUsername}>"><{$fl.CompanyName}></a></td>
               </tr>
   		<{foreachelse}>
 		<{/foreach}>
@@ -88,7 +88,8 @@ if(chked<=0){
           </table></td>
         </tr>
         <tr align="center" valign="bottom">
-          <td height="40"><input  name="delete" type="submit" id="delete" value= "删除选中的" onClick="return test();"></td>
+          <td height="40"><input  name="delete" type="submit" id="delete" value= "Delete selected
+" onClick="return test();"></td>
         </tr>
       </table>
 	  </form>

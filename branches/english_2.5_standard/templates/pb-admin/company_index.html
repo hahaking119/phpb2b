@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>控制台_<{$sitetitle}></title>
+<title>Console_<{$sitetitle}></title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="<{$CSS_PATH}>css/style.css">
 <script src="<{$JS_PATH}>js/prototype.js"></script>
@@ -14,16 +14,16 @@
 
 <body>
 <a name="top" />
-<!-- 位置 -->
+<!-- Location -->
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
 <tr><td>
-<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;公司库管理</div></td></tr>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;Corporate library management</div></td></tr>
 </table>
 <br />
 
-<!-- 搜索 -->
+<!-- Search -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
-<tr class="header"><td><div align="left">搜索</td>
+<tr class="header"><td><div align="left">Search</td>
   <td>&nbsp;</td>
   <td>&nbsp;</td>
   <td>&nbsp;</td>
@@ -34,23 +34,23 @@
 <form name="searchfrm" method="post" action="company.php?action=list&type=search">
 <tbody id="menu_2" style="display: yes">
 <tr>
-  <td width="9%">用户名称:</td>
+  <td width="9%">User Name:</td>
   <td width="15%"><input name="member[username]" type="text" id="username" size="15" value="<{$smarty.post.member.username}>"></td>
-  <td width="10%">公司名称:</td>
+  <td width="10%">Company Name:</td>
   <td><input name="company[name]" type="text" id="companyname" size="25" value="<{$smarty.post.company.name}>"></td>
   <td>&nbsp;</td>
   <td>&nbsp;</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
-  <td>企业类型:</td>
+  <td>Business Type:</td>
   <td><select name="companytype" id="companytype">
-    <option value="-1">请选择</option>
+    <option value="-1">Select</option>
     <{html_options options=$CompanyTypes selected=$smaty.post.companytype}>
   </select></td>
-  <td>审核状态</td>
+  <td>Audit Status</td>
   <td><select name="companystatus" id="companystatus">
-    <option value="-1">请选择</option>
+    <option value="-1">Select</option>
     <{html_options options=$CompanyStatus selected=$smaty.post.companystatus}>
   </select></td>
   <td>&nbsp;</td>
@@ -58,13 +58,13 @@
   <td>&nbsp;</td>
 </tr>
 <tr>
-  <td>注册时间:</td>
+  <td>Registration time:</td>
   <td><input type="text" name="FromDate" size="10" value='<{$smarty.post.FromDate|default:"None"}>' id="date3" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date3"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
-  <td>到</td>
+  <td>To</td>
   <td><input type="text" name="ToDate" size="10" value='<{$smarty.post.ToDate|default:"None"}>' id="date4" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date4"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
-  <td><input name="search" type="submit" id="search" value="查    询" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  <td><input name="search" type="submit" id="search" value="Search" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
   <td>&nbsp;</td>
   <td>&nbsp;</td>
 </tr>
@@ -73,16 +73,16 @@
 </table>
 
 <br />
-<!-- 标题 -->
+<!-- Title -->
 <form name="listfrm" id="listfrm" action="" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header" align="center"><td><!--  --></td>
-<td><strong>公司名称</strong></td>
-<td><span>用户名</span></td>
-<td><strong>信用指数</strong></td>
-<td><span><strong>审核状态</strong></span></td>
-<td><span><strong>所在地区</strong></span></td>
-<td><span><strong>加入时间</strong></span></td>
+<td><strong>Name</strong></td>
+<td><span>Username</span></td>
+<td><strong>Credit Index</strong></td>
+<td><span><strong>Audit Status</strong></span></td>
+<td><span><strong>Area</strong></span></td>
+<td><span><strong>Added</strong></span></td>
 <td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
 <tbody id="menu_1" style="display: yes">
 <{foreach from=$CompanyList item=cl name=companies}>
@@ -95,41 +95,41 @@
 <td><{$cl.CompanyProvince}>
   <{$cl.CompanyCity}></td>
 <td><{$cl.CreateDate|date_format:"%Y-%m-%d"}></td>
-<td><a href="company.php?action=mod&id=<{$cl.CompanyID}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="修改"></a><{if $cl.MemberName!=''}>&nbsp;<a href="<{$SiteUrl}>space.php?userid=<{$cl.MemberName}>" title="点击浏览<{$cl.CompanyName|truncate:55}>首页" target="_blank"><img src="<{$tpl_img_path}>admin/preview.gif" border="0" alt="查看主页"></a><{/if}></td>
+<td><a href="company.php?action=mod&id=<{$cl.CompanyID}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="Changes"></a><{if $cl.MemberName!=''}>&nbsp;<a href="<{$SiteUrl}>space.php?userid=<{$cl.MemberName}>" title="Click the Browse<{$cl.CompanyName|truncate:55}>Home" target="_blank"><img src="<{$tpl_img_path}>admin/preview.gif" border="0" alt="View Home"></a><{/if}></td>
 </tr>
 <{foreachelse}>
 <tr bgcolor="#ffffff">
-<td colspan="9">目前没有任何数据</td>
+<td colspan="9">There is no data on</td>
 </tr>
 <{/foreach}>
 </tbody>
-<!-- 操作列表 -->
+<!-- Operation List -->
 <tr align="center"><td class="altbg2" colspan="9">
 <br />
 <div id="bottom_action" class="actions">
 <ul>
-<li><img src="<{$tpl_img_path}>admin/arrow_left.png" border="0" alt="选中项"></li>
-<li><input type="checkbox" name="cidAll" id="cidAll" onClick="uaCheckAll(this, 'cid[]')"><label for="cidAll">全选/全不选</label></li>
-<li><i>选中项 : </i></li>
-<li><input type="image" name="del" src="<{$tpl_img_path}>admin/truncate.gif" border="0" alt="删除" onClick="return confirmAction('确定删除吗?');" /></li>
-<li><input type="image" name="check[in]" src="<{$tpl_img_path}>admin/checked.gif" border="0" alt="审核通过" /></li>
-<li><input type="image" name="check[out]" src="<{$tpl_img_path}>admin/check_false.gif" border="0" alt="审核不通过" /></li>
-<li><input type="image" name="recommend" src="<{$tpl_img_path}>recommend.gif" border="0" alt="推荐企业" /></li>
-<li><input type="image" name="setvip" src="<{$tpl_img_path}>admin/star2.gif" border="0" alt="设置为VIP会员" /></li>
+<li><img src="<{$tpl_img_path}>admin/arrow_left.png" border="0" alt="Checked"></li>
+<li><input type="checkbox" name="cidAll" id="cidAll" onClick="uaCheckAll(this, 'cid[]')"><label for="cidAll">Select All / Clear All</label></li>
+<li><i>Checked : </i></li>
+<li><input type="image" name="del" src="<{$tpl_img_path}>admin/truncate.gif" border="0" alt="Remove" onClick="return confirmAction('OK to delete?');" /></li>
+<li><input type="image" name="check[in]" src="<{$tpl_img_path}>admin/checked.gif" border="0" alt="Vetted and approved," /></li>
+<li><input type="image" name="check[out]" src="<{$tpl_img_path}>admin/check_false.gif" border="0" alt="Examination is not passed" /></li>
+<li><input type="image" name="recommend" src="<{$tpl_img_path}>recommend.gif" border="0" alt="Recommended Enterprises" /></li>
+<li><input type="image" name="setvip" src="<{$tpl_img_path}>admin/star2.gif" border="0" alt="Is set to VIP Member" /></li>
 </ul>
 </div>
 </td></tr>
-<!-- 分页 -->
+<!-- Paging -->
 <tr align="center"><td class="altbg1" colspan="9"><{$ByPages}></td></tr>
 <tr class="header" bgcolor="#ffffff">
 <td colspan="7"></td>
-<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+<td><div align="center"><a title="Top" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
 </tr>
 </table>
 </form>
 </td>
 </tr>
 </table>
-<!-- 结束new -->
+<!-- End of the new -->
 </body>
 </html>

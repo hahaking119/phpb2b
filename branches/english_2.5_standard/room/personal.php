@@ -10,8 +10,10 @@ $conditions = null;
 if ($_POST['save']) {
 	$vals = array();
 	$vals = $_POST['member'];
+	$vals['country_id'] = $_POST['countryid'];
 	$vals['province_code_id'] = $_POST['provinceid'];
 	$vals['city_code_id'] = $_POST['cityid'];
+	da($_POST);exit;
 	array_walk($vals,"uatrim");
 	if (!empty($_FILES['photo']['name'])) {
 	    include("../app/include/class.thumb.php");

@@ -7,75 +7,37 @@
 <style>
 .f14{font-size:14px;color:#CC0000}
 </style>
-<title>控制台_<{$sitetitle}></title>
+<title>Console_<{$sitetitle}></title>
 <script language="javascript"> 
-window.status = "欢迎您使用PHPB2B控制台<{$smarty.const.PHPB2B_VERSION}>";
+window.status = "You are welcome to use PHPB2B Console<{$smarty.const.PHPB2B_VERSION}>";
 </script> 
-<!--提示时间代码开始-->
-<script language="JavaScript">
-//定义提示信息数组,c为通用的信息,就是每天什么时候都适合显示的信息。m为早上显示的信息，
-//a为上午显示的信息，n对应中午，p对应下午，d为傍晚，e为晚上，l则对应晚上9-12点，w对应深夜。
-var w = {
-c: [ '多运动少生病', '让眼睛休息一会儿吧~'],
-m: ['早上好', '天亮了', '新的一天', '小鸟在歌唱~', '记得吃早点', '又堵车了:('],
-a: ['上午好', '好忙', '忙么？', '喝杯咖啡', '休息一下', '抓紧时间', ],
-n: ['中午好', '午饭时间',  '午饭要吃饱', '还不去吃饭？', '下午有什么任务呢'],
-p: ['下午好', '屋里好热～', '工作完成了？', '提高工作效率', '#_#有些困'],
-d: ['傍晚好', '又堵车了:(', '还不下班？', '吃些什么？', '一会儿去买菜','回家家找妈妈'],
-e: ['晚上好', '吃些什么？', '晚上去跑步', '鱼香肉丝里面是没有鱼的', '各回各家，各找各妈'],
-l: ['夜里好', '还没睡？', '今夜星光灿烂～', '还在工作么？'],
-w: ['睡吧，明天还上班~', '你不是一个人在战斗！', '长夜漫漫无心睡眠', '醒醒～～醒醒～'],
-k: ['周末好',  '周末^o^睡个懒觉', '给家里打个电话吧', '该出去晒太阳了', '约朋友去打球']
-};
-//根据不同的时间，显示对应的提示信息。
-function gw() {
-	var t = new Date()
-	var h = t.getHours();   //获取当前的小时
-	var d = t.getDay();     //获取当前的礼拜
-	var l = w.c;            //通用的信息
-	if ( h>=6 && h<9 ) {l = l.concat(w.m);}  //6-9点显示通用的和早上的提示信息
-	if ( h>=9 && h<12 ) {l = l.concat(w.a);} //9-12点显示通用的和上午的提示信息
-	if ( h>=12 && h<14 ) {l = l.concat(w.n);}
-	if ( h>=14 && h<17 ) {l = l.concat(w.p);}
-	if ( h>=17 && h<19 ) {l = l.concat(w.d);}
-	if ( h>=19 && h<21 ) {l = l.concat(w.e);}
-	if ( h>=21 && h<24 ) {l = l.concat(w.l);}
-	if ( h>=0 && h<6 ) {l = l.concat(w.w);}
-	if (d == 0 || d == 6) { l = l.concat(w.k);} //如果是周末，则可以显示适合周末的问候语
-	var n = Math.round(Math.random()*l.length); //Math.random()*l.length根据问候语的个数产生一个0到其个数的数字，Math.round()函数是用来取整的。
-	if (n == 0){n = 1;}
-	//如果n为0，则设置为1，因为返回的值为n-1
-	return(l[n-1]);
-	//document.write(gw());
-}
-</script>
-<!--提示时间代码结束-->
+<! - Prompted the end of time code -->
 </head>
 <body leftmargin="10" topmargin="10">
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td>
-<table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr><td><a href="#" onClick="parent.menu.location='admincp.php?action=menu'; parent.main.location='admincp.php?action=home';return false;">系统设置首页</a>&nbsp;&raquo;&nbsp;系统信息</td></tr></table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr><td><a href="#" onClick="parent.menu.location='admincp.php?action=menu'; parent.main.location='admincp.php?action=home';return false;">System Settings page</a>&nbsp;&raquo;&nbsp;System Information</td></tr></table>
 <br />
 <!-- Welcome -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header"><td colspan="2">You are welcome</td></tr>
-<tr class="altbg2"><td width="25%">最新版本 :</td><td><{$smarty.const.PHPB2B_VERSION}></td></tr>
+<tr class="altbg2"><td width="25%">The latest version of the :</td><td><{$smarty.const.PHPB2B_VERSION}></td></tr>
 </table>
 <br />
 <!-- System -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header"><td colspan="2">System Information</td></tr>
-<tr class="altbg2"><td width="25%">操作系统及 PHP</td><td><{$PhpVersion}></td></tr>
-<tr class="altbg2"><td width="25%">PHP B2B程序当前版本：</td><td><{$smarty.const.PHPB2B_VERSION}>，最新版本：<{$LatestVersion}></td></tr>
-<tr class="altbg1"><td>MySQL 版本</td><td><{$MysqlVersion}></td></tr>
-<tr class="altbg1"><td>GD Library支持</td><td><{$GDSupports}>
-<div style="color:red">注:验证码、图片水印、图片缩放必须具备该php扩展，否则不能运行</div></td></tr>
+<tr class="altbg2"><td width="25%">Operating system and PHP</td><td><{$PhpVersion}></td></tr>
+<tr class="altbg2"><td width="25%">PHP B2B program current version:</td><td><{$smarty.const.PHPB2B_VERSION}>, The latest version:<{$LatestVersion}></td></tr>
+<tr class="altbg1"><td>MySQL Version</td><td><{$MysqlVersion}></td></tr>
+<tr class="altbg1"><td>GD Library Support</td><td><{$GDSupports}>
+<div style="color:red">Note: The verification code, image watermark, picture zoom must have the php extension, otherwise you can not run</div></td></tr>
 <tr class="altbg1">
-  <td>当前数据库大小</td>
+  <td>The current database size</td>
   <td><{$DatabaseSize}></td>
 </tr>
 <tr class="altbg1">
-  <td>最后一次备份日期</td>
-  <td><{$LastBackupTime|date_format:"%Y-%m-%d %H:%M:%S"}><a href="./backup.php?action=backup_now">立即备份>>></a> </td>
+  <td>The last backup date</td>
+  <td><{$LastBackupTime|date_format:"%Y-%m-%d %H:%M:%S"}><a href="./backup.php?action=backup_now">Backup Now>>></a> </td>
 </tr>
 </table>
 <br />
@@ -84,15 +46,15 @@ function gw() {
 <tr class="header">
   <td colspan="2">PHPB2B Team</td>
 </tr>
-<tr class="altbg2"><td>界面美工设计</td>
-  <td class="smalltxt"><img src="<{$tpl_img_path}>admin/boy.gif" border="0" alt="">phpb2b@hotmail.com<img src="<{$tpl_img_path}>admin/girl.gif" border="0" alt=""><{mailto address="wangxiumei111@163.com" text="易水寒"}></td>
+<tr class="altbg2"><td>Interface Graphic Design</td>
+  <td class="smalltxt"><img src="<{$tpl_img_path}>admin/boy.gif" border="0" alt="">phpb2b@hotmail.com<img src="<{$tpl_img_path}>admin/girl.gif" border="0" alt=""><{mailto address="wangxiumei111@163.com" text="Yishui Han"}></td>
 </tr>
 <tr class="altbg1">
-  <td>主要网站</td>
+  <td>Main Website</td>
   <td class="smalltxt"><a href="http://www.phpb2b.com/" target="_blank">http://www.phpb2b.com/</a></td>
 </tr>
 <tr class="altbg2">
-  <td>演示网站</td>
+  <td>Demo Site</td>
   <td class="smalltxt"><a href="http://www.ualink.cn/" target="_blank">http://demo.phpb2b.com/</a></td>
 </tr>
 </table>

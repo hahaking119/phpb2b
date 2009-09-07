@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/general.js"></script>
@@ -26,7 +26,7 @@
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td><a  name="min"></a>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 查看客户询价</td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> See Customer Inquiry</td>
               </tr>
           </table></td>
         </tr>
@@ -39,23 +39,23 @@
         <tr align="center">
           <td><table width="100%"  border="0" cellpadding="5" cellspacing="1" class="bgblue">
             <tr align="center">
-              <td width="36%" height="30">询价商品</td>
+              <td width="36%" height="30">Inquiry product</td>
               <td width="64%" ><{$m.InqueryTitle}></td>
             </tr>
             <tr align="center" class="bggray">
-              <td>补充信息</td>
+              <td>Additional Information</td>
               <td><{$m.InqueryContent|nl2br|strip_tags}></td>
             </tr>
             <tr align="center" class="bggray">
-              <td>订货总量</td>
+              <td>Order Total</td>
               <td><{$m.InqueryExpQuantity}></td>
             </tr>
             <tr align="center" class="bggray">
-              <td>期望价格</td>
+              <td>Expected price</td>
               <td><{$m.InqueryExpPrice}></td>
             </tr>
             <tr align="center" class="bggray">
-              <td>联系方式</td>
+              <td>Contact</td>
               <td><{$m.InqueryLink}></td>
             </tr>
           </table>

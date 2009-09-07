@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/general.js"></script>
@@ -25,7 +25,7 @@
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 产品分类管理</td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> Products Management</td>
               </tr>
           </table></td>
         </tr>
@@ -36,7 +36,7 @@
       <br>
       <table width="95%" border="0" cellpadding="2" cellspacing="0" class="bggray">
         <tr>
-          <td height="35" class="gray"><span class="orange">友情提醒：</span>产品系列（或产品系列中各产品）调整后的顺序，将立即体现在您的企业网站上。</td>
+          <td height="35" class="gray"><span class="orange">Friendly reminder:</span>Product line (or product lines for each product) Adjusted the order will be immediately reflected in your business website.</td>
         </tr>
       </table>      
       <br>
@@ -46,14 +46,14 @@
 		  <form name="prodtypefrm" action="./producttype.php" method="post">
 		  <table width="100%" border="0" cellpadding="5" cellspacing="1" class="bgblue">
             <tr align="center">
-              <td height="28" colspan="4"><strong>按系列分类的产品</strong></td>
+              <td height="28" colspan="4"><strong>Products classified according to family</strong></td>
               </tr>
 			 <{foreach from=$ProductTypes item=prodtype name=producttype}>
             <tr align="center" class="bggray">
               <td width="6%" align="center"><img src="<{$tpl_img_path}>office/on.gif" width="15" height="16"></td>
               <td width="40%" align="left"><{$prodtype.Name}></td>
-              <td align="center"><a href="producttype.php?action=mod&id=<{$prodtype.ID}>">修改</a></td>
-              <td align="center"><a href="producttype.php?action=del&id=<{$prodtype.ID}>">删除</a></td>
+              <td align="center"><a href="producttype.php?action=mod&id=<{$prodtype.ID}>">Changes</a></td>
+              <td align="center"><a href="producttype.php?action=del&id=<{$prodtype.ID}>">Remove</a></td>
             </tr>
 			<{foreachelse}>
 			<{/foreach}>
@@ -66,7 +66,7 @@
         </tr>
 		<form name="prodtypeaddfrm" method="post" action="producttype.php" autocomplete="off">
         <tr>
-          <td colspan="2">&nbsp;产品分类名称：
+          <td colspan="2">&nbsp;Product Classification Name:
             <input name="type_name" type="Text" value="" size="25">
             <input type="Submit" name="save" value="&nbsp;添&nbsp;加&nbsp;"></td>
         </tr>

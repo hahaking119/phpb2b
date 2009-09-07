@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/general.js"></script>
@@ -17,7 +17,7 @@ for (i=0; i<t.length; i++)
 	chked++;
 }
 if(chked<=0){
-	alert("您没有选中任何留言");
+	alert("You do not select any of the comments");
 	return false;
 }else{
 	return true;
@@ -44,7 +44,7 @@ if(chked<=0){
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td><a  name="min"></a>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> <{if $smarty.get.type eq "in"}>收到的留言<{else}>发出的留言<{/if}></td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> <{if $smarty.get.type eq "in"}>Message received<{else}>Send message<{/if}></td>
               </tr>
           </table></td>
         </tr>
@@ -60,10 +60,10 @@ if(chked<=0){
         <tr align="center">
           <td><table width="100%"  border="0" cellpadding="5" cellspacing="1" class="bgblue">
             <tr align="center">
-              <td height="30"><strong>选择</strong></td>
-              <td height="30"><strong>主 题</strong></td>
-              <td height="30"><strong>状 态</strong></td>
-              <td ><strong>时 间</strong></td>
+              <td height="30"><strong>Choose</strong></td>
+              <td height="30"><strong>Theme</strong></td>
+              <td height="30"><strong>State</strong></td>
+              <td ><strong>Time</strong></td>
             </tr>
 			<{foreach from=$Messages name=companymessage item=cm}>
             <tr align="center" class="bggray">
@@ -88,7 +88,7 @@ if(chked<=0){
           </table></td>
         </tr>
         <tr align="center" valign="bottom">
-          <td height="40"><input  name="del" type=submit id="del" value=" 删除选中的 " onclick="return test();"></td>
+          <td height="40"><input  name="del" type=submit id="del" value=" Delete selected " onclick="return test();"></td>
         </tr>
       </table>
 	  </form>

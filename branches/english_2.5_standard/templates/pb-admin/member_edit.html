@@ -10,72 +10,73 @@
 
 <body leftmargin="10" topmargin="10">
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
-  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo; 会员库</div></td>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo; Member Library</div></td>
 </tr></table>
 	<form action="./member.php?action=mod" method="post" enctype="multipart/form-data" name="memberfrm">
 	<input type="hidden" name="id" value="<{$smarty.get.id}>" />
         <table width="100%"  border="0" cellpadding="5" cellspacing="1" class="tableborder">
 		<tr class="header">
-		  <td colspan="6">基本信息</td>
+		  <td colspan="6">Basic Information</td>
 		</tr>
           <tr>
-            <td align="center" class="altbg1"><font color=red>* </font>用户名
+            <td align="center" class="altbg1"><font color=red>* </font>Username
+
             <td class="altbg2"><{if $smarty.get.id}>
                 <{$m.MemberUsername|strip_tags}>
               <{else}>
               <input type="text" name="member[username]" value="" />
               <{/if}></td>
-            <td class="altbg2">密码</td>
+            <td class="altbg2">Password</td>
             <td colspan="2" class="altbg2"><input type="password" name="member[userpass]" value="" />
-              （如果不想修改，请保持为空）</td>
+              （If you do not want to change, please keep blank)</td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">姓                    
+            <td class="altbg1" align="center">Surname                    
             <td colspan="4" class="altbg2"><input name=member[firstname] type=text id="member[firstname]" value="<{$m.MemberFirstname}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">名                    
+            <td class="altbg1" align="center">Name                    
             <td colspan="4" class="altbg2"><input name=member[lastname] type=text id="member[lastname]" value="<{$m.MemberLastname}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 查询密码问题
+            <td class="altbg1" align="center"> Query Password problem
             <td colspan="4" class="altbg2"><input name=member[question] type=text id="member[question]" value="<{$m.MemberQuestion}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 查询密码答案 
+            <td class="altbg1" align="center"> Password queries and answers to queries password 
             <td colspan="4" class="altbg2"><input name=member[answer] type=text id="member[answer]" value="<{$m.MemberAnswer}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">服务开始日期
+            <td class="altbg1" align="center">Service Start Date
             <td class="altbg2"><input type="text" name="ServiceFromDate" size="10" value='<{$m.MemberServiceStartDate|date_format:"%Y-%m-%d"|default:"None"}>' id="date1" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date1"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
-            <td colspan="2" class="altbg2">服务结束日期</td>
+            <td colspan="2" class="altbg2">Service end date</td>
             <td class="altbg2"><input type="text" name="ServiceEndDate" size="10" value='<{$m.MemberServiceEndDate|date_format:"%Y-%m-%d"|default:"None"}>' id="date2" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date2"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">职位
+            <td class="altbg1" align="center">Jobs
             <td colspan="4" class="altbg2"><select name="member[position]">
                                 <{html_options options=$WorkPosition selected=$m.MemberPosition}>
                               </select>                            </td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">性别
+            <td class="altbg1" align="center">Gender
             <td colspan="4" class="altbg2"><{html_radios name="member[gender]" options=$Genders checked=$m.MemberGender|default:"1" separator=" "}></td>
           </tr>
 		<tr class="header">
-		  <td colspan="6">联系方式</td>
+		  <td colspan="6">Contact</td>
 		</tr>
           <tr>
-            <td class="altbg1" align="center">联系电话
+            <td class="altbg1" align="center">Telephone
             <td colspan="4" class="altbg2"><input name="member[tel]" type="text" id="member[tel]" value="<{$m.MemberTel}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 传真 
+            <td class="altbg1" align="center"> Fax 
             <td colspan="4" class="altbg2"><input name="member[fax]" type="text" id="member[fax]" value="<{$m.MemberFax}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 手机 
+            <td class="altbg1" align="center"> Mobile 
             <td colspan="4" class="altbg2"><input name="member[mobile]" type="text" id="member[mobile]" value="<{$m.MemberMobile}>"></td>
           </tr>
           <tr>
@@ -95,18 +96,18 @@
             <td colspan="4" class="altbg2"><input name="member[icq]" type="text" id="member[icq]" value="<{$m.MemberIcq}>"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">所在地区
+            <td class="altbg1" align="center">Area
             <td colspan="4" class="altbg2"><select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
                         </select><select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2">
                         </select><select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
-                        </select>当前地区：<{$m.ProvinceName}>-<{$m.CityName}>，如果不修改，请不要选择。</td>
+                        </select>Current Region:<{$m.ProvinceName}>-<{$m.CityName}>，If you do not change, do not choose.</td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 详细地址
+            <td class="altbg1" align="center"> Full address
             <td colspan="4" class="altbg2"><input name="member[address]" type="text" id="member[address]" value="<{$m.MemberAddress}>" size="35"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 邮编
+            <td class="altbg1" align="center"> Zip
             <td colspan="4" class="altbg2"><input name="member[zipcode]" type="text" id="member[zipcode]" value="<{$m.MemberZipcode}>"></td>
           </tr>
           <tr>
@@ -114,59 +115,60 @@
             <td colspan="4" bgcolor=#F7F7F7 border=1 ><input name="member[email]" type="text" id="member[email]" value="<{$m.MemberEmail}>"></td>
           </tr>
 		<tr class="header">
-		  <td colspan="6">会员积分</td>
+		  <td colspan="6">Member Points</td>
 		</tr>
           <tr>
-            <td class="altbg1" align="center">企业信用等级
+            <td class="altbg1" align="center">Corporate credit rating
             <td colspan="4" class="altbg2"><input name=member[credit_level] type=text id="member[credit_level]" value="<{$m.MemberCreditLevel}>">
-            (评价对应企业的活跃度)</td>
+            (Evaluation of the corresponding degree of activity of enterprises)</td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">用户信用等级          
+            <td class="altbg1" align="center">The user's credit rating          
             <td colspan="4" class="altbg2"><input name=member[rank] type=text id="member[rank]" value="<{$m.MemberRank}>">
-              (评价会员的活跃度)</td>
+              (Evaluation of active membership degree of)</td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 审核状态
+            <td class="altbg1" align="center"> Audit Status
             <td colspan="4" class="altbg2"><{html_radios name="member[status]" options=$MemberStatus checked=$m.MemberStatus separator=" "}></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 用户类型 
+            <td class="altbg1" align="center"> Audit Status
+ 
             <td colspan="4" class="altbg2"><select name="member[user_level]">
-                                <option value="1" <{if $m.MemberUserLevel==1}>selected<{/if}>>个人会员</option>
-                                <option value="2" <{if $m.MemberUserLevel==2}>selected<{/if}>>企业会员</option>
+                                <option value="1" <{if $m.MemberUserLevel==1}>selected<{/if}>>Individual Member</option>Audit Status
+                                <option value="2" <{if $m.MemberUserLevel==2}>selected<{/if}>>Corporate Member</option>
                             </select></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 会员类型 
+            <td class="altbg1" align="center"> Member Type 
             <td colspan="4" class="altbg2"><select name="member[user_type]">
                                 <{html_options options=$UserTypes selected=$m.MemberUserType}>
                             </select></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center"> 金钱点数
+            <td class="altbg1" align="center"> Points Money
             <td class="altbg2"><input name=member[credit_point] type=text id="member_credit_point" value="<{$m.MemberCreditPoint}>"></td>
             <td colspan="2" class="altbg2"></td>
             <td class="altbg2"></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">最后一次登陆时间
+            <td class="altbg1" align="center">I was online
             <td colspan="4" class="altbg2"><{$m.MemberLastLogin|date_format:"%Y-%m-%d"}></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">今天登陆次数
+            <td class="altbg1" align="center">Today, the number of landing
             <td colspan="4" class="altbg2"><{$m.MemberTodayLogins}></td>
           </tr>
           <tr>
-            <td class="altbg1" align="center">加入日期
+            <td class="altbg1" align="center">Date
             <td colspan="4" class="altbg2"><{$m.MemberCreated|date_format:"%Y-%m-%d"}></td>
           </tr>
           <tr class="altbg1">
             <td colspan="5" align="center"><table border="0" cellpadding="5" cellspacing="0" class="button">
                 <tr>
-                  <td><input  name="check_in" type=submit id="check_in" value=" 审核通过 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
-                  <td><input  name="check_out" type=submit id="check_out" value=" 审核不通过 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
-                  <td><input  name="save" type=submit id="save" value=" 保存 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                  <td><input  name="check_in" type=submit id="check_in" value=" Vetted and approved, " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                  <td><input  name="check_out" type=submit id="check_out" value=" Examination is not passed " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                  <td><input  name="save" type=submit id="save" value=" Save " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
                 </tr>
           </table>          </tr>
         </table>
@@ -176,7 +178,7 @@
 </html>
 <script language="javascript">
 var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
-linkage2.BLANK_SELECT = "请选择";
+linkage2.BLANK_SELECT = "Select";
 linkage2.init();
 </script>
 

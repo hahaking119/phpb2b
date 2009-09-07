@@ -19,12 +19,12 @@
 	<div class="cp_left2">
 		<div class="cp_tab1">
 			<p class="cp_p1"></p><p class="cp_p1 cp_p2"></p><p class="cp_p1 cp_p3"></p><p class="cp_p1 cp_p4"></p>
-			<div class="bt cp_bt4"><h2 class="f12">按类目选择</h2></div>
+			<div class="bt cp_bt4"><h2 class="f12">Select by Category</h2></div>
 			<ul class="cp_ul2">
 			<{foreach from=$OtherIndustry name=otherind item=item}>
 				<li><a href="<{$SiteUrl}>offer/list.php?industryname=<{$item.Name|urlencode}>" title="<{$item.Name}>"><{$item.Name}></a><em>(<{$item.BuyAmount}>)</em></li>
 			<{foreachelse}>
-				<li>该分类下无子分类</li>
+				<li>No sub-categories under the classification</li>
 			<{/foreach}>
 			</ul>
 		</div>
@@ -33,16 +33,16 @@
               <form name="product_search_frm" action="./list.php?sid=<{$smarty.get.sid}>" method="get">
 			  <input type="hidden" name="industryname" value="<{$smarty.get.industryname}>" />
 			<p class="cp_p7">
-				<em>按行业</em>
+				<em>By Industry</em>
 				<select name="sid" onchange="location.href='list.php?sid='+this.options[this.selectedIndex].value+'&areaid=<{$smarty.get.areaid}>'">
-					<option value="0">不限</option>
+					<option value="0">No limit</option>
 					<{foreach from=$Industries name=Industries item=item key=key}>
 					<option value="<{$key}>" <{if $key==$smarty.get.sid}>selected="selected"<{/if}>><{$item}></option>
 					<{/foreach}>
 				</select>
-				<em>按地区</em>
+				<em>By Area</em>
 				<select name="areaid" onchange="location.href='list.php?industryname=<{$smarty.get.sid}>&areaid='+this.options[this.selectedIndex].value;">
-					<option value="0">不限</option>
+					<option value="0">No limit</option>
 					<{foreach from=$Areas name=Areas item=item key=key}>
 					<option value="<{$key}>" <{if $key==$smarty.get.areaid}>selected="selected"<{/if}>><{$item}></option>
 					<{/foreach}>
@@ -53,11 +53,11 @@
 		<div class="clear9"></div>
 		<div class="cp_tab4">
 			<ul class="cp_ul3">
-				<li class="li1">图例</li>
-				<li class="li2"><p>供应信息/公司</p></li>
-				<li class="li3">会员等级</li>
-				<li class="li3">信誉度指数</li>
-				<li class="li3">在线联系</li>
+				<li class="li1">Picture</li>
+				<li class="li2"><p>Supply Information/Company</p></li>
+				<li class="li3">Member Level</li>
+				<li class="li3">Reputation index</li>
+				<li class="li3">Online Contact</li>
 			</ul>
 <!-- 列表供求 -->
 <{section name=t loop=$Lists}>
@@ -68,8 +68,8 @@
 					<p><{if $Lists[t].PrimTel==1}><img src="<{$tpl_img_path}>default/mobile.gif" alt="有手机"><{elseif $Lists[t].PrimTel!=''}><img src="<{$tpl_img_path}>default/tel.gif" alt="有电话"><{/if}>
             <br />
             <{$Lists[t].Content|strip_tags|truncate:100}></p>
-					<span class="str">发布者：<{$Lists[t].OfferCompanyName|default:"个人发布"}></span>
-					<{if $Lists[t].OfferCompanyName!=""}><a href="<{$UrlContainer.common}>space.php?do=feedback&userid=<{$Lists[t].MemberUsername}>" class="cp_a3 cp_a4">给我留言</a><{/if}>
+					<span class="str">Posted by:<{$Lists[t].OfferCompanyName|default:"Personal Release"}></span>
+					<{if $Lists[t].OfferCompanyName!=""}><a href="<{$UrlContainer.common}>space.php?do=feedback&userid=<{$Lists[t].MemberUsername}>" class="cp_a3 cp_a4">Guestbook</a><{/if}>
 				</li>
 				<li class="li3"><img src="<{$tpl_img_path}>default/grade/<{$Lists[t].CreditLevel|default:"1"|cat:".gif"}>"></li>
 				<li class="li3"><em class="str"><img src="<{$tpl_img_path}>default/type/<{$Lists[t].Membertype|default:"default"}>.gif"></em></li>

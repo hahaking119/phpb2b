@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>控制台_<{$sitetitle}></title>
+<title>Console_<{$sitetitle}></title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
 <script language="javascript" src="<{$JS_PATH}>js/popcalendar.js"></script>
@@ -13,7 +13,7 @@
 <!-- 位置 -->
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
 <tr><td>
-<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;登陆日志管理</div></td></tr>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;登陆日志管理</div></td></tr>
 </table>
 <br />
 <!-- 搜索 -->
@@ -33,7 +33,7 @@
 
 <tr>
   <td colspan="6"><div align="center">
-    <input name="search" type="submit" id="search" value="搜索" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'">
+    <input name="search" type="submit" id="search" value="Search" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'">
   </div></td>
   </tr>
 </form>
@@ -44,10 +44,10 @@
 <form name="listfrm" action="" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header" align="center">
-  <td>会员名称</td>
-<td>登陆IP地址或位置</td>
-<td>登陆时间</td>
-<td><a href="<{$smarty.server.PHP_SELF}>?action=clear" onClick="return confirmAction('是否删除所有日志记录?');">清空日志？</a></td>
+  <td>Username</td>
+<td>Log IP address or location of</td>
+<td>Landing time</td>
+<td><a href="<{$smarty.server.PHP_SELF}>?action=clear" onClick="return confirmAction('Does Delete all log records?');">Clear the log?</a></td>
 </tr>
 <tbody id="menu_1" style="display: yes">
 <{foreach from=$LogList item=lg name=memberlogs}>
@@ -59,7 +59,7 @@
 </tr>
 <{foreachelse}>
 <tr bgcolor="#ffffff">
-<td colspan="5" align="center"><strong>目前没有任何数据</strong></td>
+<td colspan="5" align="center"><strong>There is no data on</strong></td>
 </tr>
 <{/foreach}>
 </tbody>
@@ -67,7 +67,7 @@
 <tr align="center"><td class="altbg1" colspan="5"><{$ByPages}></td></tr>
 <tr class="header" bgcolor="#ffffff">
 <td colspan="3">&nbsp;</td>
-<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+<td><div align="center"><a title="Return Top" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
 </tr>
 </table>
 </form>

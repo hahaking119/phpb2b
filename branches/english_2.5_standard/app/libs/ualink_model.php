@@ -57,69 +57,65 @@ class UaModel extends UaObject
      * @var unknown_type
      */
  	var $offer_expires = array("10"=>"10 days","30"=>"1 month","90"=>"3 Months","180"=>"6 Months");
-	var $buy_types = array("1"=>"Buyer", "4"=>"Corp", "5"=>"Merchants");
-	var $sell_types = array("2"=>"Seller", "3"=>"Agent", "6"=>"Join", "7"=>"Wholesale", "8"=>"Inventory");
+	var $buy_types = array("1"=>"Buy", "4"=>"Corp", "5"=>"Merchants");
+	var $sell_types = array("2"=>"Sell", "3"=>"Agent", "6"=>"Join", "7"=>"Wholesale", "8"=>"Invent");
  	var $params = array(
- 	"1"=>array("title"=>"产品数量", "name"=>"quantity", "size"=>"10", "max_length"=>10),
- 	"2"=>array("title"=>"包装说明", "name"=>"package", "size"=>"10", "max_length"=>100),
- 	"3"=>array("title"=>"价格说明", "name"=>"price", "size"=>"10", "max_length"=>50),
- 	"4"=>array("title"=>"产品规格", "name"=>"scale", "size"=>"10", "max_length"=>20),
- 	"5"=>array("title"=>"产品编号", "name"=>"sn", "size"=>"10", "max_length"=>20),
+ 	"1"=>array("title"=>"The number of products", "name"=>"quantity", "size"=>"10", "max_length"=>10),
+ 	"2"=>array("title"=>"Package Description", "name"=>"package", "size"=>"10", "max_length"=>100),
+ 	"3"=>array("title"=>"Price DescriptionSpecifications", "name"=>"price", "size"=>"10", "max_length"=>50),
+ 	"4"=>array("title"=>"Specifications", "name"=>"scale", "size"=>"10", "max_length"=>20),
+ 	"5"=>array("title"=>"Product No.", "name"=>"sn", "size"=>"10", "max_length"=>20),
  	);
  	/**
  	 * Company
  	 */
- 	var $manage_type = array(1=>"生产型",2=>"贸易型",3=>"服务型",4=>"政府或其他机构");
- 	var $main_market = array(1=>"大陆", 2=>"港澳台", 3=>"北美", 4=>"南美", 5=>"欧洲",6=>"亚洲", 7=>"非洲", 8=>"大洋洲",9=>"其他市场");
+ 	var $manage_type = array(1=>"Production",2=>"Trade Type",3=>"Service-oriented",4=>"Government or other agencies");
+ 	var $main_market = array(1=>"China", 2=>"Hong Kong, Macao and Taiwan", 3=>"North Americ", 4=>"South America", 5=>"Europe",6=>"Asia", 7=>"Africa", 8=>"Oceania",9=>"Other markets");
  	var $company_funds = array(
-		0=>"**不公开**",1=>"人民币 10万元之下",
-		2=>"人民币 10万-30万",3=>"人民币 30万-50万",
-		4=>"人民币 50万-100万",5=>"人民币 100万-300万",
-		6=>"人民币 300万-500万",7=>"人民币 500万-1000万",
-		8=>"人民币 1000 万元/年-5000 万元/年",9=>"人民币 5000 万元/年-1 亿元/年",
-		9=>"其他",
+		0=>"**Privacy**",1=>"Under 10000",
+		2=>"100,000 -30 10000",3=>"300,000 -50 10000",
+		4=>"500,000 -100 10000",5=>"1 million -300 million",
+		6=>"300 million-500 million",7=>"More than 500 million",
 		);
  	var $year_annuals = array(
-		0=>"**不公开**",1=>"人民币 10万元之下/年",
-		2=>"人民币 10万-30万/年",3=>"人民币 30万-50万/年",
-		4=>"人民币 50万-100万/年",5=>"人民币 100万-300万/年",
-		6=>"人民币 300万-500万/年",7=>"人民币 500万-1000万/年",
-		8=>"人民币 1000万-5000万/年",9=>"人民币 5000万以上/年",
-		9=>"其他",
+		0=>"**Privacy**",1=>"Under 10000",
+		2=>"100,000 -30 10000",3=>"300,000 -50 10000",
+		4=>"500,000 -100 10000",5=>"1 million -300 million",
+		6=>"300 million-500 million",7=>"More than 500 million",
 		);
 	var $economic_type = array("Select","State-owned enterprises",
-	"Collective enterprise", 
-	"Joint-stock cooperative enterprises", 
-	"Joint ventures", 
-	"State-owned joint ventures", 
-	"Collective joint ventures", 
-	"State-owned and collective joint ventures", 
-	"Other joint ventures", 
-	"Limited liability company", 
-	"State-owned limited liability company", 
-	"Other limited liability company", 
-	"Limited", 
-	"Private enterprise", 
-	"Private-owned enterprises", 
-	"Private cooperative enterprises", 
-	"Private limited liability company", 
-	"Private Limited", 
-	"Individual-owned enterprises", 
-	"And Hong Kong, Macao and Taiwan joint ventures", 
-	"And Hong Kong, Macao and Taiwan cooperative enterprises", 
-	"Hong Kong, Macao and Taiwan sole proprietorship enterprises", 
-	"Hong Kong, Macao and Taiwan Investment Corporation", 
-	"Sino-foreign joint ventures", 
-	"Sino-foreign cooperative enterprises", 
-	"Foreign-owned enterprises", 
-	"Foreign Investment Corporation", 
-	"Non-profit organization" 
+	"Collective enterprise",
+	"Joint-stock cooperative enterprises",
+	"Joint ventures",
+	"State-owned joint ventures",
+	"Collective joint ventures",
+	"State-owned and collective joint ventures",
+	"Other joint ventures",
+	"Limited liability company",
+	"State-owned limited liability company",
+	"Other limited liability company",
+	"Limited",
+	"Private enterprise",
+	"Private-owned enterprises",
+	"Private cooperative enterprises",
+	"Private limited liability company",
+	"Private Limited",
+	"Individual-owned enterprises",
+	"And Hong Kong, Macao and Taiwan joint ventures",
+	"And Hong Kong, Macao and Taiwan cooperative enterprises",
+	"Hong Kong, Macao and Taiwan sole proprietorship enterprises",
+	"Hong Kong, Macao and Taiwan Investment Corporation",
+	"Sino-foreign joint ventures",
+	"Sino-foreign cooperative enterprises",
+	"Foreign-owned enterprises",
+	"Foreign Investment Corporation",
+	"Non-profit organization",
 	"Other",
 	);
 	var $company_status = array("0"=>"Invalid","1"=>"Effective","2"=>"Pending","3"=>"Not passed");
 	var $employee_amount = array(
-	0=>"**不公开**",
-	1=>"5 人以下",2=>"5 - 10 人",3=>"11 - 50 人",4=>"51 - 100 人",5=>"101 -500 人",6=>"501- 1000 人",7=>"1000 人以上");
+	0=>"**Privacy**",
+	1=>"Less than 5",2=>"5 - 10 people",3=>"11 - 50 people",4=>"51 - 100 people",5=>"101 -500 people",6=>"501- 1000 people",7=>"More than 1000");
     /**
      * Service
      */
@@ -128,38 +124,38 @@ class UaModel extends UaObject
  	/**
  	 * Orders
  	 */
- 	var $order_status = array(0=>"正在审核",1=>"审核通过",2=>"审核失败");
+ 	var $order_status = array(0=>"Checking",1=>"Approved",2=>"Audit Failure");
     /**
      * Job
      */
 	var $educations = array(
-		0=>"不限",
-		1=>"博士",
+		0=>"Open",
+		1=>"Doctor",
 		2 =>"MBA",
-		3 =>"硕士",
-		4 =>"本科",
-		5 =>"大专",
-		6 =>"中专",
-		7 =>"中技",
-		8 =>"高中",
-		9 =>"初中",
-		10 =>"小学",
-		11=>"其他",
+		3 =>"Master",
+		4 =>"Undergraduate",
+		5 =>"College",
+		6 =>"Secondary",
+		7 =>"In technology",
+		8 =>"High School",
+		9 =>"Junior",
+		10 =>"Primary",
+		11=>"Other",
 		);
-	var $salary = array('0'=>'面议','1'=>'1500以下','2'=>'1500-1999元','3'=>'2000-2999','4'=>'3000-4499元','5'=>'4500-5999元','6'=>'6000-7999元','7'=>'8000-9999元','8'=>'10000-14999元','9'=>'15000-19999元','10'=>'20000-29999元','11'=>'30000-49999元','12'=>'50000元以上');
-	var $worktype = array('1'=>"全职",'2'=>"兼职",'3'=>"临时",'4'=>"实习",'5'=>"其他");
+	var $salary = array('0'=>'Negotiable','1'=>'Less than 1500','2'=>'1500-1999','3'=>'2000-2999','4'=>'3000-4499','5'=>'4500-5999','6'=>'6000-7999','7'=>'8000-9999','8'=>'10000-14999','9'=>'15000-19999','10'=>'20000-29999','11'=>'30000-49999','12'=>'More than 50000');
+	var $worktype = array('1'=>"Full",'2'=>"Part",'3'=>"Provisional",'4'=>"Internship",'5'=>"Other");
     /**
      * Member
      */
- 	var $ua_positions = array(0=>"Select",1=>"Chairman, president and deputies, business owners, business partners, the general manager/vice president",
+ 	var $ua_positions = array(0=>"Select",1=>"business owners, business partners",
  	2=>"Administration Manager/administrative staff",3=>"Technical department manager/technical staff",4=>"Production Manager/Production staff",
  	5=>"Marketing manager/marketing people",6=>"Purchasing Manager/Procurement staff",7=>"Sales Manager/Sales",8=>"Others",
  	);
- 	var $ua_member_types = array(0=>"会员类型",1=>"免费企业会员",2=>"收费企业会员");
-	var $genders = array("1"=>"先生","2"=>"女士","0"=>"保密");
- 	var $member_status = array("0"=>"无效","1"=>"有效","2"=>"等待审核","3"=>"审核不通过","4"=>"被禁用");
+ 	var $ua_member_types = array(0=>"Member Type",1=>"Free Enterprise members",2=>"Corporate membership fees");
+	var $genders = array("1"=>"Mr.","2"=>"Miss.","0"=>"Privacy");
+ 	var $member_status = array("0"=>"Invalid","1"=>"Valid","2"=>"Pending review","3"=>"审核不通过","4"=>"Forbid");
  	var $im_types = array("1"=>"QQ","2"=>"ICQ","3"=>"Msn Messenger","4"=>"Yahoo Messenger","5"=>"Skype");
- 	var $phone_types = array("1"=>"Mobile","2"=>"Residential","3"=>"商务电话","4"=>"其他电话");
+ 	var $phone_types = array("1"=>"Mobile","2"=>"Residential","3"=>"Business Telephone","4"=>"Other Telephone");
 	var $office_redirects = array("Back to Previous Page", "Homepage", "Business Office Home", "My Leads", "My Messages");
 
 	function setPageTitle($titles = null, $positions = null, $left = "&laquo;", $right = "&raquo;")

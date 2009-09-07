@@ -23,22 +23,22 @@
     <tr> 
       <td width=785><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
       width=14> Your current position: <a class=link12 href="<{$SiteUrl}>"><{$sitename}></a> 
-        &raquo; <a class=link12 href="<{$SiteUrl}>tag.php">关键词搜索</a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>tag.php">Search Keywords</a> 
         &raquo; <{$smarty.get.skeyword}></td>
     </tr>
   </tbody>
 </table>
 <table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr> 
-    <td align="left"><a href="<{$SiteUrl}>tag.php?type=trades&skeyword=<{$smarty.get.skeyword|urlencode}>">供求信息</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=companies&skeyword=<{$smarty.get.skeyword|urlencode}>">公司</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=products&skeyword=<{$smarty.get.skeyword|urlencode}>">产品</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=newses&skeyword=<{$smarty.get.skeyword|urlencode}>">资讯</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=markets&skeyword=<{$smarty.get.skeyword|urlencode}>">市场</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=expoes&skeyword=<{$smarty.get.skeyword|urlencode}>">展会</a></td>
+    <td align="left"><a href="<{$SiteUrl}>tag.php?type=trades&skeyword=<{$smarty.get.skeyword|urlencode}>">Offer</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=companies&skeyword=<{$smarty.get.skeyword|urlencode}>">Company</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=products&skeyword=<{$smarty.get.skeyword|urlencode}>">Product</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=newses&skeyword=<{$smarty.get.skeyword|urlencode}>">News</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=markets&skeyword=<{$smarty.get.skeyword|urlencode}>">Market</a>&nbsp;<a href="<{$SiteUrl}>tag.php?type=expoes&skeyword=<{$smarty.get.skeyword|urlencode}>">Fair</a></td>
     <td width="5%"></td>
     <td align="right"><{$ByPages}></td>
   </tr>
 </table>
 <table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
   <tr class="corgreen"> 
-    <td width="90" height="30" align="center"><strong>图　片</strong></td>
-    <td width="385" align="center"><strong>主题</strong></td>
+    <td width="90" height="30" align="center"><strong>Picture</strong></td>
+    <td width="385" align="center"><strong>Title</strong></td>
   </tr>
 <!-- 列表关键词 -->
 <{foreach from=$KeyItems name=BuyKeyItems item=item}>
@@ -58,7 +58,7 @@
   </tr>
 <{foreachelse}>
   <tr> 
-    <td align="center" colspan="2">还没有关于该关键词的任何记录，是否现在就<a href="javascript:window.location.href='<{$SiteUrl}>room/productedit.php?keyword=<{$smarty.get.keyword}>'">添加相关产品</a>？</td>
+    <td align="center" colspan="2">Has not any records on the keywords, whether now<a href="javascript:window.location.href='<{$SiteUrl}>room/productedit.php?keyword=<{$smarty.get.keyword}>'">Add Related Products</a>?</td>
   </tr>
 </table>
 <{/foreach}>

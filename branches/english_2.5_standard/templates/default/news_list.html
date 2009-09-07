@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
-<title><{$pageTitle|default:"资讯"}></title>
+<title><{$pageTitle|default:"News"}></title>
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
@@ -23,8 +23,8 @@
 		<div class="cs_c1 zh_c2">
 			<table width="690" border="0" cellspacing="0" cellpadding="0">
 			  <thead>
-				<th width="350">名称</th>
-				<th width="120">发布时间</th>
+				<th width="350">Title</th>
+				<th width="120">Date</th>
 			  </thead>
 			  <{foreach from=$ListNews name=news item=n}>
 			  <tr <{if $smarty.foreach.news.iteration is div by 2}> class="cs_tr"<{/if}>>
@@ -43,7 +43,7 @@
 	<div class="w_right1">
 		<div class="cpk_t1"></div>
 		<div class="cpk_c2 cs_c2 zh_c3">
-			<div class="bt cpk_bt1"><h2><label>资讯排行</label></h2></div>
+			<div class="bt cpk_bt1"><h2><label>News Ranking</label></h2></div>
 			<ul class="ul21">
 			<{foreach from=$HotNews item=ht name=hot}>
 				<li><p><a title="<{$ht.NewsTitle}>" href="<{$UrlContainer.common}>news/detail.php?id=<{$ht.NewsId}>"><{$ht.NewsTitle}></a></p></li>

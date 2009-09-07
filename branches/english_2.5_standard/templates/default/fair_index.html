@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
-<title>展会&laquo;<{$sitetitle}></title>
+<title>Fairs&laquo;<{$sitetitle}></title>
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
@@ -18,7 +18,7 @@ xajax_rebuildHTML("fair/index.php");
 <div class="wd">
 	<div class="w_left1">
 		<div class="zh_tab1">
-			<div class="bt zh_bt1"><h2><a href="<{$SiteUrl}>fair/list.php?type=commend">推荐展会</a></h2><p class="padright10"><a href="<{$SiteUrl}>fair/list.php?type=commend">&raquo;&raquo;更多</a></p></div>
+			<div class="bt zh_bt1"><h2><a href="<{$SiteUrl}>fair/list.php?type=commend">Commend</a></h2><p class="padright10"><a href="<{$SiteUrl}>fair/list.php?type=commend">&raquo;&raquo;More</a></p></div>
 			<ul class="ul21 ula"><{fair type="commend"}></ul>
 		</div>
 		<div class="zh_hot">
@@ -28,17 +28,17 @@ bgcolor="#5EA4EC" menu="false" FlashVars="pics=<{$PictureFiles}>&links=<{$Pictur
 		</div>
 		<div class="clear9"></div>
 		<div class="zh_tab2">
-			<div class="bt zh_bt2"><h2><a href="<{$SiteUrl}>fair/list.php">最新展会</a></h2><p class="padright10"><a href="<{$SiteUrl}>fair/list.php">更多&raquo;&raquo;</a></p></div>
+			<div class="bt zh_bt2"><h2><a href="<{$SiteUrl}>fair/list.php">Latest</a></h2><p class="padright10"><a href="<{$SiteUrl}>fair/list.php">More&raquo;&raquo;</a></p></div>
 			<ul class="zh_ul1">
-				<li class="li5 li6">展会名称</li>
-				<li class="li5 li7">行业</li>
-				<li class="li5 li8">地点</li>
-				<li class="li5 li9">时间</li>
+				<li class="li5 li6">Expo Name</li>
+				<li class="li5 li7">Industry</li>
+				<li class="li5 li8">Address</li>
+				<li class="li5 li9">Date</li>
 				<{foreach from=$LatestExpo name=remen item=m}>
 				<li class="li1"><a href="<{$UrlContainer.common}>fair/detail.php?title=<{$m.ExpoName|urlencode}>" title="<{$m.ExpoName}>"><{$m.ExpoName|truncate:32}></a><{if $m.ExpoCreated>$today_mktime}><img src="<{$tpl_img_path}>default/new.gif" width="21" height="9"><{/if}></li>
 				<li class="li2"><{$Expotypes[$m.TypeId]}></li>
 				<li class="li3"><{$Areas[$m.ProvinceId]}><{$Areas[$m.CityId]}></li>
-				<li class="li4"><{$m.ExpoCreated|default:$m.ExpoPosted|date_format:"%Y-%m-%d"}>至<{$m.LastDate|date_format:"%Y-%m-%d"}></li>
+				<li class="li4"><{$m.ExpoCreated|default:$m.ExpoPosted|date_format:"%Y-%m-%d"}>To<{$m.LastDate|date_format:"%Y-%m-%d"}></li>
 				<{/foreach}>
 			</ul>
 		</div>

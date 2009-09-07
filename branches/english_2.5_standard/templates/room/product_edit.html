@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script src="<{$JS_PATH}>js/prototype.js"></script>
@@ -48,7 +48,7 @@ tempobj.disabled=true
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/product.gif"> 发布产品信息 </td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/product.gif"> Release Products </td>
               </tr>
             </table></td>
           </tr>
@@ -60,11 +60,11 @@ tempobj.disabled=true
 	  <input type="hidden" name="action" value="product_edit">
 	  <input type="hidden" name="id" value="<{$smarty.get.id}>">
 	  <input type="hidden" name="oldimgname" value="<{$ProductInfo.ProductPicture}>">
-        <table width="95%"  border="0" cellspacing="0" cellpadding="0" title="发布产品信息">
+        <table width="95%"  border="0" cellspacing="0" cellpadding="0" title="Release Products">
           <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td height="35"><span class="gray">&nbsp;（提示：带<font color="#FF6600"> * </font>号的为必填项）</span></td>
+                  <td height="35"><span class="gray">&nbsp;(Hint: with a<font color="#FF6600"> * </font>Number is required)</span></td>
                 </tr>
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -77,96 +77,96 @@ tempobj.disabled=true
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
-                        <td width="90" class="tdleft"><font color="#FF6600">*</font> 产品类型：</td>
+                        <td width="90" class="tdleft"><font color="#FF6600">*</font> Product Type:</td>
                         <td class="tdright"><{html_radios name="sort_id" options=$ProductSorts checked=$ProductInfo.ProductSortId|default:2 separator=" "}></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 产品名称：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Product Name:</td>
                         <td class="tdright"><input name="prod_name" type="text" id="prod_name" value="<{$ProductInfo.ProductName|default:$smarty.get.keyword}>" size="25">
-                        <font color="#666666">（2-30个中文字）</font></td>
+                        <font color="#666666">(2-30 months in the text)</font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 产品型号：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Product Type:</td>
                         <td class="tdright"><font color="#666666">
                           <input name="prod_sn" type="text" id="prod_sn" value="<{$ProductInfo.ProductSn}>" size="25">
                         （如：LV-3765）</font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">　</font>产品规格：</td>
+                        <td class="tdleft"><font color="#FF6600">　</font>Product Specifications:</td>
                         <td class="tdright"><font color="#666666">
                           <input name="scale" type="text" id="scale" value="<{$ProductInfo.ProductSpec}>" size="25">
                         </font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">　</font>包装说明：</td>
+                        <td class="tdleft"><font color="#FF6600">　</font>Package Description:</td>
                         <td class="tdright"><font color="#666666">
                           <input name="package" type="text" id="package" value="<{$ProductInfo.ProductPackingContent}>" size="25">
                         </font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">　</font>价格说明：</td>
+                        <td class="tdleft"><font color="#FF6600">　</font>Price Description:</td>
                         <td class="tdright"><font color="#666666">
                           <input name="price" type="text" id="price" value="<{$ProductInfo.ProductPrice}>" size="25">
-                        </font>(不填或写"0"则自动表示"价格面议")</td>
+                        </font>(Do not fill or write "0" is automatically says "Price Negotiable")</td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">　</font>原 产 地：</td>
+                        <td class="tdleft"><font color="#FF6600">　</font>Country of Origin:</td>
                         <td class="tdright"><font color="#666666">
                           <input name="fromwhere" type="text" id="fromwhere" value="<{$ProductInfo.ProductProduceArea}>" size="25">
                         </font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 行业类别：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Sectors:</td>
                         <td class="tdright"><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
 
 						</select><select name="bindustry" id="bindustry" USEDATA="dataSrc" SUBCLASS="2">
 
 						</select>
-						(如果不想变动,请不必选择)
+						(If you do not want to change, please do not select)
 						<br>
-						当前行业类别  :  <{foreach from=$CurrentIndustry name=cui item=ci}><{$ci.IndustryName}>&rarr;<{foreachelse}>空<{/foreach}>
+						Current sector  :  <{foreach from=$CurrentIndustry name=cui item=ci}><{$ci.IndustryName}>&rarr;<{foreachelse}>Empty<{/foreach}>
 						</td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 产品描述：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Product Description:</td>
                         <td class="tdright"><textarea name="content" cols="50" rows="8" wrap="VIRTUAL"><{$ProductInfo.ProductContent|default:""}></textarea><br />
-                            <font color="#FF3300">注：（10-500个中文字）详细说明中请勿包含公司名称、地址、联系方式等<br>
+                            <font color="#FF3300">Note: (10-500 Chinese characters) do not include detailed description of the company name, address, contact, etc.<br>
                         </font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">　</font>所属系列：</td>
+                        <td class="tdleft"><font color="#FF6600">　</font>Respective series:</td>
                         <td class="tdright"><font color="#666666">
                         <span class="zi">
                           <br>
                           <select name="product_type">
-                            <option value="0">请选择类别</option>
+                            <option value="0">Please select category</option>
 							<{foreach from=$ProductTypes name=typeselect item=types}>
 							<option value="<{$types.ID}>" <{if $ProductInfo.ProductProducttypeId==$types.ID}>selected<{/if}>><{$types.Name}></option>
 							<{/foreach}>
                           </select>
                         </span>    <br>
-                        （<span class="zi"><font color="#666666">可按照您创建的产品系列进行分类，方便您管理）</font></span></font></td>
+                        （<span class="zi"><font color="#666666">In accordance with product lines that you create a classification for your convenience Management)</font></span></font></td>
                       </tr>
                       <tr>
-                        <td valign="middle" class="tdleft"><font color="#FF6600">　</font>关键字：</td>
-                        <td class="tdright"><{foreach from=$ProductInfo.ProductKeywords item=item}><a href="<{$SiteUrl}>tag.php?type=products&keyword=<{$item.title|urlencode}>" target="_blank" title="搜索含有该关键字的产品"><{$item.title}></a>&nbsp;<{/foreach}></td>
+                        <td valign="middle" class="tdleft"><font color="#FF6600">　</font>Keywords:</td>
+                        <td class="tdright"><{foreach from=$ProductInfo.ProductKeywords item=item}><a href="<{$SiteUrl}>tag.php?type=products&keyword=<{$item.title|urlencode}>" target="_blank" title="Search for products containing the keyword"><{$item.title}></a>&nbsp;<{/foreach}></td>
                       </tr>
                       <tr>
-                        <td valign="middle" class="tdleft"><font color="#FF6600">　</font>添加关键字：</td>
+                        <td valign="middle" class="tdleft"><font color="#FF6600">　</font>Add Keyword:</td>
                         <td class="tdright"><font color="#666666">
                           <input name="keywords" type="text" id="keywords" value="<{$smarty.get.keyword}>">
-                        (请用","号或者空格隔开)</font></td>
+                        (Please use "," number or a space separated)</font></td>
                       </tr>
                       <tr>
-                        <td valign="middle" class="tdleft">　产品图片：</td>
+                        <td valign="middle" class="tdleft">Picture:</td>
                         <td class="tdright"><br>
                             <input name="pic" type="file" size="35" id="uploadfile" onChange="preview()" />
                             <span class="gray"><br>
-                              （图片大小不要超过200K ,格式gif,jpg, 图片宽度最大为400象数效果最佳！）</span></td>
+                              (Photo size of no more than 200K, format, gif, jpg, picture width of the maximum number of 400 as the best results!)</span></td>
                       </tr>
                       <tr>
                         <td valign="middle" class="tdleft">　</td>
-                        <td class="tdright"><img id="uploadpic" src="<{if $ProductInfo.ProductPicture!=""}><{$SiteUrl}>attachment/<{$ProductInfo.ProductPicture}><{else}><{$SiteUrl}>data/default/big.jpg<{/if}>" alt="<{$ProductInfo.prod_name|default:"中文名无法预览"}>" width="400" height="300" border="0" /></td>
+                        <td class="tdright"><img id="uploadpic" src="<{if $ProductInfo.ProductPicture!=""}><{$SiteUrl}>attachment/<{$ProductInfo.ProductPicture}><{else}><{$SiteUrl}>data/default/big.jpg<{/if}>" alt="<{$ProductInfo.prod_name|default:"Chinese name can not be preview"}>" width="400" height="300" border="0" /></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -183,7 +183,7 @@ tempobj.disabled=true
           </tr>
           <tr>
             <td height="40" align="center"><br>
-                <input name="save" type="submit" id="save" value=" 确认提交 ">
+                <input name="save" type="submit" id="save" value=" Affirms that the author ">
             </td>
           </tr>
           <tr>
@@ -200,6 +200,6 @@ tempobj.disabled=true
 </html>
 <script language="javascript">
 var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
-linkage.BLANK_SELECT = "请选择";
+linkage.BLANK_SELECT = "Select";
 linkage.init();
 </script>

@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>注册成功&laquo;<{$sitetitle}></title>
+<title>Registration success&laquo;<{$sitetitle}></title>
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name ="keywords" content="<{$sitename}>">
-<meta name="description" content="用户注册完成"> 
+<meta name="description" content="Register completed"> 
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
@@ -28,16 +28,17 @@
 			  <tr> 
 				<td height="174"> 
 				<div align="center"> 
-					<p align="left">您好,<strong class="fontred"><{$UalinkUser.username|default:$NewMemberName}></strong>,欢迎您成为<{$sitename}>的<strong class="fontred">注册会员</strong>。</p>
+					<p align="left">Hello,<strong class="fontred"><{$UalinkUser.username|default:$NewMemberName}></strong>,You are welcome to become
+<{$sitename}>'s <strong class="fontred">Registered Member</strong>。</p>
 				<{if $smarty.get.check==1}>
 				<p>
 				<{$RegTips}>
 				</p>
 				<{else}>
-					<p align="left"> 从现在起您可以：<{if $UalinkUser.user_level==2}><a href="<{$SiteUrl}>room/company.php">发布公司</a> <a href="<{$SiteUrl}>room/productedit.php">发布产品</a><{/if}><a href="<{$SiteUrl}>room/tradeedit.php">发布供求信息</a>                
+					<p align="left"> From now on, you can:<{if $UalinkUser.user_level==2}><a href="<{$SiteUrl}>room/company.php">Release Company</a> <a href="<{$SiteUrl}>room/productedit.php">Release Product</a><{/if}><a href="<{$SiteUrl}>room/tradeedit.php">Published supply and demand information</a>                
 					</p>
 					<{if $ForumSet.switch}>
-					<p align="left"> 同时,您还可以<a href="<{$ForumSet.url}>" target="_blank">进入商业论坛</a>,同更多的人交流您的经验.</p>
+					<p align="left"> At the same time, you can also <a href="<{$ForumSet.url}>" target="_blank">Into the Business Forum</a>,With more people sharing your experience.</p>
 					<{/if}>
 					<{/if}>
 					</div>

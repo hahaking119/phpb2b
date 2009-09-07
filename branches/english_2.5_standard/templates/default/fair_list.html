@@ -23,8 +23,8 @@
 		<div class="cs_c1 zh_c2">
 			<table width="690" border="0" cellspacing="0" cellpadding="0">
 			  <thead>
-				<th width="350">名称</th>
-				<th width="120">展会时间</th>
+				<th width="350">Name</th>
+				<th width="120">Date</th>
 			  </thead>
 			  <{foreach from=$ListFairs name=fairlist item=f}>
 			  <tr <{if $smarty.foreach.fairlist.iteration is div by 2}> class="cs_tr"<{/if}>>
@@ -43,7 +43,7 @@
 	<div class="w_right1">
 		<div class="cpk_t1"></div>
 		<div class="cpk_c2 cs_c2 zh_c3">
-			<div class="bt cpk_bt1"><h2><label>同类热门展会</label></h2></div>
+			<div class="bt cpk_bt1"><h2><label>Similar Hot Expo</label></h2></div>
 			<ul class="ul21">
 			<{foreach from=$LatestFairs name=LatestFairs item=item}>
 				<li><p><a title="<{$item.Title}>" href="<{$UrlContainer.common}>fair/detail.php?id=<{$item.FairId}>"><{$item.Title}></a></p></li>

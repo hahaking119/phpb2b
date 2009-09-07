@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
 <meta name="generator" content="<{$UaVersion}>" />
-<meta name ="keywords" content="信息提示">
+<meta name ="keywords" content="Information Tips">
 <meta name="description" content="<{$ActionAlert|strip_tags}>..."> 
-<title><{$ActionAlert|strip_tags|default:"信息提示"}>_<{$sitetitle}></title>
+<title><{$ActionAlert|strip_tags|default:"Information Tips"}>_<{$sitetitle}></title>
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
@@ -16,13 +16,13 @@
 <{include file="`$ThemeName`/element.header.html"}>
 <!--head end-->
 <div class="wd rg_wd1">
-	<p class="rg_p1"><h2>信息提示 : <{$ActionAlert|default:"未定义操作"}></h2></p>
+	<p class="rg_p1"><h2>Information Tips : <{$ActionAlert|default:"未定义操作"}></h2></p>
 </div>
 <div class="clear9"></div>
 <div class="wd rg_wd1 rg_wd3">
 <br/><br/><br/>
-	<div style="float: center;"><h3><{$ActionAlert|default:"未定义操作"}></h3></div>
-	<div id="backDiv" align="center" style="display:<{if $smarty.get.return_forward}>block<{else}>none<{/if}>"><{if $backBtn}><a href="<{$smarty.get.return_forward|urldecode}>"><h3>返回</h3></a><{/if}><{if $closeBtn}>&nbsp;<a href="window.close();"><h3>关闭</h3></a><{/if}></div>
+	<div style="float: center;"><h3><{$ActionAlert|default:"Undefined Operation"}></h3></div>
+	<div id="backDiv" align="center" style="display:<{if $smarty.get.return_forward}>block<{else}>none<{/if}>"><{if $backBtn}><a href="<{$smarty.get.return_forward|urldecode}>"><h3>Return</h3></a><{/if}><{if $closeBtn}>&nbsp;<a href="window.close();"><h3>Close</h3></a><{/if}></div>
 </div>
 <{include file="`$ThemeName`/element.foot.html"}>
 </body>

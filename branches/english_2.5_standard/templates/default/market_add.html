@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
-<title>补充市场数据&laquo;市场库&laquo;<{$sitetitle}></title>
+<title>Add market data&laquo;Markets&laquo;<{$sitetitle}></title>
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
-<meta name="description" content="请在这里提交市场库的基本信息"> 
+<meta name="description" content="Please submit the market here, the basic information database"> 
 <script src="<{$JS_PATH}>js/prototype.js"></script>
 <script src="<{$JS_PATH}>js/mixselect.js"></script>
 <style>
@@ -30,7 +30,7 @@
 <{include file="`$ThemeName`/element.header.html"}>
 <table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td height="25" class="corhui">&nbsp;<img src="<{$tpl_img_path}>default/star.gif" width="15" height="13" align="absmiddle">Your current position:<a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">市场库</a> &raquo; 补充市场数据</td>
+    <td height="25" class="corhui">&nbsp;<img src="<{$tpl_img_path}>default/star.gif" width="15" height="13" align="absmiddle">Your current position:<a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">Markets</a> &raquo; Added market data</td>
   </tr>
   <tr>
     <td height="5"></td>
@@ -46,7 +46,7 @@
                 <tr> 
                   <td>		<div class="cpk_t1"></div>
 		<div class="cpk_c2 cs_c2">
-			<div class="bt cpk_bt1"><h2><label>按行业分类</label></h2></div>
+			<div class="bt cpk_bt1"><h2><label>By industry</label></h2></div>
 			<{include file="`$ThemeName`/market_industry.html"}>
 		</div>
 </td>
@@ -64,7 +64,7 @@
         <td align="center">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td height="35" align="center" class="font14yellow"><h3 title="补充市场库">补充市场库</h3></td>
+                <td height="35" align="center" class="font14yellow"><h3 title="Add market data">Add market data</h3></td>
             </tr>
             <tr>
               <td height="12">
@@ -90,7 +90,7 @@
                   <tr>
                     <td colspan="2" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                          <td height="35" align="center" class="font12yellow">请填写该市场的基本资料，点击提交，我们会尽快审核并添加该市场数据。</td>
+                          <td height="35" align="center" class="font12yellow">Please fill out basic information on the market, click submit, we will review and add to the market data.</td>
                         </tr>
                         <tr>
                           <td height="12">&nbsp;</td>
@@ -98,17 +98,17 @@
                     </table>					</td>
                   </tr>
                   <tr align="left" >
-                    <td width="27%" class="corhui">市场名称：</td>
+                    <td width="27%" class="corhui">Market Name:</td>
                     <td width="73%"class="corhui"><input type="text" name="market[name]" id="MarketName">                  </td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">所在地区：</td>
+                    <td class="corhui">Region:</td>
                     <td class="corhui"><select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="1"></select>
 					<select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="2">
                           </select></td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">所在行业：</td>
+                    <td class="corhui">The industry:</td>
                     <td class="corhui"><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
 
 						</select><select name="bindustry" id="bindustry" USEDATA="dataSrc" SUBCLASS="2">
@@ -116,12 +116,12 @@
 						</select></td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">市场介绍：</td>
+                    <td class="corhui">Market Introduction:</td>
                     <td class="corhui"><textarea name="market[content]" rows="5" cols="35"></textarea></td>
                   </tr>
                   <tr align="left">
                     <td colspan="2" class="corhui"><div align="center">
-                      <input name="image_button" type="submit" id="addmarket" alt="提交" onclick="return checkFrm();" class="btn_xp" value="提交该市场库信息" />
+                      <input name="image_button" type="submit" id="addmarket" alt="Submit" onclick="return checkFrm();" class="btn_xp" value="Library information submitted to the market" />
                     </div></td>
                   </tr>
                   <tr>
@@ -148,7 +148,7 @@
 $("MarketName").focus();
 function checkFrm(){
 	if($F("MarketName")==""){
-		alert("请输入市场名称");
+		alert("Please enter the name of the market");
 		$("MarketName").focus();
 		return false;
 	}else{
@@ -159,9 +159,9 @@ function checkFrm(){
 </script>
 <script language="javascript">
 var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
-linkage2.BLANK_SELECT = "请选择地区";
+linkage2.BLANK_SELECT = "Please select a region";
 linkage2.init();
 var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
-linkage.BLANK_SELECT = "请选择";
+linkage.BLANK_SELECT = "Please select";
 linkage.init();
 </script>

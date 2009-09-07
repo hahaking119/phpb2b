@@ -51,17 +51,17 @@
 			</script>
 			<div class="news_title">
 				<h2><em>[<{$NewsInfo.NewstypeName}>]</em><{$NewsInfo.NewsTitle}></h2>
-				来源：<{$NewsInfo.NewsFrom}>(<{$NewsInfo.NewsCreated|date_format:"%Y-%m-%d"}>)
-				<span>关键字：</span><{foreach from=$NewsInfo.Keywords name=fore1 item=data}><a href="<{$SiteUrl}>tag.php?type=newses&keyword=<{$data.title|urlencode}>" target="_blank"><{$data.title}></a>&nbsp;<{/foreach}>
+				Source:<{$NewsInfo.NewsFrom}>(<{$NewsInfo.NewsCreated|date_format:"%Y-%m-%d"}>)
+				<span>Keywords:</span><{foreach from=$NewsInfo.Keywords name=fore1 item=data}><a href="<{$SiteUrl}>tag.php?type=newses&keyword=<{$data.title|urlencode}>" target="_blank"><{$data.title}></a>&nbsp;<{/foreach}>
 			</div>
 			<p class="a_line6"></p>
 			<div class="news_info f14">
 			<{if $NewsInfo.picture!=""}><img src="<{$SiteUrl}>attachment/<{$NewsInfo.picture}>.small.jpg" width="400" height="255" border="0" alt="<{$NewsInfo.NewsTitle}>" align="right"/><{/if}><{$NewsInfo.Content}>
 				<div class="news_kz f12">
-					分类：<a href="<{$UrlContainer.common}>news/list.php?type_id=<{$NewsInfo.TypeID}>" class="cur"><{$NewsInfo.NewstypeName}></a> <span>|</span>
-					浏览：<em><{$NewsInfo.Click}></em> <span>|</span>
-					<a href="javascript:window.close()">关闭</a> <span>|</span>
-					<a href="javascript: window.print();">打印</a>
+					Types:<a href="<{$UrlContainer.common}>news/list.php?type_id=<{$NewsInfo.TypeID}>" class="cur"><{$NewsInfo.NewstypeName}></a> <span>|</span>
+					Clicked:<em><{$NewsInfo.Click}></em> <span>|</span>
+					<a href="javascript:window.close()">Close</a> <span>|</span>
+					<a href="javascript: window.print();">Print</a>
 				</div>
 			</div>
 		</div>
@@ -69,7 +69,7 @@
 	<div class="w_right1">
 		<div class="cpk_t1"></div>
 		<div class="cpk_c2 news_c1">
-			<div class="bt cpk_bt1"><h2><a href="#">资讯分类</a></h2></div>
+			<div class="bt cpk_bt1"><h2><a href="#">Types</a></h2></div>
 			<ul class="ul21">
 			<{foreach from=$Newstypes name=Newstypes item=item key=key val=val}>
 				<li><p><a title="<{$item}>" href="<{$UrlContainer.common}>news/list.php?type_id=<{$key}>"><{$item}></a></p></li>
@@ -79,7 +79,7 @@
 		<div class="clear9"></div>
 		<div class="cpk_t1"></div>
 		<div class="cpk_c2 news_c1 news_c2">
-			<div class="bt cpk_bt1"><h2><label>相关资讯</label></h2></div>
+			<div class="bt cpk_bt1"><h2><label>Information</label></h2></div>
 			<ul class="ul21">
 			<{foreach from=$SimiliarNews name=newsother item=snews}>
 				<li><p><a title="<{$snews.NewsTitle}>" href="./detail.php?id=<{$snews.NewsId}>"><{$snews.NewsTitle|truncate:70}></a></p><em>(<{$snews.NewsCreated|date_format:"%Y/%m/%d"}>)</em></li>

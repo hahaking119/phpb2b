@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/general.js"></script>
@@ -10,15 +10,16 @@ function copyToClipboard(txt) {
      if(window.clipboardData) {    
              window.clipboardData.clearData();    
              window.clipboardData.setData("Text", txt);    
-			 alert("复制成功！")    
+			 alert("Copy success!")    
      } else if(navigator.userAgent.indexOf("Opera") != -1) {    
           window.location = txt;    
-          alert("复制成功！")    
+          alert("Copy success!")    
      } else if (window.netscape) {    
           try {    
                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");    
           } catch (e) {    
-               alert("被浏览器拒绝！\n请在浏览器地址栏输入'about:config'并回车\n然后将'signed.applets.codebase_principal_support'设置为'true'");    
+               alert("By your browser to refuse! \\ n Please enter in the browser address bar'about:config'And carriage return \\ n and then'signed.applets.codebase_principal_support'Set
+'true'");    
           }    
           var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);    
           if (!clip)    
@@ -37,7 +38,7 @@ function copyToClipboard(txt) {
           if (!clip)    
                return false;    
           clip.setData(trans,null,clipid.kGlobalClipboard);    
-          alert("复制成功！")    
+          alert("Copy success!")    
      }    
 }  
 </script>
@@ -61,7 +62,7 @@ function copyToClipboard(txt) {
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 我的邀请码</td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> My invitation code</td>
               </tr>
           </table></td>
         </tr>
@@ -72,7 +73,7 @@ function copyToClipboard(txt) {
       <br>
       <table width="95%" border="0" cellpadding="2" cellspacing="0" class="bggray">
         <tr>
-          <td height="35" class="gray"><span class="orange">友情提醒：</span>你的邀请码在24小时内有效</td>
+          <td height="35" class="gray"><span class="orange">Friendly reminder:</span>Your invitation code is valid in 24 hours</td>
         </tr>
       </table>      
       <br>
@@ -82,7 +83,8 @@ function copyToClipboard(txt) {
 		  <table width="100%" border="0" cellpadding="5" cellspacing="1" class="bgblue">
             <tr align="center" class="bggray">
               <td width="60%" align="left"><div id="txt"><{$InviteCode}></div></td>
-              <td align="center"><a href="javascript:;" onclick="copyToClipboard('<{$InviteCode}>');">复制</a></td>
+              <td align="center"><a href="javascript:;" onclick="copyToClipboard('<{$InviteCode}>');">Your invitation code is valid in 24 hours
+</a></td>
             </tr>
           </table>
 		  </td>

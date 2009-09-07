@@ -1,14 +1,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
 <script src="<{$JS_PATH}>js/prototype.js"></script>
-<script src="<{$JS_PATH}>js/mixselect.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="<{$JS_PATH}>js/area_func.js"></SCRIPT> 
+<SCRIPT LANGUAGE="JavaScript" src="<{$JS_PATH}>js/area_data.js"></SCRIPT> 
+<SCRIPT LANGUAGE = JavaScript> 
+<!--
+var s=["s1","s2","s3"]; 
+var opt0 = ["Country","Province","City"]; 
+function setup() 
+{ 
+for(i=0;i<s.length-1;i++) 
+document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")"); 
+change(0); 
+} 
+//--> 
+</SCRIPT> 
 </head>
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="setup()">
 <script language="javascript"> 
 function IsURL(urlString)
 {
@@ -19,13 +32,13 @@ function IsURL(urlString)
 
 function checkinput(){
 	if($F('memberlastname')==""){
-		alert("请输入您的姓名");
+		alert("Please enter your name");
 		$('memberlastname').focus();
 		return false;
 	}
 	if($F('membersite_url')!=""){
 		if(!IsURL($F('membersite_url'))){
-			alert("您输入的网址有误");
+			alert("The URL you entered is incorrect");
 			$('membersite_url').focus();
 			return false;
 		}
@@ -51,7 +64,7 @@ function checkinput(){
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 个人信息</td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> Privacy</td>
                 </tr>
             </table></td>
           </tr>
@@ -63,7 +76,7 @@ function checkinput(){
         <table width="95%"  border="0" cellspacing="0" cellpadding="0">          <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td height="35"><span class="gray">&nbsp;（提示：带<font color="#FF6600"> * </font>号的为必填项）</span></td>
+                  <td height="35"><span class="gray">&nbsp;(Hint: with a<font color="#FF6600"> * </font>Number is required)</span></td>
                 </tr>
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -77,40 +90,41 @@ function checkinput(){
                   <td>
 				  <table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
-                        <td class="tdleft">姓名：</td>
+                        <td class="tdleft">Name:</td>
                         <td class="tdright"><input name="member[lastname]" type="text" id="memberlastname" value="<{$p.MemberLastname}>"><font color="#FF6600">*</font></td>
                       </tr>
                       
                       <tr>
-                        <td class="tdleft">性别</td>
+                        <td class="tdleft">Gender</td>
                         <td class="tdright"><{html_radios name="member[gender]" options=$Genders checked=$p.MemberGender|default:"1" separator=" "}></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">省/市：</td>
-                        <td class="tdright"><select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
-                        </select><select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2">
-                        </select><select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
-                        </select></td>
+                        <td class="tdleft">Province/City:</td>
+                        <td class="tdright">
+					<select name="countryid" id="s1"><option>Country</option></select> 
+					<select name="provinceid" id="s2"><option>Province</option></select> 
+					<select name="cityid" id="s3"><option>City</option></select> 						
+						</td>
                       </tr>
                       <tr>
-                        <td class="tdleft">当前：</td>
+                        <td class="tdleft">Current:</td>
                         <td class="tdright"><{$p.MemberProvince|default:"无"}><{$p.MemberCity}></td>
                       </tr>
                       
                       <tr>
-                        <td class="tdleft">地址:</td>
+                        <td class="tdleft">Address:</td>
                         <td class="tdright"><input name="member[address]" type="text" id="memberaddress" value="<{$p.MemberAddress}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">邮政编码:</td>
+                        <td class="tdleft">Zip Code:</td>
                         <td class="tdright"><input name="member[zipcode]" type="text" id="memberzipcode" value="<{$p.MemberZipcode}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">QQ号码:</td>
+                        <td class="tdleft">QQ Number:</td>
                         <td class="tdright"><input name="member[qq]" type="text" id="memberqq" value="<{$p.MemberQq}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">ICQ号码:</td>
+                        <td class="tdleft">ICQ Number:</td>
                         <td class="tdright"><input name="member[icq]" type="text" id="membericq" value="<{$p.MemberIcq}>"></td>
                       </tr>
                       <tr>
@@ -122,32 +136,32 @@ function checkinput(){
                         <td class="tdright"><input name="member[yahoo]" type="text" id="memberyahoo" value="<{$p.MemberYahoo}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">联系电话</td>
+                        <td class="tdleft">Telephone</td>
                         <td class="tdright"><input name="member[tel]" type="text" id="membertel" value="<{$p.MemberTel}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">传真号码</td>
+                        <td class="tdleft">Fax</td>
                         <td class="tdright"><input name="member[fax]" type="text" id="memberfax" value="<{$p.MemberFax}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">手机号码</td>
+                        <td class="tdleft">Mobile</td>
                         <td class="tdright"><input name="member[mobile]" type="text" id="membermobile" value="<{$p.MemberMobile}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">个人主页</td>
+                        <td class="tdleft">Homepage</td>
                         <td class="tdright"><input name="member[site_url]" type="text" id="membersite_url" value="<{$p.MemberSiteUrl}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">联系Email：</td>
-                        <td class="tdright"><input name="member[email]" type="text" id="memberemail" value="<{$p.MemberEmail}>" size="32" disabled>(<a name="mod" href="#mod" onclick="javascript:$('memberemail').disabled=false;">修改</a>)</td>
+                        <td class="tdleft">Contact Email:</td>
+                        <td class="tdright"><input name="member[email]" type="text" id="memberemail" value="<{$p.MemberEmail}>" size="32" disabled>(<a name="mod" href="#mod" onclick="javascript:$('memberemail').disabled=false;">Changes</a>)</td>
                       </tr>
 					  <{if $UalinkUser.user_level==1}>
                       <tr>
-                        <td class="tdleft">求职状态：</td>
-                        <td class="tdright"><input type="radio" name="member[resume_status]" value="1" <{if $p.ResumeStatus==1}>checked="checked"<{/if}>>我想求职<input type="radio" name="member[resume_status]" value="0" <{if $p.ResumeStatus==0}>checked="checked"<{/if}>>我不想求职</td>
+                        <td class="tdleft">Job Status:</td>
+                        <td class="tdright"><input type="radio" name="member[resume_status]" value="1" <{if $p.ResumeStatus==1}>checked="checked"<{/if}>>I would like to job-seekers<input type="radio" name="member[resume_status]" value="0" <{if $p.ResumeStatus==0}>checked="checked"<{/if}>>I do not want job</td>
                       </tr>
                       <tr>
-                        <td class="tdleft">最高学历</td>
+                        <td class="tdleft">Highest degree</td>
                         <td class="tdright">
 						<select name="member[max_education]" id="MaxEducation">
 						<{foreach from=$Educations name=Educations item=item key=key}>
@@ -157,14 +171,14 @@ function checkinput(){
 						</td>
                       </tr>
                       <tr>
-                        <td class="tdleft">个人头像：</td>
+                        <td class="tdleft">Avatar:</td>
                         <td class="tdright"><input type="file" name="photo" id="MemberPhoto">
 						<{if $p.PersonalPhoto}><br /><img src="../attachment/<{$p.PersonalPhoto}>.small.jpg" /><{/if}>
 						</td>
                       </tr>
 					  <{/if}>
                        <tr>
-                        <td class="tdleft">登录后跳转页面：</td>
+                        <td class="tdleft">Login page after the jump:</td>
                         <td class="tdright"><select name="member[office_redirect]" id="MemberOfficeRedirect">
 							<{foreach from=$OfficeRedirects name=office_redirect key=key item=item}>
 							<option value="<{$key}>" <{if $key==$p.MemberOfficeRedirect}>selected<{/if}>><{$item}></option>
@@ -186,7 +200,7 @@ function checkinput(){
           </tr>
           <tr>
             <td height="40" align="center"><br>
-                <input name="save" type="submit" id="save" onClick="return checkinput();" value="保存资料">
+                <input name="save" type="submit" id="save" onClick="return checkinput();" value="The preservation of information">
             </td>
           </tr>
           <tr>
@@ -201,8 +215,3 @@ function checkinput(){
 </body>
 </center>
 </html>
-<script language="javascript">
-var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
-linkage2.BLANK_SELECT = "请选择";
-linkage2.init();
-</script>

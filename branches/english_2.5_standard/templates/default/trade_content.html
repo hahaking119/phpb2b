@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
-<title><{$tradeInfo.Name|replace:"\r\n":","}><{if $tradeInfo.TradePicture!=""}>(有图片)<{/if}>&laquo;<{$sitetitle}></title>
-<meta name ="keywords" content="求购,供应,<{$tradeInfo.keywords}>,<{$tradeInfo.Name}>,<{$tradeInfo.CompanyName}>" />
+<title><{$tradeInfo.Name|replace:"\r\n":","}><{if $tradeInfo.TradePicture!=""}>(Have Picture)<{/if}>&laquo;<{$sitetitle}></title>
+<meta name ="keywords" content="Buy, supply,<{$tradeInfo.keywords}>,<{$tradeInfo.Name}>,<{$tradeInfo.CompanyName}>" />
 <meta name="Author" content="PHPB2B2.4Final" />
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name="description" content="<{$tradeInfo.Description|replace:"\r\n":""|truncate:150}>" /> 
@@ -17,7 +17,7 @@ $(document).ready(function(){        //DOM的onload事件处理函数
 	<{if $UalinkUser.username}>
     postdata();                                      //button被点击时执行postdata函数     
 	<{else}>
-	alert("请您先登录!");
+	alert("Please login first!");
 	<{/if}>
   });     
 });
@@ -27,7 +27,7 @@ function postdata(){                             //提交数据函数
     url: "detail.php",                                      //把数据提交到ok.php     
     data: "action=favor&type_id=<{$tradeInfo.trade_type}>&id=<{$tradeInfo.TradeId}>",
     success: function(msg){
-      alert("已经加入收藏夹");
+      alert("Has joined Favorites");
     }     
   });     
 }
@@ -35,18 +35,18 @@ function postdata(){                             //提交数据函数
 <script language=javascript>
 function getExpireStr(exp_date){
 	var urodz= new Date(exp_date);
-	var s="离到期";
+	var s="From the expiration of";
 	var now = new Date();
 	var ile = urodz.getTime() - now.getTime();
 	var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
 	if (dni > 1)
-	return (""+s+"还有"+dni +"天");
+	return (""+s+"have "+dni +" day(s)");
 	else if (dni == 1)
-	return "只有2天啦!";
+	return "Only two days!";
 	else if (dni == 0)
-	return "只有1天啦!";
+	return "Only 1 day!";
 	else
-	return "<font color=red>该信息已经过期!</font>";
+	return "<font color=red>This information has expired!</font>";
 }
 </script>
 </head>
@@ -55,7 +55,7 @@ function getExpireStr(exp_date){
 <{assign var="trade_li" value="cor over"}>
 <{include file="`$ThemeName`/element.header.html"}>
 <div class="wd rmgjz mbx">
-	<p><span class="str">Your current position:<a class="link12" href="<{$SiteUrl}>"><{$sitename}></a>&raquo;<a class=link12 href="<{$SiteUrl}>offer/list.php">供求信息</a>&raquo;<{$tradeInfo.Name|strip_tags}></p>
+	<p><span class="str">Your current position:<a class="link12" href="<{$SiteUrl}>"><{$sitename}></a>&raquo;<a class=link12 href="<{$SiteUrl}>offer/list.php">Leads</a>&raquo;<{$tradeInfo.Name|strip_tags}></p>
 </div>
 <div class="clear9"></div>
 <div class="wd">
@@ -63,16 +63,16 @@ function getExpireStr(exp_date){
 	<div class="cp_c1">
 		<div class="cp_d1">
 			<img src="<{if $tradeInfo.TradePicture!=""}><{$SiteUrl}>attachment/<{$tradeInfo.TradePicture}><{else}><{$SiteUrl}>images/<{$ThemeName}>/no-big.jpg<{/if}>" alt="" />
-			<em><a href="<{$SiteUrl}>attachment.php?source=<{$tradeInfo.TradePicture}>">放大图片</a></em>
+			<em><a href="<{$SiteUrl}>attachment.php?source=<{$tradeInfo.TradePicture}>">Enlarge Image</a></em>
 		</div>
 		<ul class="cp_ul1">
-			<li><em class="str">发布时间：</em><{$tradeInfo.PublishDate|date_format:"%Y-%m-%d"}></li>
-			<li><em class="str">有效日期：</em><{$tradeInfo.ExpireDate|date_format:"%Y-%m-%d"}>,<script>document.write(getExpireStr("<{$tradeInfo.ExpireDate|date_format:"%m/%d/%Y"}>"));</script></li>
-			<li><em class="str">所在省份：</em><{$tradeInfo.province_name}></li>
-			<li><em class="str">所在城市：</em><{if $tradeInfo.city_name}><{$tradeInfo.city_name}><{else}>未知<{/if}></li>
-			<li><em class="str">关键词：</em><{$tradeInfo.keywords}></li>
-			<li><a href="#" class="cp_a1" id="favor">我要收藏</a></li>
-			<{if $tradeInfo.OfferUserName==$UalinkUser.username}><li><a href="../room/tradeedit.php?id=<{$tradeInfo.TradeId}>$&action=mod" class="cp_a1" id="favor">我要编辑</a></li><{/if}>
+			<li><em class="str">Posted:</em><{$tradeInfo.PublishDate|date_format:"%Y-%m-%d"}></li>
+			<li><em class="str">Effective Date:</em><{$tradeInfo.ExpireDate|date_format:"%Y-%m-%d"}>,<script>document.write(getExpireStr("<{$tradeInfo.ExpireDate|date_format:"%m/%d/%Y"}>"));</script></li>
+			<li><em class="str">Province:</em><{$tradeInfo.province_name}></li>
+			<li><em class="str">City:</em><{if $tradeInfo.city_name}><{$tradeInfo.city_name}><{else}>Unknown<{/if}></li>
+			<li><em class="str">Keywords:</em><{$tradeInfo.keywords}></li>
+			<li><a href="#" class="cp_a1" id="favor">Favorite</a></li>
+			<{if $tradeInfo.OfferUserName==$UalinkUser.username}><li><a href="../room/tradeedit.php?id=<{$tradeInfo.TradeId}>$&action=mod" class="cp_a1" id="favor">Edit</a></li><{/if}>
 		</ul>
 		<div class="cp_c2 cp_c6">
 			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>
@@ -87,13 +87,13 @@ function getExpireStr(exp_date){
 <div class="clear9"></div>
 <div class="wd">
 	<div class="cp_left1">
-		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>详细说明</h2><em class="cp_em2"></em></div>
+		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>Details</h2><em class="cp_em2"></em></div>
 		<div class="cp_c3">
 			<div><{$tradeInfo.Description|strip_tags|nl2br}></div>
 		</div>
 	</div>
 	<div class="cp_right1">
-		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>产品说明</h2><em class="cp_em2"></em></div>
+		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>Product Description</h2><em class="cp_em2"></em></div>
 		<div class="cp_c4">
 			<ul>
 			<{foreach from=$ObjectParams name=op item=tparam}>
@@ -103,7 +103,7 @@ function getExpireStr(exp_date){
 			<div class="clear9"></div>
 		</div>
 		<div class="clear9"></div>
-		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>本产品其他同类产品信息</h2><em class="cp_em2"></em></div>
+		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>This product other similar product information</h2><em class="cp_em2"></em></div>
 		<div class="cp_c5">
 			<{if $FineProducts}>
 			<{include file="`$ThemeName`/element.fineproducts.html"}>

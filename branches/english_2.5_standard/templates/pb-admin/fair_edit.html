@@ -10,25 +10,25 @@
 <body leftmargin="10" topmargin="10">
 <table width="101%" border="0" cellpadding="2" cellspacing="6">
   <tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
-  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;展会编辑</div></td>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;Show Editor</div></td>
 </tr></table>
 <form name="editfrm" method="post" enctype="multipart/form-data" action="<{$smarty.server.PHP_SELF}>">
 <input type="hidden" name="id" value="<{$smarty.get.id}>" />
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header">
-  <td colspan="4">展会管理与编辑</td>
+  <td colspan="4">Exhibition Management and Editing</td>
 </tr>
 
 <tr>
-  <td class="altbg1" width="15%"><strong>展会类型:</strong></td>
+  <td class="altbg1" width="15%"><strong>Show type:</strong></td>
   <td width="27%" class="altbg2"><select name="Expo[type_id]" id="ExpoTypeId">
 	<{foreach from=$ExpotypeList item=i key=k}>
 	<option value="<{$k}>" <{if $k==$one.ExpoTypeId}>selected<{/if}>><{$i}></option>
 	<{foreachelse}>
-	<option value="0">请补充展会类型</option>
+	<option value="0">Please add event type</option>
 	<{/foreach}>
 	</select></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>所在地区:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Region:</strong></span></td>
   <td width="42%" class="altbg2"><select name="countryid" id="countryid" usedata="dataSrc2" subclass="1">
   </select>
     <select name="provinceid" id="provinceid" usedata="dataSrc2" subclass="2">
@@ -38,82 +38,83 @@
 </tr>
 
 <tr>
-  <td class="altbg1" width="15%"><strong>展会标题:</strong></td>
+  <td class="altbg1" width="15%"><strong>Exhibition Title:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[ea]" type="text" id="ExpoEa" value="<{$one.ExpoEa}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>布展时间:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Preparation time:</strong></span></td>
   <td width="42%" class="altbg2"><input type="text" name="ExpoEdTime" size="10" value='<{$one.ExpoEd|date_format:"%Y-%m-%d"|default:$smarty.now|date_format:"%Y-%m-%d"}>' id="date1" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date1"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>展出时间:</strong></td>
+  <td class="altbg1" width="15%"><strong>Date:</strong></td>
   <td width="27%" class="altbg2"><input type="text" name="ExpoEfTime" size="10" value='<{$one.ExpoEf|date_format:"%Y-%m-%d"|default:$smarty.now|date_format:"%Y-%m-%d"}>' id="date2" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date2"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
-  <td width="16%" class="altbg2"><strong>撤展时间:</strong></td>
+  <td width="16%" class="altbg2"><strong>Move-out time:</strong></td>
   <td width="42%" class="altbg2"><input type="text" name="ExpoEgTime" size="10" value='<{$one.ExpoEg|date_format:"%Y-%m-%d"|default:$smarty.now|date_format:"%Y-%m-%d"}>' id="date3" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date3"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>展会周期:</strong></td>
+  <td class="altbg1" width="15%"><strong>Exhibition period:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[eh]" type="text" id="ExpoEh" value="<{$one.ExpoEh}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>展会规模:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Exhibition Scale:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[ex]" type="text" id="ExpoEx" value="<{$one.ExpoEx}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>展馆名称:</strong></td>
+  <td class="altbg1" width="15%"><strong>Venue:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[ei]" type="text" id="ExpoEi" value="<{$one.ExpoEi}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>展馆详细地址:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Hall Address:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[ec]" type="text" id="ExpoEc" value="<{$one.ExpoEc}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>主办单位:</strong></td>
+  <td class="altbg1" width="15%"><strong>Organizers:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[ek]" type="text" id="ExpoEk" value="<{$one.ExpoEk}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>涉及行业:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Involved in the industry:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[ej]" type="text" id="ExpoEj" value="<{$one.ExpoEj}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>主办单位详细地址:</strong></td>
+  <td class="altbg1" width="15%"><strong>Organizer Address:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[em]" type="text" id="ExpoEm" value="<{$one.ExpoEm}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>邮政编码:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Zip Code:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[eo]" type="text" id="ExpoEo" value="<{$one.ExpoEo}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>主办单位联系电话:</strong></td>
+  <td class="altbg1" width="15%"><strong>Contact Organizer Phone:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[ep]" type="text" id="ExpoEp" value="<{$one.ExpoEp}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>主办单位传真号码:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Contact Organizer Phone: Organizers Fax:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[eq]" type="text" id="ExpoEq" value="<{$one.ExpoEq}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>联系人姓名:</strong></td>
+  <td class="altbg1" width="15%"><strong>Contact Name:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[er]" type="text" id="ExpoEr" value="<{$one.ExpoEr}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>联系人Email:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Contact Email:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[email]" type="text" id="ExpoEmail" value="<{$one.ExpoEmail}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>承办单位名称:</strong></td>
+  <td class="altbg1" width="15%"><strong>Sponsor Name:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[es]" type="text" id="ExpoEs" value="<{$one.ExpoEs}>"></td>
-  <td width="16%" class="altbg2"><span class="altbg1"><strong>协办单位名称:</strong></span></td>
+  <td width="16%" class="altbg2"><span class="altbg1"><strong>Co Name:</strong></span></td>
   <td width="42%" class="altbg2"><input name="Expo[et]" type="text" id="ExpoEt" value="<{$one.ExpoEt}>"></td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>参展费用介绍:</strong></td>
+  <td class="altbg1" width="15%"><strong>Participation Fee Description:</strong></td>
   <td width="27%" class="altbg2"><input name="Expo[eu]" type="text" id="ExpoEu" value="<{$one.ExpoEu}>"></td>
   <td width="16%" class="altbg2">&nbsp;</td>
   <td width="42%" class="altbg2">&nbsp;</td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>会场广告介绍:</strong></td>
-  <td width="27%" class="altbg2"><input name="Expo[ev]" type="text" id="ExpoEv" value="<{$one.ExpoEv}>"></td>
+  <td class="altbg1" width="15%"><strong>Participation Fee Description:
+</strong></td>
+  <td width="27%" class="altbg2"><input name="Expo[ev]" type="text" id="ExpoEv" value="<{$one.ExpoEv}>"></td>Participation Fee Description:
   <td width="16%" class="altbg2">&nbsp;</td>
   <td width="42%" class="altbg2">&nbsp;</td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>报名办法介绍:</strong></td>
+  <td class="altbg1"><strong>Application methods description:</strong></td>
   <td class="altbg2"><input name="Expo[ey]" type="text" id="ExpoEy" value="<{$one.ExpoEy}>"></td>
   <td class="altbg2">&nbsp;</td>
   <td class="altbg2">&nbsp;</td>
 </tr>
 <tr>
-  <td class="altbg1" width="15%"><strong>已报名企业:</strong></td>
+  <td class="altbg1" width="15%"><strong>Have registered for Enterprise:</strong></td>
   <td colspan="3" class="altbg2"><{$FairCompanies}></td>
   </tr>
 <tbody id="m_source_addr" style="display:none">
@@ -121,27 +122,27 @@
 <tbody id="m_source_upload" style="display:block">
 </tbody>
 <tr>
-  <td class="altbg1"><strong>展会内容详情:</strong></td>
+  <td class="altbg1"><strong>Exhibition content details:</strong></td>
   <td colspan="3" class="altbg2"><{$FCK_EXPOEL}></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>图片:</strong></td>
-  <td colspan="3" class="altbg2"><img id="uploadpic" src="<{if $one.ExpoPicture}>../attachment/<{$one.ExpoPicture}><{else}>../data/default/big.jpg<{/if}>"  border="0" width="180" height="65" alt="看到这个,表明你的图片出错了!"></td>
+  <td class="altbg1"><strong>Photo:</strong></td>
+  <td colspan="3" class="altbg2"><img id="uploadpic" src="<{if $one.ExpoPicture}>../attachment/<{$one.ExpoPicture}><{else}>../data/default/big.jpg<{/if}>"  border="0" width="180" height="65" alt="See this, show your picture gone wrong!"></td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>附件上传:</strong></td>
+  <td class="altbg1"><strong>Accessories From:</strong></td>
   <td colspan="3" class="altbg2"><input type="file" name="pic" id="uploadfile" onChange="preview()" size=25>
-（图片要求：文件小于200K，JPG格式或GIF格式均可）</td>
+（Photo requirements: file is less than 200K, JPG format or GIF format available)</td>
 </tr>
 <tr>
-  <td class="altbg1"><strong>是否有效</strong></td>
+  <td class="altbg1"><strong>Validity</strong></td>
   <td colspan="3" class="altbg2"><{html_radios name="Expo[status]" options=$ExpoStatus checked=$one.status|default:"1" separator=" "}></td>
 </tr>
 
 
 
 <tr><td colspan="4" class="altbg1"><div align="center">
-<input type="submit" name="save" value="保存" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"/>
+<input type="submit" name="save" value="Save" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"/>
 </div></td>
 </tr>
 </table>
@@ -154,7 +155,7 @@
 </table>
 <script language="javascript">
 var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
-linkage2.BLANK_SELECT = "请选择";
+linkage2.BLANK_SELECT = "Select";
 linkage2.init();
 </script>
 </body>

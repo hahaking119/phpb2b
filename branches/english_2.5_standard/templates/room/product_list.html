@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/general.js"></script>
@@ -25,7 +25,7 @@
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 我的产品信息 </td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> My Product Information </td>
               </tr>
           </table></td>
         </tr>
@@ -35,8 +35,8 @@
       </table>
       <table width="95%" border="0" cellpadding="2" cellspacing="0">
         <tr>
-          <td class="tdright">（提示：已经发布成供应信息的产品，请不要重复发布。如果您想提高发布效果，请进入<br>
-“<a href="trade.php" class="orange">修改我的供求信息</a>”使用重发功能，使信息排名靠前）</td>
+          <td class="tdright">（Tip: the information has been released into the supply of products, please do not repeat the release. If you want to improve the published results, please go to<br>
+“<a href="trade.php" class="orange">Modify my information on supply and demand</a>”The use of retransmission feature so that information toplinks)</td>
         </tr>
       </table>      
       <br>
@@ -46,9 +46,9 @@
 		  <form name="typefrm" id="typefrm" method="get" action="">
 		  <table width="100%" height="35" border="0" cellpadding="0" cellspacing="0" class="bggray">
             <tr>
-              <td> 　按
+              <td> 　Press
                   <select name="product_type" onChange="sort(this.form);">
-                    <option value="0">全部分类</option>
+                    <option value="0">All Categories</option>
 				  <{foreach from=$ProductTypes item=pt name=listprodtypes}>
 				  <option value="<{$pt.ID}>" <{if $pt.ID == $smarty.get.sid}>selected<{/if}>><{$pt.Name}></option>
 					<{/foreach}>
@@ -74,13 +74,13 @@
                         <td bgcolor="#FFFFFF"><img src="<{if $pd.ProductPicture!=''}><{$attachment_dir}><{$pd.ProductPicture}><{else}>../data/default/small.gif<{/if}>" width=75 height=75></td>
                       </tr>
                   </table></td>
-                  <td colspan="2" style='word-break: break-all'><{$pd.Name|truncate:25}>【<{if $pd.ProductState eq 1}><span class="fontgreen">已上架</span><{else}><span class="fontred">已下架</span><{/if}>】 【<{$CheckStatus[$pd.ProductStatus]}>】(<{$ProductSorts[$pd.ProductSortId]|default:"普通商品"}>)&nbsp;&nbsp; <a href="<{$SiteUrl}>product/content.php?id=<{$pd.ID}>" target="_blank" title="点击预览"><img src="<{$tpl_img_path}>office/preview.gif" border="0" /></a> <{if $pd.ProductPicture!=""}><a href="<{$SiteUrl}>attachment.php?source=<{$pd.ProductPicture}>" target="_blank" title="点击查看大图"><img src="<{$tpl_img_path}>office/havepic.gif" border="0" /></a><{/if}><br />
-      型 号： <{$pd.SerialNumber}> <br />
-      描 述： <{$pd.Description|truncate:100}></td>
+                  <td colspan="2" style='word-break: break-all'><{$pd.Name|truncate:25}>【<{if $pd.ProductState eq 1}><span class="fontgreen">Has been added to our catalog</span><{else}><span class="fontred">Has been off the shelf</span><{/if}>】 【<{$CheckStatus[$pd.ProductStatus]}>】(<{$ProductSorts[$pd.ProductSortId]|default:"Ordinary"}>)&nbsp;&nbsp; <a href="<{$SiteUrl}>product/content.php?id=<{$pd.ID}>" target="_blank" title="Click Preview"><img src="<{$tpl_img_path}>office/preview.gif" border="0" /></a> <{if $pd.ProductPicture!=""}><a href="<{$SiteUrl}>attachment.php?source=<{$pd.ProductPicture}>" target="_blank" title="Click to view big picture"><img src="<{$tpl_img_path}>office/havepic.gif" border="0" /></a><{/if}><br />
+      Model: <{$pd.SerialNumber}> <br />
+      Description: <{$pd.Description|truncate:100}></td>
                 </tr>
                 <tr align="right">
                   <td colspan="3" class="btn-input">
-				  <{if $pd.ProductState eq 1}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=down&id=<{$pd.ID}>">从网上下架</a><{else}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=up&id=<{$pd.ID}>">把商品上架</a><{/if}>&nbsp;<a href="productedit.php?action=mod&id=<{$pd.ID}>">修改</a>&nbsp;<a href="tradeedit.php?action=pro2offer&proid=<{$pd.ID}>"><b>[作为供应发布]</b></a>&nbsp;<a href="<{$smarty.server.PHP_SELF}>?act=del&id=<{$pd.ID}>">删除</a>				  </td>
+				  <{if $pd.ProductState eq 1}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=down&id=<{$pd.ID}>">Off the shelf from the Internet</a><{else}><a href="<{$smarty.server.PHP_SELF}>?action=state&type=up&id=<{$pd.ID}>">The product was added to</a><{/if}>&nbsp;<a href="productedit.php?action=mod&id=<{$pd.ID}>">Changes</a>&nbsp;<a href="tradeedit.php?action=pro2offer&proid=<{$pd.ID}>"><b>[As the supply of release]</b></a>&nbsp;<a href="<{$smarty.server.PHP_SELF}>?act=del&id=<{$pd.ID}>">Remove</a>				  </td>
                   </tr>
                 <tr>
                   <td height="1" colspan="3" background="image/index_trade_line.gif"></td>
@@ -111,11 +111,11 @@
             <br>
       <table width="555" border="0" cellpadding="2" cellspacing="2" class="zi">
         <tr bgcolor="#FFE1B5">
-          <td width="125"><div align="center">可发布的产品总数</div></td>
-          <td width="91"><div align="center">已发布</div></td>
-          <td width="73"><div align="center">等待审核</div></td>
-          <td width="92"><div align="center">审核未通过</div></td>
-          <td width="134"><div align="center">还可以发布的产品个数</div></td>
+          <td width="125"><div align="center">The total number of products can be released</div></td>
+          <td width="91"><div align="center">Published</div></td>
+          <td width="73"><div align="center">Pending review</div></td>
+          <td width="92"><div align="center">Audit did not pass</div></td>
+          <td width="134"><div align="center">You can also publish the number of products</div></td>
         </tr>
         <tr align="center" bgcolor="#EBEBEB">
           <td><{$CountProduct.max}>个</td>

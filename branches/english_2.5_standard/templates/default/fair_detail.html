@@ -17,7 +17,7 @@
 <{include file="`$ThemeName`/element.header.html"}>
 <!--head end-->
 <div class="wd crumb">
-	<p><span class="str">Your current position:</span><a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">展会库</a> &raquo; <{$ExpoRes.ExpoEa}></em>
+	<p><span class="str">Your current position:</span><a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">Exhibition Gallery</a> &raquo; <{$ExpoRes.ExpoEa}></em>
 </div>
 <div class="clear9"></div>
 <div class="wd zh_c4">
@@ -25,43 +25,43 @@
 	<div class="zh_left">
 		<div class="zh_info str">
 			<img src="<{$UrlContainer.common}>attachment/<{$ExpoRes.ExpoPicture}>.small.jpg" />
-			所在地区：<a href="list.php?province_code=<{$ExpoRes.ExpoCountryId}>"><{$ExpoRes.ProvinceName}></a>  <a href="list.php?city_code=<{$ExpoRes.ExpoProvinceId}>"><{$ExpoRes.CityName}></a><br />
-			展馆名称：<{$ExpoRes.ExpoEi}><br />
+			Region:<a href="list.php?province_code=<{$ExpoRes.ExpoCountryId}>"><{$ExpoRes.ProvinceName}></a>  <a href="list.php?city_code=<{$ExpoRes.ExpoProvinceId}>"><{$ExpoRes.CityName}></a><br />
+			Venue:<{$ExpoRes.ExpoEi}><br />
 		</div>
-		<h2 class="f12 str"><em>已报名会员</em></h2>
+		<h2 class="f12 str"><em>Members have signed up</em></h2>
 		<ul class="zh_mem str">
 		<{foreach from=$FairCompany name=ApplyFair item=fc key=fk}>
-			<li><a href="<{$SiteUrl}>member/index.php?userid=<{$fk}>" title="访问主页" target="_blank"><{$fc}></a></li>
+			<li><a href="<{$SiteUrl}>member/index.php?userid=<{$fk}>" title="Visit homepage" target="_blank"><{$fc}></a></li>
 		<{/foreach}>
 		</ul>
 	</div>
 	<div class="zh_right">
 		<h1><{$ExpoRes.ExpoEa}></h1>
 		<div class="zh_tail f14">
-			<em>会展类别:</em><a href="list.php?type=<{$ExpoRes.ExpoTypeId}>"><{$ExpoRes.ExpotypeName}></a><br />
-			<em>详细地址:</em><{$ExpoRes.ExpoEc}><br />
-			<em>布展时间:</em> <{$ExpoRes.ExpoEd|date_format:"%Y-%m-%d"}><br />
-			<em>撤展时间:</em> <{$ExpoRes.ExpoEg|date_format:"%Y-%m-%d"}><br />
-			<em>展出时间:</em> <{$ExpoRes.ExpoEf|date_format:"%Y-%m-%d"}>～<{$ExpoRes.ExpoEg|date_format:"%Y-%m-%d"}><br />
-			<em>展会周期:</em><{$ExpoRes.ExpoEh}><br />
-			<em>涉及行业:</em><{$ExpoRes.ExpoEj}><br />
-			<em>主办单位:</em><{$ExpoRes.ExpoEk}><br />
-			<em>展会简介:</em><{$ExpoRes.ExpoEl}><br /><br />
+			<em>Exhibition Category:</em><a href="list.php?type=<{$ExpoRes.ExpoTypeId}>"><{$ExpoRes.ExpotypeName}></a><br />
+			<em>Address:</em><{$ExpoRes.ExpoEc}><br />
+			<em>Preparation time:</em> <{$ExpoRes.ExpoEd|date_format:"%Y-%m-%d"}><br />
+			<em>Move-out time:</em> <{$ExpoRes.ExpoEg|date_format:"%Y-%m-%d"}><br />
+			<em>Date:</em> <{$ExpoRes.ExpoEf|date_format:"%Y-%m-%d"}>～<{$ExpoRes.ExpoEg|date_format:"%Y-%m-%d"}><br />
+			<em>Exhibition period:</em><{$ExpoRes.ExpoEh}><br />
+			<em>Involved in the industry:</em><{$ExpoRes.ExpoEj}><br />
+			<em>Organizers:</em><{$ExpoRes.ExpoEk}><br />
+			<em>Show Description:</em><{$ExpoRes.ExpoEl}><br /><br />
 			
-			<em>联系方法:</em><br />
-			<em>地址:</em> <{$ExpoRes.ExpoEm}><br />
-			<em>邮编:</em> <{$ExpoRes.ExpoEo}><br />
-			<em>电话:</em> <{$ExpoRes.ExpoEp}><br />
-			<em>传真:</em> <{$ExpoRes.ExpoEq}><br />
-			<em>电邮:</em> <{$ExpoRes.ExpoEmail}><br />
-			<em>联系人:</em> <{$ExpoRes.ExpoEr}><br /><br />
+			<em>Contact:</em><br />
+			<em>Address:</em> <{$ExpoRes.ExpoEm}><br />
+			<em>Zipcode:</em> <{$ExpoRes.ExpoEo}><br />
+			<em>Telephone:</em> <{$ExpoRes.ExpoEp}><br />
+			<em>Fax:</em> <{$ExpoRes.ExpoEq}><br />
+			<em>Email:</em> <{$ExpoRes.ExpoEmail}><br />
+			<em>Contact:</em> <{$ExpoRes.ExpoEr}><br /><br />
 			
-			<em>承办单位:</em><{$ExpoRes.ExpoEs}><br />
-			<em>协办单位:</em><{$ExpoRes.ExpoEt}><br />
-			<em>展会费用:</em> <{$ExpoRes.ExpoEu}><br />
-			<em>广告费用:</em> <{$ExpoRes.ExpoEv}><br />
-			<em>展会规模:</em> <{$ExpoRes.ExpoEx}><br />
-			<a href="#" class="zh_enter f14 str" onclick="location.href='<{$UrlContainer.common}>room/fair.php?join=<{$ExpoRes.ExpoId}>,<{$ExpoRes.ExpoEa|urlencode}>';">我要报名参加这个展会</a>
+			<em>Sponsor:</em><{$ExpoRes.ExpoEs}><br />
+			<em>Co-organizer:</em><{$ExpoRes.ExpoEt}><br />
+			<em>Exhibition fee:</em> <{$ExpoRes.ExpoEu}><br />
+			<em>Advertising costs:</em> <{$ExpoRes.ExpoEv}><br />
+			<em>Exhibition Scale:</em> <{$ExpoRes.ExpoEx}><br />
+			<a href="#" class="zh_enter f14 str" onclick="location.href='<{$UrlContainer.common}>room/fair.php?join=<{$ExpoRes.ExpoId}>,<{$ExpoRes.ExpoEa|urlencode}>';">I would like to register for this event</a>
 		</div>
 	</div>
 	<p class="a_line5"></p>

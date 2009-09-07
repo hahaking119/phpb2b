@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
@@ -38,7 +38,7 @@ clipboardData.setData('text',(str.text));
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/contact.gif"> 修改公司的主要联系资料</td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/contact.gif"> Modify the company's main contact information</td>
                 </tr>
             </table></td>
           </tr>
@@ -50,7 +50,7 @@ clipboardData.setData('text',(str.text));
           <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td height="35"><span class="gray">&nbsp;（提示：带<font color="#FF6600"> * </font>号的为必填项）</span></td>
+                  <td height="35"><span class="gray">&nbsp;(Hint: with a<font color="#FF6600"> * </font>Number is required)</span></td>
                 </tr>
                 
               </table>
@@ -67,17 +67,17 @@ clipboardData.setData('text',(str.text));
                         <tr>
                           <td><table width="100%" border="0" cellpadding="2" cellspacing="1" class="zi">
                               <tr bgcolor="#FFFFFF">
-                                <td width="24%" align="right">联系人：</td>
+                                <td width="24%" align="right">Contact:</td>
                                 <td width="76%"><input type="text" name="company[link_man]" value="<{$CompanyInfo.CompanyLinkMan}>" />
-                                <font color="#999999">（全名） </font></td>
+                                <font color="#999999">(Full name)</font></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">公司名称：</td>
+                                <td align="right">Company full name</td>
                                 <td><input name="company[name]" type="text" value="<{$CompanyInfo.CompanyName}>" size="35" /> 
-                                <font color="#999999">（公司全称）</font></td>
+                                <font color="#999999">(Company full name)</font></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">电话：</td>
+                                <td align="right">Tel:</td>
                                 <td><input name="company[telcode]" type="text" class="ip" id="company[telcode]" value="<{$CompanyInfo.CompanyTelcode}>" size="4" maxlength="4">
                                 -
                                   <input name="company[telzone]" type="text" class="ip" id="company[telzone]" value="<{$CompanyInfo.CompanyTelzone}>" size="4" maxlength="4">
@@ -85,7 +85,7 @@ clipboardData.setData('text',(str.text));
                                   <input name="company[tel]" type="text" class="ip" id="company[tel]" value="<{$CompanyInfo.CompanyTel}>" size="10" maxlength="10" /></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">传真：</td>
+                                <td align="right">Fax:</td>
                                 <td><input name="company[faxcode]" type="text" class="ip" id="company[faxcode]" value="<{$CompanyInfo.CompanyFaxcode}>" size="4" maxlength="4">
                                 -
                                   <input name="company[faxzone]" type="text" class="ip" id="company[faxzone]" value="<{$CompanyInfo.CompanyFaxzone}>" size="4" maxlength="4">
@@ -93,16 +93,16 @@ clipboardData.setData('text',(str.text));
                                   <input name="company[fax]" type="text" class="ip" id="company[fax]" value="<{$CompanyInfo.CompanyFax}>" size="10" maxlength="10" /></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">移动电话：</td>
+                                <td align="right">Mobile:</td>
                                 <td><input name="company[mobile]" type="text" id="company[mobile]" value="<{$CompanyInfo.CompanyMobile}>" /></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">电子邮件：</td>
+                                <td align="right">E-mail:</td>
                                 <td><input name="company[email]" type="text" id="company[email]" value="<{$CompanyInfo.CompanyEmail}>" /></td>
                               </tr>
 <tr bgcolor="#FFFFFF">
                                 <td colspan="2" align="right"><div align="center">
-                                  <input name="save" type="submit" id="save" onClick="" value="保存">
+                                  <input name="save" type="submit" id="save" onClick="" value="Save">
                                 </div></td>
                               </tr>                          
                           </table></td>
@@ -122,7 +122,7 @@ clipboardData.setData('text',(str.text));
                           <form name="textfrm" action="" method="post">
                           <table width="100%" border="0" cellpadding="2" cellspacing="1" class="zi">
                               <tr bgcolor="#FFFFFF">
-                                <td width="24%" align="right">Flash<br />名片代码：</td>
+                                <td width="24%" align="right">Flash<br />Card Code:</td>
                                 <td width="38%"><textarea name="flash_card" style="width:350px;overflow-y:visible;font-family:Arial"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" id="FlashVars" width="460" height="250">  
     <param name="movie" value="<{$SiteUrl}>card/mycard.swf?instanceid=<{$CompanyId}>">  
 	<param name="allowScriptAccess" value="sameDomain" />
@@ -135,7 +135,7 @@ clipboardData.setData('text',(str.text));
     </object>  
     <!--> <![endif]-->  
    </object></textarea></td>
-                                <td width="38%"><a href="javascript:clip('textfrm.flash_card')" title="点击复制到剪贴板">复制到剪贴板</a></td>
+                                <td width="38%"><a href="javascript:clip('textfrm.flash_card')" title="Click Copy to clipboard">Copy to clipboard</a></td>
                               </tr>                          
                           </table>
                           </form>

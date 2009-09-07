@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室_<{$sitetitle}></title>
+<title>Commercial Office_<{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <style>
@@ -36,7 +36,7 @@
         <tr>
           <td width="1%"><img src="<{$tpl_img_path}>office/hy-sws-8.jpg" width="11" height="53"></td>
           <td width="10%">&nbsp;&nbsp;</td>
-          <td width="86%"><div align="right" class="zi2"><img src="<{$tpl_img_path}>office/<{if $MemberGenger==1}>male.gif<{else}>female.gif<{/if}>"> 尊敬的：<{$UserName|default:$smarty.session.MemberName}>&nbsp;<{if $MemberGenger==1}>先生<{elseif $MemberGender==2}>女士<{/if}>，您好，您最近一次访问是<{$LastLogin}></div></td>
+          <td width="86%"><div align="right" class="zi2"><img src="<{$tpl_img_path}>office/<{if $MemberGenger==1}>male.gif<{else}>female.gif<{/if}>">Dear: <{if $MemberGenger==1}>Mr.<{elseif $MemberGender==2}>Miss.<{/if}><{$UserName|default:$smarty.session.MemberName}>&nbsp;,your last visit<{$LastLogin}></div></td>
           <td width="3%"><div align="right"><img src="<{$tpl_img_path}>office/hy-sws-10.jpg" width="10" height="53"></div></td>
         </tr>
       </table>
@@ -49,7 +49,8 @@
 <table width="62%" height="250" border="0" cellpadding="5" cellspacing="5">
                       <tr> 
                         <td height="190" class="zi">
-<p><marquee behavior="scroll" direction="up" height="180" scrollamount="2"><p>　<font color="136281">您好！欢迎您访问<{$sitename}>，在这里您可以利用<{$sitename}>强大的浏览量、丰富的资源开始您的网上贸易。</font></p>
+<p><marquee behavior="scroll" direction="up" height="180" scrollamount="2"><p>　<font color="136281">Hello! You are welcome to visit <{$sitename}>, where you can use <{$sitename}> strong views, abundant resources, start your online trading.
+</font></p>
                           </marquee></td>
                       </tr>
                       <tr>
@@ -72,29 +73,29 @@
                     <tr> 
                       <td colspan="3"><br>
                         <img src="<{$tpl_img_path}>office/star.gif" width="25" height="22" align="absmiddle"> 
-                        <span class="font14b_org">您是<{$MembertypeName}>(<a href="../user/upgrade.php" title="升级为高级会员">立即升级?</a>),本年度商业通服务期限: </span> 
+                        <span class="font14b_org">You are <{$MembertypeName}>(<a href="../user/upgrade.php" title="Upgrade to Senior Member">Upgrade now?</a>),Business Link service period of the year: </span> 
                         <p> <strong><font color="#FF9900"> 
                         <table width="502" align="center" cellpadding="0" cellspacing="0">
                           <tr> 
-                            <td width="100" align="center"><font face="Verdana,宋体" style="font-size:12px;">起始时间</font></td>
-                            <td align="center"><font  face="Verdana,宋体" color="ff6600" style="font-size:12px;">当前时间 
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;">Start Time</font></td>
+                            <td align="center"><font  face="Verdana,宋体" color="ff6600" style="font-size:12px;">Current time 
                               <{$smarty.now|date_format:"%Y-%m-%d"}></font></td>
-                            <td width="100" align="center"><font face="Verdana,宋体" style="font-size:12px;">截止时间</font></td>
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;">Deadline</font></td>
                           </tr>
                           <tr> 
-                            <td width="100" align="center"><font face="Verdana,宋体" style="font-size:12px;"><{$MemberInfo.service_start_date|date_format:"%Y-%m-%d"}></font></td>
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;"><{$MemberInfo.service_start_date|date_format:"%Y-%m-%d"}></font></td>
                             <td height="22">
 							<table width="300">
 							<tr>
 								<td bgcolor="#FFFFFF" style="padding:2px">
 								<div id="ProgressBar">
-									<div id="Lable"><{if $service_days>=100}><strong>未申请?已到期?<a href='../user/upgrade.php'>立即升级</a>!</strong><{else}><{$service_days}>%<{/if}></div>
+									<div id="Lable"><{if $service_days>=100}><strong>Does not apply? Has expired?<a href='../user/upgrade.php'>Upgrade now</a>!</strong><{else}><{$service_days}>%<{/if}></div>
 									<div id="Pointer" style="width:<{$service_days}>%"></div>
 								</div></td>
 							</tr>
 							</table>
 							</td>
-                            <td width="100" align="center"><font face="Verdana,宋体" style="font-size:12px;"><{$MemberInfo.service_end_date|date_format:"%Y-%m-%d"}></font></td>
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;"><{$MemberInfo.service_end_date|date_format:"%Y-%m-%d"}></font></td>
                           </tr>
                         </table>
                         </font></strong></td>

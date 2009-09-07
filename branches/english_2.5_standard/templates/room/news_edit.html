@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 </head>
@@ -26,7 +26,7 @@
                   <td>&nbsp;</td>
                   <td class="font14b_org">
 				  <div id="addormod" style="display:<{$ShowCaption|default:"yes"}>">
-				  <img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> 添加动态信息
+				  <img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16"> Adding Dynamic Information
 				  </div>
 				  </td>
                 </tr>
@@ -55,7 +55,7 @@
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
-                        <td width="90" class="tdleft"><font color="#FF6600">　</font>新闻标题：</td>
+                        <td width="90" class="tdleft"><font color="#FF6600">　</font>News Title:</td>
                         <td class="tdright"><font color="#666666">
                             <{if $smarty.get.act eq "view"}>
 							<{$NewsInfo.Title}>
@@ -65,7 +65,7 @@
                         </font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">　详细内容：</td>
+                        <td class="tdleft">Details:</td>
                         <td class="tdright"><p>
                             <{if $smarty.get.action eq "view"}>
 							<{$NewsInfo.Content}>
@@ -91,7 +91,7 @@
           </tr>
           <tr>
             <td height="40" align="center"><br>
-                <input name="save" type="submit" id="save" value=" 确认提交 ">
+                <input name="save" type="submit" id="save" value=" Affirms that the author ">
             </td>
           </tr>
           <tr>

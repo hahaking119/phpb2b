@@ -8,33 +8,33 @@
 
 <body leftmargin="10" topmargin="10">
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
-  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo; 网站助手&nbsp;&raquo; 编辑</div></td>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo; Web Assistant&nbsp;&raquo; Edit</div></td>
 </tr></table>
       <form name="editfrm" method="post" action="<{$smarty.server.PHP_SELF}>">
         <input type="hidden" name="id" value="<{$smarty.get.id|default:0}>">
         <table width="100%"  border="0" cellpadding="8" cellspacing="1" class="tableborder">
 		<tr class="header">
-		  <td colspan="6">网站助手</td>
+		  <td colspan="6">Web Assistant</td>
 		</tr>
           <tr>
-            <td align="center" class="altbg1">帮助标题                            
+            <td align="center" class="altbg1">Help Title                            
             <td colspan="3" class="altbg2"><input name=help[ha] type="Text" value="<{$h.ha}>"></td>
           </tr>
           <tr>
-            <td align="center" class="altbg1">帮助文件类别 
+            <td align="center" class="altbg1">Help File Type 
             <td colspan="3" class="altbg2"><select name="help[helptype_id]">
                                         <{html_options options=$AllHelpTypes selected=$h.helptype_id}>
                                     </select></td>
           </tr>
           <tr>
-            <td align="center" class="altbg1">是否有效 
+            <td align="center" class="altbg1">Validit 
             <td colspan="3" class="altbg2"><select name="help[hd]">
                                         <{html_options options=$HelpStatus selected=$h.hd}>
                                     </select></td>
           </tr>
           <tr>
             <td align="center" valign="top" class="altbg1"><br>
-              内容 
+              Content 
             <td colspan="3"><textarea name="help[hb]" cols="50" rows="15"><{$h.hb}></textarea></td>
           </tr>
           <tr>

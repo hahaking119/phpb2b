@@ -1,168 +1,167 @@
 <?php
 $menus = array(
 0=>array(
-		"ename"=>"home","url"=>"","cname"=>"首页","items"=>array(
-			array("ename"=>"quickaction","show"=>true,"cname"=>"快速操作","items"=>array(
-				array("cname"=>"会员管理","url"=>"member.php?action=list"),
-				array("cname"=>"产品管理","url"=>"product.php?action=list"),
-				array("cname"=>"供求管理","url"=>"trade.php?action=list"),
-				array("cname"=>"公司库管理","url"=>"company.php?action=list"),
-				array("cname"=>"行业分类管理","url"=>"industry.php?action=list"),
-				array("cname"=>"本网动态","url"=>"news.php?action=list"),
-				array("cname"=>"关键词管理","url"=>"keyword.php?action=list"),
-				array("cname"=>"广告管理","url"=>"ad.php?action=list"),
-				array("cname"=>"展会管理","url"=>"fair.php?action=list"),
-				array("cname"=>"计划任务","url"=>"backup.php?action=home"),
-				array("cname"=>"基本设置","url"=>"setting.php?action=basic"))),
-				array("cname"=>"用户日志","ename"=>"visitlog","items"=>array(
-				array("cname"=>"用户登陆日志","url"=>"memberlog.php?action=list"),
-				array("cname"=>"管理员操作日志","url"=>"adminlog.php?action=list"))
+		"ename"=>"home","url"=>"","cname"=>"Homepage","items"=>array(
+			array("ename"=>"quickaction","show"=>true,"cname"=>"Quick Start","items"=>array(
+				array("cname"=>"Member","url"=>"member.php?action=list"),
+				array("cname"=>"Product Manager","url"=>"product.php?action=list"),
+				array("cname"=>"Offer Manager","url"=>"trade.php?action=list"),
+				array("cname"=>"Company Manager","url"=>"company.php?action=list"),
+				array("cname"=>"Industry Manager","url"=>"industry.php?action=list"),
+				array("cname"=>"Keyword Manager","url"=>"keyword.php?action=list"),
+				array("cname"=>"Ad Manager","url"=>"ad.php?action=list"),
+				array("cname"=>"Fair Manager","url"=>"fair.php?action=list"),
+				array("cname"=>"Scheduled Tasks","url"=>"backup.php?action=home"),
+				array("cname"=>"Basic Settings","url"=>"setting.php?action=basic"))),
+				array("cname"=>"User logs","ename"=>"visitlog","items"=>array(
+				array("cname"=>"User login log","url"=>"memberlog.php?action=list"),
+				array("cname"=>"Operation Log","url"=>"adminlog.php?action=list"))
 			)
 		)
 	),
 1=>array(
-		"ename"=>"basic","url"=>"setting.php?action=basic","cname"=>"系统设置","items"=>array(
-			array("ename"=>"setting","show"=>false,"cname"=>"系统设置","items"=>array(
-				array("cname"=>"基本设置","url"=>"setting.php?action=basic"),
-				array("cname"=>"邮件设置","url"=>"setting.php?action=mail"),
-				array("cname"=>"注册与访问","url"=>"setting.php?action=permission"),
-				array("cname"=>"计划任务","url"=>"backup.php?action=home"),
+		"ename"=>"basic","url"=>"setting.php?action=basic","cname"=>"System","items"=>array(
+			array("ename"=>"setting","show"=>false,"cname"=>"System Settings","items"=>array(
+				array("cname"=>"Basic Settings","url"=>"setting.php?action=basic"),
+				array("cname"=>"Mail Settings","url"=>"setting.php?action=mail"),
+				array("cname"=>"Registration and Access","url"=>"setting.php?action=permission"),
+				array("cname"=>"Scheduled Tasks","url"=>"backup.php?action=home"),
 				array("cname"=>"Google Sitemap","url"=>"sitemap.php?action=set"),
 			)),
-			array("ename"=>"iodatas","cname"=>"系统工具","items"=>array(
-				array("cname"=>"导入会员","url"=>"io.php?action=import","title"=>"从整合软件导入会员数据"),
-				array("cname"=>"更新统计数据","url"=>"stat.php","title"=>"手动更新网站数据统计"),
+			array("ename"=>"iodatas","cname"=>"System","items"=>array(
+				array("cname"=>"Importing Members","url"=>"io.php?action=import","title"=>"Integration software to import the data from the Member"),
+				array("cname"=>"Update statistics","url"=>"stat.php","title"=>"Manually update the Web Statistics"),
 			)),
 	)),
 2=>array(
-		"ename"=>"datas","url"=>"trade.php?action=list","cname"=>"信息库","items"=>array(
-			array("ename"=>"trade","show"=>false,"cname"=>"供求信息","items"=>array(
-				array("cname"=>"供求管理","url"=>"trade.php?action=list"),
-				array("cname"=>"添加供求","url"=>"trade.php?action=mod"),
-				array("cname"=>"供求统计(Beta)","url"=>"trade.php?action=stat"),
+		"ename"=>"datas","url"=>"trade.php?action=list","cname"=>"Repository","items"=>array(
+			array("ename"=>"trade","show"=>false,"cname"=>"Leads","items"=>array(
+				array("cname"=>"Supply and demand management","url"=>"trade.php?action=list"),
+				array("cname"=>"Add the supply and demand","url"=>"trade.php?action=mod"),
+				array("cname"=>"Supply and demand statistics(Beta)","url"=>"trade.php?action=stat"),
 			)),
-			array("ename"=>"product","cname"=>"产品中心","items"=>array(
-				array("cname"=>"产品管理","url"=>"product.php?action=list"),
-				array("cname"=>"添加产品","url"=>"product.php?action=mod"),
+			array("ename"=>"product","cname"=>"Products","items"=>array(
+				array("cname"=>"Product Management","url"=>"product.php?action=list"),
+				array("cname"=>"Add Product","url"=>"product.php?action=mod"),
 
 			)),
-			array("ename"=>"company","cname"=>"公司库","items"=>array(
-				array("cname"=>"公司库管理","url"=>"company.php?action=list"),
-				array("cname"=>"添加公司","url"=>"company.php?action=mod"),
-				array("cname"=>"公司类型","url"=>"companytype.php?action=list"),
-				array("cname"=>"添加类型","url"=>"companytype.php?action=mod"),
-				array("cname"=>"企业视频","url"=>"company.php?action=vcr"),
+			array("ename"=>"company","cname"=>"Company Directory","items"=>array(
+				array("cname"=>"Corporate library management","url"=>"company.php?action=list"),
+				array("cname"=>"Add Company","url"=>"company.php?action=mod"),
+				array("cname"=>"Type","url"=>"companytype.php?action=list"),
+				array("cname"=>"Add a type","url"=>"companytype.php?action=mod"),
+				array("cname"=>"Enterprise Video","url"=>"company.php?action=vcr"),
 			)),
-			array("ename"=>"market","cname"=>"市场大全","items"=>array(
-				array("cname"=>"市场库管理","url"=>"market.php?action=list"),
-				array("cname"=>"添加市场","url"=>"market.php?action=mod"),
+			array("ename"=>"market","cname"=>"Markets","items"=>array(
+				array("cname"=>"Market Database Management","url"=>"market.php?action=list"),
+				array("cname"=>"Add Market","url"=>"market.php?action=mod"),
 			)),
-			array("ename"=>"job","cname"=>"招聘信息","items"=>array(
-				array("cname"=>"招聘信息管理","url"=>"job.php?action=list"),
+			array("ename"=>"job","cname"=>"Jobs","items"=>array(
+				array("cname"=>"Recruitment Information Management","url"=>"job.php?action=list"),
 			)),
-			array("ename"=>"member","cname"=>"会员中心","items"=>array(
-				array("cname"=>"会员管理","url"=>"member.php?action=list"),
-				array("cname"=>"添加会员","url"=>"member.php?action=mod"),
-				array("cname"=>"会员类型","url"=>"membertype.php?action=list"),
-				array("cname"=>"添加类型","url"=>"membertype.php?action=mod")
+			array("ename"=>"member","cname"=>"Member Center","items"=>array(
+				array("cname"=>"Member","url"=>"member.php?action=list"),
+				array("cname"=>"Add Member","url"=>"member.php?action=mod"),
+				array("cname"=>"Member Type","url"=>"membertype.php?action=list"),
+				array("cname"=>"Add a type","url"=>"membertype.php?action=mod")
 			)),
-			array("ename"=>"member","cname"=>"展会信息","items"=>array(
-				array("cname"=>"展会管理","url"=>"fair.php?action=list"),
-				array("cname"=>"展会类型管理","url"=>"fairtype.php?action=list"),
-				array("cname"=>"添加展会","url"=>"fair.php?action=mod"),
-				array("cname"=>"添加展会类型","url"=>"fairtype.php?action=mod")
+			array("ename"=>"member","cname"=>"Exhibition Information","items"=>array(
+				array("cname"=>"Show Management","url"=>"fair.php?action=list"),
+				array("cname"=>"Show Type Manager","url"=>"fairtype.php?action=list"),
+				array("cname"=>"Add a Show","url"=>"fair.php?action=mod"),
+				array("cname"=>"Add a Show Type","url"=>"fairtype.php?action=mod")
 			)),
-			array("ename"=>"order","cname"=>"用户订单","items"=>array(
-				array("cname"=>"订单管理","url"=>"order.php?action=list")
+			array("ename"=>"order","cname"=>"User order","items"=>array(
+				array("cname"=>"Order Management","url"=>"order.php?action=list")
 			)),
-			array("ename"=>"keyword","cname"=>"关键词","items"=>array(
-				array("cname"=>"关键词列表","url"=>"keyword.php?action=list"),
-				array("cname"=>"关键词竞价","url"=>"keywordship.php?action=list"),
-				array("cname"=>"添加竞价","url"=>"keywordship.php?action=mod")
+			array("ename"=>"keyword","cname"=>"keyword","items"=>array(
+				array("cname"=>"List of Keywords","url"=>"keyword.php?action=list"),
+				array("cname"=>"Keyword bidding","url"=>"keywordship.php?action=list"),
+				array("cname"=>"Add auction","url"=>"keywordship.php?action=mod")
 			)),
 )),
 3=>array(
-		"ename"=>"ads","url"=>"ad.php?action=list","cname"=>"广告","items"=>array(
-			array("ename"=>"ads","show"=>false,"cname"=>"广告位置","items"=>array(
-				array("cname"=>"广告位置","url"=>"adzone.php?action=list"),
-				array("cname"=>"添加位置","url"=>"adzone.php?action=mod"),
+		"ename"=>"ads","url"=>"ad.php?action=list","cname"=>"Ads","items"=>array(
+			array("ename"=>"ads","show"=>false,"cname"=>"Ad Position","items"=>array(
+				array("cname"=>"Ad Position","url"=>"adzone.php?action=list"),
+				array("cname"=>"Add Location","url"=>"adzone.php?action=mod"),
 			)),
-			array("ename"=>"ads","show"=>false,"cname"=>"在线广告","items"=>array(
-				array("cname"=>"广告列表","url"=>"ad.php?action=list"),
-				array("cname"=>"添加广告","url"=>"ad.php?action=mod"),
+			array("ename"=>"ads","show"=>false,"cname"=>"Online advertising","items"=>array(
+				array("cname"=>"Listings","url"=>"ad.php?action=list"),
+				array("cname"=>"Add Ad","url"=>"ad.php?action=mod"),
 			)),
 		)),
 4=>array(
-		"ename"=>"news","url"=>"news.php?action=list","cname"=>"新闻资讯","items"=>array(
-			array("ename"=>"news","show"=>false,"cname"=>"新闻资讯","items"=>array(
-				array("cname"=>"所有新闻","url"=>"news.php?action=list"),
-				array("cname"=>"添加新闻","url"=>"news.php?action=mod"),
+		"ename"=>"news","url"=>"news.php?action=list","cname"=>"News","items"=>array(
+			array("ename"=>"news","show"=>false,"cname"=>"News","items"=>array(
+				array("cname"=>"All news","url"=>"news.php?action=list"),
+				array("cname"=>"Add News","url"=>"news.php?action=mod"),
 			)),
-			array("ename"=>"newstypes","cname"=>"资讯类别","items"=>array(
-				array("cname"=>"资讯类别","url"=>"newstype.php?action=list"),
-				array("cname"=>"添加分类","url"=>"newstype.php?action=mod"),
+			array("ename"=>"newstypes","cname"=>"Information Type","items"=>array(
+				array("cname"=>"Information Type","url"=>"newstype.php?action=list"),
+				array("cname"=>"Add Category","url"=>"newstype.php?action=mod"),
 			)),
-			array("ename"=>"companynews","cname"=>"企业新闻","items"=>array(
-				array("cname"=>"新闻管理","url"=>"companynews.php?action=list"),
+			array("ename"=>"companynews","cname"=>"News","items"=>array(
+				array("cname"=>"News Management","url"=>"companynews.php?action=list"),
 			)),
-			array("ename"=>"companymessages","cname"=>"企业评论","items"=>array(
-				array("cname"=>"评论管理","url"=>"companymessage.php?action=list"),
+			array("ename"=>"companymessages","cname"=>"Business review","items"=>array(
+				array("cname"=>"Comment Management","url"=>"companymessage.php?action=list"),
 			)),
 	)),
 5=>array(
-		"ename"=>"services","url"=>"service.php?action=list","cname"=>"在线服务","items"=>array(
-			array("ename"=>"leavewords","show"=>false,"cname"=>"留言管理","items"=>array(
-				array("cname"=>"用户留言","url"=>"service.php?action=list"),
+		"ename"=>"services","url"=>"service.php?action=list","cname"=>"Online Services","items"=>array(
+			array("ename"=>"leavewords","show"=>false,"cname"=>"Message Management","items"=>array(
+				array("cname"=>"User Comments","url"=>"service.php?action=list"),
 			)),
-			array("ename"=>"helps","cname"=>"网站助手","items"=>array(
-				array("cname"=>"帮助类别","url"=>"helptype.php?action=list"),
-				array("cname"=>"添加类别","url"=>"helptype.php?action=mod"),
-				array("cname"=>"帮助文件","url"=>"help.php?action=list"),
-				array("cname"=>"添加帮助","url"=>"help.php?action=mod"),
+			array("ename"=>"helps","cname"=>"Web Assistant","items"=>array(
+				array("cname"=>"Help Category","url"=>"helptype.php?action=list"),
+				array("cname"=>"Add Category","url"=>"helptype.php?action=mod"),
+				array("cname"=>"Help File","url"=>"help.php?action=list"),
+				array("cname"=>"Adding Help","url"=>"help.php?action=mod"),
 			)),
 		)),
 6=>array(
-		"ename"=>"templets","url"=>"templet.php?action=list","cname"=>"网站模板","items"=>array(
-			array("ename"=>"company_templets","show"=>false,"cname"=>"企业模板","items"=>array(
-				array("cname"=>"会员主页模板","url"=>"templet.php?action=list"),
-				array("cname"=>"添加会员主页模板","url"=>"templet.php?action=mod"),
+		"ename"=>"templets","url"=>"templet.php?action=list","cname"=>"Templates","items"=>array(
+			array("ename"=>"company_templets","show"=>false,"cname"=>"Enterprise Templates","items"=>array(
+				array("cname"=>"Member Home Templates","url"=>"templet.php?action=list"),
+				array("cname"=>"Add Member Home Templates","url"=>"templet.php?action=mod"),
 			)),
 		)),
 7=>array(
-		"ename"=>"links","url"=>"friendlink.php?action=list","cname"=>"其他","items"=>array(
-			array("ename"=>"membership_links","cname"=>"友情链接","items"=>array(
-				array("cname"=>"链接管理","url"=>"friendlink.php?action=list"),
-				array("cname"=>"添加链接","url"=>"friendlink.php?action=mod"),
+		"ename"=>"links","url"=>"friendlink.php?action=list","cname"=>"Other","items"=>array(
+			array("ename"=>"membership_links","cname"=>"Link","items"=>array(
+				array("cname"=>"Link Management","url"=>"friendlink.php?action=list"),
+				array("cname"=>"Add Link","url"=>"friendlink.php?action=mod"),
 			)),
-			array("ename"=>"userpages","cname"=>"自定义页面","items"=>array(
-				array("cname"=>"撰写页面","url"=>"userpage.php?action=mod"),
-				array("cname"=>"页面管理","url"=>"userpage.php?action=list"),
+			array("ename"=>"userpages","cname"=>"Custom Page","items"=>array(
+				array("cname"=>"Write Page","url"=>"userpage.php?action=mod"),
+				array("cname"=>"Page Management","url"=>"userpage.php?action=list"),
 			)),
-			array("ename"=>"staticset","cname"=>"静态缓存","items"=>array(
-				array("cname"=>"静态文件管理","url"=>"mkstatic.php?action=staticfiles"),
-				array("cname"=>"清除编译文件","url"=>"mkstatic.php?action=clearcompile"),
+			array("ename"=>"staticset","cname"=>"Static Cache","items"=>array(
+				array("cname"=>"Static document management","url"=>"mkstatic.php?action=staticfiles"),
+				array("cname"=>"Clear build file","url"=>"mkstatic.php?action=clearcompile"),
 			)),
-			array("ename"=>"industry","cname"=>"行业类别","items"=>array(
-				array("cname"=>"类别管理","url"=>"industry.php?action=list"),
-				array("cname"=>"更新行业数据","url"=>"industry.php?action=update"),
+			array("ename"=>"industry","cname"=>"Sectors","items"=>array(
+				array("cname"=>"Category Management","url"=>"industry.php?action=list"),
+				array("cname"=>"Updated industry data","url"=>"industry.php?action=update"),
 
-				array("cname"=>"添加行业类别","url"=>"industry.php?action=mod"),
-				array("cname"=>"生成行业下拉数据","url"=>"industry.php?action=industryxml"),
+				array("cname"=>"Add Sectors","url"=>"industry.php?action=mod"),
+				array("cname"=>"Generating industry, the drop-down data","url"=>"industry.php?action=industryxml"),
 
-				array("cname"=>"生成省市下拉数据","url"=>"industry.php?action=areaxml"),
+				array("cname"=>"Provinces and cities in the drop-down data is generated","url"=>"industry.php?action=areaxml"),
 			)),
-			array("ename"=>"area","cname"=>"地区管理","items"=>array(
-				array("cname"=>"地区列表","url"=>"area.php?action=list"),
-				array("cname"=>"生成省市下拉数据","url"=>"industry.php?action=areaxml"),
-				array("cname"=>"更新地区缓存","url"=>"area.php?action=update"),
+			array("ename"=>"area","cname"=>"District Management","items"=>array(
+				array("cname"=>"Area List","url"=>"area.php?action=list"),
+				array("cname"=>"Provinces and cities in the drop-down data is generated","url"=>"industry.php?action=areaxml"),
+				array("cname"=>"Update the cache region","url"=>"area.php?action=update"),
 			)),
-			array("ename"=>"announce","cname"=>"公告管理<img src=\"images/new2.gif\" border=0 />","items"=>array(
-				array("cname"=>"公告列表","url"=>"announce.php?action=list"),
-				array("cname"=>"新增公告","url"=>"announce.php?action=mod"),
+			array("ename"=>"announce","cname"=>"Announcement Management<img src=\"images/new2.gif\" border=0 />","items"=>array(
+				array("cname"=>"Announcement List","url"=>"announce.php?action=list"),
+				array("cname"=>"New Announcement","url"=>"announce.php?action=mod"),
 			)),
-			array("ename"=>"adminer","cname"=>"管理员","items"=>array(
-				array("cname"=>"管理员列表","url"=>"adminer.php"),
-				array("cname"=>"修改密码","url"=>"adminer.php?action=password"),
+			array("ename"=>"adminer","cname"=>"Administrator","items"=>array(
+				array("cname"=>"Manager List","url"=>"adminer.php"),
+				array("cname"=>"Change Password","url"=>"adminer.php?action=password"),
 			)),
 		)),
 );

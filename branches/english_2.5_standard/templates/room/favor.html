@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$INC_PATH}>js/prototype.js"></script>
@@ -16,7 +16,7 @@ for (i=0; i<t.length; i++)
 	chked++;
 }
 if(chked<=0){
-	alert("您没有选中任何信息");
+	alert("You do not have any information about selected");
 	return false;
 }else{
 	return true;
@@ -43,7 +43,7 @@ if(chked<=0){
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">我的信息收藏夹 </td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">My Info Favorites </td>
               </tr>
           </table></td>
         </tr>
@@ -53,7 +53,7 @@ if(chked<=0){
       </table>
       <table width="95%" border="0" cellpadding="2" cellspacing="0" class="bggray">
         <tr>
-          <td height="35" class="orange">（<span class="gray">提示：</span>你可以删除已有的信息再重新收藏）</td>
+          <td height="35" class="orange">（<span class="gray">Tip:</span>You can delete the existing information and re-collection)</td>
         </tr>
       </table>      
       <br>
@@ -62,10 +62,10 @@ if(chked<=0){
         <tr>
           <td><table width="100%" border="0" cellpadding="5" cellspacing="1" class="bglist">
             <tr align="center">
-              <td><strong>类 型</strong></td>
-              <td><strong>标题</strong></td>
-              <td><strong>收藏时间</strong></td>
-              <td><strong>删 除</strong></td>
+              <td><strong>Type </strong></td>
+              <td><strong>Title</strong></td>
+              <td><strong>Collection Time</strong></td>
+              <td><strong>Remove</strong></td>
             </tr>
 			<{foreach from=$favorlists item=item name=favorite }>
             <tr align="center" class="bgwhite">
@@ -80,7 +80,7 @@ if(chked<=0){
 		<{if $favorlists}>
         <tr>
           <td><div align="right">
-                <input type="submit" name="del" value="删除选中的信息" onClick="return window.confirm('真的要删除这些信息吗？')">
+                <input type="submit" name="del" value="Delete selected message" onClick="return window.confirm('Really want to delete these information?')">
               </div></td>
         </tr>
         <tr>
@@ -91,7 +91,7 @@ if(chked<=0){
         </tr>
 		<{else}>
         <tr align="center">
-          <td><B>当前没有任何收藏信息</B>&nbsp;</td>
+          <td><B>There are currently no collection of information</B>&nbsp;</td>
         </tr>
 		<{/if}>
         <tr>

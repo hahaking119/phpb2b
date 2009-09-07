@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 </head>
@@ -24,7 +24,7 @@
           <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>&nbsp;</td>
-                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">  <{if $smarty.get.type eq "in"}>收到的留言<{else}>发出的留言<{/if}></td>
+                <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">  <{if $smarty.get.type eq "in"}>Message received<{else}>Send message<{/if}></td>
               </tr>
           </table></td>
         </tr>
@@ -39,20 +39,20 @@
         <tr align="center">
           <td><table width="100%"  border="0" cellpadding="5" cellspacing="2">
             <tr align="center">
-              <td width="20%" height="30" align="center" class="bgblue">来 源：</td>
+              <td width="20%" height="30" align="center" class="bgblue">Source:</td>
               <td height="30" align="left" class="bggray3"><{$m.CompanymessageFromMemberId}></td>
               </tr>
             <tr align="center">
-              <td width="20%" height="30" class="bgblue">时 间：</td>
+              <td width="20%" height="30" class="bgblue">Time:</td>
               <td align="left" class="bggray3"><{$m.CompanymessageCreated|date_format:"%Y-%m-%d"}></td>
               </tr>
             <tr align="center">
-              <td width="20%" height="30" class="bgblue"> 主 题：</td>
+              <td width="20%" height="30" class="bgblue"> Theme:</td>
               <td align="left" class="bggray3"><{$m.CompanymessageTitle|strip_tags}></td>
               </tr>
             <tr align="center">
               <td width="20%" valign="top" class="bgblue">                <br>
-                内 容：</td>
+                Content:</td>
               <td align="left" class="tdright"><{$m.CompanymessageContent|strip_tags}></td>
               </tr>
           </table></td>
@@ -68,8 +68,8 @@
           </table></td>
         </tr>
         <tr align="center" valign="bottom">
-          <td height="40"><input type=submit value=" 回 复 " name=submit onClick="location.href='send_message.html'"> 　
-            <input type=submit value=" 返 回 " name=submit> 
+          <td height="40"><input type=submit value=" Reply " name=submit onClick="location.href='send_message.html'"> 　
+            <input type=submit value=" Return times " name=submit> 
           </td>
         </tr>
       </table>

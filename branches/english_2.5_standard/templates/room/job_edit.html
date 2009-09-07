@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
@@ -12,7 +12,7 @@
 <script language="javascript"> 
 function checkinput(){
 	if($F('memberlastname')==""){
-		alert("请输入您的姓名");
+		alert("Please enter your name");
 		$('memberlastname').focus();
 		return false;
 	}else{
@@ -38,7 +38,7 @@ function checkinput(){
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">修改企业招聘信息</td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">Changes Recruitment Information</td>
                 </tr>
             </table></td>
           </tr>
@@ -52,7 +52,8 @@ function checkinput(){
 		<tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td height="35"><span class="gray">&nbsp;（提示：带<font color="#FF6600"> * </font>号的为必填项）</span></td>
+                  <td height="35"><span class="gray">&nbsp;(Hint: with a<font color="#FF6600"> * </font>Number is required)
+</span></td>
                 </tr>
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -66,44 +67,44 @@ function checkinput(){
                   <td>
 				  <table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
-                        <td class="tdleft">招聘标题</td>
+                        <td class="tdleft">Job Title</td>
                         <td class="tdright"><input name="job[name]" type="text" id="jobname" value="<{$j.JobName}>">
                         <font color="#FF6600">*</font></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">性别要求</td>
+                        <td class="tdleft">Sex</td>
                         <td class="tdright"><{html_radios name="job[require_gender_id]" options=$Genders checked=$j.JobRequireGenderId|default:0 separator=" "}></td>
                       </tr>
                       
                       <tr>
-                        <td class="tdleft">招聘人数</td>
+                        <td class="tdleft">Number of recruits</td>
                         <td class="tdright"><input name="job[peoples]" type="text" id="peoples" value="<{$j.JobPeoples}>" size="2" maxlength="2">
                         人</td>
                       </tr>
                       <tr>
-                        <td class="tdleft">学历要求</td>
+                        <td class="tdleft">Academic requirements</td>
                         <td class="tdright"><select name="job[require_education_id]">
                           <{html_options options=$Educations selected=$j.JobRequireEducationId}>
                         </select></td>
                       </tr>
                       
                       <tr>
-                        <td class="tdleft">年龄要求</td>
+                        <td class="tdleft">Age</td>
                         <td class="tdright"><input name="job[require_age]" type="text" id="require_age" value="<{$j.JobRequireAge}>"></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">薪水范围</td>
+                        <td class="tdleft">Salary</td>
                         <td class="tdright"><select name="job[salary_id]">
 						<{html_options options=$Salary selected=$j.JobSalaryId}>
 						</select></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">截止时间</td>
+                        <td class="tdleft">Deadline</td>
                         <td class="tdright"><input type="text" name="ExpireTime" size="20" maxlength="20" value='<{$j.JobExpireTime|date_format:"%Y-%m-%d"|default:"None"}>' id="date1" readonly>
 <a href="javascript:;" onclick='showCalendar(this, $("date1"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>office/calendar.gif" border="0" alt=""></a></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">职位说明</td>
+                        <td class="tdleft">Job Description</td>
                         <td class="tdright"><textarea name="job[content]" cols="35" rows="4" id="job[content]"><{$j.JobContent|strip_tags}></textarea></td>
                       </tr>
                   </table></td>
@@ -121,7 +122,7 @@ function checkinput(){
           </tr>
           <tr>
             <td height="40" align="center"><br>
-                <input name="save" type="submit" id="save" onClick="return checkinput();" value="保存资料">
+                <input name="save" type="submit" id="save" onClick="return checkinput();" value="The preservation of information">
             </td>
           </tr>
           <tr>

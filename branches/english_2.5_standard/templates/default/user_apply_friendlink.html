@@ -26,21 +26,21 @@ function IsURL(urlString)
 }
 function check(){
 	if($F('site_name')==""){
-		alert("请输入您的网站名称");
+		alert("Please enter your site name");
 		$('site_name').focus();
 		return false;
 	}
 	if($F('site_email')==""){
-		alert("请输入您的联系email");
+		alert("Please enter your contact email");
 		$('site_email').focus();
 		return false;
 	}
 	if($F('site_url')==""){
-		alert("请输入您的网址");
+		alert("Please enter your URL");
 		$('site_url').focus();
 		return false;
 	}else if(!IsURL($F('site_url'))){
-		alert("您输入的网址有误");
+		alert("The URL you entered is incorrect");
 		$('site_url').focus();
 		return false;
 	}
@@ -109,30 +109,30 @@ xajax_rebuildHTML("user/apply_friendlink.php");
                     <tr>
                       <td><table width="98%" border="0" align="center" cellpadding="0" cellspacing="5">
                         <tr>
-                          <td colspan="2" align="center" class="font12yellow">请申请链接的同时做好本站的链接</td>
+                          <td colspan="2" align="center" class="font12yellow">Please apply at the same time do a good job site link link</td>
                         </tr>
                         <tr align="left" >
-                          <td width="27%" class="corhui">本站名称：</td>
+                          <td width="27%" class="corhui">Site name:</td>
                           <td width="73%"class="corhui"><{$sitename}></td>
                         </tr>
                         <tr align="left">
-                          <td class="corhui">本站地址：</td>
+                          <td class="corhui">Site address:</td>
                           <td class="corhui"><{$SiteUrl}></td>
                         </tr>
                         <tr align="left">
-                          <td class="corhui">网站logo图片</td>
+                          <td class="corhui">Site logo image</td>
                           <td class="corhui"><img src="<{$SiteUrl}>images/logo.gif" border="0" /></td>
                         </tr>
                         <tr align="left">
-                          <td class="corhui">logo图片地址：</td>
+                          <td class="corhui">logo image Address:</td>
                           <td class="corhui"><{$SiteUrl}>images/logo.gif</td>
                         </tr>
                         <tr align="left">
-                          <td class="corhui">联系Email：</td>
+                          <td class="corhui">Contact Email:</td>
                           <td class="corhui"><{$serviceemail}></td>
                         </tr>
                         <tr align="left">
-                          <td class="corhui">网站描述：</td>
+                          <td class="corhui">Site Description:</td>
                           <td class="corhui"><{$SiteDescription}></td>
                         </tr>
                       </table></td>
@@ -151,31 +151,31 @@ xajax_rebuildHTML("user/apply_friendlink.php");
 				<form name="marketfrm" action="<{$smarty.server.PHP_SELF}>" method="post">
 				<table width="98%" border="0" align="center" cellpadding="0" cellspacing="5">
                   <tr>
-                    <td colspan="2" align="center"><span class="font14yellow"><strong>申请成为[<{$sitename}>]友情链接</strong></span></td>
+                    <td colspan="2" align="center"><span class="font14yellow"><strong>Apply [<{$sitename}>] Link</strong></span></td>
                   </tr>
                   <tr align="left" >
-                    <td width="27%" class="corhui">网站名称：</td>
+                    <td width="27%" class="corhui">Site Name:</td>
                     <td width="73%"class="corhui"><input type="text" name="site[name]" id="site_name"><span class="fontred">*</span></td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">网站地址：</td>
+                    <td class="corhui">Web Address:</td>
                     <td class="corhui"><input type="text" name="site[url]" id="site_url"><span class="fontred">*</span></td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">联系Email：</td>
+                    <td class="corhui">Contact Email:</td>
                     <td class="corhui"><input type="text" name="site[email]" id="site_email"><span class="fontred">*</span></td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">网站描述：</td>
+                    <td class="corhui">Site Description:</td>
                     <td class="corhui"><textarea name="site[description]" id="site_description"></textarea></td>
                   </tr>
                   <tr align="left">
-                    <td class="corhui">网站logo图片地址：</td>
+                    <td class="corhui">Site logo Photo Address:</td>
                     <td class="corhui"><input type="text" name="site[logo]" id="site_logo"></td>
                   </tr>
                   <tr align="left">
                     <td colspan="2" class="corhui"><div align="center">
-                      <input name="apply" type="submit" id="apply" value="提交申请" onclick="return check();">
+                      <input name="apply" type="submit" id="apply" value="Submission" onclick="return check();">
                     </div></td>
                   </tr>
                   <tr>

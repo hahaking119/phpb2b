@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>商务室 - <{$sitetitle}></title>
+<title>Commercial Office - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
 <link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
 </head>
@@ -24,7 +24,7 @@
             <td height="45" background="<{$tpl_img_path}>office/title_bg.gif"><table height="30" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>&nbsp;</td>
-                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">查看贸易信息 </td>
+                  <td class="font14b_org"><img src="<{$tpl_img_path}>office/icon_newd.gif" width="15" height="16">View Trade Information </td>
                 </tr>
             </table></td>
           </tr>
@@ -48,74 +48,75 @@
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="5">
                       <tr>
-                        <td width="90" class="tdleft"><font color="#FF6600">*</font> 方 向：</td>
+                        <td width="90" class="tdleft"><font color="#FF6600">*</font> Direction:</td>
                         <td class="tdright"><input type="radio" name="offer_type" value="1"  <{$buyradio}>>
-                    求购
+                    Buy
                       <input name="offer_type" type="radio" value="2" <{$sellradio}>>
-                    供应</td>
+                    Supply/td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 主 题：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Theme:</td>
                         <td class="tdright"><{$TradeInfo.Name}></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 有效期：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Duration:</td>
                         <td class="tdright"><input type="radio" name="offer_expire" value="10" >
-                    10天
+                    10 days
                       <input type="radio" name="offer_expire" value="30" >
-                    一个月
+                    Month
                     <input type="radio" name="offer_expire" value="90" >
-                    三个月
+                    Months
+
                     <input name="offer_expire" type="radio" value="180" checked>
-                    六个月</td>
+                    Six</td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600">*</font> 行 业：</td>
+                        <td class="tdleft"><font color="#FF6600">*</font> Industry:</td>
                         <td class="tdright"><input name="industry" type="text" id="industry" value="1" size="32">
-                            <input type="button" onClick="OpenWindow('about:blank')" value="选择行业分类" size=16></td>
+                            <input type="button" onClick="OpenWindow('about:blank')" value="Select Industry Classification" size=16></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"> 　参 数：</td>
+                        <td class="tdleft"> Parameters: </td>
                         <td class="tdright"><table border="0" cellspacing="0" cellpadding="4">
                             <tr>
-                              <td>想让信息被更多买家搜索到？请补充产品参数：</td>
+                              <td>Information is more buyers want to search? Please add product parameters:</td>
                             </tr>
                             <tr>
-                              <td>产品数量：
+                              <td>Number of products:
                                   <input name="quantity" type="text" value="123"></td>
                             </tr>
                             <tr>
-                              <td>包装说明：
+                              <td>Package Description:
                                   <input name="packing" type="text" value="abcdebadfas;fd"></td>
                             </tr>
                             <tr>
-                              <td>价格说明：
+                              <td>Price Description:
                                   <input name="price" type="text" value="255"></td>
                             </tr>
                             <tr>
-                              <td>产品规格：
-                                  <input name="product_model" type="text" value="长宽高"></td>
+                              <td>Product Specifications:
+                                  <input name="product_model" type="text" value="L W H"></td>
                             </tr>
                             <tr>
-                              <td>产品编号：
+                              <td>Product Code:
                                   <input name="product_sn" type="text" value="SIDDD0123021"></td>
                             </tr>
                         </table></td>
                       </tr>
                       <tr>
-                        <td class="tdleft"><font color="#FF6600"> *</font> 详细说明：</td>
+                        <td class="tdleft"><font color="#FF6600"> *</font> Detailed Description:</td>
                         <td class="tdright"><p>
                             <textarea name="content" cols="60" rows="8" wrap="VIRTUAL">asdfasdfasdfasdfasdf
 xcvbxcvbxcvb</textarea>
-                            <font color="#FF3300">（详细说明中请勿包含公司名称、地址、联系方式等）<br>
+                            <font color="#FF3300">(Do not include detailed description of the company name, address, contact, etc.)<br>
                         </font></p></td>
                       </tr>
                       <tr>
-                        <td valign="top" class="tdleft">　产品图片：</td>
+                        <td valign="top" class="tdleft">Picture:</td>
                         <td class="tdright"><input name="pic" type="file" size="35">
                             <span class="gray"><br>
                             <br>
-                    （图片大小不要超过200K ,格式gif,jpg, 图片宽度最大为400象数效果最佳！）</span></td>
+                    (Photo size of no more than 200K, format, gif, jpg, picture width of the maximum number of 400 as the best results！）</span></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -133,8 +134,8 @@ xcvbxcvbxcvb</textarea>
                   <tr>
                     <td><table width="100%" border="0" cellpadding="8" cellspacing="1" class="bgblue">
                         <tr>
-                          <td align="center" class="zi">请务必检查联系资料!（若有误，客户无法找到您，信息也不能被审核通过！） <br>
-                    需要的话，您可点此 <a href="./company.php" target="_blank" class="font14b_org"><strong>修改联系资料</strong></a></td>
+                          <td align="center" class="zi">Please be sure to check the contact information! (If incorrect, the customer can not find you, the information can not be vetted and approved!) <br>
+                    If necessary, you can Click here <a href="./company.php" target="_blank" class="font14b_org"><strong>Modify the contact information</strong></a></td>
                         </tr>
                     </table></td>
                   </tr>
@@ -146,27 +147,27 @@ xcvbxcvbxcvb</textarea>
                         <tr>
                           <td><table width="100%" border="0" cellpadding="2" cellspacing="1" class="zi">
                               <tr bgcolor="#FFFFFF">
-                                <td width="24%" align="right">姓名：</td>
-                                <td width="76%"><{$MemberInfo.Name}> 先生 <font color="#999999">（全名） </font></td>
+                                <td width="24%" align="right">Name:</td>
+                                <td width="76%"><{$MemberInfo.Name}> Mr. <font color="#999999">(Full name) </font></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">公司名称：</td>
-                                <td><{$CompanyInfo.Name}> <font color="#999999">（公司全称）</font></td>
+                                <td align="right">Company Name:</td>
+                                <td><{$CompanyInfo.Name}> <font color="#999999">(Company full name)</font></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">电话：</td>
+                                <td align="right">Tel:</td>
                                 <td><{$CompanyInfo.Tel}></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">传真：</td>
+                                <td align="right">Fax:</td>
                                 <td><{$CompanyInfo.Fax}></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">移动电话：</td>
+                                <td align="right">Mobile:</td>
                                 <td><{$CompanyInfo.MobilePhone}></td>
                               </tr>
                               <tr bgcolor="#FFFFFF">
-                                <td align="right">电子邮件：</td>
+                                <td align="right">E-mail:</td>
                                 <td><{$CompanyInfo.Email}></td>
                               </tr>
                           </table></td>
@@ -177,7 +178,7 @@ xcvbxcvbxcvb</textarea>
           </tr>
           <tr>
             <td height="40" align="center"><br>
-                <input type="submit" name="submit" value="一切完成，请发布！" onClick="">
+                <input type="submit" name="submit" value="All completed, please release!" onClick="">
             </td>
           </tr>
           <tr>

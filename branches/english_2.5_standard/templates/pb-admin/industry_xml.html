@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title>生成示例数据 - <{$sitetitle}></title>
+<title>Generated sample data - <{$sitetitle}></title>
 <link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 <!--
@@ -17,7 +17,7 @@ clipboardData.setData('text',(str.text));
 </head>
 <body>
 <form name="textfrm">
-<a href="javascript:clip('textfrm.copy')" title="点击复制到剪贴板"><{if $XML_FILE_NAME}>数据已经复制到 data/xml/<{$XML_FILE_NAME}><{/if}>(点击复制到剪贴板)</a><br>
+<a href="javascript:clip('textfrm.copy')" title="点击复制到剪贴板"><{if $XML_FILE_NAME}>Data has been copied to the data/xml/<{$XML_FILE_NAME}><{/if}>(Click Copy to clipboard)</a><br>
 <textarea name="copy" style="width:450px;overflow-y:visible;font-family:Arial"><{$XMLDATA}></textarea>
 </form>
 </body>

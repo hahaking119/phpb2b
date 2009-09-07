@@ -8,28 +8,28 @@
 
 <body leftmargin="10" topmargin="10">
 <table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
-  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;<a href="#" onClick="parent.main.location='companytype.php';return false;">企业类型</a> &nbsp;&raquo; 编辑</div></td>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;<a href="#" onClick="parent.main.location='companytype.php';return false;">Business Type</a> &nbsp;&raquo; Edit</div></td>
 </tr></table>
 <form name="editfrm" method="post" action="<{$smarty.server.PHP_SELF}>">
 <input type="hidden" name="id" value="<{$smarty.get.id}>" />
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <tr class="header">
-  <td colspan="2">企业类型</td>
+  <td colspan="2">Business Type</td>
 </tr>
 
 
 <tr>
-  <td width="50%" class="altbg1"><strong>名称：</strong></td>
+  <td width="50%" class="altbg1"><strong>Name:</strong></td>
   <td class="altbg2"><input name="c[name]" type="text" value="<{$c.name}>"></td>
 </tr>
 <tr>
-<td class="altbg1"><strong>状态:</strong></td>
+<td class="altbg1"><strong>Status:</strong></td>
 <td class="altbg2"><{html_radios name="c[avaliable]" options=$CompanytypeStatus checked=$c.avaliable|default:"1" separator=" "}></td>
 </tr>
 <tr><td colspan="2" class="altbg1"><div align="center">
   <table border="0" cellpadding="5" cellspacing="0" class="button">
     <tr>
-      <td><input type="submit" name="save" value="保存" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"/></td>
+      <td><input type="submit" name="save" value="Save" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"/></td>
     </tr>
   </table>
   </div></td>
