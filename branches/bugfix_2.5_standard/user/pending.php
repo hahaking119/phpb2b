@@ -57,6 +57,8 @@ if (!empty($validate_str)) {
     }else{
         die("User not exists");
     }
+}else{
+	die("Invalid Request");
 }
 //判断随机码， 密钥是否符合
 //判断用户名是否存在

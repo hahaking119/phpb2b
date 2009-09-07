@@ -136,7 +136,7 @@ if(isset($_POST['register'])){
 		if ($member_reg_auth==1) {
 		    $if_need_check = true;
 		    $exp_time = $time_stamp+86400;
-		    $hash = authcode($tmp_username."|".$exp_time, "ENCODE");
+		    $hash = urlencode(authcode($tmp_username."|".$exp_time, "ENCODE"));
 		    $str = "Please active it through : <a href='".URL."user/pending.php?hash=".$hash."'>".URL."user/pending.php?hash=".$hash."</a>";
 		    $sended = uaMailTo($vars['email'], $tmp_username, 'Please active your account', $str);
 		}
