@@ -21,7 +21,7 @@
  * copies or substantial portions of the Software.
  * --
  *
- * @package phpb2b
+ * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:42:17 CST 2009

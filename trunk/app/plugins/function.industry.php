@@ -21,7 +21,7 @@
  * copies or substantial portions of the Software.
  * --
  *
- * @package phpb2b
+ * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:41:41 CST 2009
@@ -51,7 +51,8 @@ function smarty_function_industry($params){
 		if (isset($params['type'])) {
 			$cat_name = trim($params['type']);
 		}else{
-		    $cat_name = "buy";
+			//submited by hg888
+		    $cat_name = "offer";
 		}
 		if (isset($params['orderby'])) {
 			$orderby = " order by ".trim($params['orderby']);
