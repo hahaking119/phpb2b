@@ -33,6 +33,7 @@ class UaView extends UaObject
 {
 	var $theme_path = "default";
 	var $theme_url = "default/";
+	var $homepage_name = "index.php";
 
 	function UaView(){
 	}
