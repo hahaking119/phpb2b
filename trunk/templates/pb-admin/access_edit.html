@@ -100,12 +100,12 @@
 </tr>
 <tr>
   <td class="altbg1"><strong>默认商业服务期限</strong></td>
-  <td align="left" class="altbg2"><{html_radios name="access[default_livetime]" options=$LiveTimes checked=$a.default_livetime|default:"1" separator=" "}>
+  <td align="left" class="altbg2"><{html_radios name="access[default_livetime]" options=$LiveTimes checked=$a.default_livetime separator=" "}>
   <input type="hidden" name="old_defaultlivetime" value="<{$a.default_livetime}>" /></td>
 </tr>
 <tr>
   <td class="altbg1"><strong>商业服务期限到期处理方式</strong></td>
-  <td align="left" class="altbg2"><{html_radios name="access[after_livetime]" options=$AfterLiveTime checked=$a.default_livetime|default:"1" separator="<br />"}>
+  <td align="left" class="altbg2"><{html_radios name="access[after_livetime]" options=$AfterLiveTime checked=$a.after_livetime separator="<br />"}>
   </td>
 </tr>
 

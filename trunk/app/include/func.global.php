@@ -640,7 +640,7 @@
 		return $ua_member;
 	}
 
-	function authcode($string, $operation, $key = '') {
+	function authcode($string, $operation = "ENCODE", $key = '') {
 
 		$key = md5($key ? $key : AUTH_KEY);
 		$key_length = strlen($key);

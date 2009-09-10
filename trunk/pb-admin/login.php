@@ -30,7 +30,7 @@ if ($_POST['login'] && !empty($_POST['a']['username']) && (!empty($_POST['a']['u
 		if($r_check > 0){
 			$g_db->Execute("update ".$adminer->getTable()." set last_login=".$time_stamp." where user_name='$uname'");
 			$tAuth = $adminer->userid."|".$adminer->username."|".$adminer->userpass."|".uaIp2Long(uaGetClientIP());
-			usetcookie("uladmin", authcode($tAuth));
+			usetcookie("uladmin", authcode($tAuth, "ENCODE"));
 			//$_SESSION['admin']['current_adminer'] = $uname;
 			//$_SESSION['admin']['current_adminer_id'] = $adminer->field("id", "user_name='".$uname."'");
 			//$_SESSION['admin']['current_pass'] = md5($upass);
