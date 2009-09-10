@@ -22,6 +22,20 @@ if ($_POST['save']) {
 	$vals = $_POST['access'];
 	$access_id = $_POST['id'];
 	$data['Membertype']['access_id'] = $access_id;
+	/**for 2.4final to 2.5**/
+	$sql = "show columns from ".$db_links['dbname'].".{$tb_prefix}accesses";
+	$result = $g_db->GetArray($sql);
+	$colExists = false;
+	if(!empty($result)){
+		foreach($result as $key=>$val){
+			if($val['Field'] == "new_user_time") $colExists = true;
+		}
+		if(!$colExists){
+			$sql = "ALTER TABLE `{$tb_prefix}accesses` ADD `new_user_time` SMALLINT(6) NOT NULL DEFAULT '0';";
+			$g_db->Execute($sql);
+		}
+	}
+	/**end for 2.4final to 2.5**/
 	if (!empty($access_id)) {
 		$access_res = $access->field("id", "id=".$access_id);
 		if(empty($access_res) || !($access_res)){
