@@ -1,0 +1,15 @@
+<div class="bt cp_bt2"><h2>请登陆后查看联系信息</h2></div>
+<div class="cp_c2 cp_c6">
+<form id="loginFrm" name="loginFrm" method="post" action="<{$UrlContainer.common}>user/logging.php">
+<input type="hidden" name="id" value="<{$smarty.get.id}>">
+<input type="hidden" name="loginbtn" value="1">
+<input type="hidden" name="referer" value="<{$smarty.server.REQUEST_URI}>">
+					<p><em class="str">登录名称：</em><input name="login_name" type="text" id="login_name" size="20" value="<{$smarty.post.login_name}>"></p>
+					<p><em class="str">登录密码：</em><input name="login_pass" type="password" id="login_pass" size="20" value="<{$smarty.post.login_pass}>"></p>
+					<p class="cp_p8">
+<input name="loginbtn" type="submit" id="loginbtn" value="提交">
+<input name="resetbtn" type="reset" id="resetbtn" value="重置"></p>
+					<p><em class="str"><a href="<{$SiteUrl}>user/getpass.php">忘记密码？</a>(您还不是会员？马上... <img src="<{$theme_img_path}>images/icon03.gif" width="11" height="11"><a href="<{$UrlContainer.register}>" class="linkred12">免费注册</a>)</em></p>
+				<div class="clear9"></div>
+</form>
+</div>
