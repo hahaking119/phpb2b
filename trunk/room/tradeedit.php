@@ -200,5 +200,5 @@ setvar("PhoneTypes", $member->phone_types);
 setvar("ImTypes", $member->im_types);
 setvar("OfferExpires",$expires);
 setvar("CompanyId", $company_id);
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

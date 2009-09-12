@@ -45,5 +45,5 @@ unset($member->educations[0]);
 setvar("Educations",$member->educations);
 setvar("OfficeRedirects", $member->office_redirects);
 setvar("p",$info);
-template($office_theme_name."/"."personal");
+template("personal");
 ?>

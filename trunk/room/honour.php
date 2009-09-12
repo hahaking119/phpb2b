@@ -54,5 +54,5 @@ if (isset($_GET['action']) && $_GET['action']=="mod") {
 	$result = $attachment->findAll($fields, "type_id=9 and status=1 and member_id=".$_SESSION['MemberID'], "id desc", 0, 15);
 	setvar("Lists", $result);
 }
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

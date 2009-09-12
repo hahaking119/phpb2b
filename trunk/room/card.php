@@ -39,5 +39,5 @@ setvar("CompanyInfo",$res);
 }else{
 	setvar("CompanyNotExists", lgg('company_not_exists'));
 }
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

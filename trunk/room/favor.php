@@ -19,5 +19,5 @@ $sql = "select Favorite.id as FavorId,Trade.id as TradeId,Trade.topic as Title,T
 $result = $g_db->GetArray($sql);
 setvar("favorlists", $result);
 setvar("TradeTypes", $trade->getTradeTypes());
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

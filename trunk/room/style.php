@@ -23,5 +23,5 @@ $fields = "id as TempletId,title as TempletTitle,picture as TempletPicture";
 $res = $templet->findAll($fields, "require_membertype=0 or require_membertype='".$ua_user['user_type']."'","Templet.id desc",$firstcount,$displaypg);
 uaAssign(array("Amount"=>$amount,"ByPages"=>$pagenav));
 setvar("templets",$res);
-template($office_theme_name."/"."style");
+template("style");
 ?>

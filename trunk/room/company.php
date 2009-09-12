@@ -2,6 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");
 require("session.php");
+require(LIB_PATH .'time.class.php');
 uaCheckPermission(2);
 uses("member","industry","company","access","area", "attachment");
 $access = new Accesses();
@@ -38,7 +39,7 @@ if (isset($_POST['edit_company'])) {
 	if(!empty($industryid))
 	$vals['industry_id'] = $industryid;
 	$vals['employee_amount'] = $_POST['EmployeeAmount'];
-	if($_POST['FoundDate']!="None") $vals['found_date'] = uaDateConvert($_POST['FoundDate']);
+	if($_POST['FoundDate']!="None") $vals['found_date'] = Times::dateConvert($_POST['FoundDate']);
 	$vals['year_annual'] = $_POST['AnnualRevenue'];
 	if(isset($_POST['manage_type']))
 	{
@@ -137,5 +138,5 @@ setvar("SelectedPosition",$res['CompanyPosition']);
 setvar("EmployeeAmounts",$company->employee_amount);
 setvar("SelectedEmployeeAmount",$res['CompanyEmployeeAmount']);
 unset($selected,$res);
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

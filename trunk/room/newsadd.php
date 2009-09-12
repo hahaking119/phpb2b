@@ -41,5 +41,5 @@ if (isset($_POST['save'])) {
 		flash("./tip.php","./news.php",$message_info);
 	}
 }
-template($office_theme_name."/"."news_add");
+template("news_add");
 ?>

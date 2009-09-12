@@ -1,13 +1,13 @@
 <?php
-require($inc_path .APP_NAME. 'include/inc.discuz.php');
+//require($inc_path .APP_NAME. 'include/inc.discuz.php');
 require(SITE_ROOT. './app/configs/db_session.php');
 require(SITE_ROOT. './app/include/func.checksubmit.php');
-$office_theme_name = "room";
+$office_theme_name = "";
 /**
  * invite register
  */
 $check_invite_code = false;
-$register_type = $g_db->GetOne("select ab from {$tb_prefix}settings where aa='register_type'");
+$register_type = $g_db->GetOne("select valued from {$tb_prefix}settings where variable='register_type'");
 if ($register_type=="open_invite_reg"){
     setvar("IfInviteCode", true);
 }
@@ -30,5 +30,5 @@ function uaCheckPermission($request_level, $break = 1) {
 		die("Something Wrong!");
 	}
 }
-
+$smarty->template_dir = "template/";
 ?>

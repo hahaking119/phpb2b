@@ -41,5 +41,5 @@ if (isset($_POST['change']) && !empty($_POST['newpass'])) {
 		flash("./tip.php", null, lgg('old_pwd_error'), 0);
 	}
 }
-template($office_theme_name."/"."changepass");
+template("changepass");
 ?>

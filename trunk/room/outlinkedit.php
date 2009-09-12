@@ -40,5 +40,5 @@ if (!empty($_GET['id'])) {
 	}
 	setvar("LinkInfo",$linkinfo);
 }
-template($office_theme_name."/".$tplname."");
+template($tplname."");
 ?>

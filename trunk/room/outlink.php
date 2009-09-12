@@ -25,5 +25,5 @@ if (isset($_POST['delete'])) {
 }
 $fields = $companyoutlink->getFieldAliasNames();
 setvar("Links",$companyoutlink->findAll($fields,$conditions,"id DESC",0,10));
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

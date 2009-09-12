@@ -53,5 +53,5 @@ pageft($tmpamount,10);
 $fields = "title as CompanynewsTitle,created as CompanynewsCreated,id as CompanynewsId";
 setvar("News",$companynews->findAll($fields,$conditions,"id DESC",$firstcount,$displaypg));
 setvar("ByPages",$pagenav);
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

@@ -61,5 +61,5 @@ if (isset($_GET['id']) && $_GET['action']=="mod") {
 	setvar("ProductTypes",$typeres);
 }
 
-template($office_theme_name."/".$tplname);
+template($tplname);
 ?>

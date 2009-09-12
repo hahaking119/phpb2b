@@ -13,5 +13,5 @@ if(isset($_GET['id'])){
 }else{
     setvar("TipResult",lgg('action_complete'));
 }
-template($office_theme_name."/"."tip");
+template("tip");
 ?>

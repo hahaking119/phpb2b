@@ -14,5 +14,5 @@ setvar("Lists",$result);
 
 uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

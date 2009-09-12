@@ -2,6 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");
 require("session.php");
+require(LIB_PATH .'time.class.php');
 uaCheckPermission(2);
 uses("company","job","access");
 $company = new Companies();
@@ -16,7 +17,7 @@ if($_GET['action']=="del" && !empty($_GET['id'])){
 if (!empty($_POST['job']) && $_POST['save']) {
 	$vals = array();
 	$vals = $_POST['job'];
-	$vals['expire_time'] = uaDateConvert($_POST['ExpireTime']);
+	$vals['expire_time'] = Times::dateConvert($_POST['ExpireTime']);
 	array_walk($vals,"uatrim");
 	$check_job_update = $access->field("check_job_update","membertype_id=".$ua_user['user_type']);
 	if ($check_job_update=="0") {
@@ -61,5 +62,5 @@ if($_GET['action'] == "mod"){
 }
 setvar("Worktype",$job->worktype);
 setvar("Salary",$job->salary);
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

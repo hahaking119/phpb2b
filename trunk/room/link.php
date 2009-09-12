@@ -50,5 +50,5 @@ $joins = array(
 	);
 setvar("FriendLinks",$companylink->findAll($companylink->common_cols,$conditions,"Companylink.id DESC",0,10));
 unset($joins);
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

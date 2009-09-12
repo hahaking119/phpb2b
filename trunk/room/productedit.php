@@ -123,5 +123,5 @@ if (isset($_POST['action'])) {
 }
 setvar("ProductSorts",explode(",",lgg('product_sorts')));
 setvar("ProductTypes",$list);
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

@@ -22,6 +22,6 @@ uaAssign(array("UserName"=>$memberinfo['firstname'].$memberinfo['lastname'],"Mem
 	setvar("service_days",$service_interation);
 	setvar("MemberInfo",$memberinfo);
 	setvar("MembertypeName",$membertype->field("name", "id=".intval($ua_user['user_type'])));
-	template($office_theme_name."/"."index");
+	template("index");
 }
 ?>

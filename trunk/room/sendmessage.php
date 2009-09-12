@@ -28,5 +28,5 @@ if (isset($_POST['save']) && !empty($_POST['companymessage'])) {
 		flash("./tip.php",null);
 	}
 }
-template($office_theme_name."/"."send_message");
+template("send_message");
 ?>

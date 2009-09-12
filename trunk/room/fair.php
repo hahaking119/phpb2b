@@ -29,5 +29,5 @@ if(isset($_GET['join'])){
 		flash("./tip.php", "./fair.php", "Apply wrong!",0);
 	}
 }
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

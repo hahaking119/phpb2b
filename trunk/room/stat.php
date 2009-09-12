@@ -17,5 +17,5 @@ if(is_array($amount))
 }
 setvar("UserTradeStat",$stats);
 setvar("ProductAmount",$product->findCount($conditions,"Product.id"));
-template($office_theme_name."/"."stat");
+template("stat");
 ?>

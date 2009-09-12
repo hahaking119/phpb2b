@@ -33,5 +33,5 @@ if($_GET['action'] == "view" && !empty($_GET['id'])){
 	setvar("Lists",$res);
 	setvar("ByPages",$pagenav);
 }
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>

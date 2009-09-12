@@ -76,5 +76,5 @@ setvar("ProductList",$product->findAll($product->common_cols,$conditions,"Produc
 setvar("CheckStatus", explode(",",lgg('product_status')));
 uaAssign(array("Amount"=>$amount,"ByPages"=>$pagenav,"Msg"=>$msg,"Remain"=>($remain)));
 setvar("ProductSorts",explode(",",lgg('product_sorts')));
-template($office_theme_name."/".$tpl_file);
+template($tpl_file);
 ?>
