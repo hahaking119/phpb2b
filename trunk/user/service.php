@@ -8,7 +8,7 @@ setvar("ServiceTypes",$service->types);
 $conditions = null;
 $conditions = " Service.status=1";
 $page_service = 15;
-if ($_POST['s'] && !empty($_POST['service'])) {
+if (isset($_POST['s']) && !empty($_POST['service'])) {
 	$vals = array();
 	$vals['status'] = 0;
 	$vals['title'] = $_POST['service']['title'];

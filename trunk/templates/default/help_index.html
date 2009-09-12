@@ -15,7 +15,7 @@
 <{include file="`$ThemeName`/elements/header.html"}>
 
 <div class="wd crumb">
-	<p><span class="str">您当前位置：</span><a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="<{$SiteUrl}>help.php">帮助中心</a></p>
+	<p><span class="str">您当前位置：</span><a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="<{$SiteUrl}>help/">帮助中心</a></p>
 </div>
 <div class="clear9"></div>
 <div class="wd">
@@ -26,7 +26,7 @@
 		<div class="h_c2 h_c4">
 			<ul>
 			<{foreach from=$HelpParents[hpl].sub_helps name=sub_hplist item=sub_hpl}>
-				<li><a href="<{$SiteUrl}>help.php?sid=<{$HelpParents[hpl].HelptypeId}>#<{$sub_hpl.HelpId}>"><{$sub_hpl.HelpTitle}></a></li>
+				<li><a href="<{$SiteUrl}>help/?sid=<{$HelpParents[hpl].HelptypeId}>#<{$sub_hpl.HelpId}>"><{$sub_hpl.HelpTitle}></a></li>
 				<{/foreach}>
 			</ul>
 			<div class="clear"></div>

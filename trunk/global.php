@@ -29,7 +29,7 @@
  * @version $Id$
  */
 define('IN_UALINK', TRUE);
-define('DEBUG', '1');
+define('DEBUG', '0');
 define('SITE_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 /** set settings **/
 $gzipcompress = 0;//if use GZIP
@@ -52,9 +52,10 @@ if(!DEBUG){
 	error_reporting(0);
 }else{
 	error_reporting(E_ALL);
-	//$g_db->debug = true;
+	$g_db->debug = true;
 }
 require(SITE_ROOT. './app/include/class.my.smarty.php');
+//$inc_path = (!empty($inc_path))?$inc_path:'./';
 $smarty = new MySmarty($inc_path);
 require(LIB_PATH. 'ualink_object.php');
 require(LIB_PATH. 'ualink_model.php');
@@ -111,7 +112,7 @@ if($gzipcompress && function_exists('ob_gzhandler')) {
 //li
 if(isset($li)){
 	if($li==3){
-		$headerFrmAction = URL."company.php";
+		$headerFrmAction = URL."company/list.php";
 	}elseif($li==4){
 		$headerFrmAction = URL."product/list.php";
 	}elseif($li==5){

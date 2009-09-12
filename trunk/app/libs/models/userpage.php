@@ -76,7 +76,7 @@ class Userpages extends UaModel {
 				$tmp_contain['index'] = URL;
 				$tmp_contain['buy'] = URL."buy/";
 				$tmp_contain['sell'] = URL."sell/";
-				$tmp_contain['company'] = URL."company.php";
+				$tmp_contain['company'] = URL."company/";
 				$tmp_contain['product'] = URL."product/";
 				$tmp_contain['news'] = URL."news/";
 				$tmp_contain['hr'] = URL."hr.php";

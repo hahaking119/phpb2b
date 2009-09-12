@@ -17,7 +17,7 @@ $conditions = " and member_id=".$_SESSION['MemberID'];
 $company_id = $company->field("id", "member_id=".$_SESSION['MemberID']);
 if(!empty($company_id)) $company->checkStatus($company_id);
 $list = $producttype->findAll($producttype->common_cols, "member_id=".$_SESSION['MemberID']," id DESC",0,10);
-if (($_GET['action']=="mod") && (!empty($_GET['id']))) {
+if (isset($_GET['action']) && ($_GET['action']=="mod") && (!empty($_GET['id']))) {
 	$productinfo = $product->read(null,$_GET['id'],null,$conditions);
 	if (empty($productinfo)) {
 		PB_goto("./tip.php?id=1005");
@@ -89,8 +89,6 @@ if (isset($_POST['action'])) {
 		$vals['produce_area'] = $_POST['fromwhere'];
 		$vals['content'] = $_POST['content'];
 		$vals['producttype_id'] = $_POST['product_type'];
-		//$vals['keywords'] = uaConvertComma($_POST['keywords']);
-
 		array_walk($vals,"uatrim");
 		//if(!empty($vals['keywords'])){
 		//	$keyword->importKeys($vals['keywords'], $pid, 4);

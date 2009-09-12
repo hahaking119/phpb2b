@@ -34,6 +34,7 @@
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<{assign var="company_li" value="cor over"}>
 <{include file="`$ThemeName`/elements/header.html"}>
 <table width=960 height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
   <tbody>
@@ -60,7 +61,7 @@
       </table></td>
     <td width="395" valign="top" class="corhui"> 
       <div align="right"> <img src="<{$theme_img_path}>images/icon.gif" width="11" height="11"> <a href="<{$UrlContainer.register}>?ob=company" target="_blank">我要加入公司</a>&nbsp;&nbsp; 
-        <img src="<{$theme_img_path}>images/icon.gif" width="11" height="11"> <a href="../help.php" target="_blank">如何加入公司?</a>&nbsp;&nbsp;&nbsp;</div></td>
+        <img src="<{$theme_img_path}>images/icon.gif" width="11" height="11"> <a href="../help/" target="_blank">如何加入公司?</a>&nbsp;&nbsp;&nbsp;</div></td>
   </tr>
   <tr> 
     <td colspan="2" valign="top"> 
@@ -74,7 +75,7 @@
 			  <table>
 			  <tr>
 			  <{foreach from=$OtherIndustry name=fore1 item=data}>
-			  <td><a href="<{$SiteUrl}>company.php?ac=list&industryname=<{$data.Name|urlencode}>"><{$data.Name}></a>(<{$data.BuyAmount}>)</td>
+			  <td><a href="<{$SiteUrl}>company/list.php?industryname=<{$data.Name|urlencode}>"><{$data.Name}></a>(<{$data.BuyAmount}>)</td>
 			  <{if $smarty.foreach.fore1.iteration is div by 6}>
 			  </tr><tr>
 			  <{/if}>
@@ -136,7 +137,7 @@
 	<!-- 这里默认VIP会员的类型为4 -->
 	<img src="<{$theme_img_path}>images/grade/<{$data.MemberCreditLevel|default:"1"|cat:".gif"}>"></td>
     <td width="405"><{if $data.MemberUserType==4}><img src="<{$theme_img_path}>images/vip_company.gif" alt="<{$data.MemberUserType}>">&nbsp;<{/if}><a href="<{$SiteUrl}>space.php?userid=<{$data.MemberUsername}>" class="font14blak"><{$data.Name|strip_tags|replace:$smarty.get.skeyword:$searchwords}></a>
-          <!-- <a href=#><img src="images/mark.gif" border="0"></a> --><{if $data.CreateTime!=""}><span class="time">(<a href="<{$SiteUrl}>company/<{$data.CreateTime|date_format:"%Y/%m/%d"}>/"><{$data.CreateTime|date_format:"%Y-%m-%d"}></a>)</span><span>[<a href="<{$SiteUrl}>company.php?ac=list&industryname=<{$data.IndustryName|urlencode}>"><{$AllIndustry[$data.IndustryId]}></a>]</span><{/if}>
+          <!-- <a href=#><img src="images/mark.gif" border="0"></a> --><{if $data.CreateTime!=""}><span class="time">(<a href="<{$SiteUrl}>company/<{$data.CreateTime|date_format:"%Y/%m/%d"}>/"><{$data.CreateTime|date_format:"%Y-%m-%d"}></a>)</span><span>[<a href="<{$SiteUrl}>company/list.php?industryname=<{$data.IndustryName|urlencode}>"><{$AllIndustry[$data.IndustryId]}></a>]</span><{/if}>
 		  <br />
 		  <{$data.Description|strip_tags|truncate:100}></td>
     <td width="70"><div align="center">
@@ -186,7 +187,7 @@
     <td><div class="bgcontain"> 
 	<div id="abc"><span>字母检索</span>
 	<{foreach from=$Letters item=le}>
-	<a href="<{$UrlContainer.common}>company.php?ac=list&le=<{$le}>&sid=<{$smarty.get.sid|default:$smarty.get.aindustry}>&usertype=<{$smarty.get.usertype}>"><{$le}></a>
+	<a href="<{$UrlContainer.common}>company/list.php?le=<{$le}>&sid=<{$smarty.get.sid|default:$smarty.get.aindustry}>&usertype=<{$smarty.get.usertype}>"><{$le}></a>
 	<{/foreach}>
 	<span id="totop">
 	<a href="#" class="BTT">回到顶部</a></span>

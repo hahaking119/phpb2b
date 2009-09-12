@@ -14,7 +14,7 @@ swfobject.embedSWF("<{$SiteUrl}>data/flash/vcastr2.swf", "flashcontent2", "450",
 </script>
 <{$xajax_javascript}>
 <script language="javascript">
-xajax_rebuildHTML("company.php");
+xajax_rebuildHTML("company/index.php");
 </script>
 </head>
 
@@ -49,13 +49,13 @@ xajax_rebuildHTML("company.php");
 	<div class="w_right1">
 		<div class="cpk_t1"></div>
 		<div class="cpk_c1 gs_tab1">
-			<div class="bt gs_bt1"><h2><a href="<{$UrlContainer.common}>company.php?ac=list">新加入企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company.php?ac=list">&raquo;更多</a></p></div>
+			<div class="bt gs_bt1"><h2><a href="<{$UrlContainer.common}>company/list.php">新加入企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company/list.php?">&raquo;更多</a></p></div>
 			<ul class="ul21"><{company max=9}></ul>
 		</div>
 		<div class="clear9"></div>
 		<div class="cpk_t1"></div>
 		<div class="cpk_c1 gs_tab1">
-			<div class="bt gs_bt1"><h2><a href="<{$UrlContainer.common}>company.php?ac=list&type=commend">最新推荐企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company.php?ac=list&type=commend">&raquo;更多</a></p></div>
+			<div class="bt gs_bt1"><h2><a href="<{$UrlContainer.common}>company/list.php?type=commend">最新推荐企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company/list.php?type=commend">&raquo;更多</a></p></div>
 			<ul class="ul21"><{company max=9 commend="y"}></ul>
 		</div>
 		<div class="clear9"></div>

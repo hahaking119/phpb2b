@@ -26,10 +26,10 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:05:31 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: index.php 438 2009-07-07 14:28:27Z stevenchow811 $
  */
-$inc_path = "./";
-require("global.php");
+$inc_path = "../";
+require("../global.php");
 uses("helptype","help");
 $helptype = new Helptypes();
 $help = new Helps();
@@ -46,7 +46,7 @@ if(isset($_GET['sid'])) {
 	setvar("HelptypeTitle",$sname['HelptypeTitle']);
 	unset($res,$sname);
 }
-$parent_list = $helptype->findAll("id AS HelptypeId,title AS HelptypeTitle","Helptype.hc=0","id DESC",0,25);
+$parent_list = $helptype->findAll("id AS HelptypeId,title AS HelptypeTitle","Helptype.parent_id=0","id DESC",0,25);
 for ($i=0; $i<count($parent_list); $i++) {
 	$parent_list[$i]['sub_helps'] = $help->findAll("id AS HelpId,title AS HelpTitle","Help.helptype_id=".$parent_list[$i]['HelptypeId'],"id DESC",0,25);
 }

@@ -1460,7 +1460,7 @@ CREATE TABLE pb_visitlogs (
   KEY salt (salt)
 ) TYPE=MyISAM;
 
-INSERT INTO pb_industries (`id`, `name`, `parentid`, `buy_amount`, `sell_amount`, `product_amount`, `company_amount`, `ia`, `ib`) VALUES
+INSERT INTO pb_industries (`id`, `name`, `parentid`, `buy_amount`, `sell_amount`, `product_amount`, `company_amount`, `if_show_module`, `if_setby_market`) VALUES
 (1, '纺织、皮革', 0, 0, 0, 0, 489, 1, 0),
 (2, '服装、服饰', 0, 0, 0, 0, 0, 1, 0),
 (3, '机械及工业制品', 0, 0, 0, 0, 0, 1, 0),

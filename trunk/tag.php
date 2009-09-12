@@ -61,7 +61,7 @@ if(!empty($searchkeywords)) {
 	    		break;
 	    	case "companies":
 	    	    $fields = "id as ItemId,name as ItemTitle,description as ItemInfo,created as CreateDate,picture as ItemPicture";
-	    	    $module_name = "company.php";
+	    	    $module_name = "company/";
 	    	    break;
 	    	case "products":
 	    	    $fields = "id as ItemId,name as ItemTitle,content as ItemInfo,created as CreateDate,picture as ItemPicture";

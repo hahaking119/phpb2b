@@ -2,7 +2,7 @@
 $inc_path = "../";
 $ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
-header("Content-Type: text/html; charset=".$charset); 
+header("Content-Type: text/html; charset=".$charset);
 require(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
 if($argc>0){
@@ -17,11 +17,13 @@ if($argc>0){
 	unset($tmp_rf2, $tmp_rf1);
 }
 setvar("backUrl",$referer);
-setvar("pauseTime",$_GET['pause']);
-if ($_GET['pause'] ===0) {
-	PB_goto($referer);
+if(!empty($_GET['pause'])) {
+    setvar("pauseTime", intval($_GET['pause']));
+    if ($_GET['pause'] ===0) {
+        PB_goto($referer);
+    }
 }
-if ($_GET['result']) {
+if (isset($_GET['result'])) {
 	$alert_img = "action_success.gif";
 }else{
 	$alert_img = "action_false.gif";

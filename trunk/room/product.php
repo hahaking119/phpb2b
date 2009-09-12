@@ -9,10 +9,10 @@ uaCheckPermission($action_level);
 $access = new Accesses();
 $product = new Products();
 $producttype = new Producttypes();
-$conditions = null;
+$conditions = $msg = null;
 $table = $product->getTable(true);
 $conditions = "member_id = ".$_SESSION['MemberID'];
-if ($_GET['action'] == "state") {
+if (isset($_GET['action']) && ($_GET['action'] == "state")) {
 	switch ($_GET['type']) {
 		case "up":
 			$state = 1;
@@ -37,7 +37,7 @@ if ($_GET['action'] == "state") {
 	}
 }
 setvar("ProductTypes",$producttype->findAll($producttype->common_cols, $conditions, " id desc",0,10));
-if ($_GET['act'] == "del" && !empty($_GET['id'])) {
+if (isset($_GET['act']) && ($_GET['act'] == "del") && !empty($_GET['id'])) {
 	$res = $product->read("id",$_GET['id']);
 	if($res){
 		if($product->del($_GET['id'], "member_id=".$_SESSION['MemberID'])){

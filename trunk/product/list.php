@@ -47,6 +47,7 @@ if(isset($_GET['skeyword'])) {
 	setvar("searchwords","<font color=\"red\">".$searchkeywords."</font>");
 	$prod_conditions.= " and Product.name like '%".$searchkeywords."%'";
 }
+$subs = array();
 if(!empty($sid)){
 	$subs = $industry->getAllIndustry("and Industry.parentid=".$sid);
 	$ind_res = $industry->read("parentid,name", $sid);

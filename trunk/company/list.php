@@ -1,4 +1,7 @@
 <?php
+$inc_path = "../";
+$li = 3;
+require("../global.php");
 uses("product","industry","company","member");
 include(SITE_ROOT.'./app/include/page.php');
 include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
@@ -10,6 +13,7 @@ $conditions = null;
 $conditions = " Company.status=1 ";
 $positions = array();
 $_positions[] = lgg("company_center");
+$subs = array();
 if(isset($_GET['filter']) && !empty($_GET['id'])){
 	$conditions.=" and Company.type_id=".intval($_GET['id']);
 	$_positions[] = "<a href='#' title=''>".urldecode($_GET['name'])."</a>";
@@ -24,7 +28,7 @@ if (isset($_GET['search_list'])) {
 	if($_GET['city_id']) $conditions.= " AND Company.city_code_id=".$_GET['cityid'];
 	if($_GET['aindustry']) $conditions.= " AND Company.industry_id=".intval($_GET['aindustry']);
 }
-if($_GET['skeyword']) {
+if(isset($_GET['skeyword'])) {
 	$searchwords = strip_tags($_GET['skeyword']);
 	$conditions.= " AND Company.name like '%".$searchwords."%'";
 	setvar("searchwords","<font color=\"red\">".$searchwords."</font>");
@@ -32,15 +36,17 @@ if($_GET['skeyword']) {
 $tpl_file = "list";
 if (!empty($_GET['industryname'])) {
 	$ind_res = $g_db->GetRow("select id,parentid,name from {$tb_prefix}industries where name='".urldecode($_GET['industryname'])."'");
-	if($ind_res['parentid']==0){
-		$conditions.= " and Company.industry_id in (".$ind_res['id'].",".$industry->getSubIndustries($ind_res['id']).")";
-	}else{
-		$conditions.= " and Company.industry_id=".$ind_res['id'];
+	if(!empty($ind_res)){
+	    if($ind_res['parentid']==0){
+	        $conditions.= " and Company.industry_id in (".$ind_res['id'].",".$industry->getSubIndustries($ind_res['id']).")";
+	    }else{
+	        $conditions.= " and Company.industry_id=".$ind_res['id'];
+	    }
+	    $sid = $ind_res['id'];
+	    setvar("IndsutryName", $industry_name = $ind_res['name']);
+	    $_titles[] = $industry_name;
+	    $_positions[] = $industry_name;
 	}
-	$sid = $ind_res['id'];
-	setvar("IndsutryName", $industry_name = $ind_res['name']);
-	$_titles[] = $industry_name;
-	$_positions[] = $industry_name;
 }
 if (isset($_GET['type'])) {
 	if ($_GET['type']=="commend") {
