@@ -1,7 +1,7 @@
 <?php
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
-header("Content-Type: text/html; charset=".$charset); 
+header("Content-Type: text/html; charset=".$charset);
 require_once(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
 ?>

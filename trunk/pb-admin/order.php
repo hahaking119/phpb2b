@@ -25,13 +25,13 @@ if ($_GET['action']=="del" && !empty($_GET['id'])) {
 		setvar("ActionResult", "已删除");
 	}
 }
-if ($_POST['complete'] && !empty($_POST['id'])) {
+if (isset($_POST['complete']) && !empty($_POST['id'])) {
 	$result = $order->check($_POST['id'],1);
 	if ($result) {
 		flash("./alert.php",null,"订单审核完成");
 	}
 }
-if ($_POST['cancel'] && !empty($_POST['id'])){
+if (isset($_POST['cancel']) && !empty($_POST['id'])){
 	$result = $order->check($_POST['id']);
 	if ($result) {
 		flash("./alert.php",null,"成功取消订单");
@@ -65,5 +65,5 @@ if($_GET['action'] = "list"){
 }
 
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

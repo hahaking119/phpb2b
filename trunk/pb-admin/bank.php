@@ -6,14 +6,14 @@ require("./fckeditor/fckeditor.php") ;
 require("session_cp.inc.php");
 uses("setting");
 $setting = new Settings();
-if ($_POST['save']) {
+if (isset($_POST['save'])) {
 	$updated = false;
 	foreach($_POST['u'] as $vname=>$vval){
-		$exists = $setting->find($vname,"id","aa");
+		$exists = $setting->find($vname,"id","variable");
 		if($exists){
-			$sql = "update ".$setting->getTable()." set ab='$vval' where aa='$vname'";
+			$sql = "update ".$setting->getTable()." set valued='$vval' where variable='$vname'";
 		}else{
-			$sql = "insert into ".$setting->getTable()." (aa,ab) values ('$vname','$vval')";
+			$sql = "insert into ".$setting->getTable()." (variable,valued) values ('$vname','$vval')";
 		}
 		$g_db->Execute($sql);
 		$updated = true;

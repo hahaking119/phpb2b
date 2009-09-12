@@ -18,37 +18,37 @@ $tpl_file = "market_index";
 if ($_GET['action'] == "del" && !empty($_GET['id'])) {
 	$market->del($_GET['id']);
 }
-if ($_POST['del'] && !empty($_POST['id'])) {
+if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$market->del($_POST['id']);
 }
-if ($_POST['check'] && !empty($_POST['id'])) {
+if (isset($_POST['check']) && !empty($_POST['id'])) {
 	$ids = implode(",", $_POST['id']);
 	$condition = " id in (".$ids.")";
 	$sql = "update ".$market->getTable()." set status=1 where ".$condition;
 	$result = $g_db->Execute($sql);
 }
-if ($_POST['uncheck'] && !empty($_POST['id'])) {
+if (isset($_POST['uncheck']) && !empty($_POST['id'])) {
 	$ids = implode(",", $_POST['id']);
 	$condition = " id in (".$ids.")";
 	$sql = "update ".$market->getTable()." set status=0 where ".$condition;
 	$result = $g_db->Execute($sql);
 }
-if ($_POST['save'] && !empty($_POST['market'])) {
+if (isset($_POST['save']) && !empty($_POST['market'])) {
 	$vals = array();
 	$vals = $_POST['market'];
-	if($_POST['market_industry_id']){
+	if(isset($_POST['market_industry_id'])){
 		$vals['industry_id'] = $_POST['market_industry_id'];
 	}
-	if($_POST['cityid']){
+	if(isset($_POST['cityid'])){
 		$vals['city_id'] = $_POST['cityid'];
 	}
-	if ($_POST['provinceid']) {
+	if (isset($_POST['provinceid'])) {
 		$vals['province_id'] = $_POST['provinceid'];
 	}
-	if($_POST['cityid']){
-		$vals['ma'] = $_POST['cityid'];
-	}elseif ($_POST['provinceid']) {
-		$vals['ma'] = $_POST['provinceid'];
+	if(isset($_POST['cityid'])){
+		$vals['area_id'] = $_POST['cityid'];
+	}elseif (isset($_POST['provinceid'])) {
+		$vals['area_id'] = $_POST['provinceid'];
 	}
 	if (!empty($_FILES['pic']['name'])) {
         include("../app/include/class.thumb.php");
@@ -115,5 +115,5 @@ if ($_GET['action'] == "mod") {
 	setvar("MarketList",$market->findAll($fields, $conditions, "Market.id desc", $firstcount, $displaypg));
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -58,5 +58,5 @@ if (isset($_GET['action'])) {
     }
 }
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

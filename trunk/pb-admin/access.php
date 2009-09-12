@@ -18,7 +18,7 @@ foreach ($result as $key=>$val) {
 setvar("LiveTimes", explode(",",lgg("live_times")));
 setvar("AfterLiveTime", explode(",",lgg("after_livetimes_do")));
 setvar("UserTypes",$user_types);
-if ($_POST['save']) {
+if (isset($_POST['save'])) {
 	$vals = $_POST['access'];
 	$access_id = $_POST['id'];
 	$data['Membertype']['access_id'] = $access_id;
@@ -63,7 +63,7 @@ if ($_POST['save']) {
 		flash("./alert.php", "access.php?action=list", null, 1, null, "./membertype.php");
 	}
 }
-if ($_POST['del'] && !empty($_POST['id'])) {
+if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$result = $access->del($_POST['id']);
 }
 if ($_GET['action']=="del" && !empty($_GET['id'])) {
@@ -76,5 +76,5 @@ if ($_GET['action'] == "mod") {
 	}
 	$tpl_file = "access_edit";
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

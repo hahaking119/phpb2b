@@ -13,5 +13,5 @@ $result = $htmlcache->findAll(null, null, "id desc");
 setvar("TOKEN",  md5(AUTH_KEY));
 setvar("Lists", $result);
 //:~
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

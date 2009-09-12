@@ -5,6 +5,7 @@ require(SITE_ROOT. './app/configs/db_session.php');
 uses("product","company","member","attachment");
 require(SITE_ROOT.'./app/include/page.php');
 require("session_cp.inc.php");
+require(LIB_PATH .'time.class.php');
 $member = new Members();
 $attachment = new Attachments();
 $company = new Companies();
@@ -15,7 +16,7 @@ $product_status = explode(",",lgg('product_status'));
 setvar("CheckStatus",$product_status);
 setvar("BooleanVars", explode(",",lgg('yes_no')));
 setvar("ProductSorts",explode(",",lgg('product_sorts')));
-if ($_POST['save'] && !empty($_POST['product']['name'])) {
+if (isset($_POST['save']) && !empty($_POST['product']['name'])) {
 
 	$result = false;
 	$vals = array();
@@ -81,7 +82,7 @@ if (isset($_POST['del'])) {
     foreach ($_POST['pid'] as $val) {
     	$picture = $product->field("picture", "id=".$val);
     	@unlink($media_paths['attachment_dir'].$picture);
-    	@unlink($media_paths['attachment_dir'].$picture.".small.jpg"););
+    	@unlink($media_paths['attachment_dir'].$picture.".small.jpg");
     }
 	if (is_array($_POST['pid'])) {
 		$deleted = $product->del($_POST['pid']);
@@ -119,9 +120,9 @@ if (isset($_GET['search'])) {
 	if($_GET['provinceid']) $conditions.= " AND Company.province_code_id =".$_GET['provinceid'];
 	if ($_GET['FromDate'] && $_GET['FromDate']!="None" && $_GET['ToDate'] && $_GET['ToDate']!="None") {
 		$conditions.= " AND Product.created BETWEEN ";
-		$conditions.= uaDateConvert($_GET['FromDate']);
+		$conditions.= Times::dateConvert($_GET['FromDate']);
 		$conditions.= " AND ";
-		$conditions.= uaDateConvert($_GET['ToDate']);
+		$conditions.= Times::dateConvert($_GET['ToDate']);
 	}
 }
 $amount = $product->findCount($conditions,"Product.id", null, $ujoins);
@@ -134,5 +135,5 @@ setvar("ProductList",$product->findAll($fields,$conditions,"Product.id DESC",$fi
 uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

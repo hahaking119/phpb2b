@@ -10,5 +10,5 @@ foreach ($menus as $cur_menu) {
 setvar("ToogleMenus",implode(",",$top_menus));
 array_shift($menus);
 setvar("ActionMenus",$menus);
-template("pb-admin/top");
+template("top");
 ?>

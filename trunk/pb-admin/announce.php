@@ -7,7 +7,7 @@ uses("announcement");
 require("session_cp.inc.php");
 $announce = new Announcements();
 $tpl_file = "announce_index";
-if ($_POST['del'] && is_array($_POST['id'])) {
+if (isset($_POST['del']) && is_array($_POST['id'])) {
 	$deleted = $announce->del($_POST['id']);
 	if (!$deleted) {
 		flash("alert.php",$_SERVER['PHP_SELF'],null,0);
@@ -16,7 +16,7 @@ if ($_POST['del'] && is_array($_POST['id'])) {
 if ($_GET['action']=="del" && !empty($_GET['id'])) {
 	$announce->del($_GET['id']);
 }
-if ($_POST['save']) {
+if (isset($_POST['save'])) {
 	$vals = array();
 	$vals = $_POST['announcement'];
 	if (!empty($_POST['id'])) {
@@ -42,5 +42,5 @@ if ($_GET['action'] == "mod") {
 	$fields = "id,id_type,subject as LinkTitle,message";
 	setvar("AnnounceList",$announce->findAll($fields, $conditions, "id DESC"));
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

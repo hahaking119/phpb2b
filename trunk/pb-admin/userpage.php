@@ -42,5 +42,5 @@ if ($_GET['action'] == "mod") {
 	setvar("lists",$userpage->findAll($fields, $conditions, "id DESC", $firstcount, $displaypg));
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -9,14 +9,14 @@ $conditions = null;
 $companytype = new Companytypes();
 setvar("CompanytypeStatus", explode(",",lgg('yes_no')));
 $tpl_file = "companytype_index";
-if ($_POST['del'] && !empty($_POST['id'])) {
+if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$result = $companytype->del($_POST['id']);
 	if (!$result) {
 		flash("./alert.php","./companytype.php",null,0);
 	}
 }
 
-if ($_POST['quickadd'] && !empty($_POST['companytype']['name'])) {
+if (isset($_POST['quickadd']) && !empty($_POST['companytype']['name'])) {
 	$vals = array();
 	$vals = $_POST['companytype'];
 	$result = $companytype->save($vals);
@@ -26,10 +26,10 @@ if ($_POST['quickadd'] && !empty($_POST['companytype']['name'])) {
 		PB_goto("./companytype.php");
 	}
 }
-if ($_POST['save'] && !empty($_POST['c']['name'])) {
+if (isset($_POST['save']) && !empty($_POST['c']['name'])) {
 	$vals = array();
 	$vals = $_POST['c'];
-	if ($_POST['id']) {
+	if (isset($_POST['id'])) {
 		$result = $companytype->save($_POST['c'], "update", intval($_POST['id']));
 	}else{
 		$result = $companytype->save($vals);
@@ -51,5 +51,5 @@ if ($_GET['action']=="mod") {
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

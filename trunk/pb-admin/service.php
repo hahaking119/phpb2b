@@ -63,5 +63,5 @@ if (isset($_REQUEST['del'])){
 	}
 }
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

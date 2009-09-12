@@ -2,6 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
+require(LIB_PATH .'time.class.php');
 $position_path = array(array("name"=>"Offers","url"=>"./admin.php"));
 setvar("CurrentPos",uaFormatPositionPath($position_path));
 uses("trade","industry","company","member","area","offer","attachment");
@@ -16,6 +17,7 @@ $industry = new Industries();
 $trade = new Trades();
 $tplname = "trade_index";
 $conditions = "1";
+$ujoins = $j_field = null;
 $colors = array(0=>"blue", 1=>"green", 2=>"red", 3=>"gray");
 setvar("TradeTypes", $trade_names = $trade->getTradeTypes());
 if (isset($_POST['refresh_x'])) {
@@ -106,8 +108,12 @@ if(isset($_POST['save'])){
 	$vals = $_POST['trade'];
 	$offers = $_POST['offer'];
 	if($_POST['submittime']){
-		if($_POST['submittime']!="None") $vals['submit_time'] = uaDateConvert($_POST['submittime']);
-		if($_POST['expiretime']!="None") $vals['expire_time'] = uaDateConvert($_POST['expiretime']);
+		if($_POST['submittime']!="None") {
+		    $vals['submit_time'] = Times::dateConvert($_POST['submittime']);
+		}
+		if($_POST['expiretime']!="None") {
+		    $vals['expire_time'] = Times::dateConvert($_POST['expiretime']);
+		}
 	}
 	if (!empty($_FILES['pic']['name'])) {
         include("../app/include/class.thumb.php");
@@ -174,7 +180,7 @@ if ($_GET['action'] == "mod"){
 	$j_set = false;
 	if (isset($_POST['search'])) {
 
-		if ($_POST['keywords']) {
+		if (isset($_POST['keywords'])) {
 			$conditions.= " and Trade.topic like '%".trim($_POST['keywords'])."%'";
 		}
 		if ($_POST['companystatus']!="-1") {
@@ -182,15 +188,15 @@ if ($_GET['action'] == "mod"){
 		}
 		if ($_POST['PubFromDate']!="None" && $_POST['PubToDate']!="None") {
 			$conditions.= " and Trade.created between ";
-			$conditions.= uaDateConvert($_POST['PubFromDate']);
+			$conditions.= Times::dateConvert($_POST['PubFromDate']);
 			$conditions.= " and ";
-			$conditions.= uaDateConvert($_POST['PubToDate']);
+			$conditions.= Times::dateConvert($_POST['PubToDate']);
 		}
 		if ($_POST['ExpFromDate']!="None" && $_POST['ExpToDate']!="None") {
 			$conditions.= " and Trade.expire_time between ";
-			$conditions.= uaDateConvert($_POST['ExpFromDate']);
+			$conditions.= Times::dateConvert($_POST['ExpFromDate']);
 			$conditions.= " and ";
-			$conditions.= uaDateConvert($_POST['ExpToDate']);
+			$conditions.= Times::dateConvert($_POST['ExpToDate']);
 		}
 		if(!empty($_POST['companyname'])) {
 			$j_set = true;
@@ -236,5 +242,5 @@ setvar("token", md5(AUTH_KEY));
 setvar("ShowIndex", explode(",",lgg('yes_no')));
 setvar("TradeNames", $trade->getTradeTypeNames());
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
-template("pb-admin/".$tplname);
+template($tplname);
 ?>

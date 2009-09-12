@@ -10,8 +10,9 @@ $ua_sets = $setting->getValues();
 $t = lgg("yes_no");
 setvar("AskAction", explode(",", $t));
 if (isset($_GET['action'])) {
+    $strSiteDescription = isset($ua_sets['SITE_DESCRIPTION'])?$ua_sets['SITE_DESCRIPTION']:null;
 	if ($_GET['action']=="basic") {
-		editor("u[site_description]", $ua_sets['SITE_DESCRIPTION'], "FCK_SITE_DESCRIPTION");
+		editor("u[site_description]", $strSiteDescription, "FCK_SITE_DESCRIPTION");
 		$tpl_file = "basic";
         $position_path = array(array("name"=>"Basic","url"=>"setting.php?action=basic"));
 	}
@@ -24,14 +25,14 @@ if (isset($_GET['action'])) {
         $position_path = array(array("name"=>"Mail","url"=>"setting.php?action=mail"));
 	}
 }
-if ($_POST['savebasic']) {
+if (isset($_POST['savebasic'])) {
 	$updated = false;
 	foreach($_POST['u'] as $vname=>$vval){
-		$exists = $setting->find($vname,"id","aa");
+		$exists = $setting->find($vname,"id","variable");
 		if($exists){
-			$sql = "update ".$setting->getTable()." set ab='$vval' where aa='$vname'";
+			$sql = "update ".$setting->getTable()." set valued='$vval' where variable='$vname'";
 		}else{
-			$sql = "insert into ".$setting->getTable()." (aa,ab) values ('$vname','$vval')";
+			$sql = "insert into ".$setting->getTable()." (variable,valued) values ('$vname','$vval')";
 		}
 		$g_db->Execute($sql);
 		$updated = true;
@@ -55,7 +56,7 @@ if ($_POST['savebasic']) {
 		flash("alert.php", "setting.php?action=basic");
 	}
 }
-if ($_POST['savepermission']) {
+if (isset($_POST['savepermission'])) {
 	$updated = false;
 	if (!empty($_POST['u']['reg_filename'])) {
 	    $renameResult = rename('../user/register.php', '../user/'.$_POST['u']['reg_filename']);
@@ -64,11 +65,11 @@ if ($_POST['savepermission']) {
 	    $renameResult = rename('../post.php', '../'.$_POST['u']['post_filename']);
 	}
 	foreach($_POST['u'] as $vname=>$vval){
-		$exists = $setting->find($vname,"id","aa");
+		$exists = $setting->find($vname,"id","variable");
 		if($exists){
-			$sql = "update ".$setting->getTable()." set ab='$vval' where aa='$vname'";
+			$sql = "update ".$setting->getTable()." set valued='$vval' where variable='$vname'";
 		}else{
-			$sql = "insert into ".$setting->getTable()." (aa,ab) values ('$vname','$vval')";
+			$sql = "insert into ".$setting->getTable()." (variable,valued) values ('$vname','$vval')";
 		}
 		$g_db->Execute($sql);
 		$updated = true;
@@ -80,11 +81,11 @@ if ($_POST['savepermission']) {
 if (isset($_POST['savemail'])) {
 	$updated = false;
 	foreach($_POST['u'] as $vname=>$vval){
-		$exists = $setting->find($vname,"id","aa");
+		$exists = $setting->find($vname,"id","variable");
 		if($exists){
-			$sql = "update ".$setting->getTable()." set ab='$vval' where aa='$vname'";
+			$sql = "update ".$setting->getTable()." set valued='$vval' where variable='$vname'";
 		}else{
-			$sql = "insert into ".$setting->getTable()." (aa,ab) values ('$vname','$vval')";
+			$sql = "insert into ".$setting->getTable()." (variable,valued) values ('$vname','$vval')";
 		}
 		$g_db->Execute($sql);
 		$updated = true;
@@ -95,5 +96,5 @@ if (isset($_POST['savemail'])) {
 }
 setvar("CurrentPos",uaFormatPositionPath($position_path));
 setvar("U",$ua_sets);
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

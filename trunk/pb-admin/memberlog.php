@@ -20,7 +20,7 @@ $conditions = "1";
 if ($_GET['action'] == "clear") {
 	$result = $g_db->Execute("truncate ".$memberlog->getTable());
 	$data['Adminlog']['action_description'] = lgg('clear_memberlogs');
-	logadmin();
+	$adminlog->add();
 }
 if(isset($_GET['search'])){
 	if(!empty($_GET['memberlog']['username'])){

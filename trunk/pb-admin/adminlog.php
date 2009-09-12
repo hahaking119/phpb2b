@@ -11,7 +11,7 @@ $conditions = null;
 if ($_GET['action'] == "clear") {
 	$result = $g_db->Execute("truncate ".$adminlog->getTable());
 	$data['Adminlog']['action_description'] = "清空管理员操作日志";
-	logadmin();
+	$adminlog->add();
 }
 $fields = "Adminlog.id as LogId,Adminlog.action_description as AdminAction,Adminlog.created as AdminlogCreated";
 $amount = $adminlog->findCount($conditions);

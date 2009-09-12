@@ -3,6 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("company","member","area","companytype", "attachment", "indreccompany", "membertype");
+require(LIB_PATH .'time.class.php');
 require(SITE_ROOT.'./app/include/page.php');
 require($inc_path.APP_NAME.'include/class.DATA_XML.php');
 require("session_cp.inc.php");
@@ -69,7 +70,7 @@ if (isset($_POST['refreshvideo_x'])) {
 	    //不做任何修改
 	}
 }
-if ($_POST['del_x'] && !empty($_POST['cid'])) {
+if (isset($_POST['del_x']) && !empty($_POST['cid'])) {
 	$result = $company->del($_POST['cid']);
 	if ($result) {
 		flash("./alert.php");
@@ -127,11 +128,11 @@ if (isset($_POST['recommend_x'])){
 if (isset($_POST['edit_company'])) {
 	$company_id = $_POST['id'];
 	$vals['name'] = $_POST['company']['name'];
-	if ($_POST['cindustry']) {
+	if (isset($_POST['cindustry'])) {
 		$industryid = $_POST['cindustry'];
-	}else if($_POST['bindustry']){
+	}else if(isset($_POST['bindustry'])){
 		$industryid = $_POST['bindustry'];
-	}else if($_POST['aindustry']){
+	}else if(isset($_POST['aindustry'])){
 		$industryid = $_POST['aindustry'];
 	}
 	if($industryid) $vals['industry_id'] = $industryid;
@@ -151,7 +152,7 @@ if (isset($_POST['edit_company'])) {
 	$vals['boss_name'] = $_POST['company']['boss_name'];
 	$vals['reg_fund'] 	= $_POST['company']['reg_fund'];
 	if ($_POST['FoundDate'] !="None") {
-		$vals['found_date'] = uaDateConvert($_POST['FoundDate']);
+		$vals['found_date'] = Times::dateConvert($_POST['FoundDate']);
 	}
 	$vals['main_customer'] = $_POST['company']['main_customer'];
 	$vals['main_biz_place'] = $_POST['company']['main_biz_place'];
@@ -230,19 +231,19 @@ $tables = $company->getTable(true);
 $fields = "Company.id AS CompanyID,Member.id AS MemberID,Member.username AS MemberName,CONCAT(Member.firstname,Member.lastname) AS NickName,Company.name AS CompanyName,Company.status AS CompanyStatus,Member.user_type AS MemberType,Member.credit_level AS SuranceLevel,Company.created AS CreateDate,AreaProvince.name AS CompanyProvince,AreaCity.name AS CompanyCity,Company.if_commend as IfCommend";
 if (isset($_POST['search'])) {
 
-	if ($_POST['member']['username']) {
+	if (isset($_POST['member']['username'])) {
 		$ujoins.=" left join ".$member->getTable(true)." on Member.id=Company.member_id";
 		$conditions.= " AND Member.username like '%".$_POST['member']['username']."%'";
 	}
-	if ($_POST['company']['name']) $conditions.= " AND Company.name like '%".$_POST['company']['name']."%'";
-	if ($_POST['membertype']) $conditions.= " AND Member.user_type =".$_POST['membertype'];
-	if ($_POST['FromDate'] && $_POST['FromDate']!="None" && $_POST['ToDate'] && $_POST['ToDate']!="None") {
+	if (isset($_POST['company']['name'])) $conditions.= " AND Company.name like '%".$_POST['company']['name']."%'";
+	if (isset($_POST['membertype'])) $conditions.= " AND Member.user_type =".$_POST['membertype'];
+	if (isset($_POST['FromDate']) && $_POST['FromDate']!="None" && $_POST['ToDate'] && $_POST['ToDate']!="None") {
 		$conditions.= " AND Member.created BETWEEN ";
-		$conditions.= uaDateConvert($_POST['FromDate']);
+		$conditions.= Times::dateConvert($_POST['FromDate']);
 		$conditions.= " AND ";
-		$conditions.= uaDateConvert($_POST['ToDate']);
+		$conditions.= Times::dateConvert($_POST['ToDate']);
 	}
-	if ($_POST['industryid']) $conditions.= " AND Company.industry_id=".$_POST['industryid'];
+	if (isset($_POST['industryid'])) $conditions.= " AND Company.industry_id=".$_POST['industryid'];
 	if ($_POST['companystatus']!="-1") $conditions.= " AND Company.status=".$_POST['companystatus'];
 	if ($_POST['companytype']!="-1") $conditions.= " AND Company.type_id=".$_POST['companytype'];
 }
@@ -270,5 +271,5 @@ setvar("CompanyList", $lists);
 setvar("UserTypes",$member->ua_member_types);
 setvar("Status",$company->company_status);
 uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -47,5 +47,5 @@ if ($_GET['action'] == "view" && !empty($_GET['id'])) {
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -10,7 +10,7 @@ $access = new Accesses();
 $membertype = new Membertypes();
 $tpl_file = "membertype_index";
 setvar("MembertypeStatus", explode(",",lgg('yes_no')));
-if ($_POST['del'] && !empty($_POST['id'])) {
+if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$result = $membertype->del($_POST['id']);
 	//同时删除对应权限
 	$access->primaryKey = "membertype_id";
@@ -41,19 +41,19 @@ if(isset($_POST['save'])){
 	}
 }
 
-if ($_POST['updateDefault'] && !empty($_POST['default_id'])) {
+if (isset($_POST['updateDefault']) && !empty($_POST['default_id'])) {
 	$vals = array();
 	$vals['if_default'] = 1;
 	$g_db->Execute("update ".$membertype->getTable()." set if_default=0");
 	$result = $g_db->Execute("update ".$membertype->getTable()." set if_default=1 where id=".intval($_POST['default_id']));
 }
-if ($_POST['putIndex'] && !empty($_POST['index_id'])) {
+if (isset($_POST['putIndex']) && !empty($_POST['index_id'])) {
 	$vals = array();
 	$vals['if_index'] = 1;
 	$g_db->Execute("update ".$membertype->getTable()." set if_index=0");
 	$result = $g_db->Execute("update ".$membertype->getTable()." set if_index=1 where id=".intval($_POST['index_id']));
 }
-if ($_POST['quickadd'] && !empty($_POST['membertype']['name'])) {
+if (isset($_POST['quickadd']) && !empty($_POST['membertype']['name'])) {
 	$vals = array();
 	$vals = $_POST['membertype'];
 	$result = $membertype->save($vals);
@@ -77,5 +77,5 @@ if ($_GET['action']=="mod") {
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
 //:~
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -12,10 +12,10 @@ $conditions = null;
 $table['company_message'] = $companymessage->getTable(true);
 $table['member'] = $member->getTable(true);
 $tpl_file = "companymessage_index";
-if ($_POST['search']) {
+if (isset($_POST['search'])) {
 	if ($_POST['topic']) $conditions.= " AND Companymessage.title like '%".trim($_POST['topic'])."%'";
 }
-if ($_POST['delnews'] && is_array($_POST['id'])) {
+if (isset($_POST['delnews']) && is_array($_POST['id'])) {
 	$deleted = $companymessage->del($_POST['id']);
 	if (!$deleted) {
 		flash("./alert.php","./companymessage.php",null,0);
@@ -38,5 +38,5 @@ if($_GET['action'] == "view"){
 	$sql.=" LIMIT $firstcount,$displaypg";
 	setvar("MessageList",$g_db->GetAll($sql));
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

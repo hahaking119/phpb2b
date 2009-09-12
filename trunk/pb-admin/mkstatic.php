@@ -65,7 +65,7 @@ if (isset($_POST['create'])) {
 		    //$trade->checkAccess(serialize($res));
 		    //$trade->clicked($pid);
 		    require($inc_path."product/fineproducts.php");
-		    //setvar("IfTradeOpen", intval($setting->field("ab","aa='buy_logincheck'")));
+		    //setvar("IfTradeOpen", intval($setting->field("valued","aa='buy_logincheck'")));
 		    $res['TradeExtends'] = unserialize($res['TradeExtends']);
 		    //$res['Description'] = preg_replace("/(\r?\n)\\1+/","\\1",$res['Description']);
 		    setvar("tradeInfo",$res);
@@ -91,7 +91,6 @@ if (isset($_POST['create'])) {
 		flash("alert.php","mkstatic.php");
 	}elseif ($_POST['type']==4){
 	    //Product.
-	    //da($_POST);
 	    uses("member", "industry", "area", "company");
 	    $member = new Members();
 	    $company = new Companies();
@@ -147,5 +146,5 @@ if ($_GET['action']=="single") {
 	$file_path = '..'.DS.'htmls'.DS;
 }
 setvar("TOKEN", $token);
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

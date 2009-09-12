@@ -2,6 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
+require(LIB_PATH .'time.class.php');
 uses("expo","member","company", "expotype","attachment");
 require("./fckeditor/fckeditor.php") ;
 require(SITE_ROOT.'./app/include/page.php');
@@ -18,7 +19,7 @@ $all_expotype = $expotype->findAll("id as OptionId, name as OptionName");
 $all_expotype = UaController::generateList($all_expotype);
 setvar("ExpotypeList", $all_expotype);
 setvar("ExpoStatus", explode(",",lgg('yes_no')));
-if ($_POST['save'] && !empty($_POST['Expo']['ea'])) {
+if (isset($_POST['save']) && !empty($_POST['Expo']['ea'])) {
 	$vals = array();
 	$vals = $_POST['Expo'];
 	if(isset($_POST['countryid'])) $vals['country_id'] = $_POST['countryid'];
@@ -40,9 +41,9 @@ if ($_POST['save'] && !empty($_POST['Expo']['ea'])) {
         $vals['picture'] = gmdate("Ym")."/".$attachment->parsed_file_name;
 	}
 	$vals['eb'] = $time_stamp;
-	$vals['ed'] = uaDateConvert($_POST['ExpoEdTime']);
-	$vals['ef'] = uaDateConvert($_POST['ExpoEfTime']);
-	$vals['eg'] = uaDateConvert($_POST['ExpoEgTime']);
+	$vals['ed'] = Times::dateConvert($_POST['ExpoEdTime']);
+	$vals['ef'] = Times::dateConvert($_POST['ExpoEfTime']);
+	$vals['eg'] = Times::dateConvert($_POST['ExpoEgTime']);
 	$result = $expo->save($vals);
 	if(!$result)
 	{
@@ -102,5 +103,5 @@ if ($_GET['action'] == "mod") {
 	setvar("ByPages",$pagenav);
 }
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

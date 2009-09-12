@@ -3,6 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("member","membertype", "area", "company", "trade", "product", "access");
+require(LIB_PATH .'time.class.php');
 require(SITE_ROOT.'./app/include/page.php');
 $access = new Accesses();
 $member = new Members();
@@ -37,7 +38,7 @@ if (isset($_POST['ua_action'])) {
 		$g_db->Execute("update ".$member->getTable()." set user_type='".$actions[1]."',service_end_date='".$new_exp_time."' where id in (".$ids.")");
 	}
 }
-if ($_POST['del']) {
+if (isset($_POST['del'])) {
 	$ids = implode(",", $_POST['id']);
 	//删除可能存在的企业
 	$g_db->Execute("delete from ".$company->getTable()." where member_id in (".$ids.")");
@@ -49,7 +50,7 @@ if ($_POST['del']) {
 if ($_GET['action'] == "mod") {
 	$vals = null;
 	$member_id = empty($_GET['id'])?intval($_POST['id']):intval($_GET['id']);
-	if ($_POST['check_in']){
+	if (isset($_POST['check_in'])){
 		$vals['status'] = 1;
 		if($member->save($vals, "update", $member_id)){
 			flash("./alert.php");
@@ -57,7 +58,7 @@ if ($_GET['action'] == "mod") {
 			flash("./alert.php?r=2");
 		}
 	}
-	if ($_POST['check_out']){
+	if (isset($_POST['check_out'])){
 		$vals['status'] = 0;
 		if($member->save($vals, "update", $member_id)){
 			flash("./alert.php");
@@ -67,8 +68,12 @@ if ($_GET['action'] == "mod") {
 	}
 	if (isset($_POST['save'])) {
 		$vals = $_POST['member'];
-		if($_POST['ServiceFromDate']!="None") $vals['service_start_date'] = uaDateConvert($_POST['ServiceFromDate']);
-		if($_POST['ServiceEndDate']!="None") $vals['service_end_date'] = uaDateConvert($_POST['ServiceEndDate']);
+		if($_POST['ServiceFromDate']!="None") {
+		    $vals['service_start_date'] = Times::dateConvert($_POST['ServiceFromDate']);
+		}
+		if($_POST['ServiceEndDate']!="None") {
+		    $vals['service_end_date'] = Times::dateConvert($_POST['ServiceEndDate']);
+		}
 		if(!empty($_POST['countryid'])) $vals['province_code_id'] = $_POST['countryid'];
 		if(!empty($_POST['provinceid'])) $vals['city_code_id'] = $_POST['provinceid'];
 		if(!empty($_POST['member']['userpass'])) $vals['userpass'] = md5($_POST['member']['userpass']);else unset($vals['userpass']);
@@ -103,12 +108,12 @@ if ($_GET['action'] == "mod") {
 }
 $fields = "Member.id AS MemberID,Member.username AS MemberName,CONCAT(Member.firstname,Member.lastname) AS NickName,Member.user_type AS MemberType,Member.status AS MemberStatus,Member.created AS CreateDate,Member.last_login AS LastLogin,Member.today_logins AS Logins ";
 $amount = $member->findCount($conditions,"Member.id");
-if ($_POST['gopage'] && intval($_POST['topage'])) {
+if (isset($_POST['gopage']) && intval($_POST['topage'])) {
 	$page = intval($_POST['topage']);
 }
 pageft($amount,$display_eve_page);
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
 setvar("MemberList",$member->findAll($fields, $conditions, "Member.id DESC ",$firstcount,$displaypg));
 		uaAssign(array("MemberStatus"=>$member->member_status,"Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

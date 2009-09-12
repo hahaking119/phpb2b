@@ -2,6 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
+require(LIB_PATH .'time.class.php');
 require("session_cp.inc.php");
 uses("adzone","ad","member","attachment");
 require(SITE_ROOT.'./app/include/page.php');
@@ -43,8 +44,12 @@ if (isset($_POST['save'])) {
 		$member_id = $member->field("id","username='".trim($_POST['member']['username'])."'");
 		$vals['member_id'] = $member_id;
 	}
-	if($_POST['ServiceFromDate']!="None") $vals['start_date'] = uaDateConvert($_POST['ServiceFromDate']);
-	if($_POST['ServiceEndDate']!="None") $vals['end_date'] = uaDateConvert($_POST['ServiceEndDate']);
+	if($_POST['ServiceFromDate']!="None") {
+	    $vals['start_date'] = Times::dateConvert($_POST['ServiceFromDate']);
+	}
+	if($_POST['ServiceEndDate']!="None") {
+	    $vals['end_date'] = Times::dateConvert($_POST['ServiceEndDate']);
+	}
 	$zone_id = $_POST['id'];
 	if (!empty($zone_id)) {
 		$result = $ads->save($vals, "update", $zone_id);
@@ -84,5 +89,5 @@ if ($_GET['action'] == "mod") {
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

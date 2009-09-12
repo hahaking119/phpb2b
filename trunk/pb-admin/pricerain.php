@@ -87,5 +87,5 @@ pageft($amount,$display_eve_page);
 	setvar("Lists", $rains);
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

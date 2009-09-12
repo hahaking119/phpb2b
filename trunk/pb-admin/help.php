@@ -15,11 +15,11 @@ foreach ($help_types as $key=>$val) {
 	$tmp_v[$val['helptypeId']] = $val['helptypeName'];
 }
 setvar("AllHelpTypes",$tmp_v);
-if ($_POST['search'] && !empty($_POST['help']['title'])) {
+if (isset($_POST['search']) && !empty($_POST['help']['title'])) {
 	$searchkeywords = $_POST['help']['title'];
 	$conditions = " AND Help.ha like '%".$searchkeywords."%'";
 }
-if($_POST['save'] && !empty($_POST['help']['ha'])){
+if(isset($_POST['save']) && !empty($_POST['help']['ha'])){
 	$vals = null;
 	$vals = $_POST['help'];
 	if($_POST['id']){
@@ -60,5 +60,5 @@ if ($_REQUEST['del']){
 	}
 	flash("./alert.php","./help.php",null,$deleted);
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

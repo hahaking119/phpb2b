@@ -81,8 +81,8 @@ if(isset($_POST['update_prior']) && !empty($_POST['id'])){
 		$notshow_s = "(".$notshow_s.")";
 		$show_s = implode(",", $show_s);
 		$show_s = "(".$show_s.")";
-		$g_db->Execute("update ".$industry->getTable()." set ia=1 where id in ".$show_s);
-		$g_db->Execute("update ".$industry->getTable()." set ia=0 where id in ".$notshow_s);
+		$g_db->Execute("update ".$industry->getTable()." set if_show_module=1 where id in ".$show_s);
+		$g_db->Execute("update ".$industry->getTable()." set if_show_module=0 where id in ".$notshow_s);
 	}
 	for($i=0; $i<count($ids); $i++){
 		$g_db->Execute("update ".$industry->getTable()." set name='".$name_s[$i]."',priority=".$prs[$i]." where id=".$ids[$i]);
@@ -101,7 +101,7 @@ if($_GET['action']=="list"){
 		}
 		$positions[] = "<a href='industry.php?action=list&pid=".$_GET['pid']."'>".$_tmpres['name']."</a>";
 	}
-	$result = $industry->findAll("id,name,priority,parentid,ia as ifshow", $conditions, "id asc");
+	$result = $industry->findAll("id,name,priority,parentid,if_show_module as ifshow", $conditions, "id asc");
 	setvar("IndustryList", $result);
 	setvar("IndustryPosition", implode(" > ", $positions));
 }
@@ -132,18 +132,18 @@ if($_GET['action'] == "mod"){
 	if($_POST['save'] && $_POST['indname']){
 		$vals = array();
 		$vals['parentid'] = trim($_POST['parentid']);
-		$vals['ia'] = trim($_POST['industry']['ia']);
-		$vals['ib'] = trim($_POST['industry']['ib']);
+		$vals['if_show_module'] = trim($_POST['industry']['if_show_module']);
+		$vals['if_setby_market'] = trim($_POST['industry']['if_setby_market']);
 		if (!empty($_POST['id'])) {
 			$vals['name'] = trim($_POST['indname']);
 			$vals['modified'] = $time_stamp;
 			$result = $industry->save($vals, "update",intval($_POST['id']));
 		}elseif(is_array($_POST['indname'])){
 			foreach ($_POST['indname'] as $ind) {
-				if(!empty($ind)) $ins[] = "('".$ind."',".$vals['parentid'].",".$vals['ia'].",".$vals['ib'].",".$time_stamp.")";
+				if(!empty($ind)) $ins[] = "('".$ind."',".$vals['parentid'].",".$vals['if_show_module'].",".$vals['if_setby_market'].",".$time_stamp.")";
 			}
 			$ins = implode(",", $ins);
-			$sql = "insert into ".$industry->getTable()." (name,parentid,ia,ib,created) values ".$ins;
+			$sql = "insert into ".$industry->getTable()." (name,parentid,if_show_module,if_setby_market,created) values ".$ins;
 			$result = $g_db->Execute($sql);
 		}
 	   if ($result) {
@@ -199,7 +199,7 @@ if ($_GET['action'] == "industryxml") {
 if ($_GET['action'] == "listindustry"){
 		$x = "<?xml version=\"1.0\" encoding=\"".$charset."\" standalone=\"no\"?>\n";
 		$x.= "<root>\n";
-		$sql = "SELECT id AS IndustryId,name AS Name,parentid AS IndustryParentId,buy_amount,product_amount,sell_amount,company_amount FROM ".$industry->getTable(true)." WHERE ia=1";
+		$sql = "SELECT id AS IndustryId,name AS Name,parentid AS IndustryParentId,buy_amount,product_amount,sell_amount,company_amount FROM ".$industry->getTable(true)." WHERE if_show_module=1";
 		$res = $GLOBALS['g_db']->GetAll($sql);
 		foreach ($res as $key=>$val) {
 			$x.= "<node id=\"".$val['IndustryId']."\" buy_amount=\"".$val['buy_amount']."\" sell_amount=\"".$val['sell_amount']."\" product_amount=\"".$val['product_amount']."\" company_amount=\"".$val['company_amount']."\"";
@@ -272,5 +272,5 @@ function updatePriority($industry_id, $priorities){
 $xajax->register(XAJAX_FUNCTION,  "updatePriority");
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

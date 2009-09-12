@@ -8,7 +8,7 @@ uses("setting", "adminlog");
 $setting = new Settings();
 $adminlog = new Adminlogs();
 $backup_types = array(1=>lgg('by_hand'),2=>lgg('by_auto'));
-$backup_type = $setting->field("ab", "aa='backup_type'");
+$backup_type = $setting->field("valued", "variable='backup_type'");
 setvar("CurrentType",$backup_type);
 if(isset($_POST['restore'])){
 	if(file_exists($file_name = "../data/backup/".$_POST['sql_file_name'])){
@@ -23,13 +23,13 @@ if(isset($_POST['restore'])){
 	}
 	flash("./alert.php");
 }
-if ($_POST['save'] && !empty($_POST['u'])) {
+if (isset($_POST['save']) && !empty($_POST['u'])) {
 	foreach ($_POST['u'] as $key=>$val) {
-		$exists = $setting->find($key,"id","aa");
+		$exists = $setting->find($key,"id","variable");
 		if ($exists) {
-			$sql = "UPDATE ".$setting->getTable()." SET ab='$val' WHERE aa='$key'";
+			$sql = "UPDATE ".$setting->getTable()." SET valued='$val' WHERE variable='$key'";
 		}else{
-			$sql = "INSERT ".$setting->getTable()." (aa,ab) VALUE ('$key','$val')";
+			$sql = "INSERT ".$setting->getTable()." (variable,valued) VALUE ('$key','$val')";
 		}
 		$result = $g_db->Execute($sql);
 	}
@@ -85,13 +85,13 @@ if ($_GET['action'] == "backup_now") {
 	}
 	echo $rightmsg."<br>";
 	echo $errmsg."<br>";
-	$setting->setPrimaryKey("aa");
-	$vals['ab'] = $time_stamp;
+	$setting->setPrimaryKey("variable");
+	$vals['valued'] = $time_stamp;
 	$setting->save($vals, "update", "lastbackup");
 	$data['Adminlog']['action_description'] = lgg('backup_to').$file_name;
-	logadmin();
+	$adminlog->add();
 	exit;
 }
 setvar("BackupTypes",$backup_types);
-template("pb-admin/backup");
+template("backup");
 ?>

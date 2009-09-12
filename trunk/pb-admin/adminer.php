@@ -63,5 +63,5 @@ if ($_GET['action'] == "mod") {
 	setvar("PageHeader",$page_header);
 	setvar("ByPages",$pagenav);
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

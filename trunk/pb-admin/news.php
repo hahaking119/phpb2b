@@ -3,6 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("news","newstype", "membertype","attachment", "keyword");
+require(LIB_PATH .'time.class.php');
 require("fckeditor/fckeditor.php") ;
 require(SITE_ROOT.'./app/include/page.php');
 require("session_cp.inc.php");
@@ -17,9 +18,9 @@ if (!empty($_GET['type_id'])) {
 }
 $tpl_file = "news_index";
 if (isset($_POST['search']) && !empty($_POST['news'])) {
-	if ($_POST['news']['keywords']) $conditions.= " AND News.keywords like '%".trim($_POST['news']['keywords'])."%'";
-	if ($_POST['news']['source']) $conditions.= " AND News.source like '%".trim($_POST['news']['source'])."%'";
-	if ($_POST['news']['title']) $conditions.= " AND News.title like '%".trim($_POST['topic'])."%'";
+	if (isset($_POST['news']['keywords'])) $conditions.= " AND News.keywords like '%".trim($_POST['news']['keywords'])."%'";
+	if (isset($_POST['news']['source'])) $conditions.= " AND News.source like '%".trim($_POST['news']['source'])."%'";
+	if (isset($_POST['news']['title'])) $conditions.= " AND News.title like '%".trim($_POST['topic'])."%'";
 }
 if (isset($_POST['update']) && !empty($_POST['if_focus'])) {
 	$g_db->Execute("update ".$news->getTable()." set if_focus=0");
@@ -76,7 +77,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
 		if(empty($_POST['creattime']) || ($_POST['creattime']=="None")){
 			$vals['created'] = $time_stamp;
 		}else{
-			$vals['created'] = uaDateConvert($_POST['creattime']);
+			$vals['created'] = Times::dateConvert($_POST['creattime']);
 		}
 		$vals['modified'] = $time_stamp;
 		$result = $news->save($vals, "update", $nid);
@@ -84,7 +85,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
 		if(empty($_POST['creattime']) || ($_POST['creattime']=="None")){
 			$vals['created'] = $time_stamp;
 		}else{
-			$vals['created'] = uaDateConvert($_POST['creattime']);
+			$vals['created'] = Times::dateConvert($_POST['creattime']);
 		}
 		$result = $news->save($vals);
         $new_id = $g_db->Insert_ID();
@@ -155,5 +156,5 @@ if (isset($_POST['createhtml']) && is_array($_POST['newsid'])) {
 	die(lgg("not_defined_error"));
 	return false;
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -11,8 +11,8 @@ $serverinfo .= @ini_get('safe_mode') ? ' Safe Mode' : NULL;
 $dbversion = UaModel::getMysqlVersion();
 setvar("PhpVersion",$serverinfo);
 setvar("MysqlVersion",$dbversion);
-$when_to_backup = $setting->field("ab", "aa='backup_type'");
-setvar("LastBackupTime", $setting->field("ab", "aa='lastbackup'"));
+$when_to_backup = $setting->field("valued", "variable='backup_type'");
+setvar("LastBackupTime", $setting->field("valued", "variable='lastbackup'"));
 function checkGDSupport(){
 	if(!function_exists("gd_info")){
 		return false;
@@ -65,8 +65,8 @@ if ($when_to_backup == 2) {
 	}
 	echo "<font color=red>".$rightmsg."</font><br>";
 	echo $errmsg."<br>";
-	$setting->setPrimaryKey("aa");
-	$vals['ab'] = $time_stamp;
+	$setting->setPrimaryKey("variable");
+	$vals['valued'] = $time_stamp;
 	$setting->save($vals, "update", "lastbackup");
 }
 function db_size_info($fileSize) {
@@ -86,5 +86,5 @@ foreach ($rows as $row) {
 //$ua_version = PHPB2B_VERSION;
 setvar("LatestVersion", PHPB2B_VERSION);
 setvar("DatabaseSize",number_format($dbssize)." Bytes OR ".db_size_info($dbssize));
-template("pb-admin/home");
+template("home");
 ?>

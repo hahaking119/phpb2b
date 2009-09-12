@@ -10,7 +10,7 @@ if (!class_exists("Friendlinks")) {
 $link = new Friendlinks();
 $conditions = null;
 $tpl_file = "friendlink_index";
-if ($_POST['save'] && !empty($_POST['link']['title'])) {
+if (isset($_POST['save']) && !empty($_POST['link']['title'])) {
 	$vals = array();
 	$vals = $_POST['link'];
 	$lid = intval($_POST['id']);
@@ -54,5 +54,5 @@ if ($_GET['action'] == "mod") {
 	setvar("PageHeader",$page_header);
 	setvar("ByPages",$pagenav);
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

@@ -4,7 +4,7 @@ require($inc_path."global.php");
 header("Content-Type: text/html; charset=".$charset);
 require_once(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
-require("./menu.php");
+require("menu.php");
 setvar("ActionMenus",$menus);
-template("pb-admin/left");
+template("left");
 ?>

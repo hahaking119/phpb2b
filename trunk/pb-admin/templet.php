@@ -10,6 +10,7 @@ $company = new Companies();
 $membertype = new Membertypes();
 $conditions = null;
 $tpl_file = "templet_index";
+$page_header = $pagenav = null;
 function search_templets()
 {
 	@chdir(BASE_DIR."templates".DS."member");
@@ -39,7 +40,7 @@ if (isset($_POST['save']) && !empty($_POST['templet']['title'])) {
 	}elseif(!empty($_POST['require_membertype'])){
 		$vals['require_membertype'] = 0;
 	}
-	if ($_POST['id']) {
+	if (isset($_POST['id'])) {
 		$result = $templet->save($vals, "update", $_POST['id']);
 	}else{
 		$result = $templet->save($vals);
@@ -69,7 +70,7 @@ if($_GET['action'] == "mod"){
 	setvar("PageHeader",$page_header);
 	setvar("ByPages",$pagenav);
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 if ($_GET['action']=="list") {
 	$folder_templets = search_templets();
 	foreach ($tmp_templets as $key=>$val) {

@@ -33,7 +33,7 @@ if (isset($_POST['save']) && !empty($_POST['newstype']['name'])) {
 	}
 }
 if (isset($_POST['search'])) {
-	if ($_POST['newstype']['name']) $conditions.= " AND Newstype.name like '%".trim($_POST['newstype']['name'])."%'";
+	if (isset($_POST['newstype']['name'])) $conditions.= " AND Newstype.name like '%".trim($_POST['newstype']['name'])."%'";
 }
 $yes_no = explode(",",lgg('yes_no'));
 setvar("NavStatus", $yes_no);
@@ -62,7 +62,7 @@ if ($_GET['action'] == "mod") {
 	setvar("NewstypeList",$newstype_list);
 	uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 }
-if ($_POST['del'] && is_array($_POST['newstypeid'])) {
+if (isset($_POST['del']) && is_array($_POST['newstypeid'])) {
 	$deleted = $newstype->del($_POST['newstypeid']);
 	if ($deleted) {
 		flash("./alert.php");
@@ -70,5 +70,5 @@ if ($_POST['del'] && is_array($_POST['newstypeid'])) {
 		flash("./alert.php", "./newstype.php", null, 0);
 	}
 }
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

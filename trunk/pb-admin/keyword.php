@@ -14,7 +14,7 @@ foreach ($nav as $li_id=>$keyword_name) {
 	$keyword_types[$li_id] = $keyword_name['cname'];
 }
 setvar("KeywordTypes",$keyword_types);
-if ($_POST['save']) {
+if (isset($_POST['save'])) {
 	$vals = $_POST['keyword'];
 	$keyword_id = $_POST['id'];
 	if (!empty($keyword_id)) {
@@ -29,7 +29,7 @@ if ($_POST['save']) {
 		flash("./alert.php","./keyword.php");
 	}
 }
-if ($_POST['del_x'] && !empty($_POST['id'])) {
+if (isset($_POST['del_x']) && !empty($_POST['id'])) {
 	$keyword->del($_POST['id']);
 }
 if ($_GET['action'] == "del" && !empty($_GET['id'])) {
@@ -63,5 +63,5 @@ $result = $keyword->findAll("member_id,Keyword.id as KeywordId,Keyword.title as 
 setvar("Lists",$result);
 uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>

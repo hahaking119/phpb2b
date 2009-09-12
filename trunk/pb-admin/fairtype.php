@@ -10,7 +10,7 @@ $member = new Members();
 $company = new Companies();
 $conditions = null;
 $tpl_file = "fairtype_index";
-if ($_POST['del'] && !empty($_POST['id'])){
+if (isset($_POST['del']) && !empty($_POST['id'])){
 	$deleted = false;
 	$result = $expotype->del($_POST['id']);
 	if(!$result)
@@ -26,7 +26,7 @@ if ($_GET['action']=="del" && !empty($_GET['id'])){
 		flash("./alert.php","./fairtype.php?action=list",null,0);
 	}
 }
-if ($_POST['save'] && !empty($_POST['Expotype']['name'])) {
+if (isset($_POST['save']) && !empty($_POST['Expotype']['name'])) {
 	$vals = array();
 	$vals = $_POST['Expotype'];
 	$primary_id = intval($_POST['id']);
@@ -50,5 +50,5 @@ if ($_GET['action'] == "mod") {
 }
 
 
-template("pb-admin/".$tpl_file);
+template($tpl_file);
 ?>
