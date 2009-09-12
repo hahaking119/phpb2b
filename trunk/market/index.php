@@ -27,7 +27,7 @@ setvar("LatestMarkets",$latest_markets);
 setvar("MarketAmount",$market->findCount());
 
 $fields = "id as IndustryId,name as IndustryName";
-$conditions = " Industry.ib=1";
+$conditions = " Industry.if_setby_market=1";
 $industry_res = $industry->findAll($fields, $conditions, "id desc", 0, 30);
 $fields = "id as ProductId,name as ProductName,html_file_id as HtmlFileId,picture as ProductPicture";
 $conditions = " status=1";

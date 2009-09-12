@@ -24,30 +24,35 @@
  * @package phpb2b
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:06:13 CST 2009
+ * @created Sat Sep 12 15:04:30 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id$
  */
-$inc_path = "./";
-require("global.php");
-$hosts = explode($config_subdomain, $_SERVER['HTTP_HOST']);
-$do = null;
-$userid = 0;
-if(($hosts[0]!="www") && $subdomain_support)
+class Times extends UaObject
 {
-    $userid = trim($hosts[0]);
+    var $time_stamp;
+
+	function getSepDays($date1,$date2)
+	{
+		$tmp = $date2 - $date1;
+		$days = round($tmp/3600/24);
+		return $days;
+	}
+
+	function dateChecker($ymd, $sep='-') {
+		if(!empty($ymd)) {
+			list($year, $month, $day) = explode($sep, $ymd);
+			return checkdate($month, $day, $year);
+		} else {
+			return false;
+		}
+	}
+
+	function dateConvert($access_date, $ds = "-")
+	{
+		$date_elements = explode($ds, $access_date);
+		$s_time = mktime (0, 0, 0, $date_elements [1], $date_elements[2], $date_elements [0]);
+		return $s_time;
+	}
 }
-elseif(isset($_GET['userid']))
-{
-    $userid = $_GET['userid'];
-}
-if (isset($_GET['do'])) {
-	$do = trim($_GET['do']);
-}
-if($do=="" || !in_array($do, array("intro", "home", "product", "trade", "hr", "news", "honour", "index", "contact", "feedback")))
-{
-    $do = "home";
-}
-require("member/common.inc.php");
-require("member/".$do.".php");
 ?>

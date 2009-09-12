@@ -1,8 +1,6 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
-require("member/menu.php");
 $company_info = $company->read("*",$companyinfo['ID']);
-
 foreach (explode(",",$company_info['main_market']) as $market) {
 	$main_markets .= $company->main_market[$market]."&nbsp;&nbsp;";
 }

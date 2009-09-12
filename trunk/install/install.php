@@ -549,7 +549,7 @@ function goUrl(language){
             <tr>
           <th><?php echo $lang['db_prefix'];?></th>
           <td><div align="left">
-            <input name="db[prefix]" type="text" value="<?php echo $post_db_prefix = (empty($_POST['db']['prefix']))?"eos_":($_POST['db']['prefix']);?>" size="15" class="input" />
+            <input name="db[prefix]" type="text" value="<?php echo $post_db_prefix = (empty($_POST['db']['prefix']))?"pb_":($_POST['db']['prefix']);?>" size="15" class="input" />
             <?php echo $lang['do_not_mod'];?></div></td>
           </tr>
       </table>

@@ -1,4 +1,4 @@
 <?php
-include '../config.inc.php';
-include '../client/client.php';
+include SITE_ROOT.'config.inc.php';
+include SITE_ROOT.'client/client.php';
 ?>

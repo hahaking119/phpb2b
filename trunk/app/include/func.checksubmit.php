@@ -1,12 +1,4 @@
 <?php
-/*************************
-说明：
-判断传递的变量中是否含有非法字符
-如$_POST、$_GET
-功能：
-防注入
-**************************/
-@header('Content-Type: text/html; charset='.$charset);
 //要过滤的非法字符
 $ArrFiltrate=array("'",";","union");
 //出错后要跳转的url,不填则默认前一页

@@ -46,7 +46,7 @@ if ($_POST['apply']) {
 	if ($result) {
 		uses("setting");
 		$setting = new Settings();
-		$chinabank_account_id = $setting->field("ab","aa='chinabank_account'");
+		$chinabank_account_id = $setting->field("valued","variable='chinabank_account'");
 		$member_info = array();
 		$member_info['tel'] = $vals['tel'];
 		$member->save($member_info, "update", $vals['member_id']);

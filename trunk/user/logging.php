@@ -2,8 +2,6 @@
 $inc_path = "../";
 require($inc_path."global.php");
 uses("member","memberlog","company","setting");
-require($inc_path .APP_NAME. 'include/inc.discuz.php');
-require($inc_path .APP_NAME. 'include/inc.phpwind.php');
 require(SITE_ROOT. './app/configs/db_session.php');
 $company = new Companies();
 $setting = new Settings();
@@ -13,7 +11,7 @@ $referer = "";
 if(isset($_GET['referer'])) $referer = urldecode($_GET['referer']);
 $_SERVER['HTTP_REFERER'] = $referer ? $referer : $_SERVER['REQUEST_URI'];
 $ua_user = getMemberInfo();
-$if_set_login_picture = $setting->field("ab", "aa='login_picture'");
+$if_set_login_picture = $setting->field("valued", "variable='login_picture'");
 setvar("IfLoginPicture",intval($if_set_login_picture));
 if(isset($_POST['loginbtn'])){
 	$back_forward = null;

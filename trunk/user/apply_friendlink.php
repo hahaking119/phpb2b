@@ -33,7 +33,7 @@ if (isset($_POST['apply']) && !empty($_POST['site'])) {
 		PB_goto("../message.php", 1, lgg('wait_apply'));
 	}
 }
-setvar("SiteDescription", $setting->field("ab", "aa='site_description'"));
+setvar("SiteDescription", $setting->field("valued", "variable='site_description'"));
 if (isset($_GET['action']) && $_GET['action']=="html") {
 		$smarty->MakeHtmlFile('../htmls/user/apply_friendlink.html',$smarty->fetch($theme_name."/user_apply_friendlink.html"), true, "user/apply_friendlink.php");
 }

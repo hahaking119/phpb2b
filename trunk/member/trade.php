@@ -4,7 +4,6 @@ require(SITE_ROOT.'./app/include/page.php');
 uses("trade", "offer");
 $trade = new Trades();
 $offer = new Offers();
-require("member/menu.php");
 $conditions = null;
 $conditions.= " Trade.status=1 and Trade.member_id=".$companyinfo['member_id'];
 pageft($trade->findCount($conditions,"Trade.id"), 10);

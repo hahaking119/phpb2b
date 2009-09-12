@@ -1,7 +1,6 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
 $fields = "Company.description AS CompanyDescription,";
-require("member/menu.php");
 uses("product");
 $product = new Products();
 $conditions = " Product.status=1 and Product.company_id=".$companyinfo['ID'];

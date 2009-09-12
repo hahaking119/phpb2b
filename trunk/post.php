@@ -30,8 +30,8 @@
  */
 $inc_path = "./";
 require("global.php");
+
 require_once(SITE_ROOT. './app/configs/db_session.php');
-header("Content-Type: text/html; charset=".$charset);
 require(INC_PATH .'xajax/xajaxAIO.inc.php');
 require(SITE_ROOT. './app/include/func.checksubmit.php');
 uses("trade","industry","member", "setting", "htmlcache");
@@ -53,16 +53,20 @@ $smarty->register_function("format_amount","splitIndustryAmount");
 $expires = $trade->offer_expires;
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
-$if_visit_post = intval($setting->field("ab", "aa='vis_post'"));
-$if_visitpost_auth = intval($setting->field("ab", "aa='vispost_auth'"));
+$if_visit_post = intval($setting->field("valued", "variable='vis_post'"));
+$if_visitpost_auth = intval($setting->field("valued", "variable='vispost_auth'"));
 if ($if_visitpost_auth) {
 	$smarty->assign("IfVisPostPicture", true);
 }
 if(!$if_visit_post){
-	alert(sprintf(lgg('visitor_forbid'), $_SETTINGS['sitename']));
+	//alert(sprintf(lgg('visitor_forbid'), $_SETTINGS['sitename']));
+	alert(L('visitor_forbid', 'msg'));
 }
-if (isset($_POST['visit_post']) && isset($_POST['offer']['link_man']) && isset($_POST['trade'])) {
-	if(empty($_POST['offer']['prim_telnumber'])) exit;
+if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) && isset($_POST['data']['trade'])) {
+	if(empty($_POST['data']['offer']['prim_telnumber'])) exit;
+	//to do test trade.php->Add
+	$trade->Add();
+	exit;
 	if ($if_visitpost_auth) {
 		$auth_check = uaStrCompare(strtolower($_POST['visit_auth_num']),strtolower($_SESSION['authnum_session']));
 		if (!$auth_check) {
@@ -78,17 +82,17 @@ if (isset($_POST['visit_post']) && isset($_POST['offer']['link_man']) && isset($
 		alert(sprintf(lgg('visit_limit'), 3));
 	}
 	$vals = array();
-	$vals = $_POST['trade'];
+	$vals = $_POST['data']['trade'];
 	$tmp_result = false;
 	$vals['submit_time'] = $vals['created'] = $vals['modified'] = $time_stamp;
 	$vals['area_id'] = $_POST['countryid'];
 	$vals['province_id'] = $_POST['provinceid'];
 	$vals['city_id'] = $_POST['cityid'];
-	$vals['type_id'] = strval($_POST['type_id']);
+	$vals['type_id'] = strval($_POST['data']['trade']['type_id']);
 	$trade->setTradeCat($vals['type_id']);
 	$vals['content'] = preg_replace("/(\r?\n)\\1+/","\\1",$vals['content']);
 	$vals['ip_addr'] = uaGetClientIP();
-	$if_check = $setting->field("ab", "aa='vis_post_check'");
+	$if_check = $setting->field("valued", "variable='vis_post_check'");
 	$if_check = intval($if_check);
 	$msg = null;
 	if ($if_check) {
@@ -119,7 +123,7 @@ if (isset($_POST['visit_post']) && isset($_POST['offer']['link_man']) && isset($
 	if ($result) {
 		$last_trade_id = $trade->getMaxId();
 		$o_vals = array();
-		$o_vals = $_POST['offer'];
+		$o_vals = $_POST['data']['offer'];
 		uses("offer", "area");
 		$offer = new Offers();
 		$area = new Areas();

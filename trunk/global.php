@@ -31,7 +31,7 @@
 define('IN_UALINK', TRUE);
 define('DEBUG', '0');
 define('SITE_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
-
+/** set settings **/
 $gzipcompress = 0;//if use GZIP
 $subdomain_support = 0;//0, Close;1, Open.
 $config_subdomain = ".yourdomain.com";
@@ -61,6 +61,11 @@ require(LIB_PATH. 'ualink_model.php');
 require(LIB_PATH. 'ualink_controller.php');
 require(SITE_ROOT. './app/include/func.global.php');
 require(DATA_PATH.$cookiepre."setting.inc.php");
+require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.inc.php');
+require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.site.inc.php');
+require(SITE_ROOT.'languages/'.$app_lang.'/'.'message.inc.php');
+//上一页地址
+define('HTTP_REFERER', isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
 if(isset($_SETTINGS['headercharset'])) {
     @header('Content-Type: text/html; charset='.$charset);
 }
@@ -123,5 +128,9 @@ if(isset($li)){
 		$headerFrmAction = URL."offer/list.php";
 	}
 	setvar("HeaderFormAction", $headerFrmAction);
+}
+
+if (!empty($arrTemplate)) {
+    $smarty->assign($arrTemplate);
 }
 ?>

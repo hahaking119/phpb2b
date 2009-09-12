@@ -22,7 +22,7 @@ class Industries extends UaModel {
 
 	function getAllIndustry($conditions = null, $limit = null, $offset = null)
 	{
-		$sql = "SELECT Industry.id AS ID,name AS Name,parentid AS ParentID,product_amount AS ProductAmount,ia AS IndustryIa,ib AS IndustryIb,sell_amount AS SellAmount,buy_amount AS BuyAmount,company_amount AS CompanyAmount,product_amount,sell_amount,buy_amount,company_amount ";
+		$sql = "SELECT Industry.id AS ID,name AS Name,parentid AS ParentID,product_amount AS ProductAmount,if_show_module AS IndustryIa,if_setby_market AS IndustryIb,sell_amount AS SellAmount,buy_amount AS BuyAmount,company_amount AS CompanyAmount,product_amount,sell_amount,buy_amount,company_amount ";
 		$sql.= "FROM ".$this->getTable(true)." ";
 		$sql.= "WHERE 1 ";
 		$sql.= $conditions;
@@ -140,11 +140,11 @@ class Industries extends UaModel {
 	function recacheIndustryAmount()
 	{
 	    $fields = "id,name,buy_amount,sell_amount,product_amount,company_amount";
-	    $parent_list = $this->findAll($fields, "parentid=0 and ia=1", "priority desc,id asc");
+	    $parent_list = $this->findAll($fields, "parentid=0 and if_show_module=1", "priority desc,id asc");
 	    $cache_ind = array();
 	    foreach ($parent_list as $val) {
 	        unset($tmp_subs);
-	        $sub_industry = $this->findAll($fields, "parentid=".$val['id']." and ia=1");
+	        $sub_industry = $this->findAll($fields, "parentid=".$val['id']." and if_show_module=1");
 
 	        if (!empty($sub_industry)) {
 	            foreach ($sub_industry as $val_s) {

@@ -26,20 +26,28 @@ foreach ($res as $val) {
 unset($res);
 $smarty->assign("MetaLatestCompany", implode(",", $c));
 $total_company = $company->findCount();
-$company_stat = array();
+$arrCompanyStat = array();
 
 $sql = "select type_id,count(id) as CurAmount from ".$tables." group by type_id";
 $res = $g_db->GetArray($sql);
-foreach($res as $key=>$val){
-	$cur_company_amount[$val['type_id']] = $val['CurAmount'];
+if (!empty($res)) {
+    $tmpCompanyAmount = array();
+    foreach($res as $key=>$val){
+    	$tmpCompanyAmount[$val['type_id']] = $val['CurAmount'];
+    }
+    unset($res);
 }
-unset($res);
 $result = $companytype->findAll("id,name",null,null,0,$total_company);
-foreach($result as $key=>$val){
-	$company_stat[] = "<a href='".URL."company.php?ac=list&filter=type_id&id=".$val['id']."&name=".urlencode($val['name'])."' class='texta'>".$val['name']."</a><span class='company'> ".intval($cur_company_amount[$val['id']])." </span>.";
+
+if (!empty($result)) {
+    foreach($result as $key=>$val){
+        $intThisAmount = (!empty($tmpCompanyAmount[$val['id']]))?intval($tmpCompanyAmount[$val['id']]):0;
+    	$arrCompanyStat[] = "<a href='".URL."company.php?ac=list&filter=type_id&id=".$val['id']."&name=".urlencode($val['name'])."' class='texta'>".$val['name']."</a><span class='company'> ".$intThisAmount." </span>.";
+    }
 }
+
 setvar("CompanyAmounts", $total_company);
-setvar("CompanyStat", implode(",", $company_stat));
+setvar("CompanyStat", implode(",", $arrCompanyStat));
 unset($result, $sql);
 setvar("IndustryList", $industry->getIndustryPage($li,"company","industry1"));
 if (isset($_GET['action']) && $_GET['action']=="html") {

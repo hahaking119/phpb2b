@@ -151,19 +151,12 @@
 	   }
 	}
 
-	function template($filename = null, $ext = ".html")
+	function template($filename = null, $ext = ".html", $lang = array())
 	{
 		global $smarty;
 		$return = false;
 		$return = $smarty->display($filename.".html");
 		return $return;
-	}
-
-	function getSepDays($date1,$date2)
-	{
-		$tmp = $date2 - $date1;
-		$days = round($tmp/3600/24);
-		return $days;
 	}
 
 	function ua_checkEmail($email){
@@ -196,7 +189,7 @@
 
 	function ua_checkLogin($username,$userpass,$url = null)
 	{
-		global $member,$company, $time_stamp, $forums;
+		global $member,$company, $time_stamp, $forums, $inc_path;
 		global $g_db;
 		$keep_online = 3600;
 		$forward = $_GET['referer'] ? urldecode($_GET['referer']):URL;
@@ -248,6 +241,8 @@
 				}
 			}
 			if($forums['switch']==true){
+                require($inc_path .APP_NAME. 'include/inc.discuz.php');
+                require($inc_path .APP_NAME. 'include/inc.phpwind.php');
 				if($forums['type']=="discuz"){
 					return true;
 				}elseif($forums['type']=="phpwind") {
@@ -293,15 +288,6 @@
 		return substr(($t=strrchr($filename,'.'))!==false?".".$t:'',1);
 	}
 
-	function uaDateCheck($ymd, $sep='-') {
-		if(!empty($ymd)) {
-			list($year, $month, $day) = explode($sep, $ymd);
-			return checkdate($month, $day, $year);
-		} else {
-			return FALSE;
-		}
-	}
-
 	function uaHtmlSpecialChars($string) {
 		if(is_array($string)) {
 			foreach($string as $key => $val) {
@@ -341,19 +327,7 @@
 		return $string;
 	}
 
-	function uaDateConvert($access_date,$ds = "-")
-	{
-		$date_elements = explode($ds, $access_date);
-		$s_time = mktime (0, 0, 0, $date_elements [1], $date_elements[2], $date_elements [0]);
-		return $s_time;
-	}
-
-	function getmicrotime(){
-	    list($usec, $sec) = explode(" ",microtime());
-	    return ((float)$usec + (float)$sec);
-    }
-
-    function uaConvertComma($str){
+	function uaConvertComma($str){
 		$str = strip_tags($str);
 		if(strpos($str, "，")) $str = str_replace("，",",",$str);
 		if(strpos($str, ",")) {
@@ -378,6 +352,18 @@
     		$new_column_name = ucfirst(strtolower($colname));
     	}
     	return $new_column_name;
+    }
+
+    if (!function_exists('getmicrotime')) {
+    /**
+     * Returns microtime for execution time checking
+     *
+     * @return float Microtime
+     */
+    	function getmicrotime() {
+    		list($usec, $sec) = explode(' ', microtime());
+    		return ((float)$usec + (float)$sec);
+    	}
     }
 
     function uaGetAbsoluteUrl()
@@ -424,7 +410,7 @@
 
 	function run($sql) {
 		global $dbcharset, $tb_prefix;
-		$sql = str_replace("\r", "\n", str_replace(' eos_', ' '.$tb_prefix, $sql));
+		$sql = str_replace("\r", "\n", str_replace(' pb_', ' '.$tb_prefix, $sql));
 		$ret = array();
 		$num = 0;
 		foreach(explode(";\n", trim($sql)) as $query) {
@@ -454,13 +440,6 @@
 		$type = in_array($type, array('MYISAM', 'HEAP')) ? $type : 'MYISAM';
 		return preg_replace("/^\s*(CREATE TABLE\s+.+\s+\(.+?\)).*$/isU", "\\1", $sql).
 			(mysql_get_server_info() > '4.1' ? " ENGINE=$type DEFAULT CHARSET=$dbcharset" : " TYPE=$type");
-	}
-
-	function uaCheckAdminSession()
-	{
-		if(empty($_SESSION['admin']['current_adminer']) || empty($_SESSION['admin']['current_pass'])){
-			PB_goto("login.php");
-		}
 	}
 
 	function SplitKeywords($params)
@@ -607,19 +586,6 @@
 		return $str;
 	}
 
-	function logadmin($result = true){
-		global $adminlog;
-		global $time_stamp;
-		global $data;
-		if(!empty($data['Adminlog'])) {
-			if(!isset($data['Adminlog']['adminer_id'])) $data['Adminlog']['adminer_id'] = $_SESSION['admin']['current_adminer_id'];
-			if(!isset($data['Adminlog']['created'])) $data['Adminlog']['created'] = $time_stamp;
-			if(!isset($data['Adminlog']['ip_address'])) $data['Adminlog']['ip_address'] = uaIp2Long(uaGetClientIP());
-			$result = $adminlog->save($data['Adminlog']);
-		}
-		return $result;
-	}
-
 	function getMemberInfo()
 	{
 		global $cookiepre;
@@ -759,16 +725,16 @@ function uaMailTo($to_address, $to_name, $subject, $body, $redirect_url = null)
     $mail = new PHPMailer();
     $result = false;
     $mail_set = array();
-    $mail_set['mail_sendtype'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_sendtype'");
+    $mail_set['mail_sendtype'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='mail_sendtype'");
 
-    $mail_set['mail_from'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_from'");
-    $mail_set['mail_fromname'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='mail_fromname'");
+    $mail_set['mail_from'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='mail_from'");
+    $mail_set['mail_fromname'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='mail_fromname'");
     if ($mail_set['mail_sendtype']==2) {
-        $mail_set['smtp_servername'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_servername'");
-        $mail_set['smtp_port'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_port'");
-        $mail_set['smtp_ifauth'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_ifauth'");
-        $mail_set['smtp_username'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_username'");
-        $mail_set['smtp_userpass'] = $g_db->GetOne("select ab from ".$setting->getTable()." where aa='smtp_userpass'");
+        $mail_set['smtp_servername'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_servername'");
+        $mail_set['smtp_port'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_port'");
+        $mail_set['smtp_ifauth'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_ifauth'");
+        $mail_set['smtp_username'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_username'");
+        $mail_set['smtp_userpass'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_userpass'");
     	$mail->IsSMTP(); // telling the class to use SMTP
     	$mail->Host       = $mail_set['smtp_servername']; // SMTP server
     	$mail->Port       = $mail_set['smtp_port'];
@@ -806,5 +772,16 @@ function checkip($minIpAddress, $maxIpAddress) {
 
 function isInRange($x, $min, $max) {
     return $x >= $min && $x <= $max;
+}
+
+function L($key, $type = "")
+{
+	global $arrMessage, $arrTemplate;
+	if ("msg" == $type) {
+	    $return = $arrMessage['_'.$key];
+	}else{
+	    $return = $arrTemplate[$key];
+	}
+	return (!empty($return))?$return:"Unkown";
 }
 ?>

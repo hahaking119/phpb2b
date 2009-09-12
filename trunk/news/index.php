@@ -3,11 +3,11 @@ $inc_path = "../";
 $li = 5;
 require($inc_path."global.php");
 require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(LIB_PATH .'time.class.php');
 uses("news","newstype","htmlcache");
 $htmlcache = new Htmlcaches();
 $news = new Newses();
 $newstype = new Newstypes();
-$tmp_models = $newstype->index_model;
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
 $xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));
@@ -29,7 +29,7 @@ if(!empty($LatestPictureNews)){
 require(DATA_PATH.$cookiepre."newstype.inc.php");
 setvar("Newstype", $UL_DBCACHE_NEWSTYPE);
 setvar("pageDescriptioin", implode(",",$UL_DBCACHE_NEWSTYPE));
-setvar("today_mktime",uaDateConvert(date("d/m/Y")));
+setvar("today_mktime",Times::dateConvert(date("d/m/Y"), "/"));
 if (isset($_GET['action']) && $_GET['action']=="html") {
 	$smarty->MakeHtmlFile('../htmls/news/index.html',$smarty->fetch($theme_name."/news_index.html"), true, "news/index.php");
 }

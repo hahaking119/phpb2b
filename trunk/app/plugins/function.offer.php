@@ -107,7 +107,6 @@ function smarty_function_offer($params){
 	if (isset($params['isbold']) && !empty($result)) {
 	    $is_bold = true;
 	    $first_res = array_shift($result);
-	    //da($first_res);
 		$output.='			<div>
 				<a href="'.URL.'offer/detail.php?id='.$first_res['OfferId'].'"><img src="'.URL.'attachment/'.$first_res['OfferPicture'].'.small.jpg" alt="'.$first_res['Title'].'" class="c_b padd4" /></a>
 				<p>

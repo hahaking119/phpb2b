@@ -10,13 +10,13 @@ if ($_POST['id'] && !empty($_POST['query'])) {
 	$vals = array();
 	$vals = $_POST['query'];
 
-	$vals['ia'] = serialize($_POST['link']);
+	$vals['contacts'] = serialize($_POST['link']);
 	if(isset($_POST['qid'])) $vals['know_more'] = implode(",",$_POST['qid']);
 	uses("inquery");
 	$inquery = new Inqueries();
 	array_walk($vals,"uatrim");
 	$vals['created'] = time();
-	$vals['ia'] = serialize($_POST['link']);
+	$vals['contacts'] = serialize($_POST['link']);
 	$vals['user_ip'] = uaIp2Long(uaGetClientIP());
 	$vals['content'] = $_POST['title'].":".$_POST['content'];
 	$vals['title'] = $product->field("name", "id=".intval($_POST['id']));

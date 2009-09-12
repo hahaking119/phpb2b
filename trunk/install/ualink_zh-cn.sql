@@ -1,15 +1,15 @@
 --
--- 数据库: 'ualink'2008-9-27 11:23
+-- 数据库: 'phpb2b' 2008-9-27 11:23
 --
 
 -- --------------------------------------------------------
 
 --
--- Table 'eos_accesses'
+-- Table 'pb_accesses'
 --
 
-DROP TABLE IF EXISTS eos_accesses;
-CREATE TABLE eos_accesses (
+DROP TABLE IF EXISTS pb_accesses;
+CREATE TABLE pb_accesses (
   id tinyint(2) NOT NULL auto_increment,
   name varchar(25) default NULL,
   membertype_id tinyint(2) default NULL,
@@ -40,11 +40,11 @@ CREATE TABLE eos_accesses (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adminers'
+-- Table 'pb_adminers'
 --
 
-DROP TABLE IF EXISTS eos_adminers;
-CREATE TABLE eos_adminers (
+DROP TABLE IF EXISTS pb_adminers;
+CREATE TABLE pb_adminers (
   id tinyint(2) NOT NULL auto_increment,
   depart_id tinyint(2) default NULL,
   user_name varchar(25) default NULL,
@@ -63,11 +63,11 @@ CREATE TABLE eos_adminers (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adminlogs'
+-- Table 'pb_adminlogs'
 --
 
-DROP TABLE IF EXISTS eos_adminlogs;
-CREATE TABLE eos_adminlogs (
+DROP TABLE IF EXISTS pb_adminlogs;
+CREATE TABLE pb_adminlogs (
   id int(10) NOT NULL auto_increment,
   adminer_id tinyint(2) default NULL,
   action_description tinytext,
@@ -79,11 +79,11 @@ CREATE TABLE eos_adminlogs (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adminmodules'
+-- Table 'pb_adminmodules'
 --
 
-DROP TABLE IF EXISTS eos_adminmodules;
-CREATE TABLE eos_adminmodules (
+DROP TABLE IF EXISTS pb_adminmodules;
+CREATE TABLE pb_adminmodules (
   id int(5) NOT NULL auto_increment,
   parent_id int(5) default '0',
   name varchar(50) default NULL,
@@ -93,11 +93,11 @@ CREATE TABLE eos_adminmodules (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adminprivileges'
+-- Table 'pb_adminprivileges'
 --
 
-DROP TABLE IF EXISTS eos_adminprivileges;
-CREATE TABLE eos_adminprivileges (
+DROP TABLE IF EXISTS pb_adminprivileges;
+CREATE TABLE pb_adminprivileges (
   id int(5) NOT NULL auto_increment,
   adminmodule_id int(5) default NULL,
   name varchar(25) default NULL,
@@ -107,11 +107,11 @@ CREATE TABLE eos_adminprivileges (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adminroles'
+-- Table 'pb_adminroles'
 --
 
-DROP TABLE IF EXISTS eos_adminroles;
-CREATE TABLE eos_adminroles (
+DROP TABLE IF EXISTS pb_adminroles;
+CREATE TABLE pb_adminroles (
   id tinyint(2) NOT NULL auto_increment,
   name varchar(25) default NULL,
   PRIMARY KEY  (id)
@@ -120,11 +120,11 @@ CREATE TABLE eos_adminroles (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adses'
+-- Table 'pb_adses'
 --
 
-DROP TABLE IF EXISTS eos_adses;
-CREATE TABLE eos_adses (
+DROP TABLE IF EXISTS pb_adses;
+CREATE TABLE pb_adses (
   id int(5) NOT NULL auto_increment,
   adzone_id int(2) default NULL,
   member_id int(10) default NULL,
@@ -143,10 +143,10 @@ CREATE TABLE eos_adses (
   priority tinyint(2) default NULL,
   status tinyint(1) default NULL,
   clicked smallint(6) default '1',
-  da enum('_parent','_self','_blank') default '_blank',
-  db tinyint(1) default NULL,
-  dc tinyint(1) default NULL,
-  de tinyint(1) default NULL,
+  target enum('_parent','_self','_blank') not null default '_blank',
+  seq smallint(3) not null default '0',
+  state tinyint(1) not null default '1',
+  modified int(10) not null default '0',
   created int(10) default NULL,
   PRIMARY KEY  (id)
 ) TYPE=MyISAM;
@@ -154,11 +154,11 @@ CREATE TABLE eos_adses (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_adzones'
+-- Table 'pb_adzones'
 --
 
-DROP TABLE IF EXISTS eos_adzones;
-CREATE TABLE eos_adzones (
+DROP TABLE IF EXISTS pb_adzones;
+CREATE TABLE pb_adzones (
   id smallint(6) NOT NULL auto_increment,
   ua_zone_name varchar(15) default NULL,
   what varchar(10) default NULL,
@@ -177,10 +177,10 @@ CREATE TABLE eos_adzones (
 
 -- --------------------------------------------------------
 --
--- Table 'eos_announcements'
+-- Table 'pb_announcements'
 --
-DROP TABLE IF EXISTS eos_announcements;
-CREATE TABLE eos_announcements (
+DROP TABLE IF EXISTS pb_announcements;
+CREATE TABLE pb_announcements (
   `id` smallint(6) unsigned NOT NULL auto_increment,
   `id_type` tinyint(1) NOT NULL default '0',
   `author` varchar(15) NOT NULL default '',
@@ -213,11 +213,11 @@ CREATE TABLE pb_announcementtypes (
 
 -- --------------------------------------------------------
 --
--- Table 'eos_areas'
+-- Table 'pb_areas'
 --
 
-DROP TABLE IF EXISTS eos_areas;
-CREATE TABLE eos_areas (
+DROP TABLE IF EXISTS pb_areas;
+CREATE TABLE pb_areas (
   id int(9) NOT NULL auto_increment,
   spelling varchar(15) default NULL,
   name varchar(50) default NULL,
@@ -231,11 +231,11 @@ CREATE TABLE eos_areas (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_attachments'
+-- Table 'pb_attachments'
 --
 
-DROP TABLE IF EXISTS eos_attachments;
-CREATE TABLE eos_attachments (
+DROP TABLE IF EXISTS pb_attachments;
+CREATE TABLE pb_attachments (
   id int(10) NOT NULL auto_increment,
   member_id int(10) default NULL,
   company_id int(10) default NULL,
@@ -257,11 +257,11 @@ CREATE TABLE eos_attachments (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companies'
+-- Table 'pb_companies'
 --
 
-DROP TABLE IF EXISTS eos_companies;
-CREATE TABLE eos_companies (
+DROP TABLE IF EXISTS pb_companies;
+CREATE TABLE pb_companies (
   id int(9) NOT NULL auto_increment,
   member_id int(9) default NULL,
   industry_id int(3) default NULL,
@@ -318,11 +318,11 @@ CREATE TABLE eos_companies (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companydeparts'
+-- Table 'pb_companydeparts'
 --
 
-DROP TABLE IF EXISTS eos_companydeparts;
-CREATE TABLE eos_companydeparts (
+DROP TABLE IF EXISTS pb_companydeparts;
+CREATE TABLE pb_companydeparts (
   id int(10) NOT NULL auto_increment,
   member_id int(10) default NULL,
   company_id int(10) default NULL,
@@ -335,11 +335,11 @@ CREATE TABLE eos_companydeparts (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companyemployees'
+-- Table 'pb_companyemployees'
 --
 
-DROP TABLE IF EXISTS eos_companyemployees;
-CREATE TABLE eos_companyemployees (
+DROP TABLE IF EXISTS pb_companyemployees;
+CREATE TABLE pb_companyemployees (
   id int(10) NOT NULL auto_increment,
   company_id int(10) default NULL,
   login_name varchar(25) default NULL,
@@ -354,11 +354,11 @@ CREATE TABLE eos_companyemployees (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companylinks'
+-- Table 'pb_companylinks'
 --
 
-DROP TABLE IF EXISTS eos_companylinks;
-CREATE TABLE eos_companylinks (
+DROP TABLE IF EXISTS pb_companylinks;
+CREATE TABLE pb_companylinks (
   id int(11) NOT NULL auto_increment,
   member_id int(11) default NULL,
   user_name varchar(25) default NULL,
@@ -373,11 +373,11 @@ CREATE TABLE eos_companylinks (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companymessages'
+-- Table 'pb_companymessages'
 --
 
-DROP TABLE IF EXISTS eos_companymessages;
-CREATE TABLE eos_companymessages (
+DROP TABLE IF EXISTS pb_companymessages;
+CREATE TABLE pb_companymessages (
   id int(11) NOT NULL auto_increment,
   from_member_id varchar(25) default NULL,
   to_member_id int(11) default NULL,
@@ -392,11 +392,11 @@ CREATE TABLE eos_companymessages (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companynewses'
+-- Table 'pb_companynewses'
 --
 
-DROP TABLE IF EXISTS eos_companynewses;
-CREATE TABLE eos_companynewses (
+DROP TABLE IF EXISTS pb_companynewses;
+CREATE TABLE pb_companynewses (
   id int(11) NOT NULL auto_increment,
   member_id int(11) default NULL,
   company_id int(11) default NULL,
@@ -413,11 +413,11 @@ CREATE TABLE eos_companynewses (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companyoutlinks'
+-- Table 'pb_companyoutlinks'
 --
 
-DROP TABLE IF EXISTS eos_companyoutlinks;
-CREATE TABLE eos_companyoutlinks (
+DROP TABLE IF EXISTS pb_companyoutlinks;
+CREATE TABLE pb_companyoutlinks (
   id int(11) NOT NULL auto_increment,
   member_id int(11) default NULL,
   company_id int(11) default NULL,
@@ -430,11 +430,11 @@ CREATE TABLE eos_companyoutlinks (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companystyles'
+-- Table 'pb_companystyles'
 --
 
-DROP TABLE IF EXISTS eos_companystyles;
-CREATE TABLE eos_companystyles (
+DROP TABLE IF EXISTS pb_companystyles;
+CREATE TABLE pb_companystyles (
   id tinyint(2) NOT NULL auto_increment,
   name varchar(50) default NULL,
   preview_pic varchar(50) default NULL,
@@ -444,17 +444,17 @@ CREATE TABLE eos_companystyles (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_companytypes'
+-- Table 'pb_companytypes'
 --
 
-DROP TABLE IF EXISTS eos_companytypes;
-CREATE TABLE eos_companytypes (
+DROP TABLE IF EXISTS pb_companytypes;
+CREATE TABLE pb_companytypes (
   id tinyint(2) auto_increment,
   name varchar(50) default NULL,
   avaliable tinyint(1) NOT NULL default '1' ,
   picture varchar(50) default NULL,
-  ca text default NULL,
-  cb tinyint(1) default NULL,
+  description text not null default '',
+  status tinyint(1) not null default '1',
   created int(10) default NULL,
   PRIMARY KEY  (id)
 ) TYPE=MyISAM;
@@ -462,11 +462,11 @@ CREATE TABLE eos_companytypes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_expoes'
+-- Table 'pb_expoes'
 --
 
-DROP TABLE IF EXISTS eos_expoes;
-CREATE TABLE eos_expoes (
+DROP TABLE IF EXISTS pb_expoes;
+CREATE TABLE pb_expoes (
   id int(10) NOT NULL auto_increment,
   ea varchar(100) default NULL,
   eb varchar(10) default NULL,
@@ -506,11 +506,11 @@ CREATE TABLE eos_expoes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_expostadiums'
+-- Table 'pb_expostadiums'
 --
 
-DROP TABLE IF EXISTS eos_expostadiums;
-CREATE TABLE eos_expostadiums (
+DROP TABLE IF EXISTS pb_expostadiums;
+CREATE TABLE pb_expostadiums (
   id smallint(6) NOT NULL auto_increment,
   sa varchar(100) default NULL,
   country_id smallint(6) default NULL,
@@ -531,11 +531,11 @@ CREATE TABLE eos_expostadiums (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_expotypes'
+-- Table 'pb_expotypes'
 --
 
-DROP TABLE IF EXISTS eos_expotypes;
-CREATE TABLE eos_expotypes (
+DROP TABLE IF EXISTS pb_expotypes;
+CREATE TABLE pb_expotypes (
   id int(5) NOT NULL auto_increment,
   name varchar(50) default NULL,
   created int(10) default NULL,
@@ -545,11 +545,11 @@ CREATE TABLE eos_expotypes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_favorites'
+-- Table 'pb_favorites'
 --
 
-DROP TABLE IF EXISTS eos_favorites;
-CREATE TABLE eos_favorites (
+DROP TABLE IF EXISTS pb_favorites;
+CREATE TABLE pb_favorites (
   `id` int(10) NOT NULL auto_increment,
   `member_id` int(10) NOT NULL default '-1' COMMENT '会员编号',
   `target_id` int(10) default NULL,
@@ -563,11 +563,11 @@ CREATE TABLE eos_favorites (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_forms'
+-- Table 'pb_forms'
 --
 
-DROP TABLE IF EXISTS eos_forms;
-CREATE TABLE eos_forms (
+DROP TABLE IF EXISTS pb_forms;
+CREATE TABLE pb_forms (
   id smallint(6) NOT NULL auto_increment,
   field_title varchar(100) default NULL,
   field_type varchar(100) default NULL,
@@ -587,11 +587,11 @@ CREATE TABLE eos_forms (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_friendlinks'
+-- Table 'pb_friendlinks'
 --
 
-DROP TABLE IF EXISTS eos_friendlinks;
-CREATE TABLE eos_friendlinks (
+DROP TABLE IF EXISTS pb_friendlinks;
+CREATE TABLE pb_friendlinks (
   id int(5) NOT NULL auto_increment,
   title varchar(50) default NULL,
   logo varchar(100) default NULL,
@@ -605,63 +605,63 @@ CREATE TABLE eos_friendlinks (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_helps'
+-- Table 'pb_helps'
 --
 
-DROP TABLE IF EXISTS eos_helps;
-CREATE TABLE eos_helps (
-  id int(5) NOT NULL auto_increment,
-  helptype_id int(5) default NULL,
-  ha varchar(100) default NULL,
-  hb text,
-  hd tinyint(1) default NULL,
-  hk varchar(50) default NULL,
-  he int(11) default NULL,
-  PRIMARY KEY  (id)
-) TYPE=MyISAM ;
-
--- --------------------------------------------------------
-
---
--- Table 'eos_helptypes'
---
-
-DROP TABLE IF EXISTS eos_helptypes;
-CREATE TABLE eos_helptypes (
-  id int(5) NOT NULL auto_increment,
-  ha varchar(100) default NULL,
-  hb varchar(100) default NULL,
-  hc int(5) default NULL,
-  hd tinyint(1) default '1',
-  he tinyint(1) default NULL,
-  hf tinyint(1) default NULL,
-  hg tinyint(1) default NULL,
-  PRIMARY KEY  (id)
-) TYPE=MyISAM ;
-
--- --------------------------------------------------------
-
---
--- Table 'eos_htmlcaches'
---
-
-DROP TABLE IF EXISTS eos_htmlcaches;
-CREATE TABLE eos_htmlcaches (
-  id int(5) NOT NULL auto_increment,
-  h_n varchar(50) default NULL,
-  h_l int(10) default NULL,
-  h_r varchar(15) default '86400',
-  PRIMARY KEY  (id)
+DROP TABLE IF EXISTS pb_helps;
+CREATE TABLE pb_helps (
+  `id` int(5) NOT NULL auto_increment,
+  `helptype_id` int(5) default NULL,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `status` tinyint(1) NOT NULL default '1',
+  `keywords` varchar(100) NOT NULL,
+  `created` int(10) NOT NULL,
+  PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
 -- --------------------------------------------------------
 
 --
--- Table 'eos_indreccompanies'
+-- Table 'pb_helptypes'
 --
 
-DROP TABLE IF EXISTS eos_indreccompanies;
-CREATE TABLE eos_indreccompanies (
+DROP TABLE IF EXISTS pb_helptypes;
+CREATE TABLE pb_helptypes (
+  `id` int(5) NOT NULL auto_increment,
+  `title` varchar(100) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `parent_id` smallint(3) NOT NULL default '0',
+  `status` tinyint(1) NOT NULL default '1',
+  `alias_name` varchar(100) NOT NULL,
+  `created` int(10) NOT NULL,
+  `modified` int(10) NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+-- --------------------------------------------------------
+
+--
+-- Table 'pb_htmlcaches'
+--
+
+DROP TABLE IF EXISTS pb_htmlcaches;
+CREATE TABLE pb_htmlcaches (
+  `id` int(5) NOT NULL auto_increment,
+  `page_name` varchar(100) NOT NULL,
+  `last_cached_time` int(10) NOT NULL default '0',
+  `cache_cycle_time` int(10) NOT NULL default '86400',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+-- --------------------------------------------------------
+
+--
+-- Table 'pb_indreccompanies'
+--
+
+DROP TABLE IF EXISTS pb_indreccompanies;
+CREATE TABLE pb_indreccompanies (
   id int(10) NOT NULL auto_increment,
   industry_id int(10) default NULL,
   member_id int(10) default NULL,
@@ -675,11 +675,11 @@ CREATE TABLE eos_indreccompanies (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_industries'
+-- Table 'pb_industries'
 --
 
-DROP TABLE IF EXISTS eos_industries;
-CREATE TABLE eos_industries (
+DROP TABLE IF EXISTS pb_industries;
+CREATE TABLE pb_industries (
   id int(5) NOT NULL auto_increment,
   name varchar(50) default NULL,
   parentid int(5) default NULL default '0',
@@ -687,8 +687,8 @@ CREATE TABLE eos_industries (
   sell_amount int(9) default '0',
   product_amount int(9) default '0',
   company_amount int(9) default '0',
-  ia tinyint(1) default '0',
-  ib tinyint(1) default '0',
+  if_show_module tinyint(1) default '1',
+  if_setby_market tinyint(1) default '1',
   level tinyint(2) default NULL,
   priority tinyint(2) default '0',
   created char(10) default 0,
@@ -699,11 +699,11 @@ CREATE TABLE eos_industries (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_inqueries'
+-- Table 'pb_inqueries'
 --
 
-DROP TABLE IF EXISTS eos_inqueries;
-CREATE TABLE eos_inqueries (
+DROP TABLE IF EXISTS pb_inqueries;
+CREATE TABLE pb_inqueries (
   id int(10) NOT NULL auto_increment,
   to_member_id int(10) default NULL,
   to_company_id int(10) default NULL,
@@ -713,7 +713,7 @@ CREATE TABLE eos_inqueries (
   know_more varchar(50) default NULL,
   exp_quantity varchar(15) default NULL,
   exp_price varchar(15) default NULL,
-  ia tinytext,
+  contacts tinytext,
   user_ip varchar(11) default NULL,
   created int(10) NOT NULL,
   PRIMARY KEY  (id)
@@ -722,11 +722,11 @@ CREATE TABLE eos_inqueries (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_ipbanned'
+-- Table 'pb_ipbanned'
 --
 
-DROP TABLE IF EXISTS eos_ipbanned;
-CREATE TABLE eos_ipbanned (
+DROP TABLE IF EXISTS pb_ipbanned;
+CREATE TABLE pb_ipbanned (
   id smallint(6) default NULL,
   ip1 smallint(3) default NULL,
   ip2 smallint(3) default NULL,
@@ -739,11 +739,11 @@ CREATE TABLE eos_ipbanned (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_jobs'
+-- Table 'pb_jobs'
 --
 
-DROP TABLE IF EXISTS eos_jobs;
-CREATE TABLE eos_jobs (
+DROP TABLE IF EXISTS pb_jobs;
+CREATE TABLE pb_jobs (
   id int(10) NOT NULL auto_increment,
   member_id int(10) default NULL,
   company_id int(10) default NULL,
@@ -766,11 +766,11 @@ CREATE TABLE eos_jobs (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_keywords'
+-- Table 'pb_keywords'
 --
 
-DROP TABLE IF EXISTS eos_keywords;
-CREATE TABLE eos_keywords (
+DROP TABLE IF EXISTS pb_keywords;
+CREATE TABLE pb_keywords (
   id int(5) NOT NULL auto_increment,
   primary_id TEXT default NULL,
   member_id int(10) default NULL,
@@ -788,11 +788,11 @@ CREATE TABLE eos_keywords (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_keywordships'
+-- Table 'pb_keywordships'
 --
 
-DROP TABLE IF EXISTS eos_keywordships;
-CREATE TABLE eos_keywordships (
+DROP TABLE IF EXISTS pb_keywordships;
+CREATE TABLE pb_keywordships (
   id int(10) NOT NULL auto_increment,
   ka int(10) default NULL,
   ki int(10) default NULL,
@@ -811,11 +811,11 @@ CREATE TABLE eos_keywordships (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_leavewords'
+-- Table 'pb_leavewords'
 --
 
-DROP TABLE IF EXISTS eos_leavewords;
-CREATE TABLE eos_leavewords (
+DROP TABLE IF EXISTS pb_leavewords;
+CREATE TABLE pb_leavewords (
   id int(10) NOT NULL auto_increment,
   primary_id int(10) default NULL,
   member_id int(10) default NULL,
@@ -830,11 +830,11 @@ CREATE TABLE eos_leavewords (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_marketprice'
+-- Table 'pb_marketprice'
 --
 
-DROP TABLE IF EXISTS eos_marketprice;
-CREATE TABLE eos_marketprice (
+DROP TABLE IF EXISTS pb_marketprice;
+CREATE TABLE pb_marketprice (
   id int(10) NOT NULL auto_increment,
   product_id int(10) default NULL,
   units varchar(25) default NULL,
@@ -850,11 +850,11 @@ CREATE TABLE eos_marketprice (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_markets'
+-- Table 'pb_markets'
 --
 
-DROP TABLE IF EXISTS eos_markets;
-CREATE TABLE eos_markets (
+DROP TABLE IF EXISTS pb_markets;
+CREATE TABLE pb_markets (
   id int(10) NOT NULL auto_increment,
   name varchar(200) binary NOT NULL,
   content text,
@@ -863,8 +863,8 @@ CREATE TABLE eos_markets (
   province_id int(5) default NULL,
   city_id int(5) default NULL,
   picture varchar(50) default NULL,
-  ma tinyint(2) default NULL,
-  mb tinyint(1) default NULL,
+  area_id smallint(3) not null default '0',
+  submit_ip int(10) not null default '0',
   mc tinyint(1) default NULL,
   md varchar(25) default NULL,
   status tinyint(1) default '0',
@@ -876,11 +876,11 @@ CREATE TABLE eos_markets (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_maskwords'
+-- Table 'pb_maskwords'
 --
 
-DROP TABLE IF EXISTS eos_maskwords;
-CREATE TABLE eos_maskwords (
+DROP TABLE IF EXISTS pb_maskwords;
+CREATE TABLE pb_maskwords (
   id smallint(6) NOT NULL auto_increment,
   title varchar(50) default NULL,
   replace_to varchar(50) default NULL,
@@ -892,11 +892,11 @@ CREATE TABLE eos_maskwords (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_memberlinks'
+-- Table 'pb_memberlinks'
 --
 
-DROP TABLE IF EXISTS eos_memberlinks;
-CREATE TABLE eos_memberlinks (
+DROP TABLE IF EXISTS pb_memberlinks;
+CREATE TABLE pb_memberlinks (
   id int(11) NOT NULL auto_increment,
   member_id int(11) default NULL,
   company_id int(11) default NULL,
@@ -909,11 +909,11 @@ CREATE TABLE eos_memberlinks (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_memberlogs'
+-- Table 'pb_memberlogs'
 --
 
-DROP TABLE IF EXISTS eos_memberlogs;
-CREATE TABLE eos_memberlogs (
+DROP TABLE IF EXISTS pb_memberlogs;
+CREATE TABLE pb_memberlogs (
   id int(11) NOT NULL auto_increment,
   member_id int(11) default NULL,
   type_id tinyint(1) default NULL,
@@ -926,11 +926,11 @@ CREATE TABLE eos_memberlogs (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_members'
+-- Table 'pb_members'
 --
 
-DROP TABLE IF EXISTS eos_members;
-CREATE TABLE eos_members (
+DROP TABLE IF EXISTS pb_members;
+CREATE TABLE pb_members (
   id int(9) NOT NULL auto_increment,
   country_id int(5) default '0',
   province_code_id char(6) default '0',
@@ -981,11 +981,11 @@ CREATE TABLE eos_members (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_membertypes'
+-- Table 'pb_membertypes'
 --
 
-DROP TABLE IF EXISTS eos_membertypes;
-CREATE TABLE eos_membertypes (
+DROP TABLE IF EXISTS pb_membertypes;
+CREATE TABLE pb_membertypes (
   id tinyint(2) NOT NULL auto_increment,
   access_id tinyint(2) default NULL,
   name varchar(50) default NULL,
@@ -994,7 +994,7 @@ CREATE TABLE eos_membertypes (
   if_index tinyint(1) default '0',
   price_every_year varchar(10) default NULL,
   status tinyint(1) default NULL,
-  ma text default NULL,
+  description text default NULL,
   mb tinyint(1) default NULL,
   created int(10) default NULL,
   PRIMARY KEY  (id)
@@ -1003,11 +1003,11 @@ CREATE TABLE eos_membertypes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_messages'
+-- Table 'pb_messages'
 --
 
-DROP TABLE IF EXISTS eos_messages;
-CREATE TABLE eos_messages (
+DROP TABLE IF EXISTS pb_messages;
+CREATE TABLE pb_messages (
   id int(11) NOT NULL,
   trade_id int(11) default NULL,
   msg_content text,
@@ -1017,11 +1017,11 @@ CREATE TABLE eos_messages (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_newses'
+-- Table 'pb_newses'
 --
 
-DROP TABLE IF EXISTS eos_newses;
-CREATE TABLE eos_newses (
+DROP TABLE IF EXISTS pb_newses;
+CREATE TABLE pb_newses (
   id int(9) NOT NULL auto_increment,
   type_id int(5) default NULL,
   html_file_id varchar(50) default NULL,
@@ -1042,11 +1042,11 @@ CREATE TABLE eos_newses (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_newstypes'
+-- Table 'pb_newstypes'
 --
 
-DROP TABLE IF EXISTS eos_newstypes;
-CREATE TABLE eos_newstypes (
+DROP TABLE IF EXISTS pb_newstypes;
+CREATE TABLE pb_newstypes (
   id int(5) NOT NULL auto_increment,
   name varchar(25) NOT NULL,
   level_id tinyint(1) default '1',
@@ -1060,11 +1060,11 @@ CREATE TABLE eos_newstypes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_offers'
+-- Table 'pb_offers'
 --
 
-DROP TABLE IF EXISTS eos_offers;
-CREATE TABLE eos_offers (
+DROP TABLE IF EXISTS pb_offers;
+CREATE TABLE pb_offers (
   id int(10) NOT NULL auto_increment,
   trade_id int(10) default NULL,
   country_name varchar(50) default NULL,
@@ -1091,11 +1091,11 @@ CREATE TABLE eos_offers (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_orders'
+-- Table 'pb_orders'
 --
 
-DROP TABLE IF EXISTS eos_orders;
-CREATE TABLE eos_orders (
+DROP TABLE IF EXISTS pb_orders;
+CREATE TABLE pb_orders (
   id int(10) NOT NULL auto_increment,
   product_id int(10) default NULL,
   member_id varchar(25) default NULL,
@@ -1115,11 +1115,11 @@ CREATE TABLE eos_orders (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_params'
+-- Table 'pb_params'
 --
 
-DROP TABLE IF EXISTS eos_params;
-CREATE TABLE eos_params (
+DROP TABLE IF EXISTS pb_params;
+CREATE TABLE pb_params (
   id smallint(6) NOT NULL auto_increment,
   paramtype_id smallint(6) default NULL,
   input_title varchar(50) default NULL,
@@ -1137,11 +1137,11 @@ CREATE TABLE eos_params (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_paramtypes'
+-- Table 'pb_paramtypes'
 --
 
-DROP TABLE IF EXISTS eos_paramtypes;
-CREATE TABLE eos_paramtypes (
+DROP TABLE IF EXISTS pb_paramtypes;
+CREATE TABLE pb_paramtypes (
   id smallint(6) NOT NULL auto_increment,
   title varchar(25) default NULL,
   created int(10) default NULL,
@@ -1151,11 +1151,11 @@ CREATE TABLE eos_paramtypes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_pricequotes'
+-- Table 'pb_pricequotes'
 --
 
-DROP TABLE IF EXISTS eos_pricequotes;
-CREATE TABLE eos_pricequotes (
+DROP TABLE IF EXISTS pb_pricequotes;
+CREATE TABLE pb_pricequotes (
   id int(10) NOT NULL auto_increment,
   trade_id int(10) default NULL,
   member_id int(10) default NULL,
@@ -1168,11 +1168,11 @@ CREATE TABLE eos_pricequotes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_products'
+-- Table 'pb_products'
 --
 
-DROP TABLE IF EXISTS eos_products;
-CREATE TABLE eos_products (
+DROP TABLE IF EXISTS pb_products;
+CREATE TABLE pb_products (
   id int(10) NOT NULL auto_increment,
   company_id int(10) default NULL default '0',
   member_id int(10) default NULL,
@@ -1189,7 +1189,7 @@ CREATE TABLE eos_products (
   packing_content varchar(100) default NULL,
   picture varchar(50) default NULL,
   picture_remote varchar(50) default NULL,
-  content tinytext,
+  content text,
   producttype_id int(5) default '0',
   status tinyint(2) default '0',
   state tinyint(2) default '1',
@@ -1206,11 +1206,11 @@ CREATE TABLE eos_products (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_producttypes'
+-- Table 'pb_producttypes'
 --
 
-DROP TABLE IF EXISTS eos_producttypes;
-CREATE TABLE eos_producttypes (
+DROP TABLE IF EXISTS pb_producttypes;
+CREATE TABLE pb_producttypes (
   id int(11) NOT NULL auto_increment,
   member_id int(11) default NULL,
   company_id int(11) default NULL,
@@ -1223,11 +1223,11 @@ CREATE TABLE eos_producttypes (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_ranks'
+-- Table 'pb_ranks'
 --
 
-DROP TABLE IF EXISTS eos_ranks;
-CREATE TABLE eos_ranks (
+DROP TABLE IF EXISTS pb_ranks;
+CREATE TABLE pb_ranks (
   id int(10) NOT NULL auto_increment,
   from_member_id int(10) default NULL,
   to_member_id int(10) default NULL,
@@ -1239,11 +1239,11 @@ CREATE TABLE eos_ranks (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_roleadminers'
+-- Table 'pb_roleadminers'
 --
 
-DROP TABLE IF EXISTS eos_roleadminers;
-CREATE TABLE eos_roleadminers (
+DROP TABLE IF EXISTS pb_roleadminers;
+CREATE TABLE pb_roleadminers (
   id int(5) NOT NULL auto_increment,
   adminrole_id int(2) default NULL,
   adminer_id int(2) default NULL,
@@ -1253,11 +1253,11 @@ CREATE TABLE eos_roleadminers (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_roleprivileges'
+-- Table 'pb_roleprivileges'
 --
 
-DROP TABLE IF EXISTS eos_roleprivileges;
-CREATE TABLE eos_roleprivileges (
+DROP TABLE IF EXISTS pb_roleprivileges;
+CREATE TABLE pb_roleprivileges (
   id int(5) NOT NULL auto_increment,
   adminrole_id int(2) default NULL,
   adminprivilege_id int(2) default NULL,
@@ -1267,11 +1267,11 @@ CREATE TABLE eos_roleprivileges (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_services'
+-- Table 'pb_services'
 --
 
-DROP TABLE IF EXISTS eos_services;
-CREATE TABLE eos_services (
+DROP TABLE IF EXISTS pb_services;
+CREATE TABLE pb_services (
   id int(5) NOT NULL auto_increment,
   title varchar(25) default NULL,
   content text,
@@ -1290,11 +1290,11 @@ CREATE TABLE eos_services (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_sessions'
+-- Table 'pb_sessions'
 --
 
-DROP TABLE IF EXISTS eos_sessions;
-CREATE TABLE eos_sessions (
+DROP TABLE IF EXISTS pb_sessions;
+CREATE TABLE pb_sessions (
   id int(11) NOT NULL auto_increment,
   SESSKEY char(32) default NULL,
   EXPIRY int(11) default NULL,
@@ -1308,25 +1308,33 @@ CREATE TABLE eos_sessions (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_settings'
+-- Table 'pb_settings'
 --
 
-DROP TABLE IF EXISTS eos_settings;
-CREATE TABLE eos_settings (
+DROP TABLE IF EXISTS pb_settings;
+CREATE TABLE pb_settings (
   id int(11) NOT NULL auto_increment,
-  aa varchar(50) default NULL,
-  ab text,
+  variable varchar(150) default NULL,
+  valued text,
   PRIMARY KEY  (id)
 ) TYPE=MyISAM;
 
 -- --------------------------------------------------------
 
 --
--- Table 'eos_stats'
---
+-- Table 'pb_stats'
+--  id smallint(6) NOT NULL auto_increment,
+--  stat_type varchar(25) default NULL,
+--  type_sign varchar(50) default NULL,
+--  description varchar(50) default NULL,
+--  amount int(10) default NULL,
+--  last_stat_time int(10) default NULL,
+--  created smallint(6) default NULL,
+--  PRIMARY KEY  (id)
 
-DROP TABLE IF EXISTS eos_stats;
-CREATE TABLE eos_stats (
+
+DROP TABLE IF EXISTS pb_stats;
+CREATE TABLE pb_stats (
   id smallint(6) NOT NULL auto_increment,
   sa varchar(25) default NULL,
   sb varchar(50) default NULL,
@@ -1340,11 +1348,11 @@ CREATE TABLE eos_stats (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_templets'
+-- Table 'pb_templets'
 --
 
-DROP TABLE IF EXISTS eos_templets;
-CREATE TABLE eos_templets (
+DROP TABLE IF EXISTS pb_templets;
+CREATE TABLE pb_templets (
   id int(5) NOT NULL auto_increment,
   title varchar(100) default NULL,
   description varchar(200) default NULL,
@@ -1358,11 +1366,11 @@ CREATE TABLE eos_templets (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_terminologies'
+-- Table 'pb_terminologies'
 --
 
-DROP TABLE IF EXISTS eos_terminologies;
-CREATE TABLE eos_terminologies (
+DROP TABLE IF EXISTS pb_terminologies;
+CREATE TABLE pb_terminologies (
   id int(10) NOT NULL,
   en_name varchar(100) default NULL,
   cn_name varchar(100) default NULL,
@@ -1378,11 +1386,11 @@ CREATE TABLE eos_terminologies (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_trades'
+-- Table 'pb_trades'
 --
 
-DROP TABLE IF EXISTS eos_trades;
-CREATE TABLE eos_trades (
+DROP TABLE IF EXISTS pb_trades;
+CREATE TABLE pb_trades (
   id int(10) NOT NULL auto_increment,
   industry_id int(5) default '0',
   area_id int(5) default '0',
@@ -1423,11 +1431,11 @@ CREATE TABLE eos_trades (
 -- --------------------------------------------------------
 
 --
--- Table 'eos_userpages'
+-- Table 'pb_userpages'
 --
 
-DROP TABLE IF EXISTS eos_userpages;
-CREATE TABLE eos_userpages (
+DROP TABLE IF EXISTS pb_userpages;
+CREATE TABLE pb_userpages (
   id int(5) NOT NULL auto_increment,
   ua varchar(50) default NULL,
   ub varchar(50) default NULL,
@@ -1442,8 +1450,8 @@ CREATE TABLE eos_userpages (
 
 -- --------------------------------------------------------
 
-DROP TABLE IF EXISTS eos_visitlogs;
-CREATE TABLE eos_visitlogs (
+DROP TABLE IF EXISTS pb_visitlogs;
+CREATE TABLE pb_visitlogs (
   id smallint(6) NOT NULL auto_increment,
   salt varchar(32) default NULL,
   date_line varchar(15) default NULL,
@@ -1452,7 +1460,7 @@ CREATE TABLE eos_visitlogs (
   KEY salt (salt)
 ) TYPE=MyISAM;
 
-INSERT INTO eos_industries (`id`, `name`, `parentid`, `buy_amount`, `sell_amount`, `product_amount`, `company_amount`, `ia`, `ib`) VALUES
+INSERT INTO pb_industries (`id`, `name`, `parentid`, `buy_amount`, `sell_amount`, `product_amount`, `company_amount`, `ia`, `ib`) VALUES
 (1, '纺织、皮革', 0, 0, 0, 0, 489, 1, 0),
 (2, '服装、服饰', 0, 0, 0, 0, 0, 1, 0),
 (3, '机械及工业制品', 0, 0, 0, 0, 0, 1, 0),
@@ -2244,7 +2252,7 @@ INSERT INTO eos_industries (`id`, `name`, `parentid`, `buy_amount`, `sell_amount
 (862, '库存交通产品及用具', 27, 0, 0, 0, 0, 1, 0),
 (863, '其他未分类库存', 27, 0, 0, 0, 0, 0, 0);
 
-INSERT INTO eos_areas (`id`, `spelling`, `name`, `code_id`, `brief_name`) VALUES
+INSERT INTO pb_areas (`id`, `spelling`, `name`, `code_id`, `brief_name`) VALUES
 (1, 'BJ', '北京市', 110000, '京'),
 (2, 'TJ', '天津市', 120000, '津'),
 (3, 'HE', '河北省', 130000, '冀'),
@@ -2609,7 +2617,7 @@ INSERT INTO eos_areas (`id`, `spelling`, `name`, `code_id`, `brief_name`) VALUES
 (377, NULL, '香港', 810000, NULL);
 
 
-INSERT INTO eos_membertypes (`id`, `access_id`, `name`, `picture`, `if_default`, `if_index`, `price_every_year`, `status`) VALUES
+INSERT INTO pb_membertypes (`id`, `access_id`, `name`, `picture`, `if_default`, `if_index`, `price_every_year`, `status`) VALUES
 (1, 1, '免费会员', 'default.gif', 1, 0, '0', 1),
 (2, 0, '外贸会员', 'default.gif', 0, 0, '1000', 1),
 (3, 0, '金牌会员', 'default.gif', 0, 0, '2000', 1),
@@ -2617,10 +2625,10 @@ INSERT INTO eos_membertypes (`id`, `access_id`, `name`, `picture`, `if_default`,
 (5, 0, '普通会员', 'default.gif', 0, 0, '0', 0);
 
 -- 
--- 导出表中的数据 `eos_newstypes`
+-- 导出表中的数据 `pb_newstypes`
 -- 
 
-INSERT INTO eos_newstypes VALUES 
+INSERT INTO pb_newstypes VALUES 
 (1, '行业聚焦', 1, 0, 1, 0, 1248601001),
 (2, '热点专题', 1, 0, 1, 0, 1248601001),
 (3, '焦点关注', 1, 0, 1, 0, 1248601053),
@@ -2630,22 +2638,22 @@ INSERT INTO eos_newstypes VALUES
 (7, '商业宝典', 1, 0, 1, 0, 1248601108),
 (8, '外贸专题', 1, 0, 1, 0, 1248601108);
 
-INSERT INTO eos_accesses VALUES ('1', '普通权限', '1', '3', '3', '3', '3', '3', '3', '3', '1', '1', '1', '1', '1', '1', '0', '3', '0', '0', '3', '2', '0');
+INSERT INTO pb_accesses VALUES ('1', '普通权限', '1', '3', '3', '3', '3', '3', '3', '3', '1', '1', '1', '1', '1', '1', '0', '3', '0', '0', '3', '2', '0');
 
 ##插入默认的公司类型
 
-INSERT INTO eos_companytypes (name,avaliable,picture) VALUES ('供应商', 1,''),('采购商', 1,''),('生产商', 1,''),('加盟商', 1,''),('其他类型', 1,'');
+INSERT INTO pb_companytypes (name,avaliable,picture) VALUES ('供应商', 1,''),('采购商', 1,''),('生产商', 1,''),('加盟商', 1,''),('其他类型', 1,'');
 
 ##插入首页顶部广告位置
-INSERT INTO eos_adzones VALUES (2, '1', NULL, '首页顶部小图片广告', '6个图片一行，首页显示', 'XXX元/月', 'index.php', 760, 45, 6, 12, NULL);
+INSERT INTO pb_adzones VALUES (2, '1', NULL, '首页顶部小图片广告', '6个图片一行，首页显示', 'XXX元/月', 'index.php', 760, 45, 6, 12, NULL);
 
 
-INSERT INTO eos_templets (`id`, `title`, `description`, `picture`, `status`) VALUES
+INSERT INTO pb_templets (`id`, `title`, `description`, `picture`, `status`) VALUES
 (1, 'default', '默认的会员个人主页', 'default.jpg', 1),
 (2, 'blue', '蓝色主题', 'blue.jpg', 1),
 (3, 'green', '绿色主题', 'green.jpg', 1);
 
-INSERT INTO eos_stats (`id`, `sa`, `sb`, `description`, `sc`, `sd`, `se`) VALUES
+INSERT INTO pb_stats (`id`, `sa`, `sb`, `description`, `sc`, `sd`, `se`) VALUES
 (1, 'total', 'buy', '求购总数', 1, NULL, NULL),
 (2, 'total', 'buy_today', '今日求购总数', 1, NULL, NULL),
 (3, 'total', 'sell', '供应总数', 1, NULL, NULL),

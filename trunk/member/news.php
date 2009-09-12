@@ -3,7 +3,6 @@ if(!defined('IN_UALINK')) exit('Access Denied');
 require(SITE_ROOT.'./app/include/page.php');
 uses("companynews");
 $companynews = new Companynewses();
-require("member/menu.php");
 $conditions = " Companynews.company_id=".$companyinfo['ID'];
 $tpl_file = "news";
 if ($_GET['news_id']) {

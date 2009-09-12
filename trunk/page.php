@@ -40,7 +40,7 @@ if (!empty($find_what)) {
 	$userpage->primaryKey = "ub";
 	$find_content = $userpage->read("uc,ua,uf", $find_what);
 	if (empty($find_content) || !$find_content) {
-		$find_content['uc'] = $setting->field("ab", "aa='site_description'");
+		$find_content['uc'] = $setting->field("valued", "variable='site_description'");
 		$find_content['ua'] = "";
 	}
 	uaAssign(array("info"=> $find_content['uc'],"Title"=> $find_content['ua']));

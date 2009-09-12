@@ -41,7 +41,7 @@ $trade->clicked($pid);
 require($inc_path."product/fineproducts.php");
 $trade->setTradeCat($res['trade_type']);
 $tradetype = strtolower($trade->trade_cate);
-$IfTradeOpen = intval($setting->field("ab","aa='".$tradetype."_logincheck'"));
+$IfTradeOpen = intval($setting->field("valued","variable='".$tradetype."_logincheck'"));
 setvar("IfTradeOpen", $IfTradeOpen);
 $res['TradeExtends'] = unserialize($res['TradeExtends']);
 if (!empty($res['keywords'])) {

@@ -235,7 +235,7 @@
 	{
 	    global $tb_prefix, $g_db;
 	    $if_watermark = true;
-	    $if_watermark = $g_db->GetOne("select ab from {$tb_prefix}settings where aa='watermark'");
+	    $if_watermark = $g_db->GetOne("select valued from {$tb_prefix}settings where variable='watermark'");
 	    if (!$if_watermark) {
 	    	return;
 	    }

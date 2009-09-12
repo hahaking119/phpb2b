@@ -8,6 +8,11 @@
 	var $trade_type_sign_id = null;
 	var $industry_amount_name = null;
 
+ 	function Trades()
+ 	{
+
+ 	}
+
  	function setTradeCat($trade_type_id)
  	{
  		$buy_s = array_keys($this->buy_types);
@@ -27,11 +32,6 @@
 	function getTradeCat(){
 		return $this->trade_cate;
 	}
-
- 	function Trades()
- 	{
-
- 	}
 
  	function getTradeTypes()
  	{
@@ -129,4 +129,13 @@
 			}
 		}
 	}
+/**
+	function Add()
+	{
+		global $g_db;
+		if (isset($this->params['data']['trade'])) {
+		    da($this->params['data']['trade']);exit;
+		}
+	}
+	**/
 }

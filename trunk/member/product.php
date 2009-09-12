@@ -4,7 +4,6 @@ uses("product","producttype");
 require(SITE_ROOT.'./app/include/page.php');
 $producttype = new Producttypes();
 $product = new Products();
-require("member/menu.php");
 $tpl_file = "product";
 $conditions = null;
 

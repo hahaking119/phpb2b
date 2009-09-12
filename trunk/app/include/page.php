@@ -22,7 +22,7 @@ if (!function_exists("pageft")) {
         }
         // URL分析：
         $parse_url = parse_url($url);
-        $url_query = $parse_url["query"]; //单独取出URL的查询字串
+        $url_query = isset($parse_url["query"])?$parse_url["query"]:null; //单独取出URL的查询字串
         if ($url_query) {
             // 因为URL中可能包含了页码信息，我们要把它去掉，以便加入新的页码信息。
             // 这里用到了正则表达式，请参考“PHP中的正规表达式”.

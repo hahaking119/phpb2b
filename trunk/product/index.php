@@ -14,6 +14,7 @@ $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('getIndustryList', '../aj
 $xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));
 $xajax->processRequest();
 $_titles[] = lgg("product_center");
+$_positions = null;
 setvar('xajax_javascript', $xajax->getJavascript());
 $latest_products = $product->findAll("Product.id AS ID,Product.picture AS ProductPicture,Product.name AS ProductName,html_file_id AS HtmlFileId","Product.status=1 and Product.state=1","Product.id DESC",0,8);
 $recommend_products = $product->findAll("Product.id AS ID,Product.picture AS ProductPicture,Product.name AS ProductName,html_file_id AS HtmlFileId","Product.status=1 and Product.state=1 and Product.ifcommend=1","Product.id DESC",0,18);

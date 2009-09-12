@@ -48,10 +48,10 @@ class Userpages extends UaModel {
 	function setUrlContainer($static_level){
 		$tmp_contain = array();
 		global $media_paths, $g_db, $tb_prefix;
-		$reg_filename = $g_db->GetOne($sql = "select ab from {$tb_prefix}settings where aa='reg_filename'");
+		$reg_filename = $g_db->GetOne($sql = "select valued from {$tb_prefix}settings where variable='reg_filename'");
 		$reg_filename = (empty($reg_filename))?"register.php":$reg_filename;
-		$post_filename = $g_db->GetOne("select ab from {$tb_prefix}settings where aa='post_filename'");
-		$post_filename = (empty($post_filename['ab']))?"post.php":$post_filename;
+		$post_filename = $g_db->GetOne("select valued from {$tb_prefix}settings where variable='post_filename'");
+		$post_filename = (empty($post_filename['valued']))?"post.php":$post_filename;
 		$inc_path = $media_paths['INC_PATH'];
 		switch ($static_level) {
 			case 1:

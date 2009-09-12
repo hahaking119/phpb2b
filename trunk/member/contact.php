@@ -1,6 +1,5 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
-require("member/menu.php");
 uses("area");
 $area = new Areas();
 setvar("Genders",$member->genders);

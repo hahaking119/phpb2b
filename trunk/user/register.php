@@ -3,8 +3,6 @@ $inc_path = "../";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require(INC_PATH .'xajax/xajaxAIO.inc.php');
-require($inc_path .APP_NAME. 'include/inc.discuz.php');
-require($inc_path .APP_NAME. 'include/inc.phpwind.php');
 uses("member","company","membertype","companytype","access","setting", "htmlcache", "industry");
 $cfg['reg_time_seperate'] = 3*60;
 $cfg['register_type'] = array("close_register", "open_common_reg", "open_invite_reg");
@@ -17,10 +15,10 @@ $membertype = new Membertypes();
 $companytype = new Companytypes();
 $company = new Companies();
 $check_invite_code = false;
-$if_set_register_picture = $setting->field("ab", "aa='register_picture'");
-$register_type = $setting->field("ab", "aa='register_type'");
-$ip_reg_sep = $setting->field("ab", "aa='ip_reg_sep'");
-$forbid_ip = $setting->field("ab", "aa='forbid_ip'");
+$if_set_register_picture = $setting->field("valued", "variable='register_picture'");
+$register_type = $setting->field("valued", "variable='register_type'");
+$ip_reg_sep = $setting->field("valued", "variable='ip_reg_sep'");
+$forbid_ip = $setting->field("valued", "variable='forbid_ip'");
 
 if (!empty($ip_reg_sep)) {
 	$cfg['reg_time_seperate'] = $ip_reg_sep*60*60;
@@ -118,8 +116,8 @@ if(isset($_POST['register'])){
 		$vars['service_start_date'] = $time_stamp;
 		$vars['service_end_date'] = $access->getExpireTime($time_limits['default_livetime']);
 		$vars['user_level'] = ($is_company)?2:1;
-		$member_reg_check = $setting->field("ab","aa='regcheck'");
-		$member_reg_auth = $setting->field("ab","aa='new_userauth'");
+		$member_reg_check = $setting->field("valued","variable='regcheck'");
+		$member_reg_auth = $setting->field("valued","variable='new_userauth'");
 		$if_need_check = false;
 		if($member_reg_check=="1" || $member_reg_auth!=0){
 			$vars['status'] = 0;

@@ -23,9 +23,9 @@ if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
 	$vals['province_id'] = $_POST['provinceid'];
 	$vals['city_id'] = $_POST['cityid'];
 	if($_POST['city_id']){
-		$vals['ma'] = $_POST['city_id'];
+		$vals['area_id'] = $_POST['city_id'];
 	}elseif ($_POST['province_id']) {
-		$vals['ma'] = $_POST['province_id'];
+		$vals['area_id'] = $_POST['province_id'];
 	}
 	if(isset($_POST['bindustry'])){
 		$industryid = $_POST['bindustry'];
@@ -34,10 +34,10 @@ if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
 	}
 	$vals['industry_id'] = $industryid;
 	$vals['created'] = time();
-	$vals['mb'] = uaGetClientIP();
+	$vals['submit_ip'] = uaGetClientIP();
 	array_walk($vals, "uatrim");
 
-	$sh_check = intval($setting->field("ab", "aa='add_market_check'"));
+	$sh_check = intval($setting->field("valued", "variable='add_market_check'"));
 	if ($sh_check) {
 		$vals['status'] = 0;
 	}else{

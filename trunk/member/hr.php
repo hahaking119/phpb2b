@@ -1,6 +1,5 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
-require("member/menu.php");
 uses("job");
 $job = new Jobs();
 $company_id = (empty($_GET['id']))?$companyinfo['ID']:intval($_GET['id']);

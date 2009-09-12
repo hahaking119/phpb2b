@@ -1,6 +1,5 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
-require("member/menu.php");
 uses("companymessage");
 $companymessage = new Companymessages();
 $cid = intval($_GET['cid']);

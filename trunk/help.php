@@ -40,15 +40,15 @@ if(isset($_GET['sid'])) {
 	$type_id = intval($_GET['sid']);
 	$conditions = "Help.helptype_id=".$type_id;
 	$tpl_file = "content";
-	$res = $help->findAll("id AS HelpId,ha AS HelpTitle,hb AS HelpContent",$conditions,"id DESC",0,25);
+	$res = $help->findAll("id AS HelpId,title AS HelpTitle,description AS HelpContent",$conditions,"id DESC",0,25);
 	setvar("HelpTopics",$res);
-	$sname = $helptype->read("ha AS HelptypeTitle",$type_id);
+	$sname = $helptype->read("title AS HelptypeTitle",$type_id);
 	setvar("HelptypeTitle",$sname['HelptypeTitle']);
 	unset($res,$sname);
 }
-$parent_list = $helptype->findAll("id AS HelptypeId,ha AS HelptypeTitle","Helptype.hc=0","id DESC",0,25);
+$parent_list = $helptype->findAll("id AS HelptypeId,title AS HelptypeTitle","Helptype.hc=0","id DESC",0,25);
 for ($i=0; $i<count($parent_list); $i++) {
-	$parent_list[$i]['sub_helps'] = $help->findAll("id AS HelpId,ha AS HelpTitle","Help.helptype_id=".$parent_list[$i]['HelptypeId'],"id DESC",0,25);
+	$parent_list[$i]['sub_helps'] = $help->findAll("id AS HelpId,title AS HelpTitle","Help.helptype_id=".$parent_list[$i]['HelptypeId'],"id DESC",0,25);
 }
 setvar("HelpParents",$parent_list);
 template($theme_name."/help_".$tpl_file);
