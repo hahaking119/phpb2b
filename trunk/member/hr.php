@@ -10,5 +10,5 @@ $g_db->Execute($sql);
 setvar("CompanyJobs",$res);
 setvar("Worktype",$job->worktype);
 setvar("Salary",$job->salary);
-template($tplpath."hr");
+template("../skins/".$tplpath."hr");
 ?>

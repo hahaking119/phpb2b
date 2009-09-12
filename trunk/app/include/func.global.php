@@ -192,7 +192,7 @@
 		global $member,$company, $time_stamp, $forums, $inc_path;
 		global $g_db;
 		$keep_online = 3600;
-		$forward = $_GET['referer'] ? urldecode($_GET['referer']):URL;
+		$forward = (isset($_GET['referer'])) ? urldecode($_GET['referer']):URL;
 		if(!empty($url)) $forward = urldecode($url);
 		$checked = $member->checkUserLogin($username,$userpass);
 		$tmp_memberinfo = array();

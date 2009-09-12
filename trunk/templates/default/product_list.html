@@ -3,14 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title><{$IndsutryName|default:"产品列表"}>&laquo;产品库&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 </head>
 
 <body>
 <{assign var="product_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rmgjz mbx">
 	<p><span class="str">您当前位置：</span><{$pagePosition}>
 </div>
@@ -68,7 +68,7 @@
             <br />
             <{$prod.Description|strip_tags|truncate:150}></p>
 				</li>
-				<li class="li3"><img src="<{$tpl_img_path}>default/type/<{$prod.Membertype|default:"default"}>.gif"></li>
+				<li class="li3"><img src="<{$theme_img_path}>images/type/<{$prod.Membertype|default:"default"}>.gif"></li>
 				<li class="li3"><em class="str"><a href="<{$UrlContainer.common}>space.php?do=feedback&userid=<{$prod.UserName}>" title="联系对方">给我留言</a></li>
 				<li class="li3"></li>
 			</ul>
@@ -79,6 +79,6 @@
 	</div>
 </div>
 <div class="clear15"></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

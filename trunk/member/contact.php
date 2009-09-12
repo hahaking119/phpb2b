@@ -12,5 +12,5 @@ if (empty($company_info)) {
 	$company_info['CompanyFax'] = $company_info['faxcode']."-".$company_info['faxzone']."-".$company_info['fax'];
 	setvar("CompanyInfo",$company_info);
 }
-template($tplpath."contact");
+template("../skins/".$tplpath."contact");
 ?>

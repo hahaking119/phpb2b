@@ -33,7 +33,7 @@ function smarty_function_news($params){
 	global $smarty, $theme_name, $cookiepre;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"block.".$params['templet'].".html":"block.default.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
 	extract($params);
 	if (class_exists("News")) {
 		$info = new Newses();
@@ -48,13 +48,13 @@ function smarty_function_news($params){
 	if(isset($params['id'])){
 		$result = $info->read($fields, intval($params['id']));
 	}elseif(isset($params['ispro'])){
-    	$output = $smarty->fetch($theme_name."/block.".$params['ispro'].".html", null, null, false);
+    	$output = $smarty->fetch($theme_name."/blocks/".$params['ispro'].".html", null, null, false);
     	echo $output;
 	}else{
 		if (isset($params['type'])) {
 			if($params['type']=="image"){
 				$conditions[] = "News.picture!=''";
-				$tpl_file = "block.default.image.html";
+				$tpl_file = "blocks/default.image.html";
 			}
 		}
 		if (isset($params['type_id'])) {

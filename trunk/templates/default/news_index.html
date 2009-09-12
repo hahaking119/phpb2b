@@ -5,9 +5,9 @@
 <title>资讯&laquo;<{$sitetitle}></title>
 <meta name ="keywords" content="<{$sitename}>">
 <meta name="description" content="<{$pageDescriptioin}>"> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <{$xajax_javascript}>
 <script language="javascript">
 xajax_rebuildHTML("news/index.php");
@@ -16,7 +16,7 @@ xajax_rebuildHTML("news/index.php");
 
 <body>
 <{assign var="news_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rmgjz">
 	<p><span>热门关键字：</span><{tag}></p>
 	<em><a href="<{$SiteUrl}>tag.php">更多...</a></em>
@@ -52,7 +52,7 @@ xajax_rebuildHTML("news/index.php");
 			<ul class="ul21 ula"><{news}></ul>
 		</div>
 		<div class="clear9"></div>
-		<div class="zx_ad2"><img src="<{$tpl_img_path}>default/in_350x92.jpg" alt="" /></div>
+		<div class="zx_ad2"><img src="<{$theme_img_path}>images/in_350x92.jpg" alt="" /></div>
 		<div class="clear9"></div>
 		<div class="zx_tab3 zx_tab4">
 			<div class="bt zx_bt2"><h2><a href="<{$SiteUrl}>news/list.php?type_id=2">企业动态</a></h2><p class="padright10"><a href="<{$SiteUrl}>news/list.php?type_id=2">更多</a></p></div>
@@ -72,6 +72,6 @@ xajax_rebuildHTML("news/index.php");
 <div class="clear9"></div>
 <div class="wd cpk_ad1"><{ad type_id=1}></div>
 <script type="text/javascript" src="<{$CSS_PATH}>js/default/ChangeTab.js"></script>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

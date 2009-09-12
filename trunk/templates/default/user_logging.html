@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>登录&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
 </head>
 
 <body onload="javascript:document.loginfrm.login_name.focus();">
 <{assign var="room_li" value="cor over"}>
 <{assign var="if_searchbar" value="n"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd lg_wd1">
 	<p class="lg_txt1">尊敬的用户，为了更好的保护您个人信息的安全，我们对网站的安全性进行了升级，这需要较高版本的浏览器支持，如果您无法正常登录我们的网站，请升级您的浏览器，如果您不升级浏览器版本，您也可以点击这里按照我们的建议操作，为此给您带来的不便，请您谅谅解！</p>
 </div>
@@ -97,6 +97,6 @@ addEvent($("LogIn"), "click", function doLogin(){
 });
 //-->
 </script>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

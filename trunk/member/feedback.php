@@ -19,5 +19,5 @@ if ($_POST['cid'] && !empty($_POST['feed'])) {
 		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
 	}
 }
-template($tplpath."feedback");
+template("../skins/".$tplpath."feedback");
 ?>

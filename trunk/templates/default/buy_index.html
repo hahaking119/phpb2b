@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>求购&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <{$xajax_javascript}>
 <script language="javascript">
 xajax_rebuildHTML("buy/index.php");
@@ -14,23 +14,23 @@ xajax_rebuildHTML("buy/index.php");
 
 <body>
 <{assign var="buy_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd">
 	<div class="cg_left1">
 		<div class="bt gs_bt4 cg_bt1"><h2><a href="<{$UrlContainer.common}>offer/list.php?filter=求购">最新求购信息</a></h2><p><a href="<{$UrlContainer.common}>offer/list.php?filter=求购">进入</a></p></div>
 		<div class="cg_c1">
-			<div class="cg_ad1"><img src="<{$tpl_img_path}>default/it_market.gif" /></div>
+			<div class="cg_ad1"><img src="<{$theme_img_path}>images/it_market.gif" /></div>
 			<ul class="ul21 ula">
 				<{offer max=8 type_id="1"}>
 			</ul>
 		</div>
 	</div>
 	<div class="cg_left2">
-		<div class="cg_hot"><a href="<{$SiteUrl}>news/list.php?type_id=1"><img src="<{$tpl_img_path}>default/cg_382x153.jpg" alt="" /></a></div>
+		<div class="cg_hot"><a href="<{$SiteUrl}>news/list.php?type_id=1"><img src="<{$theme_img_path}>images/cg_382x153.jpg" alt="" /></a></div>
 		<div class="clear9"></div>
 		<div class="cg_tab1">
 			<div class="bt"><h2 class="f12">价格行情资讯</h2></div>
-			<a href="#"><img src="<{$tpl_img_path}>default/price_stat.jpg" alt="价格行情资讯" />
+			<a href="#"><img src="<{$theme_img_path}>images/price_stat.jpg" alt="价格行情资讯" />
 			<ul class="ul21">
 				<{news type_id=1 max=8}>
 			</ul>
@@ -88,6 +88,6 @@ xajax_rebuildHTML("buy/index.php");
 </div>
 <div class="clear9"></div>
 <div class="wd cpk_ad1"><{ad type_id=1}></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

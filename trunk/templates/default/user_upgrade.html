@@ -6,9 +6,9 @@
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name ="keywords" content="<{$sitename}>">
 <meta name="description" content="">
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script src="<{$JS_PATH}>js/prototype.js"></script>
 <script>
 function checkUpgrade(){
@@ -35,7 +35,7 @@ function checkUpgrade(){
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <{assign var="room_li" value="cor over"}>
 <{assign var="if_searchbar" value="n"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rg_wd1">
 	<div class="rg_left1">
 		<table width="960"  border="0" align="center" cellpadding="0" cellspacing="5" >
@@ -44,7 +44,7 @@ function checkUpgrade(){
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr> 
 					<td width="515" height="37" valign="middle"><span class="font15"> 
-					<img src="<{$tpl_img_path}>default/vip.gif">  <{$sitename}>高级会员申请：</span>　　　　　　　　　　　</td>
+					<img src="<{$theme_img_path}>images/vip.gif">  <{$sitename}>高级会员申请：</span>　　　　　　　　　　　</td>
 					<td width="235"><div align="right">带<font class=S><span class="fontred">*</span><span class="style6"></span></font>号的为必填信息</div></td>
 				  </tr>
 				</table>
@@ -56,9 +56,9 @@ function checkUpgrade(){
 		  </tr>
 		  <tr> 
 			<td> 
-			  <table width="100%" height="33" border="0" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>default/loginbj.jpg">
+			  <table width="100%" height="33" border="0" cellpadding="0" cellspacing="0" background="<{$theme_img_path}>images/loginbj.jpg">
 				<tr> 
-				  <td><img src="<{$tpl_img_path}>default/btn_online.gif" width="118" height="33"></td>
+				  <td><img src="<{$theme_img_path}>images/btn_online.gif" width="118" height="33"></td>
 				</tr>
 			  </table>
 			  <form method="post" name="applyfrm" action="<{$smarty.server.PHP_SELF}>" />
@@ -120,6 +120,6 @@ function checkUpgrade(){
 		</table>
 	</div>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

@@ -22,5 +22,5 @@ $company_products = $product->findAll($product->common_cols,$conditions,"Product
 setvar("Products",$company_products);
 setvar("ByPages",$pagenav);
 
-template($tplpath.$tpl_file);
+template("../skins/".$tplpath.$tpl_file);
 ?>

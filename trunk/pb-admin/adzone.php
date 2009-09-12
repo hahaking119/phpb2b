@@ -11,7 +11,7 @@ $conditions = null;
 
 if ($_GET['action'] == "makejs" && isset($_GET['id'])) {
 	setvar("XMLDATA","<a name=\"ad_".$_GET['id']."\"><script language=\"javascript\" src=\"<{\$UrlContainer.common}>js/adv.php?zid=".$_GET['id']."\"></script>");
-	template("pb-admin/industry_xml");
+	template("industry_xml");
 	exit;
 }
 if (isset($_POST['save'])) {

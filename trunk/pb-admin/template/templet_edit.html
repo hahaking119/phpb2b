@@ -38,14 +38,14 @@
                   <td align="center" class="altbg1">预览图片文件名（包括后缀）</td>
                   <td class="altbg2"><input name="templet[picture]" type="text" id="templet[picture]" value="<{$t.TempletPicture}>">
                   <br />
-                    （请放到data/templets目录下）</td>
+                    （请放到相应模板目录下）</td>
                 </tr>
                 <tr>
                   <td colspan="2" align="center"><input name="save" type="submit" id="save" value="保存" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
                 </tr>
             </table></td>
             <td align="center"><{if $t.TempletPicture}>
-                <img id="uploadpic" src="<{$SiteUrl}>data/templets/<{$t.TempletPicture}>" border="0">
+                <img id="uploadpic" src="<{$SiteUrl}>skins/<{$t.TempletTitle}>/screenshot.jpg" border="0">
               <{/if}></td>
           </tr>
         </table>

@@ -34,7 +34,7 @@ function smarty_function_offer($params){
 	$is_bold = false;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"block.".$params['templet'].".html":"block.offer_default.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/offer_default.html";
 	extract($params);
 	if (!class_exists("Trades")) {
 		uses("trade");
@@ -51,7 +51,7 @@ function smarty_function_offer($params){
 		if (isset($params['type'])) {
 			if($params['type']=="image"){
 				$conditions[] = "Trade.picture!=''";
-				$tpl_file = "block.default.image.html";
+				$tpl_file = "blocks/default.image.html";
 			}elseif ($params['type']=="buy" || $params['type']=="qiugou"){
 			    $offer_keys = $trade->getTradeTypeKeys("buy");
 			    $conditions[] = "Trade.type_id in ".$offer_keys;
@@ -99,7 +99,7 @@ function smarty_function_offer($params){
 	}
 	if (isset($params['showtypename'])) {
 		if ($params['showtypename']=="n") {
-			$tpl_file = "block.default.html";
+			$tpl_file = "blocks/default.html";
 		}
 	}
 	$offer_typenames = $trade->getTradeTypes();

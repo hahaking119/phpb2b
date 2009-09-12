@@ -29,7 +29,7 @@
  * @version $Id$
  */
 define('IN_UALINK', TRUE);
-define('DEBUG', '0');
+define('DEBUG', '1');
 define('SITE_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 /** set settings **/
 $gzipcompress = 0;//if use GZIP
@@ -52,7 +52,7 @@ if(!DEBUG){
 	error_reporting(0);
 }else{
 	error_reporting(E_ALL);
-	$g_db->debug = true;
+	//$g_db->debug = true;
 }
 require(SITE_ROOT. './app/include/class.my.smarty.php');
 $smarty = new MySmarty($inc_path);

@@ -8,18 +8,18 @@
 <meta name="keywords" content="友邻,友邻电子商务,B2B电子商务演示,最新产品,关键词">
 <meta name="description" content="找<{$prodInfo.ProductName|replace:"\r\n":""}>在<{$sitename}>"> 
 <script src="<{$JS_PATH}>js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script src="<{$JS_PATH}>js/prototype.js"></script>
 <script language="javascript">
 function extendDiv(id) {
 	if($('div_' + id).style.display == 'none') {
 		$('div_' + id).style.display = '';
-		$('img_' + id).src = '<{$tpl_img_path}>default/div_plus.gif';
+		$('img_' + id).src = '<{$theme_img_path}>images/div_plus.gif';
 	} else {
 		$('div_' + id).style.display = 'none';
-		$('img_' + id).src = '<{$tpl_img_path}>default/div_extend.gif';
+		$('img_' + id).src = '<{$theme_img_path}>images/div_extend.gif';
 	}
 }
 </script>
@@ -27,9 +27,9 @@ function extendDiv(id) {
 
 <body>
 <{assign var="product_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rmgjz mbx">
-	<p><span class="str"><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
+	<p><span class="str"><img height=13 src="<{$theme_img_path}>images/icon1.gif" 
       width=14> 您当前位置： <a class="link12" href="<{$SiteUrl}>"><{$sitename}></a> 
         &raquo; <a class=link12 href="<{$SiteUrl}>product/">产品库</a> 
         &raquo; <a class=link12  href="<{$SiteUrl}>product/list.php?sid=<{$prodInfo.IndustryID}>"><{$prodInfo.IndustryName}></a> &raquo; <{$prodInfo.ProductName|strip_tags}></p>
@@ -51,9 +51,9 @@ function extendDiv(id) {
 		</ul>
 		<div class="cp_d2">
 			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>
-			<{include file="`$ThemeName`/element.showcompanyinfo.html"}>
+			<{include file="`$ThemeName`/elements/showcompanyinfo.html"}>
 			<{else}>
-			<{include file="`$ThemeName`/element.loginform.html"}>
+			<{include file="`$ThemeName`/elements/loginform.html"}>
 			<{/if}>
 		</div>
 		<div class="clear9"></div>
@@ -71,15 +71,15 @@ function extendDiv(id) {
 		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>本产品其他同类产品信息</h2><em class="cp_em2"></em></div>
 		<div class="cp_c5">
 			<{if $FineProducts}>
-			<{include file="`$ThemeName`/element.fineproducts.html"}>
+			<{include file="`$ThemeName`/elements/fineproducts.html"}>
 			<{/if}>
 			<div class="clear9"></div>
 		</div>
 	</div>
 </div>
 <div class="clear9"></div>
-<div class="wd cpk_ad1"><img src="<{$tpl_img_path}>default/in_960x93.jpg" alt="" /></div>
+<div class="wd cpk_ad1"><img src="<{$theme_img_path}>images/in_960x93.jpg" alt="" /></div>
 <div class="clear15"></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

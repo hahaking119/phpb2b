@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>个人会员注册&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script src="<{$JS_PATH}>js/prototype.js"></script>
 <{$xajax_javascript}>
 </head>
@@ -13,7 +13,7 @@
 <body>
 <{assign var="room_li" value="cor over"}>
 <{assign var="if_searchbar" value="n"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rg_wd1 rg_wd">
 	<p class="rg_p1"></p><h2 class="rg_bt1">step1、填写基本信息</h2><h2 class="rg_bt2">step2、注册完成</h2><p class="rg_p2"></p>
 </div>
@@ -197,6 +197,6 @@ addEvent($("Submit"), "click", function doRegister(){
 	return checkreg(this);
 });
 </script>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

@@ -13,6 +13,7 @@ $product = new Products();
 $conditions = "1";
 $tpl_file = "product_index";
 $product_status = explode(",",lgg('product_status'));
+$ujoins = null;
 setvar("CheckStatus",$product_status);
 setvar("BooleanVars", explode(",",lgg('yes_no')));
 setvar("ProductSorts",explode(",",lgg('product_sorts')));
@@ -107,7 +108,6 @@ if($_GET['action'] == "mod"){
 if (isset($_GET['search'])) {
 	if(!empty($_GET['member']['id'])) {
 		$conditions.= " AND Product.member_id='".$_GET['member']['id']."'";
-		//$ujoins.= " left join ".$member->getTable(true)." on Product.member_id=Member.id";
 	}
 	if($_GET['product']['sort_id']!="-1") $conditions.= " AND Product.sort_id = ".$_GET['product']['sort_id'];
 	if(!empty($_GET['company']['name'])) {

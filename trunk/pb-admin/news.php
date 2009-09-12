@@ -100,7 +100,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
     	$allPictureNews = $g_db->GetArray("select picture,title,id from {$tb_prefix}newses where status='1' and picture!=''");
     	$outFileName = "../swf/imgList.xml";
     	$smarty->assign("PictureNews", $allPictureNews);
-    	$output = $smarty->fetch("pb-admin/element.swf.html");
+    	$output = $smarty->fetch("pb-admin/elements/swf.html");
     	$fp = fopen($outFileName, 'w') or die("Can't open file : ".$outFileName);
     	if($fp){
     	    fwrite($fp, $output);

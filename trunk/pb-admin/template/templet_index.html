@@ -52,7 +52,7 @@ color:black;
 <{foreach from=$TempletList name=templetlist item=t}>
 <tr align="center" bgcolor="<{cycle values=#eeeeee,#ffffff}>">
 <td><input type="checkbox" name="id[]" value="<{$t.TempletId}>" onClick="uaCheckItem(this, 'idAll')"></td>
-<td><a class="tooltips" href="#"><{$t.TempletTitle}><span><img src="../templates/member/<{$t.TempletTitle}>/screenshot.jpg" border="0" /></span></a></td>
+<td><a class="tooltips" href="#"><{$t.TempletTitle}><span><img src="../skins/<{$t.TempletTitle}>/screenshot.jpg" border="0" /></span></a></td>
 <td><{$t.CompanyStyleStat}>个</td>
 <td><a href="./templet.php?id=<{$t.TempletId}>&action=mod"><img src="images/mod.gif" border="0" alt="修改"></a>  <a href="./templet.php?id=<{$t.TempletId}>&action=del"><img src="images/delete.gif" border="0" alt="删除"></a></td>
 </tr>

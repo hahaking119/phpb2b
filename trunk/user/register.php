@@ -19,7 +19,7 @@ $if_set_register_picture = $setting->field("valued", "variable='register_picture
 $register_type = $setting->field("valued", "variable='register_type'");
 $ip_reg_sep = $setting->field("valued", "variable='ip_reg_sep'");
 $forbid_ip = $setting->field("valued", "variable='forbid_ip'");
-
+$conditions = null;
 if (!empty($ip_reg_sep)) {
 	$cfg['reg_time_seperate'] = $ip_reg_sep*60*60;
 }

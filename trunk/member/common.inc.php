@@ -27,10 +27,10 @@ if (empty($companyinfo) || !$companyinfo) {
     alert(sprintf(lgg('company_checking'), $companyinfo['CompanyName']));
 }
 $companystyle = $company->getTempletName($companyinfo['configs']);
-$tplpath = (empty($companystyle) || !$companystyle)?"member/default/":"member/".$companystyle."/";
-$space_imgurl = "templates/".$tplpath;
+$tplpath = (empty($companystyle) || !$companystyle)?"default/":$companystyle."/";
+$space_imgurl = "skins/".$tplpath;
 if(PRETEND_HTML_LEVEL>0){
-	$space_imgurl = "../../templates/".$tplpath;
+	$space_imgurl = "../../skins/".$tplpath;
 }
 uaAssign(array("I_PATH"=>$space_imgurl, "TplPath"=>$tplpath));
 $conditions = " and Companylink.companyid1=".intval($companyinfo['ID'])." and Company.id=Companylink.companyid2";

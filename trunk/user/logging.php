@@ -15,7 +15,12 @@ $if_set_login_picture = $setting->field("valued", "variable='login_picture'");
 setvar("IfLoginPicture",intval($if_set_login_picture));
 if(isset($_POST['loginbtn'])){
 	$back_forward = null;
-	$auth_check = uaStrCompare(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
+	$auth_check = true;
+	if ($if_set_login_picture) {
+    	$login_auth = $_POST['login_auth'];
+    	$authnum_session = $_SESSION['authnum_session'];
+    	$auth_check = uaStrCompare(strtolower($login_auth),strtolower($authnum_session));
+	}
 	if (!$auth_check && $if_set_login_picture) {
 		session_destroy();
 		setvar("LoginError",lgg('wrong_validate'));
@@ -80,7 +85,7 @@ function ua_referer($default = '') {
 	return $referer;
 }
 if(isset($_GET['action']) && ($_GET['action'] == "logout")){
-	$member_out = null;
+	$member_out = $referer = null;
 	$referer = ua_referer();
 	uclearcookies();
 	if (isset($_GET['fr'])) {

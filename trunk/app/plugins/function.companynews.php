@@ -33,7 +33,7 @@ function smarty_function_companynews($params){
 	global $smarty, $theme_name, $cookiepre, $tb_prefix;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"block.".$params['templet'].".html":"block.default.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
 	extract($params);
 	if (class_exists("Companynews")) {
 		$companynews = new Companynewses();

@@ -15,5 +15,5 @@ $company_info['year_annual'] = $company->year_annuals[$company_info['year_annual
 
 setvar("CompanyInfo",$company_info);
 unset($company_info);
-template($tplpath."introduction");
+template("../skins/".$tplpath."introduction");
 ?>

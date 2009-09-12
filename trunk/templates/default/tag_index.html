@@ -6,9 +6,9 @@
 <title>关键词竞价&laquo;<{$sitetitle}></title>
 <meta name ="keywords" content="关键词,竞价">
 <meta name="description" content="<{$sitetitle}>提供了关键词竞价形式来提升您的产品竞争力。"> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <style>
 .latest {
 	color: #FFF;
@@ -23,13 +23,13 @@
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr> 
-    <td><{include file="`$ThemeName`/element.header.html"}></td>
+    <td><{include file="`$ThemeName`/elements/header.html"}></td>
   </tr>
 </table>
 <table width="960" height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
   <tbody>
     <tr> 
-      <td width=785><img height=13 src="<{$tpl_img_path}>default/tag.gif"> 您当前位置： <A class=link12 href="<{$SiteUrl}>">首页</A> 
+      <td width=785><img height=13 src="<{$theme_img_path}>images/tag.gif"> 您当前位置： <A class=link12 href="<{$SiteUrl}>">首页</A> 
         &raquo; <A class=link12 href="<{$SiteUrl}>tag.php">关键词搜索</A></td>
     </tr>
   </tbody>
@@ -62,6 +62,6 @@
   </tr>
 </table>
 <!-- 列表结束 -->
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

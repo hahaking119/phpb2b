@@ -7,5 +7,5 @@ require("session_cp.inc.php");
 $adminrole = new Adminroles();
 $adminer = new Adminers();
 $conditions = null;
-template("pb-admin/adminrole_index");
+template("adminrole_index");
 ?>

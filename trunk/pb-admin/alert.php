@@ -27,5 +27,5 @@ if ($_GET['result']) {
 	$alert_img = "action_false.gif";
 }
 setvar("AlertImg",$alert_img);
-template("pb-admin/alert");
+template("alert");
 ?>

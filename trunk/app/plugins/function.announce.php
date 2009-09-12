@@ -33,7 +33,7 @@ function smarty_function_announce($params){
 	global $smarty, $theme_name, $tb_prefix, $cookiepre, $time_stamp;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"block.".$params['templet'].".html":"block.default.html";
+	$tpl_file = (isset($params['templet']))?"block/".$params['templet'].".html":"block/default.html";
 	extract($params);
 	require(DATA_PATH.$cookiepre."announce.inc.php");
 	if (!class_exists("Announcements")) {

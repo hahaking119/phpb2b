@@ -6,9 +6,9 @@
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name ="keywords" content="<{$sitename}>">
 <meta name="description" content="<{$sitename}>客户服务中心,请提交您的宝贵意见在这里"> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script language="javascript">
 /**
 onpropertychange()方法在非IE浏览器中很多都不支持，以后可能要用其他代替。
@@ -58,7 +58,7 @@ function d(){
 <body>
 <!--head-->
 <{assign var="room_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <!--head end-->
 <div class="wd crumb">
 	<p><span class="str">您当前位置：</span><a href="<{$UrlContainer.common}>" title="<{$sitename}>"><{$sitename}></a> &gt; 客服中心</p>
@@ -66,7 +66,7 @@ function d(){
 <div class="clear9"></div>
 <div class="wd">
 	<div class="w_left1">
-		<p class="cs_ad"><img src="<{$tpl_img_path}>default/service.jpg" /></p>
+		<p class="cs_ad"><img src="<{$theme_img_path}>images/service.jpg" /></p>
 		<div class="clear9"></div>
 		<p class="a_line"></p>
 		<div class="cs_c1">
@@ -143,7 +143,7 @@ function d(){
 	</div>
 	<div class="clear"></div>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 <script language="javascript">
 init();//必须放在最后，才能对按钮生效。
 </script>

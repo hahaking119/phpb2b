@@ -36,5 +36,5 @@ pageft($amount,$display_eve_page);
 setvar("LogList",$memberlog->findAll($fields, $conditions, "Memberlog.id DESC ",$firstcount,$displaypg));
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
 uaAssign(array("Amount"=>$amount,"PageHeader"=>$page_header,"ByPages"=>$pagenav));
-template("pb-admin/memberlog_index");
+template("memberlog_index");
 ?>

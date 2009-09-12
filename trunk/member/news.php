@@ -4,7 +4,6 @@ require(SITE_ROOT.'./app/include/page.php');
 uses("companynews");
 $companynews = new Companynewses();
 $conditions = " Companynews.company_id=".$companyinfo['ID'];
-$tpl_file = "news";
 if ($_GET['news_id']) {
 	$tpl_file = "news_detail";
 	$info = $companynews->read("*", intval($_GET['news_id'], $conditions));
@@ -18,5 +17,5 @@ if ($_GET['news_id']) {
 	setvar("News",$companynews->findAll($companynews->common_cols,$conditions,"Companynews.id DESC",$firstcount,$displaypg));
 	setvar("ByPages",$pagenav);
 }
-template($tplpath.$tpl_file);
+template("../skins/".$tplpath."news");
 ?>

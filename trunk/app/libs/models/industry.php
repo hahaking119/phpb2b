@@ -104,7 +104,7 @@ class Industries extends UaModel {
 	    }
 	    $smarty->assign("url", $url);
 	    $smarty->assign("IndustryList", $CACHE_P_INDUSTRY);
-	    return $smarty->fetch($theme_name."/element.".$templet.".html");
+	    return $smarty->fetch($theme_name."/elements/".$templet.".html");
 	}
 
 	function updateModelAmount($industry_id, $model_name, $write = true)

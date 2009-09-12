@@ -16,6 +16,7 @@ $company = new Companies();
 $area = new Areas();
 $conditions = "1";
 $tpl_file = "company_index";
+$ujoins = null;
 $result = $companytype->findAll("id as CompanytypeId,name as CompanytypeName",$conditions, " id desc", 0,15);
 $company_types = array();
 foreach ($result as $key=>$val) {
@@ -248,7 +249,7 @@ if (isset($_POST['search'])) {
 	if ($_POST['companytype']!="-1") $conditions.= " AND Company.type_id=".$_POST['companytype'];
 }
 $amount = $company->findCount($conditions,"Company.id", null, $ujoins);
-if ($_POST['gopage'] && intval($_POST['topage'])) {
+if (isset($_POST['gopage']) && intval($_POST['topage'])) {
 	$page = intval($_POST['topage']);
 }
 pageft($amount,$display_eve_page);

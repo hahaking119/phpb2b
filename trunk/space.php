@@ -30,6 +30,7 @@
  */
 $inc_path = "./";
 require("global.php");
+$smarty->template_dir = "./skins/";
 $hosts = explode($config_subdomain, $_SERVER['HTTP_HOST']);
 $do = null;
 $userid = 0;

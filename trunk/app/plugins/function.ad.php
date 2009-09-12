@@ -35,7 +35,7 @@ function smarty_function_ad($params){
 	$limit = null;
 	$conditions[] = "status=1 and end_date>".$time_stamp;
 	if (isset($params['templet'])) {
-		$op = $smarty->fetch($theme_name."/block.".$params['templet'].".html", null, null, false);
+		$op = $smarty->fetch($theme_name."/blocks/".$params['templet'].".html", null, null, false);
 		echo $op;
 		return;
 	}
@@ -83,7 +83,7 @@ function smarty_function_ad($params){
 	    }else{
 	        $tpl_file = 'default.image';
 	    }
-	    $op = $smarty->fetch($theme_name."/block.".$tpl_file.".html", null, null, false);
+	    $op = $smarty->fetch($theme_name."/blocks/".$tpl_file.".html", null, null, false);
 	    if (empty($max_width)) {
 	    $op = str_replace(array("[link:title]", "[field:title]", "[img:src]"), array($url, $result[$i]['LinkTitle'], $result[$i]['ItemPicture']), $op);
 	    }else{

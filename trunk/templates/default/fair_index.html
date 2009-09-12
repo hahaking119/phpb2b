@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>展会&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <{$xajax_javascript}>
 <script language="javascript">
 xajax_rebuildHTML("fair/index.php");
@@ -14,7 +14,7 @@ xajax_rebuildHTML("fair/index.php");
 
 <body>
 <{assign var="fair_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd">
 	<div class="w_left1">
 		<div class="zh_tab1">
@@ -35,7 +35,7 @@ bgcolor="#5EA4EC" menu="false" FlashVars="pics=<{$PictureFiles}>&links=<{$Pictur
 				<li class="li5 li8">地点</li>
 				<li class="li5 li9">时间</li>
 				<{foreach from=$LatestExpo name=remen item=m}>
-				<li class="li1"><a href="<{$UrlContainer.common}>fair/detail.php?title=<{$m.ExpoName|urlencode}>" title="<{$m.ExpoName}>"><{$m.ExpoName|truncate:32}></a><{if $m.ExpoCreated>$today_mktime}><img src="<{$tpl_img_path}>default/new.gif" width="21" height="9"><{/if}></li>
+				<li class="li1"><a href="<{$UrlContainer.common}>fair/detail.php?title=<{$m.ExpoName|urlencode}>" title="<{$m.ExpoName}>"><{$m.ExpoName|truncate:32}></a><{if $m.ExpoCreated>$today_mktime}><img src="<{$theme_img_path}>images/new.gif" width="21" height="9"><{/if}></li>
 				<li class="li2"><{$Expotypes[$m.TypeId]}></li>
 				<li class="li3"><{$Areas[$m.ProvinceId]}><{$Areas[$m.CityId]}></li>
 				<li class="li4"><{$m.ExpoCreated|default:$m.ExpoPosted|date_format:"%Y-%m-%d"}>至<{$m.LastDate|date_format:"%Y-%m-%d"}></li>
@@ -58,6 +58,6 @@ bgcolor="#5EA4EC" menu="false" FlashVars="pics=<{$PictureFiles}>&links=<{$Pictur
 	<{/if}>
 </div>
 <div class="clear9"></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>产品库&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <meta name ="keywords" content="产品库,行业产品库,行业分类">
 <meta name="description" content="最新最全产品库尽在<{$sitename}>"> 
 <{$xajax_javascript}>
@@ -16,7 +16,7 @@ xajax_rebuildHTML("product/index.php");
 
 <body>
 <{assign var="product_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd">
 	<div class="w_left1">
 		<div class="cp_bor1">
@@ -62,11 +62,11 @@ xajax_rebuildHTML("product/index.php");
 			<{/section}>
 		</div>
 		<div class="clear9"></div>
-		<div class="cpk_ad2"><img src="<{$tpl_img_path}>default/in_235x80.jpg" alt="" /></div>
+		<div class="cpk_ad2"><img src="<{$theme_img_path}>images/in_235x80.jpg" alt="" /></div>
 	</div>
 </div>
 <div class="clear9"></div>
 <div class="wd cpk_ad1"><{ad type_id=1}></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

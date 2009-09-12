@@ -5,17 +5,17 @@
 <title><{$i.MarketName|strip_tags}><{if $i.MarketPicture!=""}>(有图片)<{/if}>&laquo;市场库&laquo;<{$sitetitle}></title>
 <meta name ="keywords" content="<{$i.MarketName}>" />
 <meta name="description" content="市场库名称<{$i.MarketName}>,描述<{$i.MarketContent|nl2br|replace:"\r\n":""|truncate:100}>" /> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 </head>
 
 <body>
 <{assign var="market_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td height="25" class="corhui">&nbsp;<img src="<{$tpl_img_path}>default/star.gif" width="15" height="13" align="absmiddle">您当前位置：<a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">市场库</a> &raquo; <{$i.MarketName}></td>
+    <td height="25" class="corhui">&nbsp;<img src="<{$theme_img_path}>images/star.gif" width="15" height="13" align="absmiddle">您当前位置：<a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">市场库</a> &raquo; <{$i.MarketName}></td>
   </tr>
   <tr>
     <td height="5"></td>
@@ -51,14 +51,14 @@
 		</div>
 	</div>
 	<div class="sck_left3">
-		<div class="sck_ad4"><img src="<{$tpl_img_path}>default/sck_155x350.jpg" /></div>
+		<div class="sck_ad4"><img src="<{$theme_img_path}>images/sck_155x350.jpg" /></div>
 		<div class="clear9"></div>
-		<div class="sck_ad5"><img src="<{$tpl_img_path}>default/sck_155x85.jpg" /></div>
+		<div class="sck_ad5"><img src="<{$theme_img_path}>images/sck_155x85.jpg" /></div>
 		<div class="clear9"></div>
-		<div class="sck_ad6"><img src="<{$tpl_img_path}>default/sck_155x235.jpg" /></div>
+		<div class="sck_ad6"><img src="<{$theme_img_path}>images/sck_155x235.jpg" /></div>
 	</div>
 </div>
 <div class="clear15"></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

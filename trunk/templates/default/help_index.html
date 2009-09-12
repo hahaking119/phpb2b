@@ -6,13 +6,13 @@
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name ="keywords" content="<{$sitename}>">
 <meta name="description" content=""> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 
 <div class="wd crumb">
 	<p><span class="str">您当前位置：</span><a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="<{$SiteUrl}>help.php">帮助中心</a></p>
@@ -34,6 +34,6 @@
 		<{/section}>
 	</div>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

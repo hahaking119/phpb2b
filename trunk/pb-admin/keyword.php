@@ -9,11 +9,14 @@ $tpl_file = "keyword_index";
 $keyword = new Keywords();
 $member = new Members();
 $keyword_types = array();
+$conditions = null;
 setvar("KeywordStatus", explode(",",lgg('yes_no')));
-foreach ($nav as $li_id=>$keyword_name) {
-	$keyword_types[$li_id] = $keyword_name['cname'];
+if(!empty($nav)){
+	foreach ($nav as $li_id=>$keyword_name) {
+		$keyword_types[$li_id] = $keyword_name['cname'];
+	}
+	setvar("KeywordTypes",$keyword_types);
 }
-setvar("KeywordTypes",$keyword_types);
 if (isset($_POST['save'])) {
 	$vals = $_POST['keyword'];
 	$keyword_id = $_POST['id'];

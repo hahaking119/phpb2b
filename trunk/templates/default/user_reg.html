@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>新会员注册&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <style>
 .corred {
 	background: #F4FBFF;
@@ -32,7 +32,7 @@ xajax_rebuildHTML("user/index.php");
 <body>
 <{assign var="room_li" value="cor over"}>
 <{assign var="if_searchbar" value="n"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rg_wd1">
 	<div class="rg_left1">
 		<table width="960"  border="0" align="center" cellpadding="0" cellspacing="5" >
@@ -41,7 +41,7 @@ xajax_rebuildHTML("user/index.php");
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr> 
 					<td>
-					<span class="font15"><img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11"><{$sitename}>会员注册步骤一：选择注册类型</span>　　　　　　　　　　　　　　　　　　　　　
+					<span class="font15"><img src="<{$theme_img_path}>images/icon03.gif" width="11" height="11"><{$sitename}>会员注册步骤一：选择注册类型</span>　　　　　　　　　　　　　　　　　　　　　
 					</td>
 				  </tr>
 				</table>
@@ -54,8 +54,8 @@ xajax_rebuildHTML("user/index.php");
 			<td> 
 			  <table width="100%"  border="0" cellpadding="5" cellspacing="2">
 				<tr> 
-				  <td width="50%" align="right"><a href="<{$UrlContainer.register}>?ob=personal"><img src="<{$tpl_img_path}>default/reg_type1.gif" border="0"></a></td>
-				  <td><a href="<{$UrlContainer.register}>?ob=company"><img src="<{$tpl_img_path}>default/reg_type2.gif" border="0"></a></td>
+				  <td width="50%" align="right"><a href="<{$UrlContainer.register}>?ob=personal"><img src="<{$theme_img_path}>images/reg_type1.gif" border="0"></a></td>
+				  <td><a href="<{$UrlContainer.register}>?ob=company"><img src="<{$theme_img_path}>images/reg_type2.gif" border="0"></a></td>
 				</tr>
 				<tr> 
 				  <td width="50%" align="left" class="corred"><li>您可以在本网免费发布供应信息、求购信息</li></td>
@@ -73,6 +73,6 @@ xajax_rebuildHTML("user/index.php");
 	</div>
 </div>
 <div class="clear15"></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

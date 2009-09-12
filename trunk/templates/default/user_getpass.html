@@ -6,9 +6,9 @@
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name ="keywords" content="<{$sitename}>,取回密码,登录名">
 <meta name="description" content="请输入您的会员登录名以便取回丢失的密码..."> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
 <script language="javascript">
 <!-- 
@@ -31,7 +31,7 @@ function login(frm){
 <body>
 <!--head-->
 <{assign var="if_searchbar" value="n"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <!--head end-->
 <div class="clear9"></div>
 <div class="wd crumb">
@@ -64,7 +64,7 @@ function login(frm){
 			1.通过Email取回<br />
 			2.联系我们的客服:<{$servicetel}>
 		</div>
-		<div class="getpass_img"><a href="service.php"><img src="<{$tpl_img_path}>default/service.jpg" /></a></div>
+		<div class="getpass_img"><a href="service.php"><img src="<{$theme_img_path}>images/service.jpg" /></a></div>
 		<div class="getpass_c3">
 			如果您无法通过上述方法修改密码,请您和客户服务中心联系;<br />
 			<em class="str">帐号修复支持中心:</em> <{$UrlContainer.common}>user/service.php<br />
@@ -72,7 +72,7 @@ function login(frm){
 		</div>
 	</div>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 <script type="text/javascript" src="<{$JS_PATH}>js/getpass.js"></script>
 </body>
 </html>

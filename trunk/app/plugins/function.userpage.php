@@ -33,7 +33,7 @@ function smarty_function_userpage($params){
 	global $smarty, $theme_name;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"block.".$params['templet'].".html":"block.friendlink.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/friendlink.html";
 	extract($params);
 	$fields = "uf as LinkTitle,id as LinkId,ug as LinkUrl,ub as LinkName";
 	if (!class_exists("Userpages")) {

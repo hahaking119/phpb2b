@@ -24,7 +24,7 @@ if(!empty($LatestPictureNews)){
 	    $j++;
 	}
 	uaAssign(array("img_count"=>$img_count, "PictureFiles"=>implode("\n", $imgs_src), "PictureTitles"=>implode("\n", $imgs_url)));
-	setvar("ImageShow", $smarty->fetch($theme_name."/element.img_show.html"));
+	setvar("ImageShow", $smarty->fetch($theme_name."/elements/img_show.html"));
 }
 require(DATA_PATH.$cookiepre."newstype.inc.php");
 setvar("Newstype", $UL_DBCACHE_NEWSTYPE);

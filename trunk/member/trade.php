@@ -13,5 +13,5 @@ setvar("TradeTypes", $trade->getTradeTypes());
 setvar("TradeNames", $trade->getTradeTypeNames());
 setvar("Offers",$company_offers);
 setvar("ByPages",$pagenav);
-template($tplpath."offer");
+template("../skins/".$tplpath."offer");
 ?>

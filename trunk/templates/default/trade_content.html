@@ -7,9 +7,9 @@
 <meta name="Author" content="PHPB2B2.4Final" />
 <meta name="generator" content="<{$UaVersion}>" />
 <meta name="description" content="<{$tradeInfo.Description|replace:"\r\n":""|truncate:150}>" /> 
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script src="<{$CSS_PATH}>js/jquery.js"></script>
 <script>
 $(document).ready(function(){        //DOM的onload事件处理函数     
@@ -53,7 +53,7 @@ function getExpireStr(exp_date){
 
 <body>
 <{assign var="trade_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd rmgjz mbx">
 	<p><span class="str">您当前位置：<a class="link12" href="<{$SiteUrl}>"><{$sitename}></a>&raquo;<a class=link12 href="<{$SiteUrl}>offer/list.php">供求信息</a>&raquo;<{$tradeInfo.Name|strip_tags}></p>
 </div>
@@ -76,9 +76,9 @@ function getExpireStr(exp_date){
 		</ul>
 		<div class="cp_c2 cp_c6">
 			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>
-			<{include file="`$ThemeName`/element.showcompanyinfo.html"}>
+			<{include file="`$ThemeName`/elements/showcompanyinfo.html"}>
 			<{else}>
-			<{include file="`$ThemeName`/element.loginform.html"}>
+			<{include file="`$ThemeName`/elements/loginform.html"}>
 			<{/if}>
 		</div>
 		<div class="clear9"></div>
@@ -106,7 +106,7 @@ function getExpireStr(exp_date){
 		<div class="cp_bt1 cp_bt3"><em class="cp_em1"></em><h2>本产品其他同类产品信息</h2><em class="cp_em2"></em></div>
 		<div class="cp_c5">
 			<{if $FineProducts}>
-			<{include file="`$ThemeName`/element.fineproducts.html"}>
+			<{include file="`$ThemeName`/elements/fineproducts.html"}>
 			<{/if}>
 			<div class="clear9"></div>
 		</div>
@@ -115,6 +115,6 @@ function getExpireStr(exp_date){
 <div class="clear9"></div>
 <div class="wd cpk_ad1"><{ad type_id=1}></div>
 <div class="clear15"></div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

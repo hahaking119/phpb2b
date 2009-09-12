@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>公司库&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <script type="text/javascript" src="<{$JS_PATH}>js/swfobject.js"></script>
 <script type="text/javascript">
 var flashvars = {};
@@ -20,7 +20,7 @@ xajax_rebuildHTML("company.php");
 
 <body>
 <{assign var="company_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd">
 	<div class="w_left1">
 		<div class="w_left4">
@@ -59,9 +59,9 @@ xajax_rebuildHTML("company.php");
 			<ul class="ul21"><{company max=9 commend="y"}></ul>
 		</div>
 		<div class="clear9"></div>
-		<div class="gs_ad1"><img src="<{$tpl_img_path}>default/in_235x55.jpg" /></div>
+		<div class="gs_ad1"><img src="<{$theme_img_path}>images/in_235x55.jpg" /></div>
 		<div class="clear9"></div>
-		<div class="gs_ad1"><img src="<{$tpl_img_path}>default/in_235x55_1.jpg" /></div>
+		<div class="gs_ad1"><img src="<{$theme_img_path}>images/in_235x55_1.jpg" /></div>
 	</div>
 </div>
 <div class="clear9"></div>
@@ -81,6 +81,6 @@ xajax_rebuildHTML("company.php");
 		</div>
 	</div>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

@@ -42,5 +42,5 @@ if(isset($_POST['start']) && !empty($_POST['io']['from'])){
 	exit;
 }
 setvar("dbInfo", $db_links);
-template("pb-admin/io_import");
+template("io_import");
 ?>

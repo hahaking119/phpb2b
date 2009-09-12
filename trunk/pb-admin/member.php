@@ -14,6 +14,7 @@ $product = new Products();
 $membertype = new Membertypes();
 require("session_cp.inc.php");
 $tpl_file = "member_index";
+$conditions = null;
 $result = $membertype->findAll("id as MembertypeId,name as MembertypeName",$conditions, " id desc", 0,15);
 $user_types = array();
 foreach ($result as $key=>$val) {
@@ -21,7 +22,7 @@ foreach ($result as $key=>$val) {
 }
 setvar("UserTypes",$user_types);
 $conditions = "1";
-if ($_GET['search']) {
+if (isset($_GET['search'])) {
 	if($_GET['member']['name']) $conditions.=" and Member.username like '%".$_GET['member']['name']."%'";
 	if($_GET['member']['status']>=0) $conditions.=" and Member.status='".$_GET['member']['status']."'";
 	if($_GET['member']['user_type']>=0) $conditions.=" and Member.user_type=".$_GET['member']['user_type'];

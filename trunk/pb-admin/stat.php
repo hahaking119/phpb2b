@@ -42,5 +42,5 @@ if(isset($_GET['action'])){
 	}
 }
 setvar("Lists", $lists);
-template("pb-admin/stat_index");
+template("stat_index");
 ?>

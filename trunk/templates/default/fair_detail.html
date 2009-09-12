@@ -6,15 +6,15 @@
 <meta name ="keywords" content="<{$sitename}>" />
 <meta name="description" content="<{$ExpoRes.ExpoEl|replace:"\r\n":""|truncate:150}>" /> 
 <title><{$pageTitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 </head>
 
 <body onload="new CbsCalendar('mydate1')">
 <!--head-->
 <{assign var="fair_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <!--head end-->
 <div class="wd crumb">
 	<p><span class="str">您当前位置：</span><a href="<{$SiteUrl}>"><{$sitename}></a> &raquo; <a href="./index.php">展会库</a> &raquo; <{$ExpoRes.ExpoEa}></em>
@@ -66,6 +66,6 @@
 	</div>
 	<p class="a_line5"></p>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

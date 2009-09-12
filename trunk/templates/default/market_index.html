@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
 <title>市场库&laquo;<{$sitetitle}></title>
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
 <{$xajax_javascript}>
 <script language="javascript">
 xajax_rebuildHTML("market/index.php");
@@ -14,7 +14,7 @@ xajax_rebuildHTML("market/index.php");
 
 <body>
 <{assign var="market_li" value="cor over"}>
-<{include file="`$ThemeName`/element.header.html"}>
+<{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd">
 	<div class="w_left1">
 		<div class="sck_ss">
@@ -59,7 +59,7 @@ border=0>
                       </tbody>
                   </table></td>
                   <td width="74%" valign="top"><img 
-                  src="<{$tpl_img_path}>default/china.jpg" alt="" width=385 height=316 border=0 
+                  src="<{$theme_img_path}>images/china.jpg" alt="" width=385 height=316 border=0 
                   useMap=#Map2></td>
                 </tr>
               </tbody>
@@ -117,7 +117,7 @@ border=0>
 			</ul>
 		</div>
 		<div class="clear9"></div>
-		<div><img src="<{$tpl_img_path}>default/mpic2.jpg" alt="" width="230" height="95" /></div>
+		<div><img src="<{$theme_img_path}>images/mpic2.jpg" alt="" width="230" height="95" /></div>
 	</div>
 </div>
 <div class="clear9"></div>
@@ -135,6 +135,6 @@ border=0>
 		</div>
 	</div>
 </div>
-<{include file="`$ThemeName`/element.foot.html"}>
+<{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

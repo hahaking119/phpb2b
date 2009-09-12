@@ -22,5 +22,5 @@ if (isset($_POST['save'])) {
 }
 $ua_sets = $setting->getValues();
 setvar("U",$ua_sets);
-template("pb-admin/bank");
+template("bank");
 ?>

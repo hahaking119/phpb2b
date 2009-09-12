@@ -11,10 +11,11 @@ $membertype = new Membertypes();
 $conditions = null;
 $tpl_file = "templet_index";
 $page_header = $pagenav = null;
-function search_templets()
+$skin_dir = BASE_DIR."skins";
+function search_templets($skin_dir)
 {
-	@chdir(BASE_DIR."templates".DS."member");
-	$handle = @opendir(BASE_DIR."templates".DS."member");
+	@chdir($skin_dir);
+	$handle = @opendir($skin_dir);
 	while($dir = @readdir($handle))
 	{
 	if   (is_dir($dir)   and   $dir<>"."   and   $dir<>"..")
@@ -72,7 +73,7 @@ if($_GET['action'] == "mod"){
 }
 template($tpl_file);
 if ($_GET['action']=="list") {
-	$folder_templets = search_templets();
+	$folder_templets = search_templets($skin_dir);
 	foreach ($tmp_templets as $key=>$val) {
 		$db_templets[] = strtolower($val['TempletTitle']);
 	}
