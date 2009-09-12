@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr><td>
+<div align="left"><a href="#" onClick="parent.menu.location='setting.php?action=menu'; parent.main.location='setting.php?action=home';return false;">控制台</a>&nbsp;&raquo;&nbsp;会员类型管理</div></td></tr>
+</table>
+<br />
+
+<!-- 标题 -->
+<form name="listfrm" action="<{$smarty.server.PHP_SELF}>" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="全选"></td><td>名称</td><td>默认</td>
+  <td>权限</td>
+  <td>图例</td>
+  <td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$Lists item=mt name=membertypes}>
+<tr bgcolor="<{cycle values="#eeeeee,#ffffff"}>" align="center">
+<td><input type="checkbox" name="id[]" value="<{$mt.MembertypeId}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><{$mt.MembertypeName}></td>
+<td><input type="radio" name="default_id" value="<{$mt.MembertypeId}>" <{if $mt.MembertypeIfDefault=="1"}>checked<{/if}> /></td>
+<td><{if $mt.AccessName!=""}><a href="./access.php?action=mod&id=<{$mt.access_id}>&membertype_id=<{$mt.MembertypeId}>"><{$mt.AccessName}></a><{else}><a href="./access.php?action=mod&membertype_id=<{$mt.MembertypeId}>" title="只有添加权限后该会员权限才能生效"><font color="red">添加权限</font></a><{/if}></td>
+<td><div id="img1"><img src="<{$tpl_img_path}>default/type/<{$mt.picture}>" alt="" border="0" /></div></td>
+<td><a href="./membertype.php?action=mod&id=<{$mt.MembertypeId}>"><img src="images/mod.gif" border="0" alt="修改"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="7">目前没有任何数据</td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="7"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="7"><input name="del" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" value="删除">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="updateDefault" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" value="更新为默认类型"></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<br />
+<!-- 快速添加 -->
+<form name="quickaddfrm" action="" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="5"><div align="left">快速添加</div></td></tr>
+<tr>
+	<td><div align="right">类型名称 :</div></td>
+	<td><input name="membertype[name]" type="text" id="membertype_name"></td>
+	<td><div align="right">是否设置为默认类型</div></td>
+	<td><input type="radio" name="membertype[if_default]" value="1">是<input type="radio" name="membertype[if_default]" value="0" checked>否</td>
+	<td><input name="quickadd" type="submit" id="quickadd" value="添加" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>

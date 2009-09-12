@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;操作员管理</div></td></tr>
+</table>
+<br />
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" id="idAll" onClick="uaCheckAll(this, 'id[]')" title="全选"><label for="idAll">全选</label></td>
+<td>登陆用户名</td>
+<td>姓名</td>
+<td></td>
+<td><strong>最后登陆时间</strong></td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$AdminerList item=i name=admins}>
+<tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
+<td><input type="checkbox" name="id[]" value="<{$i.AdminerId}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><{$i.AdminerUserName}></td>
+<td><{$i.AdminerFirstName}><{$i.AdminerLastName}></td>
+<td></td>
+<td><{$i.AdminerLastLogin|date_format:"%Y-%m-%d"}></td>
+<td><a href="./adminer.php?action=del&username=<{$i.AdminerUserName}>&id=<{$i.AdminerId}>"><img src="images/delete.gif" border="0" alt="删除"></a><!-- &nbsp;<a href="./adminer.php?action=refresh&username=<{$i.AdminerUserName}>&id=<{$i.AdminerId}>"><img src="images/refresh.gif" border="0" alt=" 重设密码 "></a> --></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="7" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="7"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="5"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="删除" onClick="return confirmAction('确定删除吗?');"></td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<!-- 快速添加 -->
+<form name="quickaddfrm" action="" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="6"><div align="left">快速添加</div></td></tr>
+<tr>
+	<td width="9%"><div align="right">用户名：</div></td>
+	<td width="15%"><input name="adminer[user_name]" type="text" id="adminer[user_name]" size="15"></td>
+	<td width="10%"><div align="right">密码：</div></td>
+	<td><input name="adminer[user_pass]" type="text" id="adminer[user_pass]" size="15"></td>
+	<td></td>
+	<td><input name="save" type="submit" id="save" value="添加" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"  onclick="return window.confirm('确认添加吗?');"></td>
+  </tr>
+</table>
+</form>
+<!-- 结束new -->
+</body>
+</html>

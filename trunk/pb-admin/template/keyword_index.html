@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台-<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="<{$CSS_PATH}>css/style.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<style   type="text/css"   id="internalStyle">   
+#container{     
+text-align:   left;
+white-space:   nowrap;   
+}  
+</style>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+<body>
+
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;关键词管理</div></td></tr>
+</table>
+<br />
+<!-- 搜索 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="4"><div id="container">快速搜索
+<img onClick="collapse_change('3')" id="menuimg_3" src="./images/menu_add.gif" border="0"/></div></td></tr>
+<form name="searchfrm" method="get" action="<{$smarty.server.PHP_SELF}>">
+<tbody id="menu_3" style="display: none">
+<tr>
+  <td width="9%"><div align="right">关键字</div></td>
+  <td width="15%"><input name="keywords" type="text" id="keywords" value="<{$smarty.post.keywords}>"></td>
+  <td width="10%">&nbsp;</td>
+  <td><input name="search" type="submit" id="search" value="查    询" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</tbody>
+</form>
+</table>
+
+<br>
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td></td>
+<td>关键词</td>
+<td>类型</td>
+<td>发布人</td>
+<td>是否有效</td>
+<td>点击</td>
+<td>分值</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$Lists name=keyword_lists item=k}>
+<tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
+<td><input type="checkbox" name="id[]" id="id_<{$k.KeywordId}>" value="<{$k.KeywordId}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><label for="id_<{$k.KeywordId}>"><{$k.KeywordTitle|htmlspecialchars}></label></td>
+<td>类型</td>
+<td><a href="./member.php?action=mod&id=<{$k.member_id}>"><{$k.MemberUserName}></a></td>
+<td><{if $k.KeywordStatus==1}><img src="images/action_success.gif" border="0" alt="有效"><{else}><img src="images/action_false.gif" border="0" alt="无效"><{/if}></td>
+<td><{$k.KeywordClicked}></td>
+<td><{$k.KeywordRank}></td>
+<td><a href="<{$SiteUrl}>tag.php?keyword=<{$k.KeywordTitle|urlencode}>" target="_blank"><img src="images/preview.gif" border="0" alt="预览"></a>&nbsp;<a href="./keyword.php?action=del&id=<{$k.KeywordId}>"><img src="images/delete.gif" border="0" alt="删除"></a>&nbsp;<a href="./keywordship.php?action=mod&kid=<{$k.KeywordId}>"><img src="images/add.gif" border="0" alt="添加竞价"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="9" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 操作列表 -->
+<tr align="center"><td class="altbg2" colspan="9">
+<br />
+<div id="bottom_action" class="actions">
+<ul>
+<li><img src="images/arrow_left.png" border="0" alt="选中项"></li>
+<li><input type="checkbox" name="idAll" id="idAll" onClick="uaCheckAll(this, 'id[]')"><label for="idAll">全选/全不选</label></li>
+<li><i>选中项 : </i></li>
+<li><input type="image" name="del" src="images/delete.gif" border="0" alt="删除" onClick="return confirmAction('确定删除吗?');" /></li>
+<li><input type="image" name="status[y]" id="status_y" src="images/checked.gif" border="0" alt="显示" /></li>
+<li><input type="image" name="status[n]" id="status_n" src="images/check_false.gif" border="0" alt="不显示" /></li>
+</ul>
+</div>
+</td></tr>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="9"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="7"></td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+</body>
+</html>

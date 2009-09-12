@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;新闻管理</div></td></tr>
+</table>
+<br />
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="全选"></td>
+<td><span>新闻标题</span></td>
+<td>焦点头条</td>
+<td>分类</td>
+<td><span>浏览量</span></td>
+<td>发布时间</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$NewsList item=nl name=allnews}>
+<tr align="center" bgcolor="<{cycle values="#eeeeee,#ffffff"}>">
+<td><input type="checkbox" name="id[]" id="id_<{$nl.ID}>" value="<{$nl.ID}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><label for="id_<{$nl.ID}>"><{$nl.Topic|truncate:35}></label></td>
+<td><input type="radio" name="if_focus" value="<{$nl.ID}>" <{if $nl.IfFocus=="1"}>checked<{/if}> /></td>
+<td><a title="点击搜索" href="<{$smarty.server.PHP_SELF}>?type_id=<{$nl.NewstypeId}>"><{$nl.NewstypeName}></a></td>
+<td><{$nl.Click}></td>
+<td><{$nl.PublishDate|date_format:"%Y-%m-%d"}></td>
+<td><a href="./news.php?action=mod&id=<{$nl.ID}>"><img src="images/mod.gif" border="0" alt="修改"></a>&nbsp;<a href="<{$SiteUrl}>news/detail.php?id=<{$nl.ID}>" target="_blank"><img src="images/preview.gif" border="0" alt="点击预览"></a>  <a href="./news.php?action=del&id=<{$nl.ID}>"><img src="images/delete.gif" border="0" alt="删除"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="8" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="8"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="6"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="删除">&nbsp;<input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="update" value="升级为焦点头条"></td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<!-- 快速添加 -->
+<form name="quickaddfrm" action="<{$smarty.server.PHP_SELF}>" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="5"><div align="left">快速添加</div></td></tr>
+<tr>
+	<td width="9%"><div align="right">标题</div></td>
+	<td width="15%"><input name="news[title]" type="text" id="news_title"></td>
+	<td width="10%"><div align="right">分类</div></td>
+	<td><select name="news[type_id]" id="newstype_id">
+								  <{html_options options=$AllParents}>
+								  </select>
+								  </td>
+	<td><input name="save" type="submit" id="save" value="添加" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</table>
+</form>
+<!-- 结束new -->
+</body>
+</html>

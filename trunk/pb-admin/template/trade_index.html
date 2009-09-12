@@ -1,0 +1,208 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台-<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$CSS_PATH}>css/style.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/popcalendar.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+<style>
+.middle-demo-2{
+padding-top: 1px;
+padding-bottom: 5px;
+}
+</style>
+<script language="JavaScript" type="text/JavaScript">
+//复选
+function selectAll(chk)
+{  
+	var chk = document.listfrm.tradeidAll.checked;
+	for (i=0;i<document.all.length;i++) {
+		if (document.all[i].name=="tradeid[]") {
+		document.all[i].checked=chk;
+		chkRow(document.all[i]);
+		}
+	}
+}
+//复选后单元格变色
+function chkRow(obj){
+	var r = obj.parentElement.parentElement;
+	if(obj.checked){ 
+		r.style.backgroundColor="#CCFF99";
+	}else {
+		if(r.rowIndex%2==1)r.style.backgroundColor="";else r.style.backgroundColor="#F5F5F5";
+	}
+}
+</script>
+<script language=javascript>
+function getExpireStr(exp_date){
+	var urodz= new Date(exp_date);
+	var s="离到期";
+	var now = new Date();
+	var ile = urodz.getTime() - now.getTime();
+	var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+	if (dni > 1)
+	return (""+s+"还有"+dni +"天");
+	else if (dni == 1)
+	return "只有2天啦!";
+	else if (dni == 0)
+	return "只有1天啦!";
+	else
+	return "<font color=red>已过期!</font>";
+}
+</script>
+</head>
+<body>
+
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;供求信息管理</div></td></tr>
+</table>
+<br />
+<!-- 搜索 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="7"><div id="container">快速搜索</div></td></tr>
+<form name="searchfrm" method="post" action="<{$smarty.server.PHP_SELF}>">
+<tbody id="menu_3" style="display: block">
+<tr>
+  <td width="9%"><div align="right">关键字</div></td>
+  <td width="15%"><input name="keywords" type="text" id="keywords" value="<{$smarty.post.keywords}>"></td>
+  <td width="10%"><div align="right">公司名称</div></td>
+  <td><input name="companyname" type="text" id="companyname" value="<{$smarty.post.companyname}>"></td>
+  <td><div align="right">所在省份</div></td>
+  <td><div align="left">
+    <select name="country_id" id="country_id" USEDATA="dataSrc2" SUBCLASS="1">
+    </select>
+    <select name="province_id" id="province_id" USEDATA="dataSrc2" SUBCLASS="2">
+    </select>
+  </div></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td><div align="right">发布时间</div></td>
+  <td><input type="text" name="PubFromDate" value='<{$m.MemberServiceStartDate|date_format:"%Y-%m-%d"|default:"None"}>' id="date1" size="10" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date1"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
+  <td>到</td>
+  <td><input type="text" name="PubToDate" value='<{$m.MemberServiceStartDate|date_format:"%Y-%m-%d"|default:"None"}>' id="date2" size="10" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date2"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
+  <td><div align="right">审核状态</div></td>
+  <td><div align="left">
+    <select name="companystatus" id="companystatus">
+	<option value="-1">请选择</option>
+      <{html_options options=$CompanyStatus selected=$smaty.post.companystatus}>
+    </select>对象<select name="search_by">
+		<option value="0">所有会员</option>
+		<option value="1">企业会员</option>
+		<option value="2">个人会员</option>
+    </select>
+  </div></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td><div align="right">到期时间</div></td>
+  <td><input type="text" name="ExpFromDate" size="10" value='<{$smarty.post.ExpFromDate|default:"None"}>' id="date3" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date3"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
+  <td>到</td>
+  <td><input type="text" name="ExpToDate" size="10" value='<{$smarty.post.ExpToDate|default:"None"}>' id="date4" readonly>
+<a href="javascript:;" onclick='showCalendar(this, $("date4"), "yyyy-mmmm-dd",null,0,-1,-1)'><img src="<{$tpl_img_path}>calendar.gif" border="0" alt=""></a></td>
+  <td><div align="right">所属行业</div></td>
+  <td><div align="left">
+    <select name="industry_id" id="industry_id" USEDATA="dataSrc" SUBCLASS="1">
+    </select>
+  </div></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2"><div align="center">按编号快速查询</div></td>
+  <td><input name="trade[id]" type="text" id="trade_id" value="" /></td>
+  <td>(输入数字编号)</td>
+  <td colspan="3"><input name="search" type="submit" id="search" value="搜索" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+<tr>
+<td colspan="7" align="center">&nbsp;</td>
+</tr>
+</tbody>
+</form>
+</table>
+
+<br>
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<input type="hidden" name="tbname" value="trades" />
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td></td>
+<td>类型</td>
+<td>&nbsp;</td>
+<td>主题</td>
+<td>用户名</td>
+<td>公司名称</td>
+<td>审核状态</td>
+<td>紧急</td>
+<td>发布时间</td>
+<td>到期时间</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes"><{foreach from=$TradeList name=trades item=tl}>
+<tr class="row middle-demo-2" align="center">
+<td><input type="checkbox" name="tradeid[]" value="<{$tl.TradeID}>" onClick="chkRow(this);" id="input_<{$tl.TradeID}>"></td>
+<td><{$TradeTypes[$tl.OfferType]}></td>
+<td align="left"><{if $tl.TradePicture!=''}><img src="images/havepic.gif" border="0" alt="有图" /><{/if}><{if $tl.require_point>0}><img src="<{$theme_media_path}>images/cash.gif" border="0" alt="需要<{$tl.require_point}>点数才能查看" /><{/if}></td>
+<td align="left"><label for="input_<{$tl.TradeID}>"><{$tl.Topic|truncate:25}></label><{if $tl.PublishDate>$Today}>&nbsp;<img src="./images/new2.gif" /><{/if}><{if $tl.if_commend==1}><img src="<{$tpl_img_path}>recommend.gif" /><{/if}></td>
+<td><a href="member.php?action=mod&id=<{$tl.TradeMemberId}>"><{$tl.MemberName}></a></td>
+<td><a href="./company.php?action=mod&id=<{$tl.company_id}>"><{$tl.CompanyName|truncate:25}></a><{if $tl.CompanyName}>[<A HREF="../space.php?userid=<{$tl.MemberName}>" target="_blank" title="访问<{$tl.CompanyName}>空间">预览</A>]<{/if}></td>
+<td><font color="<{$Bg[$tl.TradeStatus]}>"><{$CheckStatus[$tl.TradeStatus]}></font></td>
+<td><{$ShowIndex[$tl.IfUrgent]}></td>
+<td><{$tl.PublishDate|date_format:"%Y-%m-%d"}></td>
+<td><script>document.write(getExpireStr("<{$tl.ExpireDate|date_format:"%m/%d/%Y"}>"));</script></td>
+<td><a href="./trade.php?id=<{$tl.TradeID}>&action=refresh"><img src="images/re_send.gif" border="0" alt="重发"></a>&nbsp;<a href="<{$SiteUrl}>offer/detail.php?id=<{$tl.TradeID}>" target="_blank"><img src="images/preview.gif" border="0" alt="预览"></a>&nbsp;<a href="<{$SiteUrl}><{$TradeNames[$tl.OfferType]}>/content.php?id=<{$tl.TradeID}>&action=html&token=<{$token}>" target="_blank" title=""><img src="images/static.gif" border="0" alt="生成静态"></a>&nbsp;<a href="./trade.php?action=mod&id=<{$tl.TradeID}>"><img src="images/mod.gif" border="0" alt="修改"></a>&nbsp;<a href="./trade.php?action=list&search=y&ip=<{$tl.IP}>" title=""><img src="images/ip.gif" border="0" alt="查看该IP:<{$tl.IP}>发布的所有供求"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="12" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<tr><td class="altbg2" colspan="12">
+<br />
+<div id="bottom_action" class="actions">
+<ul>
+<li><img src="images/arrow_left.png" border="0" alt="选中项"></li>
+<li><input type="checkbox" name="tradeidAll" id="tradeidAll" onClick="selectAll();"><label for="tradeidAll">全选/全不选</label></li>
+<li><i>选中项 : </i></li>
+<li><input type="image" name="del" src="images/truncate.gif" border="0" alt="删除" onClick="return confirmAction('确定删除吗?');" /></li>
+<li><input type="image" name="require_member" src="images/require_member.gif" border="0" alt="设置为会员才能查看" /></li>
+<li><input type="image" name="up_batch" src="images/checked.gif" border="0" alt="审核通过" /></li>
+<li><input type="image" name="down_batch" src="images/check_false.gif" border="0" alt="审核不通过" /></li>
+<li><input type="image" name="refresh" src="images/re_send.gif" border="0" alt="重发" /></li>
+<li><input type="image" name="mk_static" src="images/static.gif" border="0" alt="生成静态" /></li>
+<li><input type="image" name="urgent_batch" src="images/emergent.gif" border="0" alt="设为紧急供求" /></li>
+<li><input type="image" name="commend" src="<{$tpl_img_path}>recommend.gif" border="0" alt="推荐供求" /></li>
+<li><input type="image" name="export" src="images/export.gif" border="0" alt="导出" onClick="javascript: document.listfrm.action='export.php';document.listfrm.submit();" /></li>
+</ul>
+</div>
+</td></tr>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="12"><{$ByPages}></td></tr>
+<tr><td class="altbg2" colspan="12">备注 ：<span>可以点击信息标题直接选择</span></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="10"></td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+</body>
+</html>
+<script language="javascript">
+var linkage = new Linkage("dataSrc", "<{$JS_PATH}>data/xml/industry_option.xml");
+linkage.BLANK_SELECT = "请选择";
+linkage.init();
+var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
+linkage2.BLANK_SELECT = "请选择";
+linkage2.init();
+</script>

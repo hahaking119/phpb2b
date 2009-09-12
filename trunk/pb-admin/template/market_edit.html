@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+</head>
+
+<body leftmargin="10" topmargin="10">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo; 市场库管理&nbsp;&raquo; 编辑</div></td>
+</tr></table>
+      <form name="marketfrm" action="<{$smarty.server.PHP_SELF}>" method="post" enctype="multipart/form-data">
+        <{if $smarty.get.id!=""}>
+        <input type="hidden" name="oldimgname" value="<{$TradeInfo.TradePicture}>">
+        <input type="hidden" name="id" value="<{$smarty.get.id}>">
+        <{/if}>
+        <table width="100%"  border="0" cellpadding="3" cellspacing="1" class="tableborder">
+		<tr class="header">
+		  <td colspan="4">市场库管理</td>
+		</tr>
+          <tr>
+            <td align="center" class="altbg1"><div align="right"><span class="bwhitefont"><font color=red>*</font>名称 </span> </div>
+            <td><span class="menu">
+              <input name=market[name] type=text id="market[name]" value="<{$m.MarketName}>">
+            </span> </td>
+            <td class="altbg1"><div align="center">是否显示</div></td>
+            <td><{html_radios name="market[status]" options=$MarketStatus checked=$m.MarketStatus|default:1 separator=""}></td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1"><div align="right"><span class="bwhitefont">行业类别</span> </div>
+            <td width="38%" class="altbg2"><select name="market_industry_id" id="industry_id">
+              <option value="0">请选择行业类别</option>
+			  <{$ParentIndustryOptions}>
+            </select><br/>
+              当前:
+              <{$m.IndustryName}>
+              (如果不想修改，请保持为空) </td>
+            <td width="12%" class="altbg1" border=1 ><div align="right">所在地区</div></td>
+            <td width="39%" class="altbg2">                
+			<select name="countryid" id="countryid" USEDATA="dataSrc2" SUBCLASS="1">
+                </select>
+<select name="provinceid" id="provinceid" USEDATA="dataSrc2" SUBCLASS="2">
+            </select>
+<select name="cityid" id="cityid" USEDATA="dataSrc2" SUBCLASS="3">
+            </select>
+                <br/>
+              当前:
+              <{$m.ProvinceName|cat:$m.CityName}>
+              (如果不想修改，请保持为空) </td>
+          </tr>
+          
+          <tr>
+            <td align="center" valign="top" class="altbg1"><div align="right"><span class="bwhitefont">说明 </span> </div>
+            <td colspan="3" bgcolor="#F7F7F7"><textarea name="market[content]" cols="50" rows="10" id="market[content]"><{$m.MarketContent}></textarea></td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1"><div align="right"><span class="bwhitefont">图片 </span> </div>
+            <td colspan="3" class="altbg2"><img id="uploadpic" src="<{if $m.MarketPicture}>../attachment/<{$m.MarketPicture}><{else}>../data/default/big.jpg<{/if}>"  border="0" width="400" height="250" alt="看到这个,表明你的图片出错了!">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1"><div align="right">浏览量</div>
+            <td class="altbg2"><span class="menu">
+              <input name=market[clicked] type=text id="market[clicked]" value="<{$m.MarketClicked}>" size=10>
+            </span></td>
+            <td class="altbg1"><div align="right">加入时间</div></td>
+            <td class="altbg2"><{$m.MarketCreated|date_format:"%Y-%m-%d %H:%M:%S"}></td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1"><div align="right">上传图片</div>
+            <td colspan="3" class="altbg2"><input type="file" name="pic" id="uploadfile" onChange="preview()" size=40>
+              （图片要求：文件小于200K，JPG格式或GIF格式均可）</td>
+          </tr>
+          <tr>
+            <td colspan="4" align="center"><table border="0" cellpadding="5" cellspacing="0" class="button">
+                <tr>
+                  <td><input  name="save" type="submit" id="save" value=" 保存 " class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                </tr>
+          </table>          </tr>
+        </table>
+      </form></td></tr></table>
+<br /><br />
+</body>
+</html>
+<script language="javascript">
+var linkage2 = new Linkage("dataSrc2", "<{$JS_PATH}>data/xml/area.xml");
+linkage2.BLANK_SELECT = "请选择";
+linkage2.init();
+</script>
+
