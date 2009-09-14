@@ -153,7 +153,7 @@ function CheckInput(){
 					  <{/if}>
                       <tr>
                         <td valign="top" class="tdleft">　当前图片: </td>
-                        <td class="tdright"><img id="uploadpic" src="<{if $row.TradeRemotePicture}><{$SiteUrl}>attachment/<{$row.TradeRemotePicture}><{elseif  $row.TradeTopic!=""}><{$SiteUrl}>attachment/<{$row.TradePicture|default}><{else}><{$SiteUrl}>data/default/big.jpg<{/if}>" alt="<{$row.TradeTopic|default:"中文名无法预览"}>" width="400" height="250" border="0" /></td>
+                        <td class="tdright"><img id="uploadpic" src="<{if $row.TradeRemotePicture}><{$SiteUrl}>attachment/<{$row.TradeRemotePicture}><{elseif  $row.TradeTopic!=""}><{$SiteUrl}>attachment/<{$row.TradePicture|default}><{else}><{$SiteUrl}>images/nopic.large.jpg<{/if}>" alt="<{$row.TradeTopic|default:"中文名无法预览"}>" width="400" height="250" border="0" /></td>
                       </tr>
                   </table></td>
                 </tr>

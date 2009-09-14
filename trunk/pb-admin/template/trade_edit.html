@@ -118,7 +118,7 @@ $(Div2).style.display = 'none';
           
           <tr>
             <td width=11% align="center" class="altbg1"><div align="right"><span class="bwhitefont">图片 </span> </div></td>
-            <td colspan="3"  class="altbg2" ><img id="uploadpic" src="<{if $TradeInfo.TradePicture!=""}><{$attachment_dir}><{$TradeInfo.TradePicture}><{else}>../data/default/big.jpg<{/if}>"  border="0" width="400" height="250" alt="看到这个,表明你的图片出错了!">&nbsp;</td>
+            <td colspan="3"  class="altbg2" ><img id="uploadpic" src="<{if $TradeInfo.TradePicture!=""}><{$attachment_dir}><{$TradeInfo.TradePicture}><{else}><{$SiteUrl}>images/nopic.large.jpg<{/if}>"  border="0" width="400" height="250" alt="看到这个,表明你的图片出错了!">&nbsp;</td>
           </tr>
           <tr>
             <td align="center" class="altbg1"><div align="right" class="orange_B" id="remoteOrUpload">选择图片</div></td>

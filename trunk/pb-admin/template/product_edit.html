@@ -67,7 +67,7 @@ cols=45 rows=6 id="product[content]"><{$P.content}></textarea></td>
           </tr>
           <tr>
             <td class="altbg1" align="center"><span class="bwhitefont">产品图片 </span>
-            <td colspan="3" class="altbg2"><img id="uploadpic" src="<{if $P.picture!=""}><{$attachment_dir}><{$P.picture}><{else}>../data/default/big.jpg<{/if}>"  border="0" width="400" height="255" alt="看到这个,表明你的图片出错了!"></td>
+            <td colspan="3" class="altbg2"><img id="uploadpic" src="<{if $P.picture!=""}><{$attachment_dir}><{$P.picture}><{else}><{$SiteUrl}>images/nopic.large.jpg<{/if}>"  border="0" width="400" height="255" alt="看到这个,表明你的图片出错了!"></td>
           </tr>
           <tr>
             <td class="altbg1" align="center"><span class="bwhitefont">上传图片 </span>

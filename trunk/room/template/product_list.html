@@ -71,7 +71,7 @@
                 <tr>
                   <td width="16%"><table border="0" cellpadding="2" cellspacing="1" class="bglist">
                       <tr>
-                        <td bgcolor="#FFFFFF"><img src="<{if $pd.ProductPicture!=''}><{$attachment_dir}><{$pd.ProductPicture}><{else}>../data/default/small.gif<{/if}>" width=75 height=75></td>
+                        <td bgcolor="#FFFFFF"><img src="<{if $pd.ProductPicture!=''}><{$attachment_dir}><{$pd.ProductPicture}><{else}><{$SiteUrl}>images/nopic.small.gif<{/if}>" width=75 height=75></td>
                       </tr>
                   </table></td>
                   <td colspan="2" style='word-break: break-all'><{$pd.Name|truncate:25}>【<{if $pd.ProductState eq 1}><span class="fontgreen">已上架</span><{else}><span class="fontred">已下架</span><{/if}>】 【<{$CheckStatus[$pd.ProductStatus]}>】(<{$ProductSorts[$pd.ProductSortId]|default:"普通商品"}>)&nbsp;&nbsp; <a href="<{$SiteUrl}>product/content.php?id=<{$pd.ID}>" target="_blank" title="点击预览"><img src="images/preview.gif" border="0" /></a> <{if $pd.ProductPicture!=""}><a href="<{$SiteUrl}>attachment.php?source=<{$pd.ProductPicture}>" target="_blank" title="点击查看大图"><img src="images/havepic.gif" border="0" /></a><{/if}><br />
