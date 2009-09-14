@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+#labels Featured,Phase-Design,Phase-QA
+
+= Introduction =
+
+How to set subdomain support?
+
+
+= Details =
+
+You can set subdomain support by phpb2b.
