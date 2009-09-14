@@ -3,6 +3,7 @@ $inc_path = "../";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SITE_ROOT. "./app/include/sendmail.inc.php");
 uses("member","company","membertype","companytype","access","setting", "htmlcache", "industry");
 $cfg['reg_time_seperate'] = 3*60;
 $cfg['register_type'] = array("close_register", "open_common_reg", "open_invite_reg");

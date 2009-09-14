@@ -41,10 +41,10 @@ require(SITE_ROOT. './app/configs/core.php');
 define('DATA_PATH', SITE_ROOT."./data/tmp/data/");
 if (!INSTALLED) {
 	if(file_exists("./install/install.php")){
-		header("Location: ./install/install.php?step=-1");
+		header("Location: install/install.php?step=-1");
 		exit;
 	}else{
-		die("<a href='./install/install.php'>".lgg('pls_reinstall_program')."</a>!");
+		die("<a href='install/install.php'>".L('please_reinstall_program')."</a>!");
 	}
 }
 require(SITE_ROOT. './app/configs/db.php');

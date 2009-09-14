@@ -37,5 +37,5 @@ if (isset($_GET['source'])) {
 	$picture_src = URL."attachment/".$file_source;
 }
 setvar("img_src", $picture_src);
-template($theme_name."/elements/viewpic");
+template($theme_name."/viewpic");
 ?>

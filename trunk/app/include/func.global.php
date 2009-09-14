@@ -718,49 +718,6 @@ function utf_substr($str,$len, $left = true)
 	else return join($new_str);
 }
 
-function uaMailTo($to_address, $to_name, $subject, $body, $redirect_url = null)
-{
-    global $charset, $g_db, $setting, $_SETTINGS;
-    require_once(INC_PATH."phpmailer/class.phpmailer.php");
-    $mail = new PHPMailer();
-    $result = false;
-    $mail_set = array();
-    $mail_set['mail_sendtype'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='mail_sendtype'");
-
-    $mail_set['mail_from'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='mail_from'");
-    $mail_set['mail_fromname'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='mail_fromname'");
-    if ($mail_set['mail_sendtype']==2) {
-        $mail_set['smtp_servername'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_servername'");
-        $mail_set['smtp_port'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_port'");
-        $mail_set['smtp_ifauth'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_ifauth'");
-        $mail_set['smtp_username'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_username'");
-        $mail_set['smtp_userpass'] = $g_db->GetOne("select valued from ".$setting->getTable()." where variable='smtp_userpass'");
-    	$mail->IsSMTP(); // telling the class to use SMTP
-    	$mail->Host       = $mail_set['smtp_servername']; // SMTP server
-    	$mail->Port       = $mail_set['smtp_port'];
-    	if($mail_set['smtp_ifauth']) $mail->SMTPAuth = true; // 启用SMTP验证功能
-    	$mail->Username = $mail_set['smtp_username']; // 邮局用户名(请填写完整的email地址)
-    	$mail->Password = $mail_set['smtp_userpass']; // 邮局密码
-    }else{
-        $mail->IsMail();
-    }
-    $mail->IsHTML(true);
-	$mail->CharSet = $charset; // 这里指定字符集！
-	$mail->Encoding = "base64";
-	$mail->From     = $mail_set['smtp_username'];
-	$mail->FromName = (empty($mail_set['mail_fromname']))? $_SETTINGS['sitename'] : $mail_set['mail_fromname'];
-	$mail->Subject = $subject;
-	$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
-	$mail->MsgHTML($body);
-	$mail->AddAddress($to_address, $to_name);
-	$result = $mail->Send();
-	if(!empty($redirect_url)){
-	    header("Location: ".$redirect_url);
-	}else{
-	    return $result;
-	}
-}
-
 function checkip($minIpAddress, $maxIpAddress) {
     global $_SERVER;
     $onlineip = empty($_SERVER['REMOTE_ADDR']) ? getenv('REMOTE_ADDR') : $_SERVER['REMOTE_ADDR'];
@@ -774,7 +731,7 @@ function isInRange($x, $min, $max) {
     return $x >= $min && $x <= $max;
 }
 
-function L($key, $type = "")
+function L($key, $type = "msg")
 {
 	global $arrMessage, $arrTemplate;
 	if ("msg" == $type) {
@@ -782,6 +739,6 @@ function L($key, $type = "")
 	}else{
 	    $return = $arrTemplate[$key];
 	}
-	return (!empty($return))?$return:"Unkown";
+	return (!empty($return))?$return:"Unkown, Please Check Language Setting.";
 }
 ?>

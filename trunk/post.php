@@ -97,10 +97,10 @@ if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) &&
 	$msg = null;
 	if ($if_check) {
 		$vals['status'] = 0;
-		$msg = lgg('wait_check');
+		$msg = L('member_checking');
 	}else{
 		$vals['status'] = 1;
-		$msg = lgg('success');
+		$msg = L('action_successfully');
 	}
 	if (isset($_POST['cindustry'])) {
 		$industryid = $_POST['cindustry'];
@@ -141,7 +141,7 @@ if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) &&
 		$industry->updateModelAmount($industryid, $trade->industry_amount_name);
 	}
 	if ($tmp_result) {
-		alert(lgg($msg, false));
+		alert($msg);
 	}
 }
 
