@@ -56,6 +56,9 @@ function smarty_function_fair($params){
 	    		$conditions[] = "Expo.if_recommend=1";
 	    	}
 	    }
+	    if (isset($params['type_id'])) {
+	    	$conditions[] = "Expo.type_id='".$params['type_id']."'";
+	    }
 		if (isset($params['col'])) {
 			$col = intval($params['col']);
 		}
