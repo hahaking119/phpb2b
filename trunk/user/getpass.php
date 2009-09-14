@@ -26,7 +26,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
         		if ($ifexists  && !empty($email_exists)) {
 				$new_passwd = getRadomStr(6);
 				$new_passwd_md5 = md5($new_passwd);
-				$body = $smarty->fetch($theme_name.'/elements/getpass.html');
+				$body = $smarty->fetch($theme_name.'/emails/user_get_pass.html');
 				$body             = str_replace("[field:username]", $login_name, $body);
 				$body             = str_replace("[field:newpassword]", $new_passwd, $body);
 				$body             = str_replace("[field:sitename]", $_SETTINGS['sitename'], $body);
