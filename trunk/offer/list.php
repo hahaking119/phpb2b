@@ -10,8 +10,8 @@ $offer = new Offers();
 $company = new Companies();
 $industry = new Industries();
 $trade = new Trades();
-include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
-include(SITE_ROOT."./data/tmp/data/".$cookiepre."area.inc.php");
+include(SITE_ROOT."./data/cache/".$cookiepre."industry.inc.php");
+include(SITE_ROOT."./data/cache/".$cookiepre."area.inc.php");
 $areas = $industrys = array();
 foreach ($UL_DBCACHE_AREAS as $key=>$val){
     if ('0000' == substr($key, -4, 4)) {

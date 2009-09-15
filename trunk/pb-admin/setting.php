@@ -52,7 +52,7 @@ if (isset($_POST['savebasic'])) {
         $str.="\"sitebannerword\"=>'".$_POST['u']['site_banner_word']."',\n";
         $str.="\"sitedescription\"=>'".$_POST['u']['site_description']."',\n";
         $str.=");\n?>";
-        $setting->writeCache(BASE_DIR."data/tmp/data/".$cookiepre."setting.inc.php", $str);
+        $setting->writeCache(BASE_DIR."data/cache/".$cookiepre."setting.inc.php", $str);
 		flash("alert.php", "setting.php?action=basic");
 	}
 }
@@ -62,7 +62,7 @@ if (isset($_POST['savepermission'])) {
 	    $renameResult = rename('../user/register.php', '../user/'.$_POST['u']['reg_filename']);
 	}
 	if (!empty($_POST['u']['post_filename'])) {
-	    $renameResult = rename('../post.php', '../'.$_POST['u']['post_filename']);
+	    $renameResult = rename('../offer/post.php', '../offer/'.$_POST['u']['post_filename']);
 	}
 	foreach($_POST['u'] as $vname=>$vval){
 		$exists = $setting->find($vname,"id","variable");

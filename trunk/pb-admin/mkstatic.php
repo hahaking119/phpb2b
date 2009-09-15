@@ -71,10 +71,10 @@ if (isset($_POST['create'])) {
 		    setvar("tradeInfo",$res);
 		    setvar("Li",$li);
 		    //setvar("tradeInfo", $result[$key]);
-		    if(empty($res['PublishDate'])) $file_path = 'htmls/trade/'.date("Y")."/".date("m")."/".date("d")."/";
+		    if(empty($res['PublishDate'])) $file_path = 'htmls/offer/'.date("Y")."/".date("m")."/".date("d")."/";
 		    else {
 		        $tmp_date = $res['PublishDate'];
-		        $file_path = "htmls/trade/".date("Y", $tmp_date)."/".date("m", $tmp_date)."/".date("d", $tmp_date)."/";
+		        $file_path = "htmls/offer/".date("Y", $tmp_date)."/".date("m", $tmp_date)."/".date("d", $tmp_date)."/";
 		    }
 		    $html_file_name = $val['id'].'.html';
 		    if(!file_exists($inc_path.$file_path)){

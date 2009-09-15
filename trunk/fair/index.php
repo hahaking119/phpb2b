@@ -11,7 +11,6 @@ $expotype = new Expotypes();
 $htmlcache = new Htmlcaches();
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
-$xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));
 $xajax->processRequest();
 require(DATA_PATH.$cookiepre."area.inc.php");
 setvar('xajax_javascript', $xajax->getJavascript());
@@ -36,9 +35,6 @@ if(!empty($picture_expo)){
 		$tmp1['titles'][] = $val['ExpoName'];
 	}
 	uaAssign(array("PictureLinks"=>implode("|", $tmp1['links']), "PictureFiles"=>implode("|", $tmp1['files']), "PictureTitles"=>implode("|", $tmp1['titles'])));
-}
-if (isset($_GET['action']) && $_GET['action']=="html") {
-	$smarty->MakeHtmlFile('../htmls/fair/index.html',$smarty->fetch($theme_name."/fair_index.html"), true, "fair/index.php");
 }
 $expotype_res = $g_db->GetAll("select id as OptionId,name as OptionName from {$tb_prefix}expotypes");
 $expotype_res = UaController::generateList($expotype_res);

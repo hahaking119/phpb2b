@@ -48,9 +48,9 @@ if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
 		$g_db->Execute("insert into {$tb_prefix}visitlogs (salt,date_line,type_name) value ('".$salt."','".date("Ymd")."','markets');");
 		alert(lgg('wait_add'));
 	}else {
-		PB_goto("./add.php");
+		PB_goto("add.php");
 	}
 }
-include("./industry.php");
+include("industry.inc.php");
 template($theme_name."/market_add");
 ?>

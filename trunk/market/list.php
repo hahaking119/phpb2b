@@ -70,7 +70,7 @@ $fields = "id as MarketId,name as MarketName,content as MarketContent,created as
 $amount = $market->findCount(" 1 ".$conditions);
 pageft($amount,10);
 $area_markets = $market->findAll($fields, " 1 ".$conditions, "Market.id DESC", $firstcount, $displaypg);
-include("./industry.php");
+include("industry.inc.php");
 setvar("TradeTypes", $trade->getTradeTypes());
 setvar("TradeNames", $trade->getTradeTypeNames());
 setvar("AreaMarkets", $area_markets);

@@ -737,8 +737,8 @@ function L($key, $type = "msg")
 	if ("msg" == $type) {
 	    $return = $arrMessage['_'.$key];
 	}else{
-	    $return = $arrTemplate[$key];
+	    $return = $arrTemplate['_'.$key];
 	}
-	return (!empty($return))?$return:"Unkown, Please Check Language Setting.";
+	return (!empty($return))?$return:"Unkown String";
 }
 ?>

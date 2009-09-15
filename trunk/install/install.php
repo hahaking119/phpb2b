@@ -3,13 +3,11 @@ $charset = "utf-8";
 header("Content-Type: text/html; charset=".$charset);
 define('INSTALL_ROOT', dirname(__FILE__)."/");
 $lang_name = (!empty($_GET['language']))?trim($_GET['language']):"zh-cn";
-$sqlfile = INSTALL_ROOT."./ualink_zh-cn.sql";
+$sqlfile = INSTALL_ROOT."./data/mysql.sql";
 
 if(empty($_GET['language'])){
 	if($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-cn"){
 		$lang_name = "zh-cn";
-	}elseif($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="zh-tw"){
-		$lang_name = "zh-tw";
 	}elseif($_SERVER["HTTP_ACCEPT_LANGUAGE"]=="en"){
 		$lang_name = "en";
 	}else{
@@ -17,9 +15,6 @@ if(empty($_GET['language'])){
 	}
 }else{
 	$lang_name = trim($_GET['language']);
-}
-if(isset($_GET['language']) && $_GET['language']=="zh-tw"){
-	$sqlfile = INSTALL_ROOT."./ualink_zh-tw.sql";
 }
 require(INSTALL_ROOT."./lang_".$lang_name.".php");
 error_reporting(E_ERROR ^ E_WARNING);
@@ -30,29 +25,7 @@ error_reporting(E_ERROR ^ E_WARNING);
 <head>
 <title><?php echo $lang['title'];?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset;?>" />
-<style media="screen" type="text/css">
-<!--
-body,input,select,textarea{font-size:12px;font-family:'Bookman Old Style', serif;}
-body,form{margin:0;padding:0;}
-img{border:0;}
-body{background:#dcdcdc url(images/bg.jpg) no-repeat top;text-align:center;}
-a:link,a:visited{color:#0049d3;text-decoration:none;}
-a:hover,a:active{color:#f70;text-decoration:underline;}
-.ft { font-weight:bold; font-size:14px; line-height:22px;}
-.errmsg { font-family:arial Bold,宋体;color:red;background:#ccc; }
-.input {background:transparent;border:1px solid #ffffff}
-.emsg {text-align: left; width:400px; height:200px; margin:-100px 0px 0px -100px;position: absolute; top:50%; left:50%; color: #330000;font-size: 12pt; font-family: "Arial bold","Courier";}
-h4 {
-font-family: Arial, sans-serif;
-font-size: 15px;
-color: #000000;
-display : inline;
-}
-.btn {
-BORDER-RIGHT: #7b9ebd 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7b9ebd 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde); BORDER-LEFT: #7b9ebd 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7b9ebd 1px solid
-}
--->
-</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
 <script language="javascript" src="../js/prototype.js"></script>
 <script language="javascript">
 <!--
@@ -66,7 +39,7 @@ function check_install(){
 		$('db_name').focus();
 		return false;
 	}else{
-		$('divProgress').innerHTML = "<img src='./loading.gif' /><br><?php echo $lang['installing'];?>";
+		$('divProgress').innerHTML = "<img src='images/loading.gif' /><br><?php echo $lang['installing'];?>";
 		return true;
 	}
 }
@@ -113,12 +86,11 @@ $errmsg = null;
 $right_files = array(
 "media"=>"../data/",
 "tmp"=>"../data/tmp/",
-"tmp/cache"=>"../data/tmp/cache/",
-"tmp/templates_cache"=>"../data/tmp/templates_cache/",
-"tmp/templates_c"=>"../data/tmp/templates_c/",
-"tmp/templates_c"=>"../data/tmp/templates_c/room/",
-"tmp/templates_c"=>"../data/tmp/templates_c/pb-admin/",
-"data/data"=>"../data/tmp/data/",
+"cache"=>"../data/cache/",
+"templates_cache"=>"../data/templates_cache/",
+"templates_c"=>"../data/templates_c/",
+"templates_c"=>"../data/templates_c/room/",
+"templates_c"=>"../data/templates_c/pb-admin/",
 "configs"=>$app_name."configs/",
 "core.php"=>$core_sample_file,
 "db.php"=>$db_sample_file,
@@ -376,7 +348,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 		}
 	}
 	if($UA_INSTALLING){
-		$setting_cachfile = INSTALL_ROOT."../data/tmp/data/".$cookiepre."setting.inc.php";
+		$setting_cachfile = INSTALL_ROOT."../data/cache/".$cookiepre."setting.inc.php";
 		require($setting_cachfile);
 		        $str = "<?php
 \$_SETTINGS = array(\n";
@@ -470,7 +442,6 @@ function goUrl(language){
             <select name="language" id="Language" onchange="goUrl(this.options[this.selectedIndex]);">   >
                 <option value="zh-cn" <?php if($_GET['language']=="zh-cn") echo "selected";?>>简体中文</option>
                 <option value="en" <?php if($_GET['language']=="en") echo "selected";?>>English</option>
-                <option value="zh-tw" <?php if($_GET['language']=="zh-tw") echo "selected";?>>繁體中文</option>
             </select>
           </div></td>
         </tr>

@@ -23,6 +23,6 @@ if (intval($MarketInfo['MarketStatus'])==0) {
 }
 
 setvar("i",$MarketInfo);
-include("industry.php");
+include("industry.inc.php");
 template($theme_name."/market_view");
 ?>

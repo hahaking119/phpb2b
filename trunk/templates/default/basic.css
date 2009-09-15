@@ -41,7 +41,7 @@ a.f: hover{color: #fff;text-decoration: underline;}
 .bt h2{float: left;display: inline;}
 .bt p{float: right;display: inline;}
 .bt h2 a: hover,.bt p a: hover{color: #dc0000;text-decoration: none;}
-.ul21 li{height: 21px;line-height: 21px;overflow: hidden;background: url(dot.gif) 2px 10px no-repeat;padding-left: 10px;}
+.ul21 li{height: 21px;line-height: 21px;overflow: hidden;background: url(images/dot.gif) 2px 10px no-repeat;padding-left: 10px;}
 .ul21 li p{float: left;display: inline;}
 .ul21 li em{float: right;display: inline;}
 .ula li a,.ula li p a{color: #0a3168;}

@@ -13,7 +13,6 @@ $industry = new Industries();
 
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
-$xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 setvar("TradeTypes", $trade->getTradeTypes());
@@ -34,9 +33,6 @@ $conditions = " status=1";
 $product_res = $product->findAll($fields, $conditions, "id desc", 0, 2);
 setvar("LatestProduct",$product_res);
 
-include("./industry.php");
-if (isset($_GET['action']) && $_GET['action']=="html") {
-	$smarty->MakeHtmlFile('../htmls/market/index.html',$smarty->fetch($theme_name."/market_index.html"), true, "market/index.php");
-}
+include("industry.inc.php");
 template($theme_name."/market_index");
 ?>

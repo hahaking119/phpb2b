@@ -1,6 +1,6 @@
 # BEGIN REWRITE
-ErrorDocument 404 http://www.yourdomain.com/404.php
-ErrorDocument 403 http://www.yourdomain.com/404.php
+ErrorDocument 404 http://www.yourdomain.com/redirect.php
+ErrorDocument 403 http://www.yourdomain.com/redirect.php
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteBase /

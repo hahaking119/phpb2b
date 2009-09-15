@@ -15,7 +15,6 @@ $xajax->configure('javascript URI', URL."app/source/xajax/");
 $smarty->register_function("format_amount","splitIndustryAmount");
 //检测企业视频展播xml文件
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('getIndustryList', BASE_DIR.'ajax.php'));
-$xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', BASE_DIR.'ajax.php'));
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
@@ -52,8 +51,5 @@ setvar("CompanyAmounts", $total_company);
 setvar("CompanyStat", implode(",", $arrCompanyStat));
 unset($result, $sql);
 setvar("IndustryList", $industry->getIndustryPage($li,"company","industry1"));
-if (isset($_GET['action']) && $_GET['action']=="html") {
-	$smarty->MakeHtmlFile(BASE_DIR.'htmls/company/index.html',$smarty->fetch($theme_name."/company_index.html"), true, "company/index.php");
-}
 template($theme_name."/company_index");
 ?>

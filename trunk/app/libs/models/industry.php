@@ -154,7 +154,7 @@ class Industries extends UaModel {
 	        $cache_ind[$val['id']] = array("id"=>$val['id'], "name"=>$val['name'], "amount"=>$val['buy_amount']."|".$val['sell_amount']."|".$val['company_amount']."|".$val['product_amount'], "subs"=>$tmp_subs);
 	    }
 	    $cache_ind2 = var_export($cache_ind, true);
-	    $fp = fopen(BASE_DIR."data/tmp/data/industry.inc.php", "w+");
+	    $fp = fopen(BASE_DIR."data/cache/industry.inc.php", "w+");
 	    $cache_ind3 = "<?php \n"."\$"."CACHE_P_INDUSTRY = ".$cache_ind2."\n?>";
 	    $write_cache = fwrite($fp, $cache_ind3);
 	    fclose($fp);

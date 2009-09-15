@@ -38,7 +38,7 @@ if (isset($_GET['action'])) {
             $str.="\"".$val['AreaCodeId']."\"=>\"".$val['AreaName']."\",\n";
         }
         $str.=");\n?>";
-        $area->writeCache(BASE_DIR."data/tmp/data/".$cookiepre."area.inc.php", $str);
+        $area->writeCache(BASE_DIR."data/cache/".$cookiepre."area.inc.php", $str);
         flash("alert.php", "area.php?action=list");
     }
     if ($_GET['action'] == "mod") {

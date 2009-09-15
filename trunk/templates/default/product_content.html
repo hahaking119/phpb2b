@@ -8,9 +8,9 @@
 <meta name="keywords" content="友邻,友邻电子商务,B2B电子商务演示,最新产品,关键词">
 <meta name="description" content="找<{$prodInfo.ProductName|replace:"\r\n":""}>在<{$sitename}>"> 
 <script src="<{$JS_PATH}>js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/basic.css" />
-<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/head_foot.css" />
-<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>images/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$theme_img_path}>style.css" />
 <script src="<{$JS_PATH}>js/prototype.js"></script>
 <script language="javascript">
 function extendDiv(id) {
@@ -39,7 +39,7 @@ function extendDiv(id) {
 	<div class="cp_bt1"><em class="cp_em1"></em><h2><{$tradeInfo.Name|strip_tags}></h2><em class="cp_em2"></em></div>
 	<div class="cp_c1">
 		<div class="cp_d1">
-			<img src="<{if $prodInfo.picture!=''}><{$SiteUrl}>attachment/<{$prodInfo.picture}><{else}><{$SiteUrl}>images/<{$ThemeName}>/no-big.jpg<{/if}>" alt="" />
+			<img src="<{if $prodInfo.picture!=''}><{$SiteUrl}>attachment/<{$prodInfo.picture}><{else}><{$SiteUrl}>images/nopic.large.jpg<{/if}>" alt="" />
 			<em><a href="<{$SiteUrl}>attachment.php?source=<{$prodInfo.picture}>">放大图片</a></em>
 		</div>
 		<ul class="cp_ul1">

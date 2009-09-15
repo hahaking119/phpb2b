@@ -10,7 +10,6 @@ $news = new Newses();
 $newstype = new Newstypes();
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
-$xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 setvar("focus_news",$g_db->GetRow("select id as NewsId,title as NewsTitle,content as NewsContent from ".$news->getTable()." where if_focus=1"));
@@ -30,8 +29,5 @@ require(DATA_PATH.$cookiepre."newstype.inc.php");
 setvar("Newstype", $UL_DBCACHE_NEWSTYPE);
 setvar("pageDescriptioin", implode(",",$UL_DBCACHE_NEWSTYPE));
 setvar("today_mktime",Times::dateConvert(date("d/m/Y"), "/"));
-if (isset($_GET['action']) && $_GET['action']=="html") {
-	$smarty->MakeHtmlFile('../htmls/news/index.html',$smarty->fetch($theme_name."/news_index.html"), true, "news/index.php");
-}
 template($theme_name."/news_index");
 ?>

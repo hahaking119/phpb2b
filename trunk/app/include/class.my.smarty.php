@@ -46,26 +46,23 @@ class MySmarty extends Smarty {
 		if(!empty($app_dir_name)) $this->setAppDir($app_dir_name);
 		$NowPathArray = explode($app_dir_name,str_replace("\\","/",dirname(__FILE__))) ;
 		$AppDir = $NowPathArray[0].$app_dir_name;
-		$TmpDir = $NowPathArray[0]."data/tmp";
+		$dataPath = $NowPathArray[0]."data";
 		$this->setIncPath($inc_path);
 		$this->plugins_dir[] = $AppDir."/plugins/";
 		$this->template_dir = $inc_path."templates/";
 		$this->media_dir = $inc_path."images/";
 		if(empty($ua_sm_compile_dir)){
-			$this->compile_dir = $TmpDir."/templates_c/";
+			$this->compile_dir = $dataPath."/templates_c/";
 		}else{
-			$comp_d = $TmpDir."/templates_c/".$ua_sm_compile_dir;
+			$comp_d = $dataPath."/templates_c/".$ua_sm_compile_dir;
 			if(!file_exists($comp_d)) @mkdir($comp_d);
 			$this->compile_dir =$comp_d;
 		}
-		//$this->config_dir = $AppDir."/configs/";
-		$this->cache_dir = $TmpDir."/templates_cache/";
+		$this->cache_dir = $dataPath."/templates_cache/";
 		$this->left_delimiter = "<{";
 		$this->right_delimiter = "}>";
 		$this->caching = false;
 		$this->debugging   = false;
-		//$this->force_compile = true;
-		//$this->load_filter('pre','chpath');
 	}
 
 	function setAppDir($dirname)

@@ -30,7 +30,6 @@
  */
 $inc_path = "../";
 require("../global.php");
-
 require_once(SITE_ROOT. './app/configs/db_session.php');
 require(INC_PATH .'xajax/xajaxAIO.inc.php');
 require(SITE_ROOT. './app/include/func.checksubmit.php');
@@ -49,7 +48,6 @@ setvar("TradeTypes",$trade->getTradeTypes());
 setvar("Genders", $member->genders);
 setvar("PhoneTypes", $member->phone_types);
 setvar("ImTypes", $member->im_types);
-$smarty->register_function("format_amount","splitIndustryAmount");
 $expires = $trade->offer_expires;
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
@@ -145,13 +143,8 @@ if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) &&
 	}
 }
 
-$xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', 'ajax.php'));
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
-
 setvar("OfferExpires",$expires);
-if (isset($_GET['action']) && ($_GET['action'])=="html") {
-$smarty->MakeHtmlFile('htmls/post.html',$smarty->fetch($theme_name."/trade_post.html"), true, "post.php");
-}
 template($theme_name."/trade_post");
 ?>

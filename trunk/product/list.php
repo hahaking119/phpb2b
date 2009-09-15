@@ -8,8 +8,8 @@ $member = new Members();
 $industry = new Industries();
 $product = new Products();
 $prod_conditions = " and Product.status=1 ";
-include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
-include(SITE_ROOT."./data/tmp/data/".$cookiepre."area.inc.php");
+include(SITE_ROOT."./data/cache/".$cookiepre."industry.inc.php");
+include(SITE_ROOT."./data/cache/".$cookiepre."area.inc.php");
 $areas = $industrys = array();
 foreach ($UL_DBCACHE_AREAS as $key=>$val){
     if ('0000' == substr($key, -4, 4)) {

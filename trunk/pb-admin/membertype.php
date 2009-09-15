@@ -35,7 +35,7 @@ if(isset($_POST['save'])){
 		$str.="\"".$val['id']."\"=>\"".$val['name']."\",\n";
 	}
 	$str.=");\n?>";
-	$membertype->writeCache(BASE_DIR."data/tmp/data/".$cookiepre."membertype.inc.php", $str);
+	$membertype->writeCache(BASE_DIR."data/cache/".$cookiepre."membertype.inc.php", $str);
 	if(!$result){
 		flash("alert.php","membertype.php",null,0);
 	}

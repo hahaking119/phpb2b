@@ -1,5 +1,4 @@
 <?php
-require("./sell.php");
 require($inc_path."global.php");
 uses("trade","industry","member");
 $industry = new Industries();

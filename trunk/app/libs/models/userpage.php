@@ -51,13 +51,13 @@ class Userpages extends UaModel {
 		$reg_filename = $g_db->GetOne($sql = "select valued from {$tb_prefix}settings where variable='reg_filename'");
 		$reg_filename = (empty($reg_filename))?"register.php":$reg_filename;
 		$post_filename = $g_db->GetOne("select valued from {$tb_prefix}settings where variable='post_filename'");
-		$post_filename = (empty($post_filename['valued']))?"post.php":$post_filename;
+		$post_filename = (empty($post_filename['valued']))?"offer/post.php":$post_filename;
 		$inc_path = $media_paths['INC_PATH'];
 		switch ($static_level) {
 			case 1:
 				$tmp_contain['index'] = URL."index.html";
-				$tmp_contain['buy'] = URL."htmls/trade/buy/";
-				$tmp_contain['sell'] = URL."htmls/trade/sell/";
+				$tmp_contain['buy'] = URL."htmls/offer/buy/";
+				$tmp_contain['sell'] = URL."htmls/offer/sell/";
 				$tmp_contain['company'] = URL."htmls/company/";
 				$tmp_contain['product'] = URL."htmls/product/";
 				$tmp_contain['news'] = URL."htmls/news/";
@@ -69,7 +69,7 @@ class Userpages extends UaModel {
 				$tmp_contain['register'] = URL."htmls/user/register.html";
 				$tmp_contain['artical'] = URL."htmls/user/artical.html";
 				$tmp_contain['logging'] = URL."user/logging.html";
-				$tmp_contain['post'] = URL."htmls/post.html";
+				$tmp_contain['post'] = URL."htmls/offer/post.html";
 				$tmp_contain['common'] = URL;
 				break;
 			default:

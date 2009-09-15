@@ -11,7 +11,7 @@ $member = new Members();
 $product = new Products();
 $tmp_status = explode(",",lgg('product_status'));
 $smarty->register_function("format_keywords","SplitKeywords");
-include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
+include(SITE_ROOT."./data/cache/".$cookiepre."industry.inc.php");
 $pid = intval($_GET['id']);
 $fields = $product->industry_cols.",Product.status as ProductStatus,company_id";
 $table['product'] = $product->getTable();

@@ -7,7 +7,6 @@ $htmlcache = new Htmlcaches();
 $setting = new Settings();
 $xajax = new xajax();
 $xajax->configure('javascript URI', URL."app/source/xajax/");
-$xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 
@@ -34,8 +33,5 @@ if (isset($_POST['apply']) && !empty($_POST['site'])) {
 	}
 }
 setvar("SiteDescription", $setting->field("valued", "variable='site_description'"));
-if (isset($_GET['action']) && $_GET['action']=="html") {
-		$smarty->MakeHtmlFile('../htmls/user/apply_friendlink.html',$smarty->fetch($theme_name."/user_apply_friendlink.html"), true, "user/apply_friendlink.php");
-}
 template($theme_name."/user_apply_friendlink");
 ?>

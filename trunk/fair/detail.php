@@ -6,7 +6,7 @@ uses("expo", "expotype", "area");
 $fair = new Expoes();
 $area = new Areas();
 $fairtype = new Expotypes();
-@require(SITE_ROOT."data/tmp/data/".$cookiepre."area.inc.php");
+@require(SITE_ROOT."data/cache/".$cookiepre."area.inc.php");
 if (isset($_GET['title'])) {
 	$fid = $fair->field("id", "ea='".urldecode(trim($_GET['title']))."'");
 }

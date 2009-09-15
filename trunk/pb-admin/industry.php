@@ -122,7 +122,7 @@ if ($_GET['action'] == "update") {
 		echo "<a href='./industry.php?action=update&type=start'>".lgg('start_upd_ind')."</a>";
 		exit;
 	}else{
-		$industry->updateCache(BASE_DIR."data/tmp/data/".$cookiepre."industry.inc.php");
+		$industry->updateCache(BASE_DIR."data/cache/".$cookiepre."industry.inc.php");
 		echo lgg("update_end");
 		unset($table,$sql);
 		exit;

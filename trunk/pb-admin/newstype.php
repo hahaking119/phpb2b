@@ -25,7 +25,7 @@ if (isset($_POST['save']) && !empty($_POST['newstype']['name'])) {
 		$str.="\"".$val['id']."\"=>\"".$val['name']."\",\n";
 	}
 	$str.=");\n?>";
-	$newstype->writeCache(BASE_DIR."data/tmp/data/".$cookiepre."newstype.inc.php", $str);
+	$newstype->writeCache(BASE_DIR."data/cache/".$cookiepre."newstype.inc.php", $str);
 	if ($result) {
 		flash("./alert.php");
 	}else {

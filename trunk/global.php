@@ -38,15 +38,7 @@ $config_subdomain = ".yourdomain.com";
 //$is_apache = strstr($_SERVER['SERVER_SOFTWARE'], 'Apache') ? true : false;
 define('APP_NAME', 'app/');
 require(SITE_ROOT. './app/configs/core.php');
-define('DATA_PATH', SITE_ROOT."./data/tmp/data/");
-if (!INSTALLED) {
-	if(file_exists("./install/install.php")){
-		header("Location: install/install.php?step=-1");
-		exit;
-	}else{
-		die("<a href='install/install.php'>".L('please_reinstall_program')."</a>!");
-	}
-}
+define('DATA_PATH', SITE_ROOT."./data/cache/");
 require(SITE_ROOT. './app/configs/db.php');
 if(!DEBUG){
 	error_reporting(0);
@@ -60,6 +52,7 @@ $smarty = new MySmarty($inc_path);
 require(LIB_PATH. 'ualink_object.php');
 require(LIB_PATH. 'ualink_model.php');
 require(LIB_PATH. 'ualink_controller.php');
+require(LIB_PATH. 'ualink_view.php');
 require(SITE_ROOT. './app/include/func.global.php');
 require(DATA_PATH.$cookiepre."setting.inc.php");
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.inc.php');
@@ -76,6 +69,7 @@ $media_paths = (PRETEND_HTML_LEVEL==0)?$smarty->getRelativePath():$smarty->getAb
 uaAssign($media_paths);
 uses("userpage");
 $userpage = new Userpages();
+$viewhelper = new UaView();
 $li = (!empty($li))?intval($li):0; $userpage->setLi($li);
 $userpage->setUrlContainer(intval(STATIC_HTML_LEVEL));
 $urls = $userpage->getUrlContainer();
@@ -131,6 +125,7 @@ if(isset($li)){
 	setvar("HeaderFormAction", $headerFrmAction);
 }
 
+$viewhelper->setTitle($_SETTINGS['sitetitle']);
 if (!empty($arrTemplate)) {
     $smarty->assign($arrTemplate);
 }

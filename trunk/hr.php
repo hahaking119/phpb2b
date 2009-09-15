@@ -34,7 +34,7 @@ require("global.php");
 $conditions = null;
 $tpl_file = "hr_index";
 include(SITE_ROOT.'./app/include/page.php');
-include(SITE_ROOT."./data/tmp/data/".$cookiepre."area.inc.php");
+include(SITE_ROOT."./data/cache/".$cookiepre."area.inc.php");
 uses("industry", "area", "job", "company", "member");
 $industry = new Industries();
 $member = new Members();
