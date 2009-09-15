@@ -3,6 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 header("Content-Type: text/html; charset=".$charset);
 require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './app/include/func.sql.php');
 require("session_cp.inc.php");
 uses("setting");
 $setting = new Settings();

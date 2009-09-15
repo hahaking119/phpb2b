@@ -63,6 +63,7 @@ if (!file_exists("./install.php")) {
 $app_name = "../app/";
 define('IN_UALINK', true);
 require(INSTALL_ROOT.'../app/include/func.global.php');
+require(INSTALL_ROOT.'../app/include/func.sql.php');
 $core_sample_file = '../app/configs/core.php';
 $db_sample_file	= '../app/configs/db.php';
 $installfile = basename(__FILE__);
@@ -308,7 +309,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 					if(mysql_get_server_info() > '4.1'){
 						mysql_query("set names '$dbcharset'");
 					}
-					run($sql);
+					sql_run($sql);
 				}else{
 					$errmsg[] = $lang['db_cn_error'];
 					$COMPLETE_INSTALL = false;
