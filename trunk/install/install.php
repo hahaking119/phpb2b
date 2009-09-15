@@ -97,7 +97,6 @@ $right_files = array(
 "db.php"=>$db_sample_file,
 "sitemap.xml"=>"../sitemap.xml",
 "htmls"=>"../htmls/",
-"htmls subdir"=>"../htmls/product/",
 "media subdir"=>"../attachment/"
 );
 if ($_GET['action'] == "check_file_right") {
@@ -242,14 +241,12 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 				}else {
 					$BACUP_DB = true;
 				}
-				$fp = fopen($sqlfile, 'rb');
-				if(!$fp){
+				$sql = file_get_contents($sqlfile);
+				if(empty($sql)){
 					$errmsg[] = $sqlfile.":".$lang['db_file_not_exists'];
 					$COMPLETE_INSTALL = false;
 					$UA_INSTALLING = false;
 				}
-				$sql = fread($fp, filesize($sqlfile));
-				fclose($fp);
 				$conn = mysql_connect($dbhost,$dbuser,$dbpw);
 
 				if($conn){
@@ -310,6 +307,8 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 						mysql_query("set names '$dbcharset'");
 					}
 					sql_run($sql);
+					$data_sql = file_get_contents("data/mysqldata.sql");
+					sql_run($data_sql);
 				}else{
 					$errmsg[] = $lang['db_cn_error'];
 					$COMPLETE_INSTALL = false;
@@ -328,7 +327,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 					"','".md5($_POST['forum']['adminpass'])."',9,'".$lang['super_admin']."','$nowtime','admin@yourdomain.com')";
 					mysql_query($sql);
 					mysql_query("INSERT INTO ".$_POST['db']['prefix']
-					."friendlinks (title,url) values ('".$lang['ualinkphp']."','http://www.ualink.org/'),('".$lang['ualinkb2b_demo']."','http://bbs.phpb2b.com/')");
+					."friendlinks (title,url) values ('".$lang['ualinkphp']."','http://www.phpb2b.com/'),('".$lang['ualinkb2b_demo']."','http://bbs.phpb2b.com/')");
 					$sql = "INSERT INTO ".$_POST['db']['prefix']
 					."trades (topic,content,type_id,status,created,if_urgent,submit_time,expire_time,expire_days,if_commend) values ('".$lang['first_sell']."','".$lang['first_sell'].",".$lang['first_del_content']."','2',1,'$nowtime','0','$nowtime','$exp_time',10,1),('".$lang['first_buy']."','".$lang['first_sell'].",".$lang['first_del_content']."','1',1,'$nowtime','1','$nowtime','$exp_time',10,1)";
 					mysql_query($sql);

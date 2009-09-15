@@ -22,7 +22,7 @@
 .h_f_login{width:650px;background:url(images/background.gif) 0 -66px no-repeat; text-align:center;}
 .h_f_login form{display:block; width:520px; height:20px; background:url(images/background.gif) -281px -37px no-repeat; margin:0 auto; padding:5px 0 0 20px; text-align:left;}
 .h_f_login p,.h_f_login label,.h_f_login a,.h_f_login input,.h_f_login em{float:left; display:inline; height:19px; margin-left:5px; line-height:19px;}
-.h_f_login input.yhm,.h_f_login input.mm{width:90px; height:17px; background:url(x_1px_2.gif) 0 0 repeat-x; border:1px #b0b0b0 solid; border-left:0; margin-left:0;}
+.h_f_login input.yhm,.h_f_login input.mm{width:90px; height:17px; background:url(images/x_1px_2.gif) 0 0 repeat-x; border:1px #b0b0b0 solid; border-left:0; margin-left:0;}
 .h_f_login input.dl{width:46px; height:20px;background:url(images/background.gif) -544px 0 no-repeat; color:#fff; line-height:20px; cursor:pointer;}
 .h_f_login p{width:6px; height:19px; background:url(images/background.gif) -268px -42px no-repeat; margin-left:0;}
 .h_f_login a{color:#f18321;}
