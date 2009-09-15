@@ -20,7 +20,7 @@ setvar("Genders", $member->genders);
 setvar("PhoneTypes", $member->phone_types);
 $viewhelper->setTitle('供应&reg;');
 $viewhelper->setPosition('网站首页', URL, 1);
-$viewhelper->setPosition('供求信息', 'index.php', 2);
+$viewhelper->setPosition('供应', URL.'seller/index.php', 2);
 //$viewhelper->setPosition('供应', 'list.php', 3, array('type'=>'sell'));
 $pid = intval($_GET['id']);
 if (isset($_POST['action']) && !empty($ua_user['id'])) {

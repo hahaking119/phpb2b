@@ -16,7 +16,7 @@ function sql_run($sql, $default_table_prefix = 'pb_') {
         $tmpQuery = array_filter($tmpQuery);
         foreach($tmpQuery as $query) {
             $str1 = substr($query, 0, 1);
-            if($str1 != '#' && $str1 != '-') $sql_content[$num] .= $query;
+            if($str1 != '#' && $str1 != '-') $sql_content[$intRunTimes] .= $query;
         }
         $intRunTimes++;
     }

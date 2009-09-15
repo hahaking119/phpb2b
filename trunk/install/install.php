@@ -1,5 +1,6 @@
 <?php
 $charset = "utf-8";
+$dbcharset = "utf8";
 header("Content-Type: text/html; charset=".$charset);
 define('INSTALL_ROOT', dirname(__FILE__)."/");
 $lang_name = (!empty($_GET['language']))?trim($_GET['language']):"zh-cn";
@@ -99,7 +100,7 @@ $right_files = array(
 "htmls"=>"../htmls/",
 "media subdir"=>"../attachment/"
 );
-if ($_GET['action'] == "check_file_right") {
+if (isset($_GET['action']) && ($_GET['action'] == "check_file_right")) {
 	echo "<div class='emsg'>";
 	foreach ($right_files as $val) {
 		//$file_names = str_replace("/", "", $val);
@@ -120,7 +121,7 @@ if (empty($_REQUEST['step'])) {
 		}
 	}
 }
-if(($_POST['step']==1) && !empty($_POST['site'])){
+if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 	$COMPLETE_INSTALL = false;
 	if($_POST['site']['forumtype']){
 		if($_POST['forum']['admin'] == ""){
