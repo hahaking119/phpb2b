@@ -2630,14 +2630,14 @@ INSERT INTO eos_newstypes VALUES
 (7, '商业宝典', 1, 0, 1, 0, 1248601108),
 (8, '外贸专题', 1, 0, 1, 0, 1248601108);
 
-INSERT INTO eos_accesses VALUES ('1', '普通权限', '1', '3', '3', '3', '3', '3', '3', '3', '1', '1', '1', '1', '1', '1', '0', '3', '0', '0', '3', '2', '0');
+INSERT INTO eos_accesses VALUES ('1', '普通权限', '1', '3', '3', '3', '3', '3', '3', '3', '1', '1', '1', '1', '1', '1', '0', '0', '3', '0', '0', '3', '2', '0');
 
 ##插入默认的公司类型
 
 INSERT INTO eos_companytypes (name,avaliable,picture) VALUES ('供应商', 1,''),('采购商', 1,''),('生产商', 1,''),('加盟商', 1,''),('其他类型', 1,'');
 
 ##插入首页顶部广告位置
-INSERT INTO eos_adzones VALUES (2, '1', NULL, '首页顶部小图片广告', '6个图片一行，首页显示', 'XXX元/月', 'index.php', 760, 45, 6, 12, NULL);
+INSERT INTO eos_adzones VALUES (2, '1', NULL, '首页顶部小图片广告', '6个图片一行，首页显示', NULL, 'XXX元/月', 'index.php', 760, 45, 6, 12, NULL);
 
 
 INSERT INTO eos_templets (`id`, `title`, `description`, `picture`, `status`) VALUES
