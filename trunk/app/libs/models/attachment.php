@@ -283,7 +283,7 @@
 	  }
 	  else//文字水印
 	  {
-		$temp = imagettfbbox(ceil($textFont*5),0, SITE_ROOT."./data/default/ACCELERA.TTF",$waterText);//取得使用 TrueType 字体的文本的范围
+		$temp = imagettfbbox(ceil($textFont*5),0, SITE_ROOT."./data/default/incite.TTF",$waterText);//取得使用 TrueType 字体的文本的范围
 		$w = $temp[2] - $temp[6];
 		$h = $temp[3] - $temp[7];
 		unset($temp);
