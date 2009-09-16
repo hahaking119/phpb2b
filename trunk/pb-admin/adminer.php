@@ -16,7 +16,7 @@ if ($_GET['action'] == "logout") {
 	PB_goto("index.html");
 }
 if ($_GET['action'] == "del" && !empty($_GET['id'])) {
-	if (uaStrCompare($_GET['id'],$current_adminer_id)) {
+	if (pb_strcomp($_GET['id'],$current_adminer_id)) {
 		PB_goto("./alert.php");
 	}else {
 		$result = $adminer->del(intval($_GET['id']));

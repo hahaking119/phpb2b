@@ -8,7 +8,7 @@ uses("trade","product", "news");
 $trade = new Trades();
 $news = new Newses();
 $product = new Products();
-require(LIB_PATH .'class.sitemap.php');
+require(LIB_PATH .'sitemap.class.php');
 $sitemapfile = BASE_DIR."sitemap.xml";
 $sitemap = new sitemap();
 $result = $trade->findAll("Trade.id as ContentId,Trade.type_id as TradeType", null, "Trade.id desc", 0, $trade->findCount());

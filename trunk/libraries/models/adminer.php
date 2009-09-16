@@ -23,7 +23,7 @@
 			return -1;
 		}elseif(!$this->checkUserExist($uname)) {
 			return -2;
-		}elseif (!uaStrCompare($true_pass,md5($upass))){
+		}elseif (!pb_strcomp($true_pass,md5($upass))){
 			return -3;
 		}else {
 		    $this->userid = $tmpUser['UserID'];

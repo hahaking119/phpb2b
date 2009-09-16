@@ -93,7 +93,7 @@ class MySmarty extends Smarty {
 	{
 		global $htmlcache;
 		global $_GET, $ua_user;
-		if(!uaStrCompare(md5(AUTH_KEY), $_GET['token'])){
+		if(!pb_strcomp(md5(AUTH_KEY), $_GET['token'])){
 			PB_goto(URL."redirect.php?message=".urlencode(sprintf(lgg("token_error"), $file_name)));
 		}
 		unset($ua_user);

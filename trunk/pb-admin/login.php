@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
     	$r_check = $auth_check = false;
     	if ($if_set_cp_picture) {
 
-    	$auth_check = uaStrCompare(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
+    	$auth_check = pb_strcomp(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
     	}
     	if ($if_set_cp_picture && !$auth_check) {
     		session_destroy();

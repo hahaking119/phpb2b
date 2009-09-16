@@ -5,7 +5,7 @@ require(SITE_ROOT. './app/configs/db_session.php');
 uses("company","member","area","companytype", "attachment", "indreccompany", "membertype");
 require(LIB_PATH .'time.class.php');
 require(LIB_PATH .'page.php');
-require(LIB_PATH .'class.DATA_XML.php');
+require(LIB_PATH .'DATA_XML.class.php');
 require("session_cp.inc.php");
 $membertype = new Membertypes();
 $indreccompany = new Indreccompanies();

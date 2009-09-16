@@ -19,7 +19,7 @@ if(isset($_POST['loginbtn'])){
 	if ($if_set_login_picture) {
     	$login_auth = $_POST['login_auth'];
     	$authnum_session = $_SESSION['authnum_session'];
-    	$auth_check = uaStrCompare(strtolower($login_auth),strtolower($authnum_session));
+    	$auth_check = pb_strcomp(strtolower($login_auth),strtolower($authnum_session));
 	}
 	if (!$auth_check && $if_set_login_picture) {
 		session_destroy();
@@ -31,20 +31,24 @@ if(isset($_POST['loginbtn'])){
 		if(!empty($_POST['forward'])){
 			$back_forward = $_POST['forward'];
 		}
-		$checked = ua_checkLogin($tmpUserName,$tmpUserPass, $back_forward);
+		$checked = pb_check_login($tmpUserName,$tmpUserPass, $back_forward);
         //UC LOGIN 通过接口判断登录帐号的正确性，返回值为数组
-        list($uid, $username, $password, $email) = uc_user_login($tmpUserName, $tmpUserPass);
-        if($uid > 0) {
-            //生成同步登录的代码
-            $ucsynlogin = uc_user_synlogin($uid);
-            echo '登录成功'.$ucsynlogin.'<br><a href="'.$referer.'">继续</a>';
-            exit;
-        } elseif($uid == -1) {
-            echo '用户不存在,或者被删除';
-        } elseif($uid == -2) {
-            echo '密码错';
-        } else {
-            echo '未定义';
+        if($forums['switch']==true){
+            require(LIB_PATH.'inc.discuz.php');
+            require(LIB_PATH.'inc.phpwind.php');
+            list($uid, $username, $password, $email) = uc_user_login($tmpUserName, $tmpUserPass);
+            if($uid > 0) {
+                //生成同步登录的代码
+                $ucsynlogin = uc_user_synlogin($uid);
+                echo '登录成功'.$ucsynlogin.'<br><a href="'.$referer.'">继续</a>';
+                exit;
+            } elseif($uid == -1) {
+                echo '用户不存在,或者被删除';
+            } elseif($uid == -2) {
+                echo '密码错';
+            } else {
+                echo '未定义';
+            }
         }
         //END UC LOGIN
 		if ($checked > 0) {
@@ -62,54 +66,35 @@ if(isset($_POST['loginbtn'])){
 	}
 }
 
-function ua_htmlspecialchars($string) {
-	if(is_array($string)) {
-		foreach($string as $key => $val) {
-			$string[$key] = ua_htmlspecialchars($val);
-		}
-	} else {
-		$string = preg_replace('/&amp;((#(\d{3,5}|x[a-fA-F0-9]{4})|[a-zA-Z][a-z0-9]{2,5});)/', '&\\1',
-		str_replace(array('&', '"', '<', '>'), array('&amp;', '&quot;', '&lt;', '&gt;'), $string));
-	}
-	return $string;
-}
-
 function ua_referer($default = '') {
 	global $referer;
 	$indexname = URL;
 	$default = empty($default) ? $indexname : '';
-	$referer = ua_htmlspecialchars($referer);
+	$referer = pb_htmlspecialchar($referer);
 	if(!preg_match("/(\.php|[a-z]+(\-\d+)+\.html)/", $referer) || strpos($referer, 'logging.php')) {
 		$referer = $default;
 	}
 	return $referer;
 }
 if(isset($_GET['action']) && ($_GET['action'] == "logout")){
-	$member_out = $referer = null;
+	$referer = null;
 	$referer = ua_referer();
 	uclearcookies();
 	if (isset($_GET['fr'])) {
 		if ($_GET['fr']=="cp") {
-			usetcookie("uladmin", "");
+			usetcookie("uladmin", '');
 		}
 	}
 	session_destroy();
 	if($forums['switch']==true){
 		if($forums['type']=="discuz"){
-            $member_out = array
-            (
-            'username'	=> $_SESSION['MemberName'],
-            'password'	=> $_SESSION['MemberPass'],
-            'email'		=> $ua_user['email'],
-            'cookietime'=> $ua_user['keep_online']
-            );
             $gopage = URL;
             /**UC OUT**/
             $ucsynlogout = uc_user_synlogout();
             echo '退出成功'.$ucsynlogout.'<br><a href="'.$referer.'">继续</a>';
             exit;
             /**END UC OUT**/
-		}elseif($forums['type']=="phpwind"){
+		}elseif($forums['type']=='phpwind'){
 			$member_out = array
 			(
 				'username'	=> $_SESSION['MemberName'],

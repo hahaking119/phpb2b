@@ -50,7 +50,7 @@ if(isset($_POST['register'])){
     	$is_company = true;
     }
 	$r_check = false;
-	$auth_check = uaStrCompare(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
+	$auth_check = pb_strcomp(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
 	if ($if_set_register_picture && !$auth_check) {
 		session_destroy();
 		PB_goto(URL."redirect.php?message=".urlencode(lgg('auth_error')));

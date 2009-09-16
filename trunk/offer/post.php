@@ -66,7 +66,7 @@ if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) &&
 	$trade->Add();
 	exit;
 	if ($if_visitpost_auth) {
-		$auth_check = uaStrCompare(strtolower($_POST['visit_auth_num']),strtolower($_SESSION['authnum_session']));
+		$auth_check = pb_strcomp(strtolower($_POST['visit_auth_num']),strtolower($_SESSION['authnum_session']));
 		if (!$auth_check) {
 			session_destroy();
 			alert(lgg('wrong_validate'));
