@@ -21,7 +21,7 @@ if ($_POST['id'] && !empty($_POST['query'])) {
 	$vals['content'] = $_POST['title'].":".$_POST['content'];
 	$vals['title'] = $product->field("name", "id=".intval($_POST['id']));
 	$inquery->save($vals);
-	PB_goto("../message.php", 1, urlencode(lgg("complete")));
+	PB_goto("../redirect.php", 1, urlencode(lgg("complete")));
 }
 
 $pid = intval($_GET['id']);

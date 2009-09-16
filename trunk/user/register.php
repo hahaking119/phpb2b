@@ -53,7 +53,7 @@ if(isset($_POST['register'])){
 	$auth_check = uaStrCompare(strtolower($_POST['login_auth']),strtolower($_SESSION['authnum_session']));
 	if ($if_set_register_picture && !$auth_check) {
 		session_destroy();
-		PB_goto(URL."message.php?message=".urlencode(lgg('auth_error')));
+		PB_goto(URL."redirect.php?message=".urlencode(lgg('auth_error')));
 	}else{
 	    unset($_SESSION['authnum_session']);
 	}
@@ -69,19 +69,19 @@ if(isset($_POST['register'])){
 	$checked = $member->checkUserExist($member_datas['username']);
 	$uip = uaIp2Long($_SERVER['REMOTE_ADDR']);
 	if(empty($uip)){
-		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+		PB_goto(URL."redirect.php?message=".urlencode(lgg('sys_error')));
 	}elseif(!empty($forbid_ip)){
 	    $forbid_ips = explode("\r\n", $forbid_ip);
 	    if (!empty($forbid_ips)) {
 	    	foreach ($forbid_ips as $key=>$val){
 	    	    if (checkip($val, $val)) {
-	    	      PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+	    	      PB_goto(URL."redirect.php?message=".urlencode(lgg('sys_error')));
 	    	    }
 	    	}
 	    }
 	}
 	if($cfg['reg_time_seperate']>($time_stamp-$_SESSION['last_reg_time'])){
-		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+		PB_goto(URL."redirect.php?message=".urlencode(lgg('sys_error')));
 	}
 	if(!empty($checked)){
 		die(lgg('member_exists'));

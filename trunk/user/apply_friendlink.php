@@ -29,7 +29,7 @@ if (isset($_POST['apply']) && !empty($_POST['site'])) {
 	$data['Friendlink']['created'] =$time_stamp;
 	$result = $friendlink->save($data['Friendlink']);
 	if ($result) {
-		PB_goto("../message.php", 1, lgg('wait_apply'));
+		PB_goto("../redirect.php", 1, lgg('wait_apply'));
 	}
 }
 setvar("SiteDescription", $setting->field("valued", "variable='site_description'"));

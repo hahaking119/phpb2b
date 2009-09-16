@@ -26,8 +26,28 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:06:23 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: 404.php 448 2009-07-14 14:35:56Z stevenchow811 $
+ * @version $Id$
  */
+$inc_path = null;
 require("global.php");
-alert(sprintf(lgg("page_not_exist"),$_SERVER['HTTP_REFERER']));
+if (!empty($_GET['message'])) {
+	$action_alert = urldecode($_GET['message']);
+}else{
+	$action_alert = ($_GET['r'] == 1)?lgg('action_success'):lgg('action_false');
+}
+if(isset($_GET['c'])){
+	if($_GET['c']=="n"){
+		setvar("closeBtn", false);
+	}else{
+		setvar("closeBtn", true);
+	}
+}
+if($_GET['b']=="n"){
+	setvar("backBtn", false);
+}else{
+	setvar("backBtn", true);
+}
+setvar("AlertTitle", $alert_title=($_GET['result']=="success")?lgg('congratulate'):lgg('sth_wrong'));
+setvar("ActionAlert",$action_alert);
+template($theme_name."/message");
 ?>

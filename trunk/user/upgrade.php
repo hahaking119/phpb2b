@@ -59,7 +59,7 @@ if ($_POST['apply']) {
 		}
 		$order_id = date('Ymd', $time_stamp)."-".$chinabank_account_id."-".$last_order_id;
 		$v_moneytype = "CNY";
-		$v_url = URL."message.php?r=1";
+		$v_url = URL."redirect.php?r=1";
 	    $text = $order_price.$v_moneytype.$order_id.$chinabank_account_id.$v_url.$key;
    		$v_md5info = strtoupper(md5($text));
    		setvar("md5info",$v_md5info);

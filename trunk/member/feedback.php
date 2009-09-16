@@ -14,9 +14,9 @@ if ($_POST['cid'] && !empty($_POST['feed'])) {
 	$vals['to_member_id'] = $member_id;
 	array_walk($vals,"uatrim");
 	if($companymessage->save($vals)){
-		PB_goto(URL."message.php?message=".urlencode(lgg("feedback_already_submit")));
+		PB_goto(URL."redirect.php?message=".urlencode(lgg("feedback_already_submit")));
 	}else {
-		PB_goto(URL."message.php?message=".urlencode(lgg('sys_error')));
+		PB_goto(URL."redirect.php?message=".urlencode(lgg('sys_error')));
 	}
 }
 template("../skins/".$tplpath."feedback");
