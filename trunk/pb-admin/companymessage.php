@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 $tplname = "company_message";
 uses("companymessage","member","company");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 $member = new Members();
 $companymessage = new Companymessages();

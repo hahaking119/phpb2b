@@ -1,7 +1,7 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
 uses("product","producttype");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $producttype = new Producttypes();
 $product = new Products();
 $tpl_file = "product";

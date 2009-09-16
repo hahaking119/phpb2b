@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require("session.php");
 uaCheckPermission(2);
 uses("adzone");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "ads";
 $adzone = new Adzones();
 $amount = $adzone->findCount();

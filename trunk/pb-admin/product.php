@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("product","company","member","attachment");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
 $member = new Members();
@@ -24,7 +24,7 @@ if (isset($_POST['save']) && !empty($_POST['product']['name'])) {
 	$vals = $_POST['product'];
 	$pid = intval($_POST['id']);
 	if (!empty($_FILES['pic']['name'])) {
-        include("../app/include/class.thumb.php");
+        include("../libraries/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;
         $attachment->upload_process();

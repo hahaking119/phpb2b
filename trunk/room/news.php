@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");
 require("session.php");
 uaCheckPermission(2);
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 uses("member","companynews", "company");
 $companynews = new Companynewses();
 $company = new Companies;

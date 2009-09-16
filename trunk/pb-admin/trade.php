@@ -6,7 +6,7 @@ require(LIB_PATH .'time.class.php');
 $position_path = array(array("name"=>"Offers","url"=>"./admin.php"));
 setvar("CurrentPos",uaFormatPositionPath($position_path));
 uses("trade","industry","company","member","area","offer","attachment");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 $attachment = new Attachments();
 $area = new Areas();
@@ -116,7 +116,7 @@ if(isset($_POST['save'])){
 		}
 	}
 	if (!empty($_FILES['pic']['name'])) {
-        include("../app/include/class.thumb.php");
+        include("../libraries/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;
         $attachment->upload_process();

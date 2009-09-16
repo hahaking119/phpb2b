@@ -1,7 +1,7 @@
 <?php
 $inc_path = "../";
 require($inc_path."global.php");
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 uses("setting", "htmlcache");
 $htmlcache = new Htmlcaches();
 $setting = new Settings();

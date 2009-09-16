@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
 uses("membertype","access");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $conditions = null;
 $access = new Accesses();
 $membertype = new Membertypes();

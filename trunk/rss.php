@@ -1,7 +1,7 @@
 <?php
 $inc_path = null;
 require($inc_path."global.php");
-include_once(SITE_ROOT. './app/include/feedcreator.class.php');
+include_once(SITE_ROOT. './libraries/feedcreator.class.php');
 //header('Content-Type: text/xml');
 //header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 //header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

@@ -33,7 +33,7 @@ $li = 8;
 require("global.php");
 $conditions = null;
 $tpl_file = "hr_index";
-include(SITE_ROOT.'./app/include/page.php');
+include(SITE_ROOT.'./libraries/page.php');
 include(SITE_ROOT."./data/cache/".$cookiepre."area.inc.php");
 uses("industry", "area", "job", "company", "member");
 $industry = new Industries();

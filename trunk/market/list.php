@@ -3,7 +3,7 @@ $inc_path = "../";
 $li = 6;
 require($inc_path."global.php");
 uses("area","market","trade","industry");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $area = new Areas();
 $trade = new Trades();
 $market = new Markets();

@@ -46,14 +46,14 @@ if(!DEBUG){
 	error_reporting(E_ALL);
 	$g_db->debug = true;
 }
-require(SITE_ROOT. './app/include/class.my.smarty.php');
+require(SITE_ROOT. './libraries/class.my.smarty.php');
 //$inc_path = (!empty($inc_path))?$inc_path:'./';
 $smarty = new MySmarty($inc_path);
 require(LIB_PATH. 'ualink_object.php');
 require(LIB_PATH. 'ualink_model.php');
 require(LIB_PATH. 'ualink_controller.php');
 require(LIB_PATH. 'ualink_view.php');
-require(SITE_ROOT. './app/include/func.global.php');
+require(SITE_ROOT. './libraries/func.global.php');
 require(DATA_PATH.$cookiepre."setting.inc.php");
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.inc.php');
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.site.inc.php');

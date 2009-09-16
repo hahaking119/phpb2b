@@ -56,7 +56,7 @@ if (isset($_POST['action'])) {
 			flash("./tip.php","./product.php",$msg,0);
 		}
     	if (!empty($_FILES['pic']['name'])) {
-    	    include("../app/include/class.thumb.php");
+    	    include("../libraries/class.thumb.php");
     	    $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
     	    $attachment->out_file_name = $_SESSION['MemberID']."_".$pid."_".$time_stamp;
     	    $attachment->upload_process();

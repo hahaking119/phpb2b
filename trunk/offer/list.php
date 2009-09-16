@@ -4,7 +4,7 @@ $li = 0;
 require($inc_path."global.php");
 uses("trade","industry","company","area","member", "offer");
 $member = new Members();
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $area = new Areas();
 $offer = new Offers();
 $company = new Companies();

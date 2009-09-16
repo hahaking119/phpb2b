@@ -2,7 +2,7 @@
 $inc_path = "../";
 $li = 2;
 require($inc_path."global.php");
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 uses("trade", "htmlcache","industry");
 $industry_templet = "industry2";
 $htmlcache = new Htmlcaches();

@@ -5,7 +5,7 @@ require(SITE_ROOT. './app/configs/db_session.php');
 require(LIB_PATH .'time.class.php');
 require("session_cp.inc.php");
 uses("adzone","ad","member","attachment");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "ad_index";
 $attachment = new Attachments();
 $adzone = new Adzones();
@@ -19,7 +19,7 @@ if (isset($_POST['save'])) {
 	$vals = $_POST['ad'];
 	if((!$vals['source_url']) || empty($vals['source_url'])){
 		if (!empty($_FILES['pic']['name'])) {
-			include("../app/include/class.thumb.php");
+			include("../libraries/class.thumb.php");
 			$attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
 			$attachment->out_file_name = $time_stamp;
 			$attachment->upload_process();

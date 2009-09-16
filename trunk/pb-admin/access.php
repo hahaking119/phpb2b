@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
 uses("access","membertype", "member");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "access_index";
 $access = new Accesses();
 $member = new Members();

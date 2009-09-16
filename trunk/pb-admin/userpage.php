@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require("./fckeditor/fckeditor.php") ;
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 $conditions = null;
 $tpl_file = "userpage_index";

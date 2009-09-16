@@ -5,7 +5,7 @@ require(SITE_ROOT. './app/configs/db_session.php');
 require(LIB_PATH .'time.class.php');
 uses("expo","member","company", "expotype","attachment");
 require("./fckeditor/fckeditor.php") ;
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 $attachment = new Attachments();
 $expo = new Expoes();
@@ -27,7 +27,7 @@ if (isset($_POST['save']) && !empty($_POST['Expo']['ea'])) {
 	if(isset($_POST['cityid'])) $vals['city_id'] = $_POST['cityid'];
 	$primary_id = intval($_POST['id']);
 	if (!empty($_FILES['pic']['name'])) {
-        include("../app/include/class.thumb.php");
+        include("../libraries/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;
         $attachment->upload_process();

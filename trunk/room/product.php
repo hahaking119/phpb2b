@@ -2,7 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");require("session.php");
 uses("product","producttype","member","access");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "product_list";
 $action_level = 2;
 uaCheckPermission($action_level);

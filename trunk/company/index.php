@@ -2,7 +2,7 @@
 $inc_path = "../";
 $li = 3;
 require("../global.php");
-include(INC_PATH .'xajax/xajaxAIO.inc.php');
+include(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 uses("member","company","companytype", "htmlcache","industry");
 $company = new Companies();
 $industry = new Industries();

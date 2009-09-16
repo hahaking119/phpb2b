@@ -63,8 +63,8 @@ if (!file_exists("./install.php")) {
 }
 $app_name = "../app/";
 define('IN_UALINK', true);
-require(INSTALL_ROOT.'../app/include/func.global.php');
-require(INSTALL_ROOT.'../app/include/func.sql.php');
+require(INSTALL_ROOT.'../libraries/func.global.php');
+require(INSTALL_ROOT.'../libraries/func.sql.php');
 $core_sample_file = '../app/configs/core.php';
 $db_sample_file	= '../app/configs/db.php';
 $installfile = basename(__FILE__);
@@ -253,7 +253,7 @@ if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 				if($conn){
 					$db = mysql_select_db($dbname);
 					if($BACUP_DB){
-						require_once(INSTALL_ROOT."../app/include/db_mysql.inc.php");
+						require_once(INSTALL_ROOT."../libraries/db_mysql.inc.php");
 						$db = new DB_Sql();
 						//$tb_prefix = $_POST['db']['prefix'];
 						$sqldump = null;

@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("market","area","industry", "attachment");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 $attachment = new Attachments();
 $market = new Markets();
@@ -51,7 +51,7 @@ if (isset($_POST['save']) && !empty($_POST['market'])) {
 		$vals['area_id'] = $_POST['provinceid'];
 	}
 	if (!empty($_FILES['pic']['name'])) {
-        include("../app/include/class.thumb.php");
+        include("../libraries/class.thumb.php");
 		ini_set("memory_limit", "32M");
         $attachment->out_file_dir     = BASE_DIR.'./attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;

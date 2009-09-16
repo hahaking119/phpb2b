@@ -33,7 +33,7 @@ $li = 0;
 $module_id = 0;
 require("global.php");
 header("Content-Type: text/html; charset=".$charset);
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 uses("trade","industry","memberlog","ad","htmlcache", "stat");
 $stat = new Stats();
 $htmlcache = new Htmlcaches();

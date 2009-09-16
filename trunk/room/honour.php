@@ -6,7 +6,7 @@ uaCheckPermission(2);
 uses("attachment", "company");
 $attachment = new Attachments();
 $company = new Companies();
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "honour_index";
 if (isset($_GET['action'])){
 	if($_GET['action']=="del" && !empty($_GET['id'])) {
@@ -19,7 +19,7 @@ if (isset($_POST['save'])) {
 	$pid = intval($_POST['id']);
 	$result = true;
 	if (!empty($_FILES['pic']['name'])) {
-	    include("../app/include/class.thumb.php");
+	    include("../libraries/class.thumb.php");
 	    $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
 	    $attachment->out_file_name = $_SESSION['MemberID']."_".$pid."_".$time_stamp;
 		$attach['title'] = $_POST['honour']['title'];

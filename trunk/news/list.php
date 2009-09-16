@@ -3,7 +3,7 @@ $inc_path = "../";
 $li = 5;
 require($inc_path."global.php");
 uses("news","newstype");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require(DATA_PATH.$cookiepre."newstype.inc.php");
 $news = new Newses();
 $newstype = new Newstypes();

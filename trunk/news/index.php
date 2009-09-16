@@ -2,7 +2,7 @@
 $inc_path = "../";
 $li = 5;
 require($inc_path."global.php");
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 require(LIB_PATH .'time.class.php');
 uses("news","newstype","htmlcache");
 $htmlcache = new Htmlcaches();

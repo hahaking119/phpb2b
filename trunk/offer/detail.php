@@ -3,7 +3,7 @@ $inc_path = "../";
 $li = 0;
 require($inc_path."global.php");
 include(SITE_ROOT."./data/cache/".$cookiepre."area.inc.php");
-require(SITE_ROOT. './app/include/breadcrumb.inc.php');
+require(SITE_ROOT. './libraries/breadcrumb.inc.php');
 $positions = $titles = array();
 uses("trade","product","member","company","memberlog","industry","area","setting", "offer");
 $area = new Areas();

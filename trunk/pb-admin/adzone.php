@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
 uses("adzone");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "adzone_index";
 $adzone = new Adzones();
 $conditions = null;

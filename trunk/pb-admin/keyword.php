@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
 uses("adzone","member","keyword");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $tpl_file = "keyword_index";
 $keyword = new Keywords();
 $member = new Members();

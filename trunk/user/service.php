@@ -2,7 +2,7 @@
 $inc_path = "../";
 require($inc_path."global.php");
 uses("service");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $service = new Services();
 setvar("ServiceTypes",$service->types);
 $conditions = null;

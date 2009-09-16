@@ -2,7 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");
 require("session.php");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 uses("companymessage","member","company");
 $member = new Members();
 $company = new Companies();

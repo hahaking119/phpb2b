@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");
 require("session.php");
 uses("memberlog","member");
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 $memberlog = new Memberlogs();
 $member = new Members();
 $memberinfo = $member->read("id,userpass,answer,question", $_SESSION['MemberID']);

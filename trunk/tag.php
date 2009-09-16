@@ -31,9 +31,9 @@
 $inc_path = "./";
 $li = 99;
 require("global.php");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 uses("trade","industry","company","product","keyword");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $industry = new Industries();
 $keyword = new Keywords();
 $trade = new Trades();

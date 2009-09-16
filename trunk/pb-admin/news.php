@@ -5,7 +5,7 @@ require(SITE_ROOT. './app/configs/db_session.php');
 uses("news","newstype", "membertype","attachment", "keyword");
 require(LIB_PATH .'time.class.php');
 require("fckeditor/fckeditor.php") ;
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");
 $keyword = new Keywords();
 $attachment = new Attachments();
@@ -58,7 +58,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
 		$vals['require_membertype'] = 0;
 	}
 	if (!empty($_FILES['pic']['name'])) {
-        include("../app/include/class.thumb.php");
+        include("../libraries/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $time_stamp;
         $attachment->module_id = 5;//News

@@ -14,7 +14,7 @@ if ($_POST['save']) {
 	$vals['city_code_id'] = $_POST['cityid'];
 	array_walk($vals,"uatrim");
 	if (!empty($_FILES['photo']['name'])) {
-	    include("../app/include/class.thumb.php");
+	    include("../libraries/class.thumb.php");
 	    $attachment->upload_form_field = "photo";
 	    $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
 	    $attachment->out_file_name = "photo_".$_SESSION['MemberID'];

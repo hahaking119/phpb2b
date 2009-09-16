@@ -3,7 +3,7 @@ $inc_path = "../";
 $li = 4;
 require($inc_path."global.php");
 uses("company","industry","product","member");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $member = new Members();
 $industry = new Industries();
 $product = new Products();

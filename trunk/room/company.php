@@ -77,7 +77,7 @@ if (isset($_POST['edit_company'])) {
 		$vals['main_market'] = $mainmarket;
 	}
 	if (!empty($_FILES['picture']['name'])) {
-	    include("../app/include/class.thumb.php");
+	    include("../libraries/class.thumb.php");
 	    $attachment->upload_form_field = "picture";
 	    $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
 	    $attachment->out_file_name = $_SESSION['MemberID']."_logo_".$_SESSION['MemberID'];

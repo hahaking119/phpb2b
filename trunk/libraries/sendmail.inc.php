@@ -32,7 +32,7 @@
 function uaMailTo($to_address, $to_name, $subject, $body, $redirect_url = null)
 {
     global $charset, $g_db, $setting, $_SETTINGS;
-    require_once(INC_PATH."phpmailer/class.phpmailer.php");
+    require_once(SOURCE_PATH."phpmailer/class.phpmailer.php");
     $mail = new PHPMailer();
     $result = false;
     $mail_set = array();

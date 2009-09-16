@@ -126,7 +126,7 @@ if (isset($_POST['edit_trade'])) {
         $message_info = lgg('msg_wait_check');
     }
     if (!empty($_FILES['pic']['name'])) {
-        include("../app/include/class.thumb.php");
+        include("../libraries/class.thumb.php");
         $attachment->out_file_dir     = BASE_DIR.'attachment/'.gmdate("Ym");
         $attachment->out_file_name = $_SESSION['MemberID']."_".$tid."_".$time_stamp;
         $attachment->upload_process();

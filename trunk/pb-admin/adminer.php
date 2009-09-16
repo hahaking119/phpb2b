@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require("session_cp.inc.php");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $position_path = array(array("name"=>"Modify Password","url"=>"./admin.php"));
 setvar("CurrentPos",uaFormatPositionPath($position_path));
 uses("adminer","adminrole");

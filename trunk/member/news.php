@@ -1,6 +1,6 @@
 <?php
 if(!defined('IN_UALINK')) exit('Access Denied');
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 uses("companynews");
 $companynews = new Companynewses();
 $conditions = " Companynews.company_id=".$companyinfo['ID'];

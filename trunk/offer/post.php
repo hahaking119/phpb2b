@@ -31,8 +31,8 @@
 $inc_path = "../";
 require("../global.php");
 require_once(SITE_ROOT. './app/configs/db_session.php');
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
-require(SITE_ROOT. './app/include/func.checksubmit.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
+require(SITE_ROOT. './libraries/func.checksubmit.php');
 uses("trade","industry","member", "setting", "htmlcache");
 $industry = new Industries();
 $htmlcache = new Htmlcaches();

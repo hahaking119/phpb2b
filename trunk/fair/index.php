@@ -3,7 +3,7 @@ $inc_path = "../";
 $li = 7;
 $expo_newstype_id = 13;
 require($inc_path."global.php");
-require(INC_PATH .'xajax/xajaxAIO.inc.php');
+require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 uses("expo", "expotype", "htmlcache", "news");
 $expo = new Expoes();
 $news = new Newses();

@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("member","membertype", "area", "company", "trade", "product", "access");
 require(LIB_PATH .'time.class.php');
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $access = new Accesses();
 $member = new Members();
 $area = new Areas();

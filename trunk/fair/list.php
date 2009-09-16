@@ -2,7 +2,7 @@
 $inc_path = "../";
 $li = 7;
 require($inc_path."global.php");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 uses("expo", "expotype");
 $expo = new Expoes();
 $expotype = new Expotypes();

@@ -3,7 +3,7 @@ $inc_path = "../";$ua_sm_compile_dir = "room/";
 require($inc_path."global.php");
 require("session.php");
 uses("company","templet");
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 $templet = new Templets();
 $company = new Companies();
 uaCheckPermission(2);

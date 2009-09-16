@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 uses("company","member","area","companytype", "attachment", "indreccompany", "membertype");
 require(LIB_PATH .'time.class.php');
-require(SITE_ROOT.'./app/include/page.php');
+require(SITE_ROOT.'./libraries/page.php');
 require($inc_path.APP_NAME.'include/class.DATA_XML.php');
 require("session_cp.inc.php");
 $membertype = new Membertypes();
