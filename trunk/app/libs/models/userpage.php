@@ -79,7 +79,7 @@ class Userpages extends UaModel {
 				$tmp_contain['company'] = URL."company/";
 				$tmp_contain['product'] = URL."product/";
 				$tmp_contain['news'] = URL."news/";
-				$tmp_contain['hr'] = URL."hr.php";
+				$tmp_contain['hr'] = URL."hr/";
 				$tmp_contain['market'] = URL."market/";
 				$tmp_contain['fair'] = URL."fair/";
 				$tmp_contain['user'] = URL."user/";

@@ -97,7 +97,7 @@ class Industries extends UaModel {
 	    	    $url = URL."product/list.php?";
 	    	    break;
 	    	case "hr":
-	    	    $url = URL."hr.php?ac=list&";
+	    	    $url = URL."hr/index.php?ac=list&";
 	    	    break;
 	    	default:
 	    		break;

@@ -116,7 +116,7 @@ if(isset($li)){
 	}elseif($li==7){
 		$headerFrmAction = URL."fair/list.php";
 	}elseif($li==8){
-		$headerFrmAction = URL."hr.php";
+		$headerFrmAction = URL."hr/index.php";
 	}elseif($li==99){
 		$headerFrmAction = URL."tag.php";
 	}else{
