@@ -4,7 +4,7 @@ require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require(LIB_PATH .'time.class.php');
 $position_path = array(array("name"=>"Offers","url"=>"./admin.php"));
-setvar("CurrentPos",uaFormatPositionPath($position_path));
+setvar("CurrentPos",pb_format_current_position($position_path));
 uses("trade","industry","company","member","area","offer","attachment");
 require(SITE_ROOT.'./libraries/page.php');
 require("session_cp.inc.php");

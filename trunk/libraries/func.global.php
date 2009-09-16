@@ -50,7 +50,7 @@
 		}
 	}
 
-	function getRadomStr($len=6,$recycle=1){
+	function pb_radom($len=6,$recycle=1){
 
 		$str.= 'ABCDEFGHJKMNPQRSTUVWXYabcdefghjkmnpqrstuvwxy';
 		$str.= '123456789';
@@ -142,11 +142,11 @@
 		exit;
 	}
 
-	function createFolder($path)
+	function pb_create_folder($path)
 	{
 	   if (!file_exists($path))
 	   {
-	    createFolder(dirname($path));
+	    pb_create_folder(dirname($path));
 	    mkdir($path, 0777);
 	   }
 	}
@@ -159,7 +159,7 @@
 		return $return;
 	}
 
-	function ua_checkEmail($email){
+	function pb_check_email($email){
 		$return = false;
 		if(strstr($email, '@') && strstr($email, '.')){
 			if(eregi("^([_a-z0-9]+([\._a-z0-9-]+)*)@([a-z0-9]{2,}(\.[a-z0-9-]{2,})*\.[a-z]{2,3})$", $email)){
@@ -288,10 +288,10 @@
 		return substr(($t=strrchr($filename,'.'))!==false?".".$t:'',1);
 	}
 
-	function uaHtmlSpecialChars($string) {
+	function pb_htmlspecialchar($string) {
 		if(is_array($string)) {
 			foreach($string as $key => $val) {
-				$string[$key] = uhtmlspecialchars($val);
+				$string[$key] = pb_htmlspecialchar($val);
 			}
 		} else {
 			$string = preg_replace('/&amp;((#(\d{3,5}|x[a-fA-F0-9]{4})|[a-zA-Z][a-z0-9]{2,5});)/', '&\\1',
@@ -300,7 +300,7 @@
 		return $string;
 	}
 
-	function uaGetClientIP()
+	function pb_get_client_ip($type = "long")
 	{
 		if(getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
 			$onlineip = getenv('HTTP_CLIENT_IP');
@@ -313,13 +313,23 @@
 		}
 		preg_match("/[\d\.]{7,15}/", $onlineip, $onlineipmatches);
 		$onlineip = $onlineipmatches[0] ? $onlineipmatches[0] : 'unknown';
-		return $onlineip;
+		if($onlineip=='unknown') return $onlineip;
+		if($type=="long"){
+			return pb_ip2long($onlineip);
+		}else{
+			return $onlineip;
+		}
 	}
 
-	function ulAddSlashes($string) {
+	function pb_ip2long($ip)
+	{
+		return sprintf("%u",ip2long($ip));
+	}
+
+	function pb_addslashes($string) {
 		if(is_array($string)) {
 			foreach($string as $key => $val) {
-				$string[$key] = ulAddSlashes($val);
+				$string[$key] = pb_addslashes($val);
 			}
 		} else {
 			$string = addslashes($string);
@@ -327,7 +337,7 @@
 		return $string;
 	}
 
-	function uaConvertComma($str){
+	function pb_convert_comma($str){
 		$str = strip_tags($str);
 		if(strpos($str, "，")) $str = str_replace("，",",",$str);
 		if(strpos($str, ",")) {
@@ -342,7 +352,7 @@
 		return $str;
     }
 
-    function uaProcessTableCol($colname)
+    function pb_format_column($colname)
     {
     	$new_column_name = null;
     	if (strstr($colname, "_")) {
@@ -366,7 +376,7 @@
     	}
     }
 
-    function uaGetAbsoluteUrl()
+    function pb_get_absolute_url()
     {
 		if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) ) {
 			$ul_protocol = 'https';
@@ -376,7 +386,7 @@
     	return $ul_protocol."://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
     }
 
-    function uaGetHost($http = true)
+    function pb_get_host($http = true)
     {
 		if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) ) {
 			$ul_protocol = 'https';
@@ -396,7 +406,7 @@
 		$val = strip_tags(trim($val));
 	}
 
-    function uaGetOs() {
+    function pb_get_os() {
     	$os = $_SERVER['HTTP_USER_AGENT'];
     	if(strpos($os,"Windows")) $os="Windows";
     	elseif(strpos($os,"unix")) $os="Unix";
@@ -408,7 +418,7 @@
     	return $os;
     }
 
-	function SplitKeywords($params)
+	function pb_split_words($params)
 	{
 		extract($params);
 		$links = null;
@@ -430,7 +440,7 @@
 	    return $obj->getXML();
 	}
 
-	function uaFormatPositionPath($position_path)
+	function pb_format_current_position($position_path)
 	{
 		$position_name = null;
 		if(is_array($position_path)){
@@ -450,33 +460,7 @@
 		}
 	}
 
-	function uaIp2Long($ip)
-	{
-		return sprintf("%u",ip2long($ip));
-	}
-
-
-	function uaLog($action_name = null,  $type_id = 1, $member_id = null, $action_result = true)
-	{
-		global $log;
-		$vals = array();
-
-		return true;
-	}
-
-	function plugin(){
-		return false;
-	}
-
-	function checkEmail($str)
-	{
-		if (eregi("^[0-9a-z][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}[0-9a-z]\.){1,4}[a-z]{2,4}$", $str))
-		return true;
-		else
-		return false;
-	}
-
-   function isUrl($inputUrl){
+   function pb_check_url($inputUrl){
        $regUrl = "^(http://)?((localhost)|(([0-9a-z][0-9a-z_-]+.){1,3}[a-z]{2,4}))$";
        $resultUrl = ereg($regUrl,$inputUrl);
        if ($resultUrl == 1)
@@ -502,13 +486,13 @@
 	}
 
 
-	function stripSeqSpace($string)
+	function pb_strip_spaces($string)
 	{
 		$str = preg_replace('#\s+#', ' ', trim($string));
 		return $str;
 	}
 
-	function getMemberInfo()
+	function pb_get_member_info()
 	{
 		global $cookiepre;
 		$ua_member = null;

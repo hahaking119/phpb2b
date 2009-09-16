@@ -147,7 +147,7 @@ if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 				$ds = "\\";
 			}
 			$configfile = str_replace("%UALINK_SETUP_INSTALLED%",1,$configfile);
-			$configfile = str_replace("%UALINK_AUTH_KEY%",getRadomStr(15), $configfile);
+			$configfile = str_replace("%UALINK_AUTH_KEY%",pb_radom(15), $configfile);
 			if ($_POST['site']['forumtype']) {
 				$configfile = str_replace("%FORUM_SWITCH%", 1,$configfile);
 				$configfile = str_replace("%FORUM_URL%",$_POST['site']['forumurl'],$configfile);
@@ -282,7 +282,7 @@ if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 						}
 						$file_path = "../data/backup/";
 						if(function_exists("gzwrite")){
-							$zip_file_name = $file_path."db_".date("Ymd")."_".getRadomStr().".gz";
+							$zip_file_name = $file_path."db_".date("Ymd")."_".pb_radom().".gz";
 							$zip_fp = gzopen($zip_file_name, "w9");
 							if($zip_fp){
 								gzwrite($zip_fp, $sqldump);

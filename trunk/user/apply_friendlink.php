@@ -16,7 +16,7 @@ if (isset($_POST['apply']) && !empty($_POST['site'])) {
 	$data['Service']['title'] = lgg('apply_friendlink').":".strip_tags($_POST['site']['name']);
 	$data['Service']['content'] = serialize($_POST['site']);
 	$data['Service']['created'] = $time_stamp;
-	$data['Service']['user_ip'] = uaGetClientIP();
+	$data['Service']['user_ip'] = pb_get_client_ip('str');
 	$data['Service']['email'] = $_POST['site']['email'];
 	$data['Service']['type_id'] = 9;
 	uses("service");

@@ -62,7 +62,7 @@ if ($_GET['action'] == "backup_now") {
 	}
 	$file_path = "..".DS."data".DS."backup".DS;
 	if(function_exists("gzwrite")){
-		$file_name = "db_".date("Ymd")."_".getRadomStr().".gz";
+		$file_name = "db_".date("Ymd")."_".pb_radom().".gz";
 		$zip_file_name = $file_path.$file_name;
 		$zip_fp = gzopen($zip_file_name, "w9");
 		if($zip_fp){

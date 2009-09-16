@@ -7,7 +7,7 @@ $market = new Markets();
 $setting = new Settings();
 $industry = new Industries();
 if (!isset($_COOKIE[session_name()])) {
-	setcookie(session_name(), md5(getRadomStr()), $time_stamp+3*86400);
+	setcookie(session_name(), md5(pb_radom()), $time_stamp+3*86400);
 }
 $salt = substr($_COOKIE[session_name()], 0, 10);
 if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
@@ -34,7 +34,7 @@ if (isset($_POST['addmarket']) && !empty($_POST['market'])) {
 	}
 	$vals['industry_id'] = $industryid;
 	$vals['created'] = time();
-	$vals['submit_ip'] = uaGetClientIP();
+	$vals['submit_ip'] = pb_get_client_ip('str');
 	array_walk($vals, "uatrim");
 
 	$sh_check = intval($setting->field("valued", "variable='add_market_check'"));

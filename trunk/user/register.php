@@ -67,7 +67,7 @@ if(isset($_POST['register'])){
 	}
 	$member_datas = $_POST['data']['Member'];
 	$checked = $member->checkUserExist($member_datas['username']);
-	$uip = uaIp2Long($_SERVER['REMOTE_ADDR']);
+	$uip = pb_ip2long($_SERVER['REMOTE_ADDR']);
 	if(empty($uip)){
 		PB_goto(URL."redirect.php?message=".urlencode(lgg('sys_error')));
 	}elseif(!empty($forbid_ip)){
@@ -202,9 +202,9 @@ if(isset($_POST['register'])){
 						$uid = uc_user_register($uname, $upass, $uemail);
 						if($uid <= 0) {
 							if($uid == -1) {
-								echo '用户名不合法';
+								echo L('invalid_username');
 							} elseif($uid == -2) {
-								echo '包含要允许注册的词语';
+								echo L('not_allowed_forbid_words');
 							} elseif($uid == -3) {
 								echo '用户名已经存在';
 							} elseif($uid == -4) {
@@ -297,7 +297,7 @@ function checkMemberEmail($email)
     	if ($checked){
     		$errmsg = "<img src=\"".URL."images/check_error.gif\"> ".lgg('email_exists')."";
     		$obj->assign("Submit","disabled",true);
-    	}elseif(!checkEmail($tmpEmail)){
+    	}elseif(!pb_check_email($tmpEmail)){
     		$errmsg = "<img src=\"".URL."images/check_error.gif\"> ".lgg('pls_input_email')."";
     		$obj->assign("Submit","disabled",true);
     	}else{

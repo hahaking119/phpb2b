@@ -367,7 +367,7 @@ class UaModel extends UaObject
 			$fields = null;
 			$columns = $g_db->MetaColumnNames($this->getTable());
 			foreach ($columns as $key=>$val) {
-				$fields.=$key." as ".$this->name.uaProcessTableCol($val).",";
+				$fields.=$key." as ".$this->name.pb_format_column($val).",";
 			}
 			$fields = substr_replace($fields,'',-1,1);
 		}
@@ -431,7 +431,7 @@ class UaModel extends UaObject
 		$fields = null;
 		$columns = $g_db->MetaColumnNames($table_name);
 		foreach ($columns as $key=>$val) {
-			$fields.=$this->name.".".$key." as ".$this->name.uaProcessTableCol($val).",";
+			$fields.=$this->name.".".$key." as ".$this->name.pb_format_column($val).",";
 		}
 		$fields = substr_replace($fields,'',-1,1);
 		return $fields;

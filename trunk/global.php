@@ -75,7 +75,7 @@ $userpage->setUrlContainer(intval(STATIC_HTML_LEVEL));
 $urls = $userpage->getUrlContainer();
 $current_li = $userpage->getLi();
 unset($conditions);
-$ua_user = getMemberInfo();
+$ua_user = pb_get_member_info();
 
 if (isset($_GET['action']) && ($_GET['action'])=="html") {
 	unset($ua_user);
@@ -85,14 +85,14 @@ uaAssign($_SETTINGS);
 $magic_quote = get_magic_quotes_gpc();
 //secure global
 if(empty($magic_quote)) {
-    $_GET = ulAddSlashes($_GET);
-    $_POST = ulAddSlashes($_POST);
+    $_GET = pb_addslashes($_GET);
+    $_POST = pb_addslashes($_POST);
 }
 //secure cookie
 $pre_length = strlen($cookiepre);
 foreach($_COOKIE as $key => $val) {
 	if(substr($key, 0, $pre_length) == $cookiepre) {
-		$_UCOOKIE[(substr($key, $pre_length))] = empty($magic_quote) ? ulAddSlashes($val) : $val;
+		$_UCOOKIE[(substr($key, $pre_length))] = empty($magic_quote) ? pb_addslashes($val) : $val;
 	}
 }
 //referer

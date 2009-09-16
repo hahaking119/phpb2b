@@ -41,7 +41,7 @@ $trade = new Trades();
 $setting = new Settings();
 $expires = $trade->offer_expires;
 if (!isset($_COOKIE[session_name()])) {
-	setcookie(session_name(), md5(getRadomStr()), $time_stamp+3*86400);
+	setcookie(session_name(), md5(pb_radom()), $time_stamp+3*86400);
 }
 $salt = substr($_COOKIE[session_name()], 0, 10);
 setvar("TradeTypes",$trade->getTradeTypes());
@@ -89,7 +89,7 @@ if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) &&
 	$vals['type_id'] = strval($_POST['data']['trade']['type_id']);
 	$trade->setTradeCat($vals['type_id']);
 	$vals['content'] = preg_replace("/(\r?\n)\\1+/","\\1",$vals['content']);
-	$vals['ip_addr'] = uaGetClientIP();
+	$vals['ip_addr'] = pb_get_client_ip('str');
 	$if_check = $setting->field("valued", "variable='vis_post_check'");
 	$if_check = intval($if_check);
 	$msg = null;
@@ -116,7 +116,7 @@ if (isset($_POST['visit_post']) && isset($_POST['data']['offer']['link_man']) &&
 		$vals['expire_days'] = 10;
 	}
 	$tmp_keywords = preg_replace('#\s+#', ' ', trim($_POST['keywords']));
-	$vals['keywords'] = uaConvertComma($tmp_keywords);
+	$vals['keywords'] = pb_convert_comma($tmp_keywords);
 	$result = $trade->save($vals);
 	if ($result) {
 		$last_trade_id = $trade->getMaxId();

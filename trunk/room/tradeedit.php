@@ -97,7 +97,7 @@ if (isset($_POST['edit_trade'])) {
         flash("./tip.php","./trade.php", sprintf(lgg('off_trade_amount'), $max_amount), 0);
     }
     $res['content'] = preg_replace("/(\r?\n)\\1+/","\\1",$_POST['content']);
-    //$res['keywords'] = uaConvertComma($_POST['keywords']);
+    //$res['keywords'] = pb_convert_comma($_POST['keywords']);
     if($_POST['trade']['if_urgent'])
     $res['if_urgent'] = "1";
     if ($_POST['cindustry']) {
@@ -142,7 +142,7 @@ if (isset($_POST['edit_trade'])) {
     array_walk($res,"uatrim");
     $trade->setTradeCat($res['type_id']);
     $keyword_typeid = $trade->trade_type_sign_id;
-    $res['ip_addr'] = uaGetClientIP();
+    $res['ip_addr'] = pb_get_client_ip('str');
     $offer_res = $_POST['offer'];
     $offer_res['oa'] = serialize($_POST['param']);
     $offer_res['industry_name'] = $industry->field("name", "id=".$industryid);

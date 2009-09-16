@@ -11,7 +11,6 @@ $member = new Members();
 $referer = "";
 if(isset($_GET['referer'])) $referer = urldecode($_GET['referer']);
 $_SERVER['HTTP_REFERER'] = $referer ? $referer : $_SERVER['REQUEST_URI'];
-$ua_user = getMemberInfo();
 $if_set_login_picture = $setting->field("valued", "variable='login_picture'");
 setvar("IfLoginPicture",intval($if_set_login_picture));
 if(isset($_POST['loginbtn'])){

@@ -7,7 +7,7 @@ $member = new Members();
 if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 	$login_name = trim($_POST['login_name']);
 	$useremail = trim($_POST['user_email']);
-	if(!checkEmail($useremail)){
+	if(!pb_check_email($useremail)){
 		setvar("ERRORS", lgg("wrong_email_format"));
 		setvar("postLoginName", $login_name);
 	}else{
@@ -22,9 +22,9 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 			setvar("ERRORS", lgg("wrong_email_data"));
 		}
 			$memberinfo = $g_db->GetRow("select id,email,firstname,lastname from {$tb_prefix}members where username='$login_name'");
-			if(ua_checkEmail($memberinfo['email'])){
+			if(pb_check_email($memberinfo['email'])){
         		if ($ifexists  && !empty($email_exists)) {
-				$new_passwd = getRadomStr(6);
+				$new_passwd = pb_radom(6);
 				$new_passwd_md5 = md5($new_passwd);
 				$body = $smarty->fetch($theme_name.'/emails/user_get_pass.html');
 				$body             = str_replace("[field:username]", $login_name, $body);

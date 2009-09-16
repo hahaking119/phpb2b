@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
     		$r_check = $adminer->checkUserLogin($uname,$upass);
     		if($r_check > 0){
     			$g_db->Execute("update ".$adminer->getTable()." set last_login=".$time_stamp." where user_name='$uname'");
-    			$tAuth = $adminer->userid."|".$adminer->username."|".$adminer->userpass."|".uaIp2Long(uaGetClientIP());
+    			$tAuth = $adminer->userid."|".$adminer->username."|".$adminer->userpass."|".pb_get_client_ip();
     			usetcookie("uladmin", authcode($tAuth, "ENCODE"));
     			PB_goto("./index.php");
     		}else{

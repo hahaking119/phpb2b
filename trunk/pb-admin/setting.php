@@ -94,7 +94,7 @@ if (isset($_POST['savemail'])) {
 		flash("alert.php", "setting.php?action=mail");
 	}
 }
-setvar("CurrentPos",uaFormatPositionPath($position_path));
+setvar("CurrentPos",pb_format_current_position($position_path));
 setvar("U",$ua_sets);
 template($tpl_file);
 ?>

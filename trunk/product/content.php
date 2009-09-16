@@ -10,7 +10,7 @@ $company = new Companies();
 $member = new Members();
 $product = new Products();
 $tmp_status = explode(",",lgg('product_status'));
-$smarty->register_function("format_keywords","SplitKeywords");
+$smarty->register_function("format_keywords","pb_split_words");
 include(SITE_ROOT."./data/cache/".$cookiepre."industry.inc.php");
 $pid = intval($_GET['id']);
 $fields = $product->industry_cols.",Product.status as ProductStatus,company_id";

@@ -13,7 +13,7 @@ if ($register_type=="open_invite_reg"){
 }
 if (empty($_SESSION['MemberID']) || empty($_SESSION['MemberName'])) {
 	uclearcookies();
-	PB_goto($inc_path."user/logging.php?referer=".urlencode(uaGetHost().$PHP_SELF));
+	PB_goto($inc_path."user/logging.php?referer=".urlencode(pb_get_host().$PHP_SELF));
 }
 
 function uaCheckPermission($request_level, $break = 1) {

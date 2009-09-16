@@ -17,6 +17,10 @@ $arrMessage['_member_has_exists'] = "用户名已经存在";
 $arrMessage['_login_pwd_false'] = "登录密码错误";
 $arrMessage['_please_login_first'] = "请先<a href='".URL."user/logging.php'>登录</a>";
 //结束登录相关信息
+//Begin Register Message
+$arrMessage['_invalid_username'] = "用户名不合法";
+$arrMessage['_not_allowed_forbid_words'] = "包含有允许注册的词语";
+//End Register Message
 $arrMessage['_please_input_companyname'] = "请输入正确的公司名称";
 $arrMessage['_please_reinstall_program'] = "请重新安装程序包";
 $arrMessage['_save_failed'] = "数据保存失败";

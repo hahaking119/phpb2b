@@ -17,7 +17,7 @@ if ($_POST['id'] && !empty($_POST['query'])) {
 	array_walk($vals,"uatrim");
 	$vals['created'] = time();
 	$vals['contacts'] = serialize($_POST['link']);
-	$vals['user_ip'] = uaIp2Long(uaGetClientIP());
+	$vals['user_ip'] = pb_get_client_ip();
 	$vals['content'] = $_POST['title'].":".$_POST['content'];
 	$vals['title'] = $product->field("name", "id=".intval($_POST['id']));
 	$inquery->save($vals);

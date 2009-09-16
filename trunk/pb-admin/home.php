@@ -43,7 +43,7 @@ if ($when_to_backup == 2) {
 	}
 	$file_path = "..".DS."data".DS."backup".DS;
 	if(function_exists("gzwrite")){
-		$zip_file_name = $file_path."db_".date("Ymd")."_".getRadomStr().".gz";
+		$zip_file_name = $file_path."db_".date("Ymd")."_".pb_radom().".gz";
 		$zip_fp = gzopen($zip_file_name, "w9");
 		if($zip_fp){
 			gzwrite($zip_fp, $sqldump);

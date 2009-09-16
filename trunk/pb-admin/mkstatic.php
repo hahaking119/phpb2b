@@ -36,7 +36,7 @@ if(isset($_GET['action'])){
 
     setvar("Htmlfiles", $result);
 }
-$smarty->register_function("format_keywords","SplitKeywords");
+$smarty->register_function("format_keywords","pb_split_words");
 if (isset($_POST['create'])) {
     //
 	if (STATIC_HTML_LEVEL<=0) {
@@ -79,7 +79,7 @@ if (isset($_POST['create'])) {
 		    $html_file_name = $val['id'].'.html';
 		    if(!file_exists($inc_path.$file_path)){
 		        if(PHP_VERSION<5){
-		            createFolder($inc_path.$file_path,0666);
+		            pb_create_folder($inc_path.$file_path,0666);
 		        }else{
 		            mkdir($inc_path.$file_path,0666,true);
 		        }
@@ -110,7 +110,7 @@ if (isset($_POST['create'])) {
 	        $html_file_name = $val['id'].'.html';
 	        if(!file_exists($inc_path.$file_path)){
 	            if(PHP_VERSION<5){
-	                createFolder($inc_path.$file_path,0666);
+	                pb_create_folder($inc_path.$file_path,0666);
 	            }else{
 	                mkdir($inc_path.$file_path,0666,true);
 	            }

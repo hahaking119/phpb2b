@@ -62,7 +62,7 @@
 
 	function setMenu($pretend_level){
 		global $_GET, $config_subdomain, $subdomain_support, $userid;
-		$tmp_host = uaGetHost(false);
+		$tmp_host = pb_get_host(false);
 		$tmp_menus = array();
 		if($subdomain_support){
 		    $user_id = $userid; // From member-index.php
