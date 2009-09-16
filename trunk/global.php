@@ -80,7 +80,7 @@ $ua_user = getMemberInfo();
 if (isset($_GET['action']) && ($_GET['action'])=="html") {
 	unset($ua_user);
 }
-uaAssign(array("subdomain"=>$config_subdomain, "SiteUrl"=>URL, "ThemeName"=>$theme_name, "Charset"=>$charset, "UalinkUser"=>$ua_user, $current_li=>"current", "ForumSet"=>$forums, "UrlContainer"=>$urls, "UaVersion"=>PHPB2B_VERSION));
+uaAssign(array("subdomain"=>$config_subdomain, "SiteUrl"=>URL, "ThemeName"=>$theme_name, "Charset"=>$charset, "UalinkUser"=>$ua_user, $current_li=>"current", "ForumSet"=>$forums, "UrlContainer"=>$urls, "PbVersion"=>PHPB2B_VERSION));
 uaAssign($_SETTINGS);
 $magic_quote = get_magic_quotes_gpc();
 //secure global
