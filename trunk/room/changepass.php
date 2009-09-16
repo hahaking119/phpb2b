@@ -8,7 +8,7 @@ $memberlog = new Memberlogs();
 $member = new Members();
 $memberinfo = $member->read("id,userpass,answer,question", $_SESSION['MemberID']);
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 function checkOldPassword($passwd)
 {
 	global $memberinfo;

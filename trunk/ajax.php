@@ -28,7 +28,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id$
  */
-if(!defined('IN_UALINK')) exit('Access Denied');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 function getIndustryList($arg, $name)
 {
 	global $industry, $theme_name, $industry_templet;

@@ -10,7 +10,7 @@ $industry = new Industries();
 $trade = new Trades();
 $xajax = new xajax();
 $smarty->register_function("format_amount","splitIndustryAmount");
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('getIndustryList', '../ajax.php'));
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());

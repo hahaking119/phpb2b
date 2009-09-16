@@ -6,7 +6,7 @@ uses("setting", "htmlcache");
 $htmlcache = new Htmlcaches();
 $setting = new Settings();
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 setvar("SiteDescription", $setting->field("valued", "variable='site_description'"));

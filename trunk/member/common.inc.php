@@ -1,5 +1,5 @@
 <?php
-if(!defined('IN_UALINK')) exit('Access Denied');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 uses("companylink","companyoutlink","templet","member","company","membertype");
 $member = new Members();
 $membertype= new Membertypes();

@@ -1,6 +1,6 @@
 <?php
-if(!defined('IN_UALINK')) exit('Access Denied');
-include_once(ADODB_DIR . 'adodb.inc.php');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
+include_once(SOURCE_PATH . 'adodb/adodb.inc.php');
 $db_links = array('dbhost' => '%UALINK_SETUP_DBHOST%','dbuser' => '%UALINK_SETUP_DBUSER%','dbpass' => '%UALINK_SETUP_DBPASS%','dbname'=> '%UALINK_SETUP_DBNAME%');
 $g_db = &NewADOConnection('mysql');
 $tb_prefix	= "%UALINK_SETUP_DBPREFIX%";

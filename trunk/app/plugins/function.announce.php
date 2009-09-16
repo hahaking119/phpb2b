@@ -35,7 +35,7 @@ function smarty_function_announce($params){
 	$limit = null;
 	$tpl_file = (isset($params['templet']))?"block/".$params['templet'].".html":"block/default.html";
 	extract($params);
-	require(DATA_PATH.$cookiepre."announce.inc.php");
+	require(CACHE_PATH.$cookiepre."announce.inc.php");
 	if (!class_exists("Announcements")) {
 		uses("announcement");
 		$announce = new Announcements();

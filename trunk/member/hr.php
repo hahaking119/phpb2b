@@ -1,5 +1,5 @@
 <?php
-if(!defined('IN_UALINK')) exit('Access Denied');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 uses("job");
 $job = new Jobs();
 $company_id = (empty($_GET['id']))?$companyinfo['ID']:intval($_GET['id']);

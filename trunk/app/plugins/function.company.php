@@ -35,7 +35,7 @@ function smarty_function_company($params){
 	$limit = null;
 	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
 	extract($params);
-	require(DATA_PATH.$cookiepre."area.inc.php");
+	require(CACHE_PATH.$cookiepre."area.inc.php");
 	if (class_exists("Companies")) {
 		$company = new Companies();
 	}else{

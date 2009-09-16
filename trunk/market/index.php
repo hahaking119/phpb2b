@@ -12,7 +12,7 @@ $trade = new Trades();
 $industry = new Industries();
 
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 setvar("TradeTypes", $trade->getTradeTypes());

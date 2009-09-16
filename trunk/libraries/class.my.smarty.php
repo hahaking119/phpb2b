@@ -28,7 +28,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id: class.my.smarty.php 488 2009-08-15 13:38:40Z stevenchow811 $
  */
-require(SMARTY_DIR . "Smarty.class.php");
+require(SOURCE_PATH . "smarty/Smarty.class.php");
 class MySmarty extends Smarty {
 
 	var $app_dirname;
@@ -44,21 +44,18 @@ class MySmarty extends Smarty {
 		$this->Smarty();
 		if(!empty($inc_path)) $this->setIncPath($inc_path);
 		if(!empty($app_dir_name)) $this->setAppDir($app_dir_name);
-		$NowPathArray = explode($app_dir_name,str_replace("\\","/",dirname(__FILE__))) ;
-		$AppDir = $NowPathArray[0].$app_dir_name;
-		$dataPath = $NowPathArray[0]."data";
 		$this->setIncPath($inc_path);
-		$this->plugins_dir[] = $AppDir."/plugins/";
-		$this->template_dir = $inc_path."templates/";
+		$this->plugins_dir[] = APP_PATH."plugins/";
+		$this->template_dir = SITE_ROOT ."templates/";
 		$this->media_dir = $inc_path."images/";
 		if(empty($ua_sm_compile_dir)){
-			$this->compile_dir = $dataPath."/templates_c/";
+			$this->compile_dir = DATA_PATH."templates_c/";
 		}else{
-			$comp_d = $dataPath."/templates_c/".$ua_sm_compile_dir;
+			$comp_d = DATA_PATH."templates_c/".$ua_sm_compile_dir;
 			if(!file_exists($comp_d)) @mkdir($comp_d);
 			$this->compile_dir =$comp_d;
 		}
-		$this->cache_dir = $dataPath."/templates_cache/";
+		$this->cache_dir = DATA_PATH."templates_cache/";
 		$this->left_delimiter = "<{";
 		$this->right_delimiter = "}>";
 		$this->caching = false;

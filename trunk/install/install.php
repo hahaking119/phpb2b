@@ -62,7 +62,7 @@ if (!file_exists("./install.php")) {
 	$UA_INSTALLING = false;
 }
 $app_name = "../app/";
-define('IN_UALINK', true);
+define('IN_PHPB2B', true);
 require(INSTALL_ROOT.'../libraries/func.global.php');
 require(INSTALL_ROOT.'../libraries/func.sql.php');
 $core_sample_file = '../app/configs/core.php';

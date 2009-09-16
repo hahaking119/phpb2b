@@ -1,5 +1,5 @@
 <?php
-defined('IN_UALINK') or exit('Permission Denied');
+defined('IN_PHPB2B') or exit('Not A Valid Entry Point');
 $ul_lang = array(
 "user_feedback"=>"用户评论",
 "member_not_exists"=>"用户不存在",

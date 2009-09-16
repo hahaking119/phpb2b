@@ -1,5 +1,5 @@
-<?php 
-defined('IN_UALINK') or exit('Permission Denied');
+<?php
+defined('IN_PHPB2B') or exit('Permission Denied');
 
 function StrCode($string,$action='ENCODE'){
 	$key	= substr(md5($_SERVER["HTTP_USER_AGENT"].AUTH_KEY),8,18);

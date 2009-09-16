@@ -28,7 +28,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id$
  */
-define('IN_UALINK', TRUE);
+define('IN_PHPB2B', TRUE);
 define('DEBUG', '0');
 define('SITE_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 /** set settings **/
@@ -36,9 +36,11 @@ $gzipcompress = 0;//if use GZIP
 $subdomain_support = 0;//0, Close;1, Open.
 $config_subdomain = ".yourdomain.com";
 //$is_apache = strstr($_SERVER['SERVER_SOFTWARE'], 'Apache') ? true : false;
-define('APP_NAME', 'app/');
+//define('APP_NAME', 'app/');
+define('APP_PATH', SITE_ROOT .'app/');
+define('DATA_PATH', SITE_ROOT."./data/");
+define('CACHE_PATH', SITE_ROOT."./data/cache/");
 require(SITE_ROOT. './app/configs/core.php');
-define('DATA_PATH', SITE_ROOT."./data/cache/");
 require(SITE_ROOT. './app/configs/db.php');
 if(!DEBUG){
 	error_reporting(0);
@@ -54,7 +56,7 @@ require(LIB_PATH. 'ualink_model.php');
 require(LIB_PATH. 'ualink_controller.php');
 require(LIB_PATH. 'ualink_view.php');
 require(SITE_ROOT. './libraries/func.global.php');
-require(DATA_PATH.$cookiepre."setting.inc.php");
+require(CACHE_PATH.$cookiepre."setting.inc.php");
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.inc.php');
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.site.inc.php');
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'message.inc.php');

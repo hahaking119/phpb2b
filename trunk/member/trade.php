@@ -1,5 +1,5 @@
 <?php
-if(!defined('IN_UALINK')) exit('Access Denied');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(SITE_ROOT.'./libraries/page.php');
 uses("trade", "offer");
 $trade = new Trades();

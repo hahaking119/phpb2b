@@ -11,7 +11,7 @@ $companytype = new Companytypes();
 $member = new Members();
 $tables = $company->getTable(true);
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $smarty->register_function("format_amount","splitIndustryAmount");
 //检测企业视频展播xml文件
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('getIndustryList', BASE_DIR.'ajax.php'));

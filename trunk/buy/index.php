@@ -14,7 +14,7 @@ $conditions = null;
 $trade = new Trades();
 $xajax = new xajax();
 $industry_templet = "industry2";
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $smarty->register_function("format_amount","splitIndustryAmount");
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('getIndustryList', '../ajax.php'));
 $xajax->processRequest();

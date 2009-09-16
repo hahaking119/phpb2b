@@ -4,7 +4,7 @@ $li = 5;
 require($inc_path."global.php");
 uses("news","newstype");
 require(SITE_ROOT.'./libraries/page.php');
-require(DATA_PATH.$cookiepre."newstype.inc.php");
+require(CACHE_PATH.$cookiepre."newstype.inc.php");
 $news = new Newses();
 $newstype = new Newstypes();
 $conditions = null;

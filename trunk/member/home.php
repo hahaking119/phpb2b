@@ -1,5 +1,5 @@
 <?php
-if(!defined('IN_UALINK')) exit('Access Denied');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $fields = "Company.description AS CompanyDescription,";
 uses("product");
 $product = new Products();

@@ -80,7 +80,7 @@ class Industries extends UaModel {
 	function getIndustryPage($model_id, $model_index, $templet = null)
 	{
 	    global $smarty, $theme_name;
-	    require(DATA_PATH."industry.inc.php");
+	    require(CACHE_PATH."industry.inc.php");
 		if(empty($templet)) $templet = "industry1";
 	    $smarty->assign("AmountTypeLi", $model_id);
 	    switch ($model_index) {

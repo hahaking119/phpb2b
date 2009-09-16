@@ -9,7 +9,7 @@ $htmlcache = new Htmlcaches();
 $news = new Newses();
 $newstype = new Newstypes();
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 setvar("focus_news",$g_db->GetRow("select id as NewsId,title as NewsTitle,content as NewsContent from ".$news->getTable()." where if_focus=1"));
@@ -25,7 +25,7 @@ if(!empty($LatestPictureNews)){
 	uaAssign(array("img_count"=>$img_count, "PictureFiles"=>implode("\n", $imgs_src), "PictureTitles"=>implode("\n", $imgs_url)));
 	setvar("ImageShow", $smarty->fetch($theme_name."/elements/img_show.html"));
 }
-require(DATA_PATH.$cookiepre."newstype.inc.php");
+require(CACHE_PATH.$cookiepre."newstype.inc.php");
 setvar("Newstype", $UL_DBCACHE_NEWSTYPE);
 setvar("pageDescriptioin", implode(",",$UL_DBCACHE_NEWSTYPE));
 setvar("today_mktime",Times::dateConvert(date("d/m/Y"), "/"));

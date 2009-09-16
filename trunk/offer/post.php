@@ -50,7 +50,7 @@ setvar("PhoneTypes", $member->phone_types);
 setvar("ImTypes", $member->im_types);
 $expires = $trade->offer_expires;
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $if_visit_post = intval($setting->field("valued", "variable='vis_post'"));
 $if_visitpost_auth = intval($setting->field("valued", "variable='vispost_auth'"));
 if ($if_visitpost_auth) {

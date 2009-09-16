@@ -41,7 +41,7 @@ function smarty_function_news($params){
 	    uses("news");
 	    $info = new Newses();
 	}
-	require(DATA_PATH.$cookiepre."newstype.inc.php");
+	require(CACHE_PATH.$cookiepre."newstype.inc.php");
 	$conditions[] = "News.status=1";
 	$fields = "News.id AS LinkId,News.title as LinkTitle,News.html_file_id as NewsHtmlFileId,News.created as CreateDate,News.picture as LinkImage,News.type_id as TypeId,left(content,50) as NewsContent";
 	$t_var = array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:typename]", "[field:pubdate]");

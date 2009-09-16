@@ -33,7 +33,7 @@ if ($register_type=="close_register") {
 setvar("IfRegisterPicture",intval($if_set_register_picture));
 /**xajax**/
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 if (isset($_GET['ob'])) {
 	if($_GET['ob'] == "company") $tpl_file = "user_register_company";
 	else $tpl_file = "user_register_personal";

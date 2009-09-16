@@ -8,7 +8,7 @@ $htmlcache = new Htmlcaches();
 $industry = new Industries();
 $product = new Products();
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $smarty->register_function("format_amount","splitIndustryAmount");
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('getIndustryList', '../ajax.php'));
 $xajax->register(XAJAX_FUNCTION,  new xajaxUserFunction('rebuildHTML', '../ajax.php'));

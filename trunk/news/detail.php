@@ -11,7 +11,7 @@ if(!empty($_GET['title'])){
 }
 $_positions[] = lgg("info_center");
 if (!empty($nid)) {
-    require(DATA_PATH.$cookiepre."newstype.inc.php");
+    require(CACHE_PATH.$cookiepre."newstype.inc.php");
 	$news->clicked(intval($nid));
 	$info = $news->read("require_membertype,".$news->common_cols,$nid);
 	if($info['require_membertype']!=0){

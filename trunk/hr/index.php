@@ -28,9 +28,9 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id: advsearch.php 438 2009-07-07 14:28:27Z stevenchow811 $
  */
-$inc_path = "./";
+$inc_path = "../";
 $li = 8;
-require("global.php");
+require("../global.php");
 $conditions = null;
 $tpl_file = "hr_index";
 include(SITE_ROOT.'./libraries/page.php');

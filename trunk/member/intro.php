@@ -1,5 +1,5 @@
 <?php
-if(!defined('IN_UALINK')) exit('Access Denied');
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $company_info = $company->read("*",$companyinfo['ID']);
 foreach (explode(",",$company_info['main_market']) as $market) {
 	$main_markets .= $company->main_market[$market]."&nbsp;&nbsp;";

@@ -32,7 +32,6 @@ $inc_path = "./";//windows should be 'empty';
 $li = 0;
 $module_id = 0;
 require("global.php");
-header("Content-Type: text/html; charset=".$charset);
 require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 uses("trade","industry","memberlog","ad","htmlcache", "stat");
 $stat = new Stats();
@@ -46,7 +45,7 @@ setvar("Today", mktime(0,0,0,date("m") ,date("d"),date("Y")));
 setvar("TradeTypes", $trade->getTradeTypes());
 /*xajax*/
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 $xajax->processRequest();
 setvar('xajax_javascript', $xajax->getJavascript());
 /*end xajax*/

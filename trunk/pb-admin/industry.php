@@ -258,7 +258,7 @@ if ($_GET['action'] == "areaxml") {
 	$tpl_file = "industry_xml";
 }
 $xajax = new xajax();
-$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->configure('javascript URI', URL."libraries/source/xajax/");
 function updatePriority($industry_id, $priorities){
 	global $g_db;
 	global $industry;

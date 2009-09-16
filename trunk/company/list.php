@@ -77,7 +77,7 @@ if(isset($_GET['page'])){
 $fields = "Company.id as ID,Member.user_type as MemberUserType,Company.name as Name,Company.member_id as MemberID,Company.created as CreateTime,Company.main_prod as MainProduct,Company.description as Description,Company.manage_type,Member.username as MemberUsername,Company.province_code_id as CompanyProvinceId,Company.picture as CompanyPicture,Company.city_code_id as CompanyCityId,Company.industry_id as IndustryId ";
 if (!empty($_GET['type_id'])) {
 	$conditions.=" and Member.user_type=".intval($_GET['type_id']);
-	require(DATA_PATH.$cookiepre."membertype.inc.php");
+	require(CACHE_PATH.$cookiepre."membertype.inc.php");
 	$positions[] = $_titles[] = $UL_DBCACHE_MEMBERTYPES[intval($_GET['type_id'])];
 }else {
     $positions[] = $_titles[] = lgg("corp_member");
