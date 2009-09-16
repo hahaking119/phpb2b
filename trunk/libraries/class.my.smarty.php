@@ -128,14 +128,14 @@ class MySmarty extends Smarty {
 		if (isset($_GET['action']) && ($_GET['action'])=="html") {
 			if($currentRelativePath=="./") $currentRelativePath = "../";
 			elseif($currentRelativePath=="../") $currentRelativePath = "../../";
-			$paths['CSS_PATH'] = $paths['JS_PATH'] = $paths['INC_PATH'] = $currentRelativePath;
+			$paths['CSS_PATH'] = $paths['JS_PATH'] = $paths['INC_PATH'] = $paths['ROOT_URL'] = $currentRelativePath;
 			$paths['tpl_img_path'] = $currentRelativePath."images/";
 			$paths['theme_img_path'] = $currentRelativePath."templates/".$theme_name."/";
 			$paths['member_tpl_path'] = $currentRelativePath."skins/";
 			$paths['attachment_dir'] = $currentRelativePath."attachment/";
 			$paths['attachment_url'] = URL."attachment/";
 		}else {
-			$paths['CSS_PATH'] = $paths['JS_PATH'] = $paths['INC_PATH'] = $currentRelativePath;
+			$paths['CSS_PATH'] = $paths['JS_PATH'] = $paths['INC_PATH'] = $paths['ROOT_URL'] = $currentRelativePath;
 			$paths['tpl_img_path'] = $this->media_dir;
 			$paths['theme_img_path'] = $currentRelativePath."templates/".$theme_name."/";
 			$paths['member_tpl_path'] = $currentRelativePath."skins/";

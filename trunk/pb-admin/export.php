@@ -3,7 +3,7 @@ $inc_path = "../";
 $ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
-require($inc_path .APP_NAME. 'include/class-excel-xml.inc.php');
+require(LIB_PATH .'class-excel-xml.inc.php');
 require("session_cp.inc.php");
 
 $table_name = $tb_prefix.$_POST['tbname'];

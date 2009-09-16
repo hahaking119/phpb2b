@@ -37,7 +37,7 @@ function updatePriceName($id, $type, $value)
 	return $obj->getXML();
 }
 $xajax->registerFunction("updatePriceName");
-require($inc_path.APP_NAME."include/ajax.inc.php");
+require(LIB_PATH ."ajax.inc.php");
 if (isset($_POST['save'])) {
 	$vals = $_POST['pricerain'];
 	if (!empty($_POST['pricerain']['id'])) {

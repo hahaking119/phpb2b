@@ -3,7 +3,7 @@ class Userpages extends UaModel {
 	var $name = "Userpage";
 	var $current_li = null;
 	var $url_container = null;
-	var $ualink_version = null;
+	var $pb_version = null;
 
 	function getLi()
 	{
@@ -46,13 +46,12 @@ class Userpages extends UaModel {
 	}
 
 	function setUrlContainer($static_level){
-		$tmp_contain = array();
 		global $media_paths, $g_db, $tb_prefix;
+		$tmp_contain = array();
 		$reg_filename = $g_db->GetOne($sql = "select valued from {$tb_prefix}settings where variable='reg_filename'");
 		$reg_filename = (empty($reg_filename))?"register.php":$reg_filename;
 		$post_filename = $g_db->GetOne("select valued from {$tb_prefix}settings where variable='post_filename'");
 		$post_filename = (empty($post_filename['valued']))?"offer/post.php":$post_filename;
-		$inc_path = $media_paths['INC_PATH'];
 		switch ($static_level) {
 			case 1:
 				$tmp_contain['index'] = URL."index.html";
@@ -98,10 +97,10 @@ class Userpages extends UaModel {
 		return $this->url_container;
 	}
 
-	function setUalinkVersion($xml_filename){
+	function setPbVersion($xml_filename){
 		$r = array();
 		$rssurl = $xml_filename;
-		$result = @file_get_contents($rssurl);
+		$result = file_get_contents($rssurl);
 		if (empty($result) || !$result) {
 			return  false;
 		}
@@ -119,12 +118,12 @@ class Userpages extends UaModel {
 				$r['profession'] = array("ver"=>$val['attributes']['ver'], "build"=>$val['attributes']['build']);
 			}
 		}
+		$this->pb_version = $r;
 		unset($result);
-		$this->ualink_version = $r;
 	}
 
-	function getUalinkVersion(){
-		return $this->ualink_version;
+	function getPbVersion(){
+		return $this->pb_version;
 	}
 }
 ?>

@@ -3,7 +3,7 @@ $inc_path = "../";
 require($inc_path."global.php");
 require(SITE_ROOT. './app/configs/db_session.php');
 require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
-require(SITE_ROOT. "./libraries/sendmail.inc.php");
+require(SITE_ROOT."./libraries/sendmail.inc.php");
 uses("member","company","membertype","companytype","access","setting", "htmlcache", "industry");
 $cfg['reg_time_seperate'] = 3*60;
 $cfg['register_type'] = array("close_register", "open_common_reg", "open_invite_reg");
@@ -161,7 +161,7 @@ if(isset($_POST['register'])){
     			authcode($vars['user_level'], "ENCODE"));
 			}
 			if($is_company && !empty($_POST['company']['name'])){
-				require($inc_path .APP_NAME. 'include/inc.topinyin.php');
+				require(LIB_PATH .'/inc.topinyin.php');
 				$comp_vars = null;
 				$comp_vars['name'] = $_POST['company']['name'];
 				$comp_vars['member_id'] = $last_member_id;

@@ -28,7 +28,7 @@ function checkGDSupport(){
 $gd_s = checkGDSupport();
 setvar("GDSupports", $gd_ss = (!$gd_s)?lgg('without_this_ext'):implode(",", $gd_s));
 if ($when_to_backup == 2) {
-	require_once($inc_path .APP_NAME. "include/db_mysql.inc.php");
+	require_once(LIB_PATH ."db_mysql.inc.php");
 	$db = new DB_Sql();
 	$sqldump = null;
 	$conn = $db->connect($db_links['dbname'],$db_links['dbhost'],$db_links['dbuser'],$db_links['dbpass']);
@@ -83,7 +83,7 @@ $dbssize = 0;
 foreach ($rows as $row) {
   $dbssize += $row['Data_length'] + $row['Index_length'];
 }
-//$userpage->setUalinkVersion("http://www.ualink.org/version.xml");
+//$userpage->setPbVersion("http://www.ualink.org/version.xml");
 //$ua_version = PHPB2B_VERSION;
 setvar("LatestVersion", PHPB2B_VERSION);
 setvar("DatabaseSize",number_format($dbssize)." Bytes OR ".db_size_info($dbssize));

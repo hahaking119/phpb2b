@@ -241,8 +241,8 @@
 				}
 			}
 			if($forums['switch']==true){
-                require($inc_path .APP_NAME. 'include/inc.discuz.php');
-                require($inc_path .APP_NAME. 'include/inc.phpwind.php');
+                require(LIB_PATH.'inc.discuz.php');
+                require(LIB_PATH.'inc.phpwind.php');
 				if($forums['type']=="discuz"){
 					return true;
 				}elseif($forums['type']=="phpwind") {

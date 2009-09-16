@@ -47,12 +47,12 @@
 	<table width="64" height="55" border="0" align="center" cellPadding="0" cellSpacing="1" class="bghui">
         <tbody>
           <tr> 
-            <td><a href="<{$SiteUrl}><{$DirName}>?id=<{$item.ItemId}>" class="font14blak" title="<{$item.ItemTitle}>" target="_blank"><img src="<{if $item.ItemPicture}>attachment/<{$item.ItemPicture}>.small.jpg<{else}><{$INC_PATH}>data/<{$ThemeName}>/small.gif<{/if}>" width="72" height="72" border="0" alt="<{$item.ItemTitle}>"></a></td>
+            <td><a href="<{$SiteUrl}><{$DirName}>?id=<{$item.ItemId}>" class="font14blak" title="<{$item.ItemTitle}>" target="_blank"><img src="<{if $item.ItemPicture}>attachment/<{$item.ItemPicture}>.small.jpg<{else}><{$ROOT_URL}>data/<{$ThemeName}>/small.gif<{/if}>" width="72" height="72" border="0" alt="<{$item.ItemTitle}>"></a></td>
           </tr>
         </tbody>
       </table></td>
     <td width="385"> <a href="<{$SiteUrl}><{$DirName}>?id=<{$item.ItemId}>" class="font14blak" title="<{$item.ItemTitle}>" target="_blank"><{$item.ItemTitle}></a> 
-            <span class="time"><{$item.CreateDate|date_format:"%Y-%m-%d"}></span><{if $item.ItemPrior}><img src="<{$INC_PATH}>images/recommend.gif" border="0" alt="推荐" /><{/if}>
+            <span class="time"><{$item.CreateDate|date_format:"%Y-%m-%d"}></span><{if $item.ItemPrior}><img src="<{$ROOT_URL}>images/recommend.gif" border="0" alt="推荐" /><{/if}>
             <br />
             <span class="time"><{$item.ItemInfo|strip_tags|truncate:100}></span>            </td>
   </tr>

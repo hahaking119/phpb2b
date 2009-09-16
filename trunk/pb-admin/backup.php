@@ -41,7 +41,7 @@ if (isset($_POST['save']) && !empty($_POST['u'])) {
 	}
 }
 if ($_GET['action'] == "backup_now") {
-	require_once($inc_path .APP_NAME. "include/db_mysql.inc.php");
+	require_once(LIB_PATH."db_mysql.inc.php");
 	$db = new DB_Sql();
 	$sqldump = null;
 	$conn = $db->connect($db_links['dbname'],$db_links['dbhost'],$db_links['dbuser'],$db_links['dbpass']);

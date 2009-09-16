@@ -22,7 +22,7 @@ if(!empty($company_id)){
 	$res['CityName'] = $area->field("name", "code_id=".intval($res['CompanyCityCodeId']));
 }
 if (isset($_POST['edit_company'])) {
-	require($inc_path .APP_NAME. 'include/inc.topinyin.php');
+	require(LIB_PATH .'inc.topinyin.php');
 	$vals = array();
 	if($res['CompanyStatus']==0){
 		$vals['name'] = strip_tags($_POST['name']);
