@@ -1,6 +1,6 @@
 <?php
-$inc_path = "../";
-require($inc_path."global.php");
+$inc_path = "./";
+require("global.php");
 uses("member", "setting");
 $setting = new Settings();
 $member = new Members();

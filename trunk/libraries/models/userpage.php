@@ -84,7 +84,7 @@ class Userpages extends UaModel {
 				$tmp_contain['user'] = URL."user/";
 				$tmp_contain['apply_friendlink'] = URL."user/apply_friendlink.php";
 				$tmp_contain['register'] = URL."user/".$reg_filename;
-				$tmp_contain['artical'] = URL."user/announcement.php";
+				$tmp_contain['artical'] = URL."user/agreement.php";
 				$tmp_contain['logging'] = URL."user/logging.php";
 				$tmp_contain['post'] = URL.$post_filename;
 				$tmp_contain['common'] = URL;
