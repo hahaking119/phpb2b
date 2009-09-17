@@ -86,8 +86,8 @@
 				<p class="rg_p3 rg_p8">
 					<label for="">验证码：</label>
 					<input name="login_auth" id="login_auth" type="text" value="" size="4" maxlength="4">
-					<img id="image" src="../captcha.php?sid=<{php}>echo md5(uniqid(time()));<{/php}>">
-					<em>(<a href="#" onclick="document.getElementById('image').src = '../captcha.php?sid=' + Math.random(); return false;">看不清楚换一张</a>)</em>
+					<img style="cursor:hand;border:1px solid #ccc;vertical-align:top;" id="image" src="../captcha.php?sid=<{php}>echo md5(uniqid(time()));<{/php}>" onclick="this.src = '../captcha.php?sid=' + Math.random(); return false;" alt="如果看不清数字或字母?请点一下换一个!" title="如果看不清数字或字母?请点一下换一个!" />
+					<em>请输入左侧验证码</em>
 				</p>
 <{/if}>
 				<p class="rg_p3 rg_p8">
