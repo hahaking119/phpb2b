@@ -47,7 +47,11 @@ if($_GET['b']=="n"){
 }else{
 	setvar("backBtn", true);
 }
-setvar("AlertTitle", $alert_title=($_GET['result']=="success")?lgg('congratulate'):lgg('sth_wrong'));
+if (empty($action_alert)) {
+	$action_alert = L('undefined_operation');
+}
+$alert_title=($_GET['result']=="success")?lgg('congratulate'):lgg('sth_wrong');
+setvar("AlertTitle", strip_tags($alert_title));
 setvar("ActionAlert",$action_alert);
 template($theme_name."/message");
 ?>

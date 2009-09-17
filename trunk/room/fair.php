@@ -29,5 +29,5 @@ if(isset($_GET['join'])){
 		flash("./tip.php", "./fair.php", "Apply wrong!",0);
 	}
 }
-template($tpl_file);
+PB_goto();
 ?>

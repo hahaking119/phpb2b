@@ -28,7 +28,7 @@ if (isset($_GET['city_code'])) {
 }
 $expo->setPageTitle($_titles, $_positions);
 $latest_fairs = $expo->findAll("id as FairId,ea as Title,eb as FairCreated", null, "id desc", 0, 10);
-$type_fairs = $expo->findAll("id as FairId,ea as Title,eb as FairCreated", $conditions, "id desc", $firstcount, $displaypg);
+$type_fairs = $expo->findAll("id as FairId,ea as Title,eb as FairCreated,DATE_FORMAT('1997-10-04 22:23:00', '%Y.%c.%e') as begin_date", $conditions, "id desc", $firstcount, $displaypg);
 uaAssign(array("pageTitle"=>$expo->title, "pagePosition"=>$expo->position));
 setvar("ListFairs", $type_fairs);
 setvar("LatesFairs", $latest_fairs);

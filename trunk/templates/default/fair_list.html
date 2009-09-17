@@ -28,8 +28,8 @@
 			  </thead>
 			  <{foreach from=$ListFairs name=fairlist item=f}>
 			  <tr <{if $smarty.foreach.fairlist.iteration is div by 2}> class="cs_tr"<{/if}>>
-				<td><p><a href="<{$UrlContainer.common}>fair/detail.php?id=<{$f.FairId}>" alt="<{$f.Title}>"><{$f.Title|strip_tags}></a></p></td>
-				<td><{$f.FairCreated|date_format:"%Y-%m-%d"}></td>
+				<td><p><a href="<{$UrlContainer.common}>fair/detail.php?id=<{$f.FairId}>" alt="<{$f.Title}>"><{$f.Title}></a></p></td>
+				<td><{$f.FairCreated}></td>
 			  </tr>
 			  <{/foreach}>
 			</table>

@@ -4,6 +4,7 @@ $arrMessage['_action_failed'] = "操作失败";
 $arrMessage['_visitor_forbid'] = "禁止游客发布信息";
 $arrMessage['_user_feedback'] = "用户评论";
 $arrMessage['_companyname_has_exists'] = "公司名已经存在";
+$arrMessage['_undefined_operation'] = "未定义操作";
 //登录相关信息
 $arrMessage['_login_pwd_wrong'] = "登陆密码错误";
 $arrMessage['_member_checking'] = "用户审核中";

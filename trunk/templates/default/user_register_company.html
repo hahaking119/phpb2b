@@ -120,8 +120,8 @@
 				<p class="rg_p3 rg_p8">
 					<label for="">验证码：</label>
 					<input name="login_auth" id="login_auth" type="text" value="" size="4" maxlength="4">
-					<img src="../auth_image.php">
-					<em>输入四位数验证码</em>
+					<img id="image" src="../captcha.php?sid=<{php}>echo md5(uniqid(time()));<{/php}>">
+					<em>(<a href="#" onclick="document.getElementById('image').src = '../captcha.php?sid=' + Math.random(); return false;">看不清楚换一张</a>)</em>
 				</p>
 <{/if}>
 				<p class="rg_p3 rg_p8">

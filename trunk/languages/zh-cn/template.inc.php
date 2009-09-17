@@ -6,4 +6,5 @@ $arrTemplate['_forum'] = "论坛";
 $arrTemplate['_hr'] = "人才";
 $arrTemplate['_your_current_position'] = "您当前位置：";
 $arrTemplate['_unknown'] = "未知";
+$arrTemplate['_undefined_operation'] = "未定义操作";
 ?>

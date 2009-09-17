@@ -37,7 +37,7 @@ $id = intval($_GET['id']);
 $result = $announce->read("subject,message,created", $id);
 if (!empty($result)) {
 	setvar("Item", $result);
-	setvar("PageTitle", $result['subject']);
+	setvar("PageTitle", strip_tags($result['subject']));
 }
 template($theme_name."/announce");
 ?>
