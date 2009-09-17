@@ -105,7 +105,7 @@ function smarty_function_company($params){
 			if(PRETEND_HTML_LEVEL==0){
 		        $url = URL."space.php?userid=".$result[$i]['LinkId'];
 			}else{
-		        $url = URL."member/".$result[$i]['LinkId']."/";
+		        $url = URL."space/".$result[$i]['LinkId']."/";
 			}
 	    }else{
 	        $dt = getdate($result[$i]['CreateDate']);

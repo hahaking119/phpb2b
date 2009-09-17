@@ -30,7 +30,7 @@
  */
 $inc_path = "./";
 require("global.php");
-$smarty->template_dir = "./skins/";
+$smarty->template_dir = SITE_ROOT ."./skins/";
 $hosts = explode($config_subdomain, $_SERVER['HTTP_HOST']);
 $do = null;
 $userid = 0;
@@ -49,6 +49,6 @@ if($do=="" || !in_array($do, array("intro", "home", "product", "trade", "hr", "n
 {
     $do = "home";
 }
-require("member/common.inc.php");
-require("member/".$do.".php");
+require("space/common.inc.php");
+require("space/".$do.".php");
 ?>
