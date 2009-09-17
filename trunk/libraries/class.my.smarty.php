@@ -45,7 +45,7 @@ class MySmarty extends Smarty {
 		if(!empty($inc_path)) $this->setIncPath($inc_path);
 		if(!empty($app_dir_name)) $this->setAppDir($app_dir_name);
 		$this->setIncPath($inc_path);
-		$this->plugins_dir[] = APP_PATH."functions/";
+		$this->plugins_dir[] = APP_PATH."labels/";
 		$this->template_dir = SITE_ROOT ."templates/";
 		$this->media_dir = $inc_path."images/";
 		if(empty($ua_sm_compile_dir)){

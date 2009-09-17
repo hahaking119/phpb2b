@@ -16,7 +16,7 @@
 <{include file="`$ThemeName`/elements/header.html"}>
 <!--head end-->
 <div class="wd crumb">
-	<p><span class="str">您当前位置：</span><{$PageTitle}></p>
+	<p><span class="str">您当前位置：</span><a href="<{$UrlContainer.common}>">首页</a> >> <{$PageTitle}></p>
 </div>
 <div class="clear9"></div>
 <div class="wd a_c">
@@ -25,11 +25,19 @@
 		<div class="a_c1">
 			<h2><{$PageTitle}></h2>
 			<div class="a_text f14">
-				<p><{$info|nl2br}></p>
+				<p><{$Item.message|nl2br}></p>
 			</div>
 		</div>
 	</div>
-	<{include file="`$ThemeName`/elements/about_left.html"}>
+	<div class="w_right1">
+		<p class="a_line1"></p>
+		<div class="a_c2">
+			<ul>
+				<{announce col="1" templet="li"}>
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</div>
 	<div class="clear"></div>
 </div>
 <{include file="`$ThemeName`/elements/foot.html"}>
