@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:42:01 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.news.php 147 2009-09-16 14:43:42Z stevenchow811@163.com $
  */
 function smarty_function_news($params){
 	global $g_db;

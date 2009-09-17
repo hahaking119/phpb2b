@@ -24,41 +24,27 @@
  * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:41:29 CST 2009
+ * @created Mon Jun 22 16:42:28 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.userpage.php 106 2009-09-12 15:11:07Z stevenchow811@163.com $
  */
-function smarty_function_fair($params){
-	global $fair;
-	global $g_db;
+function smarty_function_userpage($params){
+	global $g_db, $li;
 	global $smarty, $theme_name;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/friendlink.html";
 	extract($params);
-	if (class_exists("Expoes")) {
-		$fair = new Expoes();
+	$fields = "uf as LinkTitle,id as LinkId,ug as LinkUrl,ub as LinkName";
+	if (!class_exists("Userpages")) {
+		uses("userpage");
+		$userpage = new Userpages();
 	}else{
-		uses("expo");
-		$fair = new Expoes();
+	    $userpage = new Userpages();
 	}
-	$conditions[] = "status=1";
-	$fields = "ea as LinkTitle,id as LinkId,picture as LinkImage,eb as CreateDate";
 	if(isset($params['id'])){
-		$result = $fair->read($fields, intval($params['id']));
+		$result = $userpage->read($fields, intval($params['id']));
 	}else{
-	    if (isset($params['type'])) {
-	    	if ($params['type']=="image") {
-	    		$conditions[] = "Expo.picture!=''";
-	    		$tpl_file = "blocks/default.image.html";
-	    	}
-	    	if ($params['type']=="commend") {
-	    		$conditions[] = "Expo.if_recommend=1";
-	    	}
-	    }
-	    if (isset($params['type_id'])) {
-	    	$conditions[] = "Expo.type_id='".$params['type_id']."'";
-	    }
 		if (isset($params['col'])) {
 			$col = intval($params['col']);
 		}
@@ -66,24 +52,28 @@ function smarty_function_fair($params){
 			$row = intval($params['row']);
 		}
 		if (isset($params['orderby'])) {
-			$orderby = " order by Expo.".trim($params['orderby']);
+			$orderby = " order by Userpage.".trim($params['orderby']);
+		}else{
+		    $orderby = " order by Userpage.ud asc";
 		}
-		$fair->setLimit($params['row'], $params['col'], $params['max']);
+		$userpage->setLimit($params['row'], $params['col'], $params['max']);
 		$tmp_cond = implode(" and ", $conditions);
-		$sql = "select ".$fields." from ".$fair->getTable(true)." where ".$tmp_cond.$orderby.$fair->getLimit();
+		if (!empty($tmp_cond)) {
+			$tmp_cond = " where ".$tmp_cond;
+		}
+		$sql = "select ".$fields." from ".$userpage->getTable(true).$tmp_cond.$orderby.$userpage->getLimit();
 		$result = $g_db->GetArray($sql);
 	}
 	$output = null;
 	for($i=0; $i<count($result); $i++) {
 	    if(PRETEND_HTML_LEVEL==0){
-	        $url = URL."fair/detail.php?id=".$result[$i]['LinkId'];
+	        $url = URL."page.php?q=".$result[$i]['LinkName'];
 	    }else{
-	        $dt = getdate($result[$i]['CreateDate']);
-	        $url = URL."fair/".$dt['year']."/".$dt['mon']."/".$dt['mday']."/".urlencode($result[$i]['LinkTitle'])."/";
+	        $url = URL."page/".urlencode($result[$i]['LinkTitle'])."/";
 	    }
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $op = str_replace(array("[link:title]", "[field:title]", "[field:img]", "[field:typename]"), array($url, utf_substr($result[$i]['LinkTitle'],36), URL."attachment/small/".$result[$i]['LinkImage'], ""), $op);
-	    //$output.=$fair->checkTerminal($i);
+	    $op = str_replace(array("[link:title]", "[field:title]", "[field:name]"), array($url, $result[$i]['LinkTitle'], $result[$i]['LinkName']), $op);
+	    //$output.=$userpage->checkTerminal($i);
 	    $output.=$op;
 	}
 	echo $output;

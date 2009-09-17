@@ -24,24 +24,17 @@
  * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:41:50 CST 2009
+ * @created Mon Jun 22 16:41:17 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.area.php 106 2009-09-12 15:11:07Z stevenchow811@163.com $
  */
-function smarty_function_job($params){
+function smarty_function_area($params){
 	global $g_db, $tb_prefix;
 	global $smarty, $theme_name;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/area.html";
 	extract($params);
-	if (!class_exists("Jobs")) {
-		uses("job");
-		$job = new Jobs();
-	}else{
-	    $job = new Jobs();
-	}
-	$conditions[] = "status=1";
 	$fields = "name as LinkTitle,member_id as MemberId,company_id as CompanyId,id as LinkId,created as CreateDate";
 	if(isset($params['id'])){
 		$result = $job->read($fields, intval($params['id']));

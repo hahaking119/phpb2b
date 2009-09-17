@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:42:17 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.product.php 106 2009-09-12 15:11:07Z stevenchow811@163.com $
  */
 function smarty_function_product($params){
 	global $g_db;

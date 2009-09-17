@@ -24,56 +24,54 @@
  * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:41:55 CST 2009
+ * @created Mon Jun 22 16:41:34 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.friendlink.php 106 2009-09-12 15:11:07Z stevenchow811@163.com $
  */
-function smarty_function_market($params){
-	global $g_db;
+function smarty_function_friendlink($params){
+	global $g_db, $li;
 	global $smarty, $theme_name;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/friendlink.html";
 	extract($params);
-	if (class_exists("Markets")) {
-		$market = new Markets();
+	if (!class_exists("Friendlinks")) {
+		uses("friendlink");
+		$friendlink = new Friendlinks();
 	}else{
-		uses("market");
-		$market = new Markets();
+	    $friendlink = new Friendlinks();
 	}
 	$conditions[] = "status=1";
-	$fields = "name as LinkTitle,id as LinkId,picture as LinkImage,created as CreateDate";
+	$fields = "title as LinkTitle,logo as LinkLogo,url as LinkUrl";
 	if(isset($params['id'])){
-		$result = $market->read($fields, intval($params['id']));
+		$result = $friendlink->read($fields, intval($params['id']));
 	}else{
 	    if (isset($params['type'])) {
 	    	if ($params['type']=="image") {
-	    		//image Market
-	    		$conditions[] = "Market.picture!=''";
-	    		$tpl_file = "blocks/market.image.html";
+	    		//image friendlink
+	    		$conditions[] = "Friendlink.logo!=''";
+	    		$tpl_file = "blocks/friendlink.image.html";
 	    	}
 	    }
-
+		$friendlink->setLimit($params['row'], $params['col'], $params['max']);
 		if (isset($params['orderby'])) {
-			$orderby = " order by Market.".trim($params['orderby']);
+			$orderby = " order by Friendlink.".trim($params['orderby']);
+		}else{
+		    $orderby = " order by Friendlink.priority asc";
 		}
-		$market->setLimit($params['row'], $params['col'], $params['max']);
 		$tmp_cond = implode(" and ", $conditions);
-		$sql = "select ".$fields." from ".$market->getTable(true)." where ".$tmp_cond.$orderby.$market->getLimit();
+		$sql = "select ".$fields." from ".$friendlink->getTable(true)." where ".$tmp_cond.$orderby;
 		$result = $g_db->GetArray($sql);
 	}
 	$output = null;
 	for($i=0; $i<count($result); $i++) {
-	    if(PRETEND_HTML_LEVEL==0){
-	        $url = URL."market/detail.php?id=".$result[$i]['LinkId'];
-	    }else{
-	        $dt = getdate($result[$i]['CreateDate']);
-	        $url = URL."market/".$dt['year']."/".$dt['mon']."/".$dt['mday']."/".urlencode($result[$i]['LinkTitle'])."/";
-	    }
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $op = str_replace(array("[link:title]", "[field:title]", "[field:img]", "[field:typename]"), array($url, $result[$i]['LinkTitle'], $result[$i]['LinkImage'], ""), $op);
-	    //$output.=$market->checkTerminal($i);
+	    $op = str_replace(array("[link:title]", "[field:title]", "[field:img]"), array($result[$i]["LinkUrl"], $result[$i]['LinkTitle'], $result[$i]['LinkLogo']), $op);
+	    //$output.=$friendlink->checkTerminal($i);
 	    $output.=$op;
+	    if($row>=2){
+	        if($row==$i+1) $output.="<br />";
+	    }
 	}
 	echo $output;
 }

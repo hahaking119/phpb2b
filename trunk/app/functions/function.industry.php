@@ -24,55 +24,59 @@
  * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:41:34 CST 2009
+ * @created Mon Jun 22 16:41:41 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.industry.php 106 2009-09-12 15:11:07Z stevenchow811@163.com $
  */
-function smarty_function_friendlink($params){
-	global $g_db, $li;
+function smarty_function_industry($params){
+	global $g_db;
 	global $smarty, $theme_name;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/friendlink.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
 	extract($params);
-	if (!class_exists("Friendlinks")) {
-		uses("friendlink");
-		$friendlink = new Friendlinks();
+	if (!class_exists("Industries")) {
+		uses("industry");
+		$industry = new Industries();
 	}else{
-	    $friendlink = new Friendlinks();
+	    $industry = new Industries();
 	}
-	$conditions[] = "status=1";
-	$fields = "title as LinkTitle,logo as LinkLogo,url as LinkUrl";
+	$fields = "id,name";
 	if(isset($params['id'])){
-		$result = $friendlink->read($fields, intval($params['id']));
+		$result = $industry->read($fields, intval($params['id']));
 	}else{
-	    if (isset($params['type'])) {
-	    	if ($params['type']=="image") {
-	    		//image friendlink
-	    		$conditions[] = "Friendlink.logo!=''";
-	    		$tpl_file = "blocks/friendlink.image.html";
-	    	}
-	    }
-		$friendlink->setLimit($params['row'], $params['col'], $params['max']);
-		if (isset($params['orderby'])) {
-			$orderby = " order by Friendlink.".trim($params['orderby']);
-		}else{
-		    $orderby = " order by Friendlink.priority asc";
+		if (isset($params['parent_id'])) {
+			$conditions[] = "parentid='".$params['parent_id']."'";
 		}
-		$tmp_cond = implode(" and ", $conditions);
-		$sql = "select ".$fields." from ".$friendlink->getTable(true)." where ".$tmp_cond.$orderby;
+		if (isset($params['type'])) {
+			$cat_name = trim($params['type']);
+		}else{
+			//submited by hg888
+		    $cat_name = "offer";
+		}
+		if (isset($params['orderby'])) {
+			$orderby = " order by ".trim($params['orderby']);
+		}
+		$industry->setLimit($params['row'], $params['col'], $params['max']);
+		if(!empty($conditions)) $tmp_cond = implode(" and ", $conditions);
+		$sql = "select ".$fields." from ".$industry->getTable()." where ".$tmp_cond.$orderby.$industry->getLimit();
 		$result = $g_db->GetArray($sql);
 	}
 	$output = null;
-	for($i=0; $i<count($result); $i++) {
-	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $op = str_replace(array("[link:title]", "[field:title]", "[field:img]"), array($result[$i]["LinkUrl"], $result[$i]['LinkTitle'], $result[$i]['LinkLogo']), $op);
-	    //$output.=$friendlink->checkTerminal($i);
-	    $output.=$op;
-	    if($row>=2){
-	        if($row==$i+1) $output.="<br />";
+	for($i=0; $i<count($result); $i++){
+	    if(PRETEND_HTML_LEVEL==0){
+	        $url = URL.$cat_name."/list.php?sid=".$result[$i]['id'];
+	    }else{
+	        $url = URL.$cat_name."/industry/".urlencode($result[$i]['name'])."/";
 	    }
+	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
+	    $op = str_replace(array("[link:title]", "[field:title]"), array($url, $result[$i]['name']), $op);
+	    //$output.=$industry->checkTerminal($i);
+	    $output.=$op;
 	}
+	unset($result);
 	echo $output;
 }
 ?>
+
+

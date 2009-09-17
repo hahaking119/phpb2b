@@ -24,11 +24,13 @@
  * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:41:05 CST 2009
+ * @created Mon Jun 22 16:41:10 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: block.cacheless.php 87 2009-09-08 02:09:14Z stevenchow811@163.com $
  */
-function smarty_block_loginbar($param, $content, &$smarty) {
-   return $content;
+function smarty_block_cacheless($param, $content, &$smarty) {
+	//$smarty->caching=true;
+	//$smarty->cache_lifetime = 6;
+	return $content;
 }
 ?>

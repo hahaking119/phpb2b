@@ -24,59 +24,55 @@
  * @package phpb2b.app.plugins
  * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
- * @created Mon Jun 22 16:42:22 CST 2009
+ * @created Mon Jun 22 16:41:55 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id$
+ * @version $Id: function.market.php 106 2009-09-12 15:11:07Z stevenchow811@163.com $
  */
-function smarty_function_tag($params){
-	global $g_db,$smarty, $theme_name;
+function smarty_function_market($params){
+	global $g_db;
+	global $smarty, $theme_name;
 	$conditions = array();
 	$limit = null;
-	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/tag.html";
+	$tpl_file = (isset($params['templet']))?"blocks/".$params['templet'].".html":"blocks/default.html";
 	extract($params);
-	if (!class_exists("Keywords")) {
-		uses("keyword");
-		$keyword = new Keywords();
+	if (class_exists("Markets")) {
+		$market = new Markets();
 	}else{
-		$keyword = new Keywords();
+		uses("market");
+		$market = new Markets();
 	}
-	$fields = "title as LinkTitle,id as LinkId,created as CreateDate,type as KeywordType";
 	$conditions[] = "status=1";
+	$fields = "name as LinkTitle,id as LinkId,picture as LinkImage,created as CreateDate";
 	if(isset($params['id'])){
-		$result = $keyword->read($fields, intval($params['id']));
+		$result = $market->read($fields, intval($params['id']));
 	}else{
-	    if (isset($params['type_id'])) {
-	        $conditions[] = "type='".intval($params['type_id'])."'";
+	    if (isset($params['type'])) {
+	    	if ($params['type']=="image") {
+	    		//image Market
+	    		$conditions[] = "Market.picture!=''";
+	    		$tpl_file = "blocks/market.image.html";
+	    	}
 	    }
-		$keyword->setLimit($params['row'], $params['col'], $params['max']);
+
 		if (isset($params['orderby'])) {
-			$orderby = " order by Keyword.".trim($params['orderby']);
-		}else{
-		    $orderby = " order by Keyword.id desc";
+			$orderby = " order by Market.".trim($params['orderby']);
 		}
-		if(isset($params['max'])) {
-			$limit = intval($params['max']);
-			$limit = " limit ".$limit;
-		}else{
-			$limit = " limit 8";
-		}
-		if (!empty($conditions)) {
-			$tmp_cond = implode(" and ", $conditions);
-			$tmp_cond = " where ".$tmp_cond;
-		}
-		$sql = "select ".$fields." from ".$keyword->getTable(true).$tmp_cond.$orderby.$keyword->getLimit();
+		$market->setLimit($params['row'], $params['col'], $params['max']);
+		$tmp_cond = implode(" and ", $conditions);
+		$sql = "select ".$fields." from ".$market->getTable(true)." where ".$tmp_cond.$orderby.$market->getLimit();
 		$result = $g_db->GetArray($sql);
 	}
 	$output = null;
 	for($i=0; $i<count($result); $i++) {
 	    if(PRETEND_HTML_LEVEL==0){
-	        $url = URL."tag.php?type=".$result[$i]['KeywordType']."&keyword=".urlencode($result[$i]['LinkTitle']);
+	        $url = URL."market/detail.php?id=".$result[$i]['LinkId'];
 	    }else{
 	        $dt = getdate($result[$i]['CreateDate']);
-	        $url = URL."tag/".urlencode($result[$i]['LinkTitle'])."/";
+	        $url = URL."market/".$dt['year']."/".$dt['mon']."/".$dt['mday']."/".urlencode($result[$i]['LinkTitle'])."/";
 	    }
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $op = str_replace(array("[link:title]", "[field:title]", "[style:class]"), array($url, utf_substr($result[$i]['LinkTitle'], 6, false), "linkwhite12"), $op);
+	    $op = str_replace(array("[link:title]", "[field:title]", "[field:img]", "[field:typename]"), array($url, $result[$i]['LinkTitle'], $result[$i]['LinkImage'], ""), $op);
+	    //$output.=$market->checkTerminal($i);
 	    $output.=$op;
 	}
 	echo $output;
