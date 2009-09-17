@@ -30,6 +30,7 @@
  */
 $inc_path = "./";
 require("global.php");
+require(LIB_PATH ."common.inc.php");
 uses("setting");
 $setting = new Settings();
 
@@ -43,10 +44,10 @@ if (!empty($find_what)) {
 		$find_content['uc'] = $setting->field("valued", "variable='site_description'");
 		$find_content['ua'] = "";
 	}
-	uaAssign(array("info"=> $find_content['uc'],"Title"=> $find_content['ua']));
+	uaAssign(array("info"=>nl2br($find_content['uc']),"Title"=> $find_content['ua']));
 	if(isset($find_content['ua'])) {
 		setvar("PageTitle", $find_content['ua']);
 	}
 }
-template($theme_name."/about_index");
+template($theme_name."/page_index");
 ?>
