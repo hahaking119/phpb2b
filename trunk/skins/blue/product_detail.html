@@ -10,10 +10,10 @@ body {
 }
 -->
 </style>
-<link href="<{$I_PATH}>css/style.css" rel="stylesheet" type="text/css">
+<link href="<{$SKIN_URL}>css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<{include file="$TplPath/top.html"}>
+<{include file="$SKIN_PATH/top.html"}>
 <table width="760" border="0" align="center" cellpadding="0" cellspacing="0"><tr><td align="center"><table width="778" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="7">&nbsp;</td>
@@ -21,7 +21,7 @@ body {
           <tr>
             <td height="55"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td align="left"><img src="<{$I_PATH}>images/cptu.gif" width="41" height="36" /><img src="<{$I_PATH}>images/product.gif" width="81" height="20" hspace="5" /></td>
+                  <td align="left"><img src="<{$SKIN_URL}>images/cptu.gif" width="41" height="36" /><img src="<{$SKIN_URL}>images/product.gif" width="81" height="20" hspace="5" /></td>
                   </tr>
             </table></td>
           </tr>
@@ -64,14 +64,14 @@ body {
                   <table width="100%" border="0" cellpadding="5" cellspacing="5" class="style">
                     <tr> 
                       <td><div align="center">
-                          <a href="../product/query.php?id=<{$p.ProductId}>"><img src="<{$I_PATH}>images/query.gif" width="119" height="24" border="0" alt=""></a></div></td>
+                          <a href="../product/query.php?id=<{$p.ProductId}>"><img src="<{$SKIN_URL}>images/query.gif" width="119" height="24" border="0" alt=""></a></div></td>
                     </tr>
                   </table></td>
               </tr>
             </table>
             <br> <table width="100%" border="0" cellpadding="3" cellspacing="3" class="style">
               <tr> 
-                <td colspan="4" background="<{$I_PATH}>images/bj1.gif"> <strong>　同系列商品：</strong></td>
+                <td colspan="4" background="<{$SKIN_URL}>images/bj1.gif"> <strong>　同系列商品：</strong></td>
               </tr>
               <tr> 
                 <td colspan="4"><div align="center"> 
@@ -100,7 +100,7 @@ body {
                                       </div></td>
                                   </tr>
                                 </table></td>
-                              <td width="1" background="<{$I_PATH}>images/img_bg_1x8.gif"></td>
+                              <td width="1" background="<{$SKIN_URL}>images/img_bg_1x8.gif"></td>
                             </tr>
                           </table></td>
 						<{foreachelse}>
@@ -116,10 +116,10 @@ body {
             </td>
           </tr>
         </table></td>
-        <td align="right" valign="top"><{include file="$TplPath/menu.html"}></td>
+        <td align="right" valign="top"><{include file="$SKIN_PATH/menu.html"}></td>
       </tr>
     </table></td>
 </tr>
-<{include file="$TplPath/foot.html"}>
+<{include file="$SKIN_PATH/foot.html"}>
 </body>
 </html>

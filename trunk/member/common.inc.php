@@ -27,12 +27,12 @@ if (empty($companyinfo) || !$companyinfo) {
     alert(sprintf(lgg('company_checking'), $companyinfo['CompanyName']));
 }
 $companystyle = $company->getTempletName($companyinfo['configs']);
-$tplpath = (empty($companystyle) || !$companystyle)?"default/":$companystyle."/";
-$space_imgurl = "skins/".$tplpath;
+$SKIN_PATH = (empty($companystyle) || !$companystyle)?"default/":$companystyle."/";
+$space_imgurl = "skins/".$SKIN_PATH;
 if(PRETEND_HTML_LEVEL>0){
-	$space_imgurl = "../../skins/".$tplpath;
+	$space_imgurl = "../../skins/".$SKIN_PATH;
 }
-uaAssign(array("I_PATH"=>$space_imgurl, "TplPath"=>$tplpath));
+uaAssign(array("I_PATH"=>$space_imgurl, "SKIN_URL"=>$space_imgurl, "TplPath"=>$SKIN_PATH, "SKIN_PATH"=>$SKIN_PATH));
 $conditions = " and Companylink.companyid1=".intval($companyinfo['ID'])." and Company.id=Companylink.companyid2";
 $link_sql = "(select Companylink.companyid2 AS FriendID,Company.name AS FriendName,null as CompanyoutlinkUrl,Companylink.user_name as UserName from ".$companylink->getTable(true).",".$company->getTable(true)." where 1 ".$conditions.")";
 $link_sql.= "union all";

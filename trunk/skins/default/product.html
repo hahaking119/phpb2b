@@ -10,10 +10,10 @@ body {
 }
 -->
 </style>
-<link href="<{$I_PATH}>css/style.css" rel="stylesheet" type="text/css">
+<link href="<{$SKIN_URL}>css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<{include file="$TplPath/top.html"}>
+<{include file="$SKIN_PATH/top.html"}>
 <table width="760" border="0" align="center" cellpadding="0" cellspacing="0"><tr><td align="center"><table width="778" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="7">&nbsp;</td>
@@ -21,12 +21,12 @@ body {
           <tr>
             <td height="55"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td width="40%" align="left"><img src="<{$I_PATH}>images/cptu.gif" width="41" height="36" /><img src="<{$I_PATH}>images/product.gif" width="81" height="20" hspace="5" /></td>
+                  <td width="40%" align="left"><img src="<{$SKIN_URL}>images/cptu.gif" width="41" height="36" /><img src="<{$SKIN_URL}>images/product.gif" width="81" height="20" hspace="5" /></td>
                   <td width="60%" align="right" valign="bottom">
                   <div align="right">
                     <table width="52%" height="48" border="0" align="right" cellpadding="3" cellspacing="3" class="style">
                       <tr> 
-                        <td width="24%" height="42"> <div align="right"><span class="tile2"><img src="<{$I_PATH}>images/search.gif" /></span></div></td>
+                        <td width="24%" height="42"> <div align="right"><span class="tile2"><img src="<{$SKIN_URL}>images/search.gif" /></span></div></td>
                         <td width="76%"><div align="left"><span class="fonthong"><strong>按分类查看产品:</strong></span> 
                             <select name="product_type"onchange="javascript:location.href='./product.php?userid=<{$smarty.get.userid}>&tid='+this.value">
                             <option value="0">请选择类别</option>
@@ -46,7 +46,7 @@ body {
             <td bgcolor="#F8F8F8" style="padding-top:5px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 
                 <tr>
-                  <td height="1" background="<{$I_PATH}>images/line.gif"></td>
+                  <td height="1" background="<{$SKIN_URL}>images/line.gif"></td>
                 </tr>
                 <tr>
                   <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -57,20 +57,20 @@ body {
                 <TABLE border=0 align="center" cellPadding=0 cellSpacing=0>
   <TBODY>
     <TR>
-      <TD width=8 height=8><IMG height=8 src="<{$I_PATH}>images/a_1.gif" 
+      <TD width=8 height=8><IMG height=8 src="<{$SKIN_URL}>images/a_1.gif" 
 
             width=8 border=0></TD>
-      <TD align=right background="<{$I_PATH}>images/b_1.gif" height=8><IMG 
+      <TD align=right background="<{$SKIN_URL}>images/b_1.gif" height=8><IMG 
 
-            height=8 src="<{$I_PATH}>images/c_1.gif" width=34 border=0></TD>
-      <TD width=8 height=8><IMG height=8 src="<{$I_PATH}>images/d_1.gif" 
+            height=8 src="<{$SKIN_URL}>images/c_1.gif" width=34 border=0></TD>
+      <TD width=8 height=8><IMG height=8 src="<{$SKIN_URL}>images/d_1.gif" 
 
             width=8 border=0></TD>
     </TR>
     <TR>
-      <TD vAlign=top width=8 background="<{$I_PATH}>images/a_3.gif"><IMG 
+      <TD vAlign=top width=8 background="<{$SKIN_URL}>images/a_3.gif"><IMG 
 
-            height=32 src="<{$I_PATH}>images/a_2.gif" width=8 border=0></TD>
+            height=32 src="<{$SKIN_URL}>images/a_2.gif" width=8 border=0></TD>
       <TD bgColor=#ffffff><table border="0" cellpadding="6" cellspacing="0">
         <tr>
           <td><div align="center"><img src="<{$attachment_dir}><{$p.ProductPicture}>.small.jpg" width="75" height="75"></div></td>
@@ -79,18 +79,18 @@ body {
           <td><div align="center" style="border-style:outset #ffdab9;background-color:#FFFFE0; border-width:3px;"><a target="_blank" href="<{$SiteUrl}>product/content.php?id=<{$p.ID}>"><{$p.Name|truncate:15}></a></div></td>
         </tr>
       </table></TD>
-      <TD vAlign=bottom width=8 background="<{$I_PATH}>images/d_2.gif"><IMG 
+      <TD vAlign=bottom width=8 background="<{$SKIN_URL}>images/d_2.gif"><IMG 
 
-            height=24 src="<{$I_PATH}>images/d_3.gif" width=8 border=0></TD>
+            height=24 src="<{$SKIN_URL}>images/d_3.gif" width=8 border=0></TD>
     </TR>
     <TR>
-      <TD width=8 height=8><IMG height=8 src="<{$I_PATH}>images/a_4.gif" 
+      <TD width=8 height=8><IMG height=8 src="<{$SKIN_URL}>images/a_4.gif" 
 
             width=8 border=0></TD>
-      <TD align=left background="<{$I_PATH}>images/c_4.gif" height=8><IMG 
+      <TD align=left background="<{$SKIN_URL}>images/c_4.gif" height=8><IMG 
 
-            height=8 src="<{$I_PATH}>images/b_4.gif" width=25 border=0></TD>
-      <TD width=8 height=8><IMG height=8 src="<{$I_PATH}>images/d_4.gif" 
+            height=8 src="<{$SKIN_URL}>images/b_4.gif" width=25 border=0></TD>
+      <TD width=8 height=8><IMG height=8 src="<{$SKIN_URL}>images/d_4.gif" 
 
             width=8 border=0></TD>
     </TR>
@@ -112,10 +112,10 @@ body {
             </table></td>
           </tr>
         </table></td>
-        <td align="right" valign="top"><{include file="$TplPath/menu.html"}></td>
+        <td align="right" valign="top"><{include file="$SKIN_PATH/menu.html"}></td>
       </tr>
     </table></td>
 </tr>
-<{include file="$TplPath/foot.html"}>
+<{include file="$SKIN_PATH/foot.html"}>
 </body>
 </html>
