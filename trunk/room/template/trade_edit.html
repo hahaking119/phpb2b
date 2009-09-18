@@ -99,10 +99,10 @@ function CheckInput(){
 				<{/if}>
                       <tr>
                         <td class="tdleft">   关 键 词：</td>
-                        <td class="tdright"><{if $row.TradeKeywords}><{foreach from=$row.TradeKeywords name=keyword_tag item=data}><a href="<{$SiteUrl}>tag.php?keyword=<{$data.title|urlencode}>" target="_blank"><{$data.title}></a><a href="tradeedit.php?do=trade&action=delkeyword&keyid=<{$data.id}>&id=<{$smarty.get.id}>"><img src="<{$tpl_img_path}>office/del.gif" border="0" alt="删除'<{$data.title}>'关键词引用" /></a><{/foreach}><{/if}></td>
+                        <td class="tdright"><{if $row.TradeKeywords}><{foreach from=$row.TradeKeywords name=keyword_tag item=data}><a href="<{$SiteUrl}>tag.php?type=trades&keyword=<{$data.title|urlencode}>" target="_blank"><{$data.title}></a><a href="tradeedit.php?do=trade&action=delkeyword&keyid=<{$data.id}>&id=<{$smarty.get.id}>"><img src="<{$tpl_img_path}>office/del.gif" border="0" alt="删除'<{$data.title}>'关键词引用" /></a><{/foreach}><{else}>无<{/if}></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">   Add Tags：</td>
+                        <td class="tdleft">   添加关键词：</td>
                         <td class="tdright"><input name="keywords" type="text" size="25" value="" />
 (多个关键词请用","号或者空格隔开.)</td>
                       </tr>
