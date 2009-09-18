@@ -18,8 +18,6 @@ if (isset($_POST['del']) && !empty($_POST['tradeid'])) {
 	if($tRes) $g_db->Execute("delete from {$tb_prefix}offers where trade_id in (".implode(",",$_POST['tradeid']).")");
 }
 if (isset($_GET['action'])){
-    if($_GET['action']=="delkeyword" && !empty($_GET['keyid'])) {
-    }
     if ($_GET['action'] == "stat"){
     	$tpl_file = "tradestat";
     	$amount = $trade->findAll("Trade.type_id AS TradeTypeId,COUNT(Trade.id) AS CountTrade",$conditions,"Trade.type_id",0,10,"Trade.type_id");
