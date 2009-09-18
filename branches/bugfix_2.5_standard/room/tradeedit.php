@@ -15,14 +15,6 @@ $company_id = $company->field("id", "member_id=".$_SESSION['MemberID']);
 $company->primaryKey = "member_id";
 setvar("ObjectParams", $trade->params);
 if(!empty($company_id)) $company->checkStatus($company_id);
-if (isset($_GET['do'])) {
-    if ($_GET['do']=="delkeyword") {
-        //取得原来primid对应的keyword字段
-        $keyword_ids = $trade->field("keywords", "id=".$_GET['id']);
-        $keyword_ids = explode(",", $keyword_ids);
-        //array_unique
-    }
-}
 function checkTradeTopic()
 {
     return false;
@@ -50,6 +42,18 @@ if(isset($_GET['action'])){
         }
         $trade_info['TradeRemotePicture'] = $prod_info['TradeRemotePicture'];
     }
+    if ($_GET['action']=="delkeyword" && !empty($_GET['keyid']) && !empty($_GET['id'])) {
+        //取得原来primid对应的keyword字段
+        $keyword_ids = $trade->field("keywords", "id=".$_GET['id']);
+        $keyword_ids = explode(",", $keyword_ids);
+        //array_unique
+        $dkey_id = array_search($_GET['keyid'], $keyword_ids);
+        unset($keyword_ids[$dkey_id]);
+        $keyword_str = implode(",", $keyword_ids);
+        $sql = "update ".$trade->getTable()." set keywords='".$keyword_str."' where id=".intval($_GET['id'])." and member_id=".$_SESSION['MemberID'];
+        $g_db->Execute($sql);
+        PB_goto("tradeedit.php?action=mod&id=".$_GET['id']);
+    }
 }
 if($_GET['id']){
     $get_id = intval($_GET['id']);
@@ -61,7 +65,7 @@ if($_GET['id']){
     $tmp_personalinfo['MemberQQ'] = $trade_info['OfferPrimImaccount'];
     $tmp_personalinfo['MemberTel'] = $trade_info['OfferPrimTelnumber'];
     if(!empty($trade_info['TradeKeywords'])){
-        $_k = $g_db->Execute("select title from ".$tb_prefix."keywords where id in (".$trade_info['TradeKeywords'].")");
+        $_k = $g_db->Execute("select id,title from ".$tb_prefix."keywords where id in (".$trade_info['TradeKeywords'].")");
         $trade_info['TradeKeywords'] = $_k;
     }
     if (empty($trade_info) || !$trade_info) {
@@ -88,14 +92,17 @@ if (isset($_POST['edit_trade'])) {
     $tid = intval($_POST['id']);
     $res = array();
     if(!empty($_POST['topic'])) $res['topic'] = $_POST['topic'];
-    if(!empty($_POST['type_id'])) $res['type_id'] = intval($_POST['type_id']);
-    $res['area_id'] = $_POST['trade']['area_id'];
-    $trade->setTradeCat($res['type_id']);
-    $max_amount = intval($access->field("max_".$trade->getTradeCat(),"membertype_id=".$ua_user['user_type']));
-    $if_can_push_today = $access->checkUserPush("max_".$trade->getTradeCat(), $trade->getTodayPushAmount($_POST['type_id']));
-    if(!$if_can_push_today){
-        flash("./tip.php","./trade.php", sprintf(lgg('off_trade_amount'), $max_amount), 0);
+    if(!empty($_POST['type_id'])) {
+        $res['type_id'] = intval($_POST['type_id']);
+        $trade->setTradeCat($res['type_id']);
+        $trade_typename = $trade->getTradeCat();
+        $max_amount = intval($access->field("max_".$trade_typename,"membertype_id=".$ua_user['user_type']));
+        $if_can_push_today = $access->checkUserPush("max_".$trade_typename, $trade->getTodayPushAmount($_POST['type_id']));
+        if(!$if_can_push_today){
+            flash("./tip.php","./trade.php", sprintf(lgg('off_trade_amount'), $max_amount), 0);
+        }
     }
+    $res['area_id'] = $_POST['trade']['area_id'];
     $res['content'] = preg_replace("/(\r?\n)\\1+/","\\1",$_POST['content']);
     //$res['keywords'] = uaConvertComma($_POST['keywords']);
     if($_POST['trade']['if_urgent'])
@@ -140,7 +147,6 @@ if (isset($_POST['edit_trade'])) {
         $res['picture'] = gmdate("Ym")."/".$attachment->parsed_file_name;
     }
     array_walk($res,"uatrim");
-    $trade->setTradeCat($res['type_id']);
     $keyword_typeid = $trade->trade_type_sign_id;
     $res['ip_addr'] = uaGetClientIP();
     $offer_res = $_POST['offer'];
@@ -175,13 +181,13 @@ if (isset($_POST['edit_trade'])) {
         if ($res) {
             uses("stat");
             $stat = new Stats();
-            $stat->Add($trade->getTradeCat());
+            if($trade_typename) $stat->Add($trade_typename);
         }
         $last_trade_id = $trade->getMaxId();
         $offer_res['trade_id'] = $last_trade_id;
         $offer->save($offer_res);
         //update amount
-        $industry->updateModelAmount($industryid, $trade->industry_amount_name);
+        if($trade->industry_amount_name) $industry->updateModelAmount($industryid, $trade->industry_amount_name);
     }
     if($res) {
         flash("./tip.php","trade.php",$message_info);

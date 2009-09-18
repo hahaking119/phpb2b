@@ -17,9 +17,7 @@ if ($_POST['del'] && !empty($_POST['tradeid'])) {
 	$tRes = $trade->del($_POST['tradeid'], "member_id = ".$_SESSION['MemberID']);
 	if($tRes) $g_db->Execute("delete from ".$tb_prefix."offers where trade_id in (".implode(",",$_POST['tradeid']).")");
 }
-if ($_GET['action']=="delkeyword" && !empty($_GET['keyid'])) {
 
-}
 if ($_GET['action']=="update" && !empty($_GET['id'])) {
     $id = intval($_GET['id']);
 	$vals = array();

@@ -50,7 +50,6 @@ function CheckInput(){
           </tr>
       </table>
 		<form name="TradeFrm" enctype="multipart/form-data" method="post" action="<{$smarty.server.PHP_SELF}>" onsubmit="$('Save').disabled=true;">
-		<input type="hidden" name="type_id" value="<{$smarty.get.type|default:"1"}>">
 		<input type="hidden" name="id" value="<{$smarty.get.id}>">
 		<input type="hidden" name="oldimgname" value="<{$row.TradePicture}>">
 		<input type="hidden" name="trade[area_id]" value="<{$MemberInfo.province_code_id}>" />
@@ -100,10 +99,10 @@ function CheckInput(){
 				<{/if}>
                       <tr>
                         <td class="tdleft">   关 键 词：</td>
-                        <td class="tdright"><{foreach from=$row.TradeKeywords name=keyword_tag item=data}><a href="<{$SiteUrl}>tag.php?keyword=<{$data.title|urlencode}>" target="_blank"><{$data.title}></a><a href="trade.php?do=trade&action=delkeyword&keyid=1"><img src="<{$tpl_img_path}>office/del.gif" border="0" alt="删除'<{$data.title}>'关键词引用" /></a><{/foreach}></td>
+                        <td class="tdright"><{if $row.TradeKeywords}><{foreach from=$row.TradeKeywords name=keyword_tag item=data}><a href="<{$SiteUrl}>tag.php?type=trades&keyword=<{$data.title|urlencode}>" target="_blank"><{$data.title}></a><a href="tradeedit.php?do=trade&action=delkeyword&keyid=<{$data.id}>&id=<{$smarty.get.id}>"><img src="<{$tpl_img_path}>office/del.gif" border="0" alt="删除'<{$data.title}>'关键词引用" /></a><{/foreach}><{else}>无<{/if}></td>
                       </tr>
                       <tr>
-                        <td class="tdleft">   Add Tags：</td>
+                        <td class="tdleft">   添加关键词：</td>
                         <td class="tdright"><input name="keywords" type="text" size="25" value="" />
 (多个关键词请用","号或者空格隔开.)</td>
                       </tr>
