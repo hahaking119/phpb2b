@@ -191,6 +191,7 @@ CREATE TABLE pb_announcements (
   `member_group` varchar(255) NOT NULL default '',
   `displayorder` tinyint(3) NOT NULL default '0',
   `created` int(10) unsigned NOT NULL default '0',
+  `create_time` datetime NOT NULL,
   `starttime` int(10) unsigned NOT NULL default '0',
   `endtime` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
@@ -1031,11 +1032,12 @@ CREATE TABLE pb_newses (
   keywords varchar(100) default NULL,
   picture varchar(50) default NULL,
   if_focus tinyint(1) default '0',
-  clicked int(11) default '1',
+  clicked int(10) default '1',
   status tinyint(1) default '1',
   require_membertype varchar(15) default '0',
-  created int(11) default NULL,
-  modified int(11) default NULL,
+  created int(10) default NULL,
+  `create_time` datetime NOT NULL,
+  modified int(10) default NULL,
   PRIMARY KEY  (id)
 ) TYPE=MyISAM ;
 
