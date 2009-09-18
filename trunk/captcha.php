@@ -1,5 +1,5 @@
 <?php
-include 'libraries/source/securimage/securimage.php';
+include 'libraries/source/captcha/securimage.php';
 $img = new securimage();
 //$img->wordlist_file = 'data/words/words.txt';
 $img->audio_path = 'data/audio/';
