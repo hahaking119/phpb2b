@@ -88,7 +88,11 @@ function PB_goto($url = "./index.php", $result = false, $msg = null, $otherparam
         $forward = urlencode($_SERVER['HTTP_REFERER']);
         if(strpos($url, ".php?")) $url.="&return_forward=".$forward;
         else $url.="?return_forward=".$forward;
-    }
+    }elseif(isset($_SERVER['HTTP_X_REWRITE_URL'])){
+        $forward = urlencode($_SERVER['HTTP_X_REWRITE_URL']);
+        if(strpos($url, ".php?")) $url.="&return_forward=".$forward;
+        else $url.="?return_forward=".$forward;
+	}
     if(!empty($otherparams)){
         $url.="&".$otherparams;
     }
