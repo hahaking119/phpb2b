@@ -35,7 +35,7 @@
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <{include file="`$ThemeName`/element.header.html"}>
-<table width=960 height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
+<table width=960 height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui" style="margin:0 auto;">
   <tbody>
     <tr> 
       <td width=785><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
@@ -43,7 +43,7 @@
     </tr>
   </tbody>
 </table>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
   <tr> 
     <td width="365">
 	<table width="365" height="27" border="0" cellpadding="0" cellspacing="0">
@@ -88,7 +88,7 @@
         </tr>
         <tr> 
           <td class="coryellow2"> 
-            <table height=35 cellSpacing=3 cellPadding=3 width="100%" align=center border=0>
+            <table height=35 cellSpacing=3 cellPadding=3 width="100%" align=center border=0 class="rg_p3">
               <form name="SearchForm" action="<{$smarty.server.PHP_SELF}>" method="get">
 			  <input type="hidden" name="ac" value="list" />
                 <tbody>
@@ -98,8 +98,8 @@
                           </select></td>
                     <td width=115><select name="aindustry" id="aindustry" USEDATA="dataSrc" SUBCLASS="1">
                           </select></td>
-                    <td align=middle width=105><input name="skeyword" value="输入关键字" size="18" onFocus="if(this.value=='输入关键字'){this.value='';this.style.color='#000'}" onBlur="if(this.value==''){this.value='输入关键字';this.style.color='#808080'}" ></td>
-                    <td align=middle width=87><input type="submit" name="search_list" class="btn_xp" value="--筛 选--"></td>
+                    <td align=middle width=105><input name="skeyword" value="请输入关键字" size="18" onFocus="if(this.value=='请输入关键字'){this.value='';this.style.color='#000'}" onBlur="if(this.value==''){this.value='请输入关键字';this.style.color='#808080'}"></td>
+                    <td align=middle width=87 class="rg_p10"><input type="submit" name="search_list" value="--筛 选--"></td>
                   </tr>
               </form>
             </table></td>
@@ -108,7 +108,7 @@
 	  </td>
   </tr>
 </table>
-<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="corhui">
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="corhui" style="margin:0 auto;">
   <tr> 
     <td> 
       <table width="960" border="0" cellpadding="3" cellspacing="0">
@@ -118,11 +118,11 @@
       </table></td>
   </tr>
 </table>
-<table width="960" border="0" align="center" cellpadding="5" cellspacing="1" class="font12white">
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1" class="font12white" style="margin:0 auto;">
   <tr class="coryellow"> 
     <td width="70" height="30" align="center"><strong>会员等级</strong></td>
     <td width="405" align="center"><strong>公司/主营产品、服务</strong></td>
-    <td width="70" align="center"><strong>经营模式/企业标识</strong></td>
+    <td width="70" align="center"><strong>经营模式</strong></td>
     <td width="70" align="center"><strong>地区</strong></td>
     <td width="75" align="center"><strong>信誉度指数</strong></td>
     <td width="70" align="center"><strong>给我留言</strong></td>
@@ -130,7 +130,7 @@
 </table>
 <!-- list sc=sub_companies-->
 <{foreach from=$Lists name=company_list item=data}>
-<table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1" style="margin:0 auto;">
   <tr class="corhui"> 
     <td width="70" align="center">
 	<!-- 这里默认VIP会员的类型为4 -->
@@ -150,14 +150,14 @@
   </tr>
 </table>
 <{foreachelse}>
-<table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1" style="margin:0 auto;">
   <tr class="corhui"> 
     <td align="center"><div align="center">暂无数据</div></td>
   </tr>
 </table>
 <{/foreach}>
 <!-- //list -->
-<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="corhui">
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="corhui" style="margin:0 auto;">
   <tr> 
     <td> <table width="960" border="0" cellpadding="3" cellspacing="0">
         <tr> 
@@ -166,7 +166,7 @@
       </table></td>
   </tr>
 </table>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
 
   <tr> 
     <td height="1" background="<{$tpl_img_path}>default/dian.gif"></td>
@@ -181,7 +181,7 @@
       </table></td>
   </tr>
 </table>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
   <tr> 
     <td><div class="bgcontain"> 
 	<div id="abc"><span>字母检索</span>
@@ -195,7 +195,7 @@
 	</td>
   </tr>
 </table>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
   <tr> 
     <td><{include file="`$ThemeName`/element.foot.html"}></td>
   </tr>

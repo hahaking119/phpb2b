@@ -65,20 +65,20 @@ function checkUpgrade(){
 			  <input type="hidden" name="member[id]" value="<{$UalinkUser.id}>" />
 			  <input type="hidden" name="company[id]" value="<{$MemberInfo.CompanyId}>" />
 			  <input type="hidden" name="last_membertype" id="last_membertype" value="<{$UalinkUser.user_type}>" />
-			  <table width="100%"  border="0" cellpadding="5" cellspacing="2">
+			  <table width="100%"  border="0" cellpadding="5" cellspacing="2" class="rg_p3">
 				<tr> 
-				  <td width="40%" align="right" class="corred">公司名称：</td>
+				  <td width="40%" align="right">公司名称：</td>
 				  <td width="60%"><{if $MemberInfo.CompanyName}><{$MemberInfo.CompanyName}><{else}><input name="company[name]" type="text" class="linehui" id="company_name" size="30" maxlength="20">
 				  <{/if}></td>
 				</tr>
 				<tr> 
-				  <td align="right" class="corred">用户ID：</td>
+				  <td align="right">用户ID：</td>
 				  <td><{if $UalinkUser.id}><{$smarty.session.MemberName}><{else}><input name="member[username]" type="text" class="linehui" id="member[username]" size="30" maxlength="20">
 					<span class="fontred">*<span class="time"><br>
 					（4-20个字符（A-Z， a-z， 0-9，下划线）</span><{/if}> </td>
 				</tr>
 				<tr> 
-				  <td align="right" class="corred">申请会员类型：</td>
+				  <td align="right">申请会员类型：</td>
 				  <td>
 					  <select name="order[product_id]" id="upgrade_membertype">
 					  <{foreach from=$Membertypes name=member_types item=t}>
@@ -89,7 +89,7 @@ function checkUpgrade(){
 					</td>
 				</tr>
 				<tr> 
-				  <td align="right" class="corred">申请年限：</td>
+				  <td align="right">申请年限：</td>
 				  <td> <select name="order[year_option]" id="year_option">
 					<option value="1">1年</option>
 					<option value="2">2年</option>
@@ -100,18 +100,17 @@ function checkUpgrade(){
 					<span class="fontred">*</span></td>
 				</tr>
 				<tr>
-				  <td height="26" align="right" class="corred">联系电话：</td>
+				  <td height="26" align="right">联系电话：</td>
 				  <td><input name="member[tel]" type="text" class="linehui" id="member_tel" value="<{$MemberInfo.Tel}>" size="30" maxlength="20">
 					  <span class="fontred">*</span></td>
 				</tr>
 				<tr>
-				  <td height="26" align="right" class="corred">E-mail：</td>
+				  <td height="26" align="right">E-mail：</td>
 				  <td><input name="member[email]" type="text" class="linehui" id="member_email" value="<{$MemberInfo.Email}>" size="30" maxlength="20">
 					  <span class="fontred">*</span></td>
 				</tr>
-				<tr class="corhui"> 
-					<td height="50" align="center" colspan="2"> 
-					  <div align="center"><input type="submit" name="apply" value=" 立即申请 " onclick="return checkUpgrade();" class="btn_xp"></div></td>
+				<tr> 
+					<td height="50" colspan="2" class="rg_p10"><input type="submit" name="apply" value=" 立即申请 " onclick="return checkUpgrade();" /></td>
 				  </tr>      
 				 </table>
 			  </form>
