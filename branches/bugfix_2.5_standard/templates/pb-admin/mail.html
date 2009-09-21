@@ -98,6 +98,10 @@ function fEvent(sType,oInput){
   <td class="altbg1"><strong>SMTP 身份验证密码:</strong></td>
   <td class="altbg2"><input name="u[smtp_userpass]" type="password" id="smtp_userpass" size="30" value="<{$U.SMTP_USERPASS|default:'password'}>"  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /></td>
 </tr>
+<tr>
+  <td class="altbg1"><strong>测试邮件配置:</strong></td>
+  <td class="altbg2"><input name="test_email" type="password" id="TestEmail" size="30" value=""  class="input150" onmouseover="fEvent('mouseover',this)" onfocus="fEvent('focus',this)" onblur="fEvent('blur',this)" onmouseout="fEvent('mouseout',this)" /><input type="submit" name="btn_test_email" id="BtnTestEmail" value="点击发送测试" /></td>
+</tr>
 </tbody>
 </tbody>
 <tr>
