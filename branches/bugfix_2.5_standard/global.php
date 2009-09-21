@@ -35,7 +35,6 @@ define('SITE_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 $gzipcompress = 0;//if use GZIP
 $subdomain_support = 0;//0, Close;1, Open.
 $config_subdomain = ".yourdomain.com";
-//$is_apache = strstr($_SERVER['SERVER_SOFTWARE'], 'Apache') ? true : false;
 define('APP_NAME', 'app/');
 require(SITE_ROOT. './app/configs/core.php');
 define('DATA_PATH', SITE_ROOT."./data/tmp/data/");
