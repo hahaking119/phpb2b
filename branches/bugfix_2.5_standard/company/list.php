@@ -1,6 +1,7 @@
 <?php
 uses("product","industry","company","member");
 include(SITE_ROOT.'./app/include/page.php');
+include(INC_PATH .'xajax/xajaxAIO.inc.php');
 include(SITE_ROOT."./data/tmp/data/".$cookiepre."industry.inc.php");
 include(SITE_ROOT."./data/tmp/data/".$cookiepre."area.inc.php");
 $member = new Members();
@@ -10,6 +11,12 @@ $conditions = null;
 $conditions = " Company.status=1 ";
 $positions = array();
 $_positions[] = lgg("company_center");
+$xajax = new xajax();
+$xajax->configure('javascript URI', URL."app/source/xajax/");
+$xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('loadDivSubIndustry'));
+$xajax->processRequest();
+setvar('xajax_javascript', $xajax->getJavascript());
+
 if(isset($_GET['filter']) && !empty($_GET['id'])){
 	$conditions.=" and Company.type_id=".intval($_GET['id']);
 	$_positions[] = "<a href='#' title=''>".urldecode($_GET['name'])."</a>";
