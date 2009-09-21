@@ -65,7 +65,7 @@ function checkUpgrade(){
 			  <input type="hidden" name="member[id]" value="<{$UalinkUser.id}>" />
 			  <input type="hidden" name="company[id]" value="<{$MemberInfo.CompanyId}>" />
 			  <input type="hidden" name="last_membertype" id="last_membertype" value="<{$UalinkUser.user_type}>" />
-			  <table width="100%"  border="0" cellpadding="5" cellspacing="2">
+			  <table width="100%"  border="0" cellpadding="5" cellspacing="2" class="rg_p3">
 				<tr> 
 				  <td width="40%" align="right" class="corred">公司名称：</td>
 				  <td width="60%"><{if $MemberInfo.CompanyName}><{$MemberInfo.CompanyName}><{else}><input name="company[name]" type="text" class="linehui" id="company_name" size="30" maxlength="20">
@@ -110,8 +110,7 @@ function checkUpgrade(){
 					  <span class="fontred">*</span></td>
 				</tr>
 				<tr class="corhui"> 
-					<td height="50" align="center" colspan="2"> 
-					  <div align="center"><input type="submit" name="apply" value=" 立即申请 " onclick="return checkUpgrade();" class="btn_xp"></div></td>
+					<td height="50" colspan="2" class="rg_p10"><input type="submit" name="apply" value=" 立即申请 " onclick="return checkUpgrade();" /></td>
 				  </tr>      
 				 </table>
 			  </form>
