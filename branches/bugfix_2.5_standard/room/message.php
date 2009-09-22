@@ -34,6 +34,9 @@ if($_GET['action'] == "view" && !empty($_GET['id'])){
 	if(empty($message_info)){
 		PB_goto("./tip.php?id=1004");
 	}else{
+
+		$from_username = $member->field("username", "id=".$message_info['CompanymessageFromMemberId']);
+		$message_info['FromUsername'] = $from_username;
 		setvar("m",$message_info);
 		$tplname = "message_detail";
 	}
@@ -42,6 +45,7 @@ if($_GET['action'] == "view" && !empty($_GET['id'])){
 	pageft($amount);
 	$sql.= " LIMIT $firstcount,$displaypg";
 	$res = $g_db->GetAll($sql);
+	setvar("MessageStatus", $companymessage->status);
 	setvar("Messages",$res);
 	setvar("ByPages",$pagenav);
 }
