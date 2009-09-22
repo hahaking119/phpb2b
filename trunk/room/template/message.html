@@ -69,7 +69,7 @@ if(chked<=0){
             <tr align="center" class="bggray">
               <td><input type="checkbox" name="messageid[]" value="<{$cm.ID}>" id="messageid_<{$cm.ID}>"></td>
               <td align="left"><a href="message.php?type=<{$smarty.get.type}>&action=view&id=<{$cm.ID}>"><{$cm.Title|truncate:30}></a></td>
-              <td class="orange"><{$cm.Status}></td>
+              <td class="orange"><{$cm.MemberUserName}></td>
               <td><{$cm.CreateDate|date_format:"%Y-%m-%d"}></td>
             </tr>
 			<{foreachelse}>
