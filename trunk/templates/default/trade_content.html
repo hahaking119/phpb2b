@@ -32,23 +32,6 @@ function postdata(){                             //提交数据函数
   });     
 }
 </script>
-<script language=javascript>
-function getExpireStr(exp_date){
-	var urodz= new Date(exp_date);
-	var s="离到期";
-	var now = new Date();
-	var ile = urodz.getTime() - now.getTime();
-	var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
-	if (dni > 1)
-	return (""+s+"还有"+dni +"天");
-	else if (dni == 1)
-	return "只有2天啦!";
-	else if (dni == 0)
-	return "只有1天啦!";
-	else
-	return "<font color=red>该信息已经过期!</font>";
-}
-</script>
 </head>
 
 <body>
@@ -117,6 +100,23 @@ function getExpireStr(exp_date){
 <div class="clear9"></div>
 <div class="wd cpk_ad1"><{ad type_id=1}></div>
 <div class="clear15"></div>
+<script language=javascript>
+function getExpireStr(exp_date){
+	var urodz= new Date(exp_date);
+	var s="离到期";
+	var now = new Date();
+	var ile = urodz.getTime() - now.getTime();
+	var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+	if (dni > 1)
+	return (""+s+"还有"+dni +"天");
+	else if (dni == 1)
+	return "只有2天啦!";
+	else if (dni == 0)
+	return "只有1天啦!";
+	else
+	return "<font color=red>该信息已经过期!</font>";
+}
+</script>
 <{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

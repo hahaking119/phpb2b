@@ -10,26 +10,6 @@
 <link rel="stylesheet" type="text/css" href="<{$theme_img_path}>head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$theme_img_path}>style.css" />
 <script src="<{$JS_PATH}>js/prototype.js"></script>
-<script>
-function checkUpgrade(){
-	if($F('last_membertype')==$F('upgrade_membertype')){
-		alert("您已经是该会员类型");
-		$('upgrade_membertype').focus();
-		return false;
-	}
-	if($F('member_tel')==""){
-		alert("请输入您的联系电话");
-		$('member_tel').focus();
-		return false;
-	}
-	if($F('member_email')==""){
-		alert("请输入您的联系Email");
-		$('member_email').focus();
-		return false;
-	}
-	return true;
-}
-</script>
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -119,6 +99,26 @@ function checkUpgrade(){
 		</table>
 	</div>
 </div>
+<script>
+function checkUpgrade(){
+	if($F('last_membertype')==$F('upgrade_membertype')){
+		alert("您已经是该会员类型");
+		$('upgrade_membertype').focus();
+		return false;
+	}
+	if($F('member_tel')==""){
+		alert("请输入您的联系电话");
+		$('member_tel').focus();
+		return false;
+	}
+	if($F('member_email')==""){
+		alert("请输入您的联系Email");
+		$('member_email').focus();
+		return false;
+	}
+	return true;
+}
+</script>
 <{include file="`$ThemeName`/elements/foot.html"}>
 </body>
 </html>

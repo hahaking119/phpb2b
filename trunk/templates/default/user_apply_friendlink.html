@@ -17,36 +17,7 @@ border-width:1px 1px 1px 1px; /* 设置边框状粗细：上 右 下 左 = 对�
 }
 </style>
 <script src="<{$JS_PATH}>js/prototype.js"></script>
-<script>
-function IsURL(urlString)
-{
-	regExp = /(?:(?:http[s]?|ftp):\/\/)?[^\/\.]+?\.[^\.\\\/]+?\.\w{2,}$/i;
-	if (urlString.match(regExp))return true;
-	else return false;
-}
-function check(){
-	if($F('site_name')==""){
-		alert("请输入您的网站名称");
-		$('site_name').focus();
-		return false;
-	}
-	if($F('site_email')==""){
-		alert("请输入您的联系email");
-		$('site_email').focus();
-		return false;
-	}
-	if($F('site_url')==""){
-		alert("请输入您的网址");
-		$('site_url').focus();
-		return false;
-	}else if(!IsURL($F('site_url'))){
-		alert("您输入的网址有误");
-		$('site_url').focus();
-		return false;
-	}
-	return true;
-}
-</script>
+
 <{$xajax_javascript}>
 </head>
 
@@ -192,6 +163,36 @@ function check(){
     </td>
   </tr>
 </table>
+<script>
+function IsURL(urlString)
+{
+	regExp = /(?:(?:http[s]?|ftp):\/\/)?[^\/\.]+?\.[^\.\\\/]+?\.\w{2,}$/i;
+	if (urlString.match(regExp))return true;
+	else return false;
+}
+function check(){
+	if($F('site_name')==""){
+		alert("请输入您的网站名称");
+		$('site_name').focus();
+		return false;
+	}
+	if($F('site_email')==""){
+		alert("请输入您的联系email");
+		$('site_email').focus();
+		return false;
+	}
+	if($F('site_url')==""){
+		alert("请输入您的网址");
+		$('site_url').focus();
+		return false;
+	}else if(!IsURL($F('site_url'))){
+		alert("您输入的网址有误");
+		$('site_url').focus();
+		return false;
+	}
+	return true;
+}
+</script>
 <table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr> 
     <td><{include file="`$ThemeName`/elements/foot.html"}></iframe></td>

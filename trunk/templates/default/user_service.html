@@ -9,50 +9,6 @@
 <link rel="stylesheet" type="text/css" href="<{$theme_img_path}>basic.css" />
 <link rel="stylesheet" type="text/css" href="<{$theme_img_path}>head_foot.css" />
 <link rel="stylesheet" type="text/css" href="<{$theme_img_path}>style.css" />
-<script language="javascript">
-/**
-onpropertychange()方法在非IE浏览器中很多都不支持，以后可能要用其他代替。
-**/
-var number=<{$ServicePageAmount}>; //定义条目数
-
-function LMYC() {
-var lbmc;
-    for (i=1;i<=number;i++) {
-        lbmc = eval('LM' + i);
-        lbmc.style.display = 'none';
-    }
-}
- 
-function ShowFLT(i) {
-    lbmc = eval('LM' + i);
-    if (lbmc.style.display == 'none') {
-        LMYC();
-        lbmc.style.display = '';
-    }
-    else {
-        lbmc.style.display = 'none';
-    }
-}
-function init(){
-	//alert("asdfasfd");
-	document.servicefrm.save.disabled=true;
-}
-function checkform() {
-	document.servicefrm.save.disabled=true;
-	var title = document.getElementById("title").value;
-	var content = document.getElementById("content").value;
-	if(title=="" || content==""){
-		alert("请输入标题或内容");
-		return false;
-	}else{
-		document.servicefrm.submit();
-	}
-}
-function d(){
-	document.servicefrm.save.disabled=false;
-	document.servicefrm.save.value="提交";
-}
-</script>
 </head>
 
 <body>
@@ -143,6 +99,50 @@ function d(){
 	</div>
 	<div class="clear"></div>
 </div>
+<script language="javascript">
+/**
+onpropertychange()方法在非IE浏览器中很多都不支持，以后可能要用其他代替。
+**/
+var number=<{$ServicePageAmount}>; //定义条目数
+
+function LMYC() {
+var lbmc;
+    for (i=1;i<=number;i++) {
+        lbmc = eval('LM' + i);
+        lbmc.style.display = 'none';
+    }
+}
+ 
+function ShowFLT(i) {
+    lbmc = eval('LM' + i);
+    if (lbmc.style.display == 'none') {
+        LMYC();
+        lbmc.style.display = '';
+    }
+    else {
+        lbmc.style.display = 'none';
+    }
+}
+function init(){
+	//alert("asdfasfd");
+	document.servicefrm.save.disabled=true;
+}
+function checkform() {
+	document.servicefrm.save.disabled=true;
+	var title = document.getElementById("title").value;
+	var content = document.getElementById("content").value;
+	if(title=="" || content==""){
+		alert("请输入标题或内容");
+		return false;
+	}else{
+		document.servicefrm.submit();
+	}
+}
+function d(){
+	document.servicefrm.save.disabled=false;
+	document.servicefrm.save.value="提交";
+}
+</script>
 <{include file="`$ThemeName`/elements/foot.html"}>
 <script language="javascript">
 init();//必须放在最后，才能对按钮生效。
