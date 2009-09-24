@@ -3,7 +3,7 @@ $inc_path = "../";
 $ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 header("Content-Type: text/html; charset=".$charset);
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 require("session_cp.inc.php");
 if($argc>0){
 	$tmp_rf1 = explode("&", trim($argv[0]));

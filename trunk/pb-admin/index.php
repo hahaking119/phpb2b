@@ -2,7 +2,7 @@
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
 header("Content-Type: text/html; charset=".$charset);
-require_once(SITE_ROOT. './app/configs/db_session.php');
+require_once(SITE_ROOT. './configs/db_session.php');
 require("session_cp.inc.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

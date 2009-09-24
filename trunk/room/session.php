@@ -1,6 +1,6 @@
 <?php
 //require($inc_path .APP_NAME. 'include/inc.discuz.php');
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 require(SITE_ROOT. './libraries/func.checksubmit.php');
 $office_theme_name = "";
 /**

@@ -65,8 +65,8 @@ $app_name = "../app/";
 define('IN_PHPB2B', true);
 require(INSTALL_ROOT.'../libraries/func.global.php');
 require(INSTALL_ROOT.'../libraries/func.sql.php');
-$core_sample_file = '../app/configs/core.php';
-$db_sample_file	= '../app/configs/db.php';
+$core_sample_file = '../configs/core.php';
+$db_sample_file	= '../configs/db.php';
 $installfile = basename(__FILE__);
 $ul_protocol = 'http';
 if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) ) {
@@ -93,7 +93,7 @@ $right_files = array(
 "templates_c"=>"../data/templates_c/",
 "templates_c"=>"../data/templates_c/room/",
 "templates_c"=>"../data/templates_c/pb-admin/",
-"configs"=>$app_name."configs/",
+"configs"=>"../configs/",
 "core.php"=>$core_sample_file,
 "db.php"=>$db_sample_file,
 "sitemap.xml"=>"../sitemap.xml",

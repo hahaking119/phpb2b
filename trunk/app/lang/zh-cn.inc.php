@@ -161,7 +161,7 @@ $ul_lang = array(
 "one_day_max"=>'不能超过%s条',
 "update_end"=>"<div id='update_end'>更新成功,是否现在就<a href='./industry.php?action=recache'>更新统计数据</a>到各首页？</div>",
 "db_connect_error"=>'数据库主机连接错误',
-"change_static_file_first"=>"请先打开静态文件设置,把 app/configs/core.php中的 STATIC_HTML_LEVEL 的值(原来为0) 改为1或2",
+"change_static_file_first"=>"请先打开静态文件设置,把 configs/core.php中的 STATIC_HTML_LEVEL 的值(原来为0) 改为1或2",
 "ready_to_add_type"=>"你还没有添加任何分类，是否现在<a href='./newstype.php?action=mod'>添加</a>?",
 "format_not_support"=>"暂不支持该文件格式，请用图片处理软件将图片转换为GIF、JPG、PNG格式。",
 "water_image_not_exists"=>"需要加水印的图片不存在！",

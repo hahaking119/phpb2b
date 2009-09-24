@@ -1,7 +1,7 @@
 <?php
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 header("Content-Type: text/html; charset=".$charset);
 require("session_cp.inc.php");
 uses("product", "htmlcache");
@@ -41,7 +41,6 @@ if (isset($_POST['create'])) {
     //
 	if (STATIC_HTML_LEVEL<=0) {
 		flash("alert.php","mkstatic.php", lgg("change_static_file_first"),0);
-		//die("请先打开静态文件设置,把 app/configs/core.php中的 STATIC_HTML_LEVEL 的值(原来为0) 改为1或2");
 	}
 	$media_paths = $smarty->getAbsolutePath();
 	uaAssign($media_paths);

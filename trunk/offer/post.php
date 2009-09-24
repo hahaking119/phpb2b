@@ -30,7 +30,7 @@
  */
 $inc_path = "../";
 require("../global.php");
-require_once(SITE_ROOT. './app/configs/db_session.php');
+require_once(SITE_ROOT. './configs/db_session.php');
 require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 require(SITE_ROOT. './libraries/func.checksubmit.php');
 uses("trade","industry","member", "setting", "htmlcache");

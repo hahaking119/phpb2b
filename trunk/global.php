@@ -40,8 +40,8 @@ $config_subdomain = ".yourdomain.com";
 define('APP_PATH', SITE_ROOT .'app/');
 define('DATA_PATH', SITE_ROOT."./data/");
 define('CACHE_PATH', SITE_ROOT."./data/cache/");
-require(SITE_ROOT. './app/configs/core.php');
-require(SITE_ROOT. './app/configs/db.php');
+require(SITE_ROOT. './configs/core.php');
+require(SITE_ROOT. './configs/db.php');
 if(!DEBUG){
 	error_reporting(0);
 }else{

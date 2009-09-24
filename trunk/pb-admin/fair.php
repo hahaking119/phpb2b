@@ -1,7 +1,7 @@
 <?php
 $inc_path = "../";$ua_sm_compile_dir = "pb-admin/";
 require($inc_path."global.php");
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 require(LIB_PATH .'time.class.php');
 uses("expo","member","company", "expotype","attachment");
 require("./fckeditor/fckeditor.php") ;
