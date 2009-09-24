@@ -95,7 +95,7 @@ if (isset($_POST['save']) && !empty($_POST['news']['title'])) {
         $keyword->setKeywordId($vals['keywords'], $new_id, 'newses');
         $g_db->Execute("update {$tb_prefix}newses set keywords='".$keyword->getKeywordId()."' where id=".$new_id);
 	}
-	//reset swf pictures.
+	//reset swf pictures, to do: instead of rouchi.
 	if (isset($_POST['set_to_swf'])) {
     	$allPictureNews = $g_db->GetArray("select picture,title,id from {$tb_prefix}newses where status='1' and picture!=''");
     	$outFileName = "../swf/imgList.xml";

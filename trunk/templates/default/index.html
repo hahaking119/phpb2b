@@ -18,7 +18,13 @@
 <{include file="`$ThemeName`/elements/header.html"}>
 <div class="wd">
 	<!--焦点图轮换-->
-	<{ad templet="index.flash"}>
+	<div class="in_hotimg">
+		<object type="application/x-shockwave-flash" data="images/bcastr.swf" width="513" height="242" id="bcastr" bgColor="#ff0000">
+				<param name="movie" value="images/bcastr.swf"/>
+				<param name="allowFullScreen" value="true" />
+				<param name="FlashVars" value="xml=data/xml/index-bcastr.xml" />
+		</object>	
+	</div>
 	<!--焦点图轮换 end-->
 	<!--最新供求信息-->
 	<div class="new_gq">

@@ -37,22 +37,18 @@
           </tr>
           <tr>            <td class="altbg1" align="center">文章来源 
             <td class="altbg2">
-                <input name=news[source] type="Text" id="source" value="<{$n.NewsSource}>"> 
-            
-            </td>
+                <input name=news[source] type="Text" id="source" value="<{$n.NewsSource}>">            </td>
             <td class="altbg1" align="center">浏览量&nbsp; 
             <td class="altbg2"><input name=news[clicked] type="Text" id="news[clicked]" Value="<{$n.NewsClicked|default:"1"}>" size="12"></td>
           </tr>
           <tr>            <td class="altbg1" align="center">阅读权限 
-            <td class="altbg2">
+            <td colspan="3" class="altbg2">
 			<select multiple name="require_membertype[]" id="NewsRequireMembertype">
 			<option value="0">不限</option>
 			<{foreach from=$Membertypes name=membertype key=key item=item}>
 			<option value="<{$key}>"><{$item}></option>
 			<{/foreach}>
 			</select>(按住Ctrl键可多选, 如果不想改动请不要选择)</td>
-            <td class="altbg1" align="center">顶到首页大图</td>
-            <td class="altbg2"><input type="checkbox" name="set_to_swf" id="set_to_swf" /></td>
           </tr>
           
           
