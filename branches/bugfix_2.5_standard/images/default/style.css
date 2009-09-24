@@ -106,12 +106,12 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .hyfl_c fieldset div a{margin-right:5px;}
 .hyfl_c fieldset a.d{color:#dc0000;}
 .hyfl_c fieldset p a{margin:0 3px;}
-.dlsws{height:757px; float:right;}
+.dlsws{height:auto; float:right;}/*height:757px*/
 .sws_bt{height:29px; background:url(background.gif) -334px -158px no-repeat; line-height:29px;}
 .sws_bt h2{color:#c00; width:110px; text-align:right; line-height:35px;}
 .sws_bt p{float:left; width:190px; text-align:right; line-height:34px;}
 .sws_bt p a{color:#fcc;}.sws_bt p a:hover{color:#fff;}
-.sws_c{width:310px; height:720px; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;padding:4px 0px 3px 4px;}
+.sws_c{width:310px; height:auto; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;padding:4px 0px 3px 4px;}/*height:720px*/
 .sws_c div img{float:left;border:1px solid #DDD;margin-right:1px}
 .sws_c form{width:304px; height:100px; margin:0 auto; display:block; background:url(f_bg_304x8.gif) bottom no-repeat; padding:15px 0 0;}
 .f_line1,.f_line2{width:217px; height:100px; float:left; display:inline; text-align:right;}
