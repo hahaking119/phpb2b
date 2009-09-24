@@ -7,7 +7,7 @@ if (!defined('DIRECTORY_SEPARATOR')) {
 }
 define('PHPB2B_VERSION', '3.0 Dev');
 define('DS', DIRECTORY_SEPARATOR);
-define('BASE_DIR', substr(dirname(__FILE__), 0, -11));
+define('BASE_DIR', substr(dirname(__FILE__), 0, -7));
 if(!defined('SOURCE_PATH')) define('SOURCE_PATH',SITE_ROOT .'libraries'.DS.'source'.DS);
 if(!defined('LIB_PATH')) define('LIB_PATH',SITE_ROOT .'libraries'.DS);
 if(!defined('URL')) define('URL','http://www.yourdomain.com/');
