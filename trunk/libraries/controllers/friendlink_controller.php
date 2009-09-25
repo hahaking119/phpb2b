@@ -1,5 +1,5 @@
 <?php
-class Friendlink extends UaController {
+class Friendlink extends PbController {
 	var $name = "Friendlink";
 }
 ?>

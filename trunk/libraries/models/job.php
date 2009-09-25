@@ -1,5 +1,5 @@
 <?php
-class Jobs extends UaModel {
+class Jobs extends PbModel {
 
 
 	var $name = "Job";

@@ -1,5 +1,5 @@
 <?php
- class Settings extends UaModel {
+ class Settings extends PbModel {
 
 
  	var $name = "Setting";

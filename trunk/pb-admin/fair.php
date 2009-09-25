@@ -16,7 +16,7 @@ $conditions = null;
 $tpl_file = "fair_index";
 $all_expotype = null;
 $all_expotype = $expotype->findAll("id as OptionId, name as OptionName");
-$all_expotype = UaController::generateList($all_expotype);
+$all_expotype = PbController::generateList($all_expotype);
 setvar("ExpotypeList", $all_expotype);
 setvar("ExpoStatus", explode(",",lgg('yes_no')));
 if (isset($_POST['save']) && !empty($_POST['Expo']['ea'])) {

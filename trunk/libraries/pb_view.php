@@ -22,14 +22,14 @@
  * --
  *
  * @package phpb2b
- * @subpackage app.libs
+ * @subpackage libraries
  * @copyright 2009 PHPB2B <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created 2009-8-28 9:45
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id: ualink_view.php 133 2009-09-15 12:53:28Z stevenchow811@163.com $
  */
-class UaView extends UaObject
+class PbView extends PbObject
 {
 	var $theme_path = "default";
 	var $theme_url = "default/";
@@ -41,11 +41,11 @@ class UaView extends UaObject
 	var $position = array();
 
 
-	function UaView(){
+	function PbView(){
 	}
 
 	function __construct(){
-		$this->UaView();
+		$this->PbView();
 	}
 
     function setTitle($title)

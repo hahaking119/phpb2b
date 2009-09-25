@@ -1,5 +1,5 @@
 <?php
-class Keywordship extends UaController {
+class Keywordship extends PbController {
 	var $name = "Keywordship";
 
 	function setUrl($keyword_info)

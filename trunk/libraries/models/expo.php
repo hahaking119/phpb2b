@@ -1,5 +1,5 @@
 <?php
- class Expoes extends UaModel {
+ class Expoes extends PbModel {
  	var $name = "Expo";
 
  	function Expoes()

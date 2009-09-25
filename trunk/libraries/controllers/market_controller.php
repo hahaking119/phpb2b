@@ -1,5 +1,5 @@
 <?php
-class Market extends UaController {
+class Market extends PbController {
 	var $name = "Market";
 }
 ?>

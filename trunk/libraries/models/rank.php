@@ -29,7 +29,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id$
  */
- class Ranks extends UaModel {
+ class Ranks extends PbModel {
  	
  	var $name = "Rank";
 

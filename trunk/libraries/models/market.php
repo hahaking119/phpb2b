@@ -1,5 +1,5 @@
 <?php
- class Markets extends UaModel {
+ class Markets extends PbModel {
 
  	
  	var $name = "Market";

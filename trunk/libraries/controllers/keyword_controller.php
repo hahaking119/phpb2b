@@ -1,4 +1,4 @@
 <?php
-class Keyword extends UaController {
+class Keyword extends PbController {
 	var $name = "Keyword";
 }

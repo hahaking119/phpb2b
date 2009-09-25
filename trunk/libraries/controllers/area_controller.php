@@ -1,5 +1,5 @@
 <?php
-class Area extends UaController {
+class Area extends PbController {
 	var $name = "Area";
 }
 ?>

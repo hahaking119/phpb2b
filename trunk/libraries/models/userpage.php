@@ -1,5 +1,5 @@
 <?php
-class Userpages extends UaModel {
+class Userpages extends PbModel {
 	var $name = "Userpage";
 	var $current_li = null;
 	var $url_container = null;

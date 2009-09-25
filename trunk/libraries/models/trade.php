@@ -1,5 +1,5 @@
 <?php
- class Trades extends UaModel {
+ class Trades extends PbModel {
  	var $name = "Trade";
  	var $company_trade_cols = "Trade.id AS TID,Trade.id AS TradeId,topic AS Name,content AS Description,company_id AS CompanyID,Trade.member_id as MemberId,Trade.picture AS TradePicture,Trade.status AS TradeStatus,Trade.type_id AS trade_type,Trade.created AS CreateDate,Trade.submit_time AS PublishDate,expire_time AS ExpireDate,Company.name AS CompanyName,Company.link_man AS CompanyLinkMan,boss_name AS LinkName,CONCAT(telcode,telzone,tel) AS CompTel";
  	var $mini_trade_cols = "Trade.id AS ID,Trade.type_id AS trade_type,Trade.member_id AS TradeMemberId,Trade.company_id AS TradeCompanyId,Trade.topic AS Name,Trade.content AS Content,submit_time AS PublishTime,Trade.picture AS TradePicture,Trade.expire_time AS TradeExpiretime,Trade.status AS TradeStatus,html_file_id,require_point,require_membertype ";

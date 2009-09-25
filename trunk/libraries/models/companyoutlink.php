@@ -1,5 +1,5 @@
 <?php
-class Companyoutlinks extends UaModel {
+class Companyoutlinks extends PbModel {
 
  	
  	var $name = "Companyoutlink";

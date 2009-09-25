@@ -1,5 +1,5 @@
 <?php
- class Members extends UaModel {
+ class Members extends PbModel {
 
  	var $name = "Member";
  	var $info = null;

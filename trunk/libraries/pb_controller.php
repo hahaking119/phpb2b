@@ -29,7 +29,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id: ualink_controller.php 25 2009-08-28 01:46:55Z stevenchow811@163.com $
  */
-class UaController extends UaObject
+class PbController extends PbObject
 {
 	var $current_li = null;
 

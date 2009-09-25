@@ -37,7 +37,7 @@ if(!empty($picture_expo)){
 	uaAssign(array("PictureLinks"=>implode("|", $tmp1['links']), "PictureFiles"=>implode("|", $tmp1['files']), "PictureTitles"=>implode("|", $tmp1['titles'])));
 }
 $expotype_res = $g_db->GetAll("select id as OptionId,name as OptionName from {$tb_prefix}expotypes");
-$expotype_res = UaController::generateList($expotype_res);
+$expotype_res = PbController::generateList($expotype_res);
 setvar("Expotypes", $expotype_res);
 if ($UL_DBCACHE_AREAS) {
 	setvar("Areas", $UL_DBCACHE_AREAS);

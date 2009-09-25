@@ -51,10 +51,10 @@ if(!DEBUG){
 require(SITE_ROOT. './libraries/class.my.smarty.php');
 //$inc_path = (!empty($inc_path))?$inc_path:'./';
 $smarty = new MySmarty($inc_path);
-require(LIB_PATH. 'ualink_object.php');
-require(LIB_PATH. 'ualink_model.php');
-require(LIB_PATH. 'ualink_controller.php');
-require(LIB_PATH. 'ualink_view.php');
+require(LIB_PATH. 'pb_object.php');
+require(LIB_PATH. 'pb_model.php');
+require(LIB_PATH. 'pb_controller.php');
+require(LIB_PATH. 'pb_view.php');
 require(SITE_ROOT. './libraries/func.global.php');
 require(CACHE_PATH.$cookiepre."setting.inc.php");
 require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.inc.php');
@@ -71,7 +71,7 @@ $media_paths = (PRETEND_HTML_LEVEL==0)?$smarty->getRelativePath():$smarty->getAb
 uaAssign($media_paths);
 uses("userpage");
 $userpage = new Userpages();
-$viewhelper = new UaView();
+$viewhelper = new PbView();
 $li = (!empty($li))?intval($li):0; $userpage->setLi($li);
 $userpage->setUrlContainer(intval(STATIC_HTML_LEVEL));
 $urls = $userpage->getUrlContainer();

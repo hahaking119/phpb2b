@@ -159,7 +159,7 @@ if ($_GET['action'] == "mod"){
 	$membertype = new Membertypes();
 	$_mt1[] = array("OptionId"=>0, "OptionName"=>"All");
 	$_mt2 = $membertype->findAll("id as OptionId, name as OptionName", "status=1");
-	setvar("AllMembertypes", UaController::generateList(array_merge($_mt1,$_mt2)));
+	setvar("AllMembertypes", PbController::generateList(array_merge($_mt1,$_mt2)));
 	if (!empty($_GET['id'])) {
 			$fields = "Industry.name AS IndustryName,AreaProvince.name AS Province,AreaCity.name AS City,Trade.member_id,Trade.company_id,Member.username AS MemberName,Company.name AS CompanyName,Trade.if_urgent AS TradeIfUrgent,Trade.keywords AS Keywords,topic AS Topic,packing AS Package,price AS Price,quantity AS Quantity,spec AS Spec,sn AS SN,Trade.picture AS TradePicture,Trade.submit_time AS PublishDate,Trade.expire_time AS ExpireDate,Trade.clicked AS Click,Trade.content AS TradeDescription,Trade.product_id AS ProductID,Trade.type_id as TradeTypeId,Trade.require_point,Trade.require_membertype,Trade.require_freedate ";
 			$sql = "select ".$fields." from ".$trade->getTable(true)." left join ".$company->getTable(true)." on Trade.company_id=Company.id left join ".$member->getTable(true)." on Trade.member_id=Member.id left join ".$area->getTable()." AreaProvince on Trade.province_id=AreaProvince.id left join ".$area->getTable()." AreaCity on Trade.city_id=AreaCity.id left join ".$industry->getTable(true)." on Trade.industry_id=Industry.id where Trade.id=".$_GET['id'];

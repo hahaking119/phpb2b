@@ -29,7 +29,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id: ualink_model.php 25 2009-08-28 01:46:55Z stevenchow811@163.com $
  */
-class UaModel extends UaObject
+class PbModel extends PbObject
 {
 	var $primaryKey = "id";
 	var $id = null;

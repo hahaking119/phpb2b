@@ -1,5 +1,5 @@
 <?php
- class Keywordships extends UaModel {
+ class Keywordships extends PbModel {
  	var $name = "Keywordship";
 
  	function Keywordships()

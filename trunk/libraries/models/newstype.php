@@ -1,5 +1,5 @@
 <?php
-class Newstypes extends UaModel {
+class Newstypes extends PbModel {
 
  	var $name = "Newstype";
 

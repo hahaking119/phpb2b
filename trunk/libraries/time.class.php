@@ -28,7 +28,7 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id$
  */
-class Times extends UaObject
+class Times extends PbObject
 {
     var $time_stamp;
 

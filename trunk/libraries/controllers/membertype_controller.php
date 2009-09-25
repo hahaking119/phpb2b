@@ -1,5 +1,5 @@
 <?php
-class Membertype extends UaController {
+class Membertype extends PbController {
 	var $name = "Membertype";
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
- class Templets extends UaModel {
+ class Templets extends PbModel {
  	
  	var $name = "Templet";
 

@@ -1,5 +1,5 @@
 <?php
- class Attachments extends UaModel {
+ class Attachments extends PbModel {
  	var $name = "Attachment";
  	var $module_id = 0;
     var $upload_form_field = 'pic';

@@ -9,7 +9,7 @@ uses("setting");
 $setting = new Settings();
 $serverinfo = PHP_OS.' / PHP v'.PHP_VERSION;
 $serverinfo .= @ini_get('safe_mode') ? ' Safe Mode' : NULL;
-$dbversion = UaModel::getMysqlVersion();
+$dbversion = PbModel::getMysqlVersion();
 setvar("PhpVersion",$serverinfo);
 setvar("MysqlVersion",$dbversion);
 $when_to_backup = $setting->field("valued", "variable='backup_type'");

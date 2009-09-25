@@ -1,5 +1,5 @@
 <?php
- class Helptypes extends UaModel {
+ class Helptypes extends PbModel {
  	
  	var $name = "Helptype";
 

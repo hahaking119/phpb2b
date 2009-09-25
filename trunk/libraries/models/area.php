@@ -1,5 +1,5 @@
 <?php
-class Areas extends UaModel {
+class Areas extends PbModel {
 
 	
 	var $name = "Area";

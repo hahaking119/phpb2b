@@ -1,5 +1,5 @@
 <?php
-class Member extends UaController {
+class Member extends PbController {
 	var $name = "Member";
 
 	function updatePassword($memberid, $newpassword)

@@ -1,5 +1,5 @@
 <?php
-class Htmlcaches extends UaModel {
+class Htmlcaches extends PbModel {
 	var $name = "Htmlcache";
 
 	function updateCacheTime($mix_page_id){

@@ -1,4 +1,4 @@
 <?php
-class Userpage extends UaController {
+class Userpage extends PbController {
 	var $name = "Userpage";
 }

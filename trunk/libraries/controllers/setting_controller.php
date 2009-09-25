@@ -1,5 +1,5 @@
 <?php
-class Setting extends UaController {
+class Setting extends PbController {
 	var $name = "Setting";
 
 	function test(){

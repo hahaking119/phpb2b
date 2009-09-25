@@ -1,5 +1,5 @@
 <?php
-class Passports extends UaObject
+class Passports extends PbObject
 {
     var $_name = '';
 

@@ -1,5 +1,5 @@
 <?php
-class Attachment extends UaController {
+class Attachment extends PbController {
 	var $name = "Attachment";
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
- class Companies extends UaModel {
+ class Companies extends PbModel {
  	var $name = "Company";
 	var $common_cols = "Company.id AS ID, AS MemberID,industry_id AS CompanyIndustryId,style_id AS Style,Company.name AS CompanyName,Company.description AS Description,main_prod AS MainProduct,boss_name AS Leader,tel AS Tel,mobile AS MobilePhone,link_man AS Linker,fax AS Fax,found_date AS FoundDate,email AS CompanyEmail,Company.*";
 	var $alias_cols = "CONCAT(telcode,'-',telzone,'-',tel) AS MixTel,CONCAT(faxcode,'-',faxzone,'-',fax) AS MixFax";

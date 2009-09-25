@@ -1,5 +1,5 @@
 <?php
-class Rank extends UaController {
+class Rank extends PbController {
 	var $name = "Rank";
 }
 ?>

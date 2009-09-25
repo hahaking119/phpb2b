@@ -1,5 +1,5 @@
 <?php
- class Announcements extends UaModel {
+ class Announcements extends PbModel {
  	var $name = "Announcement";
  	function Announcements()
  	{

@@ -1,5 +1,5 @@
 <?php
- class Indreccompanies extends UaModel {
+ class Indreccompanies extends PbModel {
  	var $name = "Indreccompany";
 }
 ?>

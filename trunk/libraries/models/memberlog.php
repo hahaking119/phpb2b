@@ -1,5 +1,5 @@
 <?php
- class Memberlogs extends UaModel {
+ class Memberlogs extends PbModel {
  	var $name = "Memberlog";
 
  	function Memberlogs()

@@ -1,5 +1,5 @@
 <?php
-class Expotype extends UaController {
+class Expotype extends PbController {
 	var $name = "Expotype";
 }
 ?>

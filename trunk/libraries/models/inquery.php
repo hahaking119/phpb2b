@@ -1,5 +1,5 @@
 <?php
- class Inqueries extends UaModel {
+ class Inqueries extends PbModel {
  	var $name = "Inquery";
 }
 ?>

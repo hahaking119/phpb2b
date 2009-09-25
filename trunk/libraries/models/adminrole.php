@@ -1,5 +1,5 @@
 <?php
- class Adminroles extends UaModel {
+ class Adminroles extends PbModel {
  	var $name = "Adminrole";
 
  	function Adminroles()

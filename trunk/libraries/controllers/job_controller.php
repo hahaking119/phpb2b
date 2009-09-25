@@ -1,5 +1,5 @@
 <?php
-class Job extends UaController {
+class Job extends PbController {
 	var $name = "Job";
 }
 ?>

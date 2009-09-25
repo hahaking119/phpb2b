@@ -1,5 +1,5 @@
 <?php
-class Htmlcache extends UaController {
+class Htmlcache extends PbController {
 	var $name = "Htmlcache";
 }
 ?>

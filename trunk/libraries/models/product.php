@@ -1,5 +1,5 @@
 <?php
-class Products extends UaModel {
+class Products extends PbModel {
 
 
  	var $name = "Product";

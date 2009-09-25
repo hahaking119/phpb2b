@@ -1,5 +1,5 @@
 <?php
- class Companytypes extends UaModel {
+ class Companytypes extends PbModel {
  	var $name = "Companytype";
 }
 ?>

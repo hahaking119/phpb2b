@@ -29,9 +29,9 @@
  * @link http://sourceforge.net/projects/php-b2b/
  * @version $Id: ualink_object.php 25 2009-08-28 01:46:55Z stevenchow811@163.com $
  */
-class UaObject{
+class PbObject{
 
-	function UaObject() {
+	function PbObject() {
 		$args = func_get_args();
 		if (method_exists($this, '__destruct')) {
 			register_shutdown_function (array(&$this, '__destruct'));

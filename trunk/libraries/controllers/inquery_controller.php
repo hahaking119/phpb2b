@@ -1,5 +1,5 @@
 <?php
-class Inquery extends UaController {
+class Inquery extends PbController {
 	var $name = "Inquery";
 }
 ?>

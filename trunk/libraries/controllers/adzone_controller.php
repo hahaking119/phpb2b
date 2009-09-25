@@ -1,5 +1,5 @@
 <?php
-class Adzone extends UaController {
+class Adzone extends PbController {
 	var $name = "Adzone";
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
- class Keywords extends UaModel {
+ class Keywords extends PbModel {
 	var $name = "Keyword";
  	var $type_condition;
  	var $exist_keyword_id = array();

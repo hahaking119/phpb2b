@@ -1,5 +1,5 @@
 <?php
- class Adzones extends UaModel {
+ class Adzones extends PbModel {
  	var $name = "Adzone";
  	
 

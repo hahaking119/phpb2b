@@ -1,5 +1,5 @@
 <?php
- class Friendlinks extends UaModel {
+ class Friendlinks extends PbModel {
  	
  	var $name = "Friendlink";
 
