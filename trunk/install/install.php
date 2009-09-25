@@ -141,13 +141,13 @@ if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 		}else{
 			$configfile = fread($fp, filesize("core.sample.php"));
 			fclose($fp);
-			$configfile = str_replace("%UALINK_SETUP_URL%",$_POST['site']['url'],$configfile);
+			$configfile = str_replace("%PHPB2B_SETUP_URL%",$_POST['site']['url'],$configfile);
 			$ds = "/";
 			if($_SERVER["WINDIR"] || strpos(strtolower($_SERVER["HTTP_USER_AGENT"]),"windows")){
 				$ds = "\\";
 			}
-			$configfile = str_replace("%UALINK_SETUP_INSTALLED%",1,$configfile);
-			$configfile = str_replace("%UALINK_AUTH_KEY%",pb_radom(15), $configfile);
+			$configfile = str_replace("%PHPB2B_SETUP_INSTALLED%",1,$configfile);
+			$configfile = str_replace("%PHPB2B_AUTH_KEY%",pb_radom(15), $configfile);
 			if ($_POST['site']['forumtype']) {
 				$configfile = str_replace("%FORUM_SWITCH%", 1,$configfile);
 				$configfile = str_replace("%FORUM_URL%",$_POST['site']['forumurl'],$configfile);
@@ -155,7 +155,7 @@ if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 				$configfile = str_replace("%FORUM_SWITCH%", 0,$configfile);
 				$configfile = str_replace("\"%FORUM_URL%\"", "null",$configfile);
 			}
-			$configfile = str_replace("%UALINK_SETUP_DATE%",date("Y-m-d H:i:s"),$configfile);
+			$configfile = str_replace("%PHPB2B_SETUP_DATE%",date("Y-m-d H:i:s"),$configfile);
 			$configfile = str_replace("%APPLICATION_LANGUAGE%", $lang_name,$configfile);
 			switch ($_POST['site']['forumtype']){
 				case 1:
@@ -210,15 +210,15 @@ if(isset($_POST['step']) && ($_POST['step']==1) && !empty($_POST['site'])){
 				}else{
 					$dbfile = fread($fp2, filesize("db.sample.php"));
 					fclose($fp2);
-					$dbfile = str_replace("%UALINK_SETUP_DBHOST%",$dbhost,$dbfile);
-					$dbfile = str_replace("%UALINK_SETUP_DBUSER%",$dbuser,$dbfile);
-					$dbfile = str_replace("%UALINK_SETUP_DBPASS%",$dbpw,$dbfile);
-					$dbfile = str_replace("%UALINK_SETUP_DBNAME%",$dbname,$dbfile);
-					$dbfile = str_replace("%UALINK_SETUP_DBPREFIX%",
+					$dbfile = str_replace("%PHPB2B_SETUP_DBHOST%",$dbhost,$dbfile);
+					$dbfile = str_replace("%PHPB2B_SETUP_DBUSER%",$dbuser,$dbfile);
+					$dbfile = str_replace("%PHPB2B_SETUP_DBPASS%",$dbpw,$dbfile);
+					$dbfile = str_replace("%PHPB2B_SETUP_DBNAME%",$dbname,$dbfile);
+					$dbfile = str_replace("%PHPB2B_SETUP_DBPREFIX%",
 					$_POST['db']['prefix'],$dbfile);
-					//$dbfile = str_replace("%UALINK_SETUP_DBSESSION%","session_start();",$dbfile);
+					//$dbfile = str_replace("%PHPB2B_SETUP_DBSESSION%","session_start();",$dbfile);
 					if(mysql_get_server_info() > '4.1'){
-						$dbfile = str_replace("#%UALINK_SETUP_SETNAMES%",
+						$dbfile = str_replace("#%PHPB2B_SETUP_SETNAMES%",
 						"\$g_db->Execute(\"set names '$dbcharset'\");",$dbfile);
 					}
 					$fp2 = fopen($db_sample_file, 'w');
@@ -495,7 +495,7 @@ function goUrl(language){
         <tr>
           <th><?php echo $lang['db_name'];?></th>
           <td ><div align="left">
-            <input name="db[name]" id="db_name" type="text" size="15" value="<?php echo $db_name = (empty($_POST['db']['name']))?"ualink":($_POST['db']['name']);?>" class="input" onfocus="if(this.value == 'ualink'){this.value = ''}" onblur="if(this.value == ''){this.value = 'ualink'}" />
+            <input name="db[name]" id="db_name" type="text" size="15" value="<?php echo $db_name = (empty($_POST['db']['name']))?"phpb2b":($_POST['db']['name']);?>" class="input" onfocus="if(this.value == 'phpb2b'){this.value = ''}" onblur="if(this.value == ''){this.value = 'phpb2b'}" />
             MySQL <?php echo $lang['db_name'];?><!--检查，如果存在，就自动换其他名字-->
             <input name="db[create]" type="checkbox" id="db_create" />
             <label for="db_create"><?php echo $lang['if_create_new_db'];?></label></div></td>
@@ -530,7 +530,7 @@ function goUrl(language){
         <h2 class="step">
       <input name="submit" type="submit" value="<?php echo $lang['start_install'];?>" onclick="return check_install();" class="btn" />
         </h2>
-    </form><a href="install.php?action=check_file_right&language=<?php echo $lang_name;?>" target="_blank"><?php echo $lang['check_file_right'];?></a>&nbsp;<a href="http://www.ualink.org/docs/index.html#install_start" target="_blank"><?php echo $lang['view_help'];?></a></td>
+    </form><a href="install.php?action=check_file_right&language=<?php echo $lang_name;?>" target="_blank"><?php echo $lang['check_file_right'];?></a>&nbsp;<a href="http://support.phpb2b.com/" target="_blank"><?php echo $lang['view_help'];?></a></td>
             </tr>
             <tr>
               <td><div id="foot" class="ft" style="color:#FFFF99"><?php echo $lang['ualink_wel'];?></div></td>
