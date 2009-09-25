@@ -2,7 +2,7 @@
 $inc_path = "../";
 require($inc_path."global.php");
 uses("member","memberlog","company","setting");
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 require(SITE_ROOT. "./libraries/sendmail.inc.php");
 $company = new Companies();
 $setting = new Settings();

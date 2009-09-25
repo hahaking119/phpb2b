@@ -1,7 +1,7 @@
 <?php
 $inc_path = "../";
 require($inc_path."global.php");
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 require(SOURCE_PATH .'xajax/xajaxAIO.inc.php');
 require(SITE_ROOT."./libraries/sendmail.inc.php");
 uses("member","company","membertype","companytype","access","setting", "htmlcache", "industry");

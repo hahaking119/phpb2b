@@ -1,7 +1,7 @@
 <?php
 $inc_path = "../";
 require($inc_path."global.php");
-require(SITE_ROOT. './app/configs/db_session.php');
+require(SITE_ROOT. './configs/db_session.php');
 uses("member","company","membertype");
 $member = new Members();
 $membertype = new Membertypes();
