@@ -1,17 +1,33 @@
 <?php
 /**
- * PHP 5.0.2 with Appserv 2.0.58
- * Zend Studio 5.2
- * @filesource		app/models/class.rank.php
- * @copyright		www.ualink.cn
- * @link
- * @package
- * @subpackage
- * @version
- * @author	 		Stevenchow811@163.com
- * @lastmodified	Tue Apr 17 14:49:21 CST 200714:49:21
- * @description		用户积分、评分说明：最高为100分
- * 会员的分数:Member(rank)=(用户被评价的总的次数×评价的分数的总和)/(用户被评价的总的次数×5)，然后取百分数，乘以100
+ * Note : The Software shall be used for Good, not Evil.
+ * PHPB2B - As an open source b2b program.
+ *
+ * Permission is hereby granted to use this version of the library under the
+ * following license:
+ *
+ * --
+ * Copyright (c) 2006-2009 PHPB2B (http://www.phpb2b.com/)
+ *
+ * All rights granted under this License are granted for the term of copyright on
+ * the Program, and are irrevocable provided the stated conditions are met. This
+ * License explicitly affirms your unlimited permission to run the unmodified Program.
+ * The output from running a covered work is covered by this License only if the
+ * output, given its content, constitutes a covered work.
+ * This License acknowledges your rights of fair use or other equivalent, as provided
+ * by copyright law.
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * --
+ *
+ * @package phpb2b
+ * @subpackage app.libs
+ * @copyright 2009 PHPB2B <phpb2b@hotmail.com> (http://www.phpb2b.com/)
+ * @license http://www.opensource.org/licenses/gpl-license.php GPL License
+ * @created 2009-8-28 9:45
+ * @link http://sourceforge.net/projects/php-b2b/
+ * @version $Id$
  */
  class Ranks extends UaModel {
  	

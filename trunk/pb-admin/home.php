@@ -83,7 +83,6 @@ $dbssize = 0;
 foreach ($rows as $row) {
   $dbssize += $row['Data_length'] + $row['Index_length'];
 }
-//$userpage->setPbVersion("http://www.ualink.org/version.xml");
 //$ua_version = PHPB2B_VERSION;
 setvar("LatestVersion", PHPB2B_VERSION);
 setvar("DatabaseSize",number_format($dbssize)." Bytes OR ".db_size_info($dbssize));

@@ -7,7 +7,7 @@
  * following license:
  * --
  * --
- * Copyright (c) 2006-2009 Ualink (http://www.phpb2b.com/)
+ * Copyright (c) 2006-2009 PHPB2B (http://www.phpb2b.com/)
  *
  * All rights granted under this License are granted for the term of copyright on
  * the Program, and are irrevocable provided the stated conditions are met. This
