@@ -41,7 +41,7 @@
 		}
 		$true_pass = $tmpUser['LoginPass'];
 		$loginip = pb_get_client_ip();
-		$sql = "insert into {$tb_prefix}memberlogs (member_id,login_time,login_ip) valued (".$tmpUser['id'].",'$time_stamp','$loginip')";
+		$sql = "insert into {$tb_prefix}memberlogs (member_id,login_time,login_ip) values (".$tmpUser['id'].",'$time_stamp','$loginip')";
 		$g_db->Execute($sql);
 		$g_db->Execute("UPDATE {$tb_prefix}members SET last_login=".$time_stamp." WHERE username='$uname'");
 		if (empty($uname) || empty($upass)){
