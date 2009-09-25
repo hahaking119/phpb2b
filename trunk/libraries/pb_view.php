@@ -27,7 +27,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created 2009-8-28 9:45
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: ualink_view.php 133 2009-09-15 12:53:28Z stevenchow811@163.com $
+ * @version $Id$
  */
 class PbView extends PbObject
 {
