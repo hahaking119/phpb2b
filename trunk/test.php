@@ -1,3 +1,4 @@
+<!-- An "Athena" (PHPB2B3.0) Plan -->
 <img src="captcha.php?sid=<?php echo md5(uniqid(time())); ?>" id="image" align="absmiddle" />
 <a href="play.php" style="font-size: 13px">(Audio)</a><br /><br />
 
