@@ -21,8 +21,8 @@
  * copies or substantial portions of the Software.
  * --
  *
- * @package phpb2b
- * @copyright 2009 Ualink <phpb2b@hotmail.com> (http://www.phpb2b.com/)
+ * @package phpb2b.user
+ * @copyright 2009 PHPB2B <phpb2b@hotmail.com> (http://www.phpb2b.com/)
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Aug 24 12:18:01 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/ PHPB2B On SourceForge
@@ -40,7 +40,9 @@ if (empty($hash)) {
 	die("Please reset hash value.");
 }
 $validate_str = authcode($hash, 'DECODE');
-//判断时间是否过期
+/**
+ * 判断时间是否过期
+ */
 if (!empty($validate_str)) {
     $tmpValidateStr = explode("|", $validate_str);
     if ($tmpValidateStr[1]<$time_stamp) {
