@@ -49,5 +49,5 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 		}
 	}
 }
-template($theme_name."/user_getpass");
+template($theme_name."/getpasswd");
 ?>
