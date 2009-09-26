@@ -57,7 +57,7 @@ function postdata(){                             //提交数据函数
 			<li><em class="str">所在城市：</em><{$offer.city_name}></li>
 			<li><em class="str">关键词：</em><{$offer.keywords}></li>
 			<li><a href="#" class="cp_a1" id="favor">我要收藏</a></li>
-			<{if $offer.OfferUserName==$UalinkUser.username}><li><a href="../room/tradeedit.php?id=<{$offer.TradeId}>$&action=mod" class="cp_a1" id="favor">我要编辑</a></li><{/if}>
+			<{if $offer.OfferUserName==$UalinkUser.username}><li><a href="../office-room/tradeedit.php?id=<{$offer.TradeId}>$&action=mod" class="cp_a1" id="favor">我要编辑</a></li><{/if}>
 		</ul>
 		<div class="cp_c2 cp_c6">
 			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>

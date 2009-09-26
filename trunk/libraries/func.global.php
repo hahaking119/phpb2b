@@ -230,16 +230,16 @@ function pb_check_login($username,$userpass,$url = null)
                         $forward = URL;
                         break;
                     case 2:
-                        $forward = URL."room/";
+                        $forward = URL."office-room/";
                         break;
                     case 3:
-                        $forward = URL."room/trade.php";
+                        $forward = URL."office-room/trade.php";
                         break;
                     case 4:
-                        $forward = URL."room/message.php?type=in";
+                        $forward = URL."office-room/message.php?type=in";
                         break;
                     default:
-                        $forward = URL."room/";
+                        $forward = URL."office-room/";
                         break;
                 }
             }

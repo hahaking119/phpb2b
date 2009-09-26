@@ -1,5 +1,5 @@
 <?php
-$inc_path = "../";$ua_sm_compile_dir = "room/";
+$inc_path = "../";$ua_sm_compile_dir = "office-room/";
 require($inc_path."global.php");require("session.php");
 uses("product","producttype","member","access");
 require(SITE_ROOT.'./libraries/page.php');

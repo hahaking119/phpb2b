@@ -1,6 +1,6 @@
 <?php
 $inc_path = "../";
-$ua_sm_compile_dir = "room/";
+$ua_sm_compile_dir = "office-room/";
 require($inc_path."global.php");
 require("session.php");
 uses("trade","member","membertype","access");

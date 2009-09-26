@@ -12,7 +12,7 @@
 			<!--登录前 end-->
 			<{if $UalinkUser.username!=""}>
 			<form>
-			<em>你好,<{$UalinkUser.username}>！ <a href="<{$UrlContainer.common}>room/" class="blue">[<{if $UalinkUser.user_level==1}>进入个人中心<{else}>进入商务室<{/if}>]</a>&nbsp;<{if $UalinkUser.user_level==9}>&nbsp;<a class="blue" href="<{$UrlContainer.common}>pb-admin/login.php" target="_blank">[控制台]</a><{/if}><a href="<{$SiteUrl}>user/logging.php?action=logout">[退出]</a></em>
+			<em>你好,<{$UalinkUser.username}>！ <a href="<{$UrlContainer.common}>office-room/" class="blue">[<{if $UalinkUser.user_level==1}>进入个人中心<{else}>进入商务室<{/if}>]</a>&nbsp;<{if $UalinkUser.user_level==9}>&nbsp;<a class="blue" href="<{$UrlContainer.common}>pb-admin/login.php" target="_blank">[控制台]</a><{/if}><a href="<{$SiteUrl}>user/logging.php?action=logout">[退出]</a></em>
 			</form>
 			<{else}>
 					<form id="tblogin" action="<{$SiteUrl}>user/logging.php" method="post" target="_parent">
