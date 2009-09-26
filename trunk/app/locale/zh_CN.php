@@ -1,5 +1,7 @@
 <?php
 $codeset = "utf-8";
+$text_dir = 'ltr'; // ('ltr' for left to right, 'rtl' for right to left)
+
 /* Set locale to Dutch */
 setlocale(LC_ALL, 'zh_CN');
 
