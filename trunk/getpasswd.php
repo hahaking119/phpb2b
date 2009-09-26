@@ -12,7 +12,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 		setvar("postLoginName", $login_name);
 	}else{
 		$ifexists = $member->checkUserExist($login_name);
-		$email_exists = $g_db->GetOne("select username from ".$member->getTable()." where email='".$useremail."'");
+		$email_exists = $g_db->GetOne("SELECT username FROM ".$member->getTable()." WHERE email='".$useremail."'");
 		if(!$ifexists || empty($ifexists)){
 			setvar("ERRORS",lgg('member_not_exists'));
 			setvar("postLoginName", $login_name);
@@ -21,7 +21,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 		if(!$email_exists || empty($email_exists)){
 			setvar("ERRORS", lgg("wrong_email_data"));
 		}
-			$memberinfo = $g_db->GetRow("select id,email,firstname,lastname from {$tb_prefix}members where username='$login_name'");
+			$memberinfo = $g_db->GetRow("SELECT id,email,firstname,lastname FROM {$tb_prefix}members WHERE username='$login_name'");
 			if(pb_check_email($memberinfo['email'])){
         		if ($ifexists  && !empty($email_exists)) {
 				$new_passwd = pb_radom(6);
@@ -39,7 +39,7 @@ if (isset($_POST['get_password']) && !empty($_POST['login_name'])) {
 				{
 				   alert(sprintf(lgg("email_send_false"), $mail->ErrorInfo), true);
 				}else{
-					$sql = "update ".$member->getTable()." set userpass='".$new_passwd_md5."' where id=".$memberinfo['id']." and status='1'";
+					$sql = "UPDATE ".$member->getTable()." SET userpass='".$new_passwd_md5."' WHERE id=".$memberinfo['id']." AND status='1'";
 					$g_db->Execute($sql);
 					alert(urlencode(lgg("get_passwd_success")), true);
 				}

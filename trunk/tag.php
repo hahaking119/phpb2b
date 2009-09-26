@@ -51,39 +51,39 @@ if(!empty($searchkeywords)) {
 	}else{
 		$tType = lgg("buy_and_sell");
 	}
-	$tExists = $g_db->GetArray("select id AS KeywordId,primary_id as ItemIds,type as ItemType,numbers from {$tb_prefix}keywords where title='".$searchkeywords."'");
+	$tExists = $g_db->GetArray("SELECT id AS KeywordId,primary_id AS ItemIds,type AS ItemType,numbers FROM {$tb_prefix}keywords WHERE title='".$searchkeywords."'");
 	if(!empty($tExists)){
-	       $keyword_res = $g_db->GetRow("select id AS KeywordId,primary_id as ItemIds,type as ItemType from {$tb_prefix}keywords where title='".$searchkeywords."' and type='$tType'");
+	       $keyword_res = $g_db->GetRow("SELECT id AS KeywordId,primary_id AS ItemIds,type AS ItemType from {$tb_prefix}keywords WHERE title='".$searchkeywords."' and type='$tType'");
 		    switch ($keyword_res['ItemType']) {
 	    	case "trades":
-	    	    $fields = "id as ItemId,topic as ItemTitle,content as ItemInfo,submit_time as CreateDate,picture as ItemPicture";
+	    	    $fields = "id AS ItemId,topic AS ItemTitle,content AS ItemInfo,submit_time AS CreateDate,picture AS ItemPicture";
 	    	    $module_name = "offer/detail.php";
 	    		break;
 	    	case "companies":
-	    	    $fields = "id as ItemId,name as ItemTitle,description as ItemInfo,created as CreateDate,picture as ItemPicture";
+	    	    $fields = "id AS ItemId,name AS ItemTitle,description AS ItemInfo,created AS CreateDate,picture AS ItemPicture";
 	    	    $module_name = "company/";
 	    	    break;
 	    	case "products":
-	    	    $fields = "id as ItemId,name as ItemTitle,content as ItemInfo,created as CreateDate,picture as ItemPicture";
+	    	    $fields = "id AS ItemId,name AS ItemTitle,content AS ItemInfo,created AS CreateDate,picture AS ItemPicture";
 	    	    $module_name = "product/content.php";
 	    	    break;
 	    	case "newses":
-	    	    $fields = "id as ItemId,title as ItemTitle,content as ItemInfo,created as CreateDate,picture as ItemPicture";
+	    	    $fields = "id AS ItemId,title AS ItemTitle,content AS ItemInfo,created AS CreateDate,picture AS ItemPicture";
 	    	    $module_name = "news/detail.php";
 	    	    break;
 	    	case "markets":
-	    	    $fields = "id as ItemId,name as ItemTitle,content as ItemInfo,created as CreateDate,picture as ItemPicture";
+	    	    $fields = "id AS ItemId,name AS ItemTitle,content AS ItemInfo,created AS CreateDate,picture AS ItemPicture";
 	    	    $module_name = "market/detail.php";
 	    	    break;
 	    	default:
-	    	    $fields = "id as ItemId,topic as ItemTitle,content as ItemInfo,submit_time as CreateDate,picture as ItemPicture";
+	    	    $fields = "id AS ItemId,topic AS ItemTitle,content AS ItemInfo,submit_time AS CreateDate,picture AS ItemPicture";
 	    	    $module_name = "offer/detail.php";
 	    		break;
 	    }
 	    if (!empty($keyword_res['ItemIds'])) {
     	    $amount = substr_count($keyword_res['ItemIds'], ",");
     	    pageft($amount+1, 25);
-    	    $sql = "select $fields from ".$tb_prefix.$tType." where id in (".$keyword_res['ItemIds'].") limit $firstcount,$displaypg";
+    	    $sql = "SELECT $fields from ".$tb_prefix.$tType." WHERE id IN (".$keyword_res['ItemIds'].") LIMIT $firstcount,$displaypg";
     		$res = $g_db->GetArray($sql);
 	    }
 		uaAssign(array("ByPages"=>$pagenav, "KeyItems"=>$res, "DirName"=>$module_name));
@@ -96,7 +96,7 @@ if(!empty($searchkeywords)) {
 		$res['numbers'] = 1;
 		$res['status'] = 0;
 		$res['type'] = "index";
-		$sql = "select id from {$tb_prefix}keywords where title='".$searchkeywords."'";
+		$sql = "SELECT id from {$tb_prefix}keywords WHERE title='".$searchkeywords."'";
 		$if_exists = $g_db->GetOne($sql);
 		if(!$if_exists)
 		$keyword->save($res);

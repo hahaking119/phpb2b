@@ -35,9 +35,9 @@ $tpl_file = "search";
 uses("industry", "area");
 $industry = new Industries();
 $area = new Areas();
-$parent_industry = $g_db->GetArray("select id,name from ".$industry->getTable()." where parentid=0;");
+$parent_industry = $g_db->GetArray("SELECT id,name FROM ".$industry->getTable()." WHERE parentid=0;");
 setvar("ParentIndustry", $parent_industry);
-$parent_area = $g_db->GetArray("select id,code_id,name from ".$area->getTable()." where INSTR(code_id,'0000');");
+$parent_area = $g_db->GetArray("SELECT id,code_id,name FROM ".$area->getTable()." WHERE INSTR(code_id,'0000');");
 setvar("ParentArea", $parent_area);
 template($theme_name."/".$tpl_file);
 ?>
