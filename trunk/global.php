@@ -57,9 +57,9 @@ require(LIB_PATH. 'pb_controller.php');
 require(LIB_PATH. 'pb_view.php');
 require(SITE_ROOT. './libraries/func.global.php');
 require(CACHE_PATH.$cookiepre."setting.inc.php");
-require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.inc.php');
-require(SITE_ROOT.'languages/'.$app_lang.'/'.'template.site.inc.php');
-require(SITE_ROOT.'languages/'.$app_lang.'/'.'message.inc.php');
+require(SITE_ROOT.'app/languages/'.$app_lang.'/'.'template.inc.php');
+require(SITE_ROOT.'app/languages/'.$app_lang.'/'.'template.site.inc.php');
+require(SITE_ROOT.'app/languages/'.$app_lang.'/'.'message.inc.php');
 //上一页地址
 define('HTTP_REFERER', isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
 if(isset($_SETTINGS['headercharset'])) {
