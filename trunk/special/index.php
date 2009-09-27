@@ -1,3 +1,0 @@
-<?php 
-//topic zhuanti
-?>

@@ -1,5 +1,0 @@
-data/*
-htmls/*
-attachment/*
-config.inc.php
-index.html
