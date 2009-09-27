@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /news/
+RewriteRule ^(.*)/news/([0-9]+)/([0-9]+)/([0-9]+)/(.*)/$ /news/detail.php?title=$5 [L]
+</IfModule>

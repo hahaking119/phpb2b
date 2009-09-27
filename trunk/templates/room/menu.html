@@ -1,0 +1,207 @@
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><img src="<{$tpl_img_path}>office/left_bg_top.gif" width="180" height="20"></td>
+</tr>
+<tr>
+<td><table width="167" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	  <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+			<td width="30"><img SRC="<{$tpl_img_path}>office/left_pic1.gif" width=30 height=35 alt=""></td>
+			<td background="<{$tpl_img_path}>office/left_bg1.gif" class="title_bar"><a name="menu_top"></a>商业信息管理</td>
+			<td width="55"><img SRC="<{$tpl_img_path}>office/left_bg11.gif" width=55 height=35 alt=""></td>
+		  </tr>
+	  </table></td>
+	</tr>
+	<tr>
+	  <td align="center" background="<{$tpl_img_path}>office/left_mid.gif"><table width="90%"  border="0" cellspacing="0" cellpadding="5">
+		  
+		  <tr>
+			<td width="22%" align="right"><img src="<{$tpl_img_path}>office/sell_add.gif"></td>
+			<td><a href="tradeedit.php?action=mod&amp;type=2">发布供求信息</a></td>
+		  </tr>
+		  <tr>
+			<td width="22%" align="right"><img src="<{$tpl_img_path}>office/buy.gif"></td>
+			<td><a href="trade.php">我的供求信息</a></td>
+		  </tr>
+		  <tr>
+			<td width="22%" align="right"><img src="<{$tpl_img_path}>office/sell.gif"></td>
+			<td><a href="favor.php">我的信息收藏</a></td>
+		  </tr>
+<!-- 		  <tr>
+			<td width="22%" align="right"><img src="<{$tpl_img_path}>office/sell.gif"></td>
+			<td><a href="order.php">我收到的订单</a></td>
+		  </tr>
+ -->		  
+		  <tr>
+			<td width="22%" align="right"><img src="<{$tpl_img_path}>office/stat.gif" width="14" height="14"></td>
+			<td><a href="stat.php">供求信息统计</a></td>
+		  </tr>
+		  
+	  </table></td>
+	</tr>
+  </table>
+  <{if $UalinkUser.user_level>1}>
+	<table width="167" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+		<td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td width="30"><img SRC="<{$tpl_img_path}>office/left_pic2.gif" width=30 height=35 alt=""></td>
+			  <td background="<{$tpl_img_path}>office/left_bg2.gif" class="title_bar"><a name="p"></a>产品信息管理</td>
+			  <td width="55"><img SRC="<{$tpl_img_path}>office/left_bg21.gif" width=55 height=35 alt=""></td>
+			</tr>
+		</table></td>
+	  </tr>
+	  <tr>
+		<td align="center" background="<{$tpl_img_path}>office/left_mid.gif"><table width="90%"  border="0" cellspacing="0" cellpadding="5">
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/product.gif"></td>
+			  <td><a href="productedit.php">发布产品信息</a> </td>
+			</tr>
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/product2.gif"></td>
+			  <td><a href="product.php">我的产品信息</a></td>
+			</tr>
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/sort.gif"></td>
+			  <td><a href="producttype.php">产品分类管理</a></td>
+			</tr>
+			
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/stat.gif" width="14" height="14"></td>
+			  <td><a href="stat.php">产品统计</a></td>
+			</tr>
+		</table></td>
+	  </tr>
+	</table>
+	<table width="167" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+		<td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td width="30"><img SRC="<{$tpl_img_path}>office/left_pic3.gif" width=30 height=35 alt=""></td>
+			  <td background="<{$tpl_img_path}>office/left_bg2.gif" class="title_bar">公司资料管理</td>
+			  <td width="55"><img SRC="<{$tpl_img_path}>office/left_bg21.gif" width=55 height=35 alt=""></td>
+			</tr>
+		</table></td>
+	  </tr>
+	  <tr>
+		<td align="center" background="<{$tpl_img_path}>office/left_mid.gif"><table width="90%"  border="0" cellspacing="0" cellpadding="5">
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/company.gif"></td>
+			  <td><a href="company.php">基本资料</a> </td>
+			</tr>
+ 			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/company.gif"></td>
+			  <td><a href="honour.php" title="企业的荣誉证书、营业执照等附件">企业荣誉</a> </td>
+			</tr>
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/contact.gif"></td>
+			  <td><a href="card.php">名片资料</a> </td>
+			</tr>
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/news.gif"></td>
+			  <td><a href="news.php?action=list">公司动态</a></td>
+			</tr>
+			<tr>
+			  <td align="right"><img src="<{$tpl_img_path}>office/hr.gif" /></td>
+			  <td><a href="job.php#menu_top">人才招聘</a></td>
+			<tr> 
+			<tr>
+			  <td align="right"><img src="<{$tpl_img_path}>office/news.gif" /></td>
+			  <td><a href="ad.php#menu_top">自助广告</a></td>
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/link1.gif"></td>
+			  <td><a href="link.php#menu_top">站内友情链接</a></td>
+			</tr>
+			
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/link2.gif"></td>
+			  <td><a href="outlink.php#menu_top">站外友情链接</a></td>
+			</tr>
+		  </table></td>
+	  </tr>
+	</table>
+	<{/if}>
+	<table width="167" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+		<td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td width="30"><img SRC="<{$tpl_img_path}>office/left_pic4.gif" width=30 height=35 alt=""></td>
+			  <td background="<{$tpl_img_path}>office/left_bg2.gif" class="title_bar">业务往来信息</td>
+			  <td width="55"><img SRC="<{$tpl_img_path}>office/left_bg21.gif" width=55 height=35 alt=""></td>
+			</tr>
+		</table></td>
+	  </tr>
+	  <tr>
+		<td align="center" background="<{$tpl_img_path}>office/left_mid.gif"><table width="90%"  border="0" cellspacing="0" cellpadding="5">
+  <{if $UalinkUser.user_level>1}>
+ 			<tr>
+              <td align="right"><img src="<{$tpl_img_path}>office/message_out.gif" /></td>
+			  <td><a href="inquery.php#menu_top">客户询价</a></td>
+			  </tr>
+<{/if}>
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/message_add.gif" /></td>
+			  <td><a href="sendmessage.php#menu_top">发送留言</a></td>
+			</tr>
+			<tr>
+              <td align="right"><img src="<{$tpl_img_path}>office/message_out.gif" /></td>
+			  <td><a href="message.php?type=out#menu_top">发出的留言</a></td>
+			  </tr>
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/message_in.gif" /></td>
+			  <td><a href="message.php?type=in#menu_top">收到的留言</a></td>
+			</tr>
+			
+		</table></td>
+	  </tr>
+	</table>
+	<table width="167" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+		<td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td width="30"><img SRC="<{$tpl_img_path}>office/left_pic7.gif" width=30 height=35 alt=""></td>
+			  <td background="<{$tpl_img_path}>office/left_bg2.gif" class="title_bar"> 系统设置</td>
+			  <td width="55"><img SRC="<{$tpl_img_path}>office/left_bg21.gif" width=55 height=35 alt=""></td>
+			</tr>
+		</table></td>
+	  </tr>
+	  <tr>
+		<td align="center" background="<{$tpl_img_path}>office/left_mid.gif"><table width="90%"  border="0" cellspacing="0" cellpadding="5">
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/home.gif"></td>
+			  <td><a href="index.php#menu_top">返回首页</a></td>
+			</tr>
+			<tr>
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/personals.gif"></td>
+			  <td><a href="personal.php#menu_top">个人资料</a></td>
+			</tr>
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/password.gif"></td>
+			  <td><a href="changepass.php#menu_top">修改密码</a></td>
+			</tr>
+  <{if $UalinkUser.user_level>1}>
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/style.gif"></td>
+			  <td><a href="style.php#menu_top">主页风格</a></td>
+			</tr>
+			<{/if}>
+  <{if $IfInviteCode}>
+			<tr> 
+			  <td width="22%" align="right"><img src="<{$tpl_img_path}>office/style.gif"></td>
+			  <td><a href="invite.php">我的邀请码</a></td>
+			</tr>
+			<{/if}>
+		</table></td>
+	  </tr>
+	  <tr>
+		<td><img src="<{$tpl_img_path}>office/left_exit.gif" alt="退出" width=167 height=35 border="0" usemap="#Map"></td>
+	  </tr>
+  </table></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+<map name="Map" id="Map"><area shape="rect" coords="48,1,157,36" href="<{$SiteUrl}>user/logging.php?action=logout" />
+</map>

@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="102%" border="0" cellpadding="2" cellspacing="6">
+  <tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;登陆日志管理</div></td></tr>
+</table>
+<br />
+<!-- 搜索 -->
+<br />
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center">
+  <td>管理员名</td>
+<td>操作说明</td>
+<td>操作时间</td>
+<td><a href="<{$smarty.server.PHP_SELF}>?action=clear" onClick="return confirmAction('是否删除所有日志记录?');">清空日志？</a></td>
+</tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$LogList item=lg name=adminlogs}>
+<tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
+<td><{$lg.AdminerName}></td>
+<td align="left"><{$lg.AdminAction}></td>
+<td align="left"><{$lg.AdminlogCreated|date_format:"%Y-%m-%d %H:%M:%S"}><{if $lg.AdminlogCreated>$Today}>&nbsp;<img src="./images/new2.gif" /><{/if}></td>
+<td>&nbsp;</td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="5" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="5"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="3">&nbsp;</td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+<!-- 结束new -->
+</body>
+</html>

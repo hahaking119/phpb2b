@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>控制台-<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<style   type="text/css"   id="internalStyle">   
+#container{     
+text-align:   left;
+white-space:   nowrap;   
+}  
+</style>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+<body>
+
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;关键词竞价管理</div></td></tr>
+</table>
+<br />
+<!-- 搜索 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="4"><div id="container">快速搜索</div></td></tr>
+<form name="searchfrm" method="get" action="<{$smarty.server.PHP_SELF}>">
+<tbody id="menu_3">
+<tr>
+  <td width="9%"><div align="right">关键字</div></td>
+  <td width="15%"><input name="keywords" type="text" id="keywords" value="<{$smarty.post.keywords}>"></td>
+  <td width="10%">&nbsp;</td>
+  <td><input name="search" type="submit" id="search" value="查    询" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</tbody>
+</form>
+</table>
+
+<br>
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td></td>
+<td>关键词</td>
+<td>供求</td>
+<td>公司库</td>
+<td>产品</td>
+<td>排名</td>
+<td>有效日期</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1">
+<{foreach from=$Lists name=keyword_lists item=k}>
+<tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
+<td><input type="checkbox" name="id[]" id="id_<{$k.KeywordId}>" value="<{$k.KeywordId}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><label for="id_<{$k.KeywordId}>"><{$k.KeywordTitle|htmlspecialchars}></label></td>
+<td><a href=""><{$k.TradeTopic}></a></td>
+<td><a href=""><{$k.CompanyName}></a></td>
+<td><a href=""><{$k.ProductName}></a></td>
+<td><{$k.Priority}></td>
+<td><{$k.StartDate|date_format:"%Y-%m-%d"}>至<{$k.EndDate|date_format:"%Y-%m-%d"}></td>
+<td><div id="actionDiv1" class="actions2"><ul><li><a href="<{$SiteUrl}>tag.php?keyword=<{$k.KeywordTitle|urlencode}>" target="_blank"><img src="<{$tpl_img_path}>admin/preview.gif" border="0" alt="预览"></a></li><li><a href="./keyword.php?action=del&id=<{$k.KeywordId}>"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="删除"></a></li></ul></div></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="9" align="center"><strong>目前没有任何数据</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 操作列表 -->
+<tr align="center"><td class="altbg2" colspan="9">
+<br />
+<div id="actionDiv" class="actions">
+<ul>
+<li><img src="<{$tpl_img_path}>admin/arrow_left.png" border="0" alt="选中项"></li>
+<li><input type="checkbox" name="idAll" id="idAll" onClick="uaCheckAll(this, 'id[]')"><label for="idAll">全选/全不选</label></li>
+<li><i>选中项 : </i></li>
+<li><input type="image" name="del" src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="删除" onClick="return confirmAction('确定删除吗?');" /></li>
+</ul>
+</div>
+</td></tr>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="9"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="7"></td>
+<td><div align="center"><a title="返回顶部" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+</body>
+</html>

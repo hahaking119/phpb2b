@@ -1,0 +1,215 @@
+body {
+	font-family:"Microsoft YaHei", "Arial", Verdana, Sans-Serif;;
+	font-size: 12px;
+}
+.font12,a:link,.menu:link,.linkwhite12:link,.linkred12:link,td,.font12white,.time,.btn,.font12yellow {
+	font-size:12px
+}
+
+.font12 {
+	line-height:24px
+}
+
+a:link,a:visited,.menu:link,.menu:hover,.menu:visited {
+	color:#000
+}
+
+a:link,a:visited,a:hover,.menu_w14:link,.menu_w14:visited,.linkred12:link,.linkred12:visited {
+	text-decoration:underline
+}
+
+a:link,td,.time {
+	line-height:normal
+}
+
+a:hover,.linkred12:link,.linkred12:visited,.linkred12:hover,h5 {
+	color:#f00
+}
+
+.menu:link,.menu:hover,.menu:visited,.linkwhite12:link,.linkwhite12:visited,.linkwhite12:hover,.linkred12:hover {
+	text-decoration:none
+}
+
+.menu_w14:link,.menu_w14:visited,.menu:hover,.menu:visited,.font14white,.font12yellow,.font14yellow,.font14blak {
+	font-size:14px
+}
+
+.menu_w14:link,.menu_w14:visited {
+	color:#c06
+}
+
+.menu_w14:link,.menu_w14:visited,.font14white,.font12yellow,.font18,.font15,.font12yellow,.font14yellow,.font14blak {
+	font-weight:bold
+}
+
+.linkwhite12:link,.linkwhite12:visited,.font12white,.font14white,h4 {
+	color:#fff
+}
+
+.linkwhite12:hover {
+	color:#ff0
+}
+
+.corgreen03 {
+	background:#50a028
+}
+
+.linered {
+	border:1px solid #d34c2a
+}
+
+.lineblack {
+	background:#f7f4f4
+}
+
+.lineblack,input.txtInput {
+	border:1px solid #999
+}
+
+.time {
+	color:#666
+}
+
+.font12yellow,.font18,.font15,.font12yellow,.font14yellow,.orange {
+	color:#f60
+}
+
+.fontred,.fontred {
+	color:#f30
+}
+
+.fontgreen,.fontgreen {
+	color:#090
+}
+
+.errorh {
+	color:red
+}
+
+.bghui,.bghui {
+	background:#e8e8e8
+}
+
+.corblak {
+	background:#999
+}
+
+.coryellow {
+	background:#f60
+}
+
+.corhei {
+	background:#000
+}
+
+.corhui {
+	background:#f7f7f7
+}
+
+.corblue {
+	background:#e9f8fe
+}
+
+.corbule2 {
+	background:#b0d4f6
+}
+
+.corwhite,div.error_message_small {
+	background:#fff
+}
+
+.corbule3 {
+	background:#12699c
+}
+
+.corgreen {
+	background:#1f7700
+}
+
+.corgreenlower {
+	background:#1f7788
+}
+
+.font18 {
+	font-size:18px
+}
+.font15 {
+	font-size:15px
+}
+
+.linehui {
+	border:1px solid #ccc
+}
+
+.linegreen {
+	border:1px solid #1f7700
+}
+
+.corred {
+	background:#fdf5e8
+}
+
+.hanggao20 {
+	line-height:20px
+}
+
+.btn {
+	background:url(./images/btn-bj.jpg) no-repeat fixed left top;
+	border-top-style:none;
+	border-right-style:none;
+	border-bottom-style:none;
+	border-left-style:none;
+	text-align:center
+}
+
+.box {
+	table-layout:fixed;
+}
+
+table {
+	table-layout:auto
+}
+
+.corgreen02 {
+	background:#e7f2e1
+}
+
+.lineyellow {
+	border:1px solid #ff0
+}
+
+input.txtInput {
+	background:no-repeat 2px center;
+	background:#fff;
+	padding:2px 2px 2px 20px
+}
+.error_message {
+	border:1px solid red;MARGIN-TOP: 5px; MARGIN-BOTTOM: 3px;vertical-align:middle;height:25;
+}
+.errorInner {
+	FONT-SIZE: 11px;FONT-WEIGHT: bold
+}
+h1              { font: 2em Arial;font-weight:bold;color:#FFFFFF; margin: .67em 0 }
+h2              { font: 10pt Arial;color:#CC0000}
+h4 {
+	font:20px arial,sans-serif
+}
+
+h4,h5,h6 {
+	display:inline
+}
+
+h5 {
+	font:15px arial,sans-serif
+}
+
+h6 {
+	font:12px arial,sans-serif;
+	color:#300
+}
+.corfen2 {
+	background-color: #FCE9EE;
+}
+.corfen {
+	background-color: #B81F45;
+}

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+<node id="1" buy_amount="0" sell_amount="1" product_amount="1" company_amount="1">
+<name>纺织、皮革</name>
+</node>
+<node id="2" buy_amount="0" sell_amount="0" product_amount="0" company_amount="2">
+<name>服装、服饰</name>
+</node>
+<node id="3" buy_amount="0" sell_amount="0" product_amount="0" company_amount="3">
+<name>机械及工业制品</name>
+</node>
+<node id="4" buy_amount="0" sell_amount="0" product_amount="0" company_amount="2">
+<name>礼品、工艺品</name>
+</node>
+<node id="5" buy_amount="0" sell_amount="0" product_amount="1" company_amount="0">
+<name>化工</name>
+</node>
+<node id="6" buy_amount="0" sell_amount="0" product_amount="1" company_amount="1">
+<name>家用电器</name>
+</node>
+<node id="7" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>包装、纸</name>
+</node>
+<node id="8" buy_amount="0" sell_amount="0" product_amount="0" company_amount="1">
+<name>电子电工</name>
+</node>
+<node id="9" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>建筑、房地产</name>
+</node>
+<node id="10" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>农业</name>
+</node>
+<node id="11" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>冶金、矿产</name>
+</node>
+<node id="12" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>医药、保养</name>
+</node>
+<node id="13" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>安全、防护</name>
+</node>
+<node id="14" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>汽摩及配件</name>
+</node>
+<node id="15" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>印刷、出版</name>
+</node>
+<node id="16" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>食品、饮料</name>
+</node>
+<node id="17" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>电脑、软件</name>
+</node>
+<node id="18" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>家居用品</name>
+</node>
+<node id="19" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>办公、文教及光仪</name>
+</node>
+<node id="20" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>能源</name>
+</node>
+<node id="21" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>环保</name>
+</node>
+<node id="22" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>通讯产品</name>
+</node>
+<node id="23" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>运动、休闲</name>
+</node>
+<node id="24" buy_amount="1" sell_amount="0" product_amount="1" company_amount="1">
+<name>商务服务</name>
+</node>
+<node id="25" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>交通运输</name>
+</node>
+<node id="26" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>玩具</name>
+</node>
+<node id="27" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0">
+<name>库存商品</name>
+</node>
+<node id="101" buy_amount="0" sell_amount="1" product_amount="1" company_amount="0" parentid="1">
+<name>厨房用纺织品</name>
+</node>
+<node id="102" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="1">
+<name>床上用品</name>
+</node>
+<node id="103" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="1">
+<name>纺织、皮革加工</name>
+</node>
+<node id="104" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="1">
+<name>纺织废料</name>
+</node>
+<node id="106" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="1">
+<name>纺织工艺品</name>
+</node>
+<node id="108" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="1">
+<name>纺织设备和器材</name>
+</node>
+<node id="134" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="2">
+<name>服装辅料</name>
+</node>
+<node id="135" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="2">
+<name>时尚饰品</name>
+</node>
+<node id="136" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="2">
+<name>内衣</name>
+</node>
+<node id="185" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="3">
+<name>焊接、切割设备与材料</name>
+</node>
+<node id="186" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="3">
+<name>通用零部件</name>
+</node>
+<node id="210" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="4">
+<name>雕塑</name>
+</node>
+<node id="211" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="4">
+<name>仿古工艺品</name>
+</node>
+<node id="212" buy_amount="0" sell_amount="0" product_amount="0" company_amount="1" parentid="4">
+<name>仿生工艺品</name>
+</node>
+<node id="254" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="5">
+<name>其他树脂</name>
+</node>
+<node id="255" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="5">
+<name>医药原料、中间体</name>
+</node>
+<node id="256" buy_amount="0" sell_amount="0" product_amount="1" company_amount="0" parentid="5">
+<name>石油及制品</name>
+</node>
+<node id="257" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="5">
+<name>化工助剂</name>
+</node>
+<node id="292" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="6">
+<name>电扇、排气扇</name>
+</node>
+<node id="293" buy_amount="0" sell_amount="0" product_amount="1" company_amount="0" parentid="6">
+<name>电热壶、电热杯</name>
+</node>
+<node id="294" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="6">
+<name>热水器</name>
+</node>
+<node id="332" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="7">
+<name>复合材料包装用品</name>
+</node>
+<node id="333" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="7">
+<name>壁纸</name>
+</node>
+<node id="358" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="8">
+<name>电子电工产品加工</name>
+</node>
+<node id="359" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="8">
+<name>光电子、激光仪器</name>
+</node>
+<node id="394" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="9">
+<name>厨房设施</name>
+</node>
+<node id="395" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="9">
+<name>砖、瓦及砌块</name>
+</node>
+<node id="427" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="10">
+<name>食用菌</name>
+</node>
+<node id="428" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="10">
+<name>牲畜</name>
+</node>
+<node id="444" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="10">
+<name>粮食</name>
+</node>
+<node id="478" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="11">
+<name>有色金属制品</name>
+</node>
+<node id="479" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="11">
+<name>矿业设备</name>
+</node>
+<node id="505" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="12">
+<name>医用材料</name>
+</node>
+<node id="506" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="12">
+<name>保健用品</name>
+</node>
+<node id="534" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="13">
+<name>报警装置</name>
+</node>
+<node id="535" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="13">
+<name>防盗设施</name>
+</node>
+<node id="553" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="14">
+<name>库存汽摩及配件</name>
+</node>
+<node id="554" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="14">
+<name>停车场、加油站设备</name>
+</node>
+<node id="561" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="15">
+<name>油墨</name>
+</node>
+<node id="567" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="15">
+<name>激光防伪</name>
+</node>
+<node id="568" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="15">
+<name>媒体和传播</name>
+</node>
+<node id="585" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="16">
+<name>食品添加剂</name>
+</node>
+<node id="586" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="16">
+<name>调味品</name>
+</node>
+<node id="606" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="17">
+<name>UPS与电源</name>
+</node>
+<node id="607" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="17">
+<name>插卡类</name>
+</node>
+<node id="628" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="18">
+<name>卫浴设施</name>
+</node>
+<node id="629" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="18">
+<name>家用塑料制品</name>
+</node>
+<node id="673" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="19">
+<name>传真机</name>
+</node>
+<node id="674" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="19">
+<name>碎纸机</name>
+</node>
+<node id="701" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="20">
+<name>能源产品代理</name>
+</node>
+<node id="702" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="20">
+<name>电力</name>
+</node>
+<node id="719" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="21">
+<name>环保产品代理</name>
+</node>
+<node id="720" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="21">
+<name>环保产品加工</name>
+</node>
+<node id="721" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="21">
+<name>其他未分类</name>
+</node>
+<node id="733" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="22">
+<name>天线</name>
+</node>
+<node id="734" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="22">
+<name>交换机</name>
+</node>
+<node id="758" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="23">
+<name>库存运动休闲产品</name>
+</node>
+<node id="759" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="23">
+<name>棋类</name>
+</node>
+<node id="780" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="24">
+<name>中介服务</name>
+</node>
+<node id="781" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="24">
+<name>超市、百货、便利店</name>
+</node>
+<node id="802" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="25">
+<name>物流</name>
+</node>
+<node id="805" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="25">
+<name>船舶及配件</name>
+</node>
+<node id="811" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="25">
+<name>自行车、三轮车及配件</name>
+</node>
+<node id="812" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="25">
+<name>废气处理设施</name>
+</node>
+<node id="813" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="25">
+<name>交通产品代理</name>
+</node>
+<node id="817" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="25">
+<name>其他未分类</name>
+</node>
+<node id="831" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="26">
+<name>玩具配件</name>
+</node>
+<node id="832" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="26">
+<name>库存玩具</name>
+</node>
+<node id="847" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="27">
+<name>库存安全防护产品</name>
+</node>
+<node id="848" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="27">
+<name>库存皮革及制品</name>
+</node>
+<node id="862" buy_amount="0" sell_amount="0" product_amount="0" company_amount="0" parentid="27">
+<name>库存交通产品及用具</name>
+</node>
+</root>
