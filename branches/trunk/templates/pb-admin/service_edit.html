@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body leftmargin="10" topmargin="10">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo; 网站留言管理&nbsp;&raquo; 编辑</div></td>
+</tr></table>
+      <form name="editfrm" method="post" action="./service.php">
+        <input type="hidden" name="id" value="<{$smarty.get.id}>">
+        <table width="100%"  border="0" cellpadding="5" cellspacing="1" class="tableborder">
+            <tr class="header">
+              <td colspan="4">用户留言区域</td>
+            </tr>
+          <tr>
+            <td align="center" class="altbg1">标题</td>                            
+            <td class="altbg2"><{$s.title}></td>
+            <td class="altbg1">类别</td>
+            <td class="altbg2"><{$ServiceTypes[$s.type_id]}></td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1">提交人</td>
+            <td class="altbg2"><{$s.nick_name}></td>
+            <td class="altbg1">联系Email：</td>
+            <td class="altbg2"><{$s.email}></td>
+          </tr>
+          
+          
+          <tr>
+            <td align="center" class="altbg1">内容</td> 
+            <td colspan="3" class="altbg2"><{$s.content}></td>
+          </tr>
+           <tr class="header">
+              <td colspan="4">管理员操作区</td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1">回复管理员</td>                           
+            <td class="altbg2"><{if $s.adminer_user_name eq ""}>
+              无
+                <{else}>
+              <{$s.adminer_user_name}>
+              <{/if}></td>
+            <td class="altbg1">回复时间</td>
+            <td class="altbg2"><{$s.revert_date|date_format:"%Y-%m-%d %H:%M:%S"}></td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1">状态</td>                            
+            <td colspan="3" class="altbg2"><{html_radios name="service[status]" options=$ServiceStatus checked=$s.status separator=" "}></td>
+          </tr>
+          <tr>
+            <td align="center" class="altbg1">管理员回复</td>                            
+            <td colspan="3" class="altbg2"><textarea name="service[revert_content]" rows="5" cols="50"><{$s.revert_content}></textarea></td>
+          </tr>
+          
+          <tr>
+            <td colspan="4" align="center"><table border="0" cellpadding="5" cellspacing="0" class="button">
+                <tr>
+                  <td><input  name=save type=submit id="save" value=" 保存 "  class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                  <td><input  name=reset type=reset id="reset" value=" 取消" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+                </tr>
+          </table>          </tr>
+        </table>
+      </form></td></tr></table>
+<br /><br />
+</body>
+</html>
+

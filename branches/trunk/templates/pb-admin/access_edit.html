@@ -1,0 +1,136 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body leftmargin="10" topmargin="10">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">控制台</a>&nbsp;&raquo;&nbsp;会员类型权限设置</div></td>
+</tr></table>
+<form name="editfrm" method="post" action="<{$smarty.server.PHP_SELF}>">
+<input type="hidden" name="id" value="<{$smarty.get.id}>" />
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header">
+  <td colspan="2">权限表</td>
+</tr>
+
+<tr>
+  <td class="altbg1" width="50%"><strong>会员类型:</strong></td>
+  <td class="altbg2"><select name="access[membertype_id]" id="membertype_id">
+    <{html_options options=$UserTypes selected=$smarty.get.membertype_id}>
+  </select></td>
+</tr>
+
+<tr>
+  <td class="altbg1"><strong>权限标识名称：</strong></td>
+  <td class="altbg2"><input name="access[name]" type="text" id="access[name]" value="<{$a.name}>"></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>每天可发布供应数量:</strong></td>
+  <td class="altbg2"><input type="text" name="access[max_sell]" value="<{$a.max_sell}>"></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>每天可发布求购数量</strong>:</td>
+  <td class="altbg2"><input type="text" name="access[max_buy]" value="<{$a.max_buy}>"></td>
+</tr>
+
+<tr>
+  <td class="altbg1"><strong>每天可发布最多产品数 :</strong></td>
+  <td class="altbg2"><input type="text" name="access[max_product]" value="<{$a.max_product}>"></td>
+</tr>
+<tr>
+<td class="altbg1"><strong>每天可发布最多职位 :</strong></td>
+<td class="altbg2"><input type="text" name="access[max_job]" value="<{$a.max_job}>"></td>
+</tr>
+
+<tr>
+<td class="altbg1"><strong>每天可发布最多公司新闻 :</strong></td>
+<td class="altbg2"><input type="text" name="access[max_news]" value="<{$a.max_news}>"></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>最多产品类型：</strong></td>
+  <td class="altbg2"><input type="text" name="access[max_producttype]" value="<{$a.max_producttype}>"></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>最多供求重发(每天)：</strong></td>
+  <td class="altbg2"><input type="text" name="access[max_of_rs_eday]" value="<{$a.max_of_rs_eday}>"></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>公司信息注册审核：</strong> </td>
+  <td class="altbg2"><{html_radios name="access[check_company_reg]" options=$AccessStatus checked=$a.check_company_reg|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>公司信息修改审核：</strong> </td>
+  <td class="altbg2"><{html_radios name="access[check_company_update]" options=$AccessStatus checked=$a.check_company_update|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>供求信息修改审核 :</strong></td>
+  <td class="altbg2"><{html_radios name="access[check_trade_update]" options=$AccessStatus checked=$a.check_trade_update|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>产品信息修改审核：</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[check_product_update]" options=$AccessStatus checked=$a.check_product_update|default:"1" separator=" "}></td>
+  </tr>
+<tr>
+  <td class="altbg1"><strong>招聘信息修改审核：</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[check_job_update]" options=$AccessStatus checked=$a.check_product_update|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>企业新闻修改审核：</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[check_news_update]" options=$AccessStatus checked=$a.check_product_update|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>关键字添加、修改审核：</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[check_keyword_update]" options=$AccessStatus checked=$a.check_keyword_update|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>允许发起团购：</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[can_organize_groupbuy]" options=$AccessStatus checked=$a.can_organize_groupbuy|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>收藏夹最多收藏：</strong></td>
+  <td align="left" class="altbg2"><input type="text" name="access[max_room_favor]" value="<{$a.max_room_favor}>"></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>新手见习期：</strong></td>
+  <td align="left" class="altbg2"><input type="text" name="access[new_user_time]" value="<{$a.new_user_time|default:"0"}>">小时</td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>默认商业服务期限</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[default_livetime]" options=$LiveTimes checked=$a.default_livetime separator=" "}>
+  <input type="hidden" name="old_defaultlivetime" value="<{$a.default_livetime}>" /></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>商业服务期限到期处理方式</strong></td>
+  <td align="left" class="altbg2"><{html_radios name="access[after_livetime]" options=$AfterLiveTime checked=$a.after_livetime separator="<br />"}>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" class="altbg1"><font color="#FF0000">注</font>：0 表示没有限制</td>
+  </tr>
+
+
+
+
+<tr><td colspan="2" class="altbg1"><div align="center">
+  <table border="0" cellpadding="5" cellspacing="0" class="button">
+    <tr>
+      <td><input type="submit" name="save" value="保存" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"/></td>
+    </tr>
+  </table>
+  </div></td>
+</tr>
+</table>
+<br />
+<center>
+</center>
+</form>
+</td></tr></table>
+<br /><br />
+</body>
+</html>
+

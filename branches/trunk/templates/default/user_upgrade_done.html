@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>成功提交订单&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content=""> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<{assign var="if_searchbar" value="n"}>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><{include file="`$ThemeName`/element.header.html"}></td>
+  </tr>
+</table>
+<form name="billfrm" method=post action="https://pay3.chinabank.com.cn/PayGate">
+<input type=hidden name=v_mid value="<{$ChinaBankAccount}>">
+<input type=hidden name=v_oid value="<{$PayOrderId}>">
+<input type=hidden name=v_amount value="<{$OrderPrice}>">
+<input type=hidden name=v_url value="<{$v_url}>">
+<input type=hidden name="v_md5info" value="<{$md5info}>">
+<input type="hidden" name="remark1"  value="会员类型:<{$MembertypeName}>">
+<input type="hidden" name="remark2"  value="用户名:<{$UalinkUser.username}>">
+</form>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td height="274" valign="top">
+<table width="605" border="0" align="center" cellpadding="0" cellspacing="2">
+        <tr> 
+          <td width="18" height="252" class="C"><br> </td>
+          <td width="600" class="hanggao20">
+          <ul>
+            <li>您的用户名：<{$UalinkUser.username}></li>
+          <li>您申请的会员类型是：<{$MembertypeName}></li>
+          <li>您的订单号：<{$UaOrderId}></li>
+            <li>您需要支付：<{$OrderPrice}>元</li>
+          </ul>
+          <div id="pay">请选择支付方式</div>
+          <ul>
+            <li><a href="#" onClick="document.billfrm.submit();">立即用网银支付</a></li>
+            <li>其他方式支付</li>
+          </ul>
+            </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><{include file="`$ThemeName`/element.foot.html"}></td>
+  </tr>
+</table>
+</body>
+</html>

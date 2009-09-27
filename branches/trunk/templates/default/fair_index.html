@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title>展会&laquo;<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<{$xajax_javascript}>
+<script language="javascript">
+xajax_rebuildHTML("fair/index.php");
+</script>
+</head>
+
+<body>
+<{assign var="fair_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd">
+	<div class="w_left1">
+		<div class="zh_tab1">
+			<div class="bt zh_bt1"><h2><a href="<{$SiteUrl}>fair/list.php?type=commend">推荐展会</a></h2><p class="padright10"><a href="<{$SiteUrl}>fair/list.php?type=commend">&raquo;&raquo;更多</a></p></div>
+			<ul class="ul21 ula"><{fair type="commend"}></ul>
+		</div>
+		<div class="zh_hot">
+			<embed pluginspage=http://www.macromedia.com/go/getflashplayer src=http://images.mainone.com/Images/pixviewer.swf
+width=428 height="200" type=application/x-shockwave-flash allowScriptAccess="sameDomain" quality="high" 
+bgcolor="#5EA4EC" menu="false" FlashVars="pics=<{$PictureFiles}>&links=<{$PictureLinks}>&texts=<{$PictureTitles}>&borderwidth=428&borderheight=200&textheight=0" wmode="opaque">
+		</div>
+		<div class="clear9"></div>
+		<div class="zh_tab2">
+			<div class="bt zh_bt2"><h2><a href="<{$SiteUrl}>fair/list.php">最新展会</a></h2><p class="padright10"><a href="<{$SiteUrl}>fair/list.php">更多&raquo;&raquo;</a></p></div>
+			<ul class="zh_ul1">
+				<li class="li5 li6">展会名称</li>
+				<li class="li5 li7">行业</li>
+				<li class="li5 li8">地点</li>
+				<li class="li5 li9">时间</li>
+				<{foreach from=$LatestExpo name=remen item=m}>
+				<li class="li1"><a href="<{$UrlContainer.common}>fair/detail.php?title=<{$m.ExpoName|urlencode}>" title="<{$m.ExpoName}>"><{$m.ExpoName|truncate:32}></a><{if $m.ExpoCreated>$today_mktime}><img src="<{$tpl_img_path}>default/new.gif" width="21" height="9"><{/if}></li>
+				<li class="li2"><{$Expotypes[$m.TypeId]}></li>
+				<li class="li3"><{$Areas[$m.ProvinceId]}><{$Areas[$m.CityId]}></li>
+				<li class="li4"><{$m.ExpoCreated|default:$m.ExpoPosted|date_format:"%Y-%m-%d"}>至<{$m.LastDate|date_format:"%Y-%m-%d"}></li>
+				<{/foreach}>
+			</ul>
+		</div>
+	</div>
+	<{if $PictureExpo}>
+	<div class="w_right1">
+		<div class="zh_t1"></div>
+		<div class="zh_tab3">
+		<{foreach from=$PictureExpo name=picture_expo item=pe}>
+			<p>
+				<a href="<{$UrlContainer.common}>fair/detail.php?title=<{$pe.ExpoName|urlencode}>" title="<{$pe.ExpoName}>"><img src="<{$attachment_dir}><{$pe.ExpoPicture}>.small.jpg" alt="<{$pe.ExpoName}>">
+				</a>
+			</p>
+	    <{/foreach}>
+		</div>
+	</div>
+	<{/if}>
+</div>
+<div class="clear9"></div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<meta http-equiv="content-language" content="zh-CN" />
+<meta name="keywords" content="<{$sitekeywords}>" />
+<meta name="description" content="<{$sitedescription|strip_tags|truncate:100}>" />
+<meta name="rating" content="general" />
+<meta name="author" content="" />
+<meta name="copyright" content="" />
+<meta name="generator" content="" />
+<link rel="shorcut icon" type="image/x-ico" href="<{$SiteUrl}>favicon.ico" />
+<title>首页&laquo;<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<{$xajax_javascript}>
+<script type="text/javascript">
+xajax_rebuildHTML("index.php");
+</script>
+</head>
+
+<body>
+<{assign var="index_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<div class="wd">
+	<!--焦点图轮换-->
+	<{ad templet="index.flash"}>
+	<!--焦点图轮换 end-->
+	<!--最新供求信息-->
+	<div class="new_gq">
+		<div class="bt in_bt1">
+			<h2 class="f13">最新供求信息</h2>
+			<p class="none" id="new_qg_bt">
+				<a href="#" class="over" onmouseover="showGqxx(0,this)">求购</a>
+				<a href="#" class="f" onmouseover="showGqxx(1,this)">供应</a>
+				<a href="#" class="f" onmouseover="showGqxx(2,this)">代理</a>
+				<a href="#" class="f" onmouseover="showGqxx(3,this)">合作</a>
+				<a href="#" class="f" onmouseover="showGqxx(4,this)">批发</a>
+				<a href="#" class="f" onmouseover="showGqxx(5,this)">加盟</a>
+				<a href="#" class="f" onmouseover="showGqxx(6,this)">库存</a>
+				<a href="#" class="f" onmouseover="showGqxx(7,this)">招商</a>
+			</p>
+		</div>
+		<div class="new_gq_c" id="new_gq0">
+				<{offer max=6 isbold=y type_id=1 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq1">
+				<{offer max=6 isbold=y type_id=2 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq2">
+				<{offer max=6 isbold=y type_id=3 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq3">
+				<{offer max=6 isbold=y type_id=4 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq4">
+				<{offer max=6 isbold=y type_id=5 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq5">
+				<{offer max=6 isbold=y type_id=6 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq6">
+				<{offer max=6 isbold=y type_id=7 templet="offer_width"}>
+		</div>
+		<div class="new_gq_c" id="new_gq7">
+				<{offer max=6 isbold=y type_id=8 templet="offer_width"}>
+		</div>
+	</div>
+	<!--最新供求信息 end-->
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="jjcg">
+		<div class="bt in_bt2"><h2><a href="<{$SiteUrl}>offer/list.php?type=urgent" title="紧急采购信息">紧急采购信息</a></h2><p><a href="<{$SiteUrl}>offer/list.php?type=urgent">更多&raquo;&raquo;</a></p></div>
+		<div class="jjcg_c">
+				<{offer max=5 urgent=y isbold=y type_id=1 templet="offer_width"}>
+		</div>
+	</div>
+	<div class="jjcg gjcg">
+		<div class="bt in_bt2"><h2><a href="<{$SiteUrl}>offer/list.php?type=urgent" title="推荐供求信息">推荐供求信息</a></h2><p><a href="<{$SiteUrl}>offer/list.php?type=commend">更多&raquo;</a></p></div>
+		<div class="jjcg_c">
+				<{offer max=5 isbold=y type="commend" templet="offer_width"}>
+		</div>
+	</div>
+	<div class="cgal">
+		<div class="bt in_bt2 in_bt3"><h2><a href="#" title="成功案例">成功案例</a></h2></div>
+		<div class="jjcg_c cgal_c">
+			<div>
+				<{company type="image" templet="company.logo" max=2}>
+				<ul>
+					<{news max=4 type_id=4}>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<{news max=10}>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear9"></div>
+<{if $InfoCount.product>0}>
+<div class="wd zxcp">
+	<div class="bt in_bt4">
+		<h2>最新产品</h2>
+		<p class="none">
+			<a href="<{$UrlContainer.common}>product/list.php?type=commend" class="ck f">查看推荐产品</a>
+			<a href="<{$SiteUrl}>room/productedit.php" class="fb f">发布产品信息</a>
+			<em></em>
+		</p>
+	</div>
+	<div class="padleft10">
+		<{product templet="product_index"}>
+	</div>
+</div>
+<div class="clear9"></div>
+<{/if}>
+<div class="wd ad2"><{ad type_id=1}></div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="vipqy">
+		<div class="bt in_bt5"><h2><a href="<{$UrlContainer.common}>company.php?ac=list" title="VIP企业" class="f">VIP企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company.php?ac=list" class="f">更多&raquo;&raquo;</a></p></div>
+		<div class="vipqy_c">
+			<div>
+				<{company type="image" templet="company.image" max=3}>
+			</div>
+		</div>
+	</div>
+	<div class="newqy">
+		<div class="bt in_bt5"><h2><a href="<{$UrlContainer.common}>company.php?ac=list" title="最新加入企业" class="f">最新加入企业</a></h2><p class="padright10"><a href="<{$UrlContainer.common}>company.php?ac=list" class="f">更多&raquo;&raquo;</a></p></div>
+		<div class="vipqy_c newqy_c">
+			<ul class="ul21">
+				<{company max=20}>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="hyfl">
+		<div class="bt in_bt6"><h2>行业分类大全</h2><p class="padright10 none"><a href="<{$SiteUrl}>room/tradeedit.php" class="a" title="立即发布供求信息">发布供求信息</a></p></div>
+		<div class="hyfl_c"><{$IndustryList}><!-- TPL element.industry1.html --></div>	
+	</div>
+	<div class="dlsws">
+		<div class="bt sws_bt"><h2>立即加入</h2><p class="none"><a href="<{$UrlContainer.user}>">免费加入会员 轻松做网上生意</a></p></div>
+		<div class="sws_c">
+			<div>
+				<{ad type_id=2}>
+			</div>
+		</div>
+	</div>
+</div>
+<{if $InfoCount.news>0}>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="bt in_bt7"><h2><a href="<{$SiteUrl}>news/" title="行业资讯" class="f">行业资讯</a></h2><p>提供最全面丰富的行业资讯</p></div>
+	<div class="hyzx_c">
+		<div class="hyzx_1">
+			<div class="bt in_bt8"><h2 class="f12 over" onmouseover="showZixun(1)" id="zx_bt1"><{newstype id=1}></h2><h2 class="f12" onmouseover="showZixun(2)" id="zx_bt2"><{newstype id=2}></h2><p class="padright10"><a href="<{$SiteUrl}>news/" class="f">更多</a></p></div>
+			<div id="zixun1">
+					<{news max=9 type_id=1 isbold=y}>
+			</div>
+			<div id="zixun2">
+					<{news max=9 type_id=2 isbold=y}>
+			</div>
+		</div>
+		<div class="hyzx_2">
+			<div class="bt in_bt9"><h2>热门新闻</h2></div>
+			<div class="hyzx_c2">
+				<{news max=3 type="image"}>
+			</div>
+			<ul class="ul21">
+					<{news max=7 orderby="created desc"}>
+			</ul>
+		</div>
+		<div class="hyzx_3">
+			<div class="bt in_bt10"><h2 class="over" onmouseover="showYlsq(1)" id="hqsq_bt1"><{newstype id=7}></h2><h2 onmouseover="showYlsq(2)" id="hqsq_bt2"><{newstype id=1}></h2><p class="padright10"><a href="<{$SiteUrl}>news/">更多</a></p></div>
+			<div class="hyzx_c3" id="ylsq_1">
+				<ul class="ul21">
+					<{news max=13 type_id=7}>
+				</ul>
+			</div>
+			<div class="hyzx_c3" id="ylsq_2">
+				<ul class="ul21">
+					<{news max=13 type_id=1}>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="hyzx_b"></div>
+</div>
+<{/if}>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="bt in_bt7 in_bt11"><h2><a href="#" title="友情链接" class="f">友情链接</a></h2><p></p></div>
+	<div class="link">
+		<div>
+			<{friendlink type="image"}>
+		</div>
+		<div>
+			<{friendlink}>
+		</div>
+	</div>
+	<div class="link_b"></div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+<script type="text/javascript" src="<{$CSS_PATH}>js/default/index.js"></script>
+</body>
+</html>
