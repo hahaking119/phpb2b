@@ -7,7 +7,6 @@ $member = new Members();
 $membertype = new Membertypes();
 $company = new Companies();
 $tpl_file = "upgrade";
-
 if ($_POST['apply']) {
 	uses("order");
 	$order = new Orders();

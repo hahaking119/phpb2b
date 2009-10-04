@@ -95,7 +95,9 @@ foreach($_COOKIE as $key => $val) {
 	}
 }
 //referer
-$pre_refer = empty($_SERVER['HTTP_REFERER'])?'':$_SERVER['HTTP_REFERER'];
+//091001#13
+$pre_refer = empty($_SERVER['HTTP_REFERER'])?URL:$_SERVER['HTTP_REFERER'];
+//end #13
 if($gzipcompress && function_exists('ob_gzhandler')) {
 	ob_start('ob_gzhandler');
 } else {

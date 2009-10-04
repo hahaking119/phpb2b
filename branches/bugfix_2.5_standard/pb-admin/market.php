@@ -39,12 +39,17 @@ if ($_POST['save'] && !empty($_POST['market'])) {
 	if($_POST['market_industry_id']){
 		$vals['industry_id'] = $_POST['market_industry_id'];
 	}
+//091001#12
 	if($_POST['cityid']){
 		$vals['city_id'] = $_POST['cityid'];
 	}
 	if ($_POST['provinceid']) {
-		$vals['province_id'] = $_POST['provinceid'];
+		$vals['city_id'] = $_POST['provinceid'];
 	}
+	if ($_POST['countryid']) {
+		$vals['province_id'] = $_POST['countryid'];
+	}
+	//end #12
 	if($_POST['cityid']){
 		$vals['ma'] = $_POST['cityid'];
 	}elseif ($_POST['provinceid']) {

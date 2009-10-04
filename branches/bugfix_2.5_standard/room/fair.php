@@ -28,6 +28,10 @@ if(isset($_GET['join'])){
 	}else {
 		flash("./tip.php", "./fair.php", "Apply wrong!",0);
 	}
+}else{
+    //091001#14
+    PB_goto($pre_refer);
+    //end #14
 }
 template($office_theme_name."/".$tpl_file);
 ?>

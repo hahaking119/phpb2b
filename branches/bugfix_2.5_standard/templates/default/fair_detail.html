@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
 </head>
 
-<body onload="new CbsCalendar('mydate1')">
+<body>
 <!--head-->
 <{assign var="fair_li" value="cor over"}>
 <{include file="`$ThemeName`/element.header.html"}>
@@ -31,7 +31,7 @@
 		<h2 class="f12 str"><em>已报名会员</em></h2>
 		<ul class="zh_mem str">
 		<{foreach from=$FairCompany name=ApplyFair item=fc key=fk}>
-			<li><a href="<{$SiteUrl}>member/index.php?userid=<{$fk}>" title="访问主页" target="_blank"><{$fc}></a></li>
+			<li><a href="<{$SiteUrl}>space.php?userid=<{$fk}>" title="访问主页" target="_blank"><{$fc}></a></li>
 		<{/foreach}>
 		</ul>
 	</div>

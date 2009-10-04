@@ -19,7 +19,9 @@ if(isset($_GET['filter'])){
 		$area_id = $area->find($area_code_id, "id", "code_id");
 	}
 	if($pieces[0]=="province"){
-		$conditions.= " and Market.province_id=".$area_code_id;
+	    //根据id取得codeid, 091001#10
+		$conditions.= " and LEFT(Market.province_id, 3) = '".substr($area_code_id, 0, 3)."'";
+		//end #10
 	}elseif($pieces[0]=="city"){
 		$conditions.= " and Market.city_id=".$area_code_id;
 	}
@@ -67,6 +69,7 @@ if ($_GET['industry']) {
 	$_positions[] = $industry_name;
 }
 $fields = "id as MarketId,name as MarketName,content as MarketContent,created as MarketCreated";
+
 $amount = $market->findCount(" 1 ".$conditions);
 pageft($amount,10);
 $area_markets = $market->findAll($fields, " 1 ".$conditions, "Market.id DESC", $firstcount, $displaypg);
