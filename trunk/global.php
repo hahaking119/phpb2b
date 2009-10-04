@@ -26,7 +26,7 @@
  * @license http://www.opensource.org/licenses/gpl-license.php GPL License
  * @created Mon Jun 22 16:05:24 CST 2009
  * @link http://sourceforge.net/projects/php-b2b/
- * @version $Id: global.php 185 2009-09-21 14:11:48Z stevenchow811@163.com $
+ * @version $Id: global.php 238 2009-10-04 12:32:19Z stevenchow811@163.com $
  */
 define('IN_UALINK', TRUE);
 define('DEBUG', '0');
@@ -95,7 +95,9 @@ foreach($_COOKIE as $key => $val) {
 	}
 }
 //referer
-$pre_refer = empty($_SERVER['HTTP_REFERER'])?'':$_SERVER['HTTP_REFERER'];
+//091001#13
+$pre_refer = empty($_SERVER['HTTP_REFERER'])?URL:$_SERVER['HTTP_REFERER'];
+//end #13
 if($gzipcompress && function_exists('ob_gzhandler')) {
 	ob_start('ob_gzhandler');
 } else {

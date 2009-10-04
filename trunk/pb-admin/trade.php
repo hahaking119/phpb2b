@@ -132,6 +132,16 @@ if(isset($_POST['save'])){
 			$vals['company_id'] = $company->field("id", "member_id=".$user_type_res['MemberId']);
 		}
 	}
+
+	//检查公司名是否有输入, 091001#11
+	if (!empty($_POST['company_name'])) {
+		$company_info_val = $company->GetRow("SELECT id,member_id from ".$company->getTable()." WHERE company_name='".$_POST['company_name']."'");
+		if (!empty($company_info_val)) {
+			$vals['company_id'] = $company_info_val['id'];
+			$vals['member_id'] = $company_info_val['member_id'];
+		}
+	}
+	//end #11
 	array_walk($vals,"uatrim");
 	if ($tid) {
 		$r_up = $trade->save($vals, "update", $tid);
