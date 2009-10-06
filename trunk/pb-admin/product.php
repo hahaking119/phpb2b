@@ -81,7 +81,7 @@ if (isset($_POST['del'])) {
     foreach ($_POST['pid'] as $val) {
     	$picture = $product->field("picture", "id=".$val);
     	@unlink($media_paths['attachment_dir'].$picture);
-    	@unlink($media_paths['attachment_dir'].$picture.".small.jpg"););
+    	@unlink($media_paths['attachment_dir'].$picture.".small.jpg");
     }
 	if (is_array($_POST['pid'])) {
 		$deleted = $product->del($_POST['pid']);
