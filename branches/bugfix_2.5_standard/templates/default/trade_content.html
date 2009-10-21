@@ -65,7 +65,7 @@ function getExpireStr(exp_date){
 			<img src="<{if $tradeInfo.TradePicture!=""}><{$SiteUrl}>attachment/<{$tradeInfo.TradePicture}><{else}><{$SiteUrl}>images/<{$ThemeName}>/no-big.jpg<{/if}>" alt="" />
 			<em><a href="<{$SiteUrl}>attachment.php?source=<{$tradeInfo.TradePicture}>">放大图片</a></em>
 		</div>
-		<ul class="cp_ul1">
+		<ul class="cp_ul1" style="float:left">
 			<li><em class="str">发布时间：</em><{$tradeInfo.PublishDate|date_format:"%Y-%m-%d"}></li>
 			<li><em class="str">有效日期：</em><{$tradeInfo.ExpireDate|date_format:"%Y-%m-%d"}>,<script>document.write(getExpireStr("<{$tradeInfo.ExpireDate|date_format:"%m/%d/%Y"}>"));</script></li>
 			<li><em class="str">所在省份：</em><{$tradeInfo.province_name}></li>
@@ -74,7 +74,7 @@ function getExpireStr(exp_date){
 			<li><a href="#" class="cp_a1" id="favor">我要收藏</a></li>
 			<{if $tradeInfo.OfferUserName==$UalinkUser.username}><li><a href="../room/tradeedit.php?id=<{$tradeInfo.TradeId}>$&action=mod" class="cp_a1" id="favor">我要编辑</a></li><{/if}>
 		</ul>
-		<div class="cp_c2 cp_c6">
+		<div class="cp_c2 cp_c6" style="float:right; margin-right:20px; display:inline">
 			<{if $IfTradeOpen==1 || $UalinkUser.username!=""}>
 			<{include file="`$ThemeName`/element.showcompanyinfo.html"}>
 			<{else}>

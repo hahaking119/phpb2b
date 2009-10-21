@@ -99,7 +99,36 @@ if(isset($_POST['down_batch_x'])) {
 		flash("./alert.php","./trade.php",null,0);
 	}
 }
-
+if(isset($_POST['pass'])){
+	$tid = (isset($_POST['id']))?$_POST['id']:null;
+	$sql = "update ".$trade->getTable()." set status='1' where id=".$tid;
+	$result = $g_db->Execute($sql);
+	if ($result) {
+		flash("alert.php", "trade.php", null, 1, null, "trade.php");
+	}else {
+		flash("alert.php", "trade.php", null, 0, null, "trade.php");
+	}
+}
+if(isset($_POST['forbid'])){
+	$tid = (isset($_POST['id']))?$_POST['id']:null;
+	$sql = "update ".$trade->getTable()." set status='0' where id=".$tid;
+	$result = $g_db->Execute($sql);
+	if ($result) {
+		flash("alert.php", "trade.php", null, 1, null, "trade.php");
+	}else {
+		flash("alert.php", "trade.php", null, 0, null, "trade.php");
+	}
+}
+if(isset($_POST['del'])){
+	$tid = (isset($_POST['id']))?$_POST['id']:null;
+	$sql = "delete from ".$trade->getTable()." where id=".$tid;
+	$result = $g_db->Execute($sql);
+	if ($result) {
+		flash("alert.php", "trade.php", null, 1, null, "trade.php");
+	}else {
+		flash("alert.php", "trade.php", null, 0, null, "trade.php");
+	}
+}
 if(isset($_POST['save'])){
 	$tid = (isset($_POST['id']))?$_POST['id']:null;
 	$vals = array();
