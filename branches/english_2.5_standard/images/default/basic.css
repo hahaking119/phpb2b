@@ -23,7 +23,9 @@ a.a{color: #0a3168;text-decoration: none;}
 a.a: hover{color: #dc0000;text-decoration: underline;}
 a.f{color: #fff;text-decoration: none;}
 a.f: hover{color: #fff;text-decoration: underline;}
+
 .none a,.none a: hover{text-decoration: none;}
+.none2 a,.none2 a: hover{text-decoration: none;}
 .wd{width: 960px;height: auto;clear: both;}
 .w_left1,.w_right1,.w_left2,.w_left3,.w_left4,.w_right2{width: 715px;height: auto;float: left;display: inline;}
 .w_right1{width: 235px;float: right;}

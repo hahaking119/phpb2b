@@ -14,7 +14,10 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .in_bt1{height:30px; background:url(background.gif) -101px -121px no-repeat;}
 .in_bt1 h2{color:#0a3168; width:100px; text-align:right; margin:12px 0 0 15px;}
 .in_bt1 p{width:300px; float:left; margin:8px 0 0 15px;}
-.in_bt1 p a{float:left;display:inline;line-height:17px; text-align:center;width:37px; height:17px; }
+.in_bt1 p a{float:left;display:inline-block;line-height:17px; text-align:center;width:37px; height:17px; }
+.in_bt1 p a.s{width:65px;}
+.in_bt1 p a.s2{width:65px;}
+
 .in_bt1 p a.over{color:#333; background:url(background.gif) -101px -161px no-repeat;}
 .new_gq_c{width:433px; height:213px; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;}
 .new_gq_c div,.jjcg_c div{width:400px; height:88px; clear:both; padding:7px 0;}
