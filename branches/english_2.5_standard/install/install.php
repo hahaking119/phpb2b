@@ -345,7 +345,7 @@ if(($_POST['step']==1) && !empty($_POST['site'])){
 					"','".md5($_POST['forum']['adminpass'])."',9,'".$lang['super_admin']."','$nowtime','admin@yourdomain.com')";
 					mysql_query($sql);
 					mysql_query("INSERT INTO ".$_POST['db']['prefix']
-					."friendlinks (title,url) values ('".$lang['ualinkphp']."','http://www.ualink.org/'),('".$lang['ualinkb2b_demo']."','http://bbs.phpb2b.com/')");
+					."friendlinks (title,url) values ('".$lang['ualinkphp']."','http://www.phpb2b.com/'),('".$lang['ualinkb2b_demo']."','http://bbs.phpb2b.com/')");
 					$sql = "INSERT INTO ".$_POST['db']['prefix']
 					."trades (topic,content,type_id,status,created,if_urgent,submit_time,expire_time,expire_days,if_commend) values ('".$lang['first_sell']."','".$lang['first_sell'].",".$lang['first_del_content']."','2',1,'$nowtime','0','$nowtime','$exp_time',10,1),('".$lang['first_buy']."','".$lang['first_sell'].",".$lang['first_del_content']."','1',1,'$nowtime','1','$nowtime','$exp_time',10,1)";
 					mysql_query($sql);
@@ -548,7 +548,7 @@ function goUrl(language){
         <h2 class="step">
       <input name="submit" type="submit" value="<?php echo $lang['start_install'];?>" onclick="return check_install();" class="btn" />
         </h2>
-    </form><a href="install.php?action=check_file_right&language=<?php echo $lang_name;?>" target="_blank"><?php echo $lang['check_file_right'];?></a>&nbsp;<a href="http://www.ualink.org/docs/index.html#install_start" target="_blank"><?php echo $lang['view_help'];?></a></td>
+    </form><a href="install.php?action=check_file_right&language=<?php echo $lang_name;?>" target="_blank"><?php echo $lang['check_file_right'];?></a>&nbsp;<a href="http://www.phpb2b.com/support/documentation/" target="_blank"><?php echo $lang['view_help'];?></a></td>
             </tr>
             <tr>
               <td><div id="foot" class="ft" style="color:#FFFF99"><?php echo $lang['ualink_wel'];?></div></td>

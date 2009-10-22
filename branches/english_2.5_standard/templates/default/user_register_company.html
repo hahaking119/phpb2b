@@ -185,49 +185,49 @@ function IsURL(urlString)
 
 function checkreg(){
 	if($F('membername')==""){
-		alert("用户名必须填写");
+		alert("You must enter user name");
 		$('membername').focus();
 		return false;
 	}
 	if(!(/^[a-zA-Z][a-zA-Z0-9_]{4,21}$/.test($F('membername')))){
-		alert("用户名必须字母开头，允许5-20字节，允许字母数字下划线");
+		alert("User name not allowed");
 		$('membername').focus();
 		return false;
 	}
 	
 	if($F('memberpass')==""){
-		alert("请输入密码");
+		alert("Please enter your password");
 		$('memberpass').focus();
 		return false;
 	}
 	if($F('re_memberpass')==""){
-		alert("请再次输入密码");
+		alert("Please enter your password again");
 		$('re_memberpass').focus();
 		return false;
 	}
 	if($F('memberpass') != $F('re_memberpass')){
-		alert("前后密码输入不一致");
+		alert("The password not same");
 		$('memberpass').focus();
 		return false;
 	}
 
 	if($F('member_email')==""){
-		alert("请输入您的Email");
+		alert("Please enter your email address");
 		$('member_email').focus();
 		return false;
 	}
 	if(chkemail($F('member_email')) == 0){
-		alert("您的Email格式输入有误!");
+		alert("Wrong email format");
 		$('member_email').focus();
 		return false;
 	}else if(!(/^[a-zA-Z0-9_\-]{1,}@[a-zA-Z0-9_\-]{1,}\.[a-zA-Z0-9_\-.]{1,}$/.test($F('member_email')))) {
-		alert("您的Email格式输入有误!");
+		alert("Wrong email format");
 		$('member_email').focus();
 		return false;
 	}
 	<{if $IfRegisterPicture}>
 	if($F('login_auth')==""){
-		alert("请输入验证码，不区分大小写");
+		alert("Please enter your auth number");
 		$('login_auth').focus();
 		return false;
 	}
