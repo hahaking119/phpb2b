@@ -369,9 +369,10 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .lg_bot,.lg_bot1{height:5px; background:url(background.gif) 0 -536px no-repeat; overflow:hidden;}
 .lg_bot1{background:url(background.gif) 0 -589px no-repeat;}
 .lg_p1{clear:both; padding:8px 0 8px 85px;}
-.lg_p1 label,.lg_p1 input,.lg_p1 em{float:left; display:inline; width:100px; height:19px; line-height:19px; text-align:center;}
+.lg_p1 label,.lg_p1 input,.lg_p1 em{float:left;width:100px; height:19px; line-height:19px; text-align:center;}
+.lg_p1 label{text-align:right;width:90px;padding-right:10px;}
 .lg_p1 input{width:165px; border:1px #808080 solid; text-align:left;}
-.lg_p1 em{width:85px; color:#69c;}
+.lg_p1 em{width:75px; color:#69c;text-align:left;padding-left:10px;}
 .lg_p2{clear:both; width:350px; margin:0 auto;text-align:center; padding:15px 0; background:url(line1.gif) bottom no-repeat;}.lg_p2 a{margin-right:15px;}
 .lg_p3{clear:both; text-align:center; text-align:center;}
 .lg_p3 input{width:96px; height:29px; line-height:29px; background:url(background.gif) 0 -596px no-repeat; text-align:right; padding-right:12px; margin:10px auto; display:block; color:#35587f; cursor:pointer;}
