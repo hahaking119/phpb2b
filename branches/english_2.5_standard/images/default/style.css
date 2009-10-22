@@ -417,7 +417,7 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .rg_bt5 p{background:url(background.gif) -639px -526px no-repeat;}
 .rg_c2{width:295px;}
 .rg_c2 ul{width:280px;}
-.rg_c2 ul li{width:260px; background:url(arrow.gif) 0px 7px no-repeat; color:#666; margin-left:15px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.rg_c2 ul li{width:260px; background:url(arrow.gif) 0px 7px no-repeat; color:#666; margin-left:15px;word-break:keep-all;}
 .rg_bt6 h2{background:url(background.gif) 0 -627px no-repeat; color:#35587f; line-height:33px; padding-left:35px;}
 .rg_xx{clear:both;}.rg_xx p{padding:10px 0;width:260px; height:auto; line-height:24px;color:#35587f; margin:0 auto;}
 .rg_wd2{border:1px #d4cebf solid; width:942px; height:420px; background:#fafafa url(sucess.gif) 380px 120px no-repeat; position:relative;}
