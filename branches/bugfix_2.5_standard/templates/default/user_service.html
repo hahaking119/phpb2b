@@ -44,8 +44,6 @@ function checkform() {
 	if(title=="" || content==""){
 		alert("请输入标题或内容");
 		return false;
-	}else{
-		document.servicefrm.submit();
 	}
 }
 function d(){
@@ -118,7 +116,7 @@ function d(){
 				<label for="content">反馈内容：</label>
 				<p><textarea name="service[content]" cols="40" rows="6" wrap="VIRTUAL" id="content" onFocus="d();"></textarea></textarea></p>
 			</div>
-			<div class="cs_d cs_d3"><input type="button" name="save" id="save" value="提交" alt="输入标题后可提交" /></div>
+			<div class="cs_d cs_d3"><input type="submit" name="save" id="save" value="提交" alt="输入标题后可提交" /></div>
 			</form>
 		</div>
 		

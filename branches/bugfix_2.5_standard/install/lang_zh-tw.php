@@ -73,6 +73,6 @@ $lang = array(
 "a_new_b2b_site"=>"一個新的B2B電子商務網",
 "db1049"=>"數據庫不存在",
 "db1045"=>"數據庫用戶名或者密碼錯誤",
-"delete_and_install"=>"您必須先刪除 data 目錄下的 install.lock 文件才能繼續進行安裝,如果已經刪除請點擊 <a href='install.php?language=".$_GET['language']."'>繼續安裝</a>.",
+"delete_and_install"=>"您必須先刪除 data 目錄下的 install.lock 文件才能繼續進行安裝,如果已經刪除請點擊 <a href='install.php?language=".(isset($_GET['language'])?$_GET['language']:-1)."'>繼續安裝</a>.",
 );
 ?>
