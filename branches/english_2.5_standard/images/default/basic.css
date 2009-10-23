@@ -44,8 +44,8 @@ a.f: hover{color: #fff;text-decoration: underline;}
 .bt p{float: right;display: inline;}
 .bt h2 a: hover,.bt p a: hover{color: #dc0000;text-decoration: none;}
 .ul21 li{overflow: hidden;background: url(dot.gif) 2px 10px no-repeat;padding-left: 10px;word-break:normal;}
-.ul21 li p{float: left;display: inline;}
-.ul21 li em{float: right;display: inline;}
+.ul21 li p{float:left;width:140px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;}
+.ul21 li em{float: right;}
 .ula li a,.ula li p a{color: #0a3168;}
 .ula li a: hover{color: #dc0000;}
 .ula li em{color: #347aba;}
