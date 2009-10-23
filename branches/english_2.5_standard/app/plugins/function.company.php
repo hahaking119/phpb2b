@@ -116,7 +116,7 @@ function smarty_function_company($params){
 	        $area_name = "[".$UL_DBCACHE_AREAS[$result[$i]['CityCodeId']]."]";
 	    }
 	    $op = $smarty->fetch($theme_name."/".$tpl_file, null, null, false);
-	    $op = str_replace(array("[link:title]", "[field:title]", "[field:typename]", "[field:imageurl]"), array($url, utf_substr($result[$i]['LinkTitle'],24), $area_name, URL."attachment/".$result[$i]['CompanyLogo']), $op);
+	    $op = str_replace(array("[link:title]", "[field:title]", "[field:typename]", "[field:imageurl]"), array($url, utf_substr($result[$i]['LinkTitle'],18), $area_name, URL."attachment/".$result[$i]['CompanyLogo']), $op);
 	    //$output.=$company->checkTerminal($i);
 	    $output.=$op;
 	}
