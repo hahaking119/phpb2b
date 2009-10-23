@@ -737,6 +737,7 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .cs_c1 table tr td em{font-weight:bold;}
 .cs_d{clear:both;height:19px;padding:10px 0 0 20px;}
 .cs_d label,.cs_d p{float:left;display:inline;}
+.cs_d p label{width:110px;}
 .cs_d input{background:none;}
 .cs_d label{width:85px;font-weight:bold;color:#333;font-size:14px;text-align:left;}
 .cs_d1 p{width:208px;height:19px;background:url(h_bg.gif) 0 -345px no-repeat;}
