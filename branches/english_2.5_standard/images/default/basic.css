@@ -43,9 +43,11 @@ a.f: hover{color: #fff;text-decoration: underline;}
 .bt h2{float: left;display: inline;}
 .bt p{float: right;display: inline;}
 .bt h2 a: hover,.bt p a: hover{color: #dc0000;text-decoration: none;}
-.ul21 li{overflow: hidden;background: url(dot.gif) 2px 10px no-repeat;padding-left: 10px;word-break:normal;}
-.ul21 li p{float:left;width:140px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;}
-.ul21 li em{float: right;}
+.ul21 li,.ul21_sell li{overflow: hidden;background: url(dot.gif) 2px 10px no-repeat;padding-left: 10px;word-break:normal;}
+.ul21 li p,.ul21_sell li p{float:left;width:140px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;}
+.gy_c4 ul.ul21_sell li p{width:165px;text-overflow:ellipsis;white-space:nowrap; overflow:hidden;}
+.gy_c4 ul.ul21_sell li em{width:70px;}
+.ul21 li em,.ul21_sell li em{float: right;}
 .ula li a,.ula li p a{color: #0a3168;}
 .ula li a: hover{color: #dc0000;}
 .ula li em{color: #347aba;}
