@@ -15,7 +15,6 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .in_bt1 h2{color:#0a3168; width:100px; text-align:right; margin:12px 0 0 15px;}
 .in_bt1 p{width:300px; float:left; margin:8px 0 0 15px;}
 .in_bt1 p a{float:left;display:inline-block;line-height:17px; text-align:center;width:37px; height:17px; margin-right:5px;}
-.in_bt1 p a.s{margin-right:10px;}
 
 .in_bt1 p a.over{color:#333; background:url(background.gif) -101px -161px no-repeat;}
 .new_gq_c{width:433px; height:213px; border:1px #b5b5b5 solid; border-top:0; overflow:hidden;}
@@ -346,7 +345,7 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .gs_ad1{height:auto overflow:hidden;}/*55px;*/
 .gs_ad2,.gs_ad3,.gs_tab4,.gs_tab5{width:715px; float:left; display:inline; height:auto; overflow:hidden;}.gs_ad3{width:235px; float:right;}.gs_tab4{width:354px;}.gs_tab5{width:597px;float:right;}
 .gs_bt4{height:27px; background:url(x_1px_3.gif) 0 -1119px repeat-x; line-height:27px;}
-.gs_bt4 h2{width:150px; height:27px; line-height:32px; text-align:center; background:url(background.gif) -722px -456px no-repeat;}
+.gs_bt4 h2{width:150px; height:27px; line-height:32px; text-align:center; background:url(background.gif) -708px -456px no-repeat;}
 .gs_bt4 p{width:150px; height:27px; background:url(background.gif) -810px -456px no-repeat;}.gs_bt5 h2{width:150px;}
 .gs_c1{width:352px; height:204px; border:1px #a8dbf8 solid; overflow:hidden;}.gs_c2{width:595px;}
 .gs_c1 ul{width:330px; margin:8px 0 0 10px;}
