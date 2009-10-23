@@ -345,7 +345,7 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .gs_ad1{height:auto overflow:hidden;}/*55px;*/
 .gs_ad2,.gs_ad3,.gs_tab4,.gs_tab5{width:715px; float:left; display:inline; height:auto; overflow:hidden;}.gs_ad3{width:235px; float:right;}.gs_tab4{width:354px;}.gs_tab5{width:597px;float:right;}
 .gs_bt4{height:27px; background:url(x_1px_3.gif) 0 -1119px repeat-x; line-height:27px;}
-.gs_bt4 h2{width:150px; height:27px; line-height:32px; text-align:center; background:url(background.gif) -708px -456px no-repeat;}
+.gs_bt4 h2{width:128px; height:27px; line-height:32px; text-align:left; padding-left:22px;background:url(background.gif) -708px -456px no-repeat;}
 .gs_bt4 p{width:150px; height:27px; background:url(background.gif) -810px -456px no-repeat;}.gs_bt5 h2{width:150px;}
 .gs_c1{width:352px; height:204px; border:1px #a8dbf8 solid; overflow:hidden;}.gs_c2{width:595px;}
 .gs_c1 ul{width:330px; margin:8px 0 0 10px;}
