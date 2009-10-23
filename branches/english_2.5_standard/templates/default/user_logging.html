@@ -81,8 +81,7 @@ function login(){
 		}
 	<{if $IfLoginPicture}>
 	if($F('login_auth') == ""){
-		alert("Please enter the verification code is not case sensitive
-");
+		alert("Please enter the verification code is not case sensitive");
 		$('login_auth').focus();
 		return false;
 	}
