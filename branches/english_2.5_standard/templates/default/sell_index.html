@@ -28,7 +28,7 @@ xajax_rebuildHTML("sell/index.php");
 		<div class="clear9"></div>
 		<div class="bt gs_bt4 gy_bt3"><h2><a href="<{$SiteUrl}>offer/list.php">Latest Supply Info</a></h2><p>&nbsp;</p></div>
 		<div class="gy_c4">
-			<ul class="ul21 ula">
+			<ul class="ul21_sell ula">
 				<{offer type="sell" max="11"}>
 			</ul>
 		</div>
@@ -44,19 +44,19 @@ xajax_rebuildHTML("sell/index.php");
 		<div class="clear9"></div>
 		<div class="cp_bt1 cp_bt3 gy_bt4"><em class="cp_em1"></em><h2>Hot Selling Leads</h2><p>Were updated today <{$TodayTradeAmount}> .</p><em class="cp_em2"></em></div>
 		<div class="gy_c4">
-			<ul class="ul21 ula">
+			<ul class="ul21_sell ula">
 				<{offer type="sell" col="2" max="11" orderby="clicked desc"}>
 			</ul>
 		</div>
 		<div class="clear9"></div>
 		<div class="cp_bt1 cp_bt3 gy_bt5"><em class="cp_em1"></em><h2><a href="<{$UrlContainer.common}>company.php?ac=list">Active suppliers</a></h2><em class="cp_em2"></em></div>
 		<div class="gy_c4 gy_c5">
-			<ul class="ul21 ula"><{company max=13 orderby="clicked desc"}></ul>
+			<ul class="ul21_sell ula"><{company max=13 orderby="clicked desc"}></ul>
 		</div>
 		<div class="clear9"></div>
 		<div class="cp_bt1 cp_bt3 gy_bt5 gy_bt6"><em class="cp_em1"></em><h2><a href="<{$UrlContainer.common}>company.php?ac=list&type=commend">Integrity Enterprises</a></h2><em class="cp_em2"></em></div>
 		<div class="gy_c4 gy_c6">
-			<ul class="ul21 ula"><{company max=8 commend="y"}></ul>
+			<ul class="ul21_sell ula"><{company max=8 commend="y"}></ul>
 		</div>
 	</div>
 </div>
