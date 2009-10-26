@@ -147,19 +147,19 @@ change(0);
 <{foreach from=$Lists name=company_list item=data}>
 <table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
   <tr class="corhui"> 
-    <td width="70" align="center">
+    <td width="100" align="center">
 	<!-- 这里默认VIP会员的类型为4 -->
 	<img src="<{$tpl_img_path}>default/grade/<{$data.MemberCreditLevel|default:"1"|cat:".gif"}>"></td>
-    <td width="405"><{if $data.MemberUserType==4}><img src="<{$tpl_img_path}>default/vip_company.gif" alt="<{$data.MemberUserType}>">&nbsp;<{/if}><a href="<{$SiteUrl}>space.php?userid=<{$data.MemberUsername}>" class="font14blak"><{$data.Name|strip_tags|replace:$smarty.get.skeyword:$searchwords}></a>
+    <td width="355"><{if $data.MemberUserType==4}><img src="<{$tpl_img_path}>default/vip_company.gif" alt="<{$data.MemberUserType}>">&nbsp;<{/if}><a href="<{$SiteUrl}>space.php?userid=<{$data.MemberUsername}>" class="font14blak"><{$data.Name|strip_tags|replace:$smarty.get.skeyword:$searchwords}></a>
           <!-- <a href=#><img src="images/mark.gif" border="0"></a> --><{if $data.CreateTime!=""}><span class="time">(<a href="<{$SiteUrl}>company/<{$data.CreateTime|date_format:"%Y/%m/%d"}>/"><{$data.CreateTime|date_format:"%Y-%m-%d"}></a>)</span><span>[<a href="<{$SiteUrl}>company.php?ac=list&industryname=<{$data.IndustryName|urlencode}>"><{$AllIndustry[$data.IndustryId]}></a>]</span><{/if}>
 		  <br />
 		  <{$data.Description|strip_tags|truncate:100}></td>
-    <td width="70"><div align="center">
+    <td width="100"><div align="center">
 		  <br />
 		  <{if $data.CompanyPicture}><img src="attachment/<{$data.CompanyPicture}>" width="117" height="63" alt="<{$data.Name}>" /><{/if}><{$ManageTypes[$data.manage_type]}></div></td>
-    <td width="70">
-<div align="center"><a href="<{$SiteUrl}>company/list.php?province_id=<{$data.CompanyProvinceId}>"><{$AllArea[$data.CompanyProvinceId]}></a><br /><a href="<{$SiteUrl}>company/list.php?city_id=<{$data.CompanyCityId}>"><{$AllArea[$data.CompanyCityId]}></a></div></td>
-    <td width="75" align="center"><img src="<{$tpl_img_path}>default/type/<{$data.Membertype|default:default}>.gif" alt="<{$data.MemberCreditLevel}>"></td>
+    <td width="70" align="left">
+<div align="left"><a href="<{$SiteUrl}>company.php?ac=list&province_id=<{$data.CompanyProvinceId}>"><{$AllArea[$data.CompanyProvinceId]}></a><br /><a href="<{$SiteUrl}>company.php??ac=list&city_id=<{$data.CompanyCityId}>"><{$AllArea[$data.CompanyCityId]}></a></div></td>
+    <td width="110" align="center"><img src="<{$tpl_img_path}>default/type/<{$data.Membertype|default:default}>.gif" alt="<{$data.MemberCreditLevel}>"></td>
     <td width="70" align="center"><img src="<{$tpl_img_path}>default/feed.gif" width="20" height="14"><br> 
       <a href="<{$SiteUrl}>space.php?do=feedback&userid=<{$data.MemberUsername}>">Feedback</a></td>
   </tr>
