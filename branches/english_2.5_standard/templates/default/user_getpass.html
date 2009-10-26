@@ -39,7 +39,7 @@ function login(frm){
 </div>
 <div class="clear9"></div>
 <div class="wd">
-	<div class="getpass_bt"><h2 class="cur" id="getbt0" onclick="getPassword(0,this)"><em>By E-mail back</em></h2></div>
+	<div class="getpass_bt"><h2 class="cur" id="getbt0" onclick="getPassword(0,this)"><em>Get password</em></h2></div>
 	<div class="getpass_c">
 		<div class="getpass_c1" id="getpass0">
 	  <form name="getpassfrm" method="post" action="<{$smarty.server.PHP_SELF}>" onsubmit="$('GoNext').disabled=true;">
@@ -55,7 +55,7 @@ function login(frm){
 				<p><input type="text" name="user_email" id="UserEmail" size="30" maxlength="50" value="<{$postUserEmail}>" /></p>
 			</div>
 			<div class="gp_line1 gp_line2">
-				<input type="submit" name="go_next" value="Next, retrieve your password" class="f14 str" id="GoNext" onClick="return login(this);" />
+				<input type="submit" name="go_next" value="Get password" class="f14 str" id="GoNext" onClick="return login(this);" />
 			</div>
 			</form>
 		</div>
