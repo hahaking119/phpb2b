@@ -623,6 +623,8 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .gy_bt6 h2{background:url(background.gif) -814px -650px no-repeat; padding-left:25px; color:#1a7933;}.gy_bt6 h2 a{color:#1a7933;}
 .gy_c5{height:273px;}.gy_c6{height:180px;}
 .gy_c6 ul{margin-top:5px;}
+.gy_c6 ul li p{width:180px;word-break:keep-all;}
+.gy_c6 ul li em{width:60px;}
 /*qiugou*/
 .cg_bt1 h2{background:url(arrow03.gif) 0 0 no-repeat;padding-left:20px;width:115px;}
 .buy h2{text-align:left;padding-left:35px;width:100px;}
