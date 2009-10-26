@@ -541,9 +541,9 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .cp_p4{background:url(cp_corner.gif) -15px 0 no-repeat; top:126px; left:956px;}
 .cp_bt4{height:25px; line-height:25px; background:url(dot1.gif) 10px 8px no-repeat; padding-left:18px; color:#0a3168;}
 .cp_ul2{width:960px; margin-top:5px;}
-.cp_ul2 li{width:auto; margin-left:17px; height:21px; line-height:21px; overflow:hidden;}
-.cp_ul2 li em{color:#1F68B5;}
-.cp_tab2{overflow:hidden; border:1px #acdce8 solid;background:url(x_1px_2.gif) repeat-x 0 -440px;height:24px;}
+.cp_ul2 li{width:auto; margin-left:17px; height:21px; line-height:21px; overflow:hidden;word-break:break-all;}
+.cp_ul2 li em{color:#1F68B5;word-break:break-all;}
+.cp_tab2{overflow:hidden; border:1px #acdce8 solid;background:url(x_1px_2.gif) repeat-x 0 -440px;height:24px;width:960px;}
 .cp_tab2 h2,.cp_tab2 p,.cp_tab2 em,.cp_tab2 img,.cp_tab2 select{font-size:12px;float:left; display:inline;}
 .cp_tab2 h2{width:80px; height:18px; line-height:18px; background:#f5f8fd url(dot1.gif) 10px 5px no-repeat; padding-left:12px; color:#0a3168; margin:3px 0 0 0; text-align:center;}
 .cp_p5,.cp_p6,.cp_p7{width:85px; text-align:center; background:url(line2.gif) 75px 4px no-repeat; padding:4px 0 0 5px;*padding:6px 0 0 5px;}
@@ -554,12 +554,12 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .cp_tab3{height:24px; background:url(x_1px_4.gif) 0 -125px repeat-x; border:1px #ddd solid; overflow:hidden; line-height:24px; padding-left:10px; text-align:left;}
 .cp_tab3 a{margin-right:5px; color:#1F68B5;}
 .cp_tab3 a:hover{color:#dc0000;}
-.cp_tab4{height:auto; border:1px #ddd solid; overflow:hidden;color:#0a3168; }
-.cp_tab4 ul{width:794px;}
-.cp_ul3{height:21px; line-height:21px; overflow:hidden;}
+.cp_tab4{height:auto; border:1px #ddd solid; overflow:hidden;color:#0a3168;width:960px; }
+.cp_tab4 ul{width:960px;}
+.cp_ul3{height:21px; line-height:21px; overflow:hidden;width:960px;}
 .cp_ul3 li{font-weight:bold; text-align:center; background:#cfeaff;}
 .cp_ul3 li p{padding-left:20px;}
-.cp_tab4 ul li.li1{width:130px;}.cp_tab4 ul li.li2{width:355px;}.cp_tab4 ul li.li3{width:103px;}
+.cp_tab4 ul li.li1{width:130px;}.cp_tab4 ul li.li2{width:521px;}.cp_tab4 ul li.li3{width:103px;}
 .cp_ul4{height:147px; background:url(x_1px_4.gif) 0 -153px repeat-x;}
 .cp_ul4 li.li1{text-align:center;margin:15px 0 0 0;}
 .cp_ul4 li.li1 img{border:1px #809073 solid;}
