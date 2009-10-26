@@ -820,7 +820,7 @@ body{background:#fff url(x_1px_1.gif) top repeat-x;}
 .news_c1 ul li em{width:80px;}
 /*getpass*/
 .getpass_bt{height:34px;background:url(h_1px_x2.gif) 0 -3px repeat-x;overflow:hidden;}
-.getpass_bt h2{float:left;display:inline;width:101px;height:34px;background:url(h_bg.gif) -203px -143px no-repeat;margin:0 3px 0 0;line-height:36px;text-align:center;color:#004F98;cursor:pointer;}
+.getpass_bt h2{float:left;display:inline;width:101px;height:34px;background:url(h_bg.gif) -203px -143px no-repeat;margin:0 3px 0 0;line-height:36px;text-align:left;color:#004F98;cursor:pointer;padding-left:13px;}
 .getpass_bt h2.cur{width:124px;background:url(h_bg.gif) -219px -42px no-repeat;color:#fff;text-align:right;line-height:34px;}
 .getpass_bt h2.cur em{margin:0 14px 0 0;}
 .getpass_c{width:958px;height:auto;border:1px #B5B5B5 solid;border-top:0;padding:10px 0;background:#fff url(gp_line.gif) 493px 15px no-repeat;color:#0A3168;}
