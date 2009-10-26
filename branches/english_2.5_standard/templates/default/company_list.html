@@ -48,6 +48,7 @@ change(0);
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="setup()">
 <{include file="`$ThemeName`/element.header.html"}>
+<div class="container">
 <table width=960 height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
   <tbody>
     <tr> 
@@ -72,8 +73,8 @@ change(0);
         </tr>
       </table></td>
     <td width="395" valign="top" class="corhui"> 
-      <div align="right"> <img src="<{$tpl_img_path}>default/icon.gif" width="11" height="11"> <a href="<{$UrlContainer.register}>?ob=company" target="_blank">I would like to join the company</a>&nbsp;&nbsp; 
-        <img src="<{$tpl_img_path}>default/icon.gif" width="11" height="11"> <a href="../help.php" target="_blank">How do I join the company?</a>&nbsp;&nbsp;&nbsp;</div></td>
+      <div align="right"> <img src="<{$tpl_img_path}>default/icon.gif" width="11" height="11"> <a href="<{$UrlContainer.register}>?ob=company" target="_blank">Join the company</a>&nbsp;&nbsp; 
+        <img src="<{$tpl_img_path}>default/icon.gif" width="11" height="11"> <a href="../help.php" target="_blank">How to join the company?</a>&nbsp;&nbsp;&nbsp;</div></td>
   </tr>
   <tr> 
     <td colspan="2" valign="top"> 
@@ -101,21 +102,22 @@ change(0);
         </tr>
         <tr> 
           <td class="coryellow2"> 
-            <table height=35 cellSpacing=3 cellPadding=3 width="100%" align=center border=0>
+            <table  cellSpacing=3 cellPadding=3 width="100%" align=center  style="height:auto;">
               <form name="SearchForm" action="<{$smarty.server.PHP_SELF}>" method="get">
 			  <input type="hidden" name="ac" value="list" />
                 <tbody>
                   <tr> 
-                    <td class=f2 align=middle width=85>
+                    <td class=f2 align=middle class="company_lists" style="width:260px;overflow:hidden;">
 					<select name="country_id" id="s1"><option>Country</option></select> 
 					<select name="province_id" id="s2"><option>Province</option></select> 
 					<select name="city_id" id="s3"><option>City</option></select> 
 					</td>
-                    <td align=middle width=105><input name="skeyword" value="Enter keywords" size="18" onFocus="if(this.value=='Enter keywords'){this.value='';this.style.color='#000'}" onBlur="if(this.value==''){this.value='Enter keywords';this.style.color='#808080'}" ></td>
+                    <td align=middle><input name="skeyword" value="Enter keywords" size="18" class="company_listi" onFocus="if(this.value=='Enter keywords'){this.value='';this.style.color='#000'}" onBlur="if(this.value==''){this.value='Enter keywords';this.style.color='#808080'}" ></td>
                     <td align=middle width=87><input type="submit" name="search_list" class="btn_xp" value="--Select--"></td>
                   </tr>
               </form>
-            </table></td>
+            </table>
+          </td>
         </tr>
       </table>
 	  </td>
@@ -133,11 +135,11 @@ change(0);
 </table>
 <table width="960" border="0" align="center" cellpadding="5" cellspacing="1" class="font12white">
   <tr class="coryellow"> 
-    <td width="70" height="30" align="center"><strong>Member Level</strong></td>
-    <td width="405" align="center"><strong>Company/Main products, services</strong></td>
-    <td width="70" align="center"><strong>Business model/Corporate Identity</strong></td>
+    <td width="100" height="30" align="center"><strong>Member Level</strong></td>
+    <td width="355" align="center"><strong>Company/Main products, services</strong></td>
+    <td width="100" align="center"><strong>Business model</strong></td>
     <td width="70" align="center"><strong>Area</strong></td>
-    <td width="75" align="center"><strong>Reputation index</strong></td>
+    <td width="110" align="center"><strong>Reputation index</strong></td>
     <td width="70" align="center"><strong>Guestbook</strong></td>
   </tr>
 </table>
@@ -213,5 +215,6 @@ change(0);
     <td><{include file="`$ThemeName`/element.foot.html"}></td>
   </tr>
 </table>
+</div>
 </body>
 </html>
