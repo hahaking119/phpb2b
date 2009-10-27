@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<META content="MSHTML 6.00.2800.1106" name="generator">
+<link href="<{$tpl_img_path}>admin/admincp.css" rel="stylesheet" type="text/css" />
+<style>
+.f14{font-size:14px;color:#CC0000}
+</style>
+<title>Console_<{$sitetitle}></title>
+<script language="javascript"> 
+window.status = "You are welcome to use PHPB2B Console<{$smarty.const.PHPB2B_VERSION}>";
+</script> 
+<! - Prompted the end of time code -->
+</head>
+<body leftmargin="10" topmargin="10">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr><td><a href="#" onClick="parent.menu.location='admincp.php?action=menu'; parent.main.location='admincp.php?action=home';return false;">System Settings page</a>&nbsp;&raquo;&nbsp;System Information</td></tr></table>
+<br />
+<!-- Welcome -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="2">You are welcome</td></tr>
+<tr class="altbg2"><td width="25%">The latest version of the :</td><td><{$smarty.const.PHPB2B_VERSION}></td></tr>
+</table>
+<br />
+<!-- System -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="2">System Information</td></tr>
+<tr class="altbg2"><td width="25%">Operating system and PHP</td><td><{$PhpVersion}></td></tr>
+<tr class="altbg2"><td width="25%">PHP B2B program current version:</td><td><{$smarty.const.PHPB2B_VERSION}>, The latest version:<{$LatestVersion}></td></tr>
+<tr class="altbg1"><td>MySQL Version</td><td><{$MysqlVersion}></td></tr>
+<tr class="altbg1"><td>GD Library Support</td><td><{$GDSupports}>
+<div style="color:red">Note: The verification code, image watermark, picture zoom must have the php extension, otherwise you can not run</div></td></tr>
+<tr class="altbg1">
+  <td>The current database size</td>
+  <td><{$DatabaseSize}></td>
+</tr>
+<tr class="altbg1">
+  <td>The last backup date</td>
+  <td><{$LastBackupTime|date_format:"%Y-%m-%d %H:%M:%S"}><a href="./backup.php?action=backup_now">Backup Now>>></a> </td>
+</tr>
+</table>
+<br />
+<!-- Team -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header">
+  <td colspan="2">PHPB2B Team</td>
+</tr>
+<tr class="altbg2"><td>Interface Graphic Design</td>
+  <td class="smalltxt"><img src="<{$tpl_img_path}>admin/boy.gif" border="0" alt="">phpb2b@hotmail.com<img src="<{$tpl_img_path}>admin/girl.gif" border="0" alt=""><{mailto address="wangxiumei111@163.com" text="Yishui Han"}></td>
+</tr>
+<tr class="altbg1">
+  <td>Main Website</td>
+  <td class="smalltxt"><a href="http://www.phpb2b.com/" target="_blank">http://www.phpb2b.com/</a></td>
+</tr>
+<tr class="altbg2">
+  <td>Demo Site</td>
+  <td class="smalltxt"><a href="http://www.ualink.cn/" target="_blank">http://demo.phpb2b.com/</a></td>
+</tr>
+</table>
+<br /></td></tr></table>
+<{include file="pb-admin/ua-foot.html"}>
+</body>
+</html>

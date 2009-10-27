@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Console_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<style>
+.actionsel {
+ background-color:#FFFFFF; font-size: 9pt; color: #003399; font-family: Verdana,Arial
+ }
+ /* leave some space between icons and text */
+.icon {
+    vertical-align: middle;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
+}
+/* no extra space in table cells */
+td .icon {
+    margin: 0;
+}
+</style>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;Member</div></td></tr>
+</table>
+<br />
+
+<!-- 搜索 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header"><td colspan="7"><div align="left">Search</div></td></tr>
+<form name="searchfrm" method="get" action="<{$smarty.server.PHP_SELF}>">
+<tr>
+	<td width="9%"><div align="right">User Name:</div></td>
+	<td width="15%"><input name="member[name]" type="text" id="member_name" value="<{$smarty.get.member.name}>"></td>
+	<td width="10%"><div align="right">Member Type:</div></td>
+	<td>
+	<select name="member[user_type]" id="member_user_type">
+	<option value="-1">Open</option>
+	<{html_options options=$UserTypes selected=$smarty.get.user_type}>
+	</select>
+	</td>
+	<td><div align="right">Audit Status:</div></td>
+	<td>
+	<select name="member[status]" id="member_status">
+	<option value="-1">Open</option>
+	<{html_options options=$MemberStatus selected=$smarty.get.member_status}>
+	</select>
+	</td>
+	<td><input name="search" type="submit" id="search" value="Search" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</form>
+</table>
+
+<br>
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="Select"></td>
+<td><a href="member.php?action=list&orderby=desc" onmouseover="if(document.getElementById('soimg1')){ document.getElementById('soimg1').src='<{$tpl_img_path}>admin/s_desc.png'; }" onmouseout="if(document.getElementById('soimg1')){ document.getElementById('soimg1').src='<{$tpl_img_path}>admin/s_asc.png'; }" title="排序">Username <img class="icon" src="<{$tpl_img_path}>admin/s_asc.png" width="11" height="9" alt="Incremental" title="Incremental" id="soimg1" border="0" /></a></td>
+<td>Audit Status</td>
+<td>Full name</td>
+<td>Member Type</td>
+<td>Registered</td>
+<td><a onclick="collapse_change('1')" href="#" title="Off / On"><img id="menuimg_1" src="./images/collapsed_up.gif" border="0"  align="absmiddle" /></a></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$MemberList item=m name=members}>
+<tr bgcolor="<{cycle name=row values=#eeeeee,#ffffff}>" align="center" onclick="this.childNodes[0].childNodes[0].checked=(this.childNodes[0].childNodes[0].checked)?false:true" onmousedown="parentElement.rows[0].bgColor='';bgColor='#FFFF99';">
+<td><input type="checkbox" name="id[]" id="id_<{$m.MemberID}>" value="<{$m.MemberID}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td align="left"><label for="id_<{$m.MemberID}>"><{$m.MemberName}><{if $m.CreateDate>$Today}>&nbsp;<img src="./images/new2.gif" /><{/if}></label></td>
+<td><{$MemberStatus[$m.MemberStatus]}></td>
+<td><{$m.NickName}></td>
+<td><a href="./membertype.php?action=mod&id=<{$m.MemberType}>"><{$UserTypes[$m.MemberType]}></a></td>
+<td><{$m.CreateDate|date_format:"%Y-%m-%d"}></td>
+<td><a href="member.php?action=mod&id=<{$m.MemberID}>" title="<{$m.NickName}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="修改"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="8"><b>There is no data on</b></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="8"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="7"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="Delete">
+<select name="ua_action" id="ua_action" class="actionsel" onChange="javascript:document.listfrm.submit()">
+<optgroup label="Audit Status">
+<option value="0">Please select the operating</option>
+<option value="status_1">Vetted and approved,</option>
+<option value="status_3">Examination is not passed</option>
+<option value="status_0">Invalid</option>
+<option value="status_4">Prohibition</option>
+<option value="status_2">Pending review</option>
+</optgroup>
+<optgroup label="Set membership type">
+<{foreach from=$UserTypes name=usertype item=item key=key}>
+<option value="membertype_<{$key}>"><{$item}></option>
+<{/foreach}>
+</optgroup>
+</select></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+<br />
+<!-- Quick Add -->
+<form name="quickaddfrm" action="member.php?action=mod" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="5"><div align="left">Quick Add</div></td></tr>
+<tr>
+	<td width="9%"><div align="right">User Name:</div></td>
+	<td width="15%"><input name="member[username]" type="text" id="member_name"></td>
+	<td width="10%"><div align="right">Password</div></td>
+	<td><input type="password" name="member[userpass]" id="member_passwd"></td>
+	<td><input name="save" type="submit" id="quickadd" value="Add" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</table>
+</form>
+
+<!-- 结束 -->
+
+</body>
+</html>

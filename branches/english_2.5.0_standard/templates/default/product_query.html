@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pf.ProductName|strip_tags}>&laquo;Query&laquo;<{$sitetitle}></title>
+<meta name ="keywords" content="Tourists, publish, supply, buy, investment, join, inventory, agents, wholesale">
+<meta name ="description" content="<{$sitename}>Web site allows visitors to comply with the basis of agreements freely publish business information, please fill in information in order to allow customers to quickly find you."> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script>
+function checkinput(){
+	return true;
+}
+</script>
+</head>
+
+<body>
+<!--head-->
+<{assign var="product_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p>Your current position: <a class=link12 href="<{$SiteUrl}>"><{$sitename}></a> 
+        &raquo; <a class=link12 href="<{$SiteUrl}>product/">Products</a> 
+        &raquo; Query</p>
+</div>
+<div class="clear9"></div>
+<div class="wd free_c">
+	<p class="a_line8"></p>
+	<div class="zh_left">
+		<div class="free_info">
+			<p>
+				<em class="str">Note:</em><br />
+				In order to facilitate customer contact you, the following"<em class="red"> </em>"Content are required<br />
+			</p>
+		</div>
+	</div>
+	<div class="zh_right">
+	<form name="xunjiafrm" action="<{$smarty.env.PHP_SELF}>" method="post">
+	<input type="hidden" name="id" value="<{$smarty.get.id}>">
+	<input type="hidden" name="query[to_member_id]" value="<{$pf.MemberId}>">
+	<input type="hidden" name="query[to_company_id]" value="<{$pf.CompanyId}>">
+		<div class="bt gs_bt4 h_tt4 free_bt"><h2>Basic information content</h2><p> </p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label>Send to:</label>
+				<p class="free_p5"><{if $pf.MemberEmail!=""}><{mailto address=$pf.MemberEmail encode="javascript" subject="Hello" text=$pf.MemberEmail|default:"NONE"}><{/if}>（<a href="../space.php?userid=<{$pf.MemberUserName}>">See the other side contact</a>）</p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">Inquiry Title:</label>
+				<p class="free_p1"><input name="query[title]" type="text" value="I am Interested on  your<{$sitename}>Product release<{$pf.ProductName}>." size="45"></p>
+			</div>
+			<div class="free_l">
+				<label>Order Total:</label>
+				<p class="free_p1"><input name="query[exp_quantity]" type="text" size="15">
+                      (Units)</p>
+			</div>
+			<div class="free_l">
+				<label>Expected price:</label>
+				<p class="free_p1"><input name="query[exp_price]" type="text">
+                      (Price/unit)</p>
+			</div>
+			<div class="free_l">
+				<label>Additional information:</label>
+				<p class="free_p4"><textarea name="query[content]" cols="40" rows="6" wrap="VIRTUAL" id="content"></textarea></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>I need a better understanding of the information (need to know the information in the pre-select the box)
+                        <input type="checkbox" name="qidAll" id="qid_all" onClick="uaCheckAll(this, 'qid[]')" title="Select"><label for="qid_all">Select</label></h3></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<table>
+				                  <tr>
+                    <td width="31%"><input type="checkbox" name="qid[]" id="qid_1" value="1" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_1">Product specifications, model</label></td>
+                    <td width="35%" height="30"><input type="checkbox" name="qid[]" id="qid_2" value="2" onClick="uaCheckItem(this, 'qidAll')">
+                  <label for="qid_2">Price</label></td>
+                    <td width="34%"><input type="checkbox" name="qid[]" id="qid_3" value="3" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_3">Price Terms</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="qid[]" id="qid_4" value="4" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_4">Origin</label></td>
+                    <td height="30"><input type="checkbox" name="qid[]" id="qid_5" value="5" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_5">Supply capacity</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_6" value="6" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_6">Sales terms and conditions</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="qid[]" id="qid_7" value="7" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_7">Minimum Order Quantity</label></td>
+                    <td height="30"><input type="checkbox" name="qid[]" id="qid_8" value="8" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_8">Delivery</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_9" value="9" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_9">Can provide samples</label></td>
+                  </tr>
+                  <tr>
+                    <td height="22"><input type="checkbox" name="qid[]" id="qid_10" value="10" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_10">Product Warranty</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_11" value="11" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_11">Packaging</label></td>
+                    <td><input type="checkbox" name="qid[]" id="qid_12" value="12" onClick="uaCheckItem(this, 'qidAll')"><label for="qid_12">Quality/Safety Certification</label></td>
+                  </tr>
+				</table>
+			</div>
+		</div>
+		<div class="bt gs_bt4 h_tt5"><h3>Contact (very important: Please fill in carefully to ensure that the other party can be linked to you) </h3><p></p></div>
+		<div class="free_c1">
+			<div class="free_l">
+				<label>Contact:</label>
+				<p class="free_p1"><input type="text" name="link[name]" /></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">Preferred Contact Phone:</label>
+				<p><select name="link[tel_type]" id="tel_type">
+                <{html_options options=$TelTypes selected="1"}>
+              </select>ID:<p class="free_p1"><input type="text" name="link[tel_number]" id="telnumber" value=""></p>
+			</div>
+			<div class="free_l">
+				<label>Preferred IM:</label>
+				<p><select name="link[im_type]">
+                <{html_options options=$ImTypes selected="1"}>
+              </select></p>
+				<label class="free_must1">ID:</label>
+				<p class="free_p3"><input name="link[im_number]" type="text" value="" /></p>
+			</div>
+			<div class="free_l">
+				<label class="free_must">Email:</label>
+				<p class="free_p1"><input name="link[email]" id="LinkEmail" type="text"></p>
+			</div>
+			<div class="free_l free_l1">
+				<input type="submit" value="I would like to Inquiry" name="post" id="Post" class="free_btn1 f14 str"  onClick="return checkinput();"/>
+				<input type="reset" value="Cancel" class="free_btn2 f14 str" onclick="document.xunjiafrm.reset();" />
+			</div>
+		</div>
+		</form>
+	</div>
+	<p class="a_line7"></p>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

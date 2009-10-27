@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Console_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- Location -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;Advertising Management</div></td></tr>
+</table>
+<br />
+<!-- Title -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="Select"></td>
+<td>Title</td>
+<td>Customer Name</td>
+<td>Location</td>
+<td>State</td>
+<td>Start Date</td>
+<td>Hits</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$Lists item=a name=ads}>
+<tr bgcolor="<{cycle values=#eeeeee,#ffffff}>" align="center">
+<td><input type="checkbox" name="id[]" value="<{$a.id}>" onClick="uaCheckItem(this, 'idAll')" id="id_<{$a.id}>"></td>
+<td><label for="id_<{$a.id}>"><{$a.title}></label></td>
+<td><a href="./member.php?action=mod&id=<{$a.member_id}>"><{$a.MemberUserName}></a></td>
+<td><a title="Click Preview" href="<{$SiteUrl}><{$a.AdzoneFileName}>#ad<{$a.id}>" target="_blank"><{$a.AdzoneName}></a></td>
+<td><{$AdsStatus[$a.status]}></td>
+<td><{$a.start_date|date_format:"%Y-%m-%d"}>To<{$a.end_date|date_format:"%Y-%m-%d"}></td>
+<td><{$a.clicked}></td>
+<td><a href="<{$smarty.server.PHP_SELF}>?action=mod&username=<{$a.MemberUserName}>&id=<{$a.id}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="Changes"></a>  <a href="<{$smarty.server.PHP_SELF}>?action=del&id=<{$a.id}>"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="Remove"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="9" align="center"><strong>There is no data on</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- Paging -->
+<tr align="center"><td class="altbg1" colspan="9"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="5"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="Remove" onClick="return confirmAction('OK to delete?');"></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><div align="center"><a title="Top" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<!-- Quick Add -->
+<form name="quickaddfrm" action="" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="5"><div align="left">Quick Add</div></td></tr>
+<tr>
+	<td width="9%"><div align="right">Ad Title:</div></td>
+	<td width="15%"><input name="ad[title]" type="text" id="ad_title"></td>
+	<td width="10%"><div align="right">Ad Position:</div></td>
+	<td>
+	<select name="ad[adzone_id]" id="ad_adzone_id">
+	<{foreach from=$Adzones item=a name=sel_adzone}>
+	<option value="<{$a.id}>"><{$a.name}>
+	<{foreachelse}>
+	<option value="0">Please add ad placement
+	<{/foreach}>
+	</select>
+	</td>
+	<td><input name="save" type="submit" id="save" value="Add" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</table>
+</form>
+<!-- End of the new -->
+</body>
+</html>

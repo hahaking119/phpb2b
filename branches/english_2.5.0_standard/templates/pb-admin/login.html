@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Console_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script language="javascript" src="<{$JS_PATH}>js/prototype.js"></script>
+<title>Management Center - Login</title>
+<style>
+body{background:#edf5ff;}
+</style>
+<script language="javascript">
+<!-- 
+function logined(){
+<{if $smarty.session.is_admin==""}>
+	if($F('username') == ""){
+		alert("Please enter a user name");
+		$('username').focus();
+		return false;
+	}
+<{/if}>
+	if($F('userpass') == ""){
+		alert("Please enter your password");
+		$('userpass').focus();
+		return false;
+	}
+	<{if $IfCpPicture}>
+	if($F('login_auth') == ""){
+		alert("Please enter the verification code is not case sensitive");
+		$('login_auth').focus();
+		return false;
+	}
+	<{/if}>
+	return true;
+}
+<{if $smarty.session.is_admin==""}>
+window.onload="javascript:$('username').focus();";
+<{/if}>
+//-->
+</script>
+</head>
+
+<body>
+<div class="s_login">
+<form action="" method="post" name="" class="s_lo_f">
+	<img src="<{$tpl_img_path}>default/center.gif" alt="UALINK Management Center" class="s_img" />
+	<p><label for="username2">UserName: </label><{if $smarty.session.is_admin}><{$smarty.session.is_admin}><input type="hidden" name=a[username] id="username2" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{else}><input tabindex="1" type="text" name=a[username] id="username" size="15" maxLength="20" value="<{$smarty.session.is_admin}>"><{/if}>	<label><{$LoginError}></label>
+</p>
+	<p>
+		<label for="userpass">Password&nbsp;:</label><input tabindex="2" type="password" name="a[userpass]" id="userpass" size=15 maxLength=20>
+		<{if $IfCpPicture}>        
+		<label for="s_yzm">Verify Code:</label><input type="text" value="" name="login_auth" tabindex="3" id="s_yzm" /><img src="../auth_image.php">
+		<{/if}>
+	</p>
+	<p class="s_p1">
+		<input type="submit" name="login" value="Login" class="s_dl" onclick="return logined();" />
+		<a href="<{$SiteUrl}>" class="s_a1">Home</a>
+		<a href="<{$SiteUrl}>user/getpass.php" class="s_a1 s_a2">Forget?</a>
+	</p>
+	<p class="s_p2">For questions,please contact this <{mailto address="`$serviceemail`" encode="javascript" subject="Hello, " text="Email"}></p>
+</form>
+</div>
+</body>
+</html>

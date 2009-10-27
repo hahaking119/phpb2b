@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body leftmargin="10" topmargin="10">
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr>
+  <td><div align="left"><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;Member type setting</div></td>
+</tr></table>
+<form name="editfrm" method="post" action="<{$smarty.server.PHP_SELF}>">
+<input type="hidden" name="id" value="<{$smarty.get.id}>" />
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header">
+  <td colspan="4">Member Type</td>
+</tr>
+
+<tr>
+  <td class="altbg1" width="50%"><strong>Type Name:</strong></td>
+  <td colspan="3" class="altbg2"><input type="text" name="t[name]" value="<{$t.name}>"></td>
+</tr>
+
+<tr>
+  <td class="altbg1"><strong>Access code:</strong></td>
+  <td colspan="3" class="altbg2">
+  <select name="t[access_id]">
+	<option value="0">New permissions</option>
+	<{foreach from=$AllAccesses name=access item=item}>
+		<option value="<{$item.id}>" <{if $item.id==$t.access_id}>selected<{/if}>><{$item.name}></option>
+	<{/foreach}>
+  </select></td>
+</tr>
+
+<tr>
+  <td class="altbg1"><strong>Whether the default type</strong>:</td>
+  <td colspan="3" class="altbg2"><{html_radios name="t[if_default]" options=$MembertypeStatus checked=$t.if_default|default:"0" separator=" "}></td>
+</tr>
+
+<tr>
+  <td class="altbg1"><strong>Price per year :</strong></td>
+  <td colspan="3" class="altbg2"><input type="text" name="t[price_every_year]" value="<{$t.price_every_year}>"></td>
+</tr>
+<tr>
+<td class="altbg1"><strong>Is enabled :</strong></td>
+<td colspan="3" class="altbg2"><{html_radios name="t[status]" options=$MembertypeStatus checked=$t.status|default:"1" separator=" "}></td>
+</tr>
+<tr>
+  <td class="altbg1"><strong>Legend:</strong>
+  <br />Picture name must be the type of numbers with the suffix</td>
+  <td colspan="3" class="altbg2"><input type="text" name="t[picture]" value="<{$t.picture}>"><img src="<{$tpl_img_path}>default/type/<{$t.picture|default:"default.gif"}>" /></td>
+</tr>
+
+
+
+
+
+<tr><td colspan="4" class="altbg1"><div align="center">
+  <input type="submit" name="save" value="Save" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"/>
+</div></td>
+</tr>
+</table>
+<br />
+<center>
+</center>
+</form>
+</td></tr></table>
+<br /><br />
+</body>
+</html>
+

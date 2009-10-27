@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="Advanced search allows you to quickly find the target"> 
+<title>Advanced Search&laquo;<{$sitetitle}></title>
+<link rel="Shortcut Icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<link href="<{$tpl_img_path}>default/search.css" rel="stylesheet" type="text/css">
+<script src="<{$JS_PATH}>js/prototype.js" type="text/javascript"></script>
+<script src="<{$JS_PATH}>js/search.js" type="text/javascript"></script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<{include file="`$ThemeName`/element.header.html"}>
+<table width="960" height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
+  <tbody>
+    <tr> 
+      <td width=785><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
+      width=14> Your current position: <a class=link12 href="<{$SiteUrl}>"><{$sitename}></a> 
+        &raquo; Advanced Search</td>
+    </tr>
+  </tbody>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td>
+	<div class="b2cbody">
+		<div class="hsearch_title">
+			<h2>Advanced Search: </h2>
+			<ul>
+				<li onclick="Tab.change(0)"><span id="li_tab0" class="hsearch_title_now">Offer</span></li>
+				<li onclick="Tab.change(1)"><span id="li_tab1" >Product</span></li>
+				<li onclick="Tab.change(2)"><span id="li_tab2" >Company</span></li>
+				<li onclick="Tab.change(3)"><span id="li_tab3" >Market</span></li>
+			</ul>
+		</div>
+		
+		
+		<div id="div_cont0" class="hsearch_body">
+		
+		 <form name='form_send0' id='form_send0' method='GET' action='offer/list.php'>
+		<div class="hsearch_body_cont">
+			<div class="hsearch_body_cont_text">Trade Title:</div>
+			<input type="text" name="skeyword"  />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Keywords:</div>
+		  <input type="text" name="key2"  />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Company Name:</div>
+		  <input type="text" name="key3"  />
+		</div>
+		<div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Effective Time:</div>
+		  <select name="laststock" class="hsearch_body_cont_input">
+							<option selected value='lall'>All the time range</option>
+							<option value='l3'>近3天</option>
+							<option value='l10'>近10天</option>
+							<option value='l30'>近30天</option>
+							<option value='m30'>大于30天</option>
+		  </select>
+		</div>
+		<div id="__book_search" class="hsearch_body_cont1">
+		<input type="submit" value="搜 索"  onclick="checkSearchSubmit(0);return false;" class="hsearch_body_button" />
+		  <input name="input2"  type="reset" value="重新填写" class="hsearch_body_button"/>
+		</div>
+		 </form>
+		
+		</div>
+		
+			<div  id="div_cont1" class="hsearch_body" style="display:none">
+			<form name='form_send1' id='form_send1' method='GET' action='product/list.php'>
+		<div class="hsearch_body_cont">
+			<div class="hsearch_body_cont_text">Product Name:</div>
+			<input type="text" name="skeyword" id="text9" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Company Name:</div>
+		  <input type="text" name="key2" id="text10" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Keywords:</div>
+		  <input type="text" name="key3" id="text11" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Posted:</div>
+		  <select name="laststock" id="select1" class="hsearch_body_cont_input">
+			  <option selected value='lall'>All the time range</option>
+							<option value='l3'>Last 3 days</option>
+							<option value='l10'>Last 10 days</option>
+							<option value='l30'>Last 30 days</option>
+							<option value='m30'>More than 30 days</option>
+		  </select>
+		</div>
+		<div id="__music_search" class="hsearch_body_cont1">
+		<input type="submit" value="Search" class="hsearch_body_button" />
+		
+		  <input name="input2" type="reset" value="Reset" class="hsearch_body_button"/>
+		</div>
+		</form>
+		</div>
+		
+		
+		  <div  id="div_cont2" class="hsearch_body" style="display:none">
+		<form name='form_send2' id='form_send2' method='GET' action='company.php'>
+		<input type="hidden" name="ac" value="list" />
+		<div class="hsearch_body_cont">
+			<div class="hsearch_body_cont_text">Company Name:</div>
+			<input type="text" name="skeyword" id="text15" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Business Type:</div>
+		  <input type="text" name="key4" id="text16" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Economic nature:</div>
+		  <input type="text" name="key2" id="text17" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Main products or services:</div>
+		  <input type="text" name="key3" id="text18" />
+		</div>
+		<div id="__movie_search" class="hsearch_body_cont1">
+		<input type="submit" value="Search" onclick="checkSearchSubmit(2);return false;" class="hsearch_body_button" />
+		  <input name="input2" type="reset" value="Reset" class="hsearch_body_button"/>
+		</div>
+		</form>
+		</div>
+		
+		
+		<div  id="div_cont3" class="hsearch_body" style="display:none">
+		<form name='form_send3' id='form_send3' method='GET' action='market/list.php'>
+		<div class="hsearch_body_cont">
+			<div class="hsearch_body_cont_text">Market Name:</div>
+			<input name="skeyword" type="text" id="ipn_f3_q" onclick="if(this.value=='Enter keywords'){this.className='';this.value='';}" onblur="if(this.value==''){this.className='gray_87';this.value='Enter keywords';}" value="Enter keywords" class=" gray_87" />
+		</div><div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Respective industry:</div>
+		  <select name="cid" id="cid" class="hsearch_body_cont_input">
+			<option value="0">Please select industry</option>
+			<{foreach from=$ParentIndustry name=fairIndustry item=item}>
+			<option value="<{$item.id}>"><{$item.name}></option>
+			<{/foreach}>
+	</select>
+		</div>
+		<div class="clear"></div>
+		<div class="hsearch_body_cont">
+		  <div class="hsearch_body_cont_text">Region:</div>
+		  <select name="loc" id="select6" class="hsearch_body_cont_input">
+			<option value="0">Please select a city/region</option>
+			<{foreach from=$ParentArea name=fairArea item=item}>
+			<option value="<{$item.id}>"><{$item.name}></option>
+			<{/foreach}>
+		  </select>
+		</div>
+		<div id="__cate_search" class="hsearch_body_cont1">
+		<input type="submit" value="Search" class="btn_xp" />
+		  <input name="input2" type="reset" value="Reset" onclick="$('ipn_f3_q').className='gray_87'" class="btn_xp"/>
+		</div>
+		</form>
+		</div>
+	</div>
+</td>
+  </tr>
+</table>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='GB2312'?>
+<imgList>
+<pic>
+<{foreach from=$PictureNews name=PictureNews item=item}>
+<list path="<{$SiteUrl}>attachment/<{$item.picture}>"   smallpath="<{$SiteUrl}>attachment/<{$item.picture}>.small.jpg" smallinfo="NEWS-<{$item.id}>"><{$SiteUrl}>news/detail.php?id=<{$item.id}></list>
+<{foreachelse}>
+<list path="swf/img/big-1.jpg"   smallpath="swf/img/small-1.png" smallinfo="OLAY Olay latest series">http://www.olay.com.cn/</list>
+<list path="swf/img/big-2.jpg"   smallpath="swf/img/small-2.png" smallinfo="Business models 51 sales">http://www.lenovo.com.cn/</list>
+<list path="swf/img/big-3.jpg"   smallpath="swf/img/small-3.png" smallinfo="Gordon Everest Digital Peripherals">http://www.lenovo.com.cn/</list>
+<list path="swf/img/big-4.jpg"   smallpath="swf/img/small-4.png" smallinfo="ideapad U110">http://www.lenovo.com.cn/</list>
+<list path="swf/img/big-5.jpg"   smallpath="swf/img/small-5.png" smallinfo="Audio-visual entertainment experience">http://www.lenovo.com.cn/</list>
+<{/foreach}>
+</pic>
+<rollTime fade_in="10">4</rollTime>
+<text font="Blackbody" size="12" bold="true" color="#FFFFFF"></text>
+</imgList>

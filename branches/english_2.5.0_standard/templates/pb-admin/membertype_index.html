@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Console_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide"><tr><td>
+<div align="left"><a href="#" onClick="parent.menu.location='setting.php?action=menu'; parent.main.location='setting.php?action=home';return false;">Console</a>&nbsp;&raquo;&nbsp;Member Type Manager</div></td></tr>
+</table>
+<br />
+
+<!-- 标题 -->
+<form name="listfrm" action="<{$smarty.server.PHP_SELF}>" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="全选"></td><td>Name</td><td>Default</td>
+  <td>Permissions</td>
+  <td>Legend</td>
+  <td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$Lists item=mt name=membertypes}>
+<tr bgcolor="<{cycle values="#eeeeee,#ffffff"}>" align="center">
+<td><input type="checkbox" name="id[]" value="<{$mt.MembertypeId}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><{$mt.MembertypeName}></td>
+<td><input type="radio" name="default_id" value="<{$mt.MembertypeId}>" <{if $mt.MembertypeIfDefault=="1"}>checked<{/if}> /></td>
+<td><{if $mt.AccessName!=""}><a href="./access.php?action=mod&id=<{$mt.access_id}>&membertype_id=<{$mt.MembertypeId}>"><{$mt.AccessName}></a><{else}><a href="./access.php?action=mod&membertype_id=<{$mt.MembertypeId}>" title="Add permissions only take effect after the member permissions"><font color="red">Add Permissions</font></a><{/if}></td>
+<td><div id="img1"><img src="<{$tpl_img_path}>default/type/<{$mt.picture}>" alt="" border="0" /></div></td>
+<td><a href="./membertype.php?action=mod&id=<{$mt.MembertypeId}>"><img src="<{$tpl_img_path}>admin/mod.gif" border="0" alt="Changes"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="7">There is no data on</td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="7"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="7"><input name="del" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" value="Delete">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="updateDefault" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" value="Updated to the default type"></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<br />
+<!-- Quick Add -->
+<form name="quickaddfrm" action="" method="post">
+<table width="98%" border="0" cellpadding="0" cellspacing="0" class="tableborder" align="center">
+<tr class="header"><td colspan="5"><div align="left">Quick Add</div></td></tr>
+<tr>
+	<td><div align="right">Type name :</div></td>
+	<td><input name="membertype[name]" type="text" id="membertype_name"></td>
+	<td><div align="right">Is set to the default type</div></td>
+	<td><input type="radio" name="membertype[if_default]" value="1">is<input type="radio" name="membertype[if_default]" value="0" checked>no</td>
+	<td><input name="quickadd" type="submit" id="quickadd" value="Add" class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"></td>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>

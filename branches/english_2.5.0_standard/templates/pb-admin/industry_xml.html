@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Generated sample data - <{$sitetitle}></title>
+<link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+<!--
+function clip(text){
+str=eval("document." + text)
+str.select()
+str = document.selection.createRange();
+clipboardData.setData('text',(str.text));
+}
+//-->
+</script>
+</head>
+<body>
+<form name="textfrm">
+<a href="javascript:clip('textfrm.copy')" title="点击复制到剪贴板"><{if $XML_FILE_NAME}>Data has been copied to the data/xml/<{$XML_FILE_NAME}><{/if}>(Click Copy to clipboard)</a><br>
+<textarea name="copy" style="width:450px;overflow-y:visible;font-family:Arial"><{$XMLDATA}></textarea>
+</form>
+</body>
+</html>

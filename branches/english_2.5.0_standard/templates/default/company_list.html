@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
+<title><{$pageTitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>" />
+<meta name="description" content="All <{$pageTitle}> Browse a detailed list of the company library" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<style>
+.bgcontain { margin: 0 auto; width: 960}
+#abc { font-size: 12px; font-weight: bold; height: 20px; margin: 8px 0; padding: 8px 2px 8px 10px; border: 1px solid #E2E44F; background: #F9FDDB; } * html #abc { padding: 8px 0 3px 10px; } 
+#abc span { float: left; color: #9F6536; margin-right: 8px; padding: 3px 4px 1px 4px; background: url(<{$tpl_img_path}>default/abc_bg.gif) no-repeat; } 
+#abc a { float: left; display: block; color: #9F6536; line-height: 19px; text-decoration: none; text-align: center; width: 20px; height: 20px; margin: 0 3px; background: url(<{$tpl_img_path}>default/abc_a.gif) 0 -40px; } 
+#abc a:hover { color: #0076AF; background: url(<{$tpl_img_path}>default/abc_a.gif) 0 -20px; } #abc span#totop { float: right; font-size: 12px; padding: 5px 0 0; background: none; } 
+#abc span#totop a { line-height: normal; width: auto; padding: 0 0 0 15px; background: url(<{$tpl_img_path}>default/totop.gif) no-repeat left 0; } 
+#abc span#totop a:hover { color: #105CB6; text-decoration: underline; }
+#lists li{
+    list-style-type:none;
+    width:200px;
+    height:25px;
+    line-height:25px;
+    text-align:left;
+    float:left;
+    margin-left:1px;
+    margin-bottom:1px;
+}
+</style>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="<{$JS_PATH}>js/area_func.js"></SCRIPT> 
+<SCRIPT LANGUAGE="JavaScript" src="<{$JS_PATH}>js/area_data.js"></SCRIPT> 
+<SCRIPT LANGUAGE = JavaScript> 
+<!--
+var s=["s1","s2","s3"]; 
+var opt0 = ["Country","Province","City"]; 
+function setup() 
+{ 
+for(i=0;i<s.length-1;i++) 
+document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")"); 
+change(0); 
+} 
+//--> 
+</SCRIPT> 
+<{$xajax_javascript}>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="setup()">
+<{include file="`$ThemeName`/element.header.html"}>
+<table width=960 height=30 border=0 align=center cellPadding=0 cellSpacing=0 class="corhui">
+  <tbody>
+    <tr> 
+      <td width=785><img height=13 src="<{$tpl_img_path}>default/icon1.gif" 
+      width=14> Your current position: <{$pagePosition}></td>
+    </tr>
+  </tbody>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="365">
+	<table width="365" height="27" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="91" background="<{$tpl_img_path}>default/menu_02.jpg"> 
+            <div align="center"><strong><a id="IndustryTab1" href="#" onClick=" changeTab(1);xajax_loadDivSubIndustry(<{$smarty.get.sid|default:"1"}>,1);">Buyer</a></strong></div></td>
+          <td width="91" background="<{$tpl_img_path}>default/menu_02.jpg"> 
+            <div align="center"><a id="IndustryTab2" href="#" onClick="changeTab(2);xajax_loadDivSubIndustry(<{$smarty.get.sid|default:"1"}>,2);"><strong>Seller</strong></a></div></td>
+          <td width="90" background="<{$tpl_img_path}>default/menu_01.jpg"> 
+            <div align="center"><strong><a id="IndustryTab3" href="javascript:void(0);" onClick="changeTab(3);xajax_loadDivSubIndustry(<{$smarty.get.sid|default:"1"}>,3);">Company</a></strong></div></td>
+          <td width="91" background="<{$tpl_img_path}>default/menu_02.jpg">
+		  <div align="center"><a id="IndustryTab4" href="javascript:void(0);" onClick="changeTab(4);xajax_loadDivSubIndustry(<{$smarty.get.sid|default:"1"}>,4);">Product</a></div></td>
+        </tr>
+      </table></td>
+    <td width="395" valign="top" class="corhui"> 
+      <div align="right"> <img src="<{$tpl_img_path}>default/icon.gif" width="11" height="11"> <a href="<{$UrlContainer.register}>?ob=company" target="_blank">I would like to join the company</a>&nbsp;&nbsp; 
+        <img src="<{$tpl_img_path}>default/icon.gif" width="11" height="11"> <a href="../help.php" target="_blank">How do I join the company?</a>&nbsp;&nbsp;&nbsp;</div></td>
+  </tr>
+  <tr> 
+    <td colspan="2" valign="top"> 
+	<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="lineyellow">
+        <tr> 
+          <td class="coryellow" height="4"></td>
+        </tr>
+        <tr> 
+          <td class="coryellow2"height="8">          
+			  <div id="divSubIndustry">
+			  <table>
+			  <tr>
+			  <{foreach from=$OtherIndustry name=fore1 item=data}>
+			  <td><a href="<{$SiteUrl}>company.php?ac=list&industryname=<{$data.Name|urlencode}>"><{$data.Name}></a>(<{$data.BuyAmount}>)</td>
+			  <{if $smarty.foreach.fore1.iteration is div by 6}>
+			  </tr><tr>
+			  <{/if}>
+			  <{foreachelse}>
+			  <td>No sub-categories of the industry</td>
+			  <{/foreach}>
+			  </tr>
+			  </table>
+			  </div>
+		  </td>
+        </tr>
+        <tr> 
+          <td class="coryellow2"> 
+            <table height=35 cellSpacing=3 cellPadding=3 width="100%" align=center border=0>
+              <form name="SearchForm" action="<{$smarty.server.PHP_SELF}>" method="get">
+			  <input type="hidden" name="ac" value="list" />
+                <tbody>
+                  <tr> 
+                    <td class=f2 align=middle width=85>
+					<select name="country_id" id="s1"><option>Country</option></select> 
+					<select name="province_id" id="s2"><option>Province</option></select> 
+					<select name="city_id" id="s3"><option>City</option></select> 
+					</td>
+                    <td align=middle width=105><input name="skeyword" value="Enter keywords" size="18" onFocus="if(this.value=='Enter keywords'){this.value='';this.style.color='#000'}" onBlur="if(this.value==''){this.value='Enter keywords';this.style.color='#808080'}" ></td>
+                    <td align=middle width=87><input type="submit" name="search_list" class="btn_xp" value="--Select--"></td>
+                  </tr>
+              </form>
+            </table></td>
+        </tr>
+      </table>
+	  </td>
+  </tr>
+</table>
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="corhui">
+  <tr> 
+    <td> 
+      <table width="960" border="0" cellpadding="3" cellspacing="0">
+        <tr> 
+          <td height="20"><{$ByPages}></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1" class="font12white">
+  <tr class="coryellow"> 
+    <td width="70" height="30" align="center"><strong>Member Level</strong></td>
+    <td width="405" align="center"><strong>Company/Main products, services</strong></td>
+    <td width="70" align="center"><strong>Business model/Corporate Identity</strong></td>
+    <td width="70" align="center"><strong>Area</strong></td>
+    <td width="75" align="center"><strong>Reputation index</strong></td>
+    <td width="70" align="center"><strong>Guestbook</strong></td>
+  </tr>
+</table>
+<!-- list sc=sub_companies-->
+<{foreach from=$Lists name=company_list item=data}>
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
+  <tr class="corhui"> 
+    <td width="70" align="center">
+	<!-- 这里默认VIP会员的类型为4 -->
+	<img src="<{$tpl_img_path}>default/grade/<{$data.MemberCreditLevel|default:"1"|cat:".gif"}>"></td>
+    <td width="405"><{if $data.MemberUserType==4}><img src="<{$tpl_img_path}>default/vip_company.gif" alt="<{$data.MemberUserType}>">&nbsp;<{/if}><a href="<{$SiteUrl}>space.php?userid=<{$data.MemberUsername}>" class="font14blak"><{$data.Name|strip_tags|replace:$smarty.get.skeyword:$searchwords}></a>
+          <!-- <a href=#><img src="images/mark.gif" border="0"></a> --><{if $data.CreateTime!=""}><span class="time">(<a href="<{$SiteUrl}>company/<{$data.CreateTime|date_format:"%Y/%m/%d"}>/"><{$data.CreateTime|date_format:"%Y-%m-%d"}></a>)</span><span>[<a href="<{$SiteUrl}>company.php?ac=list&industryname=<{$data.IndustryName|urlencode}>"><{$AllIndustry[$data.IndustryId]}></a>]</span><{/if}>
+		  <br />
+		  <{$data.Description|strip_tags|truncate:100}></td>
+    <td width="70"><div align="center">
+		  <br />
+		  <{if $data.CompanyPicture}><img src="attachment/<{$data.CompanyPicture}>" width="117" height="63" alt="<{$data.Name}>" /><{/if}><{$ManageTypes[$data.manage_type]}></div></td>
+    <td width="70">
+<div align="center"><a href="<{$SiteUrl}>company/list.php?province_id=<{$data.CompanyProvinceId}>"><{$AllArea[$data.CompanyProvinceId]}></a><br /><a href="<{$SiteUrl}>company/list.php?city_id=<{$data.CompanyCityId}>"><{$AllArea[$data.CompanyCityId]}></a></div></td>
+    <td width="75" align="center"><img src="<{$tpl_img_path}>default/type/<{$data.Membertype|default:default}>.gif" alt="<{$data.MemberCreditLevel}>"></td>
+    <td width="70" align="center"><img src="<{$tpl_img_path}>default/feed.gif" width="20" height="14"><br> 
+      <a href="<{$SiteUrl}>space.php?do=feedback&userid=<{$data.MemberUsername}>">Feedback</a></td>
+  </tr>
+</table>
+<{foreachelse}>
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="1">
+  <tr class="corhui"> 
+    <td align="center"><div align="center">No Data</div></td>
+  </tr>
+</table>
+<{/foreach}>
+<!-- //list -->
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="0" class="corhui">
+  <tr> 
+    <td> <table width="960" border="0" cellpadding="3" cellspacing="0">
+        <tr> 
+          <td height="20"><{$ByPages}></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+
+  <tr> 
+    <td height="1" background="<{$tpl_img_path}>default/dian.gif"></td>
+  </tr>
+  <tr> 
+    <td> 
+      <table width="100%" cellpadding="3" cellspacing="3" class="coryellow2">
+        <tr  > 
+          <td width="65%" valign="baseline"><!-- old pages1 --></td>
+          <td align="right" valign="baseline"><!-- old pages2 --></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div class="bgcontain"> 
+	<div id="abc"><span>Letter Search</span>
+	<{foreach from=$Letters item=le}>
+	<a href="<{$UrlContainer.common}>company.php?ac=list&le=<{$le}>&sid=<{$smarty.get.sid|default:$smarty.get.aindustry}>&usertype=<{$smarty.get.usertype}>"><{$le}></a>
+	<{/foreach}>
+	<span id="totop">
+	<a href="#" class="BTT">Back to top</a></span>
+	</div>
+	</div>
+	</td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><{include file="`$ThemeName`/element.foot.html"}></td>
+  </tr>
+</table>
+</body>
+</html>

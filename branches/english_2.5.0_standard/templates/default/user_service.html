@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Customer Service&laquo;<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="<{$sitename}>">
+<meta name="description" content="<{$sitename}>Customer Service Center, please submit your valuable comments here"> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+<script language="javascript">
+/**
+onpropertychange()方法在非IE浏览器中很多都不支持，以后可能要用其他代替。
+**/
+var number=<{$ServicePageAmount}>; //定义条目数
+
+function LMYC() {
+var lbmc;
+    for (i=1;i<=number;i++) {
+        lbmc = eval('LM' + i);
+        lbmc.style.display = 'none';
+    }
+}
+ 
+function ShowFLT(i) {
+    lbmc = eval('LM' + i);
+    if (lbmc.style.display == 'none') {
+        LMYC();
+        lbmc.style.display = '';
+    }
+    else {
+        lbmc.style.display = 'none';
+    }
+}
+function init(){
+	//alert("asdfasfd");
+	document.servicefrm.save.disabled=true;
+}
+function checkform() {
+	document.servicefrm.save.disabled=true;
+	var title = document.getElementById("title").value;
+	var content = document.getElementById("content").value;
+	if(title=="" || content==""){
+		alert("Please enter the title or content of");
+		return false;
+	}else{
+		document.servicefrm.submit();
+	}
+}
+function d(){
+	document.servicefrm.save.disabled=false;
+	document.servicefrm.save.value="Submit";
+}
+</script>
+</head>
+
+<body>
+<!--head-->
+<{assign var="room_li" value="cor over"}>
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p><span class="str">Your current position:</span><a href="#" title="<{$sitename}>"><{$sitename}></a> &gt; Customer Service</p>
+</div>
+<div class="clear9"></div>
+<div class="wd">
+	<div class="w_left1">
+		<p class="cs_ad"><img src="<{$tpl_img_path}>default/service.jpg" /></p>
+		<div class="clear9"></div>
+		<p class="a_line"></p>
+		<div class="cs_c1">
+			<table width="690" border="0" cellspacing="0" cellpadding="0">
+			  <thead>
+				<th width="80">Q / A</th>
+				<th width="400">Issues / content</th>
+				<th width="105">Submitted</th>
+				<th width="105">Time</th>
+			  </thead>
+			  <{foreach from=$ServiceList name=listservice item=sl}>
+			  <tr>
+				<td><em>Q</em></td>
+				<td><a onClick=javascript:ShowFLT(<{$smarty.foreach.listservice.iteration}>) href="javascript:void(null)"><h4><{if $sl.Title|lower eq "index"}><{else}><{$sl.Title|strip_tags}><{/if}></h4><{$sl.Content}></a></td>
+				<td><{if $sl.NickName eq ""}>Anonymous<{else}><{$sl.NickName}><{/if}></td>
+				<td><{$sl.CreateTime|date_format:"%Y-%m-%d"}></td>
+			  </tr>
+			  <tr id="LM<{$smarty.foreach.listservice.iteration}>" style="DISPLAY: none;">
+				<td><em>A</em></td>
+				<td><{$sl.Revert}></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			  </tr>
+			  <{/foreach}>
+			  <tr>
+				<td colspan="4"><{$ByPages}></td>
+			  </tr>
+			</table>
+			<p class="a_line3"></p>
+								<form name="servicefrm" action="./service.php" method="post" onSubmit="return checkform()">
+								<input type="hidden" name="s" value="1">
+			<div class="cs_d">
+				<label>Feedback category:</label>
+				<p><{html_radios name="service[type_id]" options=$ServiceTypes checked="1" separator=" "}></p>
+			</div>
+			<div class="cs_d cs_d1">
+				<label for="title">Title:</label>
+				<p><input name="service[title]" type="text" value="" id="title" size="40" onFocus="d();"/></p>
+			</div>
+			<div class="cs_d cs_d1">
+				<label for="nick_name">Your name:</label>
+				<p><input name="service[nick_name]" type="text" value="" id="nick_name" size="40" maxlength="20"/></p>
+			</div>
+			<div class="cs_d cs_d1">
+				<label for="mail">Your Email:</label>
+				<p><input name="service[email]" type="text" value="" id="mail" size="40" maxlength="20"/></p>
+			</div>
+			<div class="cs_d cs_d2">
+				<label for="content">Feedback content:</label>
+				<p><textarea name="service[content]" cols="40" rows="6" wrap="VIRTUAL" id="content" onFocus="d();"></textarea></textarea></p>
+			</div>
+			<div class="cs_d cs_d3"><input type="submit" name="save" id="save" value="提交" alt="Enter a title may be submitted after focus." /></div>
+			</form>
+		</div>
+		
+	</div>
+	<div class="w_right1">
+		<div class="cpk_t1"></div>
+		<div class="cpk_c2 cs_c2">
+			<div class="bt cpk_bt1"><h2><a href="#">Latest Announcement</a></h2></div>
+			<ul class="ul21">
+				<{announce max=10}>
+			</ul>
+			<div class="cs_c3">
+				<em>Give us the message:</em><br />
+				Dear User: Please fill in the following information, we have as far as possible within three working days to you reply, please refer to your mail carefully read the history of that message content.<br />
+				<br />
+				<em>Warm reminder:</em><br />
+				Here you can send the same to us as to submit questions, we will as soon as you reply within three working days, please note that check e-mail!<br />
+				Customer Service Hotline:<{$servicetel}><br />
+				Email:<a href="mailto:<{$serviceemail}>"><{$serviceemail}></a>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+<script language="javascript">
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title><{$PageTitle|default:"About"}>-<{$sitetitle}></title>
+<meta name="generator" content="<{$UaVersion}>" />
+<meta name ="keywords" content="Help, questions, instructions">
+<meta name="description" content="<{$PageTitle|truncate:150}>,Hello, here is the<{$sitename}>Help Center, the  <{$sitename}> all the questions, you may find the answers here."> 
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/basic.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/head_foot.css" />
+<link rel="stylesheet" type="text/css" href="<{$tpl_img_path}>default/style.css" />
+</head>
+
+<body>
+<!--head-->
+<{include file="`$ThemeName`/element.header.html"}>
+<!--head end-->
+<div class="wd crumb">
+	<p><span class="str">Your current position:</span><a href="<{$UrlContainer.common}>">Homepage</a> >> <{$PageTitle}></p>
+</div>
+<div class="clear9"></div>
+<div class="wd a_c">
+	<div class="w_left1">
+		<p class="a_line"></p>
+		<div class="a_c1">
+			<h2><{$PageTitle}></h2>
+			<div class="a_text f14">
+				<p><{$Item.message|nl2br}></p>
+			</div>
+		</div>
+	</div>
+	<div class="w_right1">
+		<p class="a_line1"></p>
+		<div class="a_c2">
+			<ul>
+				<{announce col="1" templet="li"}>
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<{include file="`$ThemeName`/element.foot.html"}>
+</body>
+</html>

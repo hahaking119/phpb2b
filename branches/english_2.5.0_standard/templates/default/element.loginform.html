@@ -1,0 +1,13 @@
+<form id="loginFrm" name="loginFrm" method="post" action="<{$UrlContainer.common}>user/logging.php">
+<input type="hidden" name="id" value="<{$smarty.get.id}>">
+<input type="hidden" name="loginbtn" value="1">
+<input type="hidden" name="referer" value="<{$smarty.server.REQUEST_URI}>">
+			<div class="bt cp_bt2"><h2>Please log in to see contact information</h2></div>
+					<p><em class="str">Login Name:</em><input name="login_name" type="text" id="login_name" size="20" value="<{$smarty.post.login_name}>"></p>
+					<p><em class="str">Password:</em><input name="login_pass" type="password" id="login_pass" size="20" value="<{$smarty.post.login_pass}>"></p>
+					<p class="cp_p8">
+<input name="loginbtn" type="submit" id="loginbtn" value="Submit">
+<input name="resetbtn" type="reset" id="resetbtn" value="Reset"></p>
+					<p><em class="str"><a href="<{$SiteUrl}>user/getpass.php">Forget Password?</a>(You are not yet a member? Immediately... <img src="<{$tpl_img_path}>default/icon03.gif" width="11" height="11"><a href="<{$UrlContainer.register}>" class="linkred12">Join Now</a>)</em></p>
+				<div class="clear9"></div>
+</form>

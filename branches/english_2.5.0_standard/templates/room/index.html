@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Commercial Office_<{$sitetitle}></title>
+<link href="<{$CSS_PATH}>css/style.css" rel="stylesheet" type="text/css">
+<link href="<{$INC_PATH}>css/room.css" rel="stylesheet" type="text/css">
+<style>
+<!--
+#ProgressBar {
+	border:1px solid #5B94DF;
+}
+#Pointer {
+	border:1px solid  #FFFFFF;
+	font-weight: bold;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=<{$start_color|default:"#DDE9F9"}>, endColorstr=<{$end_color|default:"#81ACE7"}>);
+}
+#Lable {
+	position:absolute;
+	width:100%;
+	text-align: center;
+}
+-->
+</style>
+</head>
+<body leftmargin="0" topmargin="0">
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><{include file="default/element.top.html"}></td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr align="center" valign="top">
+    <td width="180" background="<{$tpl_img_path}>office/left_bg.gif"><{include file="room/menu.html"}></td>
+    <td align="center">
+<table width="555" border="0" align="center" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>office/hy-sws-9.jpg">
+        <tr>
+          <td width="1%"><img src="<{$tpl_img_path}>office/hy-sws-8.jpg" width="11" height="53"></td>
+          <td width="10%">&nbsp;&nbsp;</td>
+          <td width="86%"><div align="right" class="zi2"><img src="<{$tpl_img_path}>office/<{if $MemberGenger==1}>male.gif<{else}>female.gif<{/if}>">Dear: <{if $MemberGenger==1}>Mr.<{elseif $MemberGender==2}>Miss.<{/if}><{$UserName|default:$smarty.session.MemberName}>&nbsp;,your last visit<{$LastLogin}></div></td>
+          <td width="3%"><div align="right"><img src="<{$tpl_img_path}>office/hy-sws-10.jpg" width="10" height="53"></div></td>
+        </tr>
+      </table>
+      <table width="555" height="350" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="F1F1F1">
+        <tr>
+          <td><div align="center">
+              <table width="550" height="345" border="0" align="center" cellpadding="0" cellspacing="0" background="<{$tpl_img_path}>office/room.gif">
+                <tr>
+                  <td valign="bottom">
+<table width="62%" height="250" border="0" cellpadding="5" cellspacing="5">
+                      <tr> 
+                        <td height="190" class="zi">
+<p><marquee behavior="scroll" direction="up" height="180" scrollamount="2"><p>　<font color="136281">Hello! You are welcome to visit <{$sitename}>, where you can use <{$sitename}> strong views, abundant resources, start your online trading.
+</font></p>
+                          </marquee></td>
+                      </tr>
+                      <tr>
+                        <td height="60">&nbsp;</td>
+                      </tr>
+                    </table></td>
+                </tr>
+              </table>
+            </div></td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="F1F1F1">
+        <tr>
+          <td><table width="555" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="178" colspan="2" valign="top"><br>
+                    <table width="95%" border="0" align="center" cellpadding="5" cellspacing="5" bgcolor="#FFFFFF" class="zi">
+                    <tr> 
+                      <td colspan="3"><br>
+                        <img src="<{$tpl_img_path}>office/star.gif" width="25" height="22" align="absmiddle"> 
+                        <span class="font14b_org">You are <{$MembertypeName}>(<a href="../user/upgrade.php" title="Upgrade to Senior Member">Upgrade now?</a>),Business Link service period of the year: </span> 
+                        <p> <strong><font color="#FF9900"> 
+                        <table width="502" align="center" cellpadding="0" cellspacing="0">
+                          <tr> 
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;">Start Time</font></td>
+                            <td align="center"><font  face="Verdana,宋体" color="ff6600" style="font-size:12px;">Current time 
+                              <{$smarty.now|date_format:"%Y-%m-%d"}></font></td>
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;">Deadline</font></td>
+                          </tr>
+                          <tr> 
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;"><{$MemberInfo.service_start_date|date_format:"%Y-%m-%d"}></font></td>
+                            <td height="22">
+							<table width="300">
+							<tr>
+								<td bgcolor="#FFFFFF" style="padding:2px">
+								<div id="ProgressBar">
+									<div id="Lable"><{if $service_days>=100}><strong>Does not apply? Has expired?<a href='../user/upgrade.php'>Upgrade now</a>!</strong><{else}><{$service_days}>%<{/if}></div>
+									<div id="Pointer" style="width:<{$service_days}>%"></div>
+								</div></td>
+							</tr>
+							</table>
+							</td>
+                            <td width="100" align="center"><font face="Verdana,Arial" style="font-size:12px;"><{$MemberInfo.service_end_date|date_format:"%Y-%m-%d"}></font></td>
+                          </tr>
+                        </table>
+                        </font></strong></td>
+                    </tr>
+                  </table>
+                    
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#CCCCCC"><img src="<{$tpl_img_path}>office/corner_1.gif" width="15" height="9"></td>
+                <td align="right" bgcolor="#CCCCCC"><img src="<{$tpl_img_path}>office/corner_2.gif" width="15" height="9"></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<{include file="room/foot.html"}>
+</body>
+</center>
+</html>
+

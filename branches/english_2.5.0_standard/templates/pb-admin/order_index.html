@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title>Console_<{$sitetitle}></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script language="javascript" src="<{$JS_PATH}>js/general.js"></script>
+<script src="<{$JS_PATH}>js/prototype.js"></script>
+<script src="<{$JS_PATH}>js/mixselect.js"></script>
+<script language="javascript" src="<{$JS_PATH}>js/admin.js"></script>
+</head>
+
+<body>
+<a name="top" />
+<!-- 位置 -->
+<table width="100%" border="0" cellpadding="2" cellspacing="6"><tr><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="guide">
+<tr><td>
+<div align="left"><ul style="display:inline"><li><a href="#" onClick="parent.main.location='home.php';return false;">Console</a>&nbsp;&raquo;&nbsp;Order Management</li><li><{$ActionResult}></li></div></td></tr>
+</table>
+<!-- 标题 -->
+<form name="listfrm" action="" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<tr class="header" align="center"><td><input type="checkbox" name="idAll" onClick="uaCheckAll(this, 'id[]')" title="Select All"></td>
+<td>Username</td>
+<td>Order Types</td>
+<td>Ordering Period</td>
+<td>Order Date</td>
+<td>Status</td>
+<td><div style="float:right; margin-right:4px; padding-bottom:9px"><img onClick="collapse_change('1')" id="menuimg_1" src="./images/menu_reduce.gif" border="0" style="vertical-align:middle;"/></div></td></tr>
+<tbody id="menu_1" style="display: yes">
+<{foreach from=$Lists item=m name=types}>
+<tr bgcolor="<{cycle values="#eeeeee,#ffffff"}>" align="center">
+<td><input type="checkbox" name="id[]" value="<{$m.id}>" onClick="uaCheckItem(this, 'idAll')"></td>
+<td><a href="./member.php?action=mod&id=<{$m.member_id}>"><{$m.username}></a></td>
+<td><{$m.name}></td>
+<td><{$m.year_option}></td>
+<td><{$m.created|date_format:"%Y-%m-%d"}></td>
+<td><{$OrderStatus[$m.status]}></td>
+<td><a href="<{$smarty.server.PHP_SELF}>?action=del&id=<{$m.id}>"><img src="<{$tpl_img_path}>admin/delete.gif" border="0" alt="Delete"></a></td>
+</tr>
+<{foreachelse}>
+<tr bgcolor="#ffffff">
+<td colspan="8" align="center"><strong>There is no data on</strong></td>
+</tr>
+<{/foreach}>
+</tbody>
+<!-- 分页 -->
+<tr align="center"><td class="altbg1" colspan="8"><{$ByPages}></td></tr>
+<tr class="header" bgcolor="#ffffff">
+<td colspan="6"><input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="del" value="Delete" onClick="return confirmAction('OK to delete?');">  <input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="complete" value="Complete" onClick="return confirmAction('OK to complete the order?');">  <input class="btn_mouseout" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" type="submit" name="cancel" value="Cancel" onClick="return confirmAction('OK cancel an order?');"></td>
+<td><div align="center"><a title="Top" href="#top"><img id="go_top" src="./images/go_top.gif" border="0" style="vertical-align:middle;"/></a></div></td>
+</tr>
+</table>
+</form>
+</td>
+</tr>
+</table>
+<!-- 结束new -->
+</body>
+</html>
