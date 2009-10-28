@@ -161,26 +161,30 @@ if(isset($_POST['register'])){
     			authcode($vars['email'], "ENCODE")."|".
     			authcode($vars['user_level'], "ENCODE"));
 			}
-			if($is_company && !empty($_POST['company']['name'])){
-				require($inc_path .APP_NAME. 'include/inc.topinyin.php');
-				$comp_vars = null;
-				$comp_vars['name'] = $_POST['company']['name'];
-				$comp_vars['member_id'] = $last_member_id;
-				$comp_vars['telcode'] = $_POST['tel']['country'];
-				$comp_vars['type_id'] = $_POST['company']['type_id'];
-				$comp_vars['link_man'] = $_POST['company']['link_man'];
-				$comp_vars['telzone'] = $_POST['tel']['area'];
-				$comp_vars['tel'] = $_POST['tel']['number'];
-				$comp_vars['created'] = $time_stamp;
-				$comp_vars['province_code_id'] = intval($_POST['country_id']);
-				$comp_vars['city_code_id'] = intval($_POST['province_id']);
-				$comp_vars['industry_id'] = intval($_POST['aindustry']);
-				$comp_vars['first_letter'] = getFirstPin($comp_vars['name']);
-				array_walk($comp_vars,"uaset");
-				$company->save($comp_vars);
-				$stat->Add("company");
-				if (!empty($_POST['aindustry'])) {
-					$industry->updateModelAmount(intval($_POST['aindustry']), "company_amount");
+			if($is_company){
+				if(!empty($_POST['company']['name'])){
+					require($inc_path .APP_NAME. 'include/inc.topinyin.php');
+					$comp_vars = null;
+					$comp_vars['name'] = $_POST['company']['name'];
+					$comp_vars['member_id'] = $last_member_id;
+					$comp_vars['telcode'] = $_POST['tel']['country'];
+					$comp_vars['type_id'] = $_POST['company']['type_id'];
+					$comp_vars['link_man'] = $_POST['company']['link_man'];
+					$comp_vars['telzone'] = $_POST['tel']['area'];
+					$comp_vars['tel'] = $_POST['tel']['number'];
+					$comp_vars['created'] = $time_stamp;
+					$comp_vars['province_code_id'] = intval($_POST['country_id']);
+					$comp_vars['city_code_id'] = intval($_POST['province_id']);
+					$comp_vars['industry_id'] = intval($_POST['aindustry']);
+					$comp_vars['first_letter'] = getFirstPin($comp_vars['name']);
+					array_walk($comp_vars,"uaset");
+					$company->save($comp_vars);
+					$stat->Add("company");
+					if (!empty($_POST['aindustry'])) {
+						$industry->updateModelAmount(intval($_POST['aindustry']), "company_amount");
+					}
+				}else{
+					PB_goto(URL."user/register.php", false, lgg("pls_input_companyname"));
 				}
 			}
 			$gopage = URL.'user/regdone.php?name='.$tmp_username.$CheckRegisterUser;

@@ -76,6 +76,16 @@ if (isset($_POST['check'])) {
 	}
 }
 
+if (isset($_POST['checkin_product']) && !empty($_POST['id'])) {
+	$result = $product->checkProducts($_POST['id'], 1);
+	flash("alert.php");
+}
+
+if (isset($_POST['checkout_product']) && !empty($_POST['id'])) {
+	$result = $product->checkProducts($_POST['id'], 2);
+	flash("alert.php");
+}
+
 if (isset($_POST['del'])) {
 	$deleted = false;
     foreach ($_POST['pid'] as $val) {

@@ -30,18 +30,20 @@ if(isset($_POST['loginbtn'])){
 		}
 		$checked = ua_checkLogin($tmpUserName,$tmpUserPass, $back_forward);
         //UC LOGIN 通过接口判断登录帐号的正确性，返回值为数组
-        list($uid, $username, $password, $email) = uc_user_login($tmpUserName, $tmpUserPass);
-        if($uid > 0) {
-            //生成同步登录的代码
-            $ucsynlogin = uc_user_synlogin($uid);
-            echo '登录成功'.$ucsynlogin.'<br><a href="'.$referer.'">继续</a>';
-            exit;
-        } elseif($uid == -1) {
-            echo '用户不存在,或者被删除';
-        } elseif($uid == -2) {
-            echo '密码错';
-        } else {
-            echo '未定义';
+        if($forums['type']=="discuz"){
+	        list($uid, $username, $password, $email) = uc_user_login($tmpUserName, $tmpUserPass);
+	        if($uid > 0) {
+	            //生成同步登录的代码
+	            $ucsynlogin = uc_user_synlogin($uid);
+	            echo '登录成功'.$ucsynlogin.'<br><a href="'.$referer.'">继续</a>';
+	            exit;
+	        } elseif($uid == -1) {
+	            echo '用户不存在,或者被删除';
+	        } elseif($uid == -2) {
+	            echo '密码错';
+	        } else {
+	            echo '未定义';
+	        }
         }
         //END UC LOGIN
 		if ($checked > 0) {

@@ -221,7 +221,7 @@ if (isset($_GET['action'])) {
     	$tpl_file = "company_edit";
     }
     if ($_GET['action']=="vcr") {
-        $xml = $xml = file_get_contents(URL.'data/xml/video.xml');
+        $xml = file_get_contents('../data/xml/video.xml');
         $data=XML_unserialize($xml);
     	$tpl_file = "company_video";
     }
@@ -257,10 +257,13 @@ $joins = array(
 "AreaCity"=>array("fullTableName"=>$area->getTable()." as AreaCity","foreignKey"=>"city_code_id","fields"=>null)
 );
 if ($_GET['action']=="vcr") {
-    if (!empty($data['vcaster']['item'])) {
+    if (!empty($data['vcaster']['item attr'])) {
+    	$lists[0]['item_title'] = $data['vcaster']['item attr']['item_title'];
+    	$lists[0]['item_url'] = $data['vcaster']['item attr']['item_url'];
+    }elseif (!empty($data['vcaster']['item'])){
     	foreach ($data['vcaster']['item'] as $key=>$val) {
     	    $lists[] = $val;
-    	}
+    	}    	
     }
     $lists = array_filter($lists);
 }else{
