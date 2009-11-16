@@ -114,7 +114,7 @@ if(isset($_POST['register'])){
 		$default_membertype = $membertype->field("id","if_default=1");
 		$vars['user_type'] = $default_membertype;
 		$access->primaryKey = "membertype_id";
-		$time_limits = $access->read("default_livetime,after_livetime", $default_membertype);
+		$time_limits = $access->read("default_livetime,after_livetime,check_company_reg", $default_membertype);
 		$vars['service_start_date'] = $time_stamp;
 		$vars['service_end_date'] = $access->getExpireTime($time_limits['default_livetime']);
 		$vars['user_level'] = ($is_company)?2:1;
@@ -165,6 +165,9 @@ if(isset($_POST['register'])){
 				if(!empty($_POST['company']['name'])){
 					require($inc_path .APP_NAME. 'include/inc.topinyin.php');
 					$comp_vars = null;
+					if($time_limits['check_company_reg']==0){
+						$comp_vars['status'] = 1;
+					}
 					$comp_vars['name'] = $_POST['company']['name'];
 					$comp_vars['member_id'] = $last_member_id;
 					$comp_vars['telcode'] = $_POST['tel']['country'];
