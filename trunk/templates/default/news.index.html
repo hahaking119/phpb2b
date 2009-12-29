@@ -1,0 +1,79 @@
+<{assign var="page_title" value="行业资讯"}>
+<{assign var="nav_id" value="6"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="warpper">
+  <div class="content clearfix">
+  <div class="second_nav">
+      <ul>
+        <li id="second_all_nav">分类导航</li>
+        <{foreach from=$Newstypes name=newstype item=typeitem key=typekey}>
+        <li><a href="news/list.php?typeid=<{$typekey}>"><{$typeitem}></a></li>
+        <{/foreach}>
+      </ul>
+    </div>
+  <div class="blank6"></div>
+  <div class="news_mainbody">
+  <div class="news_mainleft">
+      <div class="news_mainbody_left">
+      	<div class="news_mainbody_left_top"><img src="<{$theme_img_path}>images/news_position.jpg" /></div>
+        <div class="blank6"></div>
+        <div class="news_mainbody_left_con">
+        	<div class="news_mainbody_left_con_title"><span class="tit">热点新闻</span></div>
+            <div class="news_mainbody_left_con_body">
+             <ul>
+             <{news row=10 titlelen="35"}>
+             <li><span class="hot_word">[[field:typename]]</span><a href="news/detail.php?id=[field:id]">[field:title]</a></li>
+             <{/news}>  
+          </ul> 
+    </div>
+        </div>
+      </div>
+      <div class="news_mainbody_mid">
+      	<div class="news_mainbody_mid_title"><span>最新资讯</span></div>
+      	<div class="news_mainbody_mid_con">
+            <ul>
+            <{news row=44 titlelen="25"}>
+            <li><span class="hot_word">[[field:typename]]</span><a href="news/detail.php?id=[field:id]">[field:title]</a></li>  
+            <{/news}>
+            </ul> 
+        	<div class="clear"></div>
+        </div>
+      </div>
+  </div>
+   <div class="news_mainbody_right">
+
+        <div class="news_mainbody_right_title">
+        <span class="tit">行业聚焦</span><span class="more_right"><a href="news/list.php?typeid=1">更多&raquo;</a></span>
+        </div>
+        <div class="news_mainbody_right_con">
+         <ul>
+         <{news typeid=1 row=10 titlelen=25}>
+         <li><a href="news/detail.php?id=[field:id]">[field:title]</a></li>
+         <{/news}>
+         </ul>
+      </div>
+      <div class="blank6"></div>
+      <div class="news_mainbody_right_title">
+        <span class="tit">综合资讯</span><span class="more_right"><a href="news/list.php?typeid=4">更多&raquo;</a></span>
+        </div>
+      
+      <div class="news_mainbody_right_con">
+         <ul>
+             <{news typeid=4 row=10 titlelen=25}>
+             <li><a href="news/detail.php?id=[field:id]">[field:title]</a></li>
+             <{/news}>
+         </ul>
+       </div>
+   
+   </div>
+  
+  </div>   
+    
+  </div>
+  <div class="clear"></div>
+</div>
+<script>
+$("#SearchFrm").attr("action","news/list.php");
+$("#topMenuNews").addClass("lcur");
+</script>
+<{include file="`$ThemeName`/footer.html"}>

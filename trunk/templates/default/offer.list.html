@@ -1,0 +1,109 @@
+<{assign var="page_title" value="`$page_title` - 供求信息"}>
+<{assign var="nav_id" value="`$nav_id`"}>
+<{include file="`$ThemeName`/header.html"}>
+  <div class="blank6"></div>
+<div class="container">
+
+	<div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}></div>
+    <div class="blank6"></div>
+	<div class="kinds">
+		<p>
+		<span>按分类筛选</span>
+		<{foreach from=$TradeTypes item="type_item" key="type_key"}>
+		<a href="offer/list.php?typeid=<{$type_key}>" title="<{$type_item}>"><{$type_item}></a>
+		<{/foreach}>
+		</p>
+		<p>
+		<span>按行业筛选</span>
+		<{foreach from=$OtherIndustry name=subindustry item=item1}>
+		<a href="offer/list.php?industryid=<{$item1.id}>" title="<{$item1.name}>"><{$item1.name}></a>
+		<{foreachelse}>
+		<a>该分类下无子分类</a>
+		<{/foreach}>
+		</p>
+		<form name="search_frm" id="OfferSearchFrm" action="" method="get">
+		<p class="group2">
+		<span>快速筛选</span>
+		<label>
+		<select name="industryid" onchange="$('#OfferSearchFrm').submit();">
+			<option value="0">所有分类</option>
+			<{foreach from=$OtherIndustry name=byindustry item=item1}>
+			<option value="<{$item1.id}>" <{if $item1.id eq $smarty.get.industryid}>selected="selected"<{/if}>><{$item1.name}></option>
+			<{/foreach}>
+		</select>
+		</label>
+		<label>
+			<select name="areaid" onchange="$('#OfferSearchFrm').submit();">
+				<option value="0">所有地区</option>
+				<{foreach from=$OtherArea name=byarea item=item2}>
+				<option value="<{$item2.id}>" <{if $item2.id eq $smarty.get.areaid}>selected="selected"<{/if}>><{$item2.name}></option>
+				<{/foreach}>
+			</select>
+		</label>
+		<label><input type="submit"  value="筛选" class="submit"/>
+		</label>
+		<div class="clear"></div>
+		</p>
+		</form>
+	</div>
+
+<div class="qiugoucontent clearfix">
+	<div class="qiugoucontentleft">
+    <div class="base_title">
+	   <h2><span class="title_name">搜索结果</span></h2>
+	</div>
+		<div class="qiugouleftcon">
+			<form>
+            <table>
+            <tr>
+            <th class="offer_img">供求图片</th>
+            <th class="offer_info">供应信息/公司</th>
+            <th class="offer_area">所在地区</th>
+            <th class="offer_level">会员等级</th>
+            <th class="offer_contact">联系我们</th>
+            </tr>
+            <{foreach from=$Items name=offer item="item"}>
+            <tr>
+            <td class="offer_img"><img src="<{$item.image}>" border=0 alt="<{$item.title}>"></td>
+            <td class="offer_info">
+            <p><span class="blue"><a href="<{$item.url}>" title="<{$item.title}>"><{$item.title}></a></span><span class="gray">[<{$item.pubdate}>]</span></p>
+            <p>[摘要]<{$item.content|truncate:100}></p>
+            <p>发布者：<span class="smallblue"><{if $item.companyname}><a href="space.php?userid=<{$item.userid}>"><{$item.companyname}></a><{else}><{$item.username}><{/if}></span></p>
+           
+            </td>
+            <td  class="offer_area"> <p><{if $item.area_id1}><{$Areas[1][$item.area_id1]}><br /><{$Areas[2][$item.area_id2]}><{/if}></p></td>
+            <td class="offer_level"><img src="<{$item.gradeimg}>" alt="<{$item.gradename}>" ><span><{$item.im}></span></td>
+            <td class="offer_contact"><span class="two">
+                            <{if $item.companyname!=""}>
+                            <a href="space.php?do=feedback&userid=<{$item.userid}>">站内留言</a>
+                            <{else}>
+                            <a href="office-room/pms.php?do=send&to=<{$item.username}>">发送消息</a>
+                            <{/if}>
+                </span>
+             </td>
+            </tr>
+            	<{/foreach}>
+            </table>
+
+			<div>
+				<span><{$ByPages}></span>
+			</div>
+			</form>
+		</div>
+	</div>
+	<div class="qiugoucontentright">
+		<div class="keyadv">关键字广告</div>
+		<div class="recommendcompany">
+			<div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" />&nbsp;推荐企业</div>
+			<{company row=15}>
+			<p><a href="[link:title]">[field:title]</a></p>
+			<{/company}>
+			<div class="clear"></div>
+		</div>
+</div>
+</div>
+<script>
+$("#SearchFrm").attr("action","offer/list.php");
+$("#topMenuOffer").addClass("lcur");
+</script>
+<{include file="`$ThemeName`/footer.html"}>

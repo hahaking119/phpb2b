@@ -1,0 +1,49 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="rightTop"> 
+    <p>缓存</p> 
+    <ul class="subnav">
+		<{if $smarty.get.do=="clear"}>
+	  	<li><a class="btn1" href="htmlcache.php">更新</a></li>		
+      	<li><span>清理</span></li>
+        <{else}>
+	  	<li><span>更新</span></li>		
+      	<li><a class="btn1" href="htmlcache.php?do=clear">清理</a></li>
+        <{/if}>
+    </ul>
+</div>
+<div class="mrightTop"> 
+	<{if $smarty.get.do=="clear"}>
+    <div class="fontl"> 
+        <form name="edit_frm" id="EditFrm" method="post">
+        <input type="hidden" name="do" value="clear" />
+             <div class="left"> 
+               <label for="dataCache"><input type="checkbox" name="data[type][]" id="dataCache" value="cache" checked="checked" />缓存文件</label>
+               <label for="dataCompile"><input type="checkbox" name="data[type][]" id="dataCompile" value="compile" />编译文件</label>
+                <input type="submit" name="save" id="Save" class="formbtn" value="立即清理" /> 
+            </div> 
+        </form> 
+    </div> 
+    <{else}>
+    <div class="fontl"> 
+        <form name="edit_frm" id="EditFrm" method="post">
+        <input type="hidden" name="do" value="update" />
+             <div class="left"> 
+               <label for="dataTypeSetting"><input type="checkbox" name="data[type][]" id="dataTypeSetting" value="setting" checked="checked" />网站设置</label>
+               <label for="dataTypeBasic"><input type="checkbox" name="data[type][]" id="dataTypeBasic" value="basic" />基本数据</label>
+               <label for="dataTypeArea"><input type="checkbox" name="data[type][]" id="dataTypeArea" value="area" checked="checked" />地区数据</label>
+               <label for="dataTypeIndustry"><input type="checkbox" name="data[type][]" id="dataTypeIndustry" value="industry" checked="checked" />行业数据</label>
+               <label for="dataTypeOptions"><input type="checkbox" name="data[type][]" id="dataTypeOptions" value="options" />固定字段</label>
+                <input type="submit" name="save" id="Save" class="formbtn" value="立即更新" /> 
+            </div> 
+        </form> 
+    </div> 
+    <{/if}>
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare"></div>
+<{include file="footer.html"}>

@@ -1,0 +1,31 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="rightTop"> 
+    <p>地区</p> 
+    <ul class="subnav">
+		<li><a class="btn1" href="area.php">管理</a></li>
+		<li><a class="btn1" href="area.php?do=edit">添加/编辑</a></li>
+        <li><span>清理</span></li>
+        <li><a class="btn1" href="area.php?do=refresh">更新缓存</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontl"> 
+        <form name="edit_frm" action="area.php" id="EditFrm" method="post">
+        <input type="hidden" name="do" value="clear" />
+             <div class="left"> 
+               <label for="Level1"><input type="checkbox" name="data[level][]" id="Level1" value="1"/>一级地区</label>
+               <label for="Level2"><input type="checkbox" name="data[level][]" id="Level2" value="2" checked="checked"  />二级地区</label>
+               <label for="Level3"><input type="checkbox" name="data[level][]" id="Level3" value="3" checked="checked" />三级地区</label>
+                <input type="submit" name="save" id="Save" class="formbtn" value="立即清理" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare"></div>
+<{include file="footer.html"}>

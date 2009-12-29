@@ -1,0 +1,101 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<link href="../images/jquery/colorpicker.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../scripts/jquery/colorpicker.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	$.fn.colorPicker.defaultColors = ['00FFFF', '000000', '999999', 'FF0000', 'FFFF00', '0000FF', 'FFFFFF', '00FF7F', '00FF00'];
+	$('#color1').colorPicker();
+})
+</script>
+<div id="rightTop"> 
+    <p>全局</p> 
+    <ul class="subnav">
+        <li><a class="btn1" href="setting.php?do=basic">站点信息</a></li>
+		<li><a class="btn1" href="setting.php?do=functions">网站功能</a></li>
+        <li><a class="btn1" href="setting.php?do=register">注册与访问</a></li>
+		<li><a class="btn1" href="setting.php?do=email">Email</a></li>
+		<li><span>安全验证</span></li>
+    </ul>
+</div>
+<div class="info"> 
+    <form method="post" action="setting.php" name="edit_frm"> 
+        <table class="infoTable"> 
+         	<tr> 
+                <th class="paddingT15">网站安全密钥:</th> 
+              	<td class="paddingT15 wordSpacing5"><input name="data[setting][auth_key]" value="<{$item.AUTH_KEY}>" /><label class="field_notice">用于识别网站身份的唯一字符串</label></td> 
+          	</tr> 
+         	<tr> 
+                <th class="paddingT15">登陆验证码:</th> 
+              	<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_logging]" options=$AskAction checked=$item.CAPT_LOGGING|default:0 separator=""}></td> 
+          	</tr> 
+         	<tr> 
+                <th class="paddingT15">注册验证码:</th> 
+              	<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_register]" options=$AskAction checked=$item.CAPT_REGISTER|default:0 separator=""}></td> 
+          	</tr> 
+         	<tr> 
+                <th class="paddingT15">免费发布供求验证码:</th> 
+              	<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_post_free]" options=$AskAction checked=$item.CAPT_POST_FREE|default:0 separator=""}></td> 
+          	</tr> 
+         	<tr> 
+                <th class="paddingT15">用户提交市场库验证码:</th> 
+              	<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_add_market]" options=$AskAction checked=$item.CAPT_ADD_MARKET|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">控制台登陆验证码:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_login_admin]" options=$AskAction checked=$item.CAPT_LOGIN_ADMIN|default:0 separator=""}></td> 
+          	</tr> 
+         	<tr> 
+                <th class="paddingT15">申请友情链接验证码:</th> 
+              	<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_apply_friendlink]" options=$AskAction checked=$item.CAPT_APPLY_FRIENDLINK|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">意见或建议验证码:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_service]" options=$AskAction checked=$item.CAPT_SERVICE|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">图片水印:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][watermark]" options=$AskAction checked=$item.WATERMARK|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">水印文字:</th> 
+       			<td class="paddingT15 wordSpacing5"><input name="data[setting][watertext]" value="<{$item.WATERTEXT|default:$smarty.const.URL}>" /><label class="field_notice">只能是英文字母，默认为网站地址<{$SiteUrl}></label></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">文字颜色:</th> 
+       			<td class="paddingT15 wordSpacing5"><input name="data[setting][watercolor]" id="color1" value="<{$item.WATERCOLOR|default:"#990000"}>" /></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">注册会员是否必须审核:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][regcheck]" options=$AskAction checked=$item.REGCHECK|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">是否允许游客发布供求:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][vis_post]" options=$AskAction checked=$item.VIS_POST|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">游客发布供求必须审核:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][vis_post_check]" options=$AskAction checked=$item.VIS_POST_CHECK|default:1 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">开放供应信息:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][sell_logincheck]" options=$AskAction checked=$item.SELL_LOGINCHECK|default:1 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">开放求购信息:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][buy_logincheck]" options=$AskAction checked=$item.BUY_LOGINCHECK|default:1 separator=""}></td> 
+          	</tr> 
+            <tr> 
+            <th></th> 
+            <td class="ptb20"> 
+                <input class="formbtn" type="submit" name="saveauth" value="提交" /> 
+            </td> 
+        </tr> 
+        </table> 
+    </form> 
+</div> 
+<{include file="footer.html"}>

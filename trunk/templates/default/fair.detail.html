@@ -1,0 +1,65 @@
+<{assign var="page_title" value="`$page_title`"}>
+<{assign var="nav_id" value="8"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="warpper">
+  <div class="content  clearfix">
+	 <div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}></span></div>
+	 <div class="blank6"></div>
+	 <div class="ex_con">
+		 <div class="ex_con_left">
+		   <div class="ex_con_left_title"><p><{$item.name}></p></div>
+		   <div class="blank6"></div>
+		   <div class="ex_con_left_con">
+           <div class="base_title">
+	        <h2><span class="title_name">展会简介</span></h2>
+	       </div>
+		  <div class="ex_con_left_con_body">
+			<p><{$item.description}></p>
+		  </div>
+		   </div>
+		   <div class="blank6"></div>
+		  <div class="ex_con_left_con">
+		             <div class="base_title">
+	        <h2><span class="title_name">展会内容</span></h2>
+	       </div>
+		  <div class="ex_con_left_con_body">
+			展会时间：<{$item.begin_date}>至<{$item.end_date}><br />
+			地　　点：<{$item.address}><br />
+			展会规模:<{$item.scope}><br />
+			主办单位: <{$item.hosts}><br />
+			承办单位：<{$item.organisers}><br />
+			支　　持：<{$item.sponsors}><br />
+			协　　办：<{$item.co_organisers}><br />
+			联系方式：<{$item.contacts}><br />
+			注意事项：<{$item.important_notice}><br />
+            </div>
+		  </div>
+		 </div>
+	 
+	 <div class="ex_con_right">
+	<div class="ex_con_right_con">
+	  <div class="ex_con_right_top"><h2>展会报名</h2></div> 
+	  <div class="ex_con_right_con_body"><span>
+      <form name="join_fair" id="JoinFair" action="office-room/fair.php" method="post" target="_blank">
+      <input type="hidden" name="do" value="join" />
+      <input type="hidden" name="id" value="<{$item.id}>">
+      <input type="button" name="button" value="我要报名参展" onclick="$('#JoinFair').submit();" />
+      </form>
+      </span></div>
+	</div>
+	<div class="blank6"></div>
+	<div class="ex_con_right_con">
+	  <div class="ex_con_right_top"><h2>展会参展商</h2></div>
+	  <div class="ex_con_right_con_body">
+		<ul class="ex_con_rightlist" >
+        <{foreach from=$Items name=expomember item=expomember}>
+		 <li><a href="space.php?userid=<{$expomember.userid}>" target="_blank"><{$expomember.name}></a></li>
+        <{/foreach}>
+		</ul>
+		</div>
+	</div>
+  </div>
+</div>
+</div>
+</div>
+<{include file="`$ThemeName`/footer.html"}>

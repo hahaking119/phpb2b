@@ -1,0 +1,53 @@
+<{assign var="page_title" value="企业资讯"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+      <div class="hint"><span class="btn_hint"><a href="news.php?do=edit" class="btn_publish">发布企业动态</a></span>（友情提示：</span><span class="zi">可以添加公司最新动态信息，以显示在你的企业网站上！）</div>  
+		<form name="newsfrm" action="<{$smarty.server.PHP_SELF}>" method="post">
+		<input type="hidden" name="formhash" value="<{$formhash}>">
+            <table class="news">
+                <tr>
+                  <th><input name="newsidAll" type="checkbox" id="newsidAll" title="全选" onClick="uaCheckAll(this, 'newsid[]')"></th>
+                  <th>标　题</th>
+                  <th>状态</th>
+                  <th>时 间</th>
+                  <th>&nbsp;</th>
+                </tr>
+				<{foreach from=$Companynewses item=item}>
+                <tr align="center" class="bggray">
+                  <td><input name="newsid[]" type="checkbox" id="newsid[]" onClick="uaCheckItem(this, 'newsidAll')" value="<{$item.CompanynewsId}>"></td>
+                  <td><a href="news.php?do=edit&id=<{$item.CompanynewsId}>"><{$item.CompanynewsTitle|truncate:25}></a></td>
+                  <td>正常</td>
+                  <td><{$item.CompanynewsCreated|date_format:"%Y-%m-%d"}></td>
+                  <td><a href="news.php?do=edit&id=<{$item.CompanynewsId}>">修改</a></td>
+                </tr>
+				<{foreachelse}>
+				<{/foreach}>
+            </table>
+            <table class="room_pages">
+          <tr>
+            <td><{$ByPages}></td>
+          </tr>
+          </table>
+            <table class="trade_line">
+                <tr>
+                  <td height="1" background="images/index_trade_line.gif"></td>
+                </tr>
+          
+          <tr align="center" valign="bottom">
+            <td height="40"><input name="del" type="submit" id="delete" value="删除选择"></td>
+          </tr>
+        </table>
+		</form>
+</div>
+</div>
+<{include file="footer.html"}>
+

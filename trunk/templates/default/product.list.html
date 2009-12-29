@@ -1,0 +1,104 @@
+<{assign var="page_title" value="`$page_title` - 产品库"}>
+<{assign var="nav_id" value="5"}>
+<{include file="`$ThemeName`/header.html"}>
+  <div class="blank6"></div>
+<div class="container">
+
+	<div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}></div>
+    <div class="blank6"></div>
+	<div class="kinds">
+		<p>
+		<span>按行业筛选</span>
+		<{foreach from=$OtherIndustry name=subindustry item=item1}>
+		<a href="product/list.php?industryid=<{$item1.id}>" title="<{$item1.name}>"><{$item1.name}></a>
+		<{foreachelse}>
+		<a>该分类下无子分类</a>
+		<{/foreach}>
+		</p>
+		<form name="search_frm" id="ProductSearchFrm" action="" method="get">
+		<p class="group2">
+		<span>快速筛选</span>
+		<label>
+		<select name="industryid" onchange="$('#OfferSearchFrm').submit();">
+			<option value="0">所有分类</option>
+			<{foreach from=$OtherIndustry name=byindustry item=item1}>
+			<option value="<{$item1.id}>" <{if $item1.id eq $smarty.get.industryid}>selected="selected"<{/if}>><{$item1.name}></option>
+			<{/foreach}>
+		</select>
+		</label>
+		<label>
+			<select name="areaid" onchange="$('#OfferSearchFrm').submit();">
+				<option value="0">所有地区</option>
+				<{foreach from=$OtherArea name=byarea item=item2}>
+				<option value="<{$item2.id}>" <{if $item2.id eq $smarty.get.areaid}>selected="selected"<{/if}>><{$item2.name}></option>
+				<{/foreach}>
+			</select>
+		</label>
+		<label><input type="submit"  value="筛选" class="submit"/>
+		</label>
+		<div class="clear"></div>
+		</p>
+		</form>
+	</div>
+
+<div class="qiugoucontent clearfix">
+	<div class="qiugoucontentleft">
+    <div class="base_title">
+	   <h2><span class="title_name">搜索结果</span></h2>
+	</div>
+		<div class="qiugouleftcon">
+			<form>
+			<div class="qiugouleftcontop">
+				  <label>产品图片</label>
+				  <ul>
+					<li class="gongqiucompany">供应信息/公司</li>
+					<li>所在地区</li>
+					<li>信誉度指数</li>
+					<li>在线联系</li>
+				  </ul>
+			</div>
+			<{foreach from=$Items item="item"}>
+			<div class="detailcon">
+				  <ul class="images">
+					  <li><img src="<{$item.image}>" border=0 alt="<{$item.name}>" width="80" height="80"></li>
+				  </ul>
+				  <ul class="paragraphs">
+						<li class="paragraph"><span class="blue"><a href="<{$item.url}>" title="<{$item.name}>"><{$item.name}></a></span><span class="gray"><{$item.pubdate}></span><br />
+						[摘要]<{$item.content|truncate:100}><br />发布者：<span class="smallblue"><{if $item.companyname}><a href="space.php?userid=<{$item.userid}>"><{$item.companyname}></a><{else}><{$item.username}><{/if}></span></li>
+						<li><{if $item.area_id1}><{$Areas[1][$item.area_id1]}><br /><{$Areas[2][$item.area_id2]}><{/if}></li>
+						<li class="paragraph2"><img src="<{$item.gradeimg}>" alt="<{$item.gradename}>" ></li>
+						<li class="paragraph2"><span><{$item.im}></span><br />
+							<span class="two">
+                            <{if $item.companyname!=""}>
+                            <a href="space.php?do=feedback&userid=<{$item.userid}>">站内留言</a>
+                            <{else}>
+                            <a href="office-room/pms.php?do=send&to=<{$item.username}>">发送消息</a>
+                            <{/if}>
+                            </span>
+						</li>
+				  </ul>
+				  <div class="clear"></div>
+			</div>
+			<{/foreach}>
+			<div>
+				<span><{$ByPages}></span>
+			</div>
+			</form>
+		</div>
+	</div>
+	<div class="qiugoucontentright">
+		<div class="keyadv">关键字广告</div>
+		<div class="recommendcompany">
+			<div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" />&nbsp;推荐企业</div>
+			<{company row=15}>
+			<p><a href="[link:title]">[field:title]</a></p>
+			<{/company}>
+			<div class="clear"></div>
+		</div>
+</div>
+</div>
+<script>
+$("#SearchFrm").attr("action","offer/list.php");
+$("#topMenuOffer").addClass("lcur");
+</script>
+<{include file="`$ThemeName`/footer.html"}>

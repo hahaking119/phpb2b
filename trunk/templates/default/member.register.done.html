@@ -1,0 +1,32 @@
+<{assign var="page_title" value="注册成功"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="container">
+<div class="blank6"></div>
+	<div class="subnav"><span class="write_reg"><img src="<{$theme_img_path}>images/gongqiu05.gif" />填写注册基本信息&nbsp;&nbsp;<img src="<{$theme_img_path}>images/gongqiu06.gif" />注册成功</span></div>
+         <div class="blank6"></div>
+	</div>
+  <div class="blank6"></div>
+  <div class="content clearfix">
+   <div class="blank6"></div>
+   <div class="reg_sucess"><img src="<{$theme_img_path}>images/reg_sucess.jpg" /></div>
+   <div class="reg_proinfo">
+	 <div class="reg_bj"></div>
+	 <div class="reg_proinfo_content">
+		<{if $result}>
+		 <p class="member_level">欢迎您加入<{$site_name}>，您现在是：<font color="#1c9df0"><{$groupname}></font><img src="<{$groupimg}>" alt="<{$groupname}>" /></p>
+		 <p class="member_room">您可以继续进行以下操作，或者 <a href="office-room/" ><span>进入商务室</span></a><a href="<{$SiteUrl}>"><span>返回首页</span></a></p>
+		 <p> <b>1、完善个人资料：</b></p>
+		 <p>发布供求信息、提交产品资料，均需要有完善的个人联系资料，<a href="office-room/personal.php" style="text-decoration:underline" target="_blank">点击此处添加</a></p>
+		 <{if $is_company}>
+		 <p><b>2、补充企业信息：</b></p>
+		 <p> 开通企业网站，发布企业招聘，交换友情链接，请您<a href="office-room/company.php" style="text-decoration:underline" target="_blank">点击此处完善企业资料</a></p>
+		 <{/if}>
+		 <{else}>
+		<p><{$RegTips}></p>
+		 <{/if}>
+	 </div>
+   </div>
+  </div>
+  <div class="blank6"></div>   
+</div>
+<{include file="`$ThemeName`/footer.html"}>

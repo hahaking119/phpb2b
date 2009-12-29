@@ -1,0 +1,66 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="rightTop"> 
+    <p>管理员</p> 
+    <ul class="subnav">
+		<li><span>管理</span></li>
+		<li><a class="btn1" href="adminer.php?do=edit">账号设置</a></li>
+        <li><a class="btn1" href="adminer.php?do=password">密码修改</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontl"> 
+        <form name="search_frm" id="SearchFrm" method="get">
+        <input type="hidden" name="do" value="search" />
+             <div class="left">
+				用户名 : <input class="queryInput" type="text" name="q" value="" /> 
+                <input type="submit" id="Search" class="formbtn" value="查询" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td><label for="idAll">登陆用户名</label></td>
+		  <td><span>姓名</span></td>
+		  <td>最后登陆时间</td>
+		  <td><span>最后登陆IP地址</span></td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item name=adzone}>
+		<tr class="tatr2">
+		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.member_id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.member_id}>" title="<{$item.member_id}>"></td>
+		  <td><label for="item_<{$item.id}>"><{$item.username}></label></td>
+		  <td><{$item.first_name}><{$item.last_name}></td>
+		  <td><{$item.last_login|date_format:"%Y-%m-%d"}></td>
+		  <td><{$item.last_ip}></td>
+		  <td class="handler">
+		  <span style="width: 120px;">
+		  <a href="adminer.php?id=<{$item.member_id}>&do=del<{$addParams}>"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;&nbsp;<a href="adminer.php?do=edit&id=<{$item.member_id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a></span></td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="6">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">   
+      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"><{$ByPages}></div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>

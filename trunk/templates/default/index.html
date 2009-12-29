@@ -1,0 +1,392 @@
+<{assign var="page_title" value="首页"}>
+<{assign var="nav_id" value="1"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="adv mauto">
+	<{ads typeid=1 row="8"}><span><a href="[link:url]">[field:src]</a></span><{/ads}>
+</div>
+<div class="container">
+	<div class="content mauto">
+		<div class="fl notebox mr7">
+			<h2>
+				<img src="<{$theme_img_path}>images/notel.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/noter.jpg" class="fr" />
+				<p class="noteboxtitit">
+					<strong>公告栏</strong>
+					<a href="announce.php" title="<{$_more}>" target="_blank"><span class="raquo">&raquo;</span><{$_more}></a>
+				</p>
+			</h2>
+			<div class="notecont clearfix">
+               <div class="note_bar">
+				<a href="javascript:;" title="公告栏" class="fl"><img src="<{$theme_img_path}>images/notice.gif" /></a>
+				<{announce type="new" titlelen=15 infolen=35}>
+				<dl>
+					<dt><strong><a href="[link:title]">[field:title]</a></strong></dt>
+					<dd><a href="[link:title]" title="[field:content]">[field:content]</a></dd>
+				</dl>
+				<{/announce}>
+               </div>
+				<ul class="note_title">
+					<{announce titlelen=15 row=4}>
+					<li><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+					<{/announce}>
+				</ul>
+			</div>
+			<div class="notebottom">
+				<img src="<{$theme_img_path}>images/notebotl.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/notebotr.jpg" class="fr" />
+				<p class="notebottombg"></p>
+			</div>
+		</div>
+		<div class="fl advertise">
+			<{plugin name="hello"}>
+		</div>
+		<div class="fr freereg">
+			<div class="freeregh">
+				<img src="<{$theme_img_path}>images/freereg_01.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/freereg_02.jpg" class="fr" />
+			</div>
+			<div class="freeregc">
+				<strong><{$_after_free_reg}>：</strong>
+				<p class="fl freetit"><a>免费企业建站</a></p>
+				<p class="fl freetit"><a>发布供求商机</a></p>
+				<p class="fl freetit"><a>在线推广产品</a></p>
+				<p class="fl freetit"><a>结交<{$_more}>商友</a></p>
+				<p class="fl mt10"><a href="member/" title="<{$_register}>"><img src="<{$theme_img_path}>images/freebtn.jpg" /></a></p>
+			</div>
+			<div class="freeregb">
+				<img src="<{$theme_img_path}>images/freereg_03.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/freereg_04.jpg" class="fr" />
+			</div>
+		</div>
+		<br clear="all" />
+	</div>
+	<p class="whitespace"></p>
+	<div class="content mauto">
+		<a href="javascript:;" class="fl advertise"><img src="<{$theme_img_path}>images/temp_04.jpg" width="958" height="62" /></a>
+	</div>
+	<div class="whitespace"></div>
+	<div class="content mauto">
+		<div class="fl notebox mr7">
+			<h2>
+				<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+				<p class="hot_title">
+					<strong>热门展会</strong>
+					<a href="fair/" title="<{$_more}>"><span class="raquo">&raquo;</span><{$_more}></a>
+				</p>
+			</h2>
+			<div class="hotcont clearfix">
+               <div class="hot_bar">
+				<a href="javascript:;" class="fl"><img src="<{$theme_img_path}>images/hot_fair.gif" /></a>
+				<{fair id=1 titlelen=10 infolen=35}>
+				<dl>
+					<dt><strong><a href="[link:title]">[field:title]</a></strong></dt>
+					<dd>[field:content]</dd>
+				</dl>
+				<{/fair}>
+                </div>
+			   <ul class="hotcont_list">
+					<{fair row=8 titlelen=35}> 
+					<li><a href="[link:title]">[field:title]</a></li>
+					<{/fair}>
+				</ul>
+			</div>
+		</div>
+		<div class="fl latest">
+			<div class="fl latest latestbox">
+				<ul>
+					<li class="lasestcur" onmouseover="toogleOffer(1);" id="tab1"><a href="offer/list.php?typeid=2">最新供应</a></li>
+					<li onmouseover="toogleOffer(2);" id="tab2"><a href="offer/list.php?typeid=1">最新求购</a></li>
+				</ul>
+				<a href="javascript:void(0);" onclick="redirect('redirect.php?url=office-room/offer');return false;" class="fr lasestsend">立即发布自己的信息</a>
+			</div>
+			<div class="lasestcontbox" id="latest-offer-1">
+				<div class="lasestcontboxh">
+					<ul>
+						<{offer type="image" row=5 titlelen="10"}>
+						<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+						<{/offer}>
+					</ul>
+				</div>
+				<div class="lasestcontboxb">
+					<ul>
+						<{offer row=14 typeid="1"}>
+						<li><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+						<{/offer}>
+					</ul>
+				</div>
+			</div>
+			<div class="lasestcontbox" id="latest-offer-2" style="display:none;">
+				<div class="lasestcontboxh">
+					<ul>
+						<{offer type="image" row=5 titlelen="10" typeid="1"}>
+						<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+						<{/offer}>
+					</ul>
+				</div>
+				<div class="lasestcontboxb">
+					<ul>
+						<{offer row=14}>
+						<li><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+						<{/offer}>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="fr notebox">
+			<h2>
+				<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+				<p class="hot_title">
+					<strong>最新加入企业</strong>
+					<a href="member/upgrade.php" title="会员升级">我要成为VIP会员</a>
+				</p>
+			</h2>
+			<div class="vipcont clearfix">
+				<ul>
+					<{company row=12}>
+					<li><a href="[link:title]" title="[field:title]" target="_blank">[field:title]</a></li>
+					<{/company}>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<p class="whitespace"></p>
+<div class="content mauto">
+		<div class="type">
+			<h2>
+				<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+				<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+				<p class="hot_title">
+					<b>行业分类</b>
+					<em style="font-weight:bold">选择类别，立即发布商机</em>
+				</p>
+			</h2>
+			<div class="typecont">
+            <{foreach from=$IndustryList item=item0 key=key0 name=level_0}>
+			  <div class="typebox">
+					<p class="fl typeboxconttit"><a href="offer/list.php?industryid=<{$item0.id}>"><{$item0.name}></a></p>
+                    <{if $item0.sub}>
+					<ul>
+                    	<{foreach from=$item0.sub name=level_1_industry item=level1 key=key_level1}>
+						<li>
+							<a href="offer/list.php?industryid=<{$level1.id}>" title="<{$level1.name}>" class="typeboxlet01"><{$level1.name}></a><br />
+                        <{foreach from=$level1.sub name=level_2_industry item=level2 key=key_level2}>
+							<a href="offer/list.php?industryid=<{$level2.id}>" title="<{$level2.name}>"><{$level2.name}></a>
+                            <{if !$smarty.foreach.level_2_industry.last}>
+                            <span>｜</span>
+                            <{/if}>
+                        <{/foreach}>
+						</li>
+                        <{/foreach}>
+					</ul>
+                    <{/if}>
+				</div>
+                <{if !$smarty.foreach.level_0.last}>
+				<div class="line_w605"></div>                
+                <{/if}>
+            <{/foreach}>
+			</div>
+		</div>
+		<div class="fr notebox">
+			<div class="fl notebox">
+				<h2>
+					<img src="<{$theme_img_path}>images/brandl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/brandr.jpg" class="fr" />
+					<p class="brandtit">
+						<strong>行业品牌</strong>
+						<a href="office-room/ad.php" title="我要上榜">我要上榜</a>
+					</p>
+				</h2>
+				<div class="brandcont clearfix">
+				<{company type="image" row=10}>
+					<li><a href="[link:title]" target="_blank"><img src="[img:logo]" alt="[field:title]" /></a><p>[field:title]</p></li>
+				<{/company}>
+				</div>
+				<div class="notebottom">
+					<img src="<{$theme_img_path}>images/notebotl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/notebotr.jpg" class="fr" />
+					<p class="notebottombg"></p>
+				</div>
+			</div>
+			<p class="h7"></p>
+			<a href="http://www.phpb2b.com/bbs/forumdisplay.php?fid=30" title="立即访问PHPB2B技术论坛，和更多的人交流PB使用技巧" class="fl" target="_blank"><img src="<{$theme_img_path}>images/phpb2b_dev.jpg" width="230" height="70" style="border:1px solid #CFCFCF;" /></a>
+			<p class="h7"></p>
+			<div class="fl notebox">
+				<h2>
+					<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+					<p class="hot_title">
+						<strong>代理合作</strong>
+						<a href="offer/list.php?typeid=3" title="<{$_more}>"><span class="raquo">&raquo;</span><{$_more}></a>
+					</p>
+				</h2>
+			   <ul class="hot_list">
+				<{offer row=9 typeid="1" magic="y" infolen="35"}>
+				 <li[field:style]>[field:url]</li>
+				<{/offer}>
+			   </ul>
+			</div>
+			<p class="h7"></p>
+			<div class="fl notebox">
+				<h2>
+					<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+					<p class="hot_title">
+						<strong>招商加盟</strong>
+						<a href="offer/list.php?typeid=5" title="<{$_more}>"><span class="raquo">&raquo;</span><{$_more}></a>
+					</p>
+				</h2>
+			   <ul class="hot_list">
+				<{offer row=9 magic="y" typeid="2" infolen="35"}>
+				 <li[field:style]>[field:url]</li>
+				<{/offer}>
+			   </ul>
+			</div>
+			<p class="h7"></p>
+			<div class="fl notebox">
+				<h2>
+					<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+					<p class="hot_title">
+						<strong>本网动态</strong>
+						<a href="news/list.php?typeid=1" title="<{$_more}>"><span class="raquo">&raquo;</span><{$_more}></a>
+					</p>
+				</h2>
+			   <ul class="hot_list">
+				<{news typeid=4 row=9 magic="y" titlelen=30 infolen=25}>
+				 <li[field:style]>[field:url]</li>
+				<{/news}>
+			   </ul>
+			</div>
+			<p class="h7"></p>
+			<div class="fl notebox">
+				<h2>
+					<img src="<{$theme_img_path}>images/faql.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/faqr.jpg" class="fr" />
+					<p class="faqtit">
+						<strong>意见或建议</strong>
+					</p>
+				</h2>
+				<div class="hotcont_service">
+					欢迎您对我们的网站和服务提出宝贵的意见或建议：
+					<form action="service.php" name="service_frm" id="ServiceFrm" method="post">
+					<input type="hidden" name="formhash" value="<{$formhash}>">
+					<input type="hidden" name="save_service" value="save_service">
+					<textarea name="service[content]" cols="" rows=""></textarea>
+					您的Email地址：<input type="text" name="service[email]" value="">
+					<br />
+					<input type="button" name="btn_submit" value="提交" class="btn_cont" onclick="$('#ServiceFrm').submit();" />
+					<input type="reset" value="重置" name="" class="btn_cont"/>
+					</form>
+				   
+				</div>
+			</div>
+		</div>
+	   
+	</div>
+	<p class="whitespace"></p>
+	<div class="content mauto">
+		<div class="news">
+			<p class="newstit"><strong><{$_new_products}></strong></p>
+			<ul>
+			<{product row=9 type="image" titlelen="10"}>
+				<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]">[field:title]</a></li>
+			<{/product}>
+			</ul>
+		</div>
+	</div>
+	<p class="whitespace"></p>
+	<div class="content mauto">
+		<div class="bottomh">
+			<img src="<{$theme_img_path}>images/bottom_01.jpg" class="fl" />
+			<img src="<{$theme_img_path}>images/bottom_03.jpg" class="fr" />
+		</div>
+		<div class="bottomc">
+			<div class="fl newscar mr7">
+				<div class="fl newscar latestbox">
+					<ul>
+					  <li class="lasestcur" id="NewstypeId1" onmouseover="toogleNews(1)">
+					  <{newstype id=4}><a href="[link:title]">[field:title]</a><{/newstype}>
+					  </li>
+					  <li id="NewstypeId2" onmouseover="toogleNews(2)"><{newstype id=1}><a href="[link:title]">[field:title]</a><{/newstype}></li>
+					</ul>
+				</div>
+				<div class="law" id="Newstype1List">
+					<ul class="law_list">
+					<{news magic="y" typeid=4 row=10 titlelen=34 infolen=35}>
+					<li[field:style]>[field:url]</li>
+					<{/news}>
+					</ul>
+				</div>
+				<div class="law" id="Newstype2List" style="display:none;">
+					<ul class="law_list">
+					<{news magic="y" typeid=1 row=10 titlelen=34 infolen=35}>
+					<li[field:style]>[field:url]</li>
+					<{/news}>
+				 </ul>
+				</div>
+			</div>
+			<div class="fl latest02">
+				<h2>
+					<img src="<{$theme_img_path}>images/hotl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/hotr.jpg" class="fr" />
+					<p class="hot_title">
+						<strong>热点新闻</strong>
+						<a href="news/list.php?type=hot" title="<{$_more}>"><span class="raquo">&raquo;</span><{$_more}></a>
+					</p>
+				</h2>
+				<div class="newscarcontbox">
+					<div class="lasestcontboxh02">
+						<ul>
+							<{news row=4 type="image" titlelen="10"}>
+							<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+							<{/news}>
+						</ul>
+					</div>
+					<div class="newscarcontboxb">
+						<ul>
+							<{news row=14}>
+							<li><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+							<{/news}>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="fr hotzt">
+				<div class="hotztbox">
+					<p><strong><{$_topic_news}></strong><a href="news/list.php?type=topic" class="fr"><span class="raquo">&raquo;</span><{$_more}></a></p>
+					<{topic type="news" row=3}>
+					<a href="[link:title]" title=""><img src="[img:src]" width="202" height="51" /></a><br />
+					<a href="[link:title]" title="">[field:title]</a><br />
+					<{/topic}>
+				</div>
+			</div>
+		</div>
+		<div class="bottomb">
+			<img src="<{$theme_img_path}>images/bottom_04.jpg" class="fl" />
+			<img src="<{$theme_img_path}>images/bottom_06.jpg" class="fr" />
+		</div>
+	</div>
+	<p class="whitespace"></p>
+	<div class="content mauto">
+		<div class="pardent">
+			<p><a href="friendlink.php" title="申请合作或链接" class="fr"><span class="raquo">&raquo;</span>申请合作或链接</a></p>
+			<div class="pardentbox clearfix">
+			<table width="100%" border="0">
+			  <tr>
+				<th class="friend_link"><{$_friend_links}>：</th>
+				<td class="friend_link_content">
+				<{friendlink}>
+					<a href="[link:title]" title="[field:tip]" target="_blank">[field:title]</a><span>|</span>
+				<{/friendlink}>
+				</td>
+			  </tr>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="scripts/index.js"></script>
+<{include file="`$ThemeName`/footer.html"}>

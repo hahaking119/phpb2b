@@ -1,0 +1,211 @@
+<table class="menu_nav" >
+	<tr>
+	</tr>
+	<tr>
+	<td>
+		<{if $menu.offer}>
+		<table class="menu_width167">
+		<tr>
+		  <td>
+          <table class="menu_nav">
+			  <tr>
+				<td width="30"><img src="images/left_pic1.gif" width=30 height=35 alt=""></td>
+				<td background="images/left_bg1.gif" class="title_bar"><a name="menu_top"></a>商业信息管理</td>
+				<td width="55"><img src="images/left_bg11.gif" width=55 height=35 alt=""></td>
+			  </tr>
+		  </table>
+          </td>
+		</tr>
+		<tr>
+		  <td align="center" background="images/left_mid.gif">
+          <table class="menu_nav_content">
+			  <tr>
+				<th><img src="images/sell_add.gif"></th>
+				<td><a href="offer.php?do=edit">发布供求信息</a></td>
+			  </tr>
+			  <tr>
+				<th><img src="images/buy.gif"></th>
+				<td><a href="offer.php">我的供求信息</a></td>
+			  </tr>
+			  <tr>
+				<th><img src="images/sell.gif"></th>
+				<td><a href="favor.php">我的信息收藏</a></td>
+			  </tr>
+			  <tr>
+				<th><img src="images/stat.gif" width="14" height="14"></th>
+				<td><a href="stat.php">供求信息统计</a></td>
+			  </tr>
+			<tr>
+			  <th><img src="images/message_in.gif" /></td>
+			  <td><a href="pms.php?type=inquery">客户询价</a></td>
+			</tr>		  
+		  </table>
+         </td>
+		</tr>
+	  </table>
+		<{/if}>
+		<{if $menu.product}>
+		<table class="menu_width167">
+		  <tr>
+			<td>
+             <table class="menu_nav">
+				<tr>
+				  <td width="30"><img src="images/left_pic2.gif" width=30 height=35 alt=""></td>
+				  <td background="images/left_bg2.gif" class="title_bar"><a name="p"></a>产品信息管理</td>
+				  <td width="55"><img src="images/left_bg21.gif" width=55 height=35 alt=""></td>
+				</tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<td align="center" background="images/left_mid.gif">
+        <table class="menu_nav_content">
+				<tr>
+				  <th><img src="images/product.gif"></th>
+				  <td><a href="product.php?do=edit">发布产品信息</a> </td>
+				</tr>
+				<tr>
+				  <th><img src="images/product2.gif"></th>
+				  <td><a href="product.php">我的产品信息</a></td>
+				</tr>
+				<tr>
+				  <th><img src="images/sort.gif"></th>
+				  <td><a href="producttype.php">产品分类管理</a></td>
+				</tr>
+			</table></td>
+		  </tr>
+		</table>
+		<{/if}>
+		<{if $menu.company}>
+		<table class="menu_width167">
+		  <tr>
+			<td> <table class="menu_nav">
+				<tr>
+				  <td width="30"><img src="images/left_pic3.gif" width=30 height=35 alt=""></td>
+				  <td background="images/left_bg2.gif" class="title_bar">公司资料管理</td>
+				  <td width="55"><img src="images/left_bg21.gif" width=55 height=35 alt=""></td>
+				</tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<td align="center" background="images/left_mid.gif"><table class="menu_nav_content">
+				<tr> 
+				  <th><img src="images/company.gif"></th>
+				  <td><a href="company.php">基本资料</a> </td>
+				</tr>
+				<tr> 
+				  <th><img src="images/honour.gif"></th>
+				  <td><a href="album.php" title="企业的荣誉证书、营业执照等附件">企业相册</a> </td>
+				</tr>
+				<tr> 
+				  <th><img src="images/contact.gif"></th>
+				  <td><a href="card.php">名片资料</a> </td>
+				</tr>
+				<tr> 
+				  <th><img src="images/news.gif"></th>
+				  <td><a href="news.php">公司动态</a></td>
+				</tr>
+				<tr>
+				  <th><img src="images/hr.gif" /></th>
+				  <td><a href="job.php">人才招聘</a></td>
+				<tr> 
+				<tr> 
+				  <th><img src="images/link1.gif"></th>
+				  <td><a href="link.php" title="友情链接处理">交换链接</a></td>
+				</tr>
+			  </table></td>
+		  </tr>
+		</table>
+		<{/if}>
+		<table class="menu_width167">
+		  <tr>
+			<td> <table class="menu_nav">
+				<tr>
+				  <td width="30"><img src="images/left_pic4.gif" width=30 height=35 alt=""></td>
+				  <td background="images/left_bg2.gif" class="title_bar">业务往来信息</td>
+				  <td width="55"><img src="images/left_bg21.gif" width=55 height=35 alt=""></td>
+				</tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<td align="center" background="images/left_mid.gif">
+			<table class="menu_nav_content">
+				<tr>
+				  <th><img src="images/message_out.gif" /></th>
+				  <td><a href="pms.php">短消息</a></td>
+				</tr>			
+				<tr>
+				  <th><img src="images/message.gif"/></th>
+				  <td><a href="pms.php?do=send">发送消息</a></td>
+				</tr>
+			</table>
+			</td>
+		  </tr>
+		</table>
+		<table class="menu_width167">
+		  <tr>
+			<td> <table class="menu_nav">
+				<tr>
+				  <td width="30"><img src="images/self_service.gif" width=30 height=35 alt=""></td>
+				  <td background="images/left_bg2.gif" class="title_bar">自助服务</td>
+				  <td width="55"><img src="images/left_bg21.gif" width=55 height=35 alt=""></td>
+				</tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<td align="center" background="images/left_mid.gif">
+			<table class="menu_nav_content">
+				<tr>
+				  <th><img src="images/news.gif" /></th>
+				  <td><a href="ad.php">站内广告</a></td>
+				<tr> 
+				  <th><img src="images/style.gif"></th>
+				  <td><a href="style.php">自助建站</a></td>
+				</tr>
+			</table>
+			</td>
+		  </tr>
+		</table>
+		<{if $menu.basic}>
+	   <table class="menu_width167">
+		  <tr>
+			<td><table class="menu_nav">
+				<tr>
+				  <td width="30"><img src="images/left_pic7.gif" width=30 height=35 alt=""></td>
+				  <td background="images/left_bg2.gif" class="title_bar"> 系统设置</td>
+				  <td width="55"><img src="images/left_bg21.gif" width=55 height=35 alt=""></td>
+				</tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<td align="center" background="images/left_mid.gif"><table class="menu_nav_content">
+				<tr> 
+				  <th><img src="images/home.gif"></th>
+				  <td><a href="index.php">返回首页</a></td>
+				</tr>
+				<tr>
+				  <th><img src="images/personals.gif"></th>
+				  <td><a href="personal.php">个人资料</a></td>
+				</tr>
+				<tr> 
+				  <th><img src="images/password.gif"></th>
+				  <td><a href="changepass.php">修改密码</a></td>
+				</tr>
+				<tr> 
+				  <th><img src="images/style.gif"></th>
+				  <td><a href="invite.php">我的邀请码</a></td>
+				</tr>
+			</table></td>
+		  </tr>
+		  <tr>
+			<th><img src="images/left_exit.gif" alt="退出" width=167 height=35 border="0" usemap="#Map"></td>
+		  </tr>
+	  </table>
+		<{/if}>
+	  </td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+<map name="Map" id="Map"><area shape="rect" coords="48,1,157,36" href="<{$SiteUrl}>logging.php?action=logout" />
+</map>

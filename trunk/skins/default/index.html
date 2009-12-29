@@ -1,0 +1,32 @@
+<{assign var="PageTitle" value="首页"}>
+<{assign var="cur" value="space_index"}>
+<{include file="header.html"}>
+<div class="wrapper">
+	<{include file="banner.html"}>
+	<div class="content">
+		<{include file="leftbar.html"}>
+		<div class="rightbar">
+			<div class="welcome">
+				<img src="<{$COMPANY.logo}>"/>
+				<p><span class="title">欢迎访问<{$COMPANY.name}></span><br/><br/>  <{$COMPANY.description|truncate:300}><br/><br/><span class="more"><a title="更多关于<{$COMPANY.name}>的介绍" href="<{$Menus.intro}>">更多公司情况>></a></span></p>
+				<div class="clear"></div>
+			</div>
+			<br clear="all"/>
+			<{if $Products}>
+			<div class="player">
+				<div class="playerhead"><span class="playlist">产品展示</span><span class="playerheadcon"><a href="<{$Menus.product}>" title="查看<{$COMPANY.name}>更多产品"><img src="images/pic_08.gif"/></a></span><img src="images/contactus_13.jpg" /></div>
+				<div class="clear"></div>
+				<div class="playercon clearfix">
+					<ul>
+					<{foreach from=$Products name=product item=item}>
+						<li><a href="<{$SiteUrl}>product/content.php?id=<{$item.id}>" target="_blank"><img src="<{$item.picture}>" alt="<{$item.name}>" width="80" height="80" border="0" /></a>
+						<p><a href="<{$SiteUrl}>product/content.php?id=<{$item.id}>" target="_blank" title="查看<{$item.name}>详细信息"><{$item.name}></a></p></li>
+					<{/foreach}>
+					</ul>
+				</div>
+			</div>
+			<{/if}>
+		</div>
+		<div class="clear"></div>
+	</div>
+<{include file="footer.html"}>

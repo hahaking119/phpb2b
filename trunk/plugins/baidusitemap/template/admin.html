@@ -1,0 +1,45 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="rightTop"> 
+    <p>插件</p> 
+    <ul class="subnav">
+		<li><a class="btn1" href="plugin.php">管理</a></li>
+        <li><span><{$title}></span></li>
+    </ul>
+</div>
+<div class="info">
+  <form action="plugin.php" method="post" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="id" value="<{$smarty.get.id}>" />
+  <input type="hidden" name="entry" value="<{$name}>" />
+  <input type="hidden" name="formhash" value="<{$formhash}>" />
+    <table class="infoTable">
+      <tr>
+        <th class="paddingT15"> 网站地址：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[loc]" value="<{$loc|default:$SiteUrl}>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">站长email：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="pluginvar[webmaster]" value="<{$webmaster}>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 网站更新周期：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[updateperi]" value="<{$updateperi}>" />(以小时为单位)</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 文件最近更新时间：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[updatetime]" value="<{$updatetime}>" />(时间格式如：2009-12-1 15:30:30)</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" id="Save" value="保存" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<{include file="footer.html"}>
