@@ -107,7 +107,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['news'])) {
 		$vals['require_membertype'] = 0;
 	}
 	$vals['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
-	if($id){
+	if(!empty($id)){
 		$vals['modified'] = $time_stamp;
 		if (!empty($_FILES['pic']['name'])) {
 			$attachment->rename_file = "news-".$pdb->GetOne("SELECT created FROM {$tb_prefix}newses WHERE id={$id}");	
@@ -117,7 +117,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['news'])) {
 		}
 		$result = $news->save($vals, "update", $id);
 	}else{
-		$vals['created'] = $val['modified'] = $time_stamp;
+		$vals['created'] = $vals['modified'] = $time_stamp;
 		if (!empty($_FILES['pic']['name'])) {
 			$attachment->rename_file = "news-".$time_stamp;	
 			$attachment->upload_process();

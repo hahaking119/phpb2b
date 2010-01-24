@@ -13,26 +13,18 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: index.php 443 2009-12-26 13:49:49Z cht117 $
+ * @version $Id: detail.php 443 2009-12-26 13:49:49Z cht117 $
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
 require("common.inc.php");
-$tpl_file = "help.index";
-$viewhelper->setPosition(L("help_center", "tpl"), "help/index.php");
-if(isset($_GET['typeid'])) {
-	$type_id = intval($_GET['typeid']);
-	$conditions[] = "helptype_id=".$type_id;
-	$type_name = $pdb->GetOne("SELECT title FROM {$tb_prefix}helptypes WHERE id='".$type_id."'");
-	$viewhelper->setTitle($type_name);
-	$viewhelper->setPosition($type_name, "help/index.php?typeid=".$type_id);
-}
-if (isset($_GET['search'])) {
-	if (!empty($_GET['q'])) {
-		$conditions[] = "title like '%".trim($_GET['q'])."%'";
+$tpl_file = "help.detail";
+if (isset($_GET['id'])) {
+	$id = intval($_GET['id']);
+	$help_result = $pdb->GetRow("SELECT * FROM {$tb_prefix}helps WHERE id='".$id."'");
+	if (!empty($help_result)) {
+		setvar("item", $help_result);
 	}
 }
-$result = $help->findAll("id,title", null, $conditions, "id DESC");
-setvar("Items", $result);
 render($tpl_file);
 ?>

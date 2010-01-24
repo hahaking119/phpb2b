@@ -186,6 +186,11 @@ if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
     }
 	$res['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
     $form_type_id = 1;
+	  if (!empty($company_id)) {
+    	$res['company_id'] = $company_id;
+    }else{
+    	$res['company_id'] = 0;
+    }
     if (!empty($id)) {
 		$item_ids = $form->Add($id,$_POST['data']['formitem']);
 		$res['formattribute_ids'] = $item_ids;
@@ -196,6 +201,15 @@ if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
         $res['member_id'] = $_SESSION['MemberID'];
         $res['company_id'] = $company_id;
         $res['submit_time'] = $res['created'] = $res['modified'] = $time_stamp;
+        if (!empty($_POST['expire_days'])) {
+        	if (array_key_exists($_POST['expire_days'], $trade_controller->offer_expires)) {
+        		$res['expire_days'] = $_POST['expire_days'];
+        		$res['expire_time'] = $res['expire_days']*86400+$time_stamp;
+        	}
+        }else{
+        	$res['expire_days'] = 10;
+        	$res['expire_time'] = $res['expire_days']*86400+$time_stamp;
+        }
         if(isset($companyinfo['name'])) {
         	$res['cache_companyname'] = $companyinfo['name'];
         }

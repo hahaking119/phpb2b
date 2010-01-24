@@ -290,7 +290,7 @@ CREATE TABLE `pb_companies` (
   `main_biz_place` varchar(50) NOT NULL default '',
   `main_customer` varchar(200) NOT NULL default '',
   `link_man` varchar(25) NOT NULL default '',
-  `link_man_gender` tinyint(1) NOT NULL,
+  `link_man_gender` tinyint(1) NOT NULL default '0',
   `position` tinyint(1) NOT NULL default '0',
   `telcode` varchar(8) NOT NULL default '',
   `telzone` varchar(8) NOT NULL default '',
@@ -576,14 +576,13 @@ CREATE TABLE `pb_helps` (
 -- 表的结构 `pb_helptypes`
 -- 
 
-DROP TABLE IF EXISTS `pb_helptypes`;
 CREATE TABLE `pb_helptypes` (
   `id` smallint(3) NOT NULL auto_increment,
   `title` varchar(100) NOT NULL default '',
   `description` varchar(100) NOT NULL default '',
   `parent_id` smallint(3) NOT NULL default '0',
-  `level` tinyint(1) NOT NULL,
-  `display_order` tinyint(1) NOT NULL,
+  `level` tinyint(1) NOT NULL default '0',
+  `display_order` tinyint(1) NOT NULL default '0',
   `created` int(10) NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -923,7 +922,7 @@ CREATE TABLE `pb_members` (
   `email` varchar(100) NOT NULL default '',
   `points` smallint(6) NOT NULL default '0',
   `credits` smallint(6) NOT NULL default '0',
-  `balance_amount` float(7,2) NOT NULL,
+  `balance_amount` float(7,2) NOT NULL default '0.00',
   `trusttype_ids` varchar(25) NOT NULL default '',
   `status` enum('3','2','1','0') NOT NULL default '0',
   `photo` varchar(100) NOT NULL default '',

@@ -3,17 +3,6 @@
 -- 最后更新: 2009-12-28
 
 -- 
--- 导出表中的数据 `pb_adses`
--- 
-
-INSERT INTO `pb_adses` VALUES (1, 1, 'GIF', 'GIF图片', 1, '', 'image/gif', 'attachment/sample/gif.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, 1261888037, 1261888037);
-INSERT INTO `pb_adses` VALUES (2, 1, 'JPG', 'JPG图片', 1, '', 'image/pjpeg', 'attachment/sample/jpg.jpg', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, 1261888054, 1261888054);
-INSERT INTO `pb_adses` VALUES (3, 1, 'PNG', 'PNG图片', 1, '', 'image/x-png', 'attachment/sample/png-1.png', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, 1261888065, 1261888065);
-INSERT INTO `pb_adses` VALUES (4, 1, 'PNG', '', 1, '', 'image/x-png', 'attachment/sample/png-2.png', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, 1261888266, 1261888266);
-INSERT INTO `pb_adses` VALUES (5, 1, 'PNG图片', 'PNG', 1, '', 'image/x-png', 'attachment/sample/png-3.png', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, 1261888221, 1261888221);
-INSERT INTO `pb_adses` VALUES (6, 1, 'PNG图片', '', 1, '', 'image/x-png', 'attachment/sample/png.png', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, 1261888231, 1261888231);
-
--- 
 -- 导出表中的数据 `pb_adzones`
 -- 
 

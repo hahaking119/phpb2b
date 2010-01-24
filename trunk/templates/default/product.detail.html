@@ -21,7 +21,7 @@
 				   <p>关键词：<{$item.tag}>
 				 </p>
 					<label>
-					  <input type="button" name="favor" value="我要询价"  class="leftbutton" onclick="redirect('product/inquery.php?id=<{$item.id}>');" />
+					  <input type="button" name="favor" value="我要询价"  class="leftbutton" onclick="redirect('inquery.php?id=<{$item.id}>');" />
 					</label>
                     <{if $pb_username}>
 					<label>
@@ -48,7 +48,7 @@
                 <{foreach from=$ObjectParams name=op item=tparam}>
 					<tr>
 					  <td class="tableblue"><{$tparam.label}></td>
-					  <td classs="lightblue"><{$tparam.value}></td>
+					  <td class="lightblue"><{$tparam.value}></td>
 				</tr>
                	<{/foreach}>
 			   </table>
@@ -56,7 +56,7 @@
 			</div>				
 		</div>
 		<div class="detailtop3right">
-            <{if $LoginCheck && $pb_username==""}>
+            <{if $pb_username==""}>
 			<div class="contacttype">
             <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php?forward=<{$forward}>">
                 <input type="hidden" name="action" value="logging">
@@ -64,7 +64,7 @@
 				<p class="right1">请您登陆后查看联系方式</p>
 				<p>用户名：<input name="data[login_name]" type="text" /></p>
 				<p>密　码：<input name="data[login_pass]" type="password" /></p>
-				<p><input type="button" name="login" value="登陆" /></p>
+				<p><input type="submit" name="login" value="登陆" /></p>
             </form>
 			</div>
             <{else}>

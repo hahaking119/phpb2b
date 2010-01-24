@@ -21,6 +21,7 @@ require(LIB_PATH. "file.class.php");
 uses("htmlcache");
 $htmlcache = new Htmlcaches();
 require(LIB_PATH. "cache.class.php");
+require(LIB_PATH. "json_config.php");
 $cache = new Caches();
 $tpl_file = "htmlcache";
 if (isset($_POST['do'])) {

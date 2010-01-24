@@ -36,10 +36,11 @@ if (isset($_GET['do'])) {
 		}
 	}
 	if ($do == "edit") {
+		setvar("HelptypeOptions", $helptype_option = $helptype->getTypeOptions('', 3));
 		if(!empty($id)){
+			setvar("HelptypeOptions", $helptype_option = $helptype->getTypeOptions($item['helptype_id'], 3));
 			setvar("item",$item = $help->read("*",$id));
 		}
-		setvar("HelptypeOptions", $helptype_option = $helptype->getTypeOptions($item['helptype_id'], 3));
 		$tpl_file = "help.edit";
 		template($tpl_file);
 		exit;
@@ -48,10 +49,13 @@ if (isset($_GET['do'])) {
 if(isset($_POST['save']) && !empty($_POST['help'])){
 	$vals = $_POST['help'];
 	if(isset($_POST['id'])){
+		$id = intval($_POST['id']);
+	}
+	if(!empty($id)){
 		$vals['modified'] = $time_stamp;
-		$result = $help->save($vals, "update", $_POST['id']);
+		$result = $help->save($vals, "update", $id);
 	}else{
-		$vals['created'] = $time_stamp;
+		$vals['created'] = $vals['modified'] = $time_stamp;
 		$result = $help->save($vals);
 	}
 	if (!$result) {

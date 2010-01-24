@@ -74,7 +74,7 @@ class Tags extends PbModel {
 				if(isset($_SESSION['member_id']))
 				$tmp_str[] = "('".$_SESSION['member_id']."','".$val2."',1,".$this->timestamp.",".$this->timestamp.")";
 			}
-			$this->dbstuff->Execute("INSERT INTO {$this->table_prefix}tags (member_id,name,numbers,created,modified) VALUES ".implode(",", $tmp_str));
+			if(!empty($tmp_str)) $this->dbstuff->Execute("INSERT INTO {$this->table_prefix}tags (member_id,name,numbers,created,modified) VALUES ".implode(",", $tmp_str));
 			$result = $this->dbstuff->GetArray("SELECT id,name FROM {$this->table_prefix}tags WHERE name IN ('".implode("','", $not_exist_tag)."')");
 			foreach ($result as $val3) {
 				$this->inserted_id[] = $val3['id'];

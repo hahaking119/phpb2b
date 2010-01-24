@@ -12,7 +12,7 @@
      <div class="offer_info_title"><h2><{$page_title}></h2></div>
      <div class="blank"></div>
 
-	  <form name="messagefrm" action="sendmessage.php" method="post">
+	  <form name="messagefrm" action="pms.php" method="post">
 	  <input type="hidden" name="revert_to_member_id" value="<{$item.CompanymessageFromMemberId}>">
          <table class="offer_info_content">
           <tr>
@@ -36,7 +36,7 @@
        <table class="btn_save">
         
         <tr>
-          <td><input type=submit value=" 回 复 " name=submit onClick="location.href='sendmessage.php'"> 　
+          <td><input type=button value=" 回 复 " name=submit onClick="location.href='pms.php?do=send'"> 　
             <input type=submit value=" 返 回 " name=submit> 
           </td>
         </tr>

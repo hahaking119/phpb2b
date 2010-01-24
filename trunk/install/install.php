@@ -15,7 +15,7 @@
  * @package phpb2b
  * @version $Id: install.php 581 2009-12-28 13:20:17Z steven $
  */
-error_reporting(0);
+error_reporting(E_ALL & ~E_NOTICE);
 @set_time_limit(1000);
 set_magic_quotes_runtime(0);
 if (isset($_GET['act'])) {
@@ -33,11 +33,17 @@ if (!defined('DIRECTORY_SEPARATOR')) {
 	define('DIRECTORY_SEPARATOR','/');
 }
 define('DS', DIRECTORY_SEPARATOR);
+if (!defined('CACHE_PATH')) {
+	define('CACHE_PATH', PHPB2B_ROOT."data".DS."cache".DS);
+}
 require '../libraries/global.func.php';
 require '../libraries/func.sql.php';
-require"../libraries/db_mysql.inc.php";
-require"../libraries/json_config.php";
+require "../libraries/db_mysql.inc.php";
+require "../libraries/json_config.php";
+require "../libraries/pb_object.php";
+require "../libraries/file.class.php";
 $db = new DB_Sql();
+$file_cls = new Files();
 $pb_protocol = 'http';
 if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) ) {
 	$pb_protocol = 'https';
@@ -245,6 +251,7 @@ switch($step)
 				$sqls = file_get_contents("data/mysql.sample.sql");
 				sql_run($sqls);
 				dir_copy($source,$dest,1);
+			}
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('install_dateline', '".time()."')");
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('site_name', '$sitename')");
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('site_title', '".htmlspecialchars($sitetitle)." - Powered By PHPB2B"."')");
@@ -258,7 +265,6 @@ switch($step)
 			$db->query("REPLACE INTO {$tb_prefix}adminfields (member_id,last_name,created,modified) VALUES ('{$aminer_id}','管理员',".time().",".time().")");	
 			$db->free();
 			require(PHPB2B_ROOT. "libraries".DS.'adodb'.DS.'adodb.inc.php');
-			require(PHPB2B_ROOT. "libraries".DS."pb_object.php");
 			require(PHPB2B_ROOT. "libraries".DS."cache.class.php");
 			$cache = new Caches();
 			$pdb = &NewADOConnection($database);
@@ -281,7 +287,6 @@ switch($step)
 		break;
 	}
 	break;
-	}
 }
 function config_edit($configs) {
 	global $dbcharset;

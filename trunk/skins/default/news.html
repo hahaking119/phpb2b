@@ -11,7 +11,7 @@
 					<div class="clear"></div>
 					<div class="player_concontact">
 					<{foreach from=$Items item=item}>
-						<p class="companytitle"><a href="<{$Menus.news}>&id=<{$item.id}>"><{$item.title}></a></p>
+						<p class="companytitle"><a href="<{$item.url}>"><{$item.title}></a></p>
 						<p><{$item.content|truncate:100}></p>
 					<{/foreach}>					
 						<p class="page"><{$ByPages}></p>

@@ -3,7 +3,7 @@ body, th, td, input, select, textarea { font: 12px/1.5em Verdana, "Lucida Grande
 body, h1, h2, h3, h4, h5, h6, p, ul, dl, dt, dd, form, img,fieldset { margin: 0; padding: 0;border:none; list-style-type:none; }
 h1, h2, h3, h4, h5, h6 { font-size: 1em; }
 ul li { list-style: none; }
-select { margin-right: 2px; }
+select { margin:0px 2px 3px 0; }
 a:link,a:visited{ color:#333; text-decoration:none;}
 a:hover { color: #0033FF}
 a img { border: none; }
@@ -19,7 +19,7 @@ table {border-collapse:collapse;}
 .co01{ color:#EF700A;}.tar{ text-align:right;}
 .content{ width:960px;}.cb{ clear:both;}
 .mt10{ margin-top:10px;}.mr15{ margin-right:15px;}.mr7{ margin-right:10px; display:block; overflow:hidden}
-.whitespace,.h7{ height:6px; clear:both; overflow:hidden;width:980px;margin:0 auto;}
+.whitespace,.h7{ height:6px; clear:both; overflow:hidden;margin:0 auto;}
 .h7{width:auto;}
 .clear { clear:both; height:0px; display:block; visibility:hidden; _line-height:0px;}
 .blank { height:10px; clear:both; display:block; overflow:hidden;}

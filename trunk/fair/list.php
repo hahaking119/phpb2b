@@ -61,6 +61,7 @@ $page->setPagenav($amount);
 $result = $expo->findAll("*", null, $conditions, "id desc", $page->firstcount, $page->displaypg);
 setvar("Items", $result);
 setvar("Areas", $_PB_CACHE['area']);
+setvar("Type",$_PB_CACHE['expotype']);
 $viewhelper->setTitle(L("search", "tpl"));
 $viewhelper->setPosition(L("search", "tpl"));
 render("fair.list");

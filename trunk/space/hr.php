@@ -33,10 +33,16 @@ if (isset($_GET['id'])) {
 		exit;
 	}
 }
-$res = $job->findAll("*", null, $conditions, "id DESC", 0, 10);
+$result = $job->findAll("*", null, $conditions, "id DESC", 0, 10);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		$result[$i]['url'] = $space->rewriteDetail("hr", $result[$i]['id']);
+	}
+	setvar("Items", $result);
+}
 $sql = "UPDATE {$tb_prefix}jobs SET clicked=clicked+1 WHERE status=1 AND company_id=".$company->info['id'];
 $pdb->Execute($sql);
-setvar("Items",$res);
+setvar("Items",$result);
 setvar("Worktype", get_cache_type("work_type"));
 setvar("Salary", get_cache_type("salary"));
 $space->render("hr");

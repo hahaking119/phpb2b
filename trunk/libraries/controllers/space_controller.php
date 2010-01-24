@@ -21,6 +21,7 @@ class Space extends PbController {
 	var $links;
 	var $member_id;
 	var $company_id;
+	var $base_url;
 	
 	function Space()
 	{
@@ -37,11 +38,32 @@ class Space extends PbController {
 	{
 		return $this->links;
 	}
+	
+	function rewriteDetail($module, $id = 0)
+	{
+		global $rewrite_able;
+		if ($rewrite_able) {
+			return $this->base_url.$module."/detail-".$id.".html";
+		}else{
+			return $this->base_url."&do={$module}&id=".$id;
+		}
+	}
+	
+	function rewriteList($module, $page = 1)
+	{
+		global $rewrite_able;
+		if ($rewrite_able) {
+			return $this->base_url.$module."/list-".$page.".html";
+		}else{
+			return $this->base_url."&do={$module}&page=".$page;
+		}
+	}
 
 	function setMenu($user_id, $space_actions){
 		global $subdomain_support, $rewrite_able;
 		$tmp_menus = array();
 		if($subdomain_support){
+			$this->base_url = "http://".$user_id.$subdomain_support."/";
 			foreach ($space_actions as $key=>$val) {
 				if($val=="index" || $val=="home"){
 					$tmp_menus[$val] = "http://".$user_id.$subdomain_support."/";
@@ -50,14 +72,16 @@ class Space extends PbController {
 				}
 			}
 		}elseif($rewrite_able){
+			$this->base_url = URL."space/".$user_id."/";
 			foreach ($space_actions as $key=>$val) {
 				if($val=="index" || $val=="home"){
-					$tmp_menus[$val] = URL.$user_id."/";
+					$tmp_menus[$val] = URL."space/".$user_id."/";
 				}else{
-					$tmp_menus[$val] = URL.$user_id."/".$val."/";
+					$tmp_menus[$val] = URL."space/".$user_id."/".$val."/";
 				}
 			}
 		}else{
+			$this->base_url = URL."space.php?userid=".$user_id;
 			foreach ($space_actions as $key=>$val) {
 				$tmp_menus[$val] = URL."space.php?do=".$val."&userid=".$user_id;
 			}

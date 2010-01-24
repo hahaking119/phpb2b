@@ -17,18 +17,23 @@
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
+require(LIB_PATH. "typemodel.inc.php");
 uses("friendlink");
 $link = new Friendlinks();
 $conditions = null;
 $tpl_file = "friendlink";
-if (isset($_POST['save']) && !empty($_POST['friendlink']['title'])) {
+setvar("AskAction", get_cache_type("common_option"));
+if (isset($_POST['save']) && !empty($_POST['data']['friendlink']['title'])) {
 	$vals = array();
-	$vals = $_POST['friendlink'];
-	$id = intval($_POST['id']);
-	if ($id) {
+	$vals = $_POST['data']['friendlink'];
+	if(isset($_POST['id'])){
+		$id = intval($_POST['id']);
+	}
+	if (!empty($id)) {
+		$vals['modified'] = $time_stamp;
 		$updated = $link->save($vals, "update", $id);
 	} else {
-		$vals['created'] = $time_stamp;
+		$vals['created'] = $vals['modified'] = $time_stamp;
 		$updated = $link->save($vals);
 	}
 	if (!$updated) {
@@ -45,7 +50,7 @@ if (isset($_GET['do'])) {
 	}
 	if ($do == "edit") {
 		$tpl_file = "friendlink.edit";
-		if($id){
+		if(!empty($id)){
 			$fields = "id,title,logo,priority,url";
 			$link_info = $link->read($fields,$id);
 			setvar("item",$link_info);

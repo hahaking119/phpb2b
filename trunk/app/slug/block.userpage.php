@@ -31,7 +31,15 @@ function smarty_block_userpage($params, $content, &$smarty) {
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
-			$url = ($rewrite_able)? "page/".$result[$i]['name'].".html":$result[$i]['url'];			
+			if (!empty($result[$i]['url'])) {
+				$url = $result[$i]['url'];
+			}else{
+				if ($rewrite_able) {
+					$url = "page/".$result[$i]['name'].".html";
+				}else{
+					$url = "page.php?name=".$result[$i]['name'];
+				}
+			}		
 			$return.= str_replace(array("[link:title]", "[field:title]", "[field:tip]"), array($url, $result[$i]['title'], $result[$i]['digest']), $content);
 		}
 	}

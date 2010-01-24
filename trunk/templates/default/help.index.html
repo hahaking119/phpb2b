@@ -1,92 +1,59 @@
-<{assign var="page_title" value="`$page_title`"}>
+<{assign var="page_title" value="`$page_title` - `$_help_center`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="container">
 	<div class="contentbox">
-		<p class="breadnav">
-			<img src="<{$theme_img_path}>images/lhighs.jpg" />
-			当前位置 &gt; <a href="#">首页</a> &gt; <a href="#">帮助中心</a> &gt; 常见问题
-		</p>
+		<p class="breadnav"><{$position}></p>
 		<p class="whitespace"></p>
-		<div class="container">
-			<div class="fl help_l">
-				<p class="help_ltop">
-					<img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
-					<img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
-				</p>
-				<div class="help_lcont">
-					<div class="help_telborder">
-						<div class="help_tel mauto">
-							<img src="<{$theme_img_path}>images/helpcontbgl.jpg" class="fl" />
-							<img src="<{$theme_img_path}>images/helpcontbgr.jpg" class="fr" />
-							<div class="help_telcont">帮助中心<br /><p class="tar">010-12345678</p></div>
-						</div>
-						<h2 class="tar">常见问题</h2>
-					</div>
-					<ul>
-						<li class="help_lcontcur"><a href="#">什么是产品特卖会？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何发布产品信息？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何发布公司简介？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何发布公司动态？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何管理企业图片？</a></li>
-						<li class="help_lcontnav"><a href="#">怎样给商机信息选配图片？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何取消已公开的留言？</a></li>
-					</ul>
-					<h2 class="tar helpbor_01">网站使用</h2>
-					<ul>
-						<li class="help_lcontnav"><a href="#">什么是产品特卖会？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何发布产品信息？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何发布公司简介？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何发布公司动态？</a></li>
-						<li class="help_lcontnav"><a href="#">卖家如何管理企业图片？</a></li>
-						<li class="help_lcontnav"><a href="#">怎样给商机信息选配图片？</a></li>
-						<li class="help_lcontnavs"><a href="#">卖家如何取消已公开的留言？</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="fl help_r">
-				<p class="help_ltop">
-					<img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
-					<img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
-				</p>
-				<div class="help_rcontbg">
-					<img src="<{$theme_img_path}>images/helprbgl.jpg" class="fl" />
-					<img src="<{$theme_img_path}>images/helprbgr.jpg" class="fr" />
-					<p class="help_rsearch">
-						<em>搜索帮助：</em><input name="" type="text" style="width:185px; height:17px; border:1px solid #ccc;" /><input name="" value="" type="submit" class="help_rgo" />
-					</p>
-					<p class="fl help_rbg">
-						1、什么是产品特卖会?<br /> 
-						2、卖家如何发布产品信息？<br /> 
-						3、卖家如何发布公司简介？  <br />
-						4、卖家如何发布公司动态？ <br />
-						5、卖家如何管理企业图片？ <br />
-						6、怎样给商机信息选配图片？可上<br />
-						7、卖家如何取消已公开的留言？ <br />
-						8、怎样订阅最新商机？ <br />
-						9、卖家如何公开留言？ <br />
-						10、如何使用特色标志? <br />
-					</p>
-				</div>
-			</div>
-		</div><br clear="all"/>
-        <div class="ins">
-                <a href="#" title="">网站首页</a><span>|</span>
-                <a href="#" title="">关于我们</a><span>|</span>
-                <a href="#" title="">法律声明</a><span>|</span>
-                <a href="#" title="">客户服务</a><span>|</span>
-                <a href="#" title="">技术支持</a><span>|</span>
-                <a href="#" title="">媒体报道</a><span>|</span>
-                <a href="#" title="">广告专区</a><span>|</span>
-                <a href="#" title="">代理专区</a><span>|</span>
-                <a href="#" title="">联系我们</a><span>|</span>
-                <a href="#" title="">网站地图</a><span>|</span>
-                <p>
-                    本网站版权所有(C)2009 客户服务热线：010－12345678 客户服务邮箱：service@hotmail.com<br />京ICP备12345678<br />
-                    <a href="#" title=""><img src="<{$theme_img_path}>images/qq.jpg" /></a>　　
-                    <a href="#" title=""><img src="<{$theme_img_path}>images/msn.jpg" /></a>
-                </p>
+    <div class="content clearfix">
+                <div class="fl help_l">
+                    <p class="help_ltop">
+                        <img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
+                        <img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
+                    </p>
+                    <div class="help_lcont">
+                        <div class="help_telborder">
+                            <div class="help_tel mauto">
+                                <img src="<{$theme_img_path}>images/helpcontbgl.jpg" class="fl" />
+                                <img src="<{$theme_img_path}>images/helpcontbgr.jpg" class="fr" />
+                                <div class="help_telcont"><{$_help_center}>
+                                <p class="tar"><{$service_tel}></p>
+                                </div>
+                            </div>
+                        </div>
+                        <{foreach from=$Helptypes name=Helptypes item=helptype}>
+                        <h2 class="tar helpbor_01"><a href="help/index.php?typeid=<{$helptype.id}>"><{$helptype.name}></a></h2>
+                        <ul>
+                            <{if $helptype.sub}>
+                            <{foreach from=$helptype.sub name=sub_helptype item=sub_helptype}>
+                            <li class="help_lcontnav"><a href="help/index.php?typeid=<{$sub_helptype.id}>"><{$sub_helptype.name}></a></li>
+                            <{/foreach}>
+                            <{/if}>
+                        </ul>
+                        <{/foreach}>
+                    </div>
+                    <div class="help_lcontnavs"></div>
+                </div>
+                <div class="fr help_r clearfix">
+                    <div class="help_rtop"></div>
+                    <div class="help_rcontbg">
+                        
+                        <form method="get" action="help/index.php" >
+                        <input type="hidden" name="search" value="search"/>
+                         <p class="help_rsearch">
+                            <{$_search}><{$_help}>:<input name="q" value="" type="text" /><input name="submit" value="" type="submit" class="help_rgo" />
+                          </p>
+                        </form>
+                       
+                        <p class="help_rbg">
+                        <{foreach from=$Items name=helps item=item}>
+                        <{$smarty.foreach.helps.iteration}>.<a href="help/detail.php?id=<{$item.id}>"><{$item.title}></a><br /> 
+                        <{/foreach}>
+                        </p>
+                    </div>
+                </div>
             </div>
+
 	</div>
 </div>
 <{include file="`$ThemeName`/footer.html"}>

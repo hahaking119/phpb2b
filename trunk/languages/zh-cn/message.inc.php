@@ -104,6 +104,7 @@ $arrMessage['_apply_friendlink'] = "友情链接申请";
 $arrMessage['_invalid_user'] = "无效用户";
 $arrMessage['_sth_wrong_occured'] = "出现未知错误";
 $arrMessage['_submit_invalid'] = "提交数据时发生错误";
+$arrMessage['_msg_wait_success'] = "发布成功";
 $arrMessage['_msg_wait_check'] = "请等待审核";
 $arrMessage['_link_added'] = "添加商友成功";
 $arrMessage['_pls_del_first'] = "请先删除该分类下产品";
@@ -143,5 +144,6 @@ $arrMessage['_username_not_level'] = "用户名不合法";
 $arrMessage['_username_not_legal'] = "包含未允许注册的词语";
 $arrMessage['_email_not_allowed'] = "Email 不允许注册";
 $arrMessage['_email_hasbeen_used'] = "该 Email 已经被注册";
+$arrMessage['_write_file_error_and_retry'] = "文件写入失败，请检查后再试";
 
 ?>

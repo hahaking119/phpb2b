@@ -16,5 +16,5 @@
  * @version $Id: phpb2b_version.php 511 2009-12-28 05:21:13Z steven $
  */
 define('PHPB2B_VERSION', 'Athena');
-define('PHPB2B_RELEASE', '20091225');
+define('PHPB2B_RELEASE', '20090122');
 ?>

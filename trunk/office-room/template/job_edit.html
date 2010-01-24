@@ -54,9 +54,9 @@
                         <th>所属行业</th>
                         <td class="tdright">
 						<div id="dataIndustry">
-							<select name="data[job][industry_id1]" id="dataCompanyIndustryId1" class="level_1" style="width:120px;" ></select>
-							<select name="data[job][industry_id2]" id="dataCompanyIndustryId2" class="level_2" style="width:120px;"></select>
-							<select name="data[job][industry_id3]" id="dataCompanyIndustryId3" class="level_3" style="width:120px;"></select>
+							<select name="job[industry_id1]" id="dataCompanyIndustryId1" class="level_1" style="width:120px;" ></select>
+							<select name="job[industry_id2]" id="dataCompanyIndustryId2" class="level_2" style="width:120px;"></select>
+							<select name="job[industry_id3]" id="dataCompanyIndustryId3" class="level_3" style="width:120px;"></select>
 						</div>
 						</td>
                       </tr>
@@ -64,15 +64,20 @@
                         <th>所在地</th>
                         <td class="tdright">
 						<div id="dataArea">
-							<select name="data[job][area_id1]" id="dataCompanyAreaId1" class="level_1" style="width:120px;" ></select>
-							<select name="data[job][area_id2]" id="dataCompanyAreaId2" class="level_2" style="width:120px;"></select>
-							<select name="data[job][area_id3]" id="dataCompanyAreaId3" class="level_3" style="width:120px;"></select>
+							<select name="job[area_id1]" id="dataCompanyAreaId1" class="level_1" style="width:120px;" ></select>
+							<select name="job[area_id2]" id="dataCompanyAreaId2" class="level_2" style="width:120px;"></select>
+							<select name="job[area_id3]" id="dataCompanyAreaId3" class="level_3" style="width:120px;"></select>
 						</div>
 						</td>
                       </tr>
                       <tr>
                         <th>工作地点</th>
                         <td class="tdright"><input name="job[work_station]" type="text" id="work_station" value="<{$item.work_station}>" /></td>
+                      </tr>
+					   <th>工作性质</th>
+                        <td class="tdright"><select name="job[worktype_id]">
+						<{html_options options=$Worktype selected=$item.worktype_id}>
+						</select></td>
                       </tr>
                       <tr>
                         <th>截止时间</th>

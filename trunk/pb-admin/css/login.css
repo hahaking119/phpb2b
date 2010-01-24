@@ -30,15 +30,15 @@ div{margin:0 auto; padding:0;}
 #login_pan h2 span{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:15px; color:#1a4478; margin-left:6px; font-weight:bold; letter-spacing:0px;}
 
 .loginmain{width:558px; height:251px; background:url(../images/form_bg.png) no-repeat; padding:40px 0 0 50px;_height:251px;
-_background: none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,  src="../images/form_bg.png");}
+_background: none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,  src="images/form_bg.png");}
 
 #login_pan form label{width:90px; height:22px; color:#b5bac0; font-weight:bold; display:block; float:left; padding: 0 0 0 30px; margin:9px 0 0;}
 #login_password,#login_username{width:190px; height:18px; font-size:15px;border:1px inset #BFB492;}
 #login_check{width:90px; height:18px; font-size:15px; display:block; float:left; margin:9px 0 0 0;border:1px inset #BFB492;}
 .login_forget{ color:#476485; font-size:14px;letter-spacing:2px; float:left; width:80px; height:35px; line-height:35px;}
 .btn_forget { float:right; width:80px;}
-.button{ width:80px; height:31px; display:block; background:url(../images/botton_bg.jpg) 0 0 no-repeat #000; border:none; font:14px bold; text-align:center;}
-.login_main { width:280px;_width:270px; border:0; }
+.button{ width:80px; height:31px; display:block; background:url(../images/botton_bg.jpg) 0 0 no-repeat #000; border:none; font:14px bold; text-align:center; cursor:pointer}
+.login_main { width:280px;_width:270px; border:0; _z-index:10000px; _position:relative }
 .login_main th { color:#FFFFFF; width:80px; font-size:14px; font-weight:bold;}
 .login_main td { padding:5px 0 5px 0;  }
 .code { height:35px;}

@@ -39,7 +39,7 @@ if (isset($_GET['do'])) {
 	}
 	if ($do == "view" && !empty($id)) {
 		$tpl_file = "job.view";
-		$sql = "SELECT j.* FROM {$tb_prefix}jobs j WHERE j.id=".$id;
+		$sql = "SELECT j.name,j.work_station,j.content,j.require_gender_id,j.peoples,j.require_education_id,j.require_age,j.salary_id,j.worktype_id,j.clicked,j.created,j.expire_time,c.name as cache_companyname,m.username as cache_username from {$tb_prefix}jobs as j LEFT JOIN {$tb_prefix}companies c ON j.company_id=c.id LEFT JOIN {$tb_prefix}members m ON j.member_id=m.id where j.id=".$id;
 		$result = $pdb->GetRow($sql);
 		setvar("item", $result);
 		setvar("Genders", get_cache_type("gender"));
@@ -57,6 +57,11 @@ if (isset($_POST['pb_action'])) {
 		}elseif ($_POST['pb_action'] == "del"){
 			$result = $job->del($_POST['id']);
 		}
+	}
+}
+if(isset($_POST['del'])){
+	if(!empty($_POST['id'])){
+		$job->del($_POST['id']);
 	}
 }
 $fields = "Job.id,Job.name as jobname,Job.created as pubdate,Job.status as jobstatus, c.name as companyname,m.username";

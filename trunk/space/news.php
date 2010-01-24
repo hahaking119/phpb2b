@@ -36,7 +36,13 @@ if (isset($_GET['id'])) {
 }
 $amount = $companynews->findCount(null, $conditions,"Companynews.id");
 $page->setPagenav($amount);
-setvar("Items",$companynews->findAll("id,title,content,created,created AS pubdate",null, $conditions,"Companynews.id DESC",$page->firstcount,$page->displaypg));
-setvar("ByPages",$page->pagenav);
+$result = $companynews->findAll("id,title,content,created,created AS pubdate",null, $conditions,"Companynews.id DESC",$page->firstcount,$page->displaypg);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		$result[$i]['url'] = $space->rewriteDetail("news", $result[$i]['id']);
+	}
+	setvar("Items", $result);
+	setvar("ByPages",$page->pagenav);
+}
 $space->render("news");
 ?>

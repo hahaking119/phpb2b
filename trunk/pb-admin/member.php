@@ -51,6 +51,27 @@ if (isset($_POST['check_out'])){
 		flash();
 	}
 }
+if (isset($_POST['pb_action']) && !empty($_POST['id'])) {
+	list($action_name, $action_id) = explode("_", $_POST['pb_action']);
+	$ids = "(".implode(",", $_POST['id']).")";
+	switch ($action_name) {
+		case "status":
+			$sql = "UPDATE {$tb_prefix}members SET status='".$action_id."' WHERE id IN ".$ids;
+			break;
+		case "membertype":
+			$sql = "UPDATE {$tb_prefix}members SET membertype_id='".$action_id."' WHERE id IN ".$ids;
+			break;
+		case "membergroup":
+			$sql = "UPDATE {$tb_prefix}members SET membergroup_id='".$action_id."' WHERE id IN ".$ids;
+			break;
+		default:
+			break;
+	}
+	$result = $pdb->Execute($sql);
+	if (!$result) {
+		flash();
+	}
+}
 if (isset($_POST['save'])) {
 	if (isset($_POST['id'])) {
 		$member_id = $_POST['id'];

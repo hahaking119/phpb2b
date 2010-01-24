@@ -38,6 +38,7 @@ if (isset($_GET['do'])) {
 		$helptype->del($_GET['id']);
 	}
 	if($do == "edit"){
+		setvar("HelptypeOptions", $helptype->getTypeOptions());
 		if(isset($_GET['id'])){
 			$id = intval($_GET['id']);
 			$res= $helptype->read("*",$id);
@@ -51,7 +52,13 @@ if (isset($_GET['do'])) {
 }
 if (isset($_POST['save'])) {
 	$vals = array();
-	$vals = $_POST['helptype'];
+	$vals = $_POST['data']['helptype'];
+	//根据parent_id判断level
+	if (empty($vals['parent_id']) || (!$vals['parent_id'])) {
+		$vals['level'] = 1;
+	}else{
+		$vals['level'] = $pdb->GetOne("SELECT level+1 FROM {$tb_prefix}helptypes WHERE id=".$vals['parent_id']);
+	}
 	if (!empty($_POST['id'])) {
 		$result = $helptype->save($vals, "update", $_POST['id']);
 	}else{

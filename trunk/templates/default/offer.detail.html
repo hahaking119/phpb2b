@@ -82,7 +82,7 @@
 			<div class="contacttype">
 				<h3><img src="<{$theme_img_path}>images/lhighs.gif" alt="" />该会员发布的其他信息</h3>
 				<ul>
-                	<{offer memberid=1 row=10}>
+                	<{offer memberid=`$item.member_id` row=10}>
 					<li><span class="title"><a href="[link:title]" title="[field:fulltitle]">[field:title]</a></span><span class="type"><a target="_blank" href="offer/list.php?typeid=[field:typeid]">[[field:typename]]</a></span></li>
                     <{/offer}>
 				</ul>

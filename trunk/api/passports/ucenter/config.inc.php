@@ -1,19 +1,20 @@
 <?php
 
-define('UC_CONNECT', 'mysql');				// Á¬½Ó UCenter µÄ·½Ê½: mysql/NULL, Ä¬ÈÏÎª¿ÕÊ±Îª fscoketopen()
-							// mysql ÊÇÖ±½ÓÁ¬½ÓµÄÊý¾Ý¿â, ÎªÁËÐ§ÂÊ, ½¨Òé²ÉÓÃ mysql
+define('UC_CONNECT', 'mysql');				// è¿žæŽ¥ UCenter çš„æ–¹å¼: mysql/NULL, é»˜è®¤ä¸ºç©ºæ—¶ä¸º fscoketopen()
+							// mysql æ˜¯ç›´æŽ¥è¿žæŽ¥çš„æ•°æ®åº“, ä¸ºäº†æ•ˆçŽ‡, å»ºè®®é‡‡ç”¨ mysql
 
-//Êý¾Ý¿âÏà¹Ø (mysql Á¬½ÓÊ±, ²¢ÇÒÃ»ÓÐÉèÖÃ UC_DBLINK Ê±, ÐèÒªÅäÖÃÒÔÏÂ±äÁ¿)
-define('UC_DBHOST', 'localhost');			// UCenter Êý¾Ý¿âÖ÷»ú
-define('UC_DBUSER', 'root');				// UCenter Êý¾Ý¿âÓÃ»§Ãû
-define('UC_DBPW', '123456');					// UCenter Êý¾Ý¿âÃÜÂë
-define('UC_DBNAME', 'discuz');				// UCenter Êý¾Ý¿âÃû³Æ
-define('UC_DBCHARSET', 'utf8');				// UCenter Êý¾Ý¿â×Ö·û¼¯
-define('UC_DBTABLEPRE', 'discuz.cdb_uc_');			// UCenter Êý¾Ý¿â±íÇ°×º
+//æ•°æ®åº“ç›¸å…³ (mysql è¿žæŽ¥æ—¶, å¹¶ä¸”æ²¡æœ‰è®¾ç½® UC_DBLINK æ—¶, éœ€è¦é…ç½®ä»¥ä¸‹å˜é‡)
+define('UC_DBHOST', 'localhost');			// UCenter æ•°æ®åº“ä¸»æœº
+define('UC_DBUSER', 'root');				// UCenter æ•°æ®åº“ç”¨æˆ·å
+define('UC_DBPW', '123456');					// UCenter æ•°æ®åº“å¯†ç 
+define('UC_DBNAME', 'discuz');				// UCenter æ•°æ®åº“åç§°
+define('UC_DBCHARSET', 'utf8');				// UCenter æ•°æ®åº“å­—ç¬¦é›†
+define('UC_DBTABLEPRE', 'discuz.cdb_uc_');			// UCenter æ•°æ®åº“è¡¨å‰ç¼€
 
-//Í¨ÐÅÏà¹Ø
-define('UC_KEY', 'xFy9W2GuK8RCMe6');				// Óë UCenter µÄÍ¨ÐÅÃÜÔ¿, ÒªÓë UCenter ±£³ÖÒ»ÖÂ
-define('UC_API', 'http://localhost/discuz/uc_server/');	// UCenter µÄ URL µØÖ·, ÔÚµ÷ÓÃÍ·ÏñÊ±ÒÀÀµ´Ë³£Á¿
-define('UC_CHARSET', 'utf-8');				// UCenter µÄ×Ö·û¼¯
-define('UC_IP', '127.0.0.1');					// UCenter µÄ IP, µ± UC_CONNECT Îª·Ç mysql ·½Ê½Ê±, ²¢ÇÒµ±Ç°Ó¦ÓÃ·þÎñÆ÷½âÎöÓòÃûÓÐÎÊÌâÊ±, ÇëÉèÖÃ´ËÖµ
-define('UC_APPID', 3);					// µ±Ç°Ó¦ÓÃµÄ ID
+//é€šä¿¡ç›¸å…³
+define('UC_KEY', 'xFy9W2GuK8RCMe6');				// ä¸Ž UCenter çš„é€šä¿¡å¯†é’¥, è¦ä¸Ž UCenter ä¿æŒä¸€è‡´
+define('UC_API', 'http://localhost/discuz/uc_server/');	// UCenter çš„ URL åœ°å€, åœ¨è°ƒç”¨å¤´åƒæ—¶ä¾èµ–æ­¤å¸¸é‡
+define('UC_CHARSET', 'utf-8');				// UCenter çš„å­—ç¬¦é›†
+define('UC_IP', '127.0.0.1');					// UCenter çš„ IP, å½“ UC_CONNECT ä¸ºéž mysql æ–¹å¼æ—¶, å¹¶ä¸”å½“å‰åº”ç”¨æœåŠ¡å™¨è§£æžåŸŸåæœ‰é—®é¢˜æ—¶, è¯·è®¾ç½®æ­¤å€¼
+define('UC_APPID', 3);					// å½“å‰åº”ç”¨çš„ ID
+?>

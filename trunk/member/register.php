@@ -50,14 +50,14 @@ if (isset($_GET['action'])) {
 					$reg_tips = L("pls_active_your_account");
 					$reg_result = false;
 					break;
-				case 2:
+				default:
 					$reg_tips = L("pls_wait_for_check");
 					$reg_result = false;
-				default:
+			
 					break;
 			}
 		}else{
-			$member_info = $pdb->GetRow("SELECT membergroup_id,membertype_id FROM {$tb_prefix}members WHERE id=".$_SESSION['MemberID']);
+			$member_info = $pdb->GetRow("SELECT membergroup_id,membertype_id FROM {$tb_prefix}members WHERE id='".$_SESSION['MemberID']."'");
 			$gid = $member_info['membergroup_id'];
 			$smarty->assign("groupname", $_PB_CACHE['membergroup'][$gid]['name']);
 			$smarty->assign("groupimg", "images/group/".$_PB_CACHE['membergroup'][$gid]['avatar']);
@@ -130,10 +130,11 @@ if(isset($_POST['register'])){
 		setvar("ErrorMsg", $member->getError());
 	}
 }
-if(isset($_PB_CACHE['companytype']))
+if(isset($_PB_CACHE['companytype'])){
 $company_types = $_PB_CACHE['companytype'];
-formhash();
 setvar("CompanyTypes",$company_types);
+}
+formhash();
 setvar("sid",md5(uniqid($time_stamp)));
 render($tpl_file);
 ?>

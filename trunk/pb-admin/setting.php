@@ -15,6 +15,7 @@
  * @package phpb2b
  * @version $Id: setting.php 427 2009-12-26 13:45:47Z steven $
  */
+require("../configs/config.inc.php");
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
 require(LIB_PATH. "cache.class.php");
@@ -177,6 +178,14 @@ function edit_function($data){
 	foreach($data as $key=>$val){
 		$pattern[$key] = "/[$]".$key."\s*\=\s*.*?;/is";
 		$replacement[$key] = "\$".$key." = ".$val.";";
+		if ($key == "subdomain_support") {
+			//$val = $data['subdomain'];
+			if ($val==1) {
+				$replacement[$key] = "\$".$key." = '".$data['subdomain']."';";
+			}else{
+				$replacement[$key] = "\$".$key." = ".$val.";";
+			}
+		}
 	}
 	$configfiles = preg_replace($pattern, $replacement , $configfiles);
 	if(file_put_contents($configfile, $configfiles)){
@@ -186,9 +195,32 @@ function edit_function($data){
 	}
 }
 if (isset($_POST['save_functions'])) {
+	$rs = ''; 
 	$data = $_POST['data'];
+	if($_POST['data']['rewrite_able']==1&&!file_exists(PHPB2B_ROOT.'.htaccess')){
+		$htaccess = PHPB2B_ROOT.'.htaccess.sample';
+		$files = file_get_contents($htaccess);
+		$pattern = "/(http){1}\:\/\/[w]{3}[\.]yourdomain[\.]com[\/]/";
+		$replacement = $absolute_uri;
+		$file = preg_replace($pattern,$replacement,$files);
+		file_put_contents(PHPB2B_ROOT.'.htaccess',$file);
+		}else{
+			unlink(PHPB2B_ROOT.'.htaccess');
+		}
+		if($_POST['data']['subdomain_support']==1&&$_POST['data']['subdomain']!=''){
+		$subdomain = $_POST['data']['subdomain'];
+		$htaccess = PHPB2B_ROOT.'space'.DS.'.htaccess.sample';
+		$files = file_get_contents($htaccess);
+		$pattern = "/[\.]yourdomain[\.]com/";
+		$replacement = $subdomain;
+		$file = preg_replace($pattern,$replacement,$files);
+		file_put_contents(PHPB2B_ROOT.'space'.DS.'.htaccess',$file);
+		}else{
+			unlink(PHPB2B_ROOT.'space'.DS.'.htaccess');
+		}
 	$updated = edit_function($data);
 	if($updated){
+		
 		flash("success");;
 	}else{
 		flash();

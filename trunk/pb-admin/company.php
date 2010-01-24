@@ -64,9 +64,9 @@ if (isset($_POST['check'])){
 		flash("success");
 	}
 }
-if (isset($_POST['set_group']) && !empty($_POST['id'])) {
-	$ids = "IN (".implode(",", $_POST['id']).")";
-	$sql = "UPDATE {$tb_prefix}members m,{$tb_prefix}companies c SET m.membergroup_id='{$_POST['set_group']}' WHERE c.member_id=m.id AND m.id ".$ids;
+if (isset($_POST['set_group']) && !empty($_POST['member_id'])) {
+	$ids = "IN (".implode(",", array_unique($_POST['member_id'])).")";
+	$sql = "UPDATE {$tb_prefix}members m,{$tb_prefix}companies c SET c.cache_membergroupid='{$_POST['set_group']}',m.membergroup_id='{$_POST['set_group']}' WHERE c.member_id=m.id AND c.member_id ".$ids." AND m.id ".$ids;
 	$pdb->Execute($sql);
 }
 if (isset($_POST['recommend'])){
@@ -81,9 +81,9 @@ if (isset($_POST['recommend'])){
 	$company_ids = implode(",", $_POST['id']);
 	$result = $pdb->Execute("update ".$company->getTable()." set status='1' where id in (".$company_ids.")");
 	if($result){
-		flash("alert.php");
+		flash("success");
 	}else {
-		flash($_SERVER['SCRIPT_NAME']);
+		flash();
 	}
 }
 if (isset($_POST['save'])) {

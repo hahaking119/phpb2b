@@ -4,15 +4,18 @@ ErrorDocument 403 http://www.yourdomain.com/redirect.php?code=403
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteBase /
-RewriteCond %{HTTP_HOST} ^(www.)?(?!/.|www|bbs|demo)(.*)\.yourdomain.com$
-RewriteRule ^/?$ /%{HTTP_HOST}
-RewriteRule ([^.]+)\.yourdomain.com(.*)$ /space.php?userid=$1
 RewriteRule ^(.*)offer/detail/([0-9]+)\.html$ /offer/detail.php?id=$2 [QSA]
+RewriteRule ^(.*)buy/detail/([0-9]+)\.html$ /offer/detail.php?id=$2 [QSA]
+RewriteRule ^(.*)sell/detail/([0-9]+)\.html$ /offer/detail.php?id=$2 [QSA]
 RewriteRule ^(.*)product/detail/([0-9]+)\.html$ /product/content.php?id=$2 [QSA]
 RewriteRule ^(.*)news/detail/([0-9]+)\.html$ /news/detail.php?id=$2 [QSA]
 RewriteRule ^(.*)market/detail/([0-9]+)\.html$ /market/detail.php?id=$2 [QSA]
 RewriteRule ^(.*)announce/detail/([0-9]+)\.html$ /announce.php?id=$2 [QSA]
 RewriteRule ^(.*)fair/detail/([0-9]+)\.html$ /fair/detail.php?id=$2 [QSA]
-RewriteRule ^(.*)space/([a-zA-Z]+)/?$ /space.php?userid=$2 [QSA]
+RewriteRule ^(.*)page/([a-zA-Z]+)\.html$ /page.php?name=$2 [QSA]
+RewriteRule ^(.*)space/(\w+)/?$ /space.php?userid=$2 [QSA]
+RewriteRule ^(.*)space/(\w+)/(\w+)/?$ /space.php?userid=$2&do=$3 [QSA]
+RewriteRule ^(.*)space/(\w+)/(\w+)/list-([0-9]+)\.html$ /space.php?userid=$2&do=$3&page=$4 [QSA]
+RewriteRule ^(.*)space/(\w+)/(\w+)/detail-([0-9]+)\.html$ /space.php?userid=$2&do=$3&id=$4 [QSA]
 </IfModule>
 # END REWRITE

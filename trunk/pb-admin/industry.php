@@ -24,6 +24,8 @@ require("session_cp.inc.php");
 require(LIB_PATH. "json_config.php");
 require(LIB_PATH. "cache.class.php");
 require(LIB_PATH. "typemodel.inc.php");
+require(LIB_PATH. "chinese.class.php");
+$chinese = new Chinese("GBK", "UTF-8");
 uses("industry");
 $cache = new Caches();
 $industry = new Industries();
@@ -184,7 +186,7 @@ if (!empty($result)) {
 		}else{
 			$tmp_name[] = "<a href='industry.php?do=search&parentid=".$result[$i]['id']."'>".$result[$i]['name']."</a>";
 		}
-		$result[$i]['title'] = implode("«", $tmp_name);
+		$result[$i]['title'] = implode("&laquo;", $tmp_name);
 	}
 	setvar("Items", $result);
 	setvar("ByPages", $page->pagenav);

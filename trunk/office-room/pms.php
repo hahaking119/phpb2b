@@ -60,6 +60,7 @@ if (isset($_POST['send']) && !empty($_POST['pms'])) {
 	pb_submit_check('pms');
 	$vals = array();
 	$vals = $_POST['pms'];
+	$vals['type'] = 'user';
 	if (is_int($_POST['to'])) {
 		$to_memberid = intval($_POST['to']);
 		$member_info = $pdb->GetRow("SELECT id,username FROM {$tb_prefix}members WHERE id='".$to_memberid."'");
@@ -70,14 +71,13 @@ if (isset($_POST['send']) && !empty($_POST['pms'])) {
 		flash();
 	}
 	$result = $pms->SendToUser($_SESSION['MemberName'], $member_info['username'], $vals);
-
 	if (!$result) {
 		flash();
 	}
 }
 
 if (isset($_POST['del'])) {
-	$result = $pms->del($_POST['messageid'],"to_member_id=".$_SESSION['MemberID']);
+	$result = $pms->del($_POST['id'],"to_member_id=".$_SESSION['MemberID']);
 	if ($result) {
 		pheader("location:pms.php");
 	}else {

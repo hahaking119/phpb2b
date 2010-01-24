@@ -77,10 +77,15 @@ if (isset($_POST['recommend'])) {
 	foreach($_POST['id'] as $val){
 		$commend_now = $product->field("ifcommend", "id=".$val);
 		if($commend_now=="0"){
-			$product->saveField("ifcommend", "1", intval($val));
+			$result = $product->saveField("ifcommend", "1", intval($val));
 		}else{
-			$product->saveField("ifcommend", "0", intval($val));
+			$result = $product->saveField("ifcommend", "0", intval($val));
 		}
+	}
+	if ($result) {
+		flash("success");
+	}else{
+		flash();
 	}
 }
 if (isset($_POST['status'])) {

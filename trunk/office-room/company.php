@@ -29,9 +29,20 @@ $tpl_file = "company";
 if (isset($_POST['do']) && !empty($_POST['data']['company'])) {
 	pb_submit_check('data');
 	$vals = $_POST['data']['company'];
-	if($companyinfo['status']==0){
-		$vals['name'] = strip_tags($_POST['name']);
-		$vals['english_name'] = strip_tags($vals['english_name']);
+	if (isset($companyinfo)) {
+		if (empty($companyinfo)) {
+			//convert space_name
+			require(LIB_PATH. "chinese.inc.php");
+			$py = new utf8pinyin();
+			$space_name = $py->str2py($_POST['data']['company']['name'], true, false);
+			$vals['cache_spacename'] = $space_name;
+			$vals['first_letter'] = $py->first_letter;
+			$member->updateSpaceName(array("id"=>$_SESSION['MemberID']), $space_name);
+			if(isset($companyinfo['status']) && $companyinfo['status']==0){
+				$vals['name'] = strip_tags($_POST['data']['company']['name']);
+				$vals['english_name'] = strip_tags($vals['english_name']);
+			}
+		}
 	}
 	$vals['employee_amount'] = $vals['employee_amount'];
 	if(!empty($vals['found_date'])) {

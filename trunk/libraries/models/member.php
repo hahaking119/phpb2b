@@ -277,6 +277,7 @@ class Members extends PbModel {
 			$memberfield->params['data']['memberfield']['member_id'] = $this->$key;
 			$memberfield->params['data']['memberfield']['reg_ip'] = $this->params['data']['member']['last_ip'];
 			$memberfield->save($memberfield->params['data']['memberfield']);
+			$if_need_check = false;
 			if (isset($_PB_CACHE['setting']['if_need_check'])) {
 				$if_need_check = intval($_PB_CACHE['setting']['if_need_check']);
 			}

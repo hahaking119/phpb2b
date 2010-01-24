@@ -228,7 +228,10 @@ class PbModel extends PbObject
 		$rs = $this->dbstuff->Execute($sql);
 		$record = array();
 		foreach ($keys as $colname) {
-			$record[$colname] = $posts[$colname];
+			$sp_search = array('\\\"', "\\\'", "\t", "'", '\n');
+			$sp_replace = array('&quot;', '&#39;', '&nbsp; &nbsp; &nbsp; &nbsp; ', '&#39;', '<br />');
+			$slash_col = str_replace($sp_search, $sp_replace, $posts[$colname]);
+			$record[$colname] = $slash_col;
 			if($if_check_word_ban){
 				//check mask words.
 			}

@@ -130,7 +130,9 @@ class Caches extends PbObject {
 		$fpc = file_put_contents($file_name, "<?php\n/**\n * PHPB2B cache file, DO NOT change me!".
 				"\n * {$mod_label}: ".date("M j, Y, G:i").
 				"\n * Id: ".md5($prefix.$script.'.php'.$cachedata.$phpb2b_auth_key)."\n */\n\n$cachedata\n?>");
-		if(!$fpc) exit('Can not write to cache files, please check.');
+		if(!$fpc) {
+			exit(L("write_file_error_and_retry"));
+		}
 	}	
 	
 	function getCacheArray($cachename = '', $script = '') {
@@ -184,10 +186,10 @@ class Caches extends PbObject {
 				$op .= "var data_area = { \n";
 				foreach($area1 as $key=>$val){
 					$top_areas[$val['id']] = $total_areas[1][$val['id']] = $val['name'];
-					$sql = "select id,name,parent_id ,top_parentid from pb_areas a where level=2 AND parent_id=".$val['id'];
+					$sql = "select id,name,parent_id ,top_parentid from {$tb_prefix}areas a where level=2 AND parent_id=".$val['id'];
 					$sec_areas = $pdb->GetArray($sql);
 					foreach($sec_areas as $key2=>$val2){
-						$third_areas = $pdb->GetArray("select id,name,parent_id,top_parentid from pb_areas a where level=3 AND parent_id=".$val2['id']);
+						$third_areas = $pdb->GetArray("select id,name,parent_id,top_parentid from {$tb_prefix}areas a where level=3 AND parent_id=".$val2['id']);
 						$areas[$val['id']]['sub'][$val2['id']] = $val2['name'];
 						$total_areas[2][$val2['id']] = $val2['name'];
 						foreach($third_areas as $key3=>$val3){
@@ -195,7 +197,9 @@ class Caches extends PbObject {
 						}
 					}
 				}
-				$op .= "'0':".json_encode($top_areas).",\n";
+				$top_areas = $this->convert2utf8($top_areas);
+				$areas = $this->convert2utf8($areas);
+				$op .= "'0':".json_encode($top_areas);
 				$tmp_op = array();
 				foreach ($top_areas as $js_key=>$js_val){
 					if(isset($areas[$js_key])){
@@ -207,8 +211,13 @@ class Caches extends PbObject {
 						}
 					}
 				}
-				$tmp_op = implode(",\n", $tmp_op);
-				$op .= $tmp_op."\n}";
+			if (!empty($tmp_op)) {
+					$op .=",\n";
+					$tmp_op = implode(",\n", $tmp_op);
+					$op .= $tmp_op."\n}";
+				}else{
+					$op .= "\n}";
+				}
 				$fp = file_put_contents(CACHE_PATH. "area.js", $op);
 				ksort($total_areas);
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_areas).";\n\n";
@@ -232,7 +241,9 @@ class Caches extends PbObject {
 						}
 					}
 				}
-				$op .= "'0':".json_encode($top_levels).",\n";
+				$top_levels = $this->convert2utf8($top_levels);
+				$datas = $this->convert2utf8($datas);
+				$op .= "'0':".json_encode($top_levels);
 				$tmp_op = array();
 				foreach ($top_levels as $js_key=>$js_val){
 					if(isset($datas[$js_key])){
@@ -244,9 +255,15 @@ class Caches extends PbObject {
 						}
 					}
 				}
-				$tmp_op = implode(",\n", $tmp_op);
-				$op .= $tmp_op."\n}";
+					if (!empty($tmp_op)) {
+					$op .=",\n";
+					$tmp_op = implode(",\n", $tmp_op);
+					$op .= $tmp_op."\n}";
+				}else{
+					$op .= "\n}";
+				}
 				$fp = file_put_contents(CACHE_PATH. "industry.js", $op);
+				unset($op);
 				ksort($total_datas);
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_datas).";\n\n";
 			break;
@@ -370,4 +387,26 @@ class Caches extends PbObject {
 	{
 		
 	}
+	
+	function convert2utf8($str, $force = false)
+	{
+		global $charset, $chinese;
+		if ($charset!="utf-8") {
+			if(is_array($str)){
+				return array_map(array('Caches','convert2utf8'), $str);
+			}else{
+				if (function_exists("mb_convert_encoding")) {
+					return mb_convert_encoding($str, "utf-8", $charset);
+				}elseif (function_exists("iconv")){
+					return iconv($charset, "utf-8", $str);
+				}else{
+					$str = $chinese->Convert($str);
+					return $str;
+				}
+			}
+		}else{
+			return $str;
+		}
+	}
 }
+?>

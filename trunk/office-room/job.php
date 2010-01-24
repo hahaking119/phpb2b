@@ -39,6 +39,7 @@ if (isset($_GET['do'])) {
 		setvar("Genders", get_cache_type('gender'));
 		setvar("Educations", get_cache_type('education'));
 		setvar("Salary", get_cache_type('salary'));
+		setvar("Worktype", get_cache_type('work_type'));
 		if(!empty($id)){
 			$res = $job->read("*", $id, null, "Job.member_id=".$_SESSION['MemberID']);
 			if (empty($res)) {
@@ -57,12 +58,13 @@ if (!empty($_POST['job']) && $_POST['save']) {
 	if (isset($_POST['id'])) {
 		$id = $_POST['id'];
 	}
-	if(!empty($vals['expire_time'])) {
+	if(!empty($_POST['expire_time'])) {
 		$vals['expire_time'] = Times::dateConvert($_POST['expire_time']);
 	}
 	$check_job_update = $g['job_check'];
 	if ($check_job_update=="0") {
 		$vals['status'] = 1;
+        $message_info = 'msg_wait_success';
 	}else {
 		$vals['status'] = 0;
 		$message_info = 'msg_wait_check';

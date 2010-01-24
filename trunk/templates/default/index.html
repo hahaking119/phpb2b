@@ -1,6 +1,7 @@
 <{assign var="page_title" value="首页"}>
 <{assign var="nav_id" value="1"}>
 <{include file="`$ThemeName`/header.html"}>
+<script src="scripts/index.js"></script>
 <div class="adv mauto">
 	<{ads typeid=1 row="8"}><span><a href="[link:url]">[field:src]</a></span><{/ads}>
 </div>
@@ -104,7 +105,7 @@
 				<div class="lasestcontboxh">
 					<ul>
 						<{offer type="image" row=5 titlelen="10"}>
-						<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+						<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><p><a href="[link:title]" title="[field:title]">[field:title]</a></p></li>
 						<{/offer}>
 					</ul>
 				</div>
@@ -120,7 +121,7 @@
 				<div class="lasestcontboxh">
 					<ul>
 						<{offer type="image" row=5 titlelen="10" typeid="1"}>
-						<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+						<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><p><a href="[link:title]" title="[field:title]">[field:title]</a></p></li>
 						<{/offer}>
 					</ul>
 				</div>
@@ -289,10 +290,12 @@
 	<p class="whitespace"></p>
 	<div class="content mauto">
 		<div class="news">
-			<p class="newstit"><strong><{$_new_products}></strong></p>
+			<h3 class="newstit"><strong><{$_new_products}></strong></h3>
 			<ul>
 			<{product row=9 type="image" titlelen="10"}>
-				<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]">[field:title]</a></li>
+				<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a>
+                <p><a href="[link:title]">[field:title]</a></p>
+                </li>
 			<{/product}>
 			</ul>
 		</div>
@@ -341,7 +344,9 @@
 					<div class="lasestcontboxh02">
 						<ul>
 							<{news row=4 type="image" titlelen="10"}>
-							<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a><br /><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+							<li><a href="[link:title]"><img src="[img:src]" alt="[field:title]" /></a>
+                            <p><a href="[link:title]" title="[field:title]">[field:title]</a></p>
+                            </li>
 							<{/news}>
 						</ul>
 					</div>
@@ -388,5 +393,4 @@
 		</div>
 	</div>
 </div>
-<script src="scripts/index.js"></script>
 <{include file="`$ThemeName`/footer.html"}>

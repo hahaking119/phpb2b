@@ -28,6 +28,9 @@ if(!$backupdir = $pdb->GetOne("SELECT valued FROM {$tb_prefix}settings WHERE var
 	pb_create_folder(DATA_PATH. "backup_".$backupdir);
 	$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) values ('backup_dir', '$backupdir')");
 }
+if (!file_exists(DATA_PATH. "backup_".$backupdir)) {
+	pb_create_folder(DATA_PATH. "backup_".$backupdir);
+}
 require(LIB_PATH. "func.db.php");
 require(LIB_PATH. "func.sql.php");
 if (isset($_POST['do'])) {
@@ -61,12 +64,16 @@ if (isset($_POST['do'])) {
 		if(trim($sqldump)) {
 			$fp = file_put_contents($dumpfile, $sqldump);
 			unset($sqldump);
-			$pdb->Execute("UPDATE {$tb_prefix}settings SET valued=".$time_stamp." WHERE variable='last_backup'");
+			$result = $pdb->Execute("UPDATE {$tb_prefix}settings SET valued=".$time_stamp." WHERE variable='last_backup'");
 			$data['handle_type'] = 'info';
 			$data['source_module'] = 'backup';
 			$data['description'] = $_POST['message'];
-			$log->Add($data);
-			flash("success", 'db.php?do=restore');
+			$result = $log->Add($data);
+			if($result){
+				flash("success", 'db.php?do=restore');
+			}else{
+				flash("failed", "db.php", 0);
+			}
 		}else{
 			flash();
 		}
@@ -98,7 +105,15 @@ if (isset($_GET['do'])) {
 				flash();
 			}
 		}
-	}	
+	}
+		if($do =="del" &&!empty($_GET['id'])){
+		$datafile = DATA_PATH."backup_".$backupdir.DS.$_GET['id'];
+		if(!file_exists($datafile)) {
+			flash("file_not_exists");
+		}else{
+			@unlink($datafile);
+		}
+	}
 	switch ($do) {
 		case "query":
 			$tpl_file = "db.query";

@@ -13,7 +13,9 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id$
+ * @version $Id: emails.inc.php 99 2009-12-31 01:02:21Z steven $
  */
 $arrMessage['_get_passwd_subject'] = "取回密码说明";
+$arrMessage['_after_update_please'] = "更新密码后,请您及时到";
+$arrMessage['_office_room_update_passwd'] = "商务室更新您的密码,以防丢失.";
 ?>

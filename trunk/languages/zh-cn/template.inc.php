@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id$
+ * @version $Id: template.inc.php 99 2009-12-31 01:02:21Z steven $
  */
 //模板中一些共用的内容定义
 $arrTemplate['_offer'] = "供求信息";
@@ -25,6 +25,8 @@ $arrTemplate['_market'] = "市场库";
 $arrTemplate['_announce'] = "网站公告";
 $arrTemplate['_forum'] = "论坛";
 $arrTemplate['_product_center'] = "产品中心";
+$arrTemplate['_help_center'] = "帮助中心";
+$arrTemplate['_help'] = "帮助";
 $arrTemplate['_keyword_ship'] = "关键词竞价";
 $arrTemplate['_your_current_position'] = "您当前位置：";
 $arrTemplate['_unknown'] = "未知";
