@@ -6,11 +6,11 @@
  */
 
 $_PB_CACHE['setting'] = array (
-  'site_name' => 'B2B网站的名称',
-  'site_title' => 'B2B网站的标题-显示在标题栏',
+  'site_name' => '网站名称',
+  'site_title' => '网站标题',
   'site_banner_word' => '网站的宣传语',
   'company_name' => '网站的版权者',
-  'site_url' => 'http://localhost/athena/',
+  'site_url' => 'http://www.yourdomain.com/',
   'icp_number' => 'ICP备案号码[ID]',
   'service_tel' => '(86)10-84128912',
   'sale_tel' => '(86)10-84128912',
@@ -52,7 +52,7 @@ $_PB_CACHE['setting'] = array (
   'main_cache_check' => '0',
   'member_cache' => '0',
   'space_cache' => '0',
-  'mail' => 'a:10:{s:9:"send_mail";s:1:"2";s:11:"smtp_server";s:11:"smtp.qq.com";s:9:"smtp_port";s:2:"25";s:9:"smtp_auth";s:1:"1";s:9:"mail_from";s:15:"47731473@qq.com";s:12:"mail_fromwho";s:6:"Steven";s:13:"auth_username";s:15:"47731473@qq.com";s:13:"auth_password";s:10:"chow198057";s:14:"mail_delimiter";s:1:"0";s:15:"sendmail_silent";s:1:"1";}',
+  'mail' => 'a:10:{s:9:"send_mail";s:1:"2";s:11:"smtp_server";s:11:"smtp.qq.com";s:9:"smtp_port";s:2:"25";s:9:"smtp_auth";s:1:"1";s:9:"mail_from";s:15:"12345678@qq.com";s:12:"mail_fromwho";s:8:"Username";s:13:"auth_username";s:15:"12345678@qq.com";s:13:"auth_password";s:8:"12345678";s:14:"mail_delimiter";s:1:"0";s:15:"sendmail_silent";s:1:"1";}',
   'capt_auth' => 75,
   'navs' => 
   array (
