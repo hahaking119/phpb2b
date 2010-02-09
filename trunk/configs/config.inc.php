@@ -4,8 +4,8 @@
  */
 $dbhost = 'localhost';					// 数据库服务器
 $dbuser = 'root';						// 数据库用户名
-$dbpasswd = '123456';					// 数据库密码
-$dbname = 'athena';				// 数据库名
+$dbpasswd = '';					// 数据库密码
+$dbname = 'phpb2b';				// 数据库名
 $pconnect = 0;							// 数据库持久连接 0=关闭, 1=打开
 
 /**
@@ -35,13 +35,13 @@ $headercharset = 0;						// 强制论坛页面使用默认字符集，可避免�
 /**
  * 系统管理员 Email和ID编号
  */
-$admin_email = 'stevenchow@163.com';
+$admin_email = 'administrator@yourdomain.com';
 $administrator_id = '1';
 
 /**
  * 域名及地址的相关配置
  */
-$absolute_uri = 'http://localhost/athena/';
+$absolute_uri = 'http://www.yourdomain.com/';
 $gzipcompress = false; 			// use GZIP output buffering if possible (true|false)
 $admin_runquery = false;			// 后台是否允许管理员执行SQL语句[出于安全考虑,默认不允许执行]
 $subdomain_support = 0;			// 是否支持二级域名,如果允许的话,空间主页链接则变为二级域名
