@@ -485,26 +485,45 @@ function authcode($string, $operation = "ENCODE", $key = '') {
 
 }
 
-function utf_substr($str, $length=0, $start =0, $charset = "utf-8") 
+function pb_substr($str, $start = 0, $len = 10)
 {
-	if(strlen($str)<4) return $str;
-	$re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-	$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-	$re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-	$re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-	preg_match_all($re[$charset], $str, $match);
-	if($length==0) $length=count($match[0]);
-	for(;;)
-	{
-		if(isset($match[0][$start]))
+$tmpstr = ""; 
+$strlen = $start + $len; 
+for($i = 0; $i < $strlen; $i++) { 
+if(ord(substr($str, $i, 1)) > 0xa0) { 
+$tmpstr .= substr($str, $i, 2); 
+$i++; 
+} else 
+$tmpstr .= substr($str, $i, 1); 
+} 
+return $tmpstr;
+}
+
+function utf_substr($str, $length=0, $start =0) 
+{
+	global $charset;
+	if($charset!="utf-8"){
+		return pb_substr($str, $start, $length);
+	}else{
+		if(strlen($str)<4) return $str;
+		$re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
+		$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
+		$re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
+		$re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
+		preg_match_all($re[$charset], $str, $match);
+		if($length==0) $length=count($match[0]);
+		for(;;)
 		{
-			if($match[0][$start])
-			return join("", array_slice($match[0], $start, $length));
+			if(isset($match[0][$start]))
+			{
+				if($match[0][$start])
+				return join("", array_slice($match[0], $start, $length));
+				else
+				++$start;
+			}
 			else
-			++$start;
+			return join("", array_slice($match[0], $start, $length));
 		}
-		else
-		return join("", array_slice($match[0], $start, $length));
 	}
 }
 
