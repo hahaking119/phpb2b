@@ -1,9 +1,0 @@
-# BEGIN REWRITE
-<IfModule mod_rewrite.c>
-RewriteEngine on
-RewriteBase /
-RewriteCond %{HTTP_HOST} ^(www.)?(?!/.|www|bbs|demo)(.*)\.yourdomain.com$
-RewriteRule ^/?$ /%{HTTP_HOST}
-RewriteRule ([^.]+)\.yourdomain.com(.*)$ /space.php?userid=$1
-</IfModule>
-# END REWRITE

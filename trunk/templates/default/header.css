@@ -1,7 +1,0 @@
-#wd{width:960px; height:auto; clear:both;}
-.menu{height:31px;}
-.menu ul li{width:66px; height:25px; line-height:25px; margin:4px 5px 0 0; float:left; display:block; overflow:hidden}
-.menu ul li a{font-size:14px; font-weight:bold; color:#fff; text-align:center; display:block; overflow:hidden}
-.menu ul li a.current_nav{color:#cff;background:url(images/background.gif) no-repeat; color:#cff; text-decoration:none;}
-.menu ul li a:hover{background:url(images/background.gif) no-repeat; color:#cff; text-decoration:none;}
-#wd a:link, #wd a:visited {color:#fff;}
