@@ -74,8 +74,12 @@ class Chinese {
 		} elseif($this->config['SourceLang'] == 'BIG5' || $this->config['TargetLang'] == 'BIG5') {
 			$this->table = CODETABLE_DIR.$this->config['BIG5toUnicode_table'];
 		}
-		$fp = fopen($this->table, 'rb');
-		$tabletmp = fread($fp, filesize($this->table));
+		if (version_compare(PHP_VERSION, '5.0.0') >= 0) {	
+			$fp = fopen($this->table, 'rb');
+			$tabletmp = fread($fp, filesize($this->table));
+		}else{
+			$tabletmp = file_get_contents($this->table);
+		}
 		for($i = 0; $i < strlen($tabletmp); $i += 4) {
 			$tmp = unpack('nkey/nvalue', substr($tabletmp, $i, 4));
 			if($this->config['TargetLang'] == 'UTF-8') {
