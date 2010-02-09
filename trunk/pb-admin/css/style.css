@@ -241,6 +241,20 @@ form label.right { padding-left:12px; background:transparent url(../images/right
 .btn_install{ background:url(../images/icon.png) no-repeat 0 -502px; width:32px; height:32px; display:block;text-indent:-999em }
 .btn_install:hover {background:url(../images/icon.png) no-repeat -50px -502px;  width:32px; height:32px;display:block; }
 
+.copyright {
+width:150px;
+border-top:1px dashed #DDDDDD;
+bottom:3px;
+font-family:Tahoma;
+font-size:11px;
+left:10px;
+line-height:150%;
+padding-top:3px;
+position:absolute;
+text-align:left;
+z-index:10;
+}
+
 /*currentlocation*/
 #currentPosition p {background:#F2F9FD none repeat scroll 0 0;border-bottom:2px solid #FFFFFF;border-left:1px solid #FFFFFF;border-top:5px solid #FFFFFF;line-height:25px;padding-left:10px;}
 /*rightwelcome*/
