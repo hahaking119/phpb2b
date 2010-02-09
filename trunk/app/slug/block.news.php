@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.news.php 472 2009-12-27 04:12:35Z steven $
+ * @version $Id$
  */
 function smarty_block_news($params, $content, &$smarty) {
 	global $cookiepre;

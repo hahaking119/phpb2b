@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.userpage.php 438 2009-12-26 13:48:41Z steven $
+ * @version $Id$
  */
 function smarty_block_userpage($params, $content, &$smarty) {
 	if ($content === null) return;

@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.ads.php 458 2009-12-27 03:05:45Z steven $
+ * @version $Id$
  */
 function smarty_block_ads($params, $content, &$smarty){
 	global $theme_name;

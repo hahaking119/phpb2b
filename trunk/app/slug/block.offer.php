@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.offer.php 472 2009-12-27 04:12:35Z steven $
+ * @version $Id$
  */
 function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	if ($content === null) return;

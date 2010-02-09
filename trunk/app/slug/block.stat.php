@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.stat.php 560 2010-01-26 01:22:45Z steven $
+ * @version $Id$
  */
 function smarty_block_stat($params, $content, &$smarty) {
    return $content;

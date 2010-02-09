@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.company.php 490 2009-12-28 02:06:51Z steven $
+ * @version $Id$
  */
 function smarty_block_company($params, $content, &$smarty) {
 	global $cookiepre, $theme_name, $subdomain_support, $rewrite_able;
