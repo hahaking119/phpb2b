@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title><{$page_title}> - <{$_office_room}> - <{$site_name}></title>
+<link href="template/office.css" rel="stylesheet" type="text/css">
+<script src="../scripts/jquery.js"></script>
+<script src="../scripts/general.js"></script>
+<script>
+var cache_path = "../";
+</script>
+</head>
+<body>
+<div class="header clearfix">
+    <div class="header_nav">
+      <a href="<{$SiteUrl}>"><span><{$_home_page}></span></a>
+      <a href="<{$SiteUrl}>news/"><span><{$_info}></span></a>
+      <a href="<{$SiteUrl}>product/"><span><{$_product_center}></span></a>
+      <a href="<{$SiteUrl}>company/"><span><{$_yellow_page}></span></a>
+      <a href="<{$SiteUrl}>fair/"><span><{$_fair}></span></a>
+      <a href="<{$SiteUrl}>hr/"><span><{$_hr}></span></a>
+      <a href="<{$SiteUrl}>dict/"><span><{$_dictionary}></span></a>
+    </div>
+   <div class="login_info"><{$_hello}><{$UserName|default:$smarty.session.MemberName}>
+   <{if $newpm}><a href="pms.php"><img src="../images/message.gif" alt="" /></a> | <{/if}>
+   <{if $COMPANYINFO.cache_spacename and $COMPANYINFO.status==1}><span class="padding5px"> <a href="<{$COMPANYINFO.space_url}>" target="_blank">访问<{$_space_name}></a></span> |<{/if}>
+   <a href="../logging.php?action=logout"> <{$_login_out}></a></div>
+</div>
+<div class="header_img"><img src="images/header_img.gif"></div>
