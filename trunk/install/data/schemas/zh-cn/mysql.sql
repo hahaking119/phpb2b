@@ -1132,6 +1132,7 @@ CREATE TABLE `pb_passports` (
   `description` text,
   `url` varchar(25) NOT NULL default '',
   `config` text,
+  `available` tinyint(1) NOT NULL default '1',
   `created` int(10) NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`)

@@ -98,6 +98,7 @@ if (empty($file_contents) || !$file_contents) {
 }else{
 	//get update alert set
 	$file_contents = base64_decode($file_contents);
+	$file_contents = @iconv("utf-8", $charset, $file_contents);
 	$file_contents = explode("|", $file_contents);
 	list($force, $content) = $file_contents;
 	if($force){
