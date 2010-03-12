@@ -1,0 +1,61 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 用户中心 &raquo; 会员组</p>
+</div>
+<div id="rightTop"> 
+    <h3>会员组</h3> 
+    <ul class="subnav">
+		<li><a href="membergroup.php">所有会员组</a></li>
+        <li><a class="btn1" href="membergroup.php?do=permission">权限</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontl">
+             <div class="left">会员组分系统会员组、自定义会员组以及特殊会员组。</div>
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td>&nbsp;</td>
+		  <td><label for="basic_chkall"><input type="checkbox" name="basic_chkall" id="basic_chkall" onclick="checkAll('prefix', this.form, 'basic', 'basic_chkall')" />&nbsp;基本信息管理</label></td>
+		  <td><label for="offer_chkall"><input type="checkbox" name="offer_chkall" id="offer_chkall" onclick="checkAll('prefix', this.form, 'offer', 'offer_chkall')" />&nbsp;供求信息管理</label></td>
+		  <td><label for="product_chkall"><input type="checkbox" name="product_chkall" id="product_chkall" onclick="checkAll('prefix', this.form, 'product', 'product_chkall')" />&nbsp;产品资料管理</label></td>
+		  <{if $MembergroupType=="system"}><{/if}>
+		  <td><label for="company_chkall"><input type="checkbox" name="company_chkall" id="company_chkall" onclick="checkAll('prefix', this.form, 'company', 'company_chkall')" />&nbsp;公司信息管理</label></td>
+		  <td>图例</td>
+		</tr>
+		<{foreach from=$Items name=membergroup item=item}>
+		<tr class="tatr2">
+		  <th style="text-align:left; padding-left:60px;"><label for="group<{$item.id}>chkall"><input type="checkbox" name="group_<{$item.id}>_chkall" id="group<{$item.id}>chkall" onclick="checkAll('value', this.form, <{$item.id}>, 'group_<{$item.id}>_chkall')" />&nbsp;<{$item.name}></label></th>
+		  <td><input type="checkbox" name="basic[]" value="<{$item.id}>" rel="<{$item.id}>" id="groupid_<{$item.id}>_0" <{if $item.exemptval[0]==1}>checked<{/if}> /></td>
+		  <td><input type="checkbox" name="offer[]" value="<{$item.id}>" rel="<{$item.id}>" id="groupid_<{$item.id}>_3" <{if $item.exemptval[1]==1}>checked<{/if}> /></td>
+		  <td><input type="checkbox" name="product[]" value="<{$item.id}>" rel="<{$item.id}>" id="groupid_<{$item.id}>_1" <{if $item.exemptval[2]==1}>checked<{/if}> /></td>
+		  <td><input type="checkbox" name="company[]" value="<{$item.id}>" rel="<{$item.id}>" id="groupid_<{$item.id}>_2" <{if $item.exemptval[3]==1}>checked<{/if}> /></td>
+		  <td><img src="<{$item.image}>" border="0" alt="<{$item.name}>" /></td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="6">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+		<input type="submit" name="save_permission" value="保存" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"/>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>
