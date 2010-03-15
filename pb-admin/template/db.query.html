@@ -1,0 +1,41 @@
+<{include file="header.html"}>
+<script>
+jQuery(document).ready(function($) {
+	$("#sqlContent").focus();
+})
+</script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 系统工具 &raquo; 数据库</p>
+</div>
+<div id="rightTop"> 
+    <h3>数据库</h3> 
+    <ul class="subnav">
+		<li><a href="db.php">备份</a></li>
+        <li><a href="db.php?do=restore">还原</a></li>
+        <li><a class="btn1" href="db.php?do=query">升级</a></li>
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="db.php" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="do" value="query" />
+    <table class="infoTable">
+      
+      <tr>
+        <th class="paddingT15">PHPB2B 数据库升级 - 请将SQL语句粘贴在右侧：</th>
+        <td class="paddingT15 wordSpacing5"> <textarea style="width:550px;height:100px;" name="sql_content" id="sqlContent"></textarea></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="执行" />		
+			<input class="formbtn" type="reset" name="reset" value="清除" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<{include file="footer.html"}>

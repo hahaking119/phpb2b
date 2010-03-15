@@ -1,0 +1,90 @@
+<{assign var="page_title" value="供求信息"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+      <table class="offer_count">
+        <tr>
+          <td class="orange">（<span class="gray">提示：</span>相同内容的信息请不要反复发布，建议使用重发功能!）</td>
+          <td></td>
+        </tr>
+         <tr>
+          <td><strong>您已经成功发布<span class="font14b_org"> <{$Amount}></span> 条<{$ActionName}>信息!</strong></td>
+          <td class="height35"><a title="发布<{$ActionName}>" href="offer.php?do=edit" class="btn_publish">发布供求信息</a></td>
+        </tr>
+      </table>      
+      <form name="listfrm" action="<{$smarty.server.PHP_SELF}>" method="post" onSubmit="return test();">
+	  <input type="hidden" name="formhash" value="<{$formhash}>">
+      <table class="offer_publish_list">
+        <tr>
+          <td>
+          <table class="bglist">
+            <tr>
+              <th>类 型</th>
+              <th>主 题</th>
+              <th>到期时间</th>
+              <th>状 态</th>
+              <th>操作</th>
+              <th>选 择</th>
+            </tr>
+			<{foreach from=$Items item=item}>
+            <tr align="center" class="bgwhite">
+              <td class="orange">【<a href="offer.php?typeid=<{$item.type_id}>"><{$TradeTypes[$item.type_id]}></a>】</td>
+              <td><a href="<{$SiteUrl}>offer/detail.php?id=<{$item.id}>" title="预览<{$item.title}>" target="_blank"><{$item.title}></a><{if $item.picture!=""}>&nbsp;(图)<{/if}></td>
+              <td align="center"><{if $item.expire_time<$smarty.server.REQUEST_TIME}>已过期<{else}><{$item.expire_time|date_format:"%Y-%m-%d"}><{/if}></td>
+              <td><{$CheckStatus[$item.status]}></td>
+              <td><a href="offer.php?do=edit&id=<{$item.id}>">修改</a>&nbsp;&nbsp;<{if $item.status==1}><a href="offer.php?do=refresh&id=<{$item.id}>" title="延长到期时间">重发</a>&nbsp;&nbsp;<a href="offer.php?do=update&id=<{$item.id}>" title="更新到网站">更新</a><{/if}></td>
+              <td><input name="tradeid[]" type="checkbox" id="id_<{$item.id}>" value="<{$item.id}>"></td>
+            </tr>
+			<{foreachelse}>
+			<{/foreach}>
+          </table></td>
+        </tr>
+        <tr>
+          <td>
+          <table class="offer_publish_submit">
+            <tr>
+              <td><div align="right">
+                <input type="submit" name="del" value="删除选中的信息" onclick="return window.confirm('真的要删除这些信息吗？')">&nbsp;<input type="submit" name="refresh" value="重发信息" onclick="return window.confirm('真的要重发这些信息吗？')">
+              </div></td>
+              </tr>
+          </table>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="1" background="images/index_trade_line.gif"></td>
+        </tr>
+        <tr>
+          <td>
+          <table class="room_pages">
+              <tr>
+                <td><{$ByPages}></td>
+              </tr>
+          </table>
+          </td>
+        </tr>
+      </table>
+      </form>
+      <table class="attentions" >     
+          <tr>
+            <td class="bottom"> <strong>【请注意】：</strong> <BR>
+      　1. 审核并生效后，商业信息才能使用重发功能。<BR>
+      　2. 已经发布过的信息，请不要反复发布，一旦发现将被立即删除。<BR>
+      　3. 请及时更新过期信息，不想重新上网的过期信息，请及时删除。<BR>
+      　4. 如果是已发信息，建议您每天用“重发”功能来更新信息，让信息排名靠前。<BR>
+      　5. 修改商业信息只对信息内容作修改，并不会更新信息的排名。</td>
+          </tr>
+    </table>
+    </div>
+</div>
+<{include file="footer.html"}>

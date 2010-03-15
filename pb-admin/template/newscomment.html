@@ -1,0 +1,61 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 信息管理 &raquo; 行业资讯</p>
+</div>
+<div id="rightTop"> 
+    <h3>行业资讯</h3> 
+    <ul class="subnav">
+        <li><a href="news.php">管理</a></li>
+        <li><a href="news.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="newscomment.php">评论</a></li>
+        <li><a href="newstopic.php">专题</a></li>
+        <li><a href="newstype.php">分类</a></li>
+    </ul>
+</div>
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="nav.php" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td><label for="idAll">评论内容</label></td>
+		  <td><span>资讯标题</span></td>
+		  <td>评论者</td>
+		  <td><span>发表时间</span></td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item}>
+		<tr class="tatr2" title="<{$item.message}>">
+		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
+		  <td><label for="item_<{$item.id}>"><{$item.message|truncate:100}></label></td>
+		  <td><{$item.title}></td>
+		  <td><{$item.username}></td>
+		  <td><{$item.pubdate}></td>
+		  <td class="handler">
+            <ul id="handler_icon">
+            <li><a class="btn_browse"  href="<{$SiteUrl}>news/detail.php?id=<{$item.news_id}>" title="预览">预览</a></li>
+          </ul>  
+		 </td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="6">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"><{$ByPages}></div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>

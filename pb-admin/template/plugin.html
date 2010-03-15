@@ -1,0 +1,71 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 插件 &raquo; 插件</p>
+</div>
+<div id="rightTop"> 
+    <h3>插件</h3> 
+</div>
+<div class="mrightTop"> 
+    <div class="fontr"> 
+        <form name="search_frm" action="http://www.phpb2b.com/plugin/" id="SearchFrm" method="get" target="_blank">
+        <input type="hidden" name="do" value="search" />
+             <div> 
+				插件关键字 : <input class="queryInput" type="text" name="q" value="" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="站外搜索" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="plugin.php" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td><label for="idAll">标题</label></td>
+		  <td>版本</td>
+		  <td><span>描述</span></td>
+		  <td>作者</td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item}>
+		<tr class="tatr2">
+		  <td class="firstCell"><input type="checkbox" name="id[]" <{if !$item.id}>disabled="disabled"<{/if}> value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
+		  <td><{$item.title}></td>
+		  <td><{$item.version}></td>
+		  <td><{$item.description}></td>
+		  <td><{$item.copyright}></td>
+		  <td class="handler">
+          <ul id="handler_icon">
+            <{if $item.available}>
+            <li><a class="btn_config" href="plugin.php?do=edit&id=<{$item.id}><{$addParams}>" title="设置">设置</a></li>
+             <li><a class="btn_uninstall" href="plugin.php?do=uninstall&id=<{$item.id}><{$addParams}>"  title="卸载">卸载</a></li>
+             <{else}>
+            <li><a class="btn_install" href="plugin.php?entry=<{$item.name}>&do=install<{$addParams}>" title="安装">安装</a></li>
+            <{/if}>
+          </ul>  
+		 </td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="6">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="卸载" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"></div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>
