@@ -1,0 +1,46 @@
+<{assign var="page_title" value="询价详情"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+       <table class="offer_info_content">
+            <tr>
+              <th class="circle_left">询价商品</th>
+              <td class="circle_right"><{$item.InqueryTitle}></td>
+            </tr>
+            <tr>
+              <th>补充信息</th>
+              <td><{$item.InqueryContent|nl2br|strip_tags}></td>
+            </tr>
+            <tr>
+              <th>订货总量</th>
+              <td><{$item.InqueryExpQuantity}></td>
+            </tr>
+            <tr>
+              <th>期望价格</th>
+              <td><{$item.InqueryExpPrice}></td>
+            </tr>
+            <tr>
+              <th>联系方式</th>
+              <td><{$item.InqueryLink}></td>
+            </tr>
+              <tr>
+              <th class="circle_bottomleft"></th>
+                <td class="circle_bottomright"></td>
+              </tr>
+          </table>
+     <table class="trade_line">
+          <tr>
+            <td height="1" background="images/index_trade_line.gif"></td>
+          </tr>
+     </table>
+     </div>
+    </div>
+<{include file="footer.html"}>

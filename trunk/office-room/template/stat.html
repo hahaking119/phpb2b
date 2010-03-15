@@ -1,0 +1,41 @@
+<{assign var="page_title" value="信息统计"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+      <table class="bggray">
+          <tr>
+            <td align="center"><span class="font14b_org">信息统计页面</span> </td>
+          </tr>
+      </table>
+        <table class="offer_info_count">
+
+                  <{foreach from=$UserTradeStat item=ut}>
+                    <tr>
+                      <td height="35" class="font14"><img src="images/stat.gif" width="13" height="13" border="0"> <strong><{$ut.name}>信息：</strong> 当前你共有 <span class="orange"><strong><{$ut.Amount|default:"0"}></strong></span> 条<{$ut.name}>信息！</td>
+                    </tr>
+                    <{/foreach}>
+					<{if $pb_userlevel>1}>
+                    <tr>
+                      <td height="35" class="font14"><img src="images/stat.gif" width="13" height="13" border="0"> <strong>产品库：</strong> 当前你共有 <span class="orange"><strong><{$ProductAmount}></strong></span> 条产品信息！</td>
+                    </tr>
+					<{/if}>
+                    <tr>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td height="1" background="images/index_trade_line.gif"></td>
+                    </tr>
+       </table>
+
+        
+</div>
+</div>
+<{include file="footer.html"}>
