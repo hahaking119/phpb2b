@@ -1,9 +1,0 @@
-#
-# robots.txt for ualink php-b2b
-#
-
-User-agent: *
-
-Disallow: /room/
-Disallow: /pb-admin/
-Disallow: /app/
