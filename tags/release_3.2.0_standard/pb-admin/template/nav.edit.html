@@ -1,0 +1,58 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 模板风格 &raquo; 导航栏</p>
+</div>
+<div id="rightTop"> 
+    <h3>导航栏</h3> 
+    <ul class="subnav">
+		<li><a href="nav.php">管理</a></li>
+        <li><a class="btn1" href="nav.php?do=edit">添加/编辑</a></li>
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="nav.php" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="id" value="<{$item.id}>" />
+  <input type="hidden" name="page" value="<{$smarty.get.page}>" />
+    <table class="infoTable">
+	<{if $item.id}>
+      <tr>
+        <th class="paddingT15">编号：</th>
+        <td class="paddingT15 wordSpacing5"><{$item.id}></td>
+      </tr>
+	<{else}>
+      <tr>
+        <th class="paddingT15">编号：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[nav][id]" value="" /></td>
+      </tr>
+	<{/if}>	
+      <tr>
+        <th class="paddingT15"> 标题：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[nav][name]" value="<{$item.name}>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">显示顺序：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[nav][display_order]" value="<{$item.display_order}>" type="text" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">链接地址：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[nav][url]" value="<{$item.url}>" type="text" /><label class="field_notice">站内链接只需相对地址即可</label></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 备注：</th>
+        <td class="paddingT15 wordSpacing5"><textarea style="width:550px;height:100px;" name="data[nav][description]"><{$item.description}></textarea></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="保存发布" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<{include file="footer.html"}>

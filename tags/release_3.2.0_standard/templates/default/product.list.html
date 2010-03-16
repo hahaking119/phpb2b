@@ -1,0 +1,110 @@
+<{assign var="page_title" value="`$page_title`"}>
+<{assign var="nav_id" value="5"}>
+<{include file="`$ThemeName`/header.html"}>
+  <div class="blank6"></div>
+<div class="container">
+
+	<div class="tips"><span><{$position}></span></div>
+    <div class="blank6"></div>
+	<div class="kinds clearfix">
+		<p>
+		<span><{$_industry_screening}></span>
+		<{foreach from=$OtherIndustry name=subindustry item=item1}>
+		<a href="product/list.php?industryid=<{$item1.id}>" title="<{$item1.name}>"><{$item1.name}></a>
+		<{foreachelse}>
+		<a><{$_no_subclass}></a>
+		<{/foreach}>
+		</p>
+		<form name="search_frm" id="ProductSearchFrm" action="" method="get">
+		<p class="group2">
+		<span><{$_fast_screening}></span>
+		<label>
+		<select name="industryid" onchange="$('#OfferSearchFrm').submit();">
+			<option value="0"><{$_all_sort}></option>
+			<{foreach from=$OtherIndustry name=byindustry item=item1}>
+			<option value="<{$item1.id}>" <{if $item1.id eq $smarty.get.industryid}>selected="selected"<{/if}>><{$item1.name}></option>
+			<{/foreach}>
+		</select>
+		</label>
+		<label>
+			<select name="areaid" onchange="$('#OfferSearchFrm').submit();">
+				<option value="0"><{$_all_area}></option>
+				<{foreach from=$OtherArea name=byarea item=item2}>
+				<option value="<{$item2.id}>" <{if $item2.id eq $smarty.get.areaid}>selected="selected"<{/if}>><{$item2.name}></option>
+				<{/foreach}>
+			</select>
+		</label>
+		<label><input type="submit"  value="<{$_screening}>" class="submit"/>
+		</label>
+      
+		</p>
+		</form>
+	</div>
+
+<div class="qiugoucontent clearfix">
+	<div class="qiugoucontentleft">
+    <div class="base_title">
+	   <h2><span class="title_name"><{$_search_result}></span></h2>
+	</div>
+		<div class="qiugouleftcon">
+			<form>
+			<div class="qiugouleftcontop">
+				  <label><{$_products_picture}></label>
+				  <ul>
+					<li class="gongqiucompany"><{$_supply_information_company}></li>
+					<li><{$_all_area}></li>
+					<li><{$_reputation_index}></li>
+					<li><{$_online_contact}></li>
+				  </ul>
+			</div>
+			<{foreach from=$Items item="item"}>
+			<div class="detailcon">
+				  <ul class="images">
+					  <li><img src="<{$item.image}>" border=0 alt="<{$item.name}>" width="80" height="80"></li>
+				  </ul>
+				  <ul class="paragraphs">
+						<li class="paragraph"><span class="blue"><a href="<{$item.url}>" title="<{$item.name}>"><{$item.name}></a></span><span class="gray"><{$item.pubdate}></span><br />
+						<{$_abstract}><{$item.content|truncate:100}><br /><{$_publisher}><span class="smallblue"><{if $item.companyname}><a href="space.php?userid=<{$item.userid}>"><{$item.companyname}></a><{else}><{$item.username}><{/if}></span></li>
+						<li><{if $item.area_id1}><{$Areas[1][$item.area_id1]}><br /><{$Areas[2][$item.area_id2]}><{/if}></li>
+						<li class="paragraph2"><img src="<{$item.gradeimg}>" alt="<{$item.gradename}>" ></li>
+						<li class="paragraph2"><span><{$item.im}></span><br />
+							<span class="two">
+                            <{if $item.companyname!=""}>
+                            <a href="space.php?do=feedback&userid=<{$item.userid}>"><{$_station_message}></a>
+                            <{else}>
+                            <a href="office-room/pms.php?do=send&to=<{$item.username}>"><{$_send_message}></a>
+                            <{/if}>
+                            </span>
+						</li>
+				  </ul>
+				  <div class="clear"></div>
+			</div>
+			<{/foreach}>
+			<div>
+				<span><{$ByPages}></span>
+			</div>
+			</form>
+		</div>
+	</div>
+	<div class="qiugoucontentright">
+		<div class="recommendcompany">
+			<div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" />&nbsp;<{$_commend}><{$_offer}></div>
+			<{product row=10 type="commend"}>
+			<p><a href="[link:title]">[field:title]</a></p>
+			<{/product}>
+			<div class="clear"></div>
+		</div>
+		<div class="recommendcompany">
+			<div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" />&nbsp;<{$_recommended_company}></div>
+			<{company row=15}>
+			<p><a href="[link:title]" target="_blank">[field:title]</a></p>
+			<{/company}>
+			<div class="clear"></div>
+		</div>
+</div>
+</div>
+<script>
+$("#SearchFrm").attr("action","offer/list.php");
+$("#topMenuOffer").addClass("lcur");
+</script>
+<{include file="`$ThemeName`/footer.html"}>
