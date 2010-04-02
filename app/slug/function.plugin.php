@@ -25,6 +25,8 @@ function smarty_function_plugin($params){
 			$plugin_var = unserialize($plugin_var);
 			extract($plugin_var);
 			$smarty->assign($plugin_var);
+		}else{
+			return;
 		}
 		$pb_plugin_name = $name;
 		if (!class_exists("Plugin")) {

@@ -45,7 +45,7 @@ function smarty_block_tag($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$keyword->setLimitOffset($row, $col);
-	$sql = "SELECT id,title,title as fulltitle FROM {$keyword->table_prefix}jobs ".$keyword->getCondition()."{$orderby}".$keyword->getLimitOffset();
+	$sql = "SELECT id,name,name AS title,name AS fulltitle FROM {$keyword->table_prefix}jobs ".$keyword->getCondition()."{$orderby}".$keyword->getLimitOffset();
 	$result = $keyword->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {

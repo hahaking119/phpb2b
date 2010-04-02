@@ -69,7 +69,7 @@ function smarty_block_company($params, $content, &$smarty) {
 		if($area_id) $conditions[] = "(c.area_id1=".$area_id." OR c.area_id2=".$area_id." OR c.area_id3=".$area_id.")";
 	}
 	if (isset($params['groupid'])) {
-		$conditions[] = "c.cache_membergroup_id=".$params['groupid'];
+		$conditions[] = "c.cache_membergroupid=".$params['groupid'];
 	}
 	$company->setCondition($conditions);
 	$row = $col = 0;

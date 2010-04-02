@@ -169,7 +169,7 @@ class Members extends PbModel {
 
 	function checkUserExist($uname, $set = true)
 	{
-		if(strlen($uname)<1 || strlen($uname)>20) {
+		if(strlen($uname)<1 || strlen($uname)>255) {
 			return false;
 		}
 		$sql = "SELECT m.id,m.username,m.userpass FROM {$this->table_prefix}members m WHERE m.username='{$uname}'";
@@ -185,7 +185,7 @@ class Members extends PbModel {
 	function checkUserExistsByEmail($email)
 	{
 		if (!pb_check_email($email)) {
-			flash("email_exists");;
+			flash("email_exists");
 		}
 		$result = $this->field("id", "email='".$email."'");
 		if (!$result || empty($result)) {
@@ -278,11 +278,11 @@ class Members extends PbModel {
 		$this->params['data']['member']['last_ip'] = pb_get_client_ip('str');
 		$email_exists = $this->checkUserExistsByEmail($this->params['data']['member']['email']);
 		if ($email_exists) {
-			flash("email_exists");
+			flash("email_exists", null, 0);
 		}
 		$if_exists = $this->checkUserExist($this->params['data']['member']['username']);
 		if ($if_exists) {
-			flash('member_has_exists');
+			flash('member_has_exists', null, 0);
 		}else{
 			$this->save($this->params['data']['member']);
 			$key = $this->table_name."_id";

@@ -60,11 +60,4 @@ $arrTemplate['_extension'] = "扩展";
 $arrTemplate['_help_file'] = "帮助文件";
 $arrTemplate['_options'] = "分类选项";
 $arrTemplate['_plugin'] = "插件";
-$arrTemplate['_manage'] = "管理";
-$arrTemplate['_management'] = "管理";
-$arrTemplate['_add_or_edit'] = "添加/编辑";
-$arrTemplate['_data_zone'] = "数据显示区";
-$arrTemplate['_select_switch'] = "全选/全不选";
-$arrTemplate['_action_zone'] = "操作区";
-$arrTemplate['_title_keywords'] = "标题关键字";
 ?>

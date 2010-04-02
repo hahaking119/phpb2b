@@ -11,6 +11,7 @@ body {background: #fcfdff}
     <h3>分类选项</h3> 
     <ul class="subnav">
 		<li><a class="btn1" href="type.php">所有选项</a></li>       
+        <li><a href="type.php?do=edit"><{$_edit}></a></li>
 		<li><a href="type.php?do=refresh">更新缓存</a></li>       
     </ul>
 </div>
@@ -19,7 +20,7 @@ body {background: #fcfdff}
         <form name="search_frm" id="SearchFrm" method="get"> 
         <input type="hidden" name="do" value="search" />
              <div> 
-				标题关键字 : <input class="queryInput" type="text" name="q" value="" /> 
+				<{$_title_keywords}> : <input class="queryInput" type="text" name="q" value="" /> 
                 <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
             </div> 
         </form> 
@@ -28,14 +29,14 @@ body {background: #fcfdff}
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
     <tbody>
 		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></td>
 		  <td><label for="idAll">标签</label></td>
 		  <td>变量值</td>
 		  <td class="handler">类型名称</td>
-		  <td class="handler">操作</td>
+		  <td class="handler"><{$_action}></td>
 		</tr>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
@@ -45,17 +46,16 @@ body {background: #fcfdff}
           <input type="text" name="option_label[]" value="<{$item.option_label}>" onclick="$('#item_<{$item.id}>').attr('checked',true);" ></td>
 		  <td><input type="text" name="option_value[]" value="<{$item.option_value}>" onclick="$('#item_<{$item.id}>').attr('checked',true);" ></td>
 		  <td class="handler"><a href="type.php?modelid=<{$item.typemodel_id}>" title="<{$item.typename}>" style="text-decoration:none;"><{$item.typename}></a></td>
-		  <td class="handler">
-          </td>
+		  <td class="handler"><a href="type.php?do=edit&id=<{$item.id}>">编辑</a>&nbsp;<a href="type.php?do=del&id=<{$item.id}>">删除</a></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="5">没有符合条件的记录</td>
+		  <td colspan="5"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
       <input type="submit" name="update" value="更新" class="formbtn batchButton"/>
     </div>

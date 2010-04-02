@@ -3,7 +3,7 @@
 Plugin Name: googlesitemap
 Plugin URI: 
 Description: 
-Version: 1.0
+Version: 1.1
 Author: PHPB2B
 Author URI: http://www.phpb2b.com/
 */
@@ -37,18 +37,28 @@ function buildsitemap($lastmod,$encoding = '') {
 	if(empty($encoding)){
 		$encoding = "UTF-8";
 	}
-   $locs = array(array('loc'=>'http://localhost/phpb2b/index.php','changefreq'=>'always','priority'=>'0.9'),array('loc'=>'http://localhost/phpb2b/buy','changefreq'=>'always','priority'=>'0.8'),array('loc'=>'http://localhost/phpb2b/sell','changefreq'=>'always','priority'=>'0.8'));
+	$locs = array(
+	array('loc'=>URL.'index.php','changefreq'=>'always','priority'=>'0.9'),
+	array('loc'=>URL.'buy/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'sell/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'product/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'company/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'news/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'fair/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'hr/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'dict/','changefreq'=>'always','priority'=>'0.8'),
+	array('loc'=>URL.'offer/','changefreq'=>'always','priority'=>'0.8')
+	);
 	$s = "<?xml version=\"1.0\" encoding=\"$encoding\"?>\n";
 	$s .= "<urlset xmlns=\"http://www.google.com/schemas/sitemap/0.84\">\n";
-      foreach($locs as $key=>$val){
-      	 $url=htmlentities($val['loc'],ENT_QUOTES);
-      	 $s .= "\t\t<url>\n\t\t\t<loc>".$url."</loc>\n";
-      	 $s .= "\t\t\t<lastmod>".$lastmod."</lastmod>\n";
-      	 $s .= "\t\t\t<changefreq>".$val['changefreq']."</changefreq>\n";
-      	 $s .= "\t\t\t<priority>".$val['priority']."</priority>\n";
-      	 $s .= "\t\t</url>\n";
-      }
-    
+	foreach($locs as $key=>$val){
+		$url=htmlentities($val['loc'],ENT_QUOTES);
+		$s .= "\t\t<url>\n\t\t\t<loc>".$url."</loc>\n";
+		$s .= "\t\t\t<lastmod>".$lastmod."</lastmod>\n";
+		$s .= "\t\t\t<changefreq>".$val['changefreq']."</changefreq>\n";
+		$s .= "\t\t\t<priority>".$val['priority']."</priority>\n";
+		$s .= "\t\t</url>\n";
+	}
 	$s .= "\n\t</urlset>\n";
 	$fp = @fopen($filename,"w+") or die(sprintf("建立文件1%失败",$filename));
 	@fwrite($fp,$s);

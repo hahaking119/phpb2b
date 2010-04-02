@@ -37,6 +37,8 @@ function smarty_block_announce($params, $content, &$smarty) {
 	if (isset($params['type'])) {
 		if ($params['type']=="new") {
 			$result = $announce->findAll("id,subject AS title,message AS content", null, null, "id DESC", 0, 1);
+		}else{
+			$result = $datas;
 		}
 	}else{
 		$result = $datas;
@@ -44,6 +46,8 @@ function smarty_block_announce($params, $content, &$smarty) {
 	$return = $style = null;
 	if (!empty($result)) {
 		for ($i=0; $i<$i_count; $i++){
+			$result[$i]['title'] = strip_tags($result[$i]['title']);
+			$result[$i]['content'] = strip_tags($result[$i]['content']);
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
 	    	}		

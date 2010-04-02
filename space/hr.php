@@ -28,6 +28,10 @@ if (isset($_GET['id'])) {
 			flash('data_not_exists');
 		}
 		$tpl_file = "hr_detail";
+		setvar("Salary",get_cache_type("salary"));
+        setvar("Worktype",get_cache_type("work_type"));
+		setvar("Gender",get_cache_type("gender"));
+		setvar("Education",get_cache_type("education"));
 		setvar("item",$info);
 		$space->render($tpl_file);
 		exit;
@@ -42,8 +46,7 @@ if (!empty($result)) {
 }
 $sql = "UPDATE {$tb_prefix}jobs SET clicked=clicked+1 WHERE status=1 AND company_id='".$company->info['id']."'";
 $pdb->Execute($sql);
+
 setvar("Items",$result);
-setvar("Worktype", get_cache_type("work_type"));
-setvar("Salary", get_cache_type("salary"));
 $space->render("hr");
 ?>

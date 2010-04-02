@@ -7,14 +7,14 @@
 		<{include file="leftbar.html"}>
 			<div class="right_barjoinin">
 						<p class="title">职位名称：<{$item.name}></p>
-						<p><span>职位类别：</span>商务/采购/贸易 学术/科研 </p>
-						<p><span>工作地点：</span><{$item.work_station}></p>
-						<p><span>发布日期：</span><{$item.created|date_format:"%Y-%m-%d"}></p>
-						<p><span>工作经验：</span>1-3年</p>
-						<p><span>最低学历：</span>硕士</p>
-						<p><span>管理经验：</span>否</p>
-						<p><span>工作性质：</span><{$Worktype[$item.worktype_id]}></p>
+						<p><span>性别要求：</span><{$Gender[$item.require_gender_id]}></p>
 						<p><span>招聘人数：</span><{$item.peoples}></p>
+						<p><span>学历要求：</span><{$Education[$item.require_education_id]}></p>
+						<p><span>年龄要求：</span><{$item.require_age}></p>
+						<p><span>薪资范围：</span><{$Salary[$item.worktype_id]}></p>
+						<p><span>工作地点：</span><{$item.work_station}></p>
+						<p><span>工作性质：</span><{$Worktype[$item.worktype_id]}></p>
+						<p><span>发布日期：</span><{$item.created|date_format:"%Y-%m-%d"}></p>
 						<p><span>职位描述/要求：</span><{$item.content}></p>
 			</div>
 			<div class="clear"></div>
