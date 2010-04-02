@@ -17,7 +17,8 @@
  */
 define('CURSCRIPT', 'upgrade');
 require("../libraries/common.inc.php");
-require("../share.inc.php");if (session_id() == '' ) { 
+require("../share.inc.php");
+if (session_id() == '' ) { 
 	require_once(LIB_PATH. "session_php.class.php");
 	$session = new PbSessions();
 }
@@ -66,31 +67,43 @@ if (isset($_POST['do'])) {
 		$vals['member_id'] = $pb_userinfo['pb_userid'];
 		$vals['cache_username'] = $vals['username'] = $pb_userinfo['pb_username'];
 		$online = $pdb->GetRow("SELECT if_online_support,config,description FROM {$tb_prefix}payments WHERE id='".intval($_POST['payment_id'])."'");
-		if(!empty($_POST['total_price'])){
-			if(is_numeric($_POST['total_price'])){
-				$total_price = $vals['total_price'] = $_POST['total_price'];
-	            $last_order_id = $order->Add($vals);
+		$product_id = intval($_POST['product_id']);
+		switch ($product_id) {
+			case 2:
+				if(is_numeric($_POST['total_price'])){
+					$total_price = $vals['total_price'] = $_POST['total_price'];
+					$last_order_id = $order->Add($vals);
+					if($last_order_id){
+						$pdb->Execute("INSERT INTO {$tb_prefix}ordergoods (order_id,goods_id) VALUE ('".$last_order_id."','".$_POST['product_id']."')");
+						setvar("total_price", $total_price);
+						setvar("payment", $payment);
+						$configs = unserialize($online['config']);
+						if($online['if_online_support']){
+							setvar("OnlineSupport", 1);
+							setvar("OnlineSupportUrl", $configs['gateway']);
+						}else{
+							setvar("OnlineSupport", 0);
+						}
+						setvar("Description", $online['description']);
+						render("member.pay", 1);
+						exit;
+					}else{
+						flash();
+					}
+				}else{
+					flash("charge_check", null, 0);
+				}
+				break;
+			default:
+				$vals['content'] = $_POST['product_id']."|".$vals['content'];
+				$last_order_id = $order->Add($vals);
 				if($last_order_id){
-	              	$pdb->Execute("INSERT INTO {$tb_prefix}ordergoods (order_id,goods_id) VALUE ('".$last_order_id."','".$_POST['product_id']."')");
-		            setvar("total_price", $total_price);
-		            setvar("payment", $payment);
-		            $configs = unserialize($online['config']);
-					if($online['if_online_support']){
-						setvar("OnlineSupport", 1);
-						setvar("OnlineSupportUrl", $configs['gateway']);
-					 }else{
-					 	setvar("OnlineSupport", 0);
-					 }
-					 setvar("Description", $online['description']);
-					 render("member.pay", 1);
+					$pdb->Execute("INSERT INTO {$tb_prefix}ordergoods (order_id,goods_id) VALUE ('".$last_order_id."','".$_POST['item_id']."')");
+					flash("order_submited", null, 0);
 				}else{
 					flash();
 				}
-			}else{
-				flash("charge_check");
-			}
-		}else{
-				flash("charge_check");
+			break;
 		}
 	}
 }

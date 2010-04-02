@@ -37,6 +37,10 @@ body {background: #fcfdff}
         <th class="paddingT15"> 播放器高度:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[height]" value="<{$height}>" /></td>
       </tr>
+      <tr>
+        <th class="paddingT15"> 播放器水印文字:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[flashtitle]" value="<{$flashtitle|default:'PHPB2B Athena DEMO'}>" /></td>
+      </tr>
 	  <{foreach from=$data key=k item=v}>
       <tr>
          <th class="paddingT15">视频属性</th>

@@ -56,8 +56,18 @@ if (isset($_GET['do'])){
 	}
 	if ($do == "view") {
 		if (!empty($id)) {
-			$tpl_file = "order.goods";
+			$order_content = $pdb->GetOne("SELECT content FROM {$tb_prefix}orders WHERE id={$id}");
 			$sql = "SELECT g.name,og.amount,g.price,og.order_id,og.goods_id FROM {$tb_prefix}ordergoods og LEFT JOIN {$tb_prefix}goods g ON g.id=og.goods_id WHERE og.order_id=".$id;
+			if (!empty($order_content)) {
+				$contents = explode("|", $order_content);
+				$product_id = $contents[0];
+				if (!empty($product_id)) {
+					if ($product_id == 3) {
+						$sql = "SELECT g.name,og.amount,g.price,og.order_id,og.goods_id FROM {$tb_prefix}ordergoods og LEFT JOIN {$tb_prefix}adzones g ON g.id=og.goods_id WHERE og.order_id=".$id;
+					}
+				}
+			}
+			$tpl_file = "order.goods";
 			$result = $pdb->GetArray($sql);
 			if (!empty($result)) {
 				$total_price = 0;

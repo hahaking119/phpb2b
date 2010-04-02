@@ -50,7 +50,7 @@ if (isset($_GET['action'])) {
 		$reg_result = true;
 		$is_company = false;
 		if ($member_reg_auth) {
-			switch ($register_type) {
+			switch ($member_reg_auth) {
 				case 1:
 					$reg_tips = L("pls_active_your_account");
 					$reg_result = false;
@@ -119,7 +119,8 @@ if(isset($_POST['register'])){
 	if ($member_reg_auth == 1) {
 		$if_need_check = true;
 		$exp_time = $time_stamp+86400;
-		$hash = urlencode(authcode($tmp_username."|".$exp_time, "ENCODE"));
+		$tmp_username = $member->params['data']['member']['username'];
+		$hash = rawurlencode(authcode("{$tmp_username}\t".$exp_time, "ENCODE"));
 		$str = str_replace(array("%hash%"), $hash, L("pls_pending_account", "tpl"));
 		$sended = pb_sendmail($member->params['data']['member']['email'], $tmp_username, L("pls_active_your_account", "tpl"), $str);
 	}
