@@ -1,0 +1,90 @@
+<{assign var="page_title" value="添加市场库"}>
+<{assign var="nav_id" value="7"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="warpper">
+  <div class="content">
+    <div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}><a href="market/">市场库</a> &raquo; </span>补充市场库信息</div>
+    <div class="add_info">
+      <div class="add_infoleft"> 
+        <div class="add_infoleft_con">
+          <h3>为你推荐的专业市场库</h3>
+          <ul class="add_infoleft_conlist">
+          <{market row=10}>
+          <li><a href="market/detail.php?id=[field:id]">[field:title]</a></li>
+          <{/market}>
+          </ul>
+        </div>
+      </div>
+      <div class="add_inforight">
+       <div class="base_title">
+	   <h2><span class="title_name">补充市场库</span> <span class="search_more" ><a href="market/list.php"><span class="raquo">&raquo;</span><{$_more}>市场库信息</a></span></h2>
+	</div>
+        
+        <div class="add_inforight_con">
+				<form name="marketfrm" id="marketFrm" action="<{$smarty.server.PHP_SELF}>" method="post">
+				<input type="hidden" name="do" value="add_market" />
+				<input type="hidden" name="formhash" value="<{$smarty.const.FORMHASH}>" />
+            <table border="0" id="table_con">
+              <tr>
+                <td width="113" align="center" valign="middle">市场名称：</td>
+                <td height="30"><label>
+                  <input type="text" name="data[market][name]" id="MarketName" value="">
+                </label></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">所在地区：</td>
+                <td height="30" align="left" valign="middle">
+				<p id="dataArea">
+					<select name="data[market][area_id1]" id="dataMarketAreaId1" class="level_1" style="width:120px;" ></select>
+					<select name="data[market][area_id2]" id="dataMarketAreaId2" class="level_2" style="width:120px;"></select>
+					<select name="data[market][area_id3]" id="dataMarketAreaId3" class="level_3" style="width:120px;"></select>
+				</p>
+                 </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">所属行业：</td>
+                <td height="30" align="left" valign="middle">
+				<p id="dataIndustry">
+					<select name="data[market][industry_id1]" id="dataMarketIndustryId1" class="level_1" style="width:120px;" ></select>
+					<select name="data[market][industry_id2]" id="dataMarketIndustryId2" class="level_2" style="width:120px;"></select>
+					<select name="data[market][industry_id3]" id="dataMarketIndustryId3" class="level_3" style="width:120px;"></select>
+				</p>                
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">市场介绍：</td>
+                <td><label>
+                  <textarea name="data[market][content]" rows="5" cols="35"></textarea>
+                  </label></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td height="30" valign="middle">
+                  <input name="image_button" type="button" id="addmarket" alt="提交" onclick="return checkFrm();" class="btn_addsubmit" value="提交该市场库信息" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/multi_select.js"></script>
+<script src="scripts/script_area.js"></script>
+<script src="scripts/script_industry.js"></script>
+<script>
+$("#MarketName").focus();
+function checkFrm(){
+	if($("#MarketName").val()==""){
+		alert("请输入市场名称");
+		$("#MarketName").focus();
+		return false;
+	}else{
+		$("#marketFrm").submit();
+		return true;
+	}
+}
+</script>
+<{include file="`$ThemeName`/footer.html"}>

@@ -1,0 +1,52 @@
+<{assign var="page_title" value="`$page_title` - 行业资讯"}>
+<{assign var="nav_id" value="6"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="warpper">
+  <div class="content clearfix">
+    <div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}></span></div>
+    <div class="blank6"></div>
+    <div class="companylistconleft">
+       <div class="base_title">
+	   <h2><span class="title_name">搜索结果</span></h2>
+	</div>
+    <div class="companylistcon clearfix">
+      <div class="companylistconhead"></div>
+      <div class="companylistconleft">
+      	<{foreach from=$Items name=newslist item=item}>
+        <div class="companylistcontent">
+          <p><span class="span4 news_list_title"><a href="news/detail.php?id=<{$item.id}>"><{$item.title}></a></span></p>
+          <br />
+          <p><{$item.pubdate|date_format:"%Y-%m-%d"}> 来源： <{$item.source}><br />
+          <{$item.content|strip_tags|truncate:100}></p>
+
+        </div>
+        <{/foreach}>
+        <div><{$ByPages}></div>
+      </div>
+    </div>
+    </div>
+    <div class="companylistconright">
+      <div class="lookcompany">
+        <div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" />热门资讯排行</div>
+        <div class="companylistseecon">
+          <ul>
+          	<{news type="hot" row=10}>
+            <li><a href="news/detail.php?id=[field:id]">[field:title]</a></li>
+            <{/news}>
+          </ul>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="lookcompany" style="margin-top:10px;">
+       <div class="companylistseecon" >
+        <form action="news/list.php" method="get" id="NewsSearchFrm"><input type="text" name="q" value="" class="input"/><input type="button" value="搜索" onclick="$('#NewsSearchFrm').submit();" class="submit"/></form></div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+<script>
+$("#SearchFrm").attr("action","news/list.php");
+$("#topMenuNews").addClass("lcur");
+</script>
+<{include file="`$ThemeName`/footer.html"}>

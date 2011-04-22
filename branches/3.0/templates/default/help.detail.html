@@ -1,0 +1,55 @@
+<{assign var="page_title" value="`$page_title` - `$_help_center`"}>
+<{assign var="nav_id" value="`$nav_id`"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="container">
+	<div class="contentbox">
+		<p class="breadnav"><{$position}></p>
+		<p class="whitespace"></p>
+		<div class="container">
+			<div class="fl help_l">
+				<p class="help_ltop">
+					<img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
+				</p>
+				<div class="help_lcont">
+					<div class="help_telborder">
+						<div class="help_tel mauto">
+							<img src="<{$theme_img_path}>images/helpcontbgl.jpg" class="fl" />
+							<img src="<{$theme_img_path}>images/helpcontbgr.jpg" class="fr" />
+							<div class="help_telcont"><{$_help_center}><br /><p class="tar"><{$service_tel}></p></div>
+						</div>
+					</div>
+					<{foreach from=$Helptypes name=Helptypes item=helptype}>
+					<h2 class="tar helpbor_01"><a href="help/index.php?typeid=<{$helptype.id}>"><{$helptype.name}></a></h2>
+					<ul>
+						<{if $helptype.sub}>
+						<{foreach from=$helptype.sub name=sub_helptype item=sub_helptype}>
+						<li class="help_lcontnav"><a href="help/index.php?typeid=<{$sub_helptype.id}>"><{$sub_helptype.name}></a></li>
+						<{/foreach}>
+						<{/if}>
+					</ul>
+					<{/foreach}>
+				</div>
+			</div>
+			<div class="fl help_r">
+				<p class="help_ltop">
+					<img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
+				</p>
+				<div class="help_rcontbg">
+					<img src="<{$theme_img_path}>images/helprbgl.jpg" class="fl" />
+					<img src="<{$theme_img_path}>images/helprbgr.jpg" class="fr" />
+					<p class="help_rsearch">
+					<form method="get" action="help/index.php">
+					<input type="hidden" name="search" value="search"/>
+						<em><{$_search}><{$_help}>:</em><input name="q" value="" type="text" /><input name="submit" value="" type="submit" class="help_rgo" />
+					</form>
+					</p>
+					<div><{$item.content}></div>
+				</div>
+			</div>
+		</div><br clear="all"/>
+
+	</div>
+</div>
+<{include file="`$ThemeName`/footer.html"}>

@@ -1,0 +1,53 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="rightTop"> 
+    <p>资讯</p> 
+    <ul class="subnav">
+		<li><a class="btn1" href="news.php">管理</a></li>
+        <li><a class="btn1" href="newstopic.php">专题</a></li>
+        <li><span>添加/编辑</span></li>
+        <li><a class="btn1" href="newstype.php">分类</a></li>
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="newstopic.php" id="EditFrm" name="edit_frm" enctype="multipart/form-data">
+  <input type="hidden" name="id" value="<{$item.id}>" />
+  <input type="hidden" name="page" value="<{$smarty.get.page}>" />
+    <table class="infoTable">
+      <tr>
+        <th class="paddingT15"> 标题：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="newstopic[title]" value="<{$item.title}>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 简介：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="newstopic[description]" value="<{$item.description}>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 资讯列表：</th>
+        <td class="paddingT15 wordSpacing5"><textarea name="data[news]" id="dataNews"><{$item.news}></textarea><label class="field_notice">可以添加多个，一行代表一个分类</label></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">图片：</th>
+        <td class="paddingT15 wordSpacing5">
+        <input class="infoTableFile2" type="file" name="pic" id="pic" />
+          <label class="field_notice">（支持格式GIF,JPG,JPEG,PNG）</label>
+          <{if $item.picture}>
+          <br /><span><img src="<{$item.image}>" alt="<{$item.name}>"/></span>
+          <{/if}>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="保存" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<{include file="footer.html"}>

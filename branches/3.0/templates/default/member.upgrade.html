@@ -1,0 +1,69 @@
+<{assign var="page_title" value="高级会员申请"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="container">
+  <div class="blank6"></div>
+  <div class="subnav"><{$position}><span class="black">高级会员申请</span></div>
+  <div class="blank6"></div>
+  <div class="content">
+	 <div class="base_title">
+	   <h2><span class="title_name">会员升级</span><span class="title_content">* 请详细填写下表，我们的工作人员在收到你的订单后会第一时间与您取得联系，如有注册问题，请联系我们：<{$service_tel}></span></h2>
+	 </div>
+	 <div class="base_content clearfix">
+		<div class="member_upgrade">
+		   <table class="member_upgrade_content">
+            <form method="post" name="apply_frm" id="ApplyFrm" action="<{$smarty.server.PHP_SELF}>" />
+            <input type="hidden" name="formhash" value="<{$formhash}>" />
+            <input type="hidden" name="apply" value="apply" />
+		  <tr>
+			<th>申请人名称：</th>
+			<td><{if $pb_userid}><{$pb_username}><{else}><input name="username" type="text" id="username"><span>*<span><br>
+					（4-20个字符（A-Z， a-z， 0-9，下划线）</span><{/if}></td>
+		  </tr>
+		  <tr>
+			<th>申请服务类型：</th>
+			<td><label>
+			  <select name="product_id" id="ProductId">
+					  <{foreach from=$Items item=item}>
+					  <option value="<{$item.id}>"><{$item.name}>&nbsp;<{$item.price}></option>
+					  <{/foreach}>
+					</select>
+			</label></td>
+		  </tr>
+		  <tr>
+			<th>联系电话：</th>
+			<td><label>
+			  <input name="tel" type="text" class="linehui" id="member_tel" value="<{$MemberInfo.tel}>" disabled="disabled">
+					  <span>（<a href="javascript:;" onclick="$('#member_tel').attr('disabled',false);">修改</a>）</span>
+			</label></td>
+		  </tr>
+		  <tr>
+			<th>E-mail：</th>
+			<td><label>
+			  <input name="email" type="text" class="linehui" id="member_email" value="<{$MemberInfo.email}>" disabled="disabled">
+					  <span class="fontred">（<a href="javascript:;" onclick="$('#member_email').attr('disabled',false);">修改</a>）</span>
+			</label></td>
+		  </tr>
+		  <tr>
+			<th>请选择支付方式：</th>
+			<td><label>
+			  <select name="payment_id" id="PaymentId">
+					  <{foreach from=$payments item=item}>
+					  <option value="<{$item.id}>"><{$item.description}></option>
+					  <{/foreach}>
+					</select>
+			</label></td>
+		  </tr>
+		  <tr>
+			<th>说明：</th>
+			<td><label>
+			  <input name="content" type="text" class="linehui" id="content" value="" />
+			</label></td>
+		  </tr>
+          </form>
+		</table>
+	 </div>
+		<div class="member_upgrade_img"><input type="image" name="image" onclick="$('#ApplyFrm').submit();" src="<{$theme_img_path}>images/btn_upgrade.gif" /></a></div>
+	 </div>
+  </div>
+</div>
+<{include file="`$ThemeName`/footer.html"}>

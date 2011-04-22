@@ -1,0 +1,32 @@
+<{assign var="page_title" value="会员注册"}>
+<{include file="`$ThemeName`/header.html"}>
+<style type="text/css">  
+label.error {
+  font-weight: bold;
+  color: #b80000;
+}
+</style>
+<div class="container">
+  <div class="blank6"></div>
+  <div class="subnav"><span class="write_reg"><img src="<{$theme_img_path}>images/gongqiu05.gif" />填写注册基本信息&nbsp;&nbsp;<img src="<{$theme_img_path}>images/gongqiu06.gif" />注册成功</span></div>
+  <div class="blank6"></div>
+  <div class="content">
+	 <div class="base_title">
+	   <h2><span class="title_name">选择注册类型</span><span class="title_telephone">如有注册问题，请联系我们：<{$service_tel}></span></h2>
+	</div>
+	  <div class="base_content">
+	<h3>请选择您注册的会员类型，以便结交潜在的商业伙伴，获取商业机会！</h3>
+	<div class="reg_member">
+	 <table>
+	  <tr>
+		<th><a href="member/register.php?type=personal"><img src="<{$theme_img_path}>images/reg02.jpg" /></a></th>
+		<td><a href="member/register.php?type=personal">个人会员：您可以在本网免费发布供应信息、求购信息。</a></td>
+		<th><a href="member/register.php?type=company"><img src="<{$theme_img_path}>images/reg01.jpg" /></a></th>
+		<td><a href="member/register.php?type=company">企业会员：您可以拥有自己的企业网站、可以建立自己的产品库 您可以自由发布招聘信息。</a></td>
+	  </tr>
+	</table>
+	  </div>
+	 </div>
+  </div>
+</div>
+<{include file="`$ThemeName`/footer.html"}>

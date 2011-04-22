@@ -1,0 +1,47 @@
+<{assign var="page_title" value="查看消息"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+     <div class="blank"></div>
+
+	  <form name="messagefrm" action="pms.php" method="post">
+	  <input type="hidden" name="revert_to_member_id" value="<{$item.CompanymessageFromMemberId}>">
+         <table class="offer_info_content">
+          <tr>
+            <th class="circle_left">发送者：</th>
+          <td class="circle_right"><{$item.cache_from_username}></td>
+          </tr>
+           <tr>
+              <th>时 间：</th>
+              <td><{$item.created|date_format:"%Y-%m-%d"}></td>
+            </tr>
+           <tr>
+              <th> 主 题：</th>
+              <td><{$item.title}></td>
+             </tr>
+           <tr>
+          <th class="circle_bottomleft">内 容：</th>
+          <td class="circle_bottomright"><{$item.content}></td>
+          </tr>
+      </table>
+          
+       <table class="btn_save">
+        
+        <tr>
+          <td><input type=button value=" 回 复 " name=submit onClick="location.href='pms.php?do=send'"> 　
+            <input type=submit value=" 返 回 " name=submit> 
+          </td>
+        </tr>
+      </table>
+	  </form>
+   </div>
+   </div>
+<{include file="footer.html"}>

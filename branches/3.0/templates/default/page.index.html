@@ -1,0 +1,36 @@
+<{assign var="page_title" value="`$page_title`"}>
+<{assign var="nav_id" value="`$nav_id`"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="warpper">
+  <div class="content">
+   
+      <p class="whitespace"></p>
+      <div class="container">
+        <div class="fl help_l">
+          <p class="help_ltop"> <img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" /> <img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" /> </p>
+          <div class="help_lcont">
+            <div class="help_telborder">
+              <h2 class="tar">关于我们</h2>
+            </div>
+            <ul>
+            	<{userpage row=15}>
+                  	<li class="help_lcontnav"><a href="[link:title]" title="[field:title]">[field:title]</a></li>
+                <{/userpage}>
+              <li class="self_def_bg"></li>
+              <li class="self_def_nav"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="fl help_r">
+          <p class="help_ltop"> <img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" /> <img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" /> </p>
+          <div class="help_rcontbg"> <img src="<{$theme_img_path}>images/helprbgl.jpg" class="fl" /> <img src="<{$theme_img_path}>images/helprbgr.jpg" class="fr" />
+            <p class="self_def_title"><{$item.title}></p>
+            <p class="self_def_con"><{$item.content}></p>
+          </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+  </div><br clear="all"/>
+</div>
+<{include file="`$ThemeName`/footer.html"}>

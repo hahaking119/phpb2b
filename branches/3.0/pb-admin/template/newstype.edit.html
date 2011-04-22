@@ -1,0 +1,44 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="rightTop"> 
+    <p>资讯</p> 
+    <ul class="subnav">
+		<li><a class="btn1" href="news.php">管理</a></li>
+        <li><a class="btn1" href="newstopic.php">专题</a></li>
+        <li><a class="btn1" href="newstype.php">分类</a></li>
+        <li><span>添加/编辑</span></li>
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="newstype.php" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="id" value="<{$item.id}>" />
+  <input type="hidden" name="page" value="<{$smarty.get.page}>" />
+    <table class="infoTable">
+      <tr>
+        <th class="paddingT15"> 名称：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[newstype][name]" value="<{$item.name}>" /></td>
+      </tr>
+      
+      <tr>
+        <th class="paddingT15"> 上级分类：</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="data[newstype][parent_id]">
+        <option value="0">请选择</option>
+        <{$NewstypeOptions}>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="保存发布" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<{include file="footer.html"}>

@@ -1,0 +1,69 @@
+<{assign var="page_title" value="信息收藏夹"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+      <table class="bggray">
+        <tr>
+          <td class="orange">（<span class="gray">提示：</span>你可以删除已有的信息再重新收藏）</td>
+        </tr>
+      </table>      
+      <form name="listfrm" action="<{$smarty.server.PHP_SELF}>" method="post">
+	  <input type="hidden" name="formhash" value="<{$formhash}>">
+      <table class="offer_publish_list">
+        <tr>
+          <td>
+          <table class="bglist">
+            <tr>
+            <th>类 型</th>
+            <th>标题</th>
+            <th>收藏时间</th>
+            <th>选中</th>
+            </tr>
+			<{foreach from=$Items item=item}>
+            <tr>
+              <td class="orange"><{$TradeTypes[$item.type_id]}></td>
+              <td><a href="<{$SiteUrl}>offer/detail.php?id=<{$item.offerid}>" target="_blank"><{$item.title}></a>&nbsp;</td>
+              <td><{$item.pubdate|date_format:"%Y-%m-%d"}>&nbsp;</td>
+              <td><input name="id[]" type="checkbox" id="id_<{$item.id}>" value="<{$item.id}>"></td>
+            </tr>
+			<{/foreach}>
+          </table>
+          </td>
+        </tr>
+		<{if $Items}>
+        <tr>
+          <td><div align="right">
+                <input type="submit" name="del" value="删除选中的信息" onClick="return window.confirm('真的要删除这些信息吗？')">
+              </div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="1" background="images/index_trade_line.gif"></td>
+        </tr>
+		<{else}>
+        <tr align="center">
+          <td><B>当前没有任何收藏信息</B>&nbsp;</td>
+        </tr>
+		<{/if}>
+        <tr>
+          <td><table class="room_pages">
+              <tr>
+                <td><{$ByPages}></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+      </form>
+      </div>
+</div>
+<{include file="footer.html"}>

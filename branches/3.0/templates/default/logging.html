@@ -1,0 +1,77 @@
+<{assign var="page_title" value="请您登陆"}>
+<{include file="`$ThemeName`/header.html"}>
+<style type="text/css">  
+label.error {
+  font-weight: bold;
+  color: #b80000;
+}
+</style>
+<div class="warpper">
+    <div class="content">
+        <div class="loading"><img src="<{$theme_img_path}>images/lhighs.jpg" />你目前进行的操作，需要<span>"登录"</span>后才能继续</div>
+        <div class="loadingcon">
+        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
+        	<input type="hidden" name="action" value="logging">
+			<input type="hidden" name="formhash" value="<{$formhash}>">
+			<input type="hidden" name="forward" value="<{$smarty.get.forward}>" />
+            <div class="loadingconleft">
+                <p>已经是会员，在此登录</p>
+				<br />
+                    <label class="loadingname">
+                        用户名：
+                    </label>
+                    <label>
+                        <{if $pb_username!=""}>
+                        <input type="text" name="data[login_name]" id="LoginName" value="<{$pb_username}>">
+                        <{else}>
+                        <input type="text" name="data[login_name]" id="LoginName" value="" tabindex="1">
+                        <{/if}>
+						<{if $LoginError}><strong><{$LoginError}></strong><br /><{/if}>
+                    </label>
+                    <br clear="all" />
+                    <label class="loadingname">
+                        密码：
+                    </label>
+                    <label>
+                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2">&nbsp;<a href="getpasswd.php">忘记密码？</a>
+                    </label>
+                    <br clear="all" />
+                    <{if $ifcapt}>
+                    <label class="loadingname">
+                        验证码：
+                    </label>
+                    <label class="loadingcheck">
+                        <input name="data[capt_logging]" id="LoginAuth" type="text" value="" size="5" maxlength="5" tabindex="3"><a href="javascript:;" onclick="$('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());return false;"><img src="captcha.php?sid=<{$sid}>" id="imgcaptcha" alt="如果看不清数字或字母?请点一下换一个!" title="如果看不清数字或字母?请点一下换一个!"/></a>
+                    </label>
+                    <div class="clear"></div>
+                    <p class="loadingp1">点击图片可刷新验证码</p>
+                    <{/if}>
+                    <div class="clear"></div>
+                    <div class="login">
+                       <input type="submit" name="log_in" id="LogIn" value="登 陆" class="loadingbutton"/>
+                       <input type="reset" name="reset" value="重 置" class="loadingbutton"/>
+                       </div>
+                    <div class="clear"></div>
+                    <p class="loadingp3">如果有任何疑问，请您联系客服热线：<{$service_tel}></p>
+            </div>
+            <div class="loadingconright">
+                <p>还不是会员，在此免费注册</p>
+                <ul>
+                    <li><a><img src="<{$theme_img_path}>images/logging_01.gif" alt="" /><p><b>产品展示</b><br />图文并茂展示产品信息，让买家主动找到您！</p></a></li>
+                    <li><a><img src="<{$theme_img_path}>images/logging_02.gif" alt="" /><p><b>在线商机</b><br />一举名天下的互联网强力推广！</p></a></li>
+                    <li><a><img src="<{$theme_img_path}>images/logging_03.gif" alt="" /><p><b>招聘人才</b><br />展示企业实力，吸引更多人才加入！</p></a></li>
+                    <li><a><img src="<{$theme_img_path}>images/logging_04.gif" alt="" /><p><b>代理加盟</b><br />代理和加盟要求，发展自己的加盟商。</p></a></li>
+                    <li><a><img src="<{$theme_img_path}>images/logging_05.gif" alt="" /><p><b>企业新闻</b><br />展示企业动态，彰显企业文化！</p></a></li>
+                    <li><a><img src="<{$theme_img_path}>images/logging_06.gif" alt="" /><p><b>分类广告</b><br />最有效的免费广告！全方位提高曝光率！</p></a></li>
+                </ul>
+                <div class="member_reg">
+                       <input type="button" value="立即注册" class="loadfreeregister" onclick="redirect('member/');return false;"/>
+               </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<script language="javascript" src="scripts/jquery/validate.js"></script>
+<script language="javascript" src="scripts/logging.js"></script>
+<{include file="`$ThemeName`/footer.html"}>
