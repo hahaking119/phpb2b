@@ -615,9 +615,7 @@ class ADORecordSet_mysql extends ADORecordSet{
 		case ADODB_FETCH_DEFAULT:
 		case ADODB_FETCH_BOTH:
 		default:
-			/*edit by phpb2b<at>hotmail.com 2010-2-4*/
 			$this->fetchMode = MYSQL_BOTH; break;
-			//$this->fetchMode = MYSQL_ASSOC; break;
 		}
 		$this->adodbFetchMode = $mode;
 		$this->ADORecordSet($queryID);	

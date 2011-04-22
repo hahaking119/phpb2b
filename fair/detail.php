@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'detail');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 require(CACHE_PATH. 'cache_expotype.php');
 require(CACHE_PATH. 'cache_area.php');
 require(CACHE_PATH. 'cache_industry.php');

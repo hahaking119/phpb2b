@@ -6,20 +6,26 @@
 <script>
 jQuery(document).ready(function($) {
 	$('#dataCompanyEmployeeAmount').options(employee_amount);
-	$("#dataCompanyEmployeeAmount")[0].options[<{$item.option_employee_amount|default:0}>].selected = true;
+	$("#dataCompanyEmployeeAmount")[0].options[<{$item.option_employee_amount|default:0}>].selected = true; //使第index个option选中
 	$('#dataCompanyYearAnnual').options(year_annual);
-	$("#dataCompanyYearAnnual")[0].options[<{$item.option_year_annual|default:0}>].selected = true;
+	$("#dataCompanyYearAnnual")[0].options[<{$item.option_year_annual|default:0}>].selected = true; //使第index个option选中
 	$('#dataCompanyRegFund').options(reg_fund);
-	$("#dataCompanyRegFund")[0].options[<{$item.option_reg_fund|default:0}>].selected = true;
+	$("#dataCompanyRegFund")[0].options[<{$item.option_reg_fund|default:0}>].selected = true; //使第index个option选中
 	$('#dataCompanyManageType').options(manage_type);
-	$("#dataCompanyManageType")[0].options[<{$item.option_manage_type|default:0}>].selected = true;
+	$("#dataCompanyManageType")[0].options[<{$item.option_manage_type|default:0}>].selected = true; //使第index个option选中
 	$('#dataCompanyPosition').options(position);
-	$("#dataCompanyPosition")[0].options[<{$item.option_position|default:0}>].selected = true;
+	$("#dataCompanyPosition")[0].options[<{$item.option_position|default:0}>].selected = true; //使第index个option选中
 	$('#dataCompanyEconomicType').options(economic_type);
-	$("#dataCompanyEconomicType")[0].options[<{$item.option_economic_type|default:0}>].selected = true;
+	$("#dataCompanyEconomicType")[0].options[<{$item.option_economic_type|default:0}>].selected = true; //使第index个option选中
 })
+tinyMCE.init({
+mode : "specific_textareas",
+editor_selector : "mceEditor",
+theme : "simple",
+theme_advanced_toolbar_location : "top",
+theme_advanced_toolbar_align : "left"
+});
 </script>
-<{editor type="tiny_mce"}>
 <div class="wrap clearfix">
     <div class="sidebar">
        <div class="sidebar_menu">
@@ -42,16 +48,16 @@ jQuery(document).ready(function($) {
                 <td class="circle_right"><input type="text" name="data[company][name]" id="dataCompanyName" value="<{$item.name}>" size="30"></td>
               </tr>
               <tr>
-                <th> 公司英文名称：</th>
+                <th> 公司英文名称</th>
                 <td><input name="data[company][english_name]" type="text" id="english_name" value="<{$item.english_name}>" size="30"></td>
               </tr>
               <tr>
                 <th><font class="red">*</font> 行业类别：</td>
                 <td>
                 <div id="dataIndustry">
-                    <select name="data[company][industry_id1]" id="dataCompanyIndustryId1" class="level_1"  ></select>
-                    <select name="data[company][industry_id2]" id="dataCompanyIndustryId2" class="level_2" ></select>
-                    <select name="data[company][industry_id3]" id="dataCompanyIndustryId3" class="level_3" ></select>
+                    <select name="data[company][industry_id1]" id="dataCompanyIndustryId1" class="level_1" style="width:120px;" ></select>
+                    <select name="data[company][industry_id2]" id="dataCompanyIndustryId2" class="level_2" style="width:120px;"></select>
+                    <select name="data[company][industry_id3]" id="dataCompanyIndustryId3" class="level_3" style="width:120px;"></select>
                 </div>
                 </td>
               </tr>
@@ -89,11 +95,7 @@ jQuery(document).ready(function($) {
               </tr>
               <tr>
                 <th><font class="red">*</font> 详细地址：</th>
-                <td><input name="data[company][address]" type="text" id="address" value="<{$item.address}>"> </td>
-              </tr>
-              <tr>
-                <th><font class="red">*</font> 邮编：</th>
-                <td><input name="data[company][zipcode]" type="text" id="zipcode" value="<{$item.zipcode}>"> </td>
+                <td><input name="data[company][address]" type="text" id="address" value="<{$item.address}>" size="32"> </td>
               </tr>
               <tr>
                 <th><font class="red">*</font> 公司介绍：</th>
@@ -157,27 +159,27 @@ jQuery(document).ready(function($) {
               </tr>
               <tr>
                 <th>联系电话：</th>
-                <td><input name="data[telcode]" type="text" id="telcode" value="<{$item.telcode}>" size="4" maxlength="4">
+                <td><input name="data[company][telcode]" type="text" id="telcode" value="<{$item.telcode}>" size="4" maxlength="4">
                 -
-                  <input name="data[telzone]" type="text" id="telzone" value="<{$item.telzone}>" size="4" maxlength="4">
+                  <input name="data[company][telzone]" type="text" id="telzone" value="<{$item.telzone}>" size="4" maxlength="4">
                 -
-                <input name="data[tel]" type="text" id="tel" value="<{$item.tel}>" size="15">格式：86-10-12345678</td>
+                <input name="data[company][tel]" type="text" id="tel" value="<{$item.tel}>" size="15"></td>
               </tr>
               <tr>
                 <th>传真号码：</th>
-                <td><input name="data[faxcode]" type="text" id="faxcode" value="<{$item.faxcode}>" size="4" maxlength="4">
+                <td><input name="data[company][faxcode]" type="text" id="faxcode" value="<{$item.faxcode}>" size="4" maxlength="4">
 -
-<input name="data[faxzone]" type="text" id="faxzone" value="<{$item.faxzone}>" size="4" maxlength="4">
+<input name="data[company][faxzone]" type="text" id="faxzone" value="<{$item.faxzone}>" size="4" maxlength="4">
 -
-<input name="data[fax]" type="text" id="fax" value="<{$item.fax}>" size="15">格式：86-10-12345678</td>
+<input name="data[company][fax]" type="text" id="fax" value="<{$item.fax}>" size="15"></td>
               </tr>
               
               <tr>
-                <th>手机号码：</th>
+                <th>手机号码</th>
                 <td><input name="data[company][mobile]" type="text" id="mobile" value="<{$item.mobile}>" size="32"></td>
               </tr>
               <tr>
-                <th>公司主页：</th>
+                <th>公司主页</th>
                 <td><input name="data[company][site_url]" type="text" id="site_url" value="<{$item.site_url}>" size="32"></td>
               </tr>
               <tr>

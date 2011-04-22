@@ -4,15 +4,11 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 广告 &raquo; 友情链接</p>
-</div>
 <div id="rightTop"> 
-    <h3>友情链接</h3> 
+    <p>友情链接</p> 
     <ul class="subnav">
-		<li><a class="btn1" href="friendlink.php">管理</a></li>
-        <li><a href="friendlink.php?do=edit">添加/编辑</a></li>
-        <li><a href="friendlinktype.php">分类</a></li>
+		<li><span>管理</span></li>
+        <li><a class="btn1" href="friendlink.php?do=edit">添加/编辑</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -28,8 +24,6 @@ body {background: #fcfdff}
 		  <td><label for="idAll">标题</label></td>
 		  <td><span>链接地址</span></td>
 		  <td>Logo图片</td>
-		  <td>所在行业</td>
-		  <td>所在城市</td>
 		  <td><span>显示顺序</span></td>
 		  <td class="handler">操作</td>
 		</tr>
@@ -37,25 +31,22 @@ body {background: #fcfdff}
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
 		  <td><label for="item_<{$item.id}>"><{$item.title}></label></td>
-		  <td><a href="<{$item.url}>" target="_blank"><{$item.url}></a></td>
-		  <td><{if $item.logo}><img src="<{$item.logo}>" height="35" /><{/if}></td>
-		  <td><{$item.industryname}></td>
-		  <td><{$item.areaname}></td>
+		  <td><{$item.url}></td>
+		  <td><{if $item.picture}><img src="<{$item.picture}>" height="35" /><{/if}></td>
 		  <td><{$item.priority}></td>
 		  <td class="handler">
-           <ul id="handler_icon">
-            <li><a class="btn_delete" href="friendlink.php?id=<{$item.id}>&do=del<{$addParams}>" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="friendlink.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-        </ul>		</tr>
+		  <span style="width: 120px;">
+		  <a href="friendlink.php?id=<{$item.id}>&do=del<{$addParams}>"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;&nbsp;<a href="friendlink.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a></span>		  </td>
+		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="8">没有符合条件的记录</td>
+		  <td colspan="6">没有符合条件的记录</td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>

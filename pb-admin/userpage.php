@@ -18,13 +18,11 @@
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
 require(LIB_PATH. "cache.class.php");
-require(LIB_PATH. "file.class.php");
 uses("userpage");
 $cache = new Caches();
 $userpage = new Userpages();
 $conditions = null;
 $tpl_file = "userpage";
-$file = new Files();
 if (isset($_POST['del']) && is_array($_POST['id'])) {
 	$deleted = $userpage->del($_POST['id']);
 	if (!$deleted) {
@@ -35,7 +33,6 @@ if (isset($_POST['del']) && is_array($_POST['id'])) {
 if (isset($_POST['save'])) {
 	$vals = array();
 	$vals = $_POST['data']['userpage'];
-	if(!empty($vals['title'])&&!empty($vals['name'])){
 	if (!empty($_POST['id'])) {
 		$vals['modified'] = $time_stamp;
 		$result = $userpage->save($vals, "update", $_POST['id']);
@@ -43,7 +40,6 @@ if (isset($_POST['save'])) {
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		$result = $userpage->save($vals);
 	}
-  }
 	if (!$result) {
 		flash();
 	}
@@ -62,18 +58,6 @@ if (isset($_GET['do'])) {
 		if(!empty($id)){
 			$res= $userpage->read("*",$id);
 			setvar("item",$res);
-		}
-		setvar("tplext", $smarty->tpl_ext);
-		$tmp_pagetemplets = $file->getFiles(PHPB2B_ROOT."templates".DS.$theme_name);
-		if (!empty($tmp_pagetemplets)) {
-			$page_templets = "<optgroup label='".L("other_templet", "tpl")."'>";
-			foreach ($tmp_pagetemplets as $p_val) {
-				if (strstr($p_val['name'], "page.")) {
-					$page_templets.= "<option value=".$p_val['name'].">".$p_val['name']."</option>";
-				}
-			}
-			$page_templets.="</optgroup>";
-			setvar("other_templets", $page_templets);
 		}
 		$tpl_file = "userpage.edit";
 		template($tpl_file);

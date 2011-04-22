@@ -15,12 +15,11 @@
  * @package phpb2b
  * @version $Id: global.func.php 462 2009-12-27 03:20:41Z steven $
  */
-function da($arr_str, $exit = false)
+function da($arr_str)
 {
 	echo "<pre>";
 	print_r($arr_str);
 	echo "</pre>";
-	($exit)?exit:'';
 }
 
 function pb_getenv($key) {
@@ -121,23 +120,6 @@ function uaAssign($names)
 	}
 }
 
-/**
-function redirect($filename) {
-   if (!headers_sent()){
-       header('Location: '.$filename);
-       exit;
-   }else {
-       echo '<script type="text/javascript">';
-       echo 'window.location.href="'.$filename.'";';
-       echo '</script>';
-       echo '<noscript>';
-       echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
-       echo '</noscript>';
-       exit;
-   }
-}
-**/
-
 function pheader($string, $replace = true, $http_response_code = 0) {
 	$string = str_replace(array("\r", "\n"), array('', ''), $string);
 	if(empty($http_response_code) || PHP_VERSION < '4.3' ) {
@@ -150,7 +132,7 @@ function pheader($string, $replace = true, $http_response_code = 0) {
 	}
 }
 
-function flash($message_title = '', $back_url = '', $pause = 3, $extra = '')
+function flash($message_title = '', $back_url = '', $pause = 3)
 {
 	global $smarty;
 	if (empty($back_url)) {
@@ -162,110 +144,38 @@ function flash($message_title = '', $back_url = '', $pause = 3, $extra = '')
 			$back_url = "javascript:;";
 		}
 	}
-	$return = $smarty->flash($message_title, $back_url, $pause, $extra);
+	$return = $smarty->flash($message_title, $back_url, $pause);
 }
 
 
-function pb_create_folder($dir)
+function pb_create_folder($path)
 {
-	return is_dir($dir) or (pb_create_folder(dirname($dir)) and mkdir($dir, 0777));
+	if (!file_exists($path))
+	{
+		pb_create_folder(dirname($path));
+		mkdir($path, 0777);
+	}
 }
 
 function render($filename = null, $exit = false)
 {
-	global $smarty, $viewhelper, $theme_name, $time_start, $_GET, $cache_id;
+	global $smarty, $viewhelper, $theme_name, $time_start;
 	$return = false;
-	$htmlize = false;
-	$allowed_file = array("index","post","industry","area");
-	$allowed_params = array("id");
-	$file_info = pathinfo(pb_getenv('PHP_SELF'));
-	$tmp_themename = '';
 	$smarty->assign('position', $viewhelper->getPosition(' &raquo; '));
 	$smarty->assign('page_title', $viewhelper->getTitle(' - '));
-	$tpl_file = $theme_name.DS.$filename.$smarty->tpl_ext;
-	if (in_array($file_info['filename'], $allowed_file)) {
-		$dir_name = str_replace(array("\\", "//"), "/", $file_info['dirname']);
-		$dir_name = explode("/", $dir_name);
-		$dir_name = array_filter($dir_name);
-		$i_count = count($dir_name);
-		switch ($i_count) {
-			case 1:
-				$dir_name = '';
-				break;
-			default:
-				$sub_dir = strrchr($file_info['dirname'], "/")."/";
-				$dir_name = $sub_dir;
-				break;
-		}
-		$smarty->cache_dir = $smarty->cache_dir.$dir_name.DS;
-		$smarty->cache_lifetime = 60*60;
-		if (!is_dir($smarty->cache_dir)) {
-			pb_create_folder($smarty->cache_dir);
-		}
-		if (!empty($cache_id)) {
-			$cache_id = substr(md5($cache_id.$dir_name.$file_info['filename']), 0, 5);
-		}else{
-			$cache_id = substr(md5($dir_name.$file_info['filename']), 0, 5);
-		}
-	}else{
-		$smarty->caching = false;
-	}
-	if ($theme_name=='blue' || !$smarty->template_exists($tpl_file)) {
-		$tmp_themename = 'default';
-		$tpl_file = 'default'.DS.$filename.$smarty->tpl_ext;
-	}
-	$smarty->assign('ThemeName', $tmp_themename?$tmp_themename:$theme_name);
-	if (!empty($viewhelper->metaKeyword)) {
-		$smarty->assign("metakeywords", $viewhelper->metaKeyword);		
-	}
-	if (!empty($viewhelper->metaDescription)) {
-		$smarty->assign("metadescription", $viewhelper->metaDescription);		
-	}
-	if (!empty($viewhelper->metaKeyword)) {
-		$smarty->assign("metakeywords", $viewhelper->metaKeyword);
-	}elseif (!empty($viewhelper->metaDescription)){
-		$viewhelper->setMetaKeyword($viewhelper->metaDescription);
-		$smarty->assign("metakeywords", $viewhelper->metaKeyword);
-	}
-	$return = $smarty->display($tpl_file, $cache_id);
-	if ($exit) {
-		exit;
-	}
-	if (!$htmlize) {
-		return $return;
-	}
-	uses('htmlcache');
-	$htmlcache = new Htmlcache();
-	$htmls_path = PHPB2B_ROOT.$htmlcache->archiver_dir.DS;
-	//取得文件名称， 作为最后目录名称之一
-	$htmls_path.=$dir_name;
-	if (!in_array($file_info['filename'], $allowed_file)) {
-		return;
-	}
-	switch ($file_info['filename']) {
-		case "detail":
-			$htmls_path.="detail".DS;
-			//最后目录名称，默认以时间
-			$htmls_path.=date("Ymd").DS;
-			$file_name = $_GET['id'].$htmlcache->file_ext;
-			break;
-		default:
-			$file_name = $file_info['filename'].$htmlcache->file_ext;
-			break;
-	}
-	$htmlcache->setTargetPath($htmls_path);
-	$htmlcache->write($file_name);
+	$return = $smarty->display($theme_name.DS.$filename.$smarty->tpl_ext);
+	//echo "\n<!-- " . round(getMicrotime() - $time_start, 4) . "s -->";
+	//uses('htmlcache');
+	//$htmlcache = new Htmlcache();
+	//$htmlcache->write();
 	return $return;
 }
 
-function template($filename = null, $exit = false)
+function template($filename = null)
 {
 	global $smarty;
 	$return = false;
 	$return = $smarty->display($filename.$smarty->tpl_ext);
-	if ($exit) {
-		exit;
-	}
 	return $return;
 }
 
@@ -343,16 +253,6 @@ function pb_addslashes($string) {
 	return $string;
 }
 
-function stripslashes_deep($value)
-{
-    if(isset($value)) {
-        $value = is_array($value) ?
-            array_map('stripslashes_deep', $value) :
-            stripslashes($value);
-    }
-    return $value;
-}
-
 function pb_convert_comma($str){
 	$str = strip_tags($str);
 	if(strpos($str, "，")) $str = str_replace("，",",",$str);
@@ -405,6 +305,17 @@ function uatrim(&$val)
 	$val = strip_tags(trim($val));
 }
 
+function pb_split_words($params)
+{
+	extract($params);
+	$links = null;
+	$keywords = explode(",",$params['keyword']);
+	foreach ($keywords as $key=>$val) {
+		$links.="<a href='".URL."tag.php?keyword=".urlencode(strip_tags($val))."'>".$val."</a>&nbsp;";
+	}
+	return $links;
+}
+
 function uses() {
 	$args = func_get_args();
 	foreach($args as $arg) {
@@ -441,26 +352,20 @@ function pb_get_member_info()
 	}
 }
 
-function authcode($string, $operation = "ENCODE", $key = '', $expire = 0) {
+function authcode($string, $operation = "ENCODE", $key = '') {
 	global $phpb2b_auth_key;
-	$ckey_length = 4;
 	$key = md5($key ? $key : $phpb2b_auth_key);
-	$keya = md5(substr($key, 0, 16));
-	$keyb = md5(substr($key, 16, 16));
-	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
+	$key_length = strlen($key);
 
-	$cryptkey = $keya.md5($keya.$keyc);
-	$key_length = strlen($cryptkey);
-
-	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
+	$string = $operation == 'DECODE' ? base64_decode($string) : substr(md5($string.$key), 0, 8).$string;
 	$string_length = strlen($string);
 
+	$rndkey = $box = array();
 	$result = '';
-	$box = range(0, 255);
 
-	$rndkey = array();
 	for($i = 0; $i <= 255; $i++) {
-		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
+		$rndkey[$i] = ord($key[$i % $key_length]);
+		$box[$i] = $i;
 	}
 
 	for($j = $i = 0; $i < 256; $i++) {
@@ -480,56 +385,39 @@ function authcode($string, $operation = "ENCODE", $key = '', $expire = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
-			return substr($result, 26);
+		if(substr($result, 0, 8) == substr(md5(substr($result, 8).$key), 0, 8)) {
+			return substr($result, 8);
 		} else {
 			return '';
 		}
 	} else {
-		return $keyc.str_replace('=', '', base64_encode($result));
+		return str_replace('=', '', base64_encode($result));
 	}
+
 }
 
-function pb_substr($str, $start = 0, $len = 10)
+function utf_substr($str,$len, $left = false)
 {
-	$tmpstr = ""; 
-	$strlen = $start + $len; 
-	for($i = 0; $i < $strlen; $i++) { 
-	if(ord(substr($str, $i, 1)) > 0xa0) { 
-	$tmpstr .= substr($str, $i, 2); 
-	$i++; 
-	} else 
-	$tmpstr .= substr($str, $i, 1); 
-	} 
-	return $tmpstr;
-}
-
-function utf_substr($str, $length=0, $start =0) 
-{
-	global $charset;
-	if($charset!="utf-8"){
-		return pb_substr($str, $start, $length);
-	}else{
-		if(strlen($str)<4) return $str;
-		$re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-		$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-		$re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-		$re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-		preg_match_all($re[$charset], $str, $match);
-		if($length==0) $length=count($match[0]);
-		for(;;)
+	for($i=0;$i<$len;$i++)
+	{
+		$temp_str=substr($str,0,1);
+		if(ord($temp_str) > 127)
 		{
-			if(isset($match[0][$start]))
+			$i++;
+			if($i<$len)
 			{
-				if($match[0][$start])
-				return join("", array_slice($match[0], $start, $length));
-				else
-				++$start;
+				$new_str[]=substr($str,0,3);
+				$str=substr($str,3);
 			}
-			else
-			return join("", array_slice($match[0], $start, $length));
+		}
+		else
+		{
+			$new_str[]=substr($str,0,1);
+			$str=substr($str,1);
 		}
 	}
+	if($left) return join($new_str)."...";
+	else return join($new_str);
 }
 
 function checkip($minIpAddress, $maxIpAddress) {
@@ -670,18 +558,12 @@ function parse_highlight($highlight) {
 	return $style;
 }
 
-function pb_get_attachmenturl($src, $path = '', $scope = '', $force = false)
+function pb_get_attachmenturl($src, $path = '', $scope = '')
 {
 	global $attachment_dir, $attachment_url;
-	$default_thumb_img = 'images/nopicture_small.gif';
-	if (!empty($scope)) {
-		$default_thumb_img = 'images/nopicture_'.$scope.'.gif';
-	}
-	if ($force) {
-		$default_thumb_img = 'images/nopicture_'.$force.'.gif';
-	}
-	$img =  $src ? $attachment_url.$src : $default_thumb_img;
-	if ($scope && ($img!=$default_thumb_img)) {
+	$default_small_img = 'images/nopic.small.gif';
+	$img =  $src ? $attachment_url.$src : $default_small_img;
+	if ($scope && ($img!=$default_small_img)) {
 		$img.=".{$scope}.jpg";
 	}
 	return $path.$img;
@@ -710,7 +592,7 @@ function capt_check($capt_name)
 				$img = new Securimage();
 				$post_code = trim($_POST['data'][$capt_name]);
 				if(!$img->check($post_code)){
-					flash('invalid_capt', null, 0);
+					flash('invalid_capt');
 				}
 			}
 			$smarty->assign("ifcapt", true);
@@ -731,36 +613,5 @@ function am() {
 		$r = array_merge($r, $a);
 	}
 	return $r;
-}
-
-function header_sent($msg)
-{
-	global $charset;
-	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset='.$charset.'" />
-</head>
-<body>
-<div style="font:normal normal normal 12px/1.2em Arial Black;">
-'.$msg.'
-</div>
-</body>
-</html>';
-}
-
-if (!function_exists("array_combine")) {
-	function array_combine($arr1, $arr2) {
-		$out = array();
-
-		$arr1 = array_values($arr1);
-		$arr2 = array_values($arr2);
-
-		foreach($arr1 as $key1 => $value1) {
-			$out[(string)$value1] = $arr2[$key1];
-		}
-
-		return $out;
-	}
 }
 ?>

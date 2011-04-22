@@ -61,6 +61,5 @@ setvar('Items', $result);
 uaAssign(array("ByPages"=>$page->getPagenav(), "Industries"=>$industry->getIndustry(), "Areas"=>$area->getCacheArea()));
 setvar("TradeTypes", $trade_controller->getTradeTypes());
 /**end public**/
-setvar("typeid", 1);
 render("offer.list");
 ?>

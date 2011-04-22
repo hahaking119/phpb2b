@@ -21,11 +21,9 @@ require(PHPB2B_ROOT.'libraries/page.class.php');
 $product = new Products();
 $page = new Pages();
 $page->displaypg = 20;
-$page->is_rewrite = true;
-$page->_url = $space->rewriteList("product");
 $tpl_file = "product";
 $conditions = null;
-$conditions[] = "Product.status=1 AND Product.company_id='".$company->info['id']."'";
+$conditions[] = "Product.status=1 AND Product.company_id=".$company->info['id'];
 if (isset($_GET['typeid'])) {
 	$conditions[]= "producttype_id=".intval($_GET['typeid']);
 }
@@ -39,7 +37,6 @@ if (!empty($result)) {
 	$count = count($result);
 	for($i=0; $i<$count; $i++){
 		$result[$i]['image'] = URL. pb_get_attachmenturl($result[$i]['picture'], '', 'small');
-		$result[$i]['url'] = $space->rewriteDetail("product", $result[$i]['id']);
 	}
 }
 setvar("Items",$result);

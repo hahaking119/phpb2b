@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'page');
 require("libraries/common.inc.php");
-require("share.inc.php");
 uses("userpage");
 $userpage = new Userpages();
 $conditions = array();

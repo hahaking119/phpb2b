@@ -1,16 +1,27 @@
 <?php
 /**
- * PHPB2B cache file, DO NOT change me!
- * Modified: Jan 26, 2010, 22:56
- * Id: 1768bb7c77a97db6a2b6d628924f0d28
+ * NOTE   :  PHP versions 4 and 5
+ *
+ * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
+ * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
+ *
+ * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
+ * @since PHPB2B v 1.0.0
+ * @link http://phpb2b.com
+ * @package phpb2b
+ * @version $Id$
  */
 
 $_PB_CACHE['industrytype'] = array (
-  0 => '工业品',
-  1 => '消费品',
-  2 => '原材料',
-  3 => '商业服务',
-  4 => '其他',
+  1 => '工业品',
+  2 => '消费品',
+  3 => '原材料',
+  4 => '商业服务',
+  5 => '其他',
 );
 
 

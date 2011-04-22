@@ -1,8 +1,19 @@
 <?php
 /**
- * PHPB2B cache file, DO NOT change me!
- * Modified: Feb 8, 2010, 14:23
- * Id: 9ceb92a37d98ada6a7b84dd89f6c2223
+ * NOTE   :  PHP versions 4 and 5
+ *
+ * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
+ * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
+ *
+ * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
+ * @since PHPB2B v 1.0.0
+ * @link http://phpb2b.com
+ * @package phpb2b
+ * @version $Id$
  */
 
 $_PB_CACHE['membergroup'] = array (
@@ -61,7 +72,7 @@ $_PB_CACHE['membergroup'] = array (
     'market_allow' => 1,
     'market_check' => 1,
     'company_allow' => 1,
-    'company_check' => 0,
+    'company_check' => 1,
     'product_allow' => 1,
     'product_check' => 1,
     'job_allow' => 1,
@@ -108,7 +119,7 @@ $_PB_CACHE['membergroup'] = array (
   7 => 
   array (
     'name' => '普通会员',
-    'max_offer' => '3',
+    'max_offer' => '0',
     'type_id' => '1',
     'max_product' => '0',
     'max_job' => '0',
@@ -121,20 +132,20 @@ $_PB_CACHE['membergroup'] = array (
     'max_favorite' => '0',
     'type' => 'define',
     'avatar' => 'copper.gif',
-    'allow_space' => '1',
-    'offer_allow' => 1,
+    'allow_space' => '0',
+    'offer_allow' => 0,
     'offer_check' => 1,
-    'market_allow' => 1,
+    'market_allow' => 0,
     'market_check' => 1,
-    'company_allow' => 1,
+    'company_allow' => 0,
     'company_check' => 1,
-    'product_allow' => 1,
+    'product_allow' => 0,
     'product_check' => 1,
-    'job_allow' => 1,
+    'job_allow' => 0,
     'job_check' => 1,
     'companynews_allow' => 0,
     'companynews_check' => 1,
-    'album_allow' => 1,
+    'album_allow' => 0,
     'album_check' => 1,
     'auth_level' => 12,
   ),
@@ -320,7 +331,7 @@ $_PB_CACHE['membergroup'] = array (
     'type' => 'system',
     'avatar' => 'informal.gif',
     'allow_space' => '1',
-    'offer_allow' => 1,
+    'offer_allow' => 0,
     'offer_check' => 0,
     'market_allow' => 0,
     'market_check' => 0,

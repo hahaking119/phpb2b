@@ -106,19 +106,20 @@ class Passports extends PbObject
 	
 	function ucenter($username, $password, $email, $action = 'login')
 	{
-		include_once (API_PATH. 'passports/ucenter/config.inc.php');
-		include_once (API_PATH. "passports/ucenter/uc_client/client.php");
 		$sql = "SELECT id,title FROM {$this->table_prefix}passports WHERE available=1 AND name='ucenter'";
 		$rs = $this->db->GetRow($sql);
 		if (empty($rs) || !$rs) {
 			return;
 		}
+		include (API_PATH. 'passports/ucenter/config.inc.php');
+		include(API_PATH. "passports/ucenter/uc_client/client.php");
 		switch ($action) {
 			case "login":
 				$this->ucLogin($username, $password);
 				break;
 			case "reg":
 				$this->ucRegister($username, $password, $email);
+				$this->ucLogin($username, $password);
 				break;
 			default:
 				break;
@@ -131,9 +132,9 @@ class Passports extends PbObject
 		if($uid>0){
 			$ucsynlogin = uc_user_synlogin($uid);
 		}elseif($uid == -1){
-			die('通行证：用户不存在,或者被删除');
+			echo '用户不存在,或者被删除';
 		}elseif($uid == -2) {
-			die('通行证：密码错误');
+			echo '密码错误';
 		}
 	}
 	function ucRegister($username, $password, $email){

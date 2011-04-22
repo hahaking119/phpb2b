@@ -25,7 +25,7 @@ class Logs extends PbModel {
  	
  	function Add($data)
  	{
- 		return $this->dbstuff->Execute("INSERT INTO {$this->table_prefix}logs (handle_type,source_module,description,ip_address,created,modified) VALUE ('".$data['handle_type']."','".$data['source_module']."','".$data['description']."','".pb_get_client_ip()."','".$this->timestamp."','".$this->timestamp."')");
+ 		return $this->dbstuff->Execute("INSERT INTO {$this->table_prefix}logs (handle_type,source_module,description,ip_address,created) VALUE ('".$data['handle_type']."','".$data['source_module']."','".$data['description']."','".pb_get_client_ip()."','".$this->timestamp."')");
  	}
 }
 ?>

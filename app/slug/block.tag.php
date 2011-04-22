@@ -13,18 +13,17 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.tag.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.tag.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_block_tag($params, $content, &$smarty) {
 	if ($content === null) return;
+	global $rewrite_able, $rewrite_compatible;
 	$conditions = array();
 	if (!class_exists("Keywords")) {
 		uses("keyword");
 		$keyword = new Keywords();
-		$keyword_controller = new Keyword();
 	}else{
 		$keyword = new Keywords();
-		$keyword_controller = new Keyword();
 	}
 	$conditions[] = "status=1";
 	if (isset($params['typeid'])) {
@@ -45,7 +44,7 @@ function smarty_block_tag($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$keyword->setLimitOffset($row, $col);
-	$sql = "SELECT id,name,name AS title,name AS fulltitle FROM {$keyword->table_prefix}jobs ".$keyword->getCondition()."{$orderby}".$keyword->getLimitOffset();
+	$sql = "SELECT id,title,title as fulltitle FROM {$keyword->table_prefix}jobs ".$keyword->getCondition()."{$orderby}".$keyword->getLimitOffset();
 	$result = $keyword->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {
@@ -54,7 +53,8 @@ function smarty_block_tag($params, $content, &$smarty) {
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
 	    	}
-	    	$url = $keyword_controller->rewrite($result[$i]['id'], $result[$i]['title']);
+	    	$rewrite_compatible && $result[$i]['title'] = rawurlencode($result[$i]['title']);
+	    	$url = "tag.php?name=".$result[$i]['title'];
 			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[link:title]"), array($result[$i]['title'], $result[$i]['fulltitle'], $result[$i]['id'], $url), $content);
 		}
 	}

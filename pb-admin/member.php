@@ -37,8 +37,7 @@ foreach($_PB_CACHE['trusttype'] as $key=>$val){
 }
 setvar("Trusttypes", $tmp_trusttypes);
 if (isset($_POST['del'])) {
-      $member->Delete($_POST['id']);
-	  flash("success");
+	$member->Delete($_POST['id']);
 }
 if (isset($_POST['check_in'])){
 	$vals['status'] = 1;
@@ -78,18 +77,11 @@ if (isset($_POST['save'])) {
 		$member_id = $_POST['id'];
 	}
 	$vals = $_POST['data']['member'];
-	if(!empty($_POST['data']['userpass'])) {
-		if (!pb_strcomp($_POST['data']['userpass'],$_POST['data']['re_userpass'])) {
-			flash("invalid_password");
-		}else{
-			$vals['userpass'] = $member->authPasswd($_POST['data']['userpass']);
-		}
+	if(!empty($_POST['data']['userpass']) && $_POST['data']['userpass']==$_POST['data']['re_userpass']) {
+		$vals['userpass'] = md5($_POST['data']['userpass']);
 	}
+	if (!empty($_POST['data']['trusttype'])) {
 		$vals['trusttype_ids'] = implode(",", $_POST['data']['trusttype']);
-	if (!empty($_POST['data']['service_start_date'])) {
-		$vals['service_start_date'] = Times::dateConvert($_POST['data']['service_start_date']);
-	}	if (!empty($_POST['data']['service_end_date'])) {
-		$vals['service_end_date'] = Times::dateConvert($_POST['data']['service_end_date']);
 	}
 	if(!empty($member_id)){
 		$vals['modified'] = $time_stamp;
@@ -113,7 +105,7 @@ if (isset($_GET['do'])) {
 	}
 	if ($do == "edit") {
 		$vals =  null;
-		if (!empty($id)){
+		if ($id){
 			$res = $pdb->GetRow("SELECT m.*,mf.* FROM {$tb_prefix}members m LEFT JOIN {$tb_prefix}memberfields mf ON m.id=mf.member_id WHERE m.id={$id}");
 			if (empty($res)) {
 				flash("data_not_exists");
@@ -126,8 +118,6 @@ if (isset($_GET['do'])) {
 			if (!empty($res['membergroup_id'])) {
 				$res['groupimage'] = URL."images/group/".$_PB_CACHE['membergroup'][$res['membergroup_id']]['avatar'];
 			}
-			$res['service_start_date'] = @date("Y-m-d", $res['service_start_date']);
-			$res['service_end_date'] = @date("Y-m-d", $res['service_end_date']);
 			setvar("item", $res);
 		}
 		uaAssign(array("Genders"=> get_cache_type("gender")));

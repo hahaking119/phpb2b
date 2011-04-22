@@ -1,28 +1,24 @@
 <?php include 'header.share.php';?>
 	<div class="content">
 		<div id="installdiv">
-		  <h3><?php echo $_welcome_to_install;?> <?php echo PHPB2B_VERSION."(".PHPB2B_RELEASE.strtoupper($charset).")";?></h3>
+		  <h3>欢迎您使用PHPB2B</h3>
 		  <ul>
 			<li>
-			<p><br />
-			<form name="language" id="language" action="install.php" method="get">
-			<?php echo $_select_language;?> : <select name="app_lang"><?php echo showLanguages();?></select><input type="button" name="switch_language" id="SwitchLanguage" onClick="$('#language').submit();" value="<?php echo $_language_switch;?>" />&nbsp;
-			<img src="images/help.gif" style="cursor:pointer;" title="<?php echo $_if_want_to_change_language;?>" align="absmiddle" />
-			</form></p>
-			<p><br /><?php echo $_the_guide_to_install;?></p>
-			<p><br /><?php echo $_to_install_please_attention;?></p>
+			<p>PHPB2B™ is the most widely used open source b2b solution in the world. Like its predecessors, PHPB2B is feature-rich, user-friendly, and fully supported by the PHPB2B Team.</p>
+			<p><br />本向导将指导您完成PHPB2B的正确安装。</p>
+			<p><br />为了能够顺利完成安装，您需要将您的数据库设置提前准备好。如果您不知道您的数据库设置，请联系您的主机商，并要求他们提供给您相关信息，同时您的服务器必须要有如下配置：</p>
 
 	<ul>
-		<li>MySQL 3.23 <?php echo $_or_higher_version;?></li>
-		<li>PHP 4.3.0 <?php echo $_or_higher_version;?></li>
+		<li>MySQL 3.23 或更高版本</li>
+		<li>PHP 4.3.0 或更高版本</li>
 	</ul>
 
-	<p><strong><?php echo $_attention;?></strong> <?php echo $_mysql_only_suppport;?></p>
+	<p><strong>注意:</strong> PHPB2B目前仅支持Mysql数据库。</p>
 	</li>
 		  </ul>
 		</div>
 		<br />
-		<input type="button" class="btn" onClick="$('#install').submit();" value="<?php echo $_start_to_install;?>" title="<?php echo $_click_and_next;?>" />
+		<input type="button" class="btn" onClick="$('#install').submit();" value="开始安装 PHPB2B" title="点击进入下一步" />
 	</div>
 	<form id="install" action="install.php" method="get">
 	<input type="hidden" name="step" value="2">

@@ -13,18 +13,17 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.market.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.market.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_block_market($params, $content, &$smarty) {
 	if ($content === null) return;
+	global $rewrite_able;
 	$conditions = array();
 	if (class_exists("Markets")) {
 		$market = new Markets();
-		$market_controller = new Market();
 	}else{
 		uses("market");
 		$market = new Markets();
-		$market_controller = new Market();
 	}
 	if(isset($params['type'])) {
 		$type = explode(",", $params['type']);
@@ -35,7 +34,7 @@ function smarty_block_market($params, $content, &$smarty) {
 					$conditions[] = "picture!=''";
 					break;
 				case 'commend':
-					$conditions[] = "if_commend='1'";
+					$conditions[] = "ifcommend='1'";
 					break;
 				default:
 					break;
@@ -66,10 +65,10 @@ function smarty_block_market($params, $content, &$smarty) {
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
-	    	$url = $market_controller->rewrite($result[$i]['id'], $result[$i]['name']);
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['name'] = utf_substr($result[$i]['name'], $params['titlelen']);
 	    	}
+	    	$url = ($rewrite_able)? "market/detail/".$result[$i]['id'].".html":"market/detail.php?id=".$result[$i]['id'];
 			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[link:title]", "[img:src]"), array($result[$i]['name'], $result[$i]['fullname'], $result[$i]['id'], $url, "attachment/".$result[$i]['picture'],), $content);
 		}
 	}

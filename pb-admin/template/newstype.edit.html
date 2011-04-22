@@ -4,16 +4,13 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 行业资讯</p>
-</div>
 <div id="rightTop"> 
-    <h3>行业资讯</h3> 
+    <p>资讯</p> 
     <ul class="subnav">
-		<li><a href="news.php">管理</a></li>
-        <li><a href="newstopic.php">专题</a></li>
-        <li><a href="newstype.php">分类</a></li>
-        <li><a class="btn1" href="newstype.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="news.php">管理</a></li>
+        <li><a class="btn1" href="newstopic.php">专题</a></li>
+        <li><a class="btn1" href="newstype.php">分类</a></li>
+        <li><span>添加/编辑</span></li>
     </ul>
 </div>
 <div class="info">
@@ -30,8 +27,8 @@ body {background: #fcfdff}
       <tr>
         <th class="paddingT15"> 上级分类：</th>
         <td class="paddingT15 wordSpacing5">
-        <select name="data[newstype][parent_id]" id="NewstypeParentId">
-        <option value="0">顶级分类</option>
+        <select name="data[newstype][parent_id]">
+        <option value="0">请选择</option>
         <{$NewstypeOptions}>
         </select>
         </td>
@@ -44,10 +41,4 @@ body {background: #fcfdff}
     </table>
   </form>
 </div>
-<script>
-var parent_id = "<{$item.parent_id|default:0}>";
-jQuery(document).ready(function($) {
-	$("#NewstypeParentId option[value='"+parent_id+"']").attr("selected","selected")
-})
-</script>
 <{include file="footer.html"}>

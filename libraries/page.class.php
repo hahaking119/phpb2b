@@ -28,7 +28,6 @@ class Pages extends PbController {
 	var $nextpage_link = "javascript:;";
 	var $previouspage_link = "javascript:;";
 	var $page_option = array(10,20,30);
-	var $is_rewrite = false;
 	
 	function Pages() {
 		$this->_url = pb_getenv('PHP_SELF');
@@ -46,7 +45,7 @@ class Pages extends PbController {
         	}
         }else{
         	$page = 1;
-        }
+        }		
 		$this->total_record = $total_record;
 		$this->current_page = $page;
 		$lastpg = ceil($this->total_record / $this->displaypg);
@@ -75,12 +74,12 @@ class Pages extends PbController {
 			$prev_end = ($page-1)<=0?1:($page-1);
 			$prevs = range($prev_begin, $prev_end);
 			$previous_page = $page-1;
-			$this->previouspage_link = $this->rewriteList($previous_page, $params);
+			$this->previouspage_link = $this->_url."{$params}page={$previous_page}";
 			if ($prev_begin>1) {
-				$pagenav.="<a href='".$this->rewriteList(1,$params)."' title='".L('first_page', 'tpl')."'>1</a>... ";
+				$pagenav.="<a href='".$this->_url."{$params}page=1' title='".L('first_page', 'tpl')."'>1</a>... ";
 			}
 			foreach ($prevs as $val) {
-				$pagenav.="<a href='".$this->rewriteList($val, $params)."'>$val</a>";
+				$pagenav.="<a href='".$this->_url."{$params}page={$val}'>$val</a>";
 			}
 		}
 		$pagenav.="<span class='current'>{$page}</span>";
@@ -89,37 +88,19 @@ class Pages extends PbController {
 			$next_end = ($page+5)>$lastpg?$lastpg:($page+5);
 			$nexts = range($next_begin, $next_end);
 			$next_page = $page+1;
-			$this->nextpage_link = $this->rewriteList($next_page, $params);
+			$this->nextpage_link = $this->_url."{$params}page={$next_page}";
 			foreach ($nexts as $val) {
-				$pagenav.="<a href='".$this->rewriteList($val, $params)."'>{$val}</a>";
+				$pagenav.="<a href='".$this->_url."{$params}page={$val}'>{$val}</a>";
 			}
 			if($next_end<$lastpg) {
-				$pagenav.="... <a href='".$this->rewriteList($lastpg, $params)."' title='".L('last_page', 'tpl')."'>{$lastpg}</a>";
+				$pagenav.="... <a href='".$this->_url."{$params}page={$lastpg}' title='".L('last_page', 'tpl')."'>{$lastpg}</a>";
 			}
 		}
-		$tpl_file = $this->pagetpl.$smarty->tpl_ext;
 		$smarty->assign("pages", $pagenav);
 		if (!empty($this->pagetpl_dir)) {
-			$tpl_file = $this->pagetpl_dir.DS.$this->pagetpl.$smarty->tpl_ext;
+			$this->pagetpl = $this->pagetpl_dir.DS.$this->pagetpl;
 		}
-		if (!$smarty->template_exists($tpl_file)) {
-			$tpl_file = 'default'.DS.$this->pagetpl.$smarty->tpl_ext;
-		}
-		$this->pagenav = $smarty->fetch($tpl_file);
-	}
-	
-	function rewriteList($page = 1, $params = null)
-	{
-		if ($this->is_rewrite) {
-			$url = $this->_url."list-".$page;
-			if (!empty($params)) {
-				;
-			}
-			$url.=".html";
-		}else{
-			$url = $this->_url."{$params}page={$page}";
-		}
-		return $url;
+		$this->pagenav = $smarty->fetch($this->pagetpl.$smarty->tpl_ext);
 	}
 	
 	function getPagenav()

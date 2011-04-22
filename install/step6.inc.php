@@ -16,34 +16,38 @@ include 'header.share.php';?>
 <input type="hidden" name="createdb" value="<?php echo $createdb;?>">
 <input type="hidden" name="password_key" value="<?php echo $passwordkey;?>">
 <?php if($db_error){ ?>
-<span class="error"><?php echo $_db_error_and_back;?></span>
-<input type="button" onclick="javascript:history.go(-1);" value="<?php echo $_go_back;?> : <?php echo $steps[--$step];?>" class="btn" />
+<span class="error">数据库链接错误，请返回上一步重新配置</span>
+<input type="button" onclick="javascript:history.go(-1);" value="返回上一步 : <?php echo $steps[--$step];?>" class="btn" />
 <?php }else{ ?>
 <table width="100%" cellpadding="0" cellspacing="0">
-<caption><?php echo $_pls_input_site_info;?></caption>
+<caption>请输入网站的基本资料</caption>
 <tr>
-<th><?php echo $_site_name;?> : </th>
-<td><input name="sitename" type="text" id="sitename" value="<?php echo $_a_new_b2b_site;?>" style="width: 200px;" /><span> <?php echo $_for_site_name;?></span></td>
+<th>选择语言：</th>
+<td><select name="app_lang"><option value="zh-cn">简体中文</option></select><span> 如果你要修改网站语言,请在languages目录中添加相应语言包</span></td>
 </tr>
 <tr>
-<th><?php echo $_site_title;?> : </th>
-<td><input name="sitetitle" type="text" id="sitetitle" value="<?php echo $_a_new_b2b_title;?>" style="width: 200px;" /><span> <?php echo $_show_on_the_title;?></span></td>
+<th>网站名称：</th>
+<td><input name="sitename" type="text" id="sitename" value="一个新的B2B网站" style="width: 200px;" /><span> 用于网站中使用的名称</span></td>
 </tr>
 <tr>
-<th><?php echo $_site_url;?> : </th>
-<td><input name="siteurl" type="text" id="siteurl" value="<?php echo $siteUrl;?>" style="width: 200px;" /><span> <?php echo $_pls_enter_site_url;?></span></td>
+<th>网站标题：</th>
+<td><input name="sitetitle" type="text" id="sitetitle" value="一个新的B2B网站的标题" style="width: 200px;" /><span> 显示在网站的标题栏以及网页的标题上</span></td>
 </tr>
 <tr>
-<th><?php echo $_demo_data;?> : </th>
+<th>网站地址：</th>
+<td><input name="siteurl" type="text" id="siteurl" value="<?php echo $siteUrl;?>" style="width: 200px;" /><span> 请输入网站的访问URL，一般保持默认即可</span></td>
+</tr>
+<tr>
+<th>演示数据：</th>
 <td><input type="checkbox" name="testdata" id="TestData" value="testdata" />
-<label for="TestData"><span class="disabletxt">&nbsp;<?php echo $_import_demo_data;?></span> (<?php echo $_for_new_users;?>)</label></td>
+<label for="TestData"><span class="disabletxt">&nbsp;导入演示数据</span> (用于新手和调试用户)</label></td>
 </tr>
 </table>
 </form>
 </div>
 
-<input type="button" onclick="javascript:history.go(-1);" value="<?php echo $_go_back;?> : <?php echo $steps[--$step];?>" class="btn" />
-<input type="button" onClick="$('#install').submit();$('#btn_installnow').attr('disabled',true);" id="btn_installnow" class="btn" value="<?php echo $_next_step;?> : <?php echo $_start_install;?>" />
+<input type="button" onclick="javascript:history.go(-1);" value="返回上一步 : <?php echo $steps[--$step];?>" class="btn" />
+<input type="button" onClick="$('#install').submit();$('#btn_installnow').attr('disabled',true);" id="btn_installnow" class="btn" value="下一步：安装" />
 <?php } ?>
 </div>
 </div>

@@ -49,7 +49,7 @@ class Keywords extends PbModel {
 	function setKeywordId($keys, $prim_id, $type_id)
 	{
 	    if(!empty($keys)){
-	        $words = str_replace(array("£¬", " ", "¡¡"), ",", $keys);
+	        $words = str_replace(array("ï¼Œ", " ", "ã€€"), ",", $keys);
 	        $words = explode(",", $words);
 	        foreach ($words as $key=>$val){
 	            $val = trim($val);

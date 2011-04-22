@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("setting");
 $setting = new Settings();
 setvar("SiteDescription", $_PB_CACHE['setting']['login_picture']);

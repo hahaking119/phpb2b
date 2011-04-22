@@ -4,15 +4,12 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 扩展 &raquo; 帮助文件</p>
-</div>
 <div id="rightTop"> 
-    <h3>帮助文件</h3> 
+    <p>帮助文件</p> 
     <ul class="subnav">
-		<li><a href="help.php">管理</a></li>
-		<li><a href="helptype.php">分类</a></li>        
-        <li><a class="btn1" href="helptype.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="help.php">管理</a></li>
+		<li><a class="btn1" href="helptype.php">分类</a></li>        
+        <li><span>添加/编辑</span></li>
     </ul>
 </div>
 <div class="info">
@@ -32,7 +29,7 @@ body {background: #fcfdff}
       <tr>
         <th class="paddingT15"> 显示顺序：</th>
         <td class="paddingT15 wordSpacing5">          
-		<input class="infoTableInput2" name="data[helptype][display_order]" value="<{$item.display_order|default:0}>" /></td>
+		<input class="infoTableInput2" name="data[helptype][display_order]" value="<{$item.display_order}>" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> 上级类别：</th>

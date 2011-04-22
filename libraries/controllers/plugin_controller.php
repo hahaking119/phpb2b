@@ -21,7 +21,6 @@ class Plugin extends PbController {
 	var $plugin_path;
 	var $info_filename = "info.inc.php";
 	var $plugin_name;
-	var $need_config = false;
 	
 	function Plugin($plugin_name = '')
 	{
@@ -33,23 +32,18 @@ class Plugin extends PbController {
 
 	function install($entry)
 	{
-		global $smarty;
 		$return = 0;
 		$tpldir = realpath($this->plugin_path.$entry);
 		$_this = & Plugins::getInstance();
 		if (is_dir($tpldir) && file_exists($tpldir.'/'.$this->info_filename)) {
 			require($tpldir.'/'.$this->info_filename);
 			$_this->params['data']['name'] = $entry;
-			$_this->params['data']['available'] = 1;
 			$_this->params['data']['title'] = $title;
 			$_this->params['data']['description'] = $description;
 			$_this->params['data']['copyright'] = $copyright;
 			$_this->params['data']['version'] = $version;
 			$_this->params['data']['created'] = $_this->params['data']['modified'] = $_this->timestamp;
 			$_this->save($_this->params['data']);
-			if (file_exists($tpldir.'/template/admin'.$smarty->tpl_ext)) {
-				$this->need_config = true;
-			}
 			$key = $_this->table_name."_id";
 			$return = $_this->$key;
 		}
@@ -83,15 +77,15 @@ class Plugin extends PbController {
 			if((!in_array($entry, array('.', '..', '.svn'))) && (!in_array($entry, $temp)) && is_dir($tpldir)) {
 				if(file_exists($tpldir ."/".$this->info_filename)){
 					require($tpldir ."/".$this->info_filename);
-					$built[] = array(
-					'name' => $entry,
-					'title' => $title,
-					'version' => $version,
-					'available' => 0,
-					'copyright' => $copyright,
-					'description' => $description,
-					);
 				}
+				$built[] = array(
+				'name' => $entry,
+				'title' => $title,
+				'version' => $version,
+				'available' => 0,
+				'copyright' => $copyright,
+				'description' => $description,
+				);
 			}
 		}
 		return $built;

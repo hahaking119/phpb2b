@@ -1,4 +1,3 @@
-<!--
 function toogleOffer(n) {
   if(n==2){
 	  $("#tab1").attr("class","lasestnav");
@@ -25,4 +24,3 @@ function toogleNews(n) {
 	  $("#Newstype1List").show();
   }
 }
-//-->

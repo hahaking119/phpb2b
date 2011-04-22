@@ -1,14 +1,25 @@
 <?php
 /**
- * PHPB2B cache file, DO NOT change me!
- * Modified: Feb 6, 2010, 15:40
- * Id: 6e08650fa19b6b4c6440fd2501d49bc4
+ * NOTE   :  PHP versions 4 and 5
+ *
+ * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
+ * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
+ *
+ * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
+ * @since PHPB2B v 1.0.0
+ * @link http://phpb2b.com
+ * @package phpb2b
+ * @version $Id$
  */
 
 $_PB_CACHE['service_type'] = array (
-  0 => '咨询',
-  1 => '建议',
-  2 => '投诉',
+  1 => '咨询',
+  2 => '建议',
+  3 => '投诉',
 );
 
 

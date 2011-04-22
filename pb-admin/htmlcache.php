@@ -28,35 +28,16 @@ if (isset($_POST['do'])) {
 	$do = trim($_POST['do']);
 	switch ($do) {
 		case "clear":
-			if (in_array("membercache", $_POST['data']['type'])) {
-				$pdb->Execute("TRUNCATE `{$tb_prefix}membercaches`");
-			}
-			if (in_array("smartycache", $_POST['data']['type'])) {
-				$smarty->clear_all_cache();
-			}
-			if (in_array("smartycompile", $_POST['data']['type'])) {
-				$smarty->clear_compiled_tpl();
-				$file = new Files();
-				$file->rmDirs(DATA_PATH. "templates_c".DS);
-			}
-			if (in_array("options", $_POST['data']['type'])) {
-				$cache->updateTypevars();
-			}
+			$smarty->clear_all_cache();
+			$smarty->clear_compiled_tpl();
+			$file = new Files();
+			$file->rmDirs(DATA_PATH. "templates_c".DS);
 			flash("success", "htmlcache.php?do=clear");
 			break;
 		case "update":
-			if (in_array("area", $_POST['data']['type'])) {
-				$cache->writeCache("area", "area");
-			}
-			if (in_array("industry", $_POST['data']['type'])) {
-				$cache->writeCache("industry", "industry");
-			}
-			if (in_array("setting", $_POST['data']['type'])) {
-				$cache->writeCache("setting", "setting");
-			}
-			if (in_array("setting1", $_POST['data']['type'])) {
-				$cache->writeCache("setting1", "setting1");
-			}
+			$cache->writeCache("area", "area");
+			$cache->writeCache("industry", "industry");
+			$cache->writeCache("setting", "setting");
 			flash("success", "htmlcache.php?do=update");
 			break;
 		default:

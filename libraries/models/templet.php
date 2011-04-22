@@ -31,23 +31,9 @@ class Templets extends PbModel {
 		return $instance[0];
 	}
 	
-	function getInstalled($membergroup_id = null, $membertype_id = null){
+	function getInstalled(){
 		$installed = array();
-		if (!empty($membergroup_id)) {
-			$conditions[] = "INSTR(t.require_membergroups,'[".$membergroup_id."]')>0";
-			//$sql = "SELECT t.name, t.id, t.directory, t.author, t.title FROM {$this->table_prefix}templets t WHERE INSTR(t.require_membergroups,'[".$membergroup_id."]')>0 OR t.require_membergroups=0 ORDER BY t.id DESC";
-		}
-		if (!empty($membertype_id)) {
-			$conditions[] = "INSTR(t.require_membertype,'[".$membertype_id."]')>0";
-		}
-		$this->setCondition($conditions);
-		$condition = $this->getCondition();
-		if (!empty($condition)) {
-			$condition.=" OR t.require_membergroups=0";
-		}else{
-			$condition.=" WHERE 1 OR t.require_membergroups=0";
-		}
-		$sql = "SELECT t.name, t.id, t.directory, t.author, t.title FROM {$this->table_prefix}templets t {$condition} ORDER BY t.id DESC";
+		$sql = "SELECT t.name, t.id, t.directory, t.author, t.title FROM {$this->table_prefix}templets t ORDER BY t.id DESC";
 		$result = $this->dbstuff->GetArray($sql);
 		if (!empty($result)) {
 			$count = count($result);

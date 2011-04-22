@@ -20,10 +20,7 @@ require("../libraries/common.inc.php");
 uses("templet");
 require("session_cp.inc.php");
 require(CACHE_PATH. "cache_membergroup.php");
-require(CACHE_PATH. "cache_membertype.php");
 require(LIB_PATH. "typemodel.inc.php");
-require_once LIB_PATH.'chinese.class.php';
-$chinese = new Chinese('gbk', 'utf8', TRUE);
 $templet = new Templets();
 $templet_controller = new Templet();
 $conditions = null;
@@ -50,8 +47,7 @@ if(isset($_GET['do'])){
 		foreach ($_PB_CACHE['membergroup'] as $key=>$val) {
 			$user_types[$key] = $val['name'];
 		}
-		setvar("Membergroups", $user_types);
-		setvar("Membertypes", $_PB_CACHE['membertype']);
+		setvar("Membertypes", $user_types);
 		$tpl_file = "templet.edit";
 		template($tpl_file);
 		exit;
@@ -60,30 +56,17 @@ if(isset($_GET['do'])){
 if (isset($_POST['del']) && is_array($_POST['id'])) {
 	$result = $templet->del($_POST['id']);
 }
-if (isset($_POST['save']) && !empty($_POST['data']['templet']['title'])) {
+if (isset($_POST['save']) && !empty($_POST['templet']['title'])) {
 	$vals = array();
-	$vals = $_POST['data']['templet'];
+	$vals = $_POST['templet'];
 	if(!in_array(0, $_POST['data']['require_membertype']) && !empty($_POST['data']['require_membertype'])){
-		$res = "[".implode("][", $_POST['data']['require_membertype'])."]";
+		$res = implode(",", $_POST['data']['require_membertype']);
 		$vals['require_membertype'] = $res;
 	}elseif(!empty($_POST['data']['require_membertype'])){
 		$vals['require_membertype'] = 0;
 	}
-	if(!in_array(0, $_POST['data']['require_membergroups']) && !empty($_POST['data']['require_membergroups'])){
-		$res = "[".implode("][", $_POST['data']['require_membergroups'])."]";
-		$vals['require_membergroups'] = $res;
-	}elseif(!empty($_POST['data']['require_membergroups'])){
-		$vals['require_membergroups'] = 0;
-	}
 	if (isset($_POST['id'])) {
-		$id = intval($_POST['id']);
-	}
-	if(!empty($id)){
-		$result = $templet->save($vals, "update", $id);
-		if ($_POST['data']['templet']['is_default']==1) {
-			$pdb->Execute("UPDATE {$tb_prefix}templets SET is_default='0'");
-			$pdb->Execute("UPDATE {$tb_prefix}templets SET is_default='1' WHERE id='".$_POST['id']."'");
-		}
+		$result = $templet->save($vals, "update", $_POST['id']);
 	}else{
 		$result = $templet->save($vals);
 	}

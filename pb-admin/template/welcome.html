@@ -2,37 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>" />
-<title><{$_welcome_to_cp}></title>
+<title>Welcome To PHPB2B</title>
 <base target="_blank" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../scripts/jquery.js"></script>
 <script src="../scripts/jquery/facebox.js" type="text/javascript"></script>
 <link href="../images/facebox/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
 <script>
-function setUpdateAlert(d)
-{
-$.ajax({
-    url: 'home.php?do=set_update_alert&type='+d,
-    type: 'GET',
-    dataType: 'html',
-    timeout: 1000,
-    error: function(){
-        alert('Error loading XML document');
-    },
-    success: function(data){
-        $.facebox.close();
-    }
-});
-}
-</script>
-<{if $hasNewVersion}>
-<script>
 jQuery(document).ready(function($) {
 	$.facebox.settings.loadingImage = '<{$SiteUrl}>images/facebox/loading.gif'; 
-	$.facebox('<{$VersionInfo}>'+"<div align='center'><input type='button' id='NoUpdateAlert' value='<{$_alert_no}>' onclick='setUpdateAlert(1);'>&nbsp;<input type='button' id='AlertAfterWeek' value='<{$_alert_after_week}>' onclick='setUpdateAlert(7);'>&nbsp;<input type='button' id='AlertAfterWeek' value='<{$_close}>' onclick='$.facebox.close();'></div>");
+	$.facebox.settings.closeImage = '<{$SiteUrl}>images/facebox/closelabel.gif'; 
+	$('a[rel*=facebox]').facebox() 
 })
 </script>
-<{/if}>
 <style type="text/css">
 <!--
 body {background: #fcfdff}
@@ -40,9 +22,9 @@ body {background: #fcfdff}
 </style>
 </head>
 <body>
-<div id="rightWelcome">
+<div id="rightTop">
 	<p>
-		<strong>您好，<{$current_adminer}>，欢迎进入<{$site_name}>控制台</strong>
+		<strong>您好，admin，欢迎进入<{$site_name}>控制台</strong>
 		 上次登录时间: <{$item.last_login}>，上次登录ip: <{$item.last_ip}>
 	</p>
 </div>
@@ -51,10 +33,9 @@ body {background: #fcfdff}
 <dd>
     <ul>
        <li>请妥善保管<span class="red">网站密钥</span>，如需重新设置请到 "<a href="setting.php?do=auth" target="_self"><span class="bold">全局 - 安全验证</span></a>" 中重新覆盖。</li>
-       <li>如果要继续启用<span class="red">更新提醒</span>功能，请重新 "<a href="javascript:void(0);" onclick="setUpdateAlert(0);" target="_self"><span class="bold">设置提醒</span></a>" 并刷新页面。</li>
     </ul>
 </dd>
-<dt><{$_administrator}>留言</dt>
+<dt>管理员留言</dt>
 <dd>
     <ul>
       <form method="post" action="adminnote.php" id="EditFrm" name="edit_frm" target="_self">
@@ -79,7 +60,7 @@ body {background: #fcfdff}
         </tr>
         <tr>
             <th>PHPB2B 版本:</th>
-            <td><a href="<{$SupportUrl}>" title="检查更新" target="_blank"><span class="red"><{$item.PBVersion}></span></a></td>
+            <td><a href="http://www.phpb2b.com/athena.php" title="检查更新" target="_blank"><span class="red"><{$item.PBVersion}></span></a></td>
             <th>安装日期:</th>
             <td><{$item.InstallDate}></td>
         </tr>
@@ -96,8 +77,8 @@ body {background: #fcfdff}
     <table>
         <tr>
             <th>官方论坛：</th>
-            <td><a href="http://www.phpb2b.net/">http://www.phpb2b.com/bbs/</a></td>
-            <th>官方博客：</th>
+            <td><a href="http://www.phpb2b.com/bbs/">http://www.phpb2b.com/bbs/</a></td>
+            <th>团队博客：</th>
             <td><a href="http://www.phpb2b.com/blog/">http://www.phpb2b.com/blog/</a></td>
         </tr>
     </table>

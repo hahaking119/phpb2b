@@ -21,7 +21,6 @@ require(PHPB2B_ROOT.'./libraries/page.class.php');
 require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
 require(LIB_PATH. "typemodel.inc.php");
-require(CACHE_PATH. 'cache_productsort.php');
 $attachment = new Attachment('pic');
 $tag = new Tags();
 $product = new Products();
@@ -30,7 +29,7 @@ $conditions = array();
 $tpl_file = "product";
 setvar("CheckStatus", get_cache_type("common_status"));
 setvar("BooleanVars", get_cache_type("common_option"));
-setvar("ProductSorts",$_PB_CACHE['productsort']);
+setvar("ProductSorts",explode(",",L('product_sorts', 'tpl')));
 if (isset($_POST['save']) && !empty($_POST['data']['product']['name'])) {
 	$result = false;
 	$vals = array();
@@ -52,8 +51,6 @@ if (isset($_POST['save']) && !empty($_POST['data']['product']['name'])) {
 	$attachment->rename_file = "product-".$time_stamp;
 	if(isset($_POST['id'])){
 		$id = intval($_POST['id']);
-	}
-	if(!empty($id)){
 		$attachment->rename_file = "product-".$id;
 	}
 	if (!empty($vals['content'])) {
@@ -75,6 +72,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['product']['name'])) {
 		flash();
 	}
 }
+
 if (isset($_POST['recommend'])) {
 	foreach($_POST['id'] as $val){
 		$commend_now = $product->field("ifcommend", "id=".$val);
@@ -149,16 +147,16 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 	if ($do == 'search') {
-		if(!empty($_GET['data']['username'])) {
-			$member_id = $pdb->GetOne("SELECT id from {$tb_prefix}members where username=".$_GET['data']['username']);
-			$conditions[]= "Product.member_id='".$member_id."'";
+		if(!empty($_GET['member']['id'])) {
+			$conditions[]= "Product.member_id='".$_GET['member']['id']."'";
 		}
-		if(!empty($_GET['data']['companyname'])) {
-			$conditions[]= "c.name like '%".$_GET['data']['companyname']."%'";
+		if($_GET['product']['sort_id']!="-1") $conditions[] = "Product.sort_id = ".$_GET['product']['sort_id'];
+		if(!empty($_GET['company']['name'])) {
+			$conditions[]= "c.name like '%".$_GET['company']['name']."%'";
 			$joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
 		}
 		if($_GET['product']['status']!="-1") $conditions[]= "Product.status=".$_GET['product']['status'];
-		if(!empty($_GET['data']['q'])) $conditions[]= "Product.name like '%".$_GET['data']['q']."%'";
+		if(!empty($_GET['product']['name'])) $conditions[]= "Product.name like '%".$_GET['product']['name']."%'";
 		if($_GET['industryid']) $conditions[]= "Product.industry_id =".$_GET['industryid'];
 		if($_GET['provinceid']) $conditions[]= "c.province_code_id =".$_GET['provinceid'];
 		if ($_GET['FromDate'] && $_GET['FromDate']!="None" && $_GET['ToDate'] && $_GET['ToDate']!="None") {

@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title><{$page_title}> - <{$_office_room}> - <{$site_name}></title>
+<title><{$page_title}> - 商务室 - <{$site_name}></title>
 <link href="template/office.css" rel="stylesheet" type="text/css">
 <script src="../scripts/jquery.js"></script>
 <script src="../scripts/general.js"></script>
@@ -14,17 +13,16 @@ var cache_path = "../";
 <body>
 <div class="header clearfix">
     <div class="header_nav">
-      <a href="<{$SiteUrl}>"><span><{$_home_page}></span></a>
-      <a href="<{$SiteUrl}>news/"><span><{$_info}></span></a>
-      <a href="<{$SiteUrl}>product/"><span><{$_product_center}></span></a>
-      <a href="<{$SiteUrl}>company/"><span><{$_yellow_page}></span></a>
-      <a href="<{$SiteUrl}>fair/"><span><{$_fair}></span></a>
-      <a href="<{$SiteUrl}>hr/"><span><{$_hr}></span></a>
-      <a href="<{$SiteUrl}>dict/"><span><{$_dictionary}></span></a>
+      <a href="<{$SiteUrl}>"><span>首页</span></a>
+      <a href="<{$SiteUrl}>news/"><span>行业资讯</span></a>
+      <a href="<{$SiteUrl}>product/"><span>产品库</span></a>
+      <a href="<{$SiteUrl}>company/"><span>公司库</span></a>
+      <a href="<{$SiteUrl}>fair/"><span>展会</span></a>
+      <a href="<{$SiteUrl}>hr/"><span>人才</span></a>
     </div>
-   <div class="login_info"><{$_hello}><{$UserName|default:$smarty.session.MemberName}>
-   <{if $newpm}><a href="pms.php"><img src="../images/message.gif" alt="" /></a> | <{/if}>
-   <{if $COMPANYINFO.cache_spacename and $COMPANYINFO.status==1}><span class="padding5px"> <a href="<{$COMPANYINFO.space_url}>" target="_blank">访问<{$_space_name}></a></span> |<{/if}>
-   <a href="../logging.php?action=logout"> <{$_login_out}></a></div>
+   <div class="login_info">你好，<{$UserName|default:$smarty.session.MemberName}>
+   <{if $newpm}><a href="pms.php"><img src="../images/message.gif" alt="<{$newpm}>条未读短消息" /></a> | <{/if}>
+   <{if $COMPANYINFO.cache_spacename and $COMPANYINFO.status==1}><span class="padding5px"> <{company id="`$COMPANYINFO.id`"}><a href="[link:title]" target="_blank">企业空间</a><{/company}></span> |<{/if}>
+   <a href="../logging.php?action=logout"> 退出</a></div>
 </div>
 <div class="header_img"><img src="images/header_img.gif"></div>

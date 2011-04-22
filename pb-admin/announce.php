@@ -26,7 +26,6 @@ $tpl_file = "announce";
 setvar("Types", $_PB_CACHE['announcetype']);
 if (isset($_POST['del']) && is_array($_POST['id'])) {
 	$deleted = $announce->del($_POST['id']);
-	$announce->updateCache();
 	if (!$deleted) {
 		flash();
 	}
@@ -49,17 +48,11 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 }
-if (isset($_POST['save']) && !empty($_POST['data']['announcement'])) {
-	$vals = $_POST['data']['announcement'];
-	if(isset($_POST['id'])){
-		$id = intval($_POST['id']);
-	}
-	if (!empty($id)) {
-		$vals['modified'] = $time_stamp;
-		$result = $announce->save($vals, "update", $id);
+if (isset($_POST['save'])) {
+	if (!empty($_POST['id'])) {
+		$result = $announce->save($_POST['data']['announcement'], "update", intval($_POST['id']));
 	}else{
-		$vals['created'] = $vals['modified'] = $time_stamp;
-		$result = $announce->save($vals);
+		$result = $announce->save($_POST['data']['announcement']);
 	}
 	if (!$result) {
 		flash();

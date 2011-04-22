@@ -4,15 +4,12 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 用户中心 &raquo; 管理员</p>
-</div>
 <div id="rightTop"> 
-    <h3>管理员</h3> 
+    <p>管理员</p> 
     <ul class="subnav">
-		<li><a href="adminer.php">管理</a></li>
-		<li><a class="btn1">添加/编辑</a></li>
-        <li><a href="adminer.php?do=password">密码修改</a></li>
+		<li><a class="btn1" href="adminer.php">管理</a></li>
+		<li><span>账号设置</span></li>
+        <li><a class="btn1" href="adminer.php?do=password">密码修改</a></li>
     </ul>
 </div>
 <div class="info">
@@ -20,7 +17,6 @@ body {background: #fcfdff}
     <table class="infoTable">
 	<{if $item.member_id}>
 	  <input type="hidden" name="member_id" value="<{$item.member_id}>" />
-	  <input type="hidden" name="data[member][id]" value="<{$item.member_id}>" />
       <tr>
         <th class="paddingT15"> 登陆用户名：</th>
         <td class="paddingT15 wordSpacing5"><{$item.username}></td>
@@ -28,7 +24,7 @@ body {background: #fcfdff}
 	<{else}>
       <tr>
         <th class="paddingT15"> 用户名：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[username]" value="" /><label class="field_notice">该用户必须已经存在</label></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[username]" value="" /></td>
       </tr>
 	<{/if}>
       <tr>
@@ -37,11 +33,7 @@ body {background: #fcfdff}
       </tr>
       <tr>
         <th class="paddingT15"> Email：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[member][email]" value="<{$item.email}>" /></td>
-      </tr>
-      <tr>
-        <th class="paddingT15"> 过期时间：</th>
-        <td class="paddingT15 wordSpacing5"><input id="date1" class="Wdate" type="text" name="data[expired]" value="<{$item.expire_date}>" type="text"  onclick="WdatePicker();"/><label class="field_notice">过期后，即不能登录后台</label></td>
+        <td class="paddingT15 wordSpacing5"><{$item.email}></td>
       </tr>
       <tr>
         <th></th>
@@ -51,5 +43,4 @@ body {background: #fcfdff}
     </table>
   </form>
 </div>
-<{fetch file="../scripts/date.js"}></script>
 <{include file="footer.html"}>

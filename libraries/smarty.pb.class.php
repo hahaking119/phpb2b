@@ -75,8 +75,18 @@ class MySmarty extends Smarty {
 		}
 	}
 	
-	function flash($message_code, $url, $pause = 1, $extra = '') {
+	function getRelativePath()
+	{
 		global $theme_name;
+		$paths = array();
+		$currentRelativePath = "";
+		$paths['theme_img_path'] = $currentRelativePath."templates/".$theme_name."/";
+		$paths['attachment_dir'] = $currentRelativePath."attachment/";
+		$paths['attachment_url'] = URL."attachment/";
+		return $paths;
+	}
+	
+	function flash($message_code, $url, $pause = 1) {
 		$images = array("failed.png", "success.png", "notice.png");
 		$styles = array("error", "true");
 		if (empty($message_code) || !$message_code || $message_code=="failed") {
@@ -95,26 +105,11 @@ class MySmarty extends Smarty {
 		$this->assign('action_img', $image);
 		$this->assign('action_style', $style);
 		$this->assign('url', $url);
-		if (!empty($extra)) {
-			$extra_data = func_get_args();
-			if (is_array($extra)) {
-				$message = sprintf($message, $extra_data[3][0]);
-			}else{
-				$message = sprintf($message, $extra_data[3]);
-			}
-		}
 		$this->assign('message', $message);
-		$this->assign('title', strip_tags($message));
 		if($pause!=0){
 			$this->assign('redirect', $this->redirect($url, $pause));
 		}
 		$this->assign('page_title', strip_tags($message));
-		if(strchr($this->flash_layout, "/")){
-			if (!$this->template_exists($this->flash_layout.$this->tpl_ext)) {
-				$this->assign('ThemeName', 'default');
-				$this->flash_layout = 'default/flash';
-			}
-		}
 		template($this->flash_layout);
 		exit();
 	}

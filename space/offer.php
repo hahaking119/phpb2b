@@ -23,10 +23,8 @@ $trade_controller = new Trade();
 $tradefiled = new Tradefields();
 $page = new Pages();
 $page->displaypg = 20;
-$page->is_rewrite = true;
-$page->_url = $space->rewriteList("offer");
 $conditions = array();
-$conditions[]= "Trade.status=1 and Trade.member_id='".$member->info['id']."'";
+$conditions[]= "Trade.status=1 and Trade.member_id=".$member->info['id'];
 $amount = $trade->findCount(null, $conditions,"Trade.id");
 $page->setPagenav($amount);
 $join = null;
@@ -38,7 +36,6 @@ if (!empty($company_offers)) {
 		$company_offers[$i]['typename'] = $tradetypes[$company_offers[$i]['typeid']];
 		$company_offers[$i]['pubdate'] = date("Y-m-d", $company_offers[$i]['created']);
 		$company_offers[$i]['image'] = URL. pb_get_attachmenturl($company_offers[$i]['picture'], '', 'small');
-		$company_offers[$i]['url'] = $space->rewriteDetail("offer", $company_offers[$i]['id']);
 	}
 }
 setvar("Items",$company_offers);

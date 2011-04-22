@@ -13,19 +13,15 @@ jQuery(document).ready(function($) {
 	$('a[rel*=facebox]').facebox() 
 })
 </script>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 产品中心</p>
-</div>
 <div id="rightTop"> 
-    <h3>产品中心</h3>
+    <p>产品中心</p> 
     <ul class="subnav">
-		<li><a href="product.php">管理</a></li>
-        <li><a class="btn1">添加/编辑</a></li>
-		<li><a href="productsort.php">分类</a></li>
+		<li><a class="btn1" href="product.php">管理</a></li>
+        <li><span>添加/编辑</span></li>
     </ul>
 </div>
 <div class="info">
-  <form method="post" id="EditFrm" name="edit_frm" enctype="multipart/form-data" >
+  <form method="post"id="EditFrm" name="edit_frm" enctype="multipart/form-data" >
   <input type="hidden" name="id" value="<{$smarty.get.id}>" />
   <input type="hidden" name="page" value="<{$smarty.get.page}>" />
   <input type="hidden" name="company_name" value="<{$item.companyname}>" />
@@ -110,5 +106,4 @@ var industry_id3 = <{$item.industry_id3|default:0}> ;
 <script src="../scripts/multi_select.js"></script>
 <script src="../scripts/script_area.js"></script>
 <script src="../scripts/script_industry.js"></script>
-<{editor type="tiny_mce"}>
 <{include file="footer.html"}>

@@ -17,264 +17,234 @@
  */
 $menus = array(
     'dashboard' => array(
-        'text'      => L("homepage", "tpl"),
-        'subtext'   => L("common_action", "tpl"),
+        'text'      => "首页",
+        'subtext'   => "常用操作",
         'default'   => 'welcome',
         'children'  => array(
             'welcome'   => array(
-                'text'  => L("welcome_page", "tpl"),
+                'text'  => "欢迎页面",
                 'url'   => 'home.php',
             ),
             'basic_setting'  => array(
                 'parent'=> 'setting',
-                'text'  => L("settings", "tpl"),
+                'text'  => "网站设置",
                 'url'   => 'setting.php?do=basic',
             ),
             'member'  => array(
                 'parent'=> 'members',
-                'text'  => L("member_manage", "tpl"),
+                'text'  => "会员管理",
                 'url'   => 'member.php',
             ),
             'note'  => array(
                 'parent'=> 'tools',
-                'text'  => L("my_notes", "tpl"),
+                'text'  => "我的笔记",
                 'url'   => 'adminnote.php',
             ),
         ),
     ),
     'setting'   => array(
-        'text'      => L("global", "tpl"),
-        'subtext'	=> L("global_set", "tpl"),
+        'text'      => "全局",
         'default'   => 'basic_setting',
         'children'  => array(
             'basic_setting'  => array(
-                'text'  => L("common_action", "tpl"),
+                'text'  => "站点信息",
                 'url'   => 'setting.php?do=basic',
             ), 
             'register' => array(
-                'text'  => L("reg_and_visit", "tpl"),
+                'text'  => "注册与访问",
                 'url'   => 'setting.php?do=register',
             ),
 			 'functions' => array(
-                'text'  => L("functions", "tpl"),
+                'text'  => "网站功能",
                 'url'   => 'setting.php?do=functions',
             ),
-            'cache' => array(
-                'text'  => L("cache_setting", "tpl"),
-                'url'   => 'setting.php?do=cache',
-            ),
-            'datetime' => array(
-                'text'  => L("time_set", "tpl"),
-                'url'   => 'setting.php?do=datetime',
-            ),
 			 'auth' => array(
-                'text'  => L("secure_set", "tpl"),
+                'text'  => "安全验证",
                 'url'   => 'setting.php?do=auth',
             ),
 			 'industry' => array(
-                'text'  => L("industry", "tpl"),
+                'text'  => "行业分类",
                 'url'   => 'industry.php',
             ),
 			 'area' => array(
-                'text'  => L("area", "tpl"),
+                'text'  => "地区",
                 'url'   => 'area.php',
             ),
 			 'announce' => array(
-                'text'  => L("announcement", "tpl"),
+                'text'  => "网站公告",
                 'url'   => 'announce.php',
             ),
 			 'userpage' => array(
-                'text'  => L("userpage", "tpl"),
+                'text'  => "自定义页面",
                 'url'   => 'userpage.php',
             ),
 			 'service' => array(
-                'text'  => L("service_center", "tpl"),
+                'text'  => "用户留言",
                 'url'   => 'service.php',
             ),
+			 'help' => array(
+                'text'  => "帮助文件",
+                'url'   => 'help.php',
+            ),
 			 'email' => array(
-                'text'  => L("email_set", "tpl"),
+                'text'  => "Email邮件设置",
                 'url'   => 'setting.php?do=email',
             ),
         ),
     ),
     'infocenter' => array(
-        'text'      => L("info_manage", "tpl"),
-        'subtext'	=> L("com_info_manage", "tpl"),
+        'text'      => "信息管理",
         'default'   => 'trade',
         'children'  => array(
             'trade' => array(
-                'text'  => L("offer", "tpl"),
+                'text'  => '供求信息',
                 'url'   => 'offer.php',
             ),
             'product' => array(
-                'text'  => L("product_center", "tpl"),
+                'text'  => '产品中心',
                 'url'   => 'product.php',
             ),
             'company' => array(
-                'text'  => L("yellow_page", "tpl"),
+                'text'  => '公司库',
                 'url'   => 'company.php',
             ),
             'market' => array(
-                'text'  => L("pro_market", "tpl"),
+                'text'  => '专业市场',
                 'url'   => 'market.php',
             ),
             'job' => array(
-                'text'  => L("job", "tpl"),
+                'text'  => '招聘信息',
                 'url'   => 'job.php',
             ),
             'fair' => array(
-                'text'  => L("fair", "tpl"),
+                'text'  => '展会信息',
                 'url'   => 'fair.php',
             ),
             'news' => array(
-                'text'  => L("industry_news", "tpl"),
+                'text'  => '行业资讯',
                 'url'   => 'news.php',
             ),
             'tag' => array(
-                'text'  => L("tag_center", "tpl"),
+                'text'  => '标签库',
                 'url'   => 'tag.php',
             ),
             'companynews' => array(
-                'text'  => L("companynews", "tpl"),
+                'text'  => '企业新闻',
                 'url'   => 'companynews.php',
-            ),
-            'dict' => array(
-                'text'  => L("industry_dict", "tpl"),
-                'url'   => 'dict.php',
             ),
                                     
         ),
     ),
     'members'     => array(
-        'text'      => L("member_center", "tpl"),
-        'subtext'	=> L("member_manage_center", "tpl"),
+        'text'      => "用户中心",
         'default'   => 'member',
         'children'  => array(
             'member' => array(
-                'text'  => L("member_manage", "tpl"),
+                'text'  => '会员中心',
                 'url'   => 'member.php',
             ),
 			'membergroup'  => array(
-                'text'  => L("membergroup", "tpl"),
+                'text'  => '会员组',
                 'url'   => 'membergroup.php?type=define',
             ),
             'member_add' => array(
-                'text'  => L("add_member", "tpl"),
+                'text'  => '添加会员',
                 'url'   => 'member.php?do=edit',
             ),
             'member_add' => array(
-                'text'  => L("pms", "tpl"),
+                'text'  => '短消息',
                 'url'   => 'message.php',
             ),
 			 'adminer' => array(
-                'text'  => L("adminer", "tpl"),
+                'text'  => '管理员',
                 'url'   => 'adminer.php',
             ),
 			 'adminer_passwd' => array(
-                'text'  => L("change_pass", "tpl"),
+                'text'  => '密码修改',
                 'url'   => 'adminer.php?do=password',
             ),
         ),
     ),
     'ads' => array(
-        'text'      => L("ads", "tpl"),
-        'subtext'	=> L("ads_manage", "tpl"),
+        'text'      => "广告",
         'default'   => 'ad',
         'children'  => array(
             'ad' => array(
-                'text'  => L("ads", "tpl"),
+                'text'  => '广告',
                 'url'   => 'ad.php',
             ),
 			 'ad_add' => array(
-                'text'  => L("add_ads", "tpl"),
+                'text'  => '添加广告',
                 'url'   => 'ad.php?do=edit',
             ),
 			 'adzone' => array(
-                'text'  => L("adzone", "tpl"),
+                'text'  => '广告位',
                 'url'   => 'adzone.php',
             ),
             'goods' => array(
-                'text'  => L("service_manage", "tpl"),
+                'text'  => '服务管理',
                 'url'   => 'goods.php',
             ),
             'order' => array(
-                'text'  => L("order_center", "tpl"),
+                'text'  => '订单中心',
                 'url'   => 'order.php',
             ),
 			 'friendlink' => array(
-                'text'  => L("friendlink", "tpl"),
+                'text'  => '友情链接',
                 'url'   => 'friendlink.php',
             ),
         ),
     ),
     'templet' => array(
-        'text'      => L("templet", "tpl"),
+        'text'      => "模板风格",
         'default'   => 'skin',
         'children'  => array(
 			 'skin' => array(
-                'text'  => L("company_templet", "tpl"),
+                'text'  => '企业模板',
                 'url'   => 'templet.php?type=user',
             ),
 			 'nav' => array(
-                'text'  => L("nav", "tpl"),
+                'text'  => '导航栏',
                 'url'   => 'nav.php',
             ),
         ),
     ),
     'tools' => array(
-        'text'      => L("system_tool", "tpl"),
+        'text'      => '系统工具',
         'default'   => 'cache_update',
         'children'  => array(
             'cache_update' => array(
-                'text'  => L("cache", "tpl"),
+                'text'  => '缓存',
                 'url'   => 'htmlcache.php',
             ),
 			 'log' => array(
-                'text'  => L("log_browse", "tpl"),
+                'text'  => '日志查看',
                 'url'   => 'log.php',
             ),
             'db' => array(
-                'text'  => L("database", "tpl"),
+                'text'  => '数据库',
                 'url'   => 'db.php',
             ),
 			 'passport' => array(
-                'text'  => L("passport", "tpl"),
+                'text'  => '通行证',
                 'url'   => 'passport.php',
             ),
-			 'checkfile' => array(
-			     'text'  =>L("check_file", "tpl"),
-				 'url'   =>'checkfile.php',
-		    ),
             'payment' => array(
-                'text'  => L("payment_method", "tpl"),
+                'text'  => '支付方式',
                 'url'   => 'payment.php',
             ),
 			 'note' => array(
-                'text'  => L("my_notes", "tpl"),
+                'text'  => '我的笔记',
                 'url'   => 'adminnote.php',
             ),
         ),
     ),
-    'extesions' => array(
-        'text'      => L("extension", "tpl"),
-        'default'   => 'help',
-        'children'  => array(
-			 'help' => array(
-                'text'  => L("help_file", "tpl"),
-                'url'   => 'help.php',
-            ),
-			 'type' => array(
-                'text'  => L("options", "tpl"),
-                'url'   => 'type.php',
-            ),
-        ),
-    ),
     'plugins' => array(
-        'text'      => L("plugin", "tpl"),
+        'text'      => "插件",
         'default'   => 'plugin',
         'children'  => array(
             'plugin'   => array(
-                'text'  => L("manage", "tpl"),
+                'text'  => "管理",
                 'url'   => 'plugin.php',
             ),
         ),

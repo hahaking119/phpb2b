@@ -16,7 +16,4 @@
  * @version $Id: search.php 416 2009-12-26 13:31:08Z steven $
  */
 define('CURSCRIPT', 'search');
-require("libraries/common.inc.php");
-require("share.inc.php");
-render("sample");
 ?>

@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'space');
 require("libraries/common.inc.php");
-//require("share.inc.php");
 $do = null;
 $space_actions = array(
 "intro", 

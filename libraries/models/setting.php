@@ -26,13 +26,9 @@ class Settings extends PbModel {
 
  	}
 
-	function getValues($typeid = null)
+	function getValues()
 	{
-		if (!is_null($typeid)) {
-			$sql = "SELECT id,variable,valued FROM {$this->table_prefix}settings WHERE type_id='{$typeid}' ";
-		}else{
-			$sql = "SELECT id,variable,valued FROM {$this->table_prefix}settings";
-		}
+		$sql = "SELECT id,variable,valued FROM ".$this->getTable(true)." ";
 		$r_res = $this->dbstuff->GetArray($sql);
 		$data = array();
 		if (!empty($r_res)) {
@@ -43,16 +39,16 @@ class Settings extends PbModel {
 		return $data;
 	}
 	
-	function replace($datas, $typeid = 0)
+	function replace($datas)
 	{
 		$updated = false;
 		$data = null;
 		$values = array();
 		foreach ($datas as $key=>$val) {
-			$values[] = "('".$key."','".$val."','".$typeid."')";
+			$values[] = "('".$key."','".$val."')";
 		}
 		$data = implode(",", $values);
-		$sql = "REPLACE INTO {$this->table_prefix}settings (variable,valued,type_id) values ".$data;
+		$sql = "REPLACE INTO {$this->table_prefix}settings (variable,valued) values ".$data;
 		$updated = $this->dbstuff->Execute($sql);
 		return $updated;
 	}

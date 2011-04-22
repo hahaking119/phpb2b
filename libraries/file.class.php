@@ -43,8 +43,6 @@ class Files extends PbObject
 			} else {
 				$writeable = false;
 			}
-		}else{
-			return is_writable($dir);
 		}
 		return $writeable;
 	}

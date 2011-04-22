@@ -19,16 +19,14 @@ if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(PHPB2B_ROOT.'libraries/page.class.php');
 uses("companynews");
 $page = new Pages();
-$page->is_rewrite = true;
-$page->_url = $space->rewriteList("news");
 $companynews = new Companynewses();
 $conditions = "Companynews.company_id=".$company->info['id'];
-if (isset($_GET['nid'])) {
-	$id = intval(($_GET['nid']));
+if (isset($_GET['id'])) {
+	$id = intval(($_GET['id']));
 	if ($id) {
-		$info = $companynews->read("*", intval($_GET['nid'], $conditions));
+		$info = $companynews->read("*", intval($_GET['id'], $conditions));
 		if (empty($info)) {
-			flash('data_not_exists', null, 0);
+			flash('data_not_exists');
 		}
 		$tpl_file = "news_detail";
 		setvar("item",$info);

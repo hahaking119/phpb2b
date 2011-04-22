@@ -24,20 +24,6 @@ class Industries extends PbModel {
 		parent::__construct();
  	}
  	
- 	function rewrite($id, $name = '')
- 	{
- 		global $rewrite_able, $rewrite_compatible;
- 		if ($rewrite_able) {
- 			if ($rewrite_compatible && !empty($name)) {
- 				return "industry/".rawurlencode($name)."/";
- 			}else{
- 				return "industry/".$id."/";
- 			}
- 		}else{
- 			return "special/industry.php?id=".$id;
- 		}
- 	}
- 	
  	function setInfo($id)
  	{
  		$result = $this->dbstuff->GetRow("SELECT * FROM {$this->table_prefix}industries WHERE id=".$id);
@@ -54,9 +40,9 @@ class Industries extends PbModel {
  		return $this->info;
  	}
 
-	function getCacheIndustry($module = 0)
+	function getCacheIndustry()
 	{
-		$data = include(CACHE_PATH. "industry.php");
+		$data = require(CACHE_PATH. "industry.php");
 		return $data;
 	}
 	
@@ -69,15 +55,15 @@ class Industries extends PbModel {
 	function getSubIndustry($id, $extra = false)
 	{
 		$return = array();
-		$result = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}industries i WHERE parent_id='".$id."' ORDER BY display_order ASC");
+		$result = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}industries i WHERE parent_id='".$id."'");
 		if (!$result || empty($result)) {
 			if ($extra) {
 				$row = $this->dbstuff->GetRow("SELECT id,level,parent_id FROM {$this->table_prefix}industries i WHERE id='".$id."'");
 				if (!$row || empty($row)) {
-					$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}industries WHERE parent_id='0' ORDER BY display_order ASC");
+					$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}industries WHERE parent_id='0'");
 					return $return;
 				}else{
-					$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}industries WHERE parent_id='".$row['parent_id']."' ORDER BY display_order ASC");
+					$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}industries WHERE parent_id='".$row['parent_id']."'");
 					return $return;
 				}
 			}else{
@@ -87,23 +73,6 @@ class Industries extends PbModel {
 			return $result;
 		}
 		return $result;
-	}
-	
-	function updateCache()
-	{
-		global $cache;
-	}
-	
-	function getMinalId()
-	{
-		$args = func_get_args();
-		if (!empty($args)) {
-			foreach ($args as $key=>$val) {
-				if($val==0) return intval($args[$key-1]);
-			}
-		}else {
-			return false;
-		}
 	}
 }
 ?>

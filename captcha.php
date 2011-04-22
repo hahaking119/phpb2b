@@ -16,8 +16,6 @@
  * @version $Id: captcha.php 416 2009-12-26 13:31:08Z steven $
  */
 include 'libraries/captcha/securimage.php';
-include 'libraries/session_php.class.php';
-$session = new PbSessions('data/tmp/');
 $img = new securimage();
 $img->wordlist_file = 'data/words/words.txt';
 $img->audio_path = 'data/audio/';

@@ -18,7 +18,6 @@
 define('CURSCRIPT', 'ajax');
 define('NOROBOT', TRUE);
 require_once 'libraries/common.inc.php';
-require("share.inc.php");
 require_once 'libraries/json_config.php';
 $return = array();
 $result = array();
@@ -40,9 +39,10 @@ if (isset($_GET['action'])) {
 				}
 			}
 			ajax_exit($return);
-			break;
+		break;
 		case "addtag":
-			break;
+			echo "hello everybody";
+		break;
 		case "checkemail":
 			if(isset($_GET['email'])) {
 				$result = call_user_func_array($action, array($_GET['email']));		
@@ -53,9 +53,9 @@ if (isset($_GET['action'])) {
 				}
 			}
 			ajax_exit($return);
-			break;
+		break;
 		default:
-			break;
+		break;
 	}
 }
 

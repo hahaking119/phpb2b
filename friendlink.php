@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'friendlink');
 require("libraries/common.inc.php");
-require("share.inc.php");
 uses("setting", "message", "friendlink");
 $pms = new Messages();
 $friendlink = new Friendlinks();

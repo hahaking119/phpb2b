@@ -17,11 +17,9 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 require("common.inc.php");
 $tpl_file = "help.index";
 $viewhelper->setPosition(L("help_center", "tpl"), "help/index.php");
-$viewhelper->setTitle(L("help_center", "tpl"));
 if(isset($_GET['typeid'])) {
 	$type_id = intval($_GET['typeid']);
 	$conditions[] = "helptype_id=".$type_id;

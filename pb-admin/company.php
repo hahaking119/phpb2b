@@ -39,10 +39,11 @@ require(CACHE_PATH. "type_position.php");
 require(CACHE_PATH. "type_employee_amount.php");
 require(CACHE_PATH. "type_gender.php");
 require(CACHE_PATH. "type_check_status.php");
+unset($_PB_CACHE['check_status'][0]);
 setvar('Membergroups', $membergroup->getUsergroups('define'));
 setvar('AllMembergroups', $membergroup->getUsergroups('all'));
 setvar("CompanyTypes", $_PB_CACHE['companytype']);
-setvar("CheckStatus", $_PB_CACHE['check_status']);
+setvar("CompanyStatus",$_PB_CACHE['check_status']);
 setvar("Industries",$_PB_CACHE['industry']);
 setvar("Areas",$_PB_CACHE['area']);
 if (isset($_POST['del']) && !empty($_POST['id'])) {
@@ -59,12 +60,13 @@ if (isset($_POST['check'])){
 	}
 	if(!$result){
 		flash();
+	}else{
+		flash("success");
 	}
 }
-if (isset($_POST['set_group']) && !empty($_POST['id']) &&!empty($_POST['set_group'])) {
-	$ids = "IN (".implode(",", array_unique($_POST['id'])).")";
-	$member_ids = "IN (".implode(",", array_unique($_POST['member_id'])).")";
-	$sql = "UPDATE {$tb_prefix}members m,{$tb_prefix}companies c SET c.cache_membergroupid='{$_POST['set_group']}',m.membergroup_id='{$_POST['set_group']}' WHERE c.member_id=m.id AND c.id ".$ids." AND m.id ".$member_ids;
+if (isset($_POST['set_group']) && !empty($_POST['member_id'])) {
+	$ids = "IN (".implode(",", array_unique($_POST['member_id'])).")";
+	$sql = "UPDATE {$tb_prefix}members m,{$tb_prefix}companies c SET c.cache_membergroupid='{$_POST['set_group']}',m.membergroup_id='{$_POST['set_group']}' WHERE c.member_id=m.id AND c.member_id ".$ids." AND m.id ".$ids;
 	$pdb->Execute($sql);
 }
 if (isset($_POST['recommend'])){
@@ -115,6 +117,8 @@ if (isset($_POST['save'])) {
 	}
 	if(!$result){
 		flash();
+	}else{
+		flash("success");
 	}
 }
 

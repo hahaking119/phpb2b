@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'detail');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("market");
 $market = new Markets();
 $viewhelper->setPosition(L("market", "tpl"), "market/");
@@ -27,7 +26,7 @@ if (isset($_GET['id'])) {
 	$item = $pdb->GetRow($sql);
 }
 if (!empty($item)) {
-	$viewhelper->setMetaDescription($item['content']);
+	$seo_description = utf_substr($item['content'], 100);
 	$item['content'] = nl2br($item['content']);
 	$viewhelper->setTitle($item['name']);
 	if (isset($item['status'])) {

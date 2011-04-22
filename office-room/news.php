@@ -18,9 +18,10 @@
 require("../libraries/common.inc.php");
 require("room.share.php");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
-uses("companynews");
+uses("companynews", "company");
 check_permission("companynews");
 $companynews = new Companynewses();
+$company = new Companies;
 $tables = $companynews->getTable(true);
 $tpl_file = "news";
 $page = new Pages();
@@ -35,7 +36,6 @@ if (isset($_GET['do'])) {
 		$id = intval($_GET['id']);
 	}
 	if ($do == "edit") {
-		$company->newCheckStatus($companyinfo['status']);
 		if(!empty($id)){
 			$res = $companynews->read("Companynews.id AS ID,title AS Title,content AS Content,created AS CreateDate",$id);
 			setvar("item",$res);
@@ -51,27 +51,16 @@ if (isset($_POST['save'])) {
 	$vals = null;
 	$vals['title'] = trim($_POST['title']);
 	$vals['content'] = trim($_POST['content']);
-	$now_companynews_amount = $companynews->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
-    if ($g['companynews_check']) {
-        $vals['status'] = 0;
-        $msg = 'msg_wait_check';
-    }else {
-        $vals['status'] = 1;
-        $msg = 'success';
-    }	
 	if(!empty($_POST['newsid'])){
 		$vals['modified'] = $time_stamp;
 		$companynews->save($vals, "update",$_POST['newsid'],null, "member_id=".$_SESSION['MemberID']);
 		pheader("location:news.php?action=list");
 	}else {
-    	if ($g['max_companynews'] && $now_companynews_amount>=$g['max_companynews']) {
-    		flash('one_day_max');
-    	}
 		$vals['created'] = $time_stamp;
 		$vals['member_id'] = $_SESSION['MemberID'];
 		$vals['company_id'] = $company_id;
 		$result = $companynews->save($vals);
-		flash($msg);
+		flash("success");
 	}
 }
 if (isset($_POST['del'])) {
@@ -84,17 +73,8 @@ if (isset($_POST['del'])) {
 }
 $amount = $companynews->findCount(null, $conditions);
 $page->setPagenav($amount);
-$fields = "title as CompanynewsTitle,status,created as CompanynewsCreated,id as CompanynewsId";
-$res = $companynews->findAll($fields,null, $conditions,"id DESC",$page->firstcount,$page->displaypg);
-for($i=0;$i<count($res);$i++){
-
-if($res[$i]['status'] == 1){
-	$res[$i]['status'] = '正常';
-}else{
-	$res[$i]['status'] = '无效';
-}
-}
-setvar("Companynewses",$res);
+$fields = "title as CompanynewsTitle,created as CompanynewsCreated,id as CompanynewsId";
+setvar("Companynewses",$companynews->findAll($fields,null, $conditions,"id DESC",$page->firstcount,$page->displaypg));
 setvar("ByPages",$page->pagenav);
 template($tpl_file);
 ?>

@@ -4,19 +4,12 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 通行证</p>
-</div>
 <div id="rightTop"> 
-    <h3>通行证</h3> 
+    <p>通行证</p> 
     <ul class="subnav">
-		<li><a class="btn1" href="passport.php">管理</a></li>
-		<li><a href="passport.php?do=set">基本设置</a></li>
-		<{foreach from=$Items item=item}>
-		<{if $item.available}>
-        <li><a class="btn_edit" href="passport.php?do=edit&entry=<{$item.name}>&id=<{$item.id}><{$addParams}>" title="编辑"><{$item.title}></a></li>
-		<{/if}>
-		<{/foreach}>
+		<li><span>管理</span></li>
+		<li><a class="btn1" href="passport.php?do=set">设置</a></li>
+        <li><a class="btn1" href="javascript:;">编辑</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -39,15 +32,8 @@ body {background: #fcfdff}
 		  <td><label for="item_<{$item.id}>"><{$item.name}></label></td>
 		  <td><{$item.title}></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-            <{if $item.available}>
-            <li><a class="btn_edit" href="passport.php?do=edit&entry=<{$item.name}>&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-             <li><a class="btn_uninstall" href="passport.php?do=uninstall&id=<{$item.id}><{$addParams}>"  title="卸载">卸载</a></li>
-             <{else}>
-            <li><a class="btn_install" href="passport.php?entry=<{$item.name}>&do=install<{$addParams}>" title="安装">安装</a></li>
-            <{/if}>
-          </ul>  
-		</td>
+		  <span style="width: 120px;">
+		  <{if $item.available}><a href="passport.php?do=edit&entry=<{$item.name}>&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a>&nbsp;&nbsp;<a href="passport.php?do=uninstall&id=<{$item.id}><{$addParams}>"><img src="images/uninstall.gif" border="0" alt="卸载"></a><{else}><a href="passport.php?entry=<{$item.name}>&do=install<{$addParams}>"><img src="images/install.gif" border="0" alt="安装"></a><{/if}></span></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -57,7 +43,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="卸载" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>

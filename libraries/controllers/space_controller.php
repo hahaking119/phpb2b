@@ -22,7 +22,6 @@ class Space extends PbController {
 	var $member_id;
 	var $company_id;
 	var $base_url;
-	var $skins_dir;
 	
 	function Space()
 	{
@@ -44,60 +43,32 @@ class Space extends PbController {
 	{
 		global $rewrite_able;
 		if ($rewrite_able) {
-			switch ($module) {
-				case "product":
-					$url = URL.$module."/detail/".$id.".html";
-					break;
-				case "offer":
-					$url = URL.$module."/detail/".$id.".html";
-					break;
-				default:
-					$url = $this->base_url.$module."/detail-".$id.".html";
-					break;
-			}
+			return $this->base_url.$module."/detail-".$id.".html";
 		}else{
-			switch ($module) {
-				case "product":
-					$url = URL.$module."/content.php?id=".$id;
-					break;
-				case "offer":
-					$url = URL.$module."/detail.php?id=".$id;
-					break;
-				case "news":
-					$url = $this->base_url."&do={$module}&nid=".$id;
-					break;
-				default:
-					$url = $this->base_url."&do={$module}&id=".$id;
-					break;
-			}			
+			return $this->base_url."&do={$module}&id=".$id;
 		}
-		return $url;
 	}
 	
-	function rewriteList($module, $additionalParams = null)
+	function rewriteList($module, $page = 1)
 	{
 		global $rewrite_able;
 		if ($rewrite_able) {
-			if (!empty($additionalParams)) {
-				$tmp_str = explode("&", $additionalParams);
-			}
-			return $this->base_url.$module."/";
+			return $this->base_url.$module."/list-".$page.".html";
 		}else{
-			return $this->base_url."&do={$module}{$additionalParams}";
+			return $this->base_url."&do={$module}&page=".$page;
 		}
 	}
 
 	function setMenu($user_id, $space_actions){
 		global $subdomain_support, $rewrite_able;
 		$tmp_menus = array();
-		$user_id = rawurlencode($user_id);
 		if($subdomain_support){
-			$this->base_url = "http://".$user_id.$subdomain_support."/space/";
+			$this->base_url = "http://".$user_id.$subdomain_support."/";
 			foreach ($space_actions as $key=>$val) {
 				if($val=="index" || $val=="home"){
 					$tmp_menus[$val] = "http://".$user_id.$subdomain_support."/";
 				}else{
-					$tmp_menus[$val] = "http://".$user_id.$subdomain_support."/space/".$val.".html";
+					$tmp_menus[$val] = "http://".$user_id.$subdomain_support."/".$val."/";
 				}
 			}
 		}elseif($rewrite_able){
@@ -118,30 +89,15 @@ class Space extends PbController {
 		$this->menu = $tmp_menus;
 	}
 
-	function setBaseUrlByUserId($user_id, $space_actions){
-		global $subdomain_support, $rewrite_able;
-		$user_id = rawurlencode($user_id);
-		if($subdomain_support){
-			$this->base_url = "http://".$user_id.$subdomain_support."/space/";
-		}elseif($rewrite_able){
-			$this->base_url = URL."space/".$user_id."/";
-		}else{
-			$this->base_url = URL."space.php?userid=".$user_id;
-		}
-		return $this->base_url;
-	}
-
 	function getMenu(){
 		return $this->menu;
 	}
 	
 	function render($tpl_file, $ext = ".html")
 	{
-		global $smarty, $skin_path;
-		if(!file_exists($smarty->template_dir.$skin_path.DS.$tpl_file.$ext)){
+		global $smarty;
+		if(!file_exists($smarty->template_dir.$tpl_file.$ext)){
 			$smarty->template_dir = PHPB2B_ROOT ."skins".DS."default".DS;
-		}else{
-			$smarty->template_dir = PHPB2B_ROOT ."skins".DS.$skin_path.DS;
 		}
 		$smarty->display("{$tpl_file}{$ext}");
 	}

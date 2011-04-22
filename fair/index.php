@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("expo");
 $fair = new Expoes();
 require(CACHE_PATH."cache_area.php");

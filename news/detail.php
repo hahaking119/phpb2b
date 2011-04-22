@@ -17,13 +17,10 @@
  */
 define('CURSCRIPT', 'detail');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("news","tag");
 $news = new Newses();
 $tag = new Tags();
 $conditions = array();
-$viewhelper->setTitle(L("info", "tpl"));
-$viewhelper->setPosition(L("info", "tpl"), "news/");
 if (isset($_GET['id'])) {
 	$id = intval($_GET['id']);
 }
@@ -32,20 +29,18 @@ if (!empty($id)) {
 	$news->clicked($id);
 	$info = $news->read("*",$id);
 	if (empty($info) or !$info) {
-		flash("data_not_exists", '', 0);
+		flash();
 	}
 	if(!empty($info['tag_ids'])){
-    	$tag->getTagsByIds($info['tag_ids'], true);
+    	$tag->getTagsByIds($info['tag_ids']);
     	$info['tag'] = $tag->tag;
 	}
 	if (!empty($info['picture'])) {
 		$info['image'] = pb_get_attachmenturl($info['picture'], '', 'small');
 	}
-	$info['pubdate'] = date("Y-m-d", $info['created']);
 	$info['typename'] = $_PB_CACHE['newstype'][$info['type_id']];
 	$viewhelper->setTitle($info['typename']);
 	$viewhelper->setPosition($info['typename'], "news/list.php?typeid=".$info['type_id']);
-	$viewhelper->setTitle($info['title']);
 	setvar("item",$info);
 }else{
     flash();

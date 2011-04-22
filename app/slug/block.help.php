@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.help.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.help.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_block_help($params, $content, &$smarty) {
 	if ($content === null) return;

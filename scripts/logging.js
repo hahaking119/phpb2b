@@ -14,7 +14,7 @@ $(document).ready(function(){
 });
 function login(frm){
 	if($('#LoginName').val() == ""){
-			alert("请输入正确的用户名");
+			alert("请输入用户名");
 			$('#LoginName').focus();
 			return false;
 		}else if($('#UserEmail').val() == ""){

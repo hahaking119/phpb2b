@@ -30,7 +30,6 @@ $conditions = null;
 $tpl_file = "fair";
 setvar("Expotypes", $_PB_CACHE['expotype']);
 setvar("ExpoStatus", get_cache_type("common_option"));
-setvar("AskAction", get_cache_type("common_option"));
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
 	if (!empty($_GET['id'])) {
@@ -121,7 +120,7 @@ if (isset($_POST['up']) && !empty($_POST['id'])){
 }
 $amount = $expo->findCount();
 $page->setPagenav($amount);
-$fields = "*";
+$fields = "name,begin_time,end_time,id,expotype_id,picture";
 $result = $expo->findAll($fields,null, null,"id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

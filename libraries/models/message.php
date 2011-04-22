@@ -17,16 +17,11 @@
  */
 class Messages extends PbModel  {
  	var $name = "Message";
+ 	var $read_status = array("0"=>"未读","1"=>"已读");
  	
  	function Messages()
  	{
  		parent::__construct();
- 	}
- 	
- 	function getReadStatus()
- 	{
- 		$tmp_status = explode(",", L("read_status", "tpl"));
- 		return $tmp_status;
  	}
  	
  	function SendToUser($from_username, $to_username, $data)
@@ -36,9 +31,6 @@ class Messages extends PbModel  {
  		if (!$member_info || empty($member_info) || !$from_memberinfo || empty($from_memberinfo)) {
  			return false;
  		}else{
- 			if (empty($data['type'])) {
- 				$data['type'] = 'user';
- 			}
  			$sql = "INSERT INTO {$this->table_prefix}messages (title,content,from_member_id,cache_from_username,to_member_id,cache_to_username,created,type) VALUE ('".$data['title']."','".$data['content']."',".$from_memberinfo['id'].",'".$from_memberinfo['username']."',".$member_info['id'].",'".$member_info['username']."',{$this->timestamp},'".$data['type']."')";
  			return $this->dbstuff->Execute($sql);
  		}

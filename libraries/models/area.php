@@ -23,20 +23,6 @@ class Areas extends PbModel {
 		parent::__construct();
 	}
 	
- 	function rewrite($id, $name = '')
- 	{
- 		global $rewrite_able, $rewrite_compatible;
- 		if ($rewrite_able) {
- 			if ($rewrite_compatible && !empty($name)) {
- 				return "area/".rawurlencode($name)."/";
- 			}else{
- 				return "area/".$id."/";
- 			}
- 		}else{
- 			return "special/area.php?id=".$id;
- 		}
- 	}
-	
  	function setInfo($id)
  	{
  		$result = $this->dbstuff->GetRow("SELECT * FROM {$this->table_prefix}areas WHERE id=".$id);
@@ -64,21 +50,21 @@ class Areas extends PbModel {
 	function getSubArea($id, $extra = false)
 	{
 		$return = array();
-		$result = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}areas WHERE parent_id='".$id."' ORDER BY display_order ASC");
+		$result = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}areas WHERE parent_id='".$id."'");
 		if (!$result || empty($result)) {
 			if ($extra) {
 				$row = $this->dbstuff->GetRow("SELECT id,level,parent_id FROM {$this->table_prefix}areas WHERE id=".$id);
 				if (!$row || empty($row)) {
 					return null;
 				}else{
-					$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}areas WHERE parent_id='".$row['parent_id']."' ORDER BY display_order ASC");
+					$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}areas WHERE parent_id='".$row['parent_id']."'");
 					return $return;
 				}
 			}else{
 				return null;
 			}
 		}else{
-			$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}areas WHERE parent_id=0 ORDER BY display_order ASC");
+			$return = $this->dbstuff->GetArray("SELECT id,name,url FROM {$this->table_prefix}areas WHERE parent_id=0");
 			return $return;
 		}
 		return $result;

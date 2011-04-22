@@ -1,79 +1,81 @@
-<{assign var="page_title" value="`$_apply_friendlink`"}>
+<{assign var="page_title" value="申请`$site_name`的友情链接"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="content">
-  <div class="tips"><span><{$position}></span><{$_apply_friendlink}></div>
-  <div class="blank6"></div>
-  <div class="add_link clearfix">
-    <div class="add_link_left">    
-        <div class="add_link_title">
-         <h2><{$_friend_links}></h2>
-       </div>
+  <div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span>首页> > </span>申请友情链接</div>
+  <div class="add_link">
+    <div class="add_link_left">
+      <ul>
+        <div class="add_link_left_title"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span>友情链接</span></div>
         <div class="add_link_leftcon">
           <ul>
-		  	<{friendlink}>
-            <li><a href="[link:title]" title="[field:tip]" target="_blank">[field:title]</a></li>
-			<{/friendlink}>
+            <li>PHP B2B 电子商务网演示</li>
+            <li>PHP B2B 电子商务网演示</li>
+            <li class="last_li">PHP B2B 电子商务网演示</li>
           </ul>
         </div>
+      </ul>
     </div>
     <div class="add_link_right">
-      <div class="add_link_title">
-      <h2><{$_apply_friendlink}></h2>
-      </div>
+      <div class="add_link_right_title"><span>请申请链接的同时做好本站的链接</span></div>
       <div class="add_link_rightcon">
-          <form action="friendlink.php" method="post" name="friendlink_frm" id="FriendlinkFrm">
-          <input type="hidden" name="formhash" value="<{$formhash}>">
-          <input type="hidden" name="do" value="apply_friendlink">
-          <table class="add_link_rightcon_info">
+        <div class="add_link_rightcon_info">
+          <table  border="0">
             <tr>
-              <th><{$_local_sitename}></th>
+              <th>本站名称：</th>
               <td align="left"><{$site_name}></td>
             </tr>
             <tr>
-              <th><{$_local_siteurl}></th>
+              <th>本站地址：</th>
               <td align="left"><{$site_url}></td>
             </tr>
             <tr>
-              <th><{$_local_sitelogo}></th>
+              <th>网站logo图片：</th>
               <td rowspan="2" align="left"><img src="<{$site_logo}>" alt="<{$site_title}>"></td>
             </tr>
             <tr align="left">
               <th height="25">&nbsp;</th>
             </tr>
             <tr>
-              <th><{$_local_logourl}></th>
+              <th>logo地址：</th>
               <td align="left"><{$SiteUrl}><{$site_logo}></td>
             </tr>
-         
-             <tr>
-                <th><{$_your_site_name}></th>
+          </table>
+        </div>
+        <div class="add_link_rightcon_form">
+          <form action="friendlink.php" method="post" name="friendlink_frm" id="FriendlinkFrm">
+          <input type="hidden" name="formhash" value="<{$formhash}>">
+          <input type="hidden" name="do" value="apply_friendlink">
+            <table border="0">
+              <tr>
+                <th>贵站名称：</th>
                 <td ><input name="friendlink[title]" type="text" size="20"  class="form_text"/></td>
               </tr>
               <tr>
-                <th><{$_your_site_address}></th>
+                <th>贵站地址：</th>
                 <td><input name="friendlink[url]" type="text" size="20"  class="form_text"/></td>
               </tr>
               <tr>
-                <th><{$_your_site_logo}></th>
+                <th>贵站logo地址：</th>
                 <td><input name="friendlink[logo]" type="text" size="20"  class="form_text"/></td>
               </tr>
               <tr>
-                <th><{$_contact_mail}></th>
+                <th>联系人E-mail:</th>
                 <td><input name="data[email]" type="text" size="20"  class="form_text"/></td>
               </tr>
               <tr>
-                <th><{$_your_site_description}></th>
+                <th>贵站描述：</th>
                 <td><textarea name="friendlink[description]" cols="40" rows="5"></textarea></td>
               </tr>
               
               <tr>
                 <th></th>
-                <td><input name="btn_friendlink" type="button" value="<{$_submit}>" class="btn_submit" onclick="$('#FriendlinkFrm').submit();"/>&nbsp;&nbsp;&nbsp;&nbsp;<input name="reset" type="reset" value="<{$_reset}>" class="btn_submit"/></td>
+                <td><input name="btn_friendlink" type="button" value="提交申请" class="btn_submit" onclick="$('#FriendlinkFrm').submit();"/>&nbsp;&nbsp;&nbsp;&nbsp;<input name="reset" type="reset" value="重填" class="btn_submit"/></td>
               </tr>
             </table>
           </form>
         </div>
       </div>
     </div>
+  </div><br clear="all"/>
 </div>
 <{include file="`$ThemeName`/footer.html"}>

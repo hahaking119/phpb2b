@@ -66,7 +66,7 @@ class Products extends PbModel {
 			$result['image'] = "attachment/".$result['picture'];
 			$result['image_url'] = rawurlencode($result['picture']);
 		}else{
-			$result['image'] = pb_get_attachmenturl('', '', 'middle');
+			$result['image'] = "images/nopic.large.jpg";
 		}
 		if (!empty($result['tag_ids'])) {
 			uses("tag");

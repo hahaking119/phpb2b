@@ -19,24 +19,17 @@ define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
 require("common.inc.php");
 require(PHPB2B_ROOT.'libraries/page.class.php');
-include(CACHE_PATH. "cache_setting1.php");
 $page = new Pages();
 $page->pagetpl_dir = $theme_name;
-$viewhelper->setTitle(L('offer', 'tpl'));
-$viewhelper->setPosition(L('offer', 'tpl'), "offer/");
-$trade->setParams();
-$tmp_q = http_build_query($trade->params['url']);
-if (!empty($tmp_q)) {
-	setvar("addParams", $tmp_q."&");
-}
+$viewhelper->setTitle(L('search', 'tpl'));
+$viewhelper->setPosition(L('search', 'tpl'));
 if (isset($_GET['typeid'])) {
 	$type_id = intval($_GET['typeid']);
 	$conditions[]= "t.type_id='".$type_id."'";
-	setvar("typeid", $type_id);
 	$trade_controller->setTypeInfo($type_id);
 	$type_name = $trade_controller->type_info['name'];
 	$viewhelper->setTitle($type_name);
-	$viewhelper->setPosition($type_name, "offer/list.php?typeid=".$type_id);
+	$viewhelper->setPosition($type_name, "offer/list.php?typeid=".$type_id);;
 }
 if (isset($_GET['industryid'])) {
 	$industry_id = intval($_GET['industryid']);
@@ -71,24 +64,6 @@ if (isset($_GET['do'])) {
 			$conditions[]= "t.title like '%".$searchkeywords."%'";
 		}
 	}
-		if (isset($_GET['pubdate'])) {
-			switch ($_GET['pubdate']) {
-				case "l3":
-					$conditions[] = "t.submit_time>".($time_stamp-3*86400);
-					break;
-				case "l10":
-					$conditions[] = "t.submit_time>".($time_stamp-10*86400);
-					break;
-				case "l30":
-					$conditions[] = "t.submit_time>".($time_stamp-30*86400);
-					break;
-				default:
-					break;
-			}
-		}
-}
-if ($_PB_CACHE['setting1']['offer_expire_method']==2 || $_PB_CACHE['setting1']['offer_expire_method']==3) {
-	$conditions[] = "t.expire_time>".$time_stamp;
 }
 $trade->setCondition($conditions);
 $amount = $trade->findCount(null, $conditions, null, "t");

@@ -513,7 +513,7 @@ function &_adodb_pageexecute_all_rows(&$zthis, $sql, $nrows, $page,
 	return $rsreturn;
 }
 
-// Ivï¿½n Oliva version
+// Iván Oliva version
 function &_adodb_pageexecute_no_last_page(&$zthis, $sql, $nrows, $page, $inputarr=false, $secs2cache=0) 
 {
 
@@ -1023,9 +1023,8 @@ function _adodb_debug_execute(&$zthis, $sql, $inputarr)
 		}
 		if ($zthis->debug === -1)
 			ADOConnection::outp( "<br />\n($dbt): ".htmlspecialchars($sqlTxt)." &nbsp; $ss\n<br />\n",false);
-		elseif(!strpos($sqlTxt, "ET NAMES")) {
+		else 
 			ADOConnection::outp( "<hr />\n($dbt): ".htmlspecialchars($sqlTxt)." &nbsp; $ss\n<hr />\n",false);
-		}
 	} else {
 		ADOConnection::outp("-----\n($dbt): ".$sqlTxt."\n-----\n",false);
 	}

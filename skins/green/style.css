@@ -33,8 +33,8 @@ table td {padding:0;}
 .global_link ul.list2 li.home{background:url(images/contactus_11.jpg) no-repeat;width:81px;height:27px;z-index:3;margin-top:0;padding-top:13px;}
 .global_link ul.list2 li.home a{color:#fff;text-decoration:none;font-weight:bold;}
 .global_link ul.list2 li.home a:hover,.global_link ul.list2 li.home a:active{color:#000;text-decoration:none;}
-#tips{background:#458800;height:20px;color:#9dbf95;padding:10px 0 0 20px;}
-#tips a { color:#9DADC2}
+.head p{background:#458800;height:20px;color:#9dbf95;padding:10px 0 0 20px;}
+.head p a { color:#9DADC2}
 .content{height:auto;margin-top:6px;}
 .leftbar{width:201px;height:auto;float:left;}
 .latest_news{width:196px;height:auto;background:#f4f5f5 url(images/contactus_06.jpg) no-repeat left top;padding:0px 0 20px 5px;}
@@ -42,7 +42,7 @@ table td {padding:0;}
 .latest_news div img{margin-top:3px;margin-left:20px;}
 .latest_news p{color:#fff;font-size:14px;font-weight:bold;margin-bottom:16px;padding:8px 0 0 23px;height:23px;}
 .latest_news ul{list-style-type:none;}
-.latest_news ul li{background:url(images/contactus_20.jpg) no-repeat left 4px;padding-left:10px;line-height:20px;}
+.latest_news ul li{background:url(images/contactus_20.jpg) no-repeat left 4px;padding-left:10px;height:20px;line-height:20px;}
 .latest_news ul li a{display:block;text-overflow:ellipsis;width:170px;overflow:hidden;white-space:nowrap;}
 
 

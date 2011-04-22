@@ -17,13 +17,11 @@
  */
 define('CURSCRIPT', 'index');
 require("libraries/common.inc.php");
-require("share.inc.php");
-require(CACHE_PATH. "cache_setting1.php");
-$viewhelper->Start();
-uses("industry");
+uses("trade","industry","ad");
+$ads = new Adses();
+$trade = new Trade();
 $industry = new Industries();
 setvar("IndustryList", $industry->getCacheIndustry());
-$viewhelper->setMetaDescription($_PB_CACHE['setting1']['site_description']);
 formhash();
 render("index");
 ?>

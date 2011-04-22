@@ -25,9 +25,7 @@ class Htmlcache extends PbController {
 	var $full_file_name;
 	var $tpl_file;
 	var $target_path;
-	var $prefix = '';
-	var $archiver_dir = 'archiver';
-	var $archiver_url = 'archiver/';
+	var $prefix = 'phpb2b_';
 	
 	function Htmlcache()
 	{
@@ -42,7 +40,8 @@ class Htmlcache extends PbController {
 			return false;
 		}
 		if(!fwrite($fp, $content)){
-			flash("file_write_error");
+			die(sprintf(L("file_write_error"), $file_name));
+			return false;
 		}
 		fclose($fp);
 		chmod($file_name,0666);
@@ -62,27 +61,17 @@ class Htmlcache extends PbController {
 		return $this->target_path;
 	}
 	
-	function write($file_name = null, $created = null)
+	function write()
 	{
-		global $time_stamp;
-		$fp = false;
-		//$allowed_file = array("index", "detail");
-		//$allowed_params = array("id");
-		$seperate = 10;//间隔多长时间更新静态，单位为秒，0表示触发式更新，不自动更新
-		if (!file_exists($this->target_path.$file_name)) {
-			$content = ob_get_contents();
-			$fp = file_put_contents($this->target_path.$file_name, $content);
+		$_this =& Htmlcaches::getInstance();
+		$content = ob_get_contents();
+		$htmls_path = PHPB2B_ROOT."htmls/".date("Y")."/".date("m")."/".date("d")."/";
+		$this->setTargetPath($htmls_path);
+		if(isset($_GET['id'])) {
+			$fp = file_put_contents($this->target_path."offer_detail~id-".$_GET['id'].".html", $content);
 			return $fp;
 		}else{
-			//检查是否需要更新了
-			$last_create_time = filemtime($this->target_path.$file_name);
-			if ($time_stamp<($last_create_time+$seperate)) {
-				return;
-			}else{
-				$content = ob_get_contents();
-				$fp = file_put_contents($this->target_path.$file_name, $content);
-				return $fp;
-			}
+			return false;
 		}
 	}
 }

@@ -1,7 +1,4 @@
 <{include file="header.html"}>
-<!--[if lt IE 7]>
-<script defer type="text/javascript" src="../scripts/pngfix.js"></script>
-<![endif]-->
 <style type="text/css">
 <!--
 body {background: #fcfdff}
@@ -16,7 +13,7 @@ p {color: #999; border-top: 1px solid #cbe4f5; text-align: center; padding-top: 
 </style>
 <h1>操作提示</h1>
 <dl>
-    <dt><a href="<{$url}>" style="text-decoration: none;" title="<{$message|strip_tags}>"><{$message}></a></dt>
+    <dt><a href="<{$url}>"><{$message}></a></dt>
       <dd><a href="javascript:history.back()" class="forward">返回上一页</a></dd>
 </dl>
 <{$redirect}>

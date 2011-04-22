@@ -24,18 +24,13 @@ if (isset($_POST['companyid']) && !empty($_POST['feed']) && !empty($pb_user)) {
 	$vals['status'] = 0;
 	$vals['from_member_id'] = $pb_user['pb_userid'];
 	$vals['cache_from_username'] = $pb_user['pb_username'];
-	if (empty($member->info)) {
-		$vals['to_member_id'] = $administrator_id;
-		$vals['cache_to_username'] = $pdb->GetOne("SELECT username FROM {$tb_prefix}members WHERE id=".$administrator_id);
-	}else{
-		$vals['to_member_id'] = $member->info['id'];
-		$vals['cache_to_username'] = $member->info['username'];
-	}
-	$vals['title'] = L("pms_from_space", "tpl");
+	$vals['to_member_id'] = $member->info['id'];
+	$vals['cache_to_username'] = $member->info['username'];
 	if($companymessage->save($vals)){
-		$smarty->flash('feedback_already_submit', null, 0);
+		flash("feedback_already_submit");
+	}else {
+		flash();
 	}
 }
-formhash();
 $space->render("feedback");
 ?>

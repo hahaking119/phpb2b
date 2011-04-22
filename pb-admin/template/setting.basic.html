@@ -6,25 +6,31 @@ body {background: #fcfdff}
 </style>
 <link href="../images/jquery/colorpicker.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="../scripts/jquery/colorpicker.js"></script>
+<script src="../scripts/tiny_mce/tiny_mce.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function($) {
 	$.fn.colorPicker.defaultColors = ['00FFFF', '000000', '999999', 'FF0000', 'FFFF00', '0000FF', 'FFFFFF', '00FF7F', '00FF00'];
 	$('#color1').colorPicker();
 })
+tinyMCE.init({
+mode : "textareas",
+theme : "advanced",
+theme_advanced_toolbar_location : "top",
+theme_advanced_toolbar_align : "left"
+});
 </script>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 站点信息</p>
-</div>
 <div id="rightTop">
-	<h3>站点信息</h3>
+	<p>全局</p>
 	<ul class="subnav">
-		<li><a class="btn1" href="setting.php?do=basic">基本信息</a></li>
-		<li><a href="setting.php?do=basic_contact">联系方式</a></li>
-		<li><a href="setting.php?do=basic_desc">站点描述</a></li>
+		<li><span>站点信息</span></li>
+		<li><a class="btn1" href="setting.php?do=functions">网站功能</a></li>
+		<li><a class="btn1" href="setting.php?do=register">注册与访问</a></li>
+		<li><a class="btn1" href="setting.php?do=email">Email</a></li>
+		<li><a class="btn1" href="setting.php?do=auth">安全验证</a></li>
 	</ul>
 </div>
 <div class="info">
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     <table class="infoTable">
       <tr>
         <th class="paddingT15"><label for="time_zone"> 网站名称：</label></th>
@@ -34,13 +40,13 @@ jQuery(document).ready(function($) {
       </tr>
       <tr>
         <th class="paddingT15"><label for="time_format_simple"> 网站标题：</label></th>
-        <td class="paddingT15 wordSpacing5"><input name="data[setting][site_title]" type="text" id="site_title" value="<{$item.SITE_TITLE|default:$site_title}>" class="infoTableInput" />
+        <td class="paddingT15 wordSpacing5"><input name="data[setting][site_title]" type="text" id="site_title" value="<{$item.SITE_TITLE|default:$sitetitle}>" class="infoTableInput" />
           <span class="gray">该标题将显示在网页的标题中</span>
 		</td>
       </tr>
       <tr>
-        <th class="paddingT15"><label for="time_format_complete"> 网站副标题：</label></th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][site_banner_word]" type="text" id="site_banner_word" value="<{$item.SITE_BANNER_WORD|default:$site_banner_word}>"/>
+        <th class="paddingT15"><label for="time_format_complete"> 网站标语：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][site_banner_word]" type="text" id="site_banner_word" value="<{$item.SITE_BANNER_WORD|default:$sitebannerword}>"/>
           <span class="gray">该标语将显示在网站的宣传上</span>
 		</td>
       </tr>
@@ -51,16 +57,53 @@ jQuery(document).ready(function($) {
 		</td>
       </tr>
       <tr>
-        <th class="paddingT15"><label for="price_format"> 网站 URL：</label></th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][site_url]" type="text" id="site_url" value="<{$item.SITE_URL|default:$smarty.const.URL}>" />
-          <span class="gray">网站 URL，将作为链接显示在页面底部, 必须以"/"结尾</span>
+        <th class="paddingT15"><label for="price_format"> 公司名称：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][company_name]" type="text" id="company_name" value="<{$item.COMPANY_NAME|default:$companyname}>" />
+          <span class="gray">公司名称，将显示在一些版权信息声明中</span>
 		</td>
       </tr>
-	   <tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站 URL：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][site_url]" type="text" id="site_url" value="<{$item.SITE_URL|default:$smarty.const.URL}>" />
+          <span class="gray">网站 URL，将作为链接显示在页面底部</span>
+		</td>
+      </tr>
+      <tr>
         <th class="paddingT15"><label for="price_format"> 网站备案信息代码：</label></th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][icp_number]" type="text" id="icp_number" value="<{$item.ICP_NUMBER|default:$icpnumber}>" />
           <span class="gray">如果网站已备案，在此输入您的ICP 备案信息，它将显示在页面底部，如果没有请留空</span>
-                </td>
+		</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站客服热线：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][service_tel]" type="text" id="service_tel" size="30" value="<{$item.SERVICE_TEL|default:$servicetel}>"  />
+		</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站销售热线：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][sale_tel]" type="text" id="sale_tel" size="30" value="<{$item.SALE_TEL|default:$saletel}>" />
+		</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站客服QQ号码：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][service_qq]" type="text" id="data[setting][sale_tel]" size="30" value="<{$item.SERVICE_QQ|default:$serviceqq}>" />
+		</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站客服MSN Messenger帐号：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][service_msn]" type="text" id="data[setting][sale_tel]2" size="30" value="<{$item.SERVICE_MSN|default:$servicemsn}>" />
+		</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站客服Email信箱：</label></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][service_email]" type="text" id="service_email" size="30" value="<{$item.SERVICE_EMAIL|default:$serviceemail}>" />
+		</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"><label for="price_format"> 网站描述：</label></th>
+        <td class="paddingT15 wordSpacing5"><textarea name="data[setting][site_description]" id="USiteDescription" style="width:650px;height:300px;" ><{$item.SITE_DESCRIPTION}></textarea>
+          <span class="gray">关于你网站的简单的描述信息，将会显示在相关网站介绍处</span>
+		</td>
       </tr>
       <tr>
         <th></th>

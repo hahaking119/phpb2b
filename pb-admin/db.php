@@ -106,7 +106,7 @@ if (isset($_GET['do'])) {
 			}
 		}
 	}
-	if($do =="del" &&!empty($_GET['id'])){
+		if($do =="del" &&!empty($_GET['id'])){
 		$datafile = DATA_PATH."backup_".$backupdir.DS.$_GET['id'];
 		if(!file_exists($datafile)) {
 			flash("file_not_exists");
@@ -149,7 +149,7 @@ if (isset($_GET['do'])) {
 }
 $lastbackup_time = $pdb->GetOne("SELECT valued FROM {$tb_prefix}settings WHERE variable='last_backup'");
 if ($lastbackup_time) {
-	setvar("LastbackupTime", date("Y-m-d H:i", $lastbackup_time));
+	setvar("LastbackupTime", date("Y-m-d H:i:s", $lastbackup_time));
 }
 template($tpl_file);
 ?>

@@ -21,45 +21,10 @@ class Trade extends PbController {
 	var $type_names;
 	var $type_info;
 	var $types;
- 	
- 	function getOfferExpires()
- 	{
- 		@require(CACHE_PATH. "type_offer_expire.php");
- 		return $_PB_CACHE['offer_expire'];
- 	}
- 	
- 	function rewrite($id, $typeid = 0, $title = null, $dt = null)
- 	{
-		$url = null;
-		global $rewrite_able, $rewrite_compatible;
-		if ($rewrite_able) {
-			if ($rewrite_compatible && !empty($title)) {
-				$url = $this->getModulenameById($typeid)."/".rawurlencode($title)."/";
-			}else{
-				$url = $this->getModulenameById($typeid)."/detail/".$id.".html";
-			}
-		}else{
-			$url = "offer/detail.php?id=".$id;
-		}
-		return $url; 		
- 	}
- 	
- 	function getModulenameById($typeid)
- 	{
- 		$module_name = null;
- 		switch ($typeid) {
- 			case 1:
- 				$module_name = "buy";
- 				break;
- 			case 2:
- 				$module_name = "sell";
-				break;
- 			default:
- 				$module_name = "offer";
- 				break;
- 		}
- 		return $module_name;
- 	}
+
+ 	var $offer_expires = array("10"=>"10天","30"=>"一个月","90"=>"三个月","180"=>"六个月");
+	var $buy_types = array(1=>"求购", 4=>"合作", 5=>"招商");
+	var $sell_types = array(2=>"供应", 3=>"代理", 6=>"加盟", 7=>"批发", 8=>"库存");
 	
 	function setInfoById($id)
 	{
@@ -67,6 +32,7 @@ class Trade extends PbController {
 		$this->info = $_this->getInfoById($id);
 	}
 	
+ 	
 	function &getInstance() {
 		static $instance = array();
 		if (!$instance) {
@@ -95,11 +61,46 @@ class Trade extends PbController {
 		return $this->type_info;
 	}
 	
+
+ 	function setTradeCat($trade_type_id)
+ 	{
+ 		$buy_s = array_keys($this->buy_types);
+ 		$sell_s = array_keys($this->sell_types);
+ 		if (in_array($trade_type_id, $buy_s)) {
+ 			$return_type = "buy";
+ 		}elseif (in_array($trade_type_id, $sell_s)){
+ 			$return_type = "sell";
+ 		}else {}
+		$this->trade_cate = $return_type;
+ 		return $return_type;
+ 	}
+
+	function getTradeCat(){
+		return $this->trade_cate;
+	}
+
  	function getTradeTypes()
  	{
-		@require(CACHE_PATH. "cache_offertype.php");
-		$this->types = $_PB_CACHE['offertype'];
-		return $_PB_CACHE['offertype'];
+		$this->setTradeTypeNames();
+ 		$tmp_buytypes = $this->buy_types;
+ 		$tmp_selltypes = $this->sell_types;
+ 		$tmp_types = $tmp_buytypes + $tmp_selltypes;
+ 		ksort($tmp_types);
+ 		$this->types = $tmp_types;
+ 		return $tmp_types;
+ 	}
+
+ 	function getTradeTypeKeys($params)
+ 	{
+ 		if($params=="buy"){
+			$trade_type = implode("','",array_keys($this->buy_types));
+ 		}elseif($params=="sell"){
+ 			$trade_type = implode("','",array_keys($this->sell_types));
+ 		}else{
+			$trade_type = implode("','",array_keys($this->getTradeTypes()));
+		}
+		$trade_type = "('".$trade_type."')";
+		return $trade_type;
  	}
 
 	function getTradeTypeNames(){
@@ -107,8 +108,17 @@ class Trade extends PbController {
 	}
 
 	function setTradeTypeNames(){
-		@require(CACHE_PATH. "cache_offertype.php");
-		$this->type_names = $_PB_CACHE['offertype'];
+		$type_name = array();
+		$buy_names = $this->buy_types;
+		$sell_names = $this->sell_types;
+		foreach($buy_names as $key_1=>$val_1){
+			$type_name[$key_1] = "buy";
+		}
+		foreach($sell_names as $key_2=>$val_2){
+			$type_name[$key_2] = "sell";
+		}
+		ksort($type_name);
+		$this->type_names = $type_name;
 	}
 
  	function Expired($expire_time)

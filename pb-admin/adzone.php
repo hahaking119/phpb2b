@@ -29,17 +29,8 @@ if (isset($_GET['do'])) {
 		$id = intval($_GET['id']);
 		setvar("id", $id);
 	}
-	if ($do=="del" && !empty($id)) {
-		//check if have ad
-		$all_ad = $pdb->GetOne("SELECT count(id) FROM {$tb_prefix}adses WHERE adzone_id=".$id);
-		if ($all_ad>0) {
-			flash("yet_some_ads");
-		}else{
-			$adzone->del($id);
-		}
-	}
 	if($do == "makejs" && !empty($id)) {
-		setvar("XMLDATA",'<{ads typeid='.$id.'}><a href="[link:url]">[field:src]</a><{/ads}>');
+		setvar("XMLDATA","<{ads typeid={$id}}>[field:src]<{/ads}>");
 		template("adzone.makejs");
 		exit;
 	}

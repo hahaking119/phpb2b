@@ -41,7 +41,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['member']['styleid'])) {
 	flash("success");
 }
 setvar("templet_id", $memberinfo['templet_id']);
-$result = $templet->getInstalled($memberinfo['membergroup_id'], $memberinfo['membertype_id']);
+$result = $templet->getInstalled();
 setvar("Items", $result);
 template("style");
 ?>

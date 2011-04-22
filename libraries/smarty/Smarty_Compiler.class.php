@@ -708,9 +708,7 @@ class Smarty_Compiler extends Smarty {
             if (!function_exists($plugin_func)) {
                 $message = "plugin function $plugin_func() not found in $plugin_file\n";
                 $have_function = false;
-            } elseif($tag_command == 'cacheless'){
-				$this->_plugins['block'][$tag_command] = array($plugin_func, null, null, null, false);
-			}else {
+            } else {
                 $this->_plugins['block'][$tag_command] = array($plugin_func, null, null, null, true);
 
             }

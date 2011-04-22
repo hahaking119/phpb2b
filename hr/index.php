@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 $tpl_file = "hr.index";
 include(CACHE_PATH. "cache_area.php");
 uses("industry", "job");

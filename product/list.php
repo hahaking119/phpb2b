@@ -1,7 +1,6 @@
 <?php
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("company","industry","product","area");
 require(LIB_PATH. 'page.class.php');
 include(CACHE_PATH. "cache_industry.php");
@@ -15,7 +14,8 @@ $conditions = array();
 $conditions[] = "Product.status=1 ";
 $industry_id = $area_id = 0;
 $viewhelper->setPosition(L("product_center", 'tpl'), 'product/');
-$viewhelper->setTitle(L("product_center", 'tpl'));
+$viewhelper->setTitle(L('search', 'tpl'));
+$viewhelper->setPosition(L('search', 'tpl'));
 if (isset($_GET['industryid'])) {
 	$industry_id = intval($_GET['industryid']);
 	$tmp_info = $industry->setInfo($industry_id);
@@ -44,21 +44,7 @@ if (isset($_GET['do'])) {
 			setvar("searchwords","<font color=\"red\">".$searchkeywords."</font>");
 			$conditions[]= "Product.name like '%".$searchkeywords."%'";
 		}
-		if (isset($_GET['pubdate'])) {
-			switch ($_GET['pubdate']) {
-				case "l3":
-					$conditions[] = "Product.created>".($time_stamp-3*86400);
-					break;
-				case "l10":
-					$conditions[] = "Product.created>".($time_stamp-10*86400);
-					break;
-				case "l30":
-					$conditions[] = "Product.created>".($time_stamp-30*86400);
-					break;
-				default:
-					break;
-			}
-		}
+
 	}
 }
 if (isset($_GET['type'])) {

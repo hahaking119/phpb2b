@@ -66,19 +66,7 @@ class PbModel extends PbObject
 				unset($params['form']['_method']);
 			}
 		}
-		$params = array_merge($extra, $params);
-		if (isset($_GET)) {
-			if (ini_get('magic_quotes_gpc') === '1') {
-				$url = stripslashes_deep($_GET);
-			} else {
-				$url = $_GET;
-			}
-			if (isset($params['url'])) {
-				$params['url'] = array_merge($params['url'], $url);
-			} else {
-				$params['url'] = $url;
-			}
-		}		
+
 		if (isset($params['action']) && strlen($params['action']) === 0) {
 			$params['action'] = 'list';
 		}
@@ -215,7 +203,7 @@ class PbModel extends PbObject
 
 	function save($posts, $action=null, $id=null, $tbname = null, $conditions = null, $if_check_word_ban = false)
 	{
-		$new_id = $result = false;
+		$new_id = false;
 		$keys = array_keys($posts);
 		$cols = implode($keys,",");
 		$tbname = (is_null($tbname))? $this->getTable():trim($tbname);
@@ -240,19 +228,20 @@ class PbModel extends PbObject
 		$rs = $this->dbstuff->Execute($sql);
 		$record = array();
 		foreach ($keys as $colname) {
-			$sp_search = array('\\\"', "\\\'", "'","&nbsp;", '\n');
-			$sp_replace = array('&quot;', '&#39;', '&#39;',' ', '<br />');
+			$sp_search = array('\\\"', "\\\'", "\t", "'", '\n');
+			$sp_replace = array('&quot;', '&#39;', '&nbsp; &nbsp; &nbsp; &nbsp; ', '&#39;', '<br />');
 			$slash_col = str_replace($sp_search, $sp_replace, $posts[$colname]);
 			$record[$colname] = $slash_col;
 			if($if_check_word_ban){
 				//check mask words.
 			}
 		}
-		if(!empty($record)) $record = stripslashes_deep($record);
 		if (strtolower($action) == "update") {
 			$insertsql = $this->dbstuff->GetUpdateSQL($rs,$record);
 		    $new_id = false;
 		}else {
+		    //unset($record[$this->primaryKey]);
+		    //$record = array_filter($record);
 			$insertsql = $this->dbstuff->GetInsertSQL($rs,$record);
 			$new_id = true;
 		}
@@ -445,14 +434,13 @@ class PbModel extends PbObject
 		if (!empty($offsets)) {
 			$limit.= $offsets;
 		}
-		$sql = "SELECT {$field} FROM {$table} {$join}{$condition}{$order}{$limit}";
+		$sql = "SELECT {$fields} FROM {$table} {$join}{$condition}{$order}{$limit}";
 		$return = $this->dbstuff->GetArray($sql);
 		return $return;
 	}
 
 	function findAll($fields, $joins = null, $conditions = null, $order = null, $limit = null, $offset = null, $recursive = null)
 	{
-		global $ADODB_CACHE_DIR, $db_cache_supporty;
 		$orders			= null;
 		$records		= null;
 		$condition	 	= null;
@@ -484,11 +472,7 @@ class PbModel extends PbObject
 			$records.= " LIMIT $limit,$offset";
 			$sql.=$records;
 		}
-		if (!empty($ADODB_CACHE_DIR) && $db_cache_supporty) {
-			$return = $this->dbstuff->CacheGetArray($sql);
-		}else{
-			$return = $this->dbstuff->GetArray($sql);
-		}
+		$return = $this->dbstuff->GetArray($sql);
 		return $return;
 	}
 

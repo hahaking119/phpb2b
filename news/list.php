@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("news","newstype");
 require(LIB_PATH. 'page.class.php');
 require(CACHE_PATH. "cache_newstype.php");
@@ -29,8 +28,6 @@ $conditions = array();
 $tpl_file = "news.list";
 setvar("Newstypes", $newstype->getCacheTypes());
 $orderby = null;
-$viewhelper->setTitle(L("info", "tpl"));
-$viewhelper->setPosition(L("info", "tpl"), "news/");
 if(isset($_GET['q']) && !empty($_GET['q'])){
 	$title = trim($_GET['q']);
 	$conditions[] = "News.title like '%".$title."%'";
@@ -68,6 +65,8 @@ $amount = $news->findCount(null, $conditions);
 $page->setPagenav($amount);
 $result = $news->findAll("News.*,News.created AS pubdate", null, $conditions, $orderby."News.id DESC", $page->firstcount, $page->displaypg);
 setvar("Items", $result);
+$viewhelper->setTitle(L("search", "tpl"));
+$viewhelper->setPosition(L("search", "tpl"));
 setvar("ByPages", $page->pagenav);
 render($tpl_file);
 ?>

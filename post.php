@@ -15,22 +15,17 @@
  * @package phpb2b
  * @version $Id: post.php 416 2009-12-26 13:31:08Z steven $
  */
+session_start();
 define('CURSCRIPT', 'post');
 require("libraries/common.inc.php");
-require("share.inc.php");
-if (session_id() == '' ) { 
-	require_once(LIB_PATH. "session_php.class.php");
-	$session = new PbSessions();
-}
 require(LIB_PATH. "typemodel.inc.php");
-uses("trade","member","tradefield","tag");
-$tag = new Tags();
+uses("trade","member","tradefield");
 $offer = new Tradefields();
 $member = new Members();
 $trade = new Trades();
 $trade_controller = new Trade();
 $tradefield = new Tradefields();
-$expires = $trade_controller->getOfferExpires();
+$expires = $trade_controller->offer_expires;
 setvar("TradeTypes",$trade_controller->getTradeTypes());
 setvar("Genders", get_cache_type("gender",null,array("0", "-1")));
 setvar("PhoneTypes", get_cache_type("phone_type"));
@@ -43,21 +38,9 @@ capt_check("capt_post_free");
 if (isset($_POST['visit_post'])) {
 	pb_submit_check('visit_post');
 	$trade->setParams();
-	$tradefield->setParams();
 	$trade->params['expire_days'] = $_POST['expire_days'];
-	$trade->params['data']['trade']['tag_ids'] = $tag->setTagId($_POST['data']['tag']);;
 	$if_check = $_PB_CACHE['setting']['vis_post_check'];
 	$msg = null;
-	$words = $pdb->GetArray("SELECT * FROM {$tb_prefix}words");
-	if (!empty($words)) {
-		foreach ($words as $word_val) {
-			if(!empty($word_val['title'])){
-				str_replace($word_val['title'], "*", $trade->params['data']['trade']['title']);
-				str_replace($word_val['title'], "*", $trade->params['data']['trade']['content']);
-			}
-		}
-		$item['forbid_word'] = implode("\r\n", $tmp_str);
-	}
 	if ($if_check) {
 		$trade->params['data']['trade']['status'] = 0;
 		$msg = 'pls_wait_for_check';

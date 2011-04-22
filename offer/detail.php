@@ -17,10 +17,8 @@
  */
 define('CURSCRIPT', 'detail');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 include(CACHE_PATH. "cache_area.php");
 include(CACHE_PATH. "cache_industry.php");
-include(CACHE_PATH. "cache_setting1.php");
 require(LIB_PATH. "typemodel.inc.php");
 $positions = $titles = array();
 uses("trade","product","member","company","tradefield","form");
@@ -40,31 +38,13 @@ if (isset($_GET['id'])) {
 	if (empty($info)) {
 		flash("data_not_exists", '', 0);
 	}
-	$info['title'].=(($_PB_CACHE['setting1']['offer_expire_method']==1||$_PB_CACHE['setting1']['offer_expire_method']==3) && $info['expdate']<$time_stamp)?"[".L("has_expired", "tpl")."]":'';
-	$info['title'].=(!empty($info['if_urgent']))?"[".L("urgent_buy", "tpl")."]":'';
-	if ($info['expdate']<$time_stamp && $_PB_CACHE['setting1']['offer_expire_method']==2) {
-		flash("has_been_expired", URL, 0, $info['title']);
-	}
 }else{
 	flash("data_not_exists", '', 0);
-}
-if ($info['status']!=1) {
-	flash("under_checking", null, 0, $info['title']);
 }
 $trade_types = $trade->getTradeTypes();
 $viewhelper->setTitle($trade_types[$info['type_id']]);
 $viewhelper->setPosition($trade_types[$info['type_id']], "offer/list.php?typeid=".$info['type_id']);
 $trade_model->clicked($id);
-if ($info['require_point']>0) {
-	//check member points
-	if (empty($pb_user)) {
-		flash("please_login_first", URL."logging.php");
-	}
-	$point = $member->field("points", "id='".$pb_user['pb_userid']."'");
-	if ($point<$info['require_point']) {
-		flash("not_enough_points", URL, 0, $info['require_point']);
-	}
-}
 if (isset($info['formattribute_ids'])) {
 	$form_vars = $form->getAttributes(explode(",", $info['formattribute_ids']));
 	setvar("ObjectParams", $form_vars);
@@ -96,18 +76,16 @@ if (!empty($info['company_id'])) {
 	$info['address'] = $company_info['address'];
 	$info['zipcode'] = $company_info['zipcode'];
 	$info['site_url'] = $company_info['site_url'];
-	$info['tel'] = $company_info['tel'];
-	$info['fax'] = $company_info['fax'];
+	$info['tel'] = implode("-",array($company_info['telcode'],$company_info['telzone'],$company_info['tel']));
+	$info['fax'] = implode("-",array($company_info['faxcode'],$company_info['faxzone'],$company_info['fax']));
 	setvar("COMPANY", $company_info);
 }
-$viewhelper->setMetaDescription($info['content']);
 setvar("LoginCheck", $login_check);
-$info['title'] = strip_tags($info['title']);
-
 setvar("item",$info);
 $viewhelper->setTitle($info['title'], $info['picture']);
 setvar("Areas", $_PB_CACHE['area']);
 setvar("Industry", $_PB_CACHE['industry']);
 setvar("forward", "offer/detail.php?id=".$id);
+formhash();
 render("offer.detail");
 ?>

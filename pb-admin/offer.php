@@ -17,12 +17,10 @@
  */
 require("../libraries/common.inc.php");
 require(LIB_PATH .'time.class.php');
-uses("trade","tag","tradefield","attachment","segment","membertype","setting");
+uses("trade","tag","tradefield","attachment","segment");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require("session_cp.inc.php");
 $attachment = new Attachment('pic');
-$setting = new Settings();
-$membertype = new Membertypes();
 $offer = new Tradefields();
 $tag = new Tags();
 $keyword = new Segments();
@@ -31,38 +29,20 @@ $trade_controller = new Trade();
 $tpl_file = "offer";
 $conditions = array();
 $page = new Pages();
-$trade_names = $trade_controller->getTradeTypes();
-setvar("TradeTypes", $trade_names);
+setvar("TradeTypes", $trade_names = $trade_controller->getTradeTypes());
 if (isset($_POST['refresh']) && !empty($_POST['id'])) {
 	$result = $trade->refresh($_POST['id']);
 	if (!$result) {
 		flash();
-	}else{
-		flash("success");
 	}
 }
 if (isset($_POST['commend'])) {
-	if (!empty($_POST['id'])) {
-		foreach ($_POST['id'] as $key=>$val) {
-			$old_commend = $pdb->GetOne("select if_commend from {$tb_prefix}trades where id=".$val);
-			$result = ($old_commend==1)?$pdb->Execute("update {$tb_prefix}trades set if_commend=0 where id={$val}"):$pdb->Execute("update {$tb_prefix}trades set if_commend=1 where id={$val}");
-		}
-	}
+	$ids = implode(",",$_POST['id']);
+	$result = $pdb->Execute($sql = "update ".$trade->getTable()." set if_commend=1 where id in (".$ids.")");
 	if ($result) {
-		flash("success");
+		flash("trade.php");
 	}else{
-		flash();
-	}
-}
-if (isset($_POST['setting'])) {
-	require(LIB_PATH. "cache.class.php");
-	$cache = new Caches();
-	$updated = $setting->replace($_POST['data']['setting'], 1);
-	if($updated){
-		$cache->writeCache("setting1", "setting1");
-		pheader("location:offer.php?do=setting");
-	}else{
-		flash();
+		flash("trade.php");
 	}
 }
 if(isset($_GET['do'])){
@@ -71,25 +51,9 @@ if(isset($_GET['do'])){
 		$id = intval($_GET['id']);
 	}
 	if ($do == "refresh" && !empty($id)) {
-		$trade->refresh($id);
-	}
-	if ($do == "setting") {
-		$setting_offer_status = L("setting_offer_expired", "tpl");
-		$setting_offer_status = explode("|", $setting_offer_status);
-		setvar("SettingStatus", $setting_offer_status);
-		$item = $setting->getValues(1);
-		setvar("item", $item);
-		$tpl_file = "offer.setting";
-		template($tpl_file);
-		exit;
+		$trade->refresh($id);		
 	}
 	if ($do=="edit") {
-		$result = $membertype->findAll("id,name",null, $conditions, " id desc");
-		$user_types = array();
-		foreach ($result as $key=>$val) {
-			$user_types[$val['id']] = $val['name'];
-		}
-		setvar("Membertypes", $user_types);		
 		if (!empty($id)) {
 			$sql = "SELECT t.*,tf.*,m.username,c.name as companyname FROM {$tb_prefix}trades t LEFT JOIN {$tb_prefix}tradefields tf ON t.id=tf.trade_id LEFT JOIN {$tb_prefix}members m ON t.member_id=m.id LEFT JOIN {$tb_prefix}companies c ON c.id=t.company_id WHERE t.id={$id}";
 			$res = $pdb->GetRow($sql);
@@ -97,7 +61,7 @@ if(isset($_GET['do'])){
 				$res['image'] = pb_get_attachmenturl($res['picture'], '../', 'small');
 			}
 			$res['pubdate'] = @date("Y-m-d", $res['submit_time']);
-			$res['expdate'] = @date("Y-m-d", $res['expire_time']);
+			$res['enddate'] = @date("Y-m-d", $res['expire_time']);
 			if (empty($res)) {
 				flash();
 			}else{
@@ -113,9 +77,6 @@ if(isset($_GET['do'])){
 	if ($do == "search") {
 		if (!empty($_GET['display_pg']) && in_array($_GET['display_pg'], $page->page_option)) {
 			$page->displaypg = $_GET['display_pg'];
-		}
-		if($_GET['type_id']>0){ 
-            $conditions[] = "Trade.type_id='".$_GET['type_id']."'";
 		}
 		if (!empty($_GET['q'])) {
 			$conditions[]= "Trade.title like '%".trim($_GET['q'])."%'";
@@ -159,7 +120,8 @@ if (isset($_POST['urgent_batch'])) {
 if(isset($_POST['del']) && !empty($_POST['id'])){
     foreach ($_POST['id'] as $val) {
     	$picture = $trade->field("picture", "id=".$val);
-    	$attachment->deleteBySource($picture);
+    	@unlink($media_paths['attachment_dir']."big/".$picture);
+    	@unlink($media_paths['attachment_dir']."small/".$picture);
     }
 	$result = $trade->Delete($_POST['id']);
 	if (!$result) {
@@ -205,9 +167,6 @@ if(isset($_POST['save'])){
 		$id = intval($_POST['id']);
 	}
 	$vals = $_POST['data']['trade'];
-	if($vals['title']==''){
-		flash();
-	}
 	if (isset($_POST['data']['company_name'])) {
 		if (!pb_strcomp($_POST['data']['company_name'], $_POST['company_name'])) {
 			$vals['company_id'] = $pdb->GetOne("SELECT id FROM {$tb_prefix}companies WHERE name='".$_POST['data']['company_name']."'");
@@ -226,23 +185,14 @@ if(isset($_POST['save'])){
 		    $vals['expire_time'] = Times::dateConvert($_POST['expiretime']);
 		}
 	}
-	$attachment->rename_file = "offer-".$time_stamp;
-	if(!empty($id)){
-		$attachment->rename_file = "offer-".$id;
-	}	
 	if (!empty($_FILES['pic']['name'])) {
+		$attachment->rename_file = "offer-".$time_stamp;
 		$attachment->upload_process();
 		$vals['picture'] = $attachment->file_full_url;
 	}
 	if (!empty($vals['content'])) {
 		$vals['content'] = stripcslashes($vals['content']);
 	}
-	if(!empty($_POST['require_membertype']) && !in_array(0, $_POST['require_membertype'])){
-		$reses = implode(",", $_POST['require_membertype']);
-		$vals['require_membertype'] = $reses;
-	}elseif(!empty($_POST['require_membertype'])){
-		$vals['require_membertype'] = 0;
-	}	
 	$vals['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
 	if (!empty($id)) {
 		$vals['modified'] = $time_stamp;
@@ -261,24 +211,16 @@ if(isset($_POST['save'])){
 		if($_PB_CACHE['setting']['keyword_bidding']) {
 			$keyword->setIds($vals['title'].$vals['content'], 'trades', true, $id);
 		}
+		pheader("location:offer.php");
 	}
 }
 setvar("CheckStatus", explode(",",L('product_status', 'tpl')));
 $amount = $trade->findCount(null, $conditions,"Trade.id", null);
 $page->setPagenav($amount);
-$fields = "Trade.member_id,m.username,Trade.company_id,Trade.type_id,Trade.status,Trade.id,Trade.title,Trade.clicked,Trade.if_urgent,Trade.submit_time AS pubdate,Trade.submit_time,Trade.expire_time AS expdate,Trade.expire_time,Trade.picture as TradePicture,require_point,require_membertype,ip_addr as IP,Trade.if_commend";
+$fields = "Trade.member_id,m.username,Trade.company_id,Trade.type_id,Trade.status,Trade.id,Trade.title,Trade.clicked,Trade.if_urgent,Trade.submit_time AS pubdate,Trade.expire_time AS expdate,Trade.picture as TradePicture,require_point,require_membertype,ip_addr as IP,Trade.if_commend";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Trade.member_id";
-$result = $trade->findAll($fields,$joins, $conditions,"Trade.id DESC",$page->firstcount,$page->displaypg);
-if (!empty($result)) {
-	for($i=0; $i<count($result); $i++){
-		$result[$i]['pubdate'] = @date("Y-m-d", $result[$i]['pubdate']);
-		$result[$i]['expdate'] = @date("Y-m-d", $result[$i]['expdate']);
-		if ($result[$i]['expire_time']<$time_stamp) {
-			$result[$i]['if_expire'] = L("has_expired", "tpl");
-		}
-	}
-	setvar("Items", $result);
-}
+$all_trades = $trade->findAll($fields,$joins, $conditions,"Trade.id DESC",$page->firstcount,$page->displaypg);
+setvar("Items",$all_trades);
 setvar("ByPages", $page->getPagenav());
 setvar("TradeNames", $trade_controller->getTradeTypeNames());
 template($tpl_file);

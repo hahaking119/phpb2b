@@ -11,7 +11,9 @@
 	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2><{$page_title}></h2></div>
      <div class="blank"></div>
-	  <form name="message_frm" id="MessageFrm" action="pms.php?do=send&to=<{$item.cache_from_username}>" method="post">
+
+	  <form name="messagefrm" action="pms.php" method="post">
+	  <input type="hidden" name="revert_to_member_id" value="<{$item.CompanymessageFromMemberId}>">
          <table class="offer_info_content">
           <tr>
             <th class="circle_left">发送者：</th>
@@ -30,10 +32,12 @@
           <td class="circle_bottomright"><{$item.content}></td>
           </tr>
       </table>
+          
        <table class="btn_save">
+        
         <tr>
-          <td><input type="submit" value=" 回 复 " name="submit"> 　
-            <input type="button" value=" 返 回 " name="back" onclick="history.go(-1);"> 
+          <td><input type=button value=" 回 复 " name=submit onClick="location.href='pms.php?do=send'"> 　
+            <input type=submit value=" 返 回 " name=submit> 
           </td>
         </tr>
       </table>

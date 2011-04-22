@@ -17,8 +17,14 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 $conditions = null;
 $tpl_file = "search";
+uses("industry", "area");
+$industry = new Industries();
+$area = new Areas();
+$parent_industry = $pdb->GetArray("SELECT id,name FROM ".$industry->getTable()." WHERE parent_id=0;");
+setvar("ParentIndustry", $parent_industry);
+$parent_area = $pdb->GetArray("SELECT id,code_id,name FROM ".$area->getTable()." WHERE INSTR(code_id,'0000');");
+setvar("ParentArea", $parent_area);
 render($tpl_file);
 ?>

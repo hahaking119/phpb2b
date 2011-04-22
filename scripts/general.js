@@ -97,14 +97,6 @@ function preview(){
 	}
 }
 
-function showPreview(mypic,imgfile) {
-	if (imgfile.value){
-	mypic.src=imgfile.value;
-	mypic.style.display="";
-	mypic.border=1;
-	}
-}
-
 function confirmAction(message){
 	if(window.confirm(message)){
 		return true;

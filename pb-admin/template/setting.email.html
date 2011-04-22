@@ -6,11 +6,15 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; Email设置</p>
-</div>
 <div id="rightTop"> 
-    <h3>Email设置</h3> 
+    <p>全局</p> 
+    <ul class="subnav">
+        <li><a class="btn1" href="setting.php?do=basic">站点信息</a></li>
+		<li><a class="btn1" href="setting.php?do=functions">网站功能</a></li>
+        <li><a class="btn1" href="setting.php?do=register">注册与访问</a></li>
+		<li><span>Email</span></li>
+		<li><a class="btn1" href="setting.php?do=auth">安全验证</a></li>
+    </ul>
 </div>
 <div class="info"> 
     <form method="post" action="setting.php" name="edit_frm" id="EditFrm">
@@ -78,7 +82,7 @@ body {background: #fcfdff}
             <th></th> 
             <td class="ptb20"> 
                 <input class="formbtn" type="submit" name="save_mail" id="SaveEmail" value="保存" /> 
-                <input class="formbtn" type="reset" name="reset" id="ResetEmail" value="重置" /> 
+                <input class="formbtn" type="reset" name="reset" value="重置" /> 
             </td> 
         </tr> 
         </table> 

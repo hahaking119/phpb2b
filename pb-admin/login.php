@@ -15,12 +15,9 @@
  * @package phpb2b
  * @version $Id: login.php 504 2009-12-28 05:01:52Z steven $
  */
+session_start();
+ini_set('session.cookie_path','/');
 require("../libraries/common.inc.php");
-require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.admin.inc.php');
-if (session_id() == '' ) { 
-	require_once(LIB_PATH. "session_php.class.php");
-	$session = new PbSessions(DATA_PATH."tmp");
-}
 uses("adminfield","setting", "member");
 $adminer = new Adminfields();
 $member = new Members();
@@ -52,9 +49,6 @@ if (isset($_POST['do'])) {
 formhash();
 $smarty->template_dir = "template/";
 $smarty->setCompileDir("pb-admin".DS);
-if (!empty($arrTemplate)) {
-    $smarty->assign($arrTemplate);
-}
 template("login");
 exit;
 ?>

@@ -4,24 +4,20 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 地区</p>
-</div>
 <div id="rightTop"> 
-    <h3>地区</h3> 
+    <p>地区</p> 
     <ul class="subnav">
-		<li><a class="btn1" href="area.php"><{$_management}></a></li>
-        <li><a href="area.php?do=edit"><{$_add_or_edit}></a></li>
-        <li><a href="areatype.php">分类</a></li>
-        <li><a href="area.php?do=clear">清理</a></li>
-        <li><a href="area.php?do=refresh">更新缓存</a></li>
+		<li><span>管理</span></li>
+        <li><a class="btn1" href="area.php?do=edit">添加/编辑</a></li>
+        <li><a class="btn1" href="area.php?do=clear">清理</a></li>
+        <li><a class="btn1" href="area.php?do=refresh">更新缓存</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
-    <div class="fontr"> 
+    <div class="fontl"> 
         <form name="search_frm" id="SearchFrm" method="get"> 
         <input type="hidden" name="do" value="search" />
-             <div> 
+             <div class="left"> 
 				地区名称关键字 : <input class="queryInput" type="text" name="name" value="" /> 
                 <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
             </div> 
@@ -31,43 +27,37 @@ body {background: #fcfdff}
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="area.php" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
     <tbody>
 		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></td>
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
 		  <td><label for="idAll">名称</label></td>
-		  <td>排序</td>
 		  <td>分级示例</td>
 		  <td>地区</td>
-		  <td class="handler"><{$_action}></td>
+		  <td class="handler">操作</td>
 		</tr>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>">
 		  <input type="hidden" name="aid[]" value="<{$item.id}>" />
 		  </td>
-		  <td><input type="text" name="data[aname][]" value="<{$item.name}>"></td>
-		  <td><input type="text" name="data[display_order][]" value="<{$item.display_order}>"></td>
+		  <td><label for="item_<{$item.id}>"><input type="text" name="data[aname][]" value="<{$item.name}>"></label></td>
 		  <td><{$item.title}></td>
 		  <td><a title="<{$Types[$item.areatype_id]}>" href="area.php?do=search&typeid=<{$item.areatype_id}>"><{$Types[$item.areatype_id]}></a></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-            <li><a class="btn_up" href="area.php?do=level&action=up&id=<{$item.id}><{$addParams}>" title="提升">提升</a></li>
-            <li><a class="btn_down" href="area.php?do=level&action=down&id=<{$item.id}><{$addParams}>" title="下沉">下沉</a></li>
-            <li><a class="btn_edit" href="area.php?do=edit&id=<{$item.id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
-          </ul>  
-		  </td>
+		  <span style="width: 120px;">
+		  <a href="area.php?do=level&action=up&id=<{$item.id}><{$addParams}>"><img src="images/up.gif" border="0" alt="提升"></a>&nbsp;<a href="area.php?do=level&action=down&id=<{$item.id}><{$addParams}>"><img src="images/down.gif" border="0" alt="下沉"></a>&nbsp;<a href="area.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a></span>		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="5"><{$_no_datas}></td>
+		  <td colspan="5">没有符合条件的记录</td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="<{$_action_zone}>">
-    <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton"/>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">   
+      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
 	  <input type="submit" name="update_batch" value="更新" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>

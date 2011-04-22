@@ -1,14 +1,16 @@
-<{assign var="page_title" value="$_hr"}>
+<{assign var="page_title" value="人才招聘"}>
 <{assign var="nav_id" value="9"}>
 <{include file="`$ThemeName`/header.html"}>
-<div class="wrapper">
+<div class="warpper">
 	<div class="content">
 		<div class="job_type fl">
-          <div class="title_bar_s1" style="height:28px;">
-           <span class="title_top_s1"><span></span></span>
-           <h3><{$_industry_sort}></h3>
-          </div>
-			
+			<h2>
+				<img class="fl" src="<{$theme_img_path}>images/hotl.jpg"/>
+				<img class="fr" src="<{$theme_img_path}>images/hotr.jpg"/>
+				<p class="hot_title">
+					<b>行业分类</b>
+				</p>
+			</h2>
 			<div class="job_type_c">
             	<{foreach from=$IndustryList name=IndustryList item=industry_item key=industry_key}>
 			  <h3><em class="fl"><a href="hr/list.php?industryid=<{$industry_item.id}>" title="<{$industry_item.name}>"><{$industry_item.name}></a></em></h3>
@@ -24,17 +26,17 @@
 		<div class="job_ss fl">
 			<form action="hr/list.php" method="get">
             <input type="hidden" name="do" value="search" />
-			<h2><{$_jobs_search}></h2>
+			<h2>职位搜索</h2>
 			<table width="390" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
-				<td align="right" width="65"><{$_salary}></td>
+				<td align="right" width="65">薪水范围：</td>
 				<td width="325" align="left">
                 <select name="data[salary_id]">
 						<{html_options options=$Salary}>
 						</select></td>
 			  </tr>
 			  <tr>
-				<td align="right"><{$_jobs_area}></td>
+				<td align="right">工作地点：</td>
 				<td align="left">
                 <div id="dataArea">
 							<select name="data[area_id1]" id="dataAreaId1" class="level_1" style="width:120px;" ></select>
@@ -44,36 +46,38 @@
                         </td>
 			  </tr>
 			  <tr>
-				<td align="right"><{$_keyword}></td>
+				<td align="right">关键字：</td>
 				<td align="left">
 					<input type="text" name="q" value="" class="job_gjz" />
 					</td>
 			  </tr>
 			  <tr>
 				<td>&nbsp;</td>
-				<td align="left"><input type="submit" value="<{$_search}>" class="submit" /></td>
+				<td align="left"><input type="submit" value="搜索" class="submit" /></td>
 			  </tr>
 			</table>
 			</form>
 		</div>
 		<div class="job_reg fr">
-            <div class="title_bar_s1">
-               <span class="title_top_s1"><span></span></span>
-               <h5><{$_after_free_reg}></h5>
-            </div>
-
+			<h2>
+				<img class="fl" src="<{$theme_img_path}>images/hotl.jpg"/>
+				<img class="fr" src="<{$theme_img_path}>images/hotr.jpg"/>
+				<p class="hot_title">
+					<b>免费注册为会员后你可以</b>
+				</p>
+			</h2>
 			<div class="job_reg_c">
-				<p class="fl"><a><{$_build_your_site}></a></p>
-				<p class="fl"><a><{$_post_offer_trade}></a></p>
-				<p class="fl"><a><{$_spread_your_products}></a></p>
-				<p class="fl"><a><{$_meet_more_friends}></a></p>
+				<p class="fl"><a>免费企业建站</a></p>
+				<p class="fl"><a>发布供求商机</a></p>
+				<p class="fl"><a>在线推广产品</a></p>
+				<p class="fl"><a>结交更多商友</a></p>
 				<div class="reg">
-                <span><a href="member/" class="submit_w165"><{$_free_reg}></a><span>
+                <span><a href="member/" class="submit_w165">&nbsp;&nbsp;&nbsp;马上免费注册成为会员</a><span>
                 </div>
 			</div>
 		</div>
 		<div class="job_area fl">
-			<h2><{$_hot_area}></h2>
+			<h2>热门地区</h2>
 			<div>
             <{foreach from=$Areas[1] name=area item=area_item key=area_key}>
             <a href="hr/list.php?areaid=<{$area_key}>"><{$area_item}></a>
@@ -82,8 +86,8 @@
 		</div>
 		<div class="job_new fl">
 			<div class="job_new_tt">
-				<h2 class="fl cur"><{$_new_hr}></h2>
-				<p class="fr"><a href="hr/list.php"><{$_more}>&raquo;</a></p>
+				<h2 class="fl cur">最新招聘</h2>
+				<p class="fr"><a href="hr/list.php">更多&raquo;</a></p>
 			</div>
 			<div class="job_new_c fl">
 				<ul>

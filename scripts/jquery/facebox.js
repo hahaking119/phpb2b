@@ -33,7 +33,7 @@
  *  The above will open a facebox with "some html" as the content.
  *    
  *    jQuery.facebox(function($) { 
- *      $.get('blank.html', function(data) { $.facebox(data) })
+ *      $.get('blah.html', function(data) { $.facebox(data) })
  *    })
  *
  *  The above will show a loading screen before the passed function is called,
@@ -94,6 +94,11 @@
               <td class="b"/> \
               <td class="body"> \
                 <div class="content"> \
+                </div> \
+                <div class="footer"> \
+                  <a href="#" class="close"> \
+                    <img src="images/facebox/closelabel.gif" title="close" class="close_image" /> \
+                  </a> \
                 </div> \
               </td> \
               <td class="b"/> \

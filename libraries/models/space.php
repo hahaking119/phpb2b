@@ -38,7 +38,7 @@ class Spaces extends PbModel {
 		if (!empty($company_id)) {
 			$condition = "AND company_id='{$company_id}'";
 		}
-		$sql = "SELECT id,title,url,is_outlink,description,logo,highlight FROM {$this->table_prefix}spacelinks s WHERE member_id='{$member_id}' {$condition} ORDER BY s.display_order ASC";
+		$sql = "SELECT id,title,url,is_outlink,description,logo,highlight FROM {$this->table_prefix}spacelinks s WHERE member_id={$member_id} {$condition} ORDER BY s.display_order ASC";
 		$result = $this->dbstuff->GetArray($sql);
 		if (empty($result)) {
 			return false;

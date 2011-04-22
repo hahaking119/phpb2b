@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("industry","company");
 $company = new Companies();
 $industry = new Industries();

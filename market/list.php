@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("area","market","industry");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
 require(CACHE_PATH. "cache_area.php");
@@ -27,8 +26,6 @@ $page->pagetpl_dir = $theme_name;
 $market = new Markets();
 $industry = new Industries();
 $conditions = array();
-$viewhelper->setTitle(L("market", "tpl"));
-$viewhelper->setPosition(L("market", "tpl"), "market/");
 if (isset($_GET['industryid'])) {
 	$industry_id = intval($_GET['industryid']);
 	$tmp_info = $industry->setInfo($industry_id);
@@ -49,17 +46,15 @@ if (isset($_GET['areaid'])) {
 }
 setvar("OtherArea", $area->getSubArea($area_id, true));
 $conditions[] = "Market.status=1";
-if (isset($_GET['do'])) {
-	if($_GET['do'] == "search"){
-		$s_key = $_GET['q'];
-		if($s_key) {
-			$conditions[] = "Market.name like '%".$s_key."%'";
-		}
+if (!empty($_GET['search'])) {
+	$s_key = $_GET['q'];
+	if($s_key) {
+		$conditions[] = "Market.name like '%".$s_key."%'";
 	}
 }
 $viewhelper->setTitle(L("search", "tpl"));
 $viewhelper->setPosition(L("search", "tpl"));
-$amount = intval($market->findCount(null, $conditions));
+$amount = $market->findCount(null, $conditions);
 $page->setPagenav($amount);
 $result = $market->findAll("*", null, $conditions, "Market.id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
@@ -67,7 +62,6 @@ if (!empty($result)) {
 		if(!empty($result[$i]['picture'])) $result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture']);
 	}
 }
-setvar("SearchAmount", L("search_amount", "tpl"));
 setvar("Items", $result);
 setvar("AreaItems", $_PB_CACHE['area']);
 setvar("Amount", $amount);

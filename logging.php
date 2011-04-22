@@ -15,11 +15,9 @@
  * @package phpb2b
  * @version $Id: logging.php 416 2009-12-26 13:31:08Z steven $
  */
+session_start();
 define('CURSCRIPT', 'logging');
 require("libraries/common.inc.php");
-require("share.inc.php");
-require_once(LIB_PATH. "session_php.class.php");
-$session = new PbSessions(DATA_PATH. 'tmp/');
 uses("member","company","point");
 require(PHPB2B_ROOT. 'libraries/sendmail.inc.php');
 require(API_PATH.'passport.class.php');

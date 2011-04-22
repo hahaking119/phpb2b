@@ -17,29 +17,29 @@
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
-uses("product","producttype","form","attachment","tag");
+uses("product","producttype","company","form","attachment","tag");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require(CACHE_PATH. 'cache_membergroup.php');
-require(CACHE_PATH. 'cache_productsort.php');
 check_permission("product");
 $page = new Pages();
+$company = new Companies();
 $tag = new Tags();
 $form = new Forms();
 $product = new Products();
 $producttype = new Producttypes();
 $attachment = new Attachment('pic');
 $conditions[] = "member_id = ".$_SESSION['MemberID'];
-setvar("ProductSorts", $_PB_CACHE['productsort']);
+setvar("ProductSorts",explode(",",L('product_sorts', 'tpl')));
 setvar("ProductTypes",$producttype->findAll('id,name', null, $conditions, "id DESC"));
 $tpl_file = "product";
 if (empty($companyinfo)) {
 	flash("pls_complete_company_info", "company.php", 0);
 }
 if (isset($_POST['save'])) {
-	$company->newCheckStatus($companyinfo['status']);
+	$company->checkStatus($company_id);
 	if(!empty($_POST['data']['product'])){
 		$product->setParams();
-		$now_product_amount = $product->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
+		$now_product_amount = $product->findCount(null, "member_id=".$_SESSION['MemberID']);
 		$check_product_update = $g['product_check'];
 		if ($check_product_update == 0) {
 			$product->params['data']['product']['status'] = 1;
@@ -95,7 +95,7 @@ if (isset($_GET['do'])) {
 			$company->checkStatus($company_id);
 			$company_info = $company->getInfoById($company_id);
 			setvar("CompanyInfo",$company_info);
-		}
+		}		
 		setvar("Forms", $form->getAttributes());
 		if (!empty($id)) {
 			$productinfo = $product->read("*", $id, null, $conditions);

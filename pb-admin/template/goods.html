@@ -4,14 +4,11 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 广告 &raquo; 服务管理</p>
-</div>
 <div id="rightTop"> 
-    <h3>服务管理</h3> 
+    <p>服务管理</p> 
     <ul class="subnav"> 
-		<li><a class="btn1" href="goods.php">列表</a></li>
-        <li><a href="goods.php?do=edit">添加/编辑</a></li>
+		<li><span>列表</span></li>
+        <li><a class="btn1" href="goods.php?do=edit">添加/编辑</a></li>
     </ul> 
 </div> 
 <div class="tdare">
@@ -34,12 +31,8 @@ body {background: #fcfdff}
 		  <td><{$item.description|truncate:100}></td>
 		  <td><{$item.created|date_format:"%Y-%m-%d"}></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-            <li><a class="btn_delete" href="goods.php?id=<{$item.id}>&do=del" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="goods.php?id=<{$item.id}>&do=edit" title="编辑">编辑</a></li>
-          </ul>
-         
-		  </td>
+		  <span style="width: 120px;">
+		  <a href="goods.php?id=<{$item.id}>&do=del"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;<a href="goods.php?id=<{$item.id}>&do=edit"><img src="images/edit.gif" border="0" alt="编辑"></a></span></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -49,7 +42,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>

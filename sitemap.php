@@ -17,6 +17,5 @@
  */
 define('CURSCRIPT', 'sitemap');
 require("libraries/common.inc.php");
-require("share.inc.php");
 render("sitemap");
 ?>

@@ -32,8 +32,8 @@ class Expoes extends PbModel {
  			return false;
  		}else{
  			if ($extra) {
- 				$info['begin_date'] = (!$info['begin_time'])?@date("Y-m-d", $this->timestamp):@date("Y-m-d", $info['begin_time']);
- 				$info['end_date'] = (!$info['end_time'])?@date("Y-m-d", $this->timestamp):@date("Y-m-d", $info['end_time']);
+ 				$info['begin_date'] = @date("Y-m-d", $info['begin_time']);
+ 				$info['end_date'] = @date("Y-m-d", $info['end_time']);
  				$this->info = $info;
  			}
  			return true;

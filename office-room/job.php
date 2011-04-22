@@ -18,9 +18,10 @@
 require("../libraries/common.inc.php");
 require("room.share.php");
 require(LIB_PATH .'time.class.php');
-uses("job");
+uses("company","job");
 check_permission("job");
 require(LIB_PATH. "typemodel.inc.php");
+$company = new Companies();
 $job = new Jobs();
 $tpl_file = "job";
 if (empty($companyinfo)) {
@@ -54,7 +55,6 @@ if (isset($_GET['do'])) {
 if (!empty($_POST['job']) && $_POST['save']) {
 	$vals = $_POST['job'];
 	pb_submit_check('job');
-	$now_job_amount = $job->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
 	if (isset($_POST['id'])) {
 		$id = $_POST['id'];
 	}
@@ -73,9 +73,6 @@ if (!empty($_POST['job']) && $_POST['save']) {
 		$vals['modified'] = $time_stamp;
 		$result = $job->save($vals, "update", $id, null, "member_id=".$_SESSION['MemberID']);
 	}else{
-    	if ($g['max_job'] && $now_job_amount>=$g['max_job']) {
-    		flash('one_day_max');
-    	}
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		$vals['company_id'] = $companyinfo['id'];
 		$vals['member_id'] = $_SESSION['MemberID'];

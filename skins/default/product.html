@@ -1,4 +1,4 @@
-<{assign var="PageTitle" value="`$_space_product`"}>
+<{assign var="PageTitle" value="产品展示"}>
 <{assign var="cur" value="space_product"}>
 <{include file="header.html"}>
 <div class="wrapper">
@@ -7,18 +7,16 @@
 		<{include file="leftbar.html"}>
 			<div class="rightbarcontact">
 					<div class="playercontact">
-					<div class="playerheadcontact"><span class="playlistcontact"><{$_space_product}></span><span class="player_head_concontact"></span><img src="images/contactus_13.jpg" /></div>
+					<div class="playerheadcontact"><span class="playlistcontact">产品展示</span><span class="player_head_concontact"></span><img src="images/contactus_13.jpg" /></div>
 					<div class="clear"></div>
 					<div class="player_concontact clearfix">
-					<{if $Items}>
 						<ul>
 						<{foreach from=$Items item=item}>
-							<li><a href="<{$item.url}>" target="_blank"><img src="<{$item.image}>" width="80" height="80" alt="<{$item.name}>"></a><p><{$item.name}></p></li>
+							<li><a href="<{$SiteUrl}>product/content.php?id=<{$item.id}>" target="_blank"><img src="<{$item.image}>" width="80" height="80" alt="<{$item.name}>"></a><p><{$item.name}></p></li>
 						<{/foreach}>					
 						</ul>
 						<div class="clear"></div>
 						<p class="page"><{$ByPages}></p>
-					<{/if}>
 					</div>
 				</div>
 			</div>

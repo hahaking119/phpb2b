@@ -57,11 +57,8 @@ if (isset($_POST['update_batch'])) {
 		for($i=0; $i<count($_POST['data']['iname']); $i++) {
 			$pdb->Execute("UPDATE {$tb_prefix}industries SET name = '".$_POST['data']['iname'][$i]."' WHERE id='".$_POST['iid'][$i]."'");
 		}
-		for($i=0; $i<count($_POST['data']['iname']); $i++) {
-			$pdb->Execute("UPDATE {$tb_prefix}industries SET display_order = '".$_POST['data']['display_order'][$i]."' WHERE id='".$_POST['iid'][$i]."'");
-		}
+		flash("success");
 	}
-	flash("success","industry.php");
 }
 if (isset($_POST['save'])) {
 	if (isset($_POST['data']['industry']['parent_id'])) {
@@ -107,9 +104,9 @@ if (isset($_GET['do'])) {
 	if ($do == "level") {
 		if(!empty($id)){
 			if ($_GET['action']=="up") {
-				$pdb->Execute("UPDATE {$tb_prefix}industries SET display_order=display_order-1 WHERE id=".$id);
-			}elseif ($_GET['action']=="down"){
 				$pdb->Execute("UPDATE {$tb_prefix}industries SET display_order=display_order+1 WHERE id=".$id);
+			}elseif ($_GET['action']=="down"){
+				$pdb->Execute("UPDATE {$tb_prefix}industries SET display_order=display_order-1 WHERE id=".$id);
 			}
 		}
 	}
@@ -121,34 +118,16 @@ if (isset($_GET['do'])) {
 		foreach ($_PB_CACHE['industry'][1] as $key1=>$val1) {
 			$data[$key1]['id'] = $key1;
 			$data[$key1]['name'] = $val1;
-			$url = $pdb->GetOne("SELECT url FROM {$tb_prefix}industries WHERE id={$key1} ORDER BY display_order ASC");
-			if ($url) {
-				$data[$key1]['url'] = $url;
-			}else{
-				$data[$key1]['url'] = $industry->rewrite($key1, $val1);
-			}
 			$tmp_result1 = $pdb->GetArray("SELECT id,name,level FROM {$tb_prefix}industries WHERE level=2 AND parent_id=".$key1." ORDER BY display_order ASC");
 			if (!empty($tmp_result1)) {
 				foreach ($tmp_result1 as $key2=>$val2) {
 					$data[$key1]['sub'][$key2]['id'] = $val2['id'];
 					$data[$key1]['sub'][$key2]['name'] = $val2['name'];
-					$url = $pdb->GetOne("SELECT url FROM {$tb_prefix}industries WHERE id={$val2['id']}");
-					if ($url) {
-						$data[$key1]['sub'][$key2]['url'] = $url;
-					}else{
-						$data[$key1]['sub'][$key2]['url'] = $industry->rewrite($val2['id'], $val2['name']);
-					}
 					$tmp_result2 = $pdb->GetArray("SELECT id,name,level FROM {$tb_prefix}industries WHERE level=3 AND parent_id=".$val2['id']." ORDER BY display_order ASC");
 					if (!empty($tmp_result2)) {
 						foreach ($tmp_result2 as $key3=>$val3) {
 							$data[$key1]['sub'][$key2]['sub'][$key3]['id'] = $val3['id'];
 							$data[$key1]['sub'][$key2]['sub'][$key3]['name'] = $val3['name'];
-							$url = $pdb->GetOne("SELECT url FROM {$tb_prefix}industries WHERE id={$val3['id']}");
-							if ($url) {
-								$data[$key1]['sub'][$key2]['sub'][$key3]['url'] = $url;
-							}else{
-								$data[$key1]['sub'][$key2]['sub'][$key3]['url'] = $industry->rewrite($val3['id'], $val3['name']);
-							}
 						}
 					}
 				}
@@ -191,7 +170,7 @@ if (isset($_GET['do'])) {
 }
 $amount = $industry->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $industry->findAll("id,name,name as title,highlight,parent_id,industrytype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order ASC,id ASC", $page->firstcount, $page->displaypg);
+$result = $industry->findAll("id,name,name as title,highlight,parent_id,industrytype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order DESC,id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$tmp_name = array();

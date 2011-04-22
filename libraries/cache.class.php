@@ -32,18 +32,6 @@ class Caches extends PbObject {
 		}
 	}
 	
-	function updateTypes($cache_name = '', $text_data)
-	{
-		if (!empty($text_data)) {
-			$tmp_arr = explode("\r\n", $text_data);
-			array_filter($tmp_arr);
-			$data = "\$_PB_CACHE['".$cache_name."'] = ".$this->evalArray($tmp_arr).";\n\n";
-			return $this->writeCache($cache_name, '', $data);
-		}else {
-			return false;
-		}
-	}
-	
 	function updateAgreement($data)
 	{
 		global $_PB_CACHE;
@@ -66,7 +54,7 @@ class Caches extends PbObject {
 			foreach ($Typemodels as $key=>$val) {
 				$data = array();
 				$tmp_js_option = null;
-				$tmp_options = $pdb->GetArray("SELECT option_value,option_label FROM {$tb_prefix}typeoptions WHERE typemodel_id=".$val['id']." ORDER BY id ASC");
+				$tmp_options = $pdb->GetArray("SELECT option_value,option_label FROM {$tb_prefix}typeoptions WHERE typemodel_id=".$val['id']);
 				$type_js_data.="var ".$val['type_name']." = [";
 				if (!empty($tmp_options)) {
 					foreach ($tmp_options as $option_key=>$option_val) {
@@ -85,10 +73,8 @@ class Caches extends PbObject {
 			file_put_contents(CACHE_PATH. "type.js", $type_js_data);
 			$jsMin = new JSMin(file_get_contents(CACHE_PATH. "type.js"), false);
 			$out = $jsMin->minify();
-			return file_put_contents(CACHE_PATH. "type.js", $out);
+			file_put_contents(CACHE_PATH. "type.js", $out);
 		}
-		$false = false;
-		return $false;
 	}
 	
 	function evalArray($array, $level = 0) {
@@ -146,8 +132,6 @@ class Caches extends PbObject {
 				"\n * Id: ".md5($prefix.$script.'.php'.$cachedata.$phpb2b_auth_key)."\n */\n\n$cachedata\n?>");
 		if(!$fpc) {
 			exit(L("write_file_error_and_retry"));
-		}else{
-			return true;
 		}
 	}	
 	
@@ -159,20 +143,11 @@ class Caches extends PbObject {
 			$cachename = $this->cache_name;
 		}
 		switch($cachename) {
-			case 'setting1':
-				$conditions = "";
-				$sql = "SELECT * FROM {$tb_prefix}settings WHERE type_id='1'";
-				$setting = $pdb->GetArray($sql);
-				foreach ($setting as $key=>$val) {
-					$data[$val['variable']] = $val['valued'];
-				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-				break;
 			case 'setting':
 				$tmp_mail = array();
 				$table = 'setting';
 				$conditions = "";
-				$sql = "SELECT * FROM {$tb_prefix}settings WHERE type_id='0'";
+				$sql = "SELECT * FROM {$tb_prefix}settings";
 				$setting = $pdb->GetArray($sql);
 				foreach ($setting as $key=>$val) {
 					$data[$val['variable']] = $val['valued'];
@@ -196,7 +171,7 @@ class Caches extends PbObject {
 				$navmns = array();
 				if (!empty($navs)) {
 					foreach ($navs as $nav=>$nav_val) {
-						$navmns[$nav_val['id']]['nav'] = '<a href="'.$nav_val['url'].'" title="'.$nav_val['name'].'"'.parse_highlight($nav_val['highlight']).' id="mn_'.$nav_val['id'].'"><span>'.$nav_val['name'].'</span></a>';
+						$navmns[$nav_val['id']]['nav'] = '<a href="'.$nav_val['url'].'" title="'.$nav_val['name'].'"'.parse_highlight($nav_val['highlight']).' id="mn_'.$nav_val['id'].'">'.$nav_val['name'].'</a>';
 						$navmns[$nav_val['id']]['level'] = $nav_val['display_order'];
 					}
 					$data['navs'] = $navmns;
@@ -204,17 +179,17 @@ class Caches extends PbObject {
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
 			break;
 			case 'area':
-				$sql = "select name,id from {$tb_prefix}areas a where a.parent_id=0 ORDER by display_order asc";
+				$sql = "select name,id from {$tb_prefix}areas a where a.parent_id=0";
 				$top_areas = $sec_areas = $third_areas = $areas = $total_areas = array();
 				$area1 = $pdb->GetArray($sql);
 				$op = "<!--// Created ".date("M j, Y, G:i")." -->\n";
 				$op .= "var data_area = { \n";
 				foreach($area1 as $key=>$val){
 					$top_areas[$val['id']] = $total_areas[1][$val['id']] = $val['name'];
-					$sql = "select id,name,parent_id ,top_parentid from {$tb_prefix}areas a where level=2 AND parent_id=".$val['id']." ORDER by display_order asc";
+					$sql = "select id,name,parent_id ,top_parentid from {$tb_prefix}areas a where level=2 AND parent_id=".$val['id'];
 					$sec_areas = $pdb->GetArray($sql);
 					foreach($sec_areas as $key2=>$val2){
-						$third_areas = $pdb->GetArray("select id,name,parent_id,top_parentid from {$tb_prefix}areas a where level=3 AND parent_id=".$val2['id']." ORDER by display_order asc");
+						$third_areas = $pdb->GetArray("select id,name,parent_id,top_parentid from {$tb_prefix}areas a where level=3 AND parent_id=".$val2['id']);
 						$areas[$val['id']]['sub'][$val2['id']] = $val2['name'];
 						$total_areas[2][$val2['id']] = $val2['name'];
 						foreach($third_areas as $key3=>$val3){
@@ -236,7 +211,7 @@ class Caches extends PbObject {
 						}
 					}
 				}
-				if (!empty($tmp_op)) {
+			if (!empty($tmp_op)) {
 					$op .=",\n";
 					$tmp_op = implode(",\n", $tmp_op);
 					$op .= $tmp_op."\n}";
@@ -248,17 +223,17 @@ class Caches extends PbObject {
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_areas).";\n\n";
 			break;
 			case 'industry':
-				$sql = "select name,id from {$tb_prefix}industries i where i.parent_id=0 ORDER by display_order asc";
+				$sql = "select name,id from {$tb_prefix}industries i where i.parent_id=0";
 				$top_levels = $sec_levels = $third_levels = $datas = $total_datas = array();
 				$level1 = $pdb->GetArray($sql);
 				$op = "<!--// Created ".date("M j, Y, G:i")." -->\n";
 				$op .= "var data_industry = { \n";
 				foreach($level1 as $key=>$val){
 					$top_levels[$val['id']] = $total_datas[1][$val['id']] = $val['name'];
-					$sql = "SELECT id,name,parent_id ,top_parentid FROM {$tb_prefix}industries t where available=1 AND level=2 AND parent_id=".$val['id']." ORDER by display_order asc";
+					$sql = "SELECT id,name,parent_id ,top_parentid FROM {$tb_prefix}industries t where available=1 AND level=2 AND parent_id=".$val['id'];
 					$sec_levels = $pdb->GetArray($sql);
 					foreach($sec_levels as $key2=>$val2){
-						$third_levels = $pdb->GetArray("SELECT id,name,parent_id,top_parentid FROM {$tb_prefix}industries t WHERE available=1 AND level=3 AND parent_id=".$val2['id']." ORDER by display_order asc");
+						$third_levels = $pdb->GetArray("SELECT id,name,parent_id,top_parentid FROM {$tb_prefix}industries t WHERE available=1 AND level=3 AND parent_id=".$val2['id']);
 						$datas[$val['id']]['sub'][$val2['id']] = $val2['name'];
 						$total_datas[2][$val2['id']] = $val2['name'];
 						foreach($third_levels as $key3=>$val3){
@@ -280,7 +255,7 @@ class Caches extends PbObject {
 						}
 					}
 				}
-				if (!empty($tmp_op)) {
+					if (!empty($tmp_op)) {
 					$op .=",\n";
 					$tmp_op = implode(",\n", $tmp_op);
 					$op .= $tmp_op."\n}";
@@ -355,17 +330,7 @@ class Caches extends PbObject {
 					}
 				}
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-			break;
-			case "offertype":
-				$sql = "SELECT * FROM {$tb_prefix}tradetypes ORDER BY display_order ASC";
-				$result = $pdb->GetArray($sql);
-				if (!empty($result)) {
-					foreach ($result as $key=>$val) {
-						$data[$val['id']] = $val['name'];
-					}
-					$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-				}
-			break;
+			break;			
 			case 'membergroup':				
 				$sql = "SELECT * FROM {$tb_prefix}membergroups mg ORDER BY mg.id DESC";
 				$membergroup_result = $pdb->GetArray($sql);

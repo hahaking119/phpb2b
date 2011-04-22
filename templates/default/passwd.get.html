@@ -1,40 +1,52 @@
 <{assign var="page_title" value="`$page_title`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
-<div class="wrapper">
+<div class="warpper">
 		<div class="content">
-			<div class="tips"><span><{$site_name}></span><{$_get_password}></div>
+			<div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span>首页></span>取回密码</div>
 			<div class="quhuimima">
-        <div class="base_title">
-             <h2><span class="title_name"><{$_fill_reg_info}></span></h2>
-        </div>
-       <div class="messagecon">
-            <div class="messageconleft">
-                <form id="form1" name="form1" method="post" action=""><strong><{$_input_name_password}></strong><br /><br />
-                 <table class="messagecon_list">
-                  <tr>
-                    <th><{$_login_name}></th>
-                    <td><input type="text" name="textfield" />&nbsp;<{$_forgot_login_name}></td>
-                  </tr>
-                  <tr>
-                    <th><{$_your_email}></th>
-                    <td><input type="text" name="textfield" /></td>
-                  </tr>
-                  <tr>
-                    <th>&nbsp;</th>
-                    <td>&nbsp; <input type="submit" name="Submit" value="<{$_next_get_password}>" class="submit_w118" /></td>
-                  </tr>
-                </table>
-                </form>
+					<div class="message"><img src="<{$theme_img_path}>images/quhuimima_07.jpg" /><span>填写注册信息</span><img src="<{$theme_img_path}>images/quhuimima_11.jpg" class="cirlepic"/></div>
+					<div class="messagecon">
+						<div class="messageconleft">
+							<form id="form1" name="form1" method="post" action=""><strong>请输入你的会员登录名及密码：</strong><br /><br />
+								<label><strong>您的登录名：</strong></label>
+								<label>
+								<input type="text" name="textfield" />
+								</label>
+								<label class="noremember">忘记登录名？</label>
+								<br clear="all" />
+								<label><strong>你的Email信箱：</strong></label>
+								<label>
+								<input type="text" name="textfield" />
+								</label><br clear="all" />
+								<input type="submit" name="Submit" value="下一步，取回密码" class="quhuimimabutton" />
+							</form>
+						</div>
+						<img src="<{$theme_img_path}>images/quhuuimima04.jpg" />
+						<div class="messageconright">
+							<p>Email地址有误，不能发送！</p>
+							<p>邮件格式错误，不能发送！</p>
+							<p>登录名不存在，发送失败！</p>
+						</div>
+					</div>
+			</div>
+			<div class="ins">
+                <a href="#" title="">网站首页</a><span>|</span>
+                <a href="#" title="">关于我们</a><span>|</span>
+                <a href="#" title="">法律声明</a><span>|</span>
+                <a href="#" title="">客户服务</a><span>|</span>
+                <a href="#" title="">技术支持</a><span>|</span>
+                <a href="#" title="">媒体报道</a><span>|</span>
+                <a href="#" title="">广告专区</a><span>|</span>
+                <a href="#" title="">代理专区</a><span>|</span>
+                <a href="#" title="">联系我们</a><span>|</span>
+                <a href="#" title="">网站地图</a><span>|</span>
+                <p>
+                    本网站版权所有(C)2009 客户服务热线：010－12345678 客户服务邮箱：service@hotmail.com<br />京ICP备12345678<br />
+                    <a href="#" title=""><img src="<{$theme_img_path}>images/qq.jpg" /></a>　　
+                    <a href="#" title=""><img src="<{$theme_img_path}>images/msn.jpg" /></a>
+                </p>
             </div>
-            <img src="<{$theme_img_path}>images/quhuuimima04.jpg" />
-            <div class="messageconright">
-                <p><{$_emai_incorrectly_not_send}></p>
-                <p><{$_email_format_error_not_send}></p>
-                <p><{$_Login_name_exist_send_failed}></p>
-            </div>
-        </div>
-	</div>
 		</div>
 	</div>
 <{include file="`$ThemeName`/footer.html"}>

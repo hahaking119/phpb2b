@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("market","trade","area");
 $market = new Markets();
 $area = new Areas();

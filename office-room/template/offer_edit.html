@@ -86,9 +86,9 @@ function CheckInput(){
                         <th> 行 业：</th>
                         <td>
 						<div id="dataIndustry">
-							<select name="data[trade][industry_id1]" id="dataTradeIndustryId1" class="level_1" ></select>
-							<select name="data[trade][industry_id2]" id="dataTradeIndustryId2" class="level_2" ></select>
-							<select name="data[trade][industry_id3]" id="dataTradeIndustryId3" class="level_3" ></select>
+							<select name="data[trade][industry_id1]" id="dataTradeIndustryId1" class="level_1" style="width:120px;" ></select>
+							<select name="data[trade][industry_id2]" id="dataTradeIndustryId2" class="level_2" style="width:120px;"></select>
+							<select name="data[trade][industry_id3]" id="dataTradeIndustryId3" class="level_3" style="width:120px;"></select>
 						</div>						
 						</td>
                       </tr>
@@ -96,9 +96,9 @@ function CheckInput(){
                         <th> 地 区：</th>
                         <td>
 						<div id="dataArea">
-							<select name="data[trade][area_id1]" id="dataTradeAreaId1" class="level_1" ></select>
-							<select name="data[trade][area_id2]" id="dataTradeAreaId2" class="level_2" ></select>
-							<select name="data[trade][area_id3]" id="dataTradeAreaId3" class="level_3" ></select>
+							<select name="data[trade][area_id1]" id="dataTradeAreaId1" class="level_1" style="width:120px;" ></select>
+							<select name="data[trade][area_id2]" id="dataTradeAreaId2" class="level_2" style="width:120px;"></select>
+							<select name="data[trade][area_id3]" id="dataTradeAreaId3" class="level_3" style="width:120px;"></select>
 						</div>
 
 						</td>
@@ -110,18 +110,13 @@ function CheckInput(){
                       </tr>
                       <tr>
                         <th>　图片：</th>
-                        <td><input name="pic" type="file" id="uploadfile" onchange="showPreview(uploadpic,this.form.pic);" />
+                        <td><input name="pic" type="file" id="uploadfile" onchange="preview()" />
                             <span class="gray"><br>
                     （图片大小不要超过200K ,格式gif,jpg,png 图片宽度最大为220像素效果最佳！）</span></td>
                       </tr>
                       <tr>
                         <th>　当前图片: </th>
-                        <td class="tdright">
-						<div class="img-preview">
-						<a href="<{$item.image|default:"javascript:;"}>" id="uploadpic_hover" rel="facebox"><img id="uploadpic" src="<{$item.image}>.small.jpg" style='<{if !$item.image}>display:none;<{/if}>width:220px;' alt="<{$item.title|default:"预览图片"}>"  /></a>
-						<div>
-						<div style="display:none"></div>
-						</td>
+                        <td class="tdright"><a href="<{$item.image|default:"javascript:;"}>" id="uploadpic_hover" rel="facebox"><img id="uploadpic" src="<{$item.image}>.small.jpg" alt="<{$item.title}>"  /></a></td>
                      </tr>
                   <tr>
                       <th></th>

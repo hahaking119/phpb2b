@@ -4,14 +4,11 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 模板风格 &raquo; 导航栏</p>
-</div>
 <div id="rightTop"> 
-    <h3>导航栏</h3> 
+    <p>导航栏</p> 
     <ul class="subnav">
-		<li><a href="nav.php">管理</a></li>
-        <li><a class="btn1" href="nav.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="nav.php">管理</a></li>
+        <li><span>添加/编辑</span></li>
     </ul>
 </div>
 <div class="info">
@@ -19,17 +16,10 @@ body {background: #fcfdff}
   <input type="hidden" name="id" value="<{$item.id}>" />
   <input type="hidden" name="page" value="<{$smarty.get.page}>" />
     <table class="infoTable">
-	<{if $item.id}>
       <tr>
         <th class="paddingT15">编号：</th>
         <td class="paddingT15 wordSpacing5"><{$item.id}></td>
       </tr>
-	<{else}>
-      <tr>
-        <th class="paddingT15">编号：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[nav][id]" value="" /></td>
-      </tr>
-	<{/if}>	
       <tr>
         <th class="paddingT15"> 标题：</th>
         <td class="paddingT15 wordSpacing5">          

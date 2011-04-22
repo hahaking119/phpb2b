@@ -39,10 +39,9 @@ if (isset($_GET['do'])){
 		}
 	}
 	if ($do=="edit") {
-		$company->newCheckStatus($companyinfo['status']);		
 		if (!empty($id)) {
-			$res = $producttype->read('id,name', $id, null, $conditions);
-			setvar("item",$res);
+		$res = $producttype->read('id,name', $id, null, $conditions);
+		setvar("item",$res);
 		}
 		$tpl_file = "producttype_edit";
 		template($tpl_file);

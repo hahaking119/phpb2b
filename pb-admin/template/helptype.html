@@ -4,21 +4,18 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 扩展 &raquo; 帮助文件</p>
-</div>
 <div id="rightTop"> 
-    <h3>帮助文件</h3> 
+    <p>帮助文件</p> 
     <ul class="subnav">
-		<li><a href="help.php">管理</a></li>
-        <li><a class="btn1" href="helptype.php">分类</a></li>        
-        <li><a href="helptype.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="help.php">管理</a></li>
+        <li><span>分类</span></li>        
+        <li><a class="btn1" href="helptype.php?do=edit">添加/编辑</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
     <div class="fontl"> 
         <form name="search_frm" id="SearchFrm" method="get"> 
-             <div class="right"> 
+             <div class="left"> 
 				标题关键字 : <input class="queryInput" type="text" name="q" value="" /> 
                 <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
             </div> 
@@ -32,7 +29,7 @@ body {background: #fcfdff}
     <tbody>
 		<tr class="tatr1">
 		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">内容摘要</label></td>
+		  <td>内容摘要</td>
 		  <td><span>标题</span></td>
 		  <td>级别</td>
 		  <td><span>显示顺序</span></td>
@@ -46,11 +43,8 @@ body {background: #fcfdff}
 		  <td><{$item.level}></td>
 		  <td><{$item.display_order}></td>
 		  <td class="handler">
-           <ul id="handler_icon">
-            <li><a class="btn_delete"  href="helptype.php?id=<{$item.id}>&do=del<{$addParams}>" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="helptype.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-          </ul>  
-		 </td>
+		  <span style="width: 120px;">
+		  <a href="helptype.php?id=<{$item.id}>&do=del<{$addParams}>"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;&nbsp;<a href="helptype.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a></span>		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -60,7 +54,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>

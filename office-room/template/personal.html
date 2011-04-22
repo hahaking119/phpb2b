@@ -21,7 +21,7 @@
                       </tr>
                       
                       <tr>
-                        <th>性别：</th>
+                        <th>性别</th>
                         <td><{html_radios name="memberfield[gender]" options=$Genders checked=$item.gender|default:"1" separator=" "}></td>
                       </tr>
                       <tr>
@@ -59,19 +59,19 @@
                         <td><input name="memberfield[yahoo]" type="text" id="memberyahoo" value="<{$item.yahoo}>"></td>
                       </tr>
                       <tr>
-                        <th>联系电话：</th>
+                        <th>联系电话</th>
                         <td><input name="memberfield[tel]" type="text" id="membertel" value="<{$item.tel}>"></td>
                       </tr>
                       <tr>
-                        <th>传真号码：</th>
+                        <th>传真号码</th>
                         <td><input name="memberfield[fax]" type="text" id="memberfax" value="<{$item.fax}>"></td>
                       </tr>
                       <tr>
-                        <th>手机号码：</th>
+                        <th>手机号码</th>
                         <td><input name="memberfield[mobile]" type="text" id="membermobile" value="<{$item.mobile}>"></td>
                       </tr>
                       <tr>
-                        <th>个人主页：</th>
+                        <th>个人主页</th>
                         <td><input name="memberfield[site_url]" type="text" id="site_url" value="<{$item.site_url}>"></td>
                       </tr>
                       <tr>
@@ -83,7 +83,7 @@
                         <td><input type="radio" name="personal[resume_status]" value="1" <{if $item.ResumeStatus==1}>checked="checked"<{/if}>>我想求职<input type="radio" name="personal[resume_status]" value="0" <{if $item.resume_status==0}>checked="checked"<{/if}>>我不想求职</td>
                       </tr>
                       <tr>
-                        <th>最高学历：</th>
+                        <th>最高学历</th>
                         <td>
 						<select name="personal[max_education]" id="MaxEducation">
 						<{foreach from=$Educations name=Educations item=item1 key=key1}>

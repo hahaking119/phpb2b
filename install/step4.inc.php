@@ -1,13 +1,13 @@
 <?php include 'header.share.php';?>
 <div class="content">
 <?php if($no_writablefile !='') { ?>
-<?php echo $_file_perm_result;?> : <br>
+目录文件属性检测结果：<br>
 <span class="error">
 <?php echo $no_writablefile;?>
 </span>
-	<input type="button" onclick="javascript:history.go(-1);" value="<?php echo $_go_back;?> : <?php echo $_env_check;?>" class="btn">
-	<input type="button" onclick="window.location.reload()" value="<?php echo $_re_check;?>" class="btn">
-	<input type="button" onclick="if(confirm('<?php echo $_maybe_wrong_but_go_on;?>')) $('#install').submit();" value="<?php echo $_strong_install;?>" class="btn" title="<?php echo $_strong_install;?>">
+	<input type="button" onclick="javascript:history.go(-1);" value="返回上一步 : 运行环境检测" class="btn">
+	<input type="button" onclick="window.location.reload()" value="重新检测" class="btn">
+	<input type="button" onclick="if(confirm('安装后网站可能无法正常运行,是否继续?')) $('#install').submit();" value="强制安装" class="btn" title="绕过文件错误,强制安装">
 <?php
 }
 else
@@ -18,8 +18,8 @@ else
 <?php echo $writablefile;?>
 
 </span>
-<a href="javascript:history.go(-1);" class="btn"><?php echo $_go_back;?> : <?php echo $steps[--$step];?></a> 
-<a onclick="$('#install').submit();" class="btn"><?php echo $_check_go_next;?></a>
+<a href="javascript:history.go(-1);" class="btn">返回上一步：<?php echo $steps[--$step];?></a> 
+<a onclick="$('#install').submit();" class="btn">检测通过，下一步</a>
 <?php
 }
 ?>

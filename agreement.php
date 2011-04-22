@@ -17,8 +17,6 @@
  */
 define('CURSCRIPT', 'agreement');
 require("libraries/common.inc.php");
-require("share.inc.php");
-include(CACHE_PATH. "cache_setting1.php");
 setvar("content", file_get_contents(CACHE_PATH. "cache_agreement.php"));
 render("agreement");
 ?>

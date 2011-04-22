@@ -1,15 +1,13 @@
 <{assign var="page_title" value="`$page_title` - `$_announce`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
-<div class="wrapper">
+<div class="warpper">
   <div class="content">
-    <div class="tips"><span><{$position}></span><{$item.subject}></div>
+    <div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}></span></div>
     <div class="blank"></div>
     <div class="body_content">
-     <div class="title_bar_s3">
-            <span class="title_top_s3"><span></span></span>
-            <h2><{$item.subject}></h2>
-         </div>  
+      <div class="content_top"><h2><{$item.subject}></h2>
+       </div>
       <div class="content_body"><{$item.message}></div>
        <div class="blank"></div>
     </div>

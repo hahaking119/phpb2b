@@ -4,17 +4,17 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 插件 &raquo; 插件</p>
-</div>
 <div id="rightTop"> 
-    <h3>插件</h3> 
+    <p>插件</p> 
+    <ul class="subnav">
+		<li><span>管理</span></li>
+    </ul>
 </div>
 <div class="mrightTop"> 
-    <div class="fontr"> 
+    <div class="fontl"> 
         <form name="search_frm" action="http://www.phpb2b.com/plugin/" id="SearchFrm" method="get" target="_blank">
         <input type="hidden" name="do" value="search" />
-             <div> 
+             <div class="left"> 
 				插件关键字 : <input class="queryInput" type="text" name="q" value="" /> 
                 <input type="submit" name="search" id="Search" class="formbtn" value="站外搜索" /> 
             </div> 
@@ -42,15 +42,8 @@ body {background: #fcfdff}
 		  <td><{$item.description}></td>
 		  <td><{$item.copyright}></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-            <{if $item.available}>
-            <li><a class="btn_config" href="plugin.php?do=edit&id=<{$item.id}><{$addParams}>" title="设置">设置</a></li>
-             <li><a class="btn_uninstall" href="plugin.php?do=uninstall&id=<{$item.id}><{$addParams}>"  title="卸载">卸载</a></li>
-             <{else}>
-            <li><a class="btn_install" href="plugin.php?entry=<{$item.name}>&do=install<{$addParams}>" title="安装">安装</a></li>
-            <{/if}>
-          </ul>  
-		 </td>
+		  <span style="width: 120px;">
+		  <{if $item.available}><a href="plugin.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/set.gif" border="0" alt="设置"></a>&nbsp;&nbsp;<a href="plugin.php?do=uninstall&id=<{$item.id}><{$addParams}>"><img src="images/uninstall.gif" border="0" alt="卸载"></a><{else}><a href="plugin.php?entry=<{$item.name}>&do=install<{$addParams}>"><img src="images/install.gif" border="0" alt="安装"></a><{/if}></span></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -60,7 +53,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="卸载" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"></div>

@@ -19,5 +19,6 @@ class Member extends PbController {
 	var $name = "Member";
 	var $info;
 	var $id;
+	var $office_redirects = array("返回上一页", "网站首页", "商务室首页", "供求信息", "短消息");
 }
 ?>

@@ -4,22 +4,18 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 专业市场</p>
-</div>
 <div id="rightTop"> 
-    <h3>专业市场</h3> 
+    <p>专业市场</p> 
     <ul class="subnav">
-		<li><a class="btn1" href="market.php">管理</a></li>
-        <li><a href="market.php?do=edit">添加/编辑</a></li>
-		<li><a href="markettype.php">类型</a></li>
+		<li><span>管理</span></li>
+        <li><a class="btn1" href="market.php?do=edit">添加/编辑</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
-    <div class="fontr"> 
+    <div class="fontl"> 
         <form name="search_frm" action="market.php" id="SearchFrm" method="get">
         <input type="hidden" name="do" value="search" />
-             <div>
+             <div class="left">
 				关键字 : <input class="queryInput" type="text" name="q" value="" />
                 <span id="dataArea">
 						<select name="data[market][area_id1]" id="dataMarketAreaId1" class="level_1" style="width:120px;" ></select>
@@ -52,12 +48,8 @@ body {background: #fcfdff}
 		  <td><{$item.areaname}></td>
 		  <td><{if $item.status==1}>显示<{else}>不显示<{/if}></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-              <li><a class="btn_delete" href="market.php?id=<{$item.id}>&do=del<{$addParams}>" title="删除">删除</a></li>
-              <li><a class="btn_edit" href="market.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-              <li><a class="btn_browse" href="<{$SiteUrl}>market/detail.php?id=<{$item.id}>" target="_blank" title="预览">预览</a></li>
-           </ul> 
-		 </td>
+		  <span style="width: 120px;">
+		  <a href="market.php?id=<{$item.id}>&do=del<{$addParams}>"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;&nbsp;<a href="market.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a>&nbsp;&nbsp;<a href="<{$SiteUrl}>market/detail.php?id=<{$item.id}>" target="_blank"><img src="images/preview.gif" border="0" alt="预览"></a></span>		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -67,7 +59,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
       <input type="submit" name="check" value="显示" class="formbtn batchButton"/>
       <input type="submit" name="uncheck" value="不显示" class="formbtn batchButton"/>

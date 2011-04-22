@@ -104,35 +104,12 @@ class Members extends PbModel {
 			if (!empty($result['trusttype_ids'])) {
 				$tmp_str = explode(",", $result['trusttype_ids']);
 				foreach ($tmp_str as $key=>$val){
-					$tmp_img.="<img src=\"images/icon/".$_PB_CACHE['trusttype'][$val]['avatar']."\" alt=\"".$_PB_CACHE['trusttype'][$val]['name']."\" />";
+					$tmp_img.="<img src='images/icon/".$_PB_CACHE['trusttype'][$val]['avatar']."' alt='".$_PB_CACHE['trusttype'][$val]['name']."' />";
 				}
 				$result['trust_image'] = $tmp_img;
 			} 			
  		}
  		return $result;
- 	}
- 	
- 	function authPasswd($passwd, $type = 'md5', $salt = null)
- 	{
- 		switch ($type) {
- 			case "md5":
- 				return md5($passwd);
- 				break;
- 			case "crypt":
- 				if (!empty($salt)) {
- 					return crypt($passwd, $salt);
- 				}else{
- 					$salt = substr($passwd, 0, 2);
- 					return crypt($passwd, $salt);
- 				}
- 				break;
- 			case "crc32":
- 				$crc = crc32($passwd);
- 				return sprintf("%u", $crc);
- 			default:
- 				return $passwd;
- 				break;
- 		}
  	}
  	 	
 	function checkUserLogin($uname,$upass)
@@ -149,7 +126,7 @@ class Members extends PbModel {
 			return -1;
 		}elseif(!$this->checkUserExist($uname)) {
 			return -2;
-		}elseif (strcmp($true_pass,$this->authPasswd($upass))!=0){
+		}elseif (strcmp($true_pass,md5($upass))!=0){
 			return -3;
 		}elseif ($tmpUser['status'] !=1) {
 			return -4;
@@ -169,7 +146,7 @@ class Members extends PbModel {
 
 	function checkUserExist($uname, $set = true)
 	{
-		if(strlen($uname)<1 || strlen($uname)>255) {
+		if(strlen($uname)<1 || strlen($uname)>20) {
 			return false;
 		}
 		$sql = "SELECT m.id,m.username,m.userpass FROM {$this->table_prefix}members m WHERE m.username='{$uname}'";
@@ -185,7 +162,7 @@ class Members extends PbModel {
 	function checkUserExistsByEmail($email)
 	{
 		if (!pb_check_email($email)) {
-			flash("email_exists");
+			flash("email_exists");;
 		}
 		$result = $this->field("id", "email='".$email."'");
 		if (!$result || empty($result)) {
@@ -221,7 +198,7 @@ class Members extends PbModel {
 	{
 		$return = false;
 		$user_pass = $this->field("userpass", "id=".$member_id);
-		if (pb_strcomp($this->authPasswd($input_passwd), $user_pass)) {
+		if (pb_strcomp(md5($input_passwd), $user_pass)) {
 			return true;
 		}else{
 			return false;
@@ -230,7 +207,7 @@ class Members extends PbModel {
 	
 	function updateUserPasswdById($member_id, $new_passwd)
 	{
-		$sql = "UPDATE {$this->table_prefix}members SET userpass='".$this->authPasswd($new_passwd)."' WHERE id={$member_id} AND status='1'";
+		$sql = "UPDATE {$this->table_prefix}members SET userpass='".md5($new_passwd)."' WHERE id={$member_id} AND status='1'";
 		$result = $this->dbstuff->Execute($sql);
 		return $result;
 	}
@@ -242,7 +219,16 @@ class Members extends PbModel {
 			return false;
 		}
 		list($uid, $uname, $upass, $uemail) = $data;
-		$passport->ucenter($uname, $upass, $uemail, $action);
+		switch ($action) {
+			case "login":
+				$passport->ucenter($uname,$upass, '', 'login');
+				break;
+			case "reg":
+				$passport->ucenter($uname, $upass, $uemail, 'reg');
+				break;
+			default:
+				break;
+		}
 	}
 	
 	function putLoginStatus($user_info)
@@ -250,21 +236,20 @@ class Members extends PbModel {
 		global $phpb2b_auth_key;
 		$_SESSION["MemberID"] = $user_info['id'];
 		$_SESSION["MemberName"] = $user_info['username'];
-		$auth = authcode($user_info['id']."\t".$user_info['username']."\t".$this->authPasswd($user_info['userpass'])."\t".$user_info['is_admin'], 'ENCODE', $phpb2b_auth_key);
+		$auth = authcode($user_info['id']."\t".$user_info['username']."\t".md5($user_info['userpass'])."\t".$user_info['is_admin'], 'ENCODE', $phpb2b_auth_key);
 		usetcookie('auth', $auth, $this->timestamp+3600);
-		$this->passport(array($user_info['id'], $user_info['username'], $user_info['userpass']), "login");
 	}
 	
 	function Add()
 	{
-		global $_PB_CACHE, $memberfield, $phpb2b_auth_key, $if_need_check;
+		global $_PB_CACHE, $memberfield, $phpb2b_auth_key;
 		$error_msg = array();
 		if (empty($this->params['data']['member']['username']) or 
 		empty($this->params['data']['member']['userpass']) or 
 		empty($this->params['data']['member']['email'])) return false;
 		$space_name = $this->params['data']['member']['username'];
 		$userpass = $this->params['data']['member']['userpass'];
-		$this->params['data']['member']['userpass'] = $this->authPasswd($this->params['data']['member']['userpass']);
+		$this->params['data']['member']['userpass'] = md5($this->params['data']['member']['userpass']);
 		if ($this->isChinese($space_name)) {
 			require(LIB_PATH. "wordsconvert.class.php");
 			$wd = new WordsConvert($space_name);
@@ -274,15 +259,16 @@ class Members extends PbModel {
 		if(empty($uip)){
 			pheader("location:".URL."redirect.php?message=".urlencode(L('sys_error')));
 		}
+		//$this->params['data']['member']['space_name'] = $space_name;
 		$this->params['data']['member']['last_login'] = $this->params['data']['member']['created'] = $this->params['data']['member']['modified'] = $this->timestamp;
 		$this->params['data']['member']['last_ip'] = pb_get_client_ip('str');
 		$email_exists = $this->checkUserExistsByEmail($this->params['data']['member']['email']);
 		if ($email_exists) {
-			flash("email_exists", null, 0);
+			flash("email_exists");
 		}
 		$if_exists = $this->checkUserExist($this->params['data']['member']['username']);
 		if ($if_exists) {
-			flash('member_has_exists', null, 0);
+			flash('member_has_exists');
 		}else{
 			$this->save($this->params['data']['member']);
 			$key = $this->table_name."_id";
@@ -291,10 +277,10 @@ class Members extends PbModel {
 			$memberfield->params['data']['memberfield']['member_id'] = $this->$key;
 			$memberfield->params['data']['memberfield']['reg_ip'] = $this->params['data']['member']['last_ip'];
 			$memberfield->save($memberfield->params['data']['memberfield']);
-			//$if_need_check = false;
-			//if (isset($_PB_CACHE['setting']['if_need_check'])) {
-			//	$if_need_check = intval($_PB_CACHE['setting']['if_need_check']);
-			//}
+			$if_need_check = false;
+			if (isset($_PB_CACHE['setting']['if_need_check'])) {
+				$if_need_check = intval($_PB_CACHE['setting']['if_need_check']);
+			}
 			if (!$if_need_check) {
 				$user_info['id'] = $this->$key;
 				$user_info['username'] = $this->params['data']['member']['username'];
@@ -350,23 +336,10 @@ class Members extends PbModel {
 		if (pb_strcomp($new_space_name, $data['space_name']) || empty($data)) {
 			return;
 		}else{
-			$if_exists = $this->dbstuff->GetOne("SELECT id FROM {$this->table_prefix}members WHERE space_name='".$new_space_name."'");
-			if ($if_exists) {
-				flash("space_name_exists");
-			}
 			$return = $this->dbstuff->Execute("UPDATE {$this->table_prefix}members m SET m.space_name='".$new_space_name."' WHERE m.id=".$this->id);
 			$return = $this->dbstuff->Execute("UPDATE {$this->table_prefix}companies c SET c.cache_spacename='".$new_space_name."' WHERE c.member_id=".$this->id);
 			$return = $this->dbstuff->Execute("UPDATE {$this->table_prefix}jobs j SET j.cache_spacename='".$new_space_name."' WHERE j.member_id=".$this->id);
 			return true;
-		}
-	}
-	
-	function clearCache($id = null)
-	{
-		if (!is_null($id) && $id>0) {
-			$this->dbstuff->Execute("DELETE FROM  WHERE member_id='".$id."'");
-		}else{
-			$this->dbstuff->Execute("TRUNCATE `{$this->table_prefix}membercaches`");
 		}
 	}
 }

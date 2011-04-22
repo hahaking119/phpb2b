@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'redirect');
 require("libraries/common.inc.php");
-require("share.inc.php");
 $redirect = array(
 "office-room/offer"=>"office-room/offer.php?do=edit",
 "office-room/company"=>"office-room/company.php",

@@ -16,29 +16,34 @@
  * @version $Id: header.share.php 571 2009-12-28 12:00:59Z steven $
  */
 $steps = array(
-'1'=>$_software_intro,
-'2'=>$_software_license,
-'3'=>$_env_check,
-'4'=>$_perm_check,
-'5'=>$_db_setting,
-'6'=>$_site_info_setting,
-'7'=>$_install_complete
+'1'=>'软件介绍',
+'2'=>'软件许可协议',
+'3'=>'运行环境检测',
+'4'=>'文件权限检测',
+'5'=>'数据库及管理员设置',
+'6'=>'填写网站基本信息',
+'7'=>'安装完成'
 );
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset;?>">
-<title><?php echo $steps[$step];?> - PHPB2B Athena <?php echo $_install_quide;?></title>
+<title><?php echo $steps[$step];?> - PHPB2B 安装向导</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="../scripts/jquery.js"></script>
 <script language="JavaScript" src="../scripts/install.js"></script>
 <script language="JavaScript" src="../scripts/pngfix.js"></script>
+<script>
+jQuery(function($) {
+    $("img[@src$=png], #image-one, #image-two").pngfix();
+});
+</script>
 </head>
 <body>
 <div id="main">
-<div id="ads">- <?php echo $_b2b_market_system;?></div>
-<div id="top"><a href="http://www.phpb2b.com/" target="_blank"><?php echo $_official_site;?></a> | <a href="http://www.phpb2b.com/bbs/" target="_blank"><?php echo $_official_community;?></a></div>
+<div id="ads">- 行业B2B电子商务网站管理系统</div>
+<div id="top"><a href="http://www.phpb2b.com/" target="_blank">官方网站</a>　|　<a href="http://www.phpb2b.com/bbs/" target="_blank">官方论坛</a></div>
   <div id="left">
     <ul>
 	<?php

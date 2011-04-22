@@ -43,12 +43,11 @@ jQuery(document).ready(function($) {
                   （图片大小不要超过200K ,格式gif,jpg,png 图片宽度最大为220像素效果最佳！）</span>
              </td>
           </tr>
-		  <{if $item.image}>
           <tr>
            <th class="circle_bottomleft">　</th>
              <td class="circle_bottomright"><a href="<{$item.image}>" id="uploadpic_hover" rel="facebox"><img id="uploadpic" src="<{$item.image}>.small.jpg" alt="<{$item.title}>" width="80" height="80" border="0" /></a></td>
           </tr>
-          <{/if}>
+          
        </table>
        <table class="btn_save">
           <tr>

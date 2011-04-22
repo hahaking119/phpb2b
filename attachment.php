@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'attachment');
 require("libraries/common.inc.php");
-require("share.inc.php");
 if(empty($_GET['id'])){
 	$picture_src = URL."images/watermark.png";
 }

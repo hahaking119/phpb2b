@@ -30,10 +30,8 @@ class Attachment extends PbController {
     var $file_full_url;
     var $upload_dir;
     var $file_size;
-    var $if_watermark;
-    var $is_water_image;
-    var $is_water_text;
-    var $water_text_color;
+    var $if_watermark = true;
+    var $is_water_image = true;
     var $if_thumb = true;
     var $if_thumb_middle = true;
     var $rename_file;
@@ -48,15 +46,11 @@ class Attachment extends PbController {
 	
 	function Attachment($user_file = '')
 	{
-		global $attachment_dir, $_PB_CACHE;
+		global $attachment_dir;
 		if (!empty($user_file)) {
 			$this->upload_form_field = $user_file;
 		}
 		$this->attachment_dir = $attachment_dir;
-		$this->if_watermark = $_PB_CACHE['setting']['watermark'];
-		$this->is_water_image = $_PB_CACHE['setting']['waterimage'];
-		$this->is_water_text = $_PB_CACHE['setting']['watertext'];
-		$this->water_text_color = $_PB_CACHE['setting']['watercolor'];
 		$this->upload_dir = gmdate("Y").DS.gmdate("m").DS.gmdate("d");
 		$this->out_file_path = PHPB2B_ROOT. $this->attachment_dir.DS.$this->upload_dir.DS;
 		$this->upload_url = str_replace(array(DS, "\\", "\'"), "/", $this->upload_dir).'/'; 	
@@ -75,7 +69,7 @@ class Attachment extends PbController {
 			$upload->the_file = $_FILES[$this->upload_form_field]['name'];
 			$upload->http_error = $_FILES[$this->upload_form_field]['error'];
 	 		if ($_FILES[$this->upload_form_field]['size']>$this->max_file_size) {
-	 			flash(sprintf(L('file_too_big'), $upload->show_extensions()));
+	 			die(sprintf(L('file_too_big'), $upload->show_extensions()));
 	 		}
 			$isuploaded = $upload->upload($this->rename_file);
 			//insert into db.
@@ -137,19 +131,16 @@ class Attachment extends PbController {
  		
  	}
 	
-	function imageWaterMark($groundImage, $waterImage="", $waterPos=9, $waterText='',
-	$textFont=10, $textColor = '')
+	function imageWaterMark($groundImage, $waterImage="", $waterPos=9, $waterText=URL,
+	$textFont=10, $textColor ="#FF0000")
 	{
 		if ($this->is_water_image && empty($waterImage)) {
 			$waterImage = PHPB2B_ROOT.'images/watermark.png';
 		}
 		$is_water_image = false;
 		$formatMsg = L("format_not_support");
-		if(!empty($waterImage))
-		{ 
-			if(!file_exists($waterImage)){
-				flash("water_image_not_exists");
-			}
+		if(!empty($waterImage) && file_exists($waterImage))
+		{
 			$is_water_image = TRUE;
 			$water_info = getimagesize($waterImage);
 			$water_w   = $water_info[0];
@@ -175,21 +166,23 @@ class Attachment extends PbController {
 				default:die($formatMsg);
 			}
 		}
+		else
+		{
+			flash("water_image_not_exists");
+		}
 		if($is_water_image)
 		{
 			$w = $water_w;
 			$h = $water_h;
+			//$label = "图片的";
 		}
 		else
 		{
-			if (empty($waterText)) {
-				$waterText = (!empty($this->is_water_text))?$this->is_water_text:URL;
-				$textColor = (!empty($this->water_text_color))?$this->water_text_color:'#FF0000';
-			}
-			$temp = imagettfbbox(ceil($textFont*5),0, $font_file = PHPB2B_ROOT."./data/fonts/incite.ttf",$waterText);
+			$temp = imagettfbbox(ceil($textFont*5),0, PHPB2B_ROOT."./data/fonts/incite.ttf",$waterText);
 			$w = $temp[2] - $temp[6];
 			$h = $temp[3] - $temp[7];
 			unset($temp);
+			//$label = "文字的";
 		}
 		if( ($ground_w<=$w) || ($ground_h<=$h) )
 		{
@@ -197,47 +190,47 @@ class Attachment extends PbController {
 		}
 		switch($waterPos)
 		{
-			case 0:
+			case 0://随机
 			$posX = rand(0,($ground_w - $w));
 			$posY = rand(0,($ground_h - $h));
 			break;
-			case 1:
+			case 1://1为顶端居左
 			$posX = 0;
 			$posY = 0;
 			break;
-			case 2:
+			case 2://2为顶端居中
 			$posX = ($ground_w - $w) / 2;
 			$posY = 0;
 			break;
-			case 3:
+			case 3://3为顶端居右
 			$posX = $ground_w - $w;
 			$posY = 0;
 			break;
-			case 4:
+			case 4://4为中部居左
 			$posX = 0;
 			$posY = ($ground_h - $h) / 2;
 			break;
-			case 5:
+			case 5://5为中部居中
 			$posX = ($ground_w - $w) / 2;
 			$posY = ($ground_h - $h) / 2;
 			break;
-			case 6:
+			case 6://6为中部居右
 			$posX = $ground_w - $w;
 			$posY = ($ground_h - $h) / 2;
 			break;
-			case 7:
+			case 7://7为底端居左
 			$posX = 0;
 			$posY = $ground_h - $h;
 			break;
-			case 8:
+			case 8://8为底端居中
 			$posX = ($ground_w - $w) / 2;
 			$posY = $ground_h - $h;
 			break;
-			case 9:
+			case 9://9为底端居右
 			$posX = $ground_w - $w;
 			$posY = $ground_h - $h;
 			break;
-			default:
+			default://随机
 			$posX = rand(0,($ground_w - $w));
 			$posY = rand(0,($ground_h - $h));
 			break;
@@ -259,11 +252,7 @@ class Attachment extends PbController {
 			{
 				flash("watermark_word_error");
 			}
-			$font = 1;
-			if (!empty($font_file)) {
-				$font = @imageloadfont($font_file);
-			}
-			imagestring ( $ground_im, $font, $posX, $posY, $waterText, imagecolorallocate($ground_im, $R, $G, $B));
+			imagestring ( $ground_im, $textFont, $posX, $posY, $waterText, imagecolorallocate($ground_im, $R, $G, $B));
 		}
 		@unlink($groundImage);
 		switch($ground_info[2])

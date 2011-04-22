@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.userpage.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.userpage.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_block_userpage($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -22,25 +22,11 @@ function smarty_block_userpage($params, $content, &$smarty) {
 	if (!class_exists("Userpages")) {
 		uses("userpage");
 		$userpage = new Userpages();
-		$userpage_controller = new Userpage();
 	}else{
 	    $userpage = new Userpages();
-		$userpage_controller = new Userpage();
 	}
 	require(CACHE_PATH. "cache_userpage.php");
 	$result = $_PB_CACHE['userpage'];
-	if (isset($params['exclude'])) {
-		if (strpos($params['exclude'], ",")>0) {
-			$tmp_str = explode(",", $params['exclude']);
-			if (!empty($tmp_str)) {
-				foreach ($tmp_str as $id_val) {
-					unset($result[$id_val]);
-				}
-			}
-		}else{
-			unset($params['exclude']);
-		}
-	}
 	$return = null;
 	if (!empty($result)) {
 		$i_count = count($result);
@@ -53,7 +39,7 @@ function smarty_block_userpage($params, $content, &$smarty) {
 				}else{
 					$url = "page.php?name=".$result[$i]['name'];
 				}
-			}
+			}		
 			$return.= str_replace(array("[link:title]", "[field:title]", "[field:tip]"), array($url, $result[$i]['title'], $result[$i]['digest']), $content);
 		}
 	}

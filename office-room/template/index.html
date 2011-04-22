@@ -22,7 +22,7 @@ $(document).ready(function() {
               <table class="base_member">
               <tr>
                 <th>&nbsp;</th>
-                <td class="member_upgrade">您现在是<{$group.name}>(<a href="../member/upgrade.php?do=upgrade" title="升级为高级会员" target="_blank">立即升级?</a>)(<a href="../member/upgrade.php?do=charge" title="为账户充值" target="_blank">立即充值?</a>)</td>
+                <td>您现在是<{$group.name}>(<a href="../member/upgrade.php" title="升级为高级会员" target="_blank">立即升级?</a>)</td>
               </tr>
               <tr>
                 <th><img src="../images/group/<{$group.image}>" /></th>
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 <td> 
 					<div id="ProgressBar">
 					<div id="Lable">
-					<{if $service_days>=100}><strong>已到期?<a href="../member/upgrade.php?do=upgrade" target="_blank">立即升级</a>!</strong><{/if}>
+					<{if $service_days>=100}><strong>已到期?<a href="../member/upgrade.php" target="_blank">立即升级</a>!</strong><{/if}>
 					</div>
 					<span class="progressBar" id="service-pro"><{$service_days}>%</span>
 					</div>
@@ -62,7 +62,7 @@ $(document).ready(function() {
 				<{/announce}>
               </ul>
            </div>
-        </div>
+        </div>           
     </div>
 </div>
 <{include file="footer.html"}>

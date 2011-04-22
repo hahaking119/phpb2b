@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'announce');
 require("libraries/common.inc.php");
-require("share.inc.php");
 uses("announcement");
 $announce = new Announcements();
 if (isset($_GET['id'])) {
@@ -26,6 +25,7 @@ if (isset($_GET['id'])) {
 	if (!empty($result)) {
 		$result['message'] = nl2br($result['message']);
 		$viewhelper->setTitle($result['subject']);
+		$viewhelper->setPosition($result['subject']);
 		setvar("item", $result);
 		setvar("PageTitle", strip_tags($result['subject']));
 		render("announce.detail");

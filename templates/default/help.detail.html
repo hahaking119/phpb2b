@@ -1,4 +1,4 @@
-<{assign var="page_title" value="`$page_title`"}>
+<{assign var="page_title" value="`$page_title` - `$_help_center`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="container">
@@ -42,7 +42,7 @@
 					<p class="help_rsearch">
 					<form method="get" action="help/index.php">
 					<input type="hidden" name="search" value="search"/>
-						<em><{$_search}><{$_help}><{$_colon}></em><input name="q" value="" type="text" /><input name="submit" value="" type="submit" class="help_rgo" />
+						<em><{$_search}><{$_help}>:</em><input name="q" value="" type="text" /><input name="submit" value="" type="submit" class="help_rgo" />
 					</form>
 					</p>
 					<div><{$item.content}></div>

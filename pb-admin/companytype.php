@@ -13,26 +13,48 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: product.php 525 2009-12-28 06:23:21Z cht117 $
+ * @version $Id: companytype.php 427 2009-12-26 13:45:47Z steven $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
-require(CACHE_PATH. "cache_companytype.php");
-require(LIB_PATH. "cache.class.php");
+require(LIB_PATH. 'cache.class.php');
+uses("companytype");
 $cache = new Caches();
+$conditions = array();
+$companytype = new Companytypes();
 $tpl_file = "companytype";
-if (isset($_POST['do'])) {
-	$do = trim($_POST['do']);
-	if ($do == "save") {
-		if($cache->updateTypes("companytype", $_POST['data']['sort'])){
-			flash("success");
-		}else{
-			flash();
-		}
+if (isset($_POST['del']) && !empty($_POST['id'])) {
+	$result = $companytype->del($_POST['id']);
+	if (!$result) {
+		flash();
 	}
 }
-if (!empty($_PB_CACHE['companytype'])) {
-	setvar("sorts", implode("\r\n", $_PB_CACHE['companytype']));
+if (isset($_POST['save']) && !empty($_POST['data']['companytype']['name'])) {
+	$companytype->setParams();
+	if (isset($_POST['data']['companytype']['id'])) {
+		$result = $companytype->save($companytype->params['data']['companytype'], "update", intval($_POST['data']['companytype']['id']));
+	}else{
+		$result = $companytype->save($companytype->params['data']['companytype']);
+	}
+	$cache->writeCache('companytype', 'companytype');
+	pheader("location:companytype.php");
 }
+if (isset($_GET['do'])) {
+	$do = trim($_GET['do']);
+	if (!empty($_GET['id'])) {
+		$id = intval($_GET['id']);
+	}
+	if ($do=="edit") {
+		if($id){
+			$result = $companytype->read("*",$id);
+			setvar("item",$result);
+		}
+		$tpl_file = "companytype.edit";
+		template($tpl_file);
+		exit;
+	}
+}
+$result = $companytype->findAll("id,name,created",null, $conditions, " id DESC");
+setvar("Items",$result);
 template($tpl_file);
 ?>

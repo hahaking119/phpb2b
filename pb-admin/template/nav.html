@@ -4,14 +4,11 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 模板风格 &raquo; 导航栏</p>
-</div>
 <div id="rightTop"> 
-    <h3>导航栏</h3> 
+    <p>导航栏</p> 
     <ul class="subnav">
-		<li><a class="btn1" href="nav.php">管理</a></li>
-        <li><a href="nav.php?do=edit">添加/编辑</a></li>
+		<li><span>管理</span></li>
+        <li><a class="btn1" href="nav.php?do=edit">添加/编辑</a></li>
     </ul>
 </div>
 <div class="tdare">
@@ -21,7 +18,7 @@ body {background: #fcfdff}
 		<tr class="tatr1">
 		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
 		  <td><label for="idAll">名称</label></td>
-		  <td><span>预览</span></td>
+		  <td><span>显示名称</span></td>
 		  <td>链接地址</td>
 		  <td><span>显示顺序</span></td>
 		  <td class="handler">操作</td>
@@ -37,9 +34,8 @@ body {background: #fcfdff}
 		  <td><{$item.url}></td>
 		  <td><input type="text" name="display_order[]" style="width:35px; text-align:center" value="<{$item.display_order}>" /></td>
 		  <td class="handler">
-           <ul id="handler_icon">
-            <li><a class="btn_edit" href="nav.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-          </ul>  
+		  <span style="width: 120px;">
+		  <a href="nav.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a></span></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -49,7 +45,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
       <input type="submit" name="update_prior" value="更新" class="formbtn batchButton"/>
     </div>

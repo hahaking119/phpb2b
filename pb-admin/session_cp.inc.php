@@ -20,28 +20,25 @@ if(empty($_COOKIE[$cookiepre.'admin']) || !($_COOKIE[$cookiepre.'admin'])){
 	echo "<script language='javascript'>top.location.href='login.php';</script>";
 	exit;
 }else{
-	uses("adminfield");
-	$adminer = new Adminfields();	
     $tAdminInfo = authcode($_COOKIE[$cookiepre.'admin'], "DECODE");
     $tAdminInfo = explode("\n", $tAdminInfo);
     $current_adminer_id = $tAdminInfo[0];
     $current_adminer = $tAdminInfo[1];
     $current_pass = $tAdminInfo[2];
-    $adminer->loadsession($current_adminer_id, pb_get_client_ip("str"), $cfg_checkip);
-    $adminer_info = $adminer->info;
+    $sql = "select m.userpass,af.last_login,af.last_ip,af.member_id from {$tb_prefix}members m,{$tb_prefix}adminfields af where m.id='".$current_adminer_id."' AND m.id=af.member_id";
+    $adminer_info = $pdb->GetRow($sql);
     uaAssign(array("current_adminer"=>$current_adminer, "current_adminer_id"=>$current_adminer_id));
+	if (!pb_strcomp($current_pass, $adminer_info['userpass']) || !pb_strcomp(pb_get_client_ip(), $tAdminInfo[3])) {
+    	pheader("location:login.php");
+    }
 }
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.admin.inc.php');
-require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.adminmenu.inc.php');
 require(PHPB2B_ROOT. 'phpb2b_version.php');
 $smarty->template_dir = "template/";
 $smarty->setCompileDir("pb-admin".DS);
 $smarty->flash_layout = "flash";
 $smarty->assign("addParams", $viewhelper->addParams);
 $smarty->assign("today_timestamp", mktime(0, 0, 0, date("m"), date("d"), date("Y")));
-if (!empty($arrTemplate)) {
-    $smarty->assign($arrTemplate);
-}
 function size_info($fileSize) {
 	$size = sprintf("%u", $fileSize);
 	if($size == 0) {

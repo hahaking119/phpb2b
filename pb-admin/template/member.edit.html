@@ -4,26 +4,27 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 用户中心 &raquo; 会员中心</p>
-</div>
 <div id="rightTop"> 
-    <h3>会员</h3> 
+    <p>会员中心</p> 
     <ul class="subnav">
-		<li><a href="member.php">管理</a></li>
-        <li><a class="btn1" href="member.php?do=edit">添加/编辑</a></li>
-        <li><a href="membertype.php">分类</a></li>
+		<li><a class="btn1" href="member.php">管理</a></li>
+        <li><span>添加/编辑</span></li>
+        <li><a class="btn1" href="membertype.php">分类</a></li>
     </ul>
 </div>
 <div class="info">
   <form method="post" action="member.php" id="EditFrm" name="edit_frm">
-  	<input type="hidden" name="page" value="<{$smarty.get.page}>" />
-	<input type="hidden" name="id" value="<{$item.id}>" />
+  <input type="hidden" name="id" value="<{$item.id}>" />
     <table class="infoTable">
       <tr>
         <th class="paddingT15"> 用户名：</th>
         <td class="paddingT15 wordSpacing5">          
 		<input class="infoTableInput2" name="data[member][username]" value="<{$item.username}>" /></td>
+      </tr>   
+      <tr>
+        <th class="paddingT15"> 真实姓名：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[memberfield][last_name]" value="<{$item.last_name}>" /></td>
       </tr>   
       <tr>
         <th class="paddingT15"> 空间名：</th>
@@ -64,7 +65,7 @@ body {background: #fcfdff}
         <select name="data[member][membergroup_id]" id="dataMemberGroupId">
         <{html_options options=$MembergroupOptions selected=$item.membergroup_id}>
         </select>
-        <{if $item.groupimage}><img src="<{$item.groupimage}>" /><{/if}>
+        <img src="<{$item.groupimage}>" />
         </td>
       </tr>
       <tr>
@@ -73,7 +74,7 @@ body {background: #fcfdff}
       </tr>
       <tr>
         <th class="paddingT15">商业服务时间：</th>
-        <td class="paddingT15 wordSpacing5"><input name="data[service_start_date]" value="<{$item.service_start_date}>" class="Wdate" onclick="WdatePicker();" />至<input name="data[service_end_date]" value="<{$item.service_end_date}>" class="Wdate" onclick="WdatePicker();" /></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[service_start_date]" value="<{$item.service_start_date|date_format:"%Y-%m-%d"}>" />至<input class="infoTableInput2" name="data[service_end_date]" value="<{$item.service_end_date|date_format:"%Y-%m-%d"}>" /></td>
       </tr>
       <tr>
         <th class="paddingT15">状态：</th>
@@ -85,7 +86,7 @@ body {background: #fcfdff}
       </tr>
       <tr>
         <th class="paddingT15">新密码：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[userpass]" id="dataUserpass" value="" type="password" /><label class="field_notice">如果不想修改，则不必填写</label></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[userpass]" id="dataUserpass" value="" type="password" /></td>
       </tr>
       <tr>
         <th class="paddingT15">再次输入密码：</th>
@@ -99,5 +100,4 @@ body {background: #fcfdff}
     </table>
   </form>
 </div>
-<{fetch file="../scripts/date.js"}></script>
 <{include file="footer.html"}>

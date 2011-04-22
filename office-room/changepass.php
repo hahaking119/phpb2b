@@ -24,7 +24,7 @@ if (isset($_POST['do'])) {
 		$OldPassCheck = $member->checkUserLogin($_SESSION['MemberName'],$_POST['oldpass']);
 		if ($OldPassCheck>0) {
 			$vals = array();
-			$vals['userpass'] = $member->authPasswd(trim($_POST['newpass']));
+			$vals['userpass'] = md5(trim($_POST['newpass']));
 			if (!empty($_POST['question']) && !empty($_POST['answer'])) {
 				$vals['question'] = $_POST['question'];
 				$vals['answer'] = $_POST['answer'];

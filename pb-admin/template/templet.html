@@ -10,22 +10,23 @@ body {background: #fcfdff}
 jQuery(document).ready(function($) {
 	$.facebox.settings.loadingImage = '<{$SiteUrl}>images/facebox/loading.gif'; 
 	$.facebox.settings.closeImage = '<{$SiteUrl}>images/facebox/closelabel.gif'; 
-	$('a[rel*=facebox]').facebox()
+	$('a[rel*=facebox]').facebox() 
 })
 </script>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 模板风格 &raquo; 企业模板</p>
-</div>
 <div id="rightTop"> 
-    <h3>企业模板</h3> 
+    <p>模板风格</p> 
+    <ul class="subnav">
+		<li><span>管理</span></li>
+        <li><a class="btn1" href="javascript:;">编辑</a></li>
+    </ul>
 </div>
 <div class="mrightTop"> 
-    <div class="fontr"> 
+    <div class="fontl"> 
         <form name="search_frm" id="SearchFrm" method="get">
         <input type="hidden" name="do" value="search" />
-             <div> 
-				<{$_keywords}><input class="queryInput" type="text" name="q" value="" /> 
-                <input type="submit" name="search" id="Search" class="formbtn" value="<{$_search}>" /> 
+             <div class="left"> 
+				名称关键字 : <input class="queryInput" type="text" name="q" value="" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
             </div> 
         </form> 
     </div> 
@@ -33,15 +34,15 @@ jQuery(document).ready(function($) {
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
     <tbody>
 		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></td>
-		  <td><label for="idAll"><{$_templet_name}></label></td>
-		  <td><span><{$_directory}></span></td>
-		  <td><{$_author}></td>
-		  <td><span><{$_screenshot}></span></td>
-		  <td class="handler"><{$_action}></td>
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td><label for="idAll">模板名称</label></td>
+		  <td><span>所在目录</span></td>
+		  <td>作者</td>
+		  <td><span>图例</span></td>
+		  <td class="handler">操作</td>
 		</tr>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
@@ -49,27 +50,22 @@ jQuery(document).ready(function($) {
 		  <td><label for="item_<{$item.id}>"><{$item.title}></label></td>
 		  <td><{$item.directory}></td>
 		  <td><{$item.author}></td>
-		  <td><{if $item.picture}><a href="<{$item.picture}>" title="" rel="facebox"><{$_preview}></a><{/if}></td>
+		  <td><{if $item.picture}><a href="<{$item.picture}>" title="" rel="facebox">预览</a><{/if}></td>
 		  <td class="handler">
-           <ul id="handler_icon">
-            <{if $item.available}>
-            <li><a class="btn_edit" href="templet.php?do=edit&id=<{$item.id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
-             <li><a class="btn_uninstall" href="templet.php?do=uninstall&id=<{$item.id}><{$addParams}>" title="<{$_uninstall}>"><{$_uninstall}></a></li>
-             <{else}>
-            <li><a class="btn_install" href="templet.php?entry=<{$item.name}>&do=install<{$addParams}>" title="<{$_install}>"><{$_insatll}></a></li>
-            <{/if}>
-          </ul>  
-		 </td>
+		  <span style="width: 120px;">
+		  <{if $item.available}><a href="templet.php?do=edit&id=<{$item.id}><{$addParams}>"><img src="images/edit.gif" border="0" alt="编辑"></a>&nbsp;&nbsp;<a href="templet.php?do=uninstall&id=<{$item.id}><{$addParams}>"><img src="images/uninstall.gif" border="0" alt="卸载"></a><{else}><a href="templet.php?entry=<{$item.name}>&do=install<{$addParams}>"><img src="images/install.gif" border="0" alt="安装"></a><{/if}></span></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="6"><{$_no_datas}></td>
+		  <td colspan="6">没有符合条件的记录</td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="<{$_action_zone}>">
-    <div class="left paddingT15" id="batchAction"><input type="submit" name="del" value="<{$_uninstall}>" class="formbtn batchButton"/></div>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">   
+      <input type="submit" name="del" value="卸载" class="formbtn batchButton"/>
+    </div>
     <div class="pageLinks"><{$ByPages}></div>
     <div class="clear"/>
     </div>

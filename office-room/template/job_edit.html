@@ -19,39 +19,39 @@
 		  <table class="offer_info_content">       
 
                       <tr>
-                         <th class="circle_left">招聘标题：</th>
+                         <th class="circle_left">招聘标题</th>
                          <td class="circle_right"><input name="job[name]" type="text" id="jobname" value="<{$item.name}>">
                         <font color="#FF6600">*</font></td>
                       </tr>
                       <tr>
-                        <th>性别要求：</th>
+                        <th>性别要求</th>
                         <td class="tdright"><{html_radios name="job[require_gender_id]" options=$Genders checked=$item.require_gender_id|default:0 separator=" "}></td>
                       </tr>
                       
                       <tr>
-                        <th>招聘人数：</th>
+                        <th>招聘人数</th>
                         <td class="tdright"><input name="job[peoples]" type="text" id="peoples" value="<{$item.peoples}>" size="2" maxlength="2">
                         人</td>
                       </tr>
                       <tr>
-                        <th>学历要求：</th>
+                        <th>学历要求</th>
                         <td class="tdright"><select name="job[require_education_id]">
                           <{html_options options=$Educations selected=$item.require_education_id}>
                         </select></td>
                       </tr>
                       
                       <tr>
-                        <th>年龄要求：</th>
+                        <th>年龄要求</th>
                         <td class="tdright"><input name="job[require_age]" type="text" id="require_age" value="<{$item.require_age}>"></td>
                       </tr>
                       <tr>
-                        <th>薪水范围：</th>
+                        <th>薪水范围</th>
                         <td class="tdright"><select name="job[salary_id]">
 						<{html_options options=$Salary selected=$item.salary_id}>
 						</select></td>
                       </tr>
                       <tr>
-                        <th>所属行业：</th>
+                        <th>所属行业</th>
                         <td class="tdright">
 						<div id="dataIndustry">
 							<select name="job[industry_id1]" id="dataCompanyIndustryId1" class="level_1" style="width:120px;" ></select>
@@ -61,7 +61,7 @@
 						</td>
                       </tr>
                       <tr>
-                        <th>所在地：</th>
+                        <th>所在地</th>
                         <td class="tdright">
 						<div id="dataArea">
 							<select name="job[area_id1]" id="dataCompanyAreaId1" class="level_1" style="width:120px;" ></select>
@@ -71,20 +71,20 @@
 						</td>
                       </tr>
                       <tr>
-                        <th>工作地点：</th>
+                        <th>工作地点</th>
                         <td class="tdright"><input name="job[work_station]" type="text" id="work_station" value="<{$item.work_station}>" /></td>
                       </tr>
-					   <th>工作性质：</th>
+					   <th>工作性质</th>
                         <td class="tdright"><select name="job[worktype_id]">
 						<{html_options options=$Worktype selected=$item.worktype_id}>
 						</select></td>
                       </tr>
                       <tr>
-                        <th>截止时间：</th>
-                        <td class="tdright"><input type="text" name="expire_time" value='<{$item.expire_time|date_format:"%Y-%m-%d"}>' id="date1" class="Wdate" onclick="WdatePicker();" readonly></td>
+                        <th>截止时间</th>
+                        <td class="tdright"><input type="text" name="expire_time" value='<{$item.expire_time|date_format:"%Y-%m-%d"}>' id="date1" class="date-pick" readonly></td>
                       </tr>
                       <tr>
-                        <th>职位说明：</th>
+                        <th>职位说明</th>
                         <td class="tdright"><textarea name="job[content]" cols="35" rows="4" id="job[content]"><{$item.content|strip_tags}></textarea></td>
                       </tr>
                        <tr>
@@ -105,7 +105,12 @@
 	</form>
 </div>
 </div>
-<{fetch file="../scripts/date.js"}>
+<script type="text/javascript" src="../scripts/date.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	$('.date-pick').datePicker({startDate:"<{$smarty.now|date_format:"%Y-%m-%d"}>",createButton:true});
+})
+</script>
 <script>
 var cache_path = "../";
 var area_id1 = <{$item.area_id1|default:0}> ;

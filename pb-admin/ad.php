@@ -16,11 +16,10 @@
  * @version $Id: ad.php 427 2009-12-26 13:45:47Z steven $
  */
 require("../libraries/common.inc.php");
-
-require("session_cp.inc.php");
-require(LIB_PATH. "typemodel.inc.php");
 require(LIB_PATH .'time.class.php');
 require(LIB_PATH .'page.class.php');
+require("session_cp.inc.php");
+require(LIB_PATH. "typemodel.inc.php");
 uses("adzone","ad","attachment");
 $tpl_file = "ad";
 $attachment = new Attachment('attach');
@@ -44,15 +43,18 @@ if (isset($_POST['save'])) {
 		$vals['width'] = $attachment->width;
 		$vals['height'] = $attachment->height;
 	}
-	if(!empty($_POST['data']['end_date'])) {
-	    $vals['end_date'] = Times::dateConvert($_POST['data']['end_date']);
+	if(!empty($_POST['ServiceFromDate'])) {
+	    $vals['start_date'] = Times::dateConvert($_POST['ServiceFromDate']);
+	}
+	if(!empty($_POST['ServiceEndDate'])) {
+	    $vals['end_date'] = Times::dateConvert($_POST['ServiceEndDate']);
 	}
 	$id = $_POST['id'];
 	if (!empty($id)) {
 		$vals['modified'] = $time_stamp;
 		$result = $ads->save($vals, "update", $id);
 	}else{
-		$vals['created'] = $vals['modified'] = $vals['start_date'] = $time_stamp;
+		$vals['created'] = $vals['modified'] = $time_stamp;
 		$result = $ads->save($vals);
 	}
 	if (!$result) {
@@ -61,18 +63,6 @@ if (isset($_POST['save'])) {
 }
 if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$result = $ads->del($_POST['id']);
-}
-if(isset($_POST['up'])&&!empty($_POST['id'])){
-	$ids = $_POST['id'];
-	foreach($ids as $id){
-		$pdb->Execute("UPDATE {$tb_prefix}adses set state=1 where id=".$id);
-    }
-}
-if(isset($_POST['down'])&&!empty($_POST['id'])){
-	$ids = $_POST['id'];
-	foreach($ids as $id){
-		$pdb->Execute("UPDATE {$tb_prefix}adses set state=0 where id=".$id);
-    }
 }
 if (isset($_GET['do'])){
 	$do = trim($_GET['do']);
@@ -85,9 +75,6 @@ if (isset($_GET['do'])){
 	if ($do == "edit") {
 		if (!empty($id)) {
 			$result = $ads->read("*", $id);
-			if (!empty($result['end_date'])) {
-				$result['end_date'] = date("Y-m-d", $result['end_date']);
-			}
 			setvar("item",$result);
 		}
 		$tpl_file = "ad.edit";
@@ -103,7 +90,7 @@ if (isset($_GET['do'])){
 $amount = $ads->findCount();
 $page->setPagenav($amount);
 $joins[] = "LEFT JOIN {$tb_prefix}adzones az ON az.id=Ads.adzone_id";
-$result = $ads->findAll("Ads.*,az.name AS adzone",$joins, $conditions, " Ads.id desc", $page->firstcount, $page->displaypg);
+$result = $ads->findAll("Ads.clicked,Ads.adzone_id,Ads.id,Ads.title,Ads.status,start_date,end_date,az.name AS adzone",$joins, $conditions, " Ads.id desc", $page->firstcount, $page->displaypg);
 setvar("Items",$result);
 setvar("ByPages",$page->pagenav);
 template($tpl_file);

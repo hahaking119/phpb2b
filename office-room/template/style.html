@@ -1,79 +1,68 @@
 <{assign var="page_title" value="自助建站"}>
 <{include file="header.html"}>
 <div class="wrap clearfix">
-<div class="sidebar">
-   <div class="sidebar_menu">
-	 <{include file="menu.html"}>
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+      <table class="bggray">
+        <tr>
+          <td class="gray"><span class="orange">温馨提醒：</span>企业网站风格可以随心换！
+		  <a href="javascript:;" onclick="$('#SpaceNameModify').toggle();">修改空间名称</a>
+		  <{company id="`$COMPANYINFO.id`"}><a href="[link:title]" target="_blank">点击预览</a><{/company}>
+		  </td>
+        </tr>
+		<tbody id="SpaceNameModify" style="display:none;">
+		<form name="space_form" action="style.php" method="post">
+        <tr>
+          <td class="gray">空间名称：<input type="text" name="data[space_name]" id="dataSpaceName" value="<{$COMPANYINFO.cache_spacename}>" style="text-align:center;ime-mode:disabled;" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" maxlength="25">&nbsp;<input type="submit" name="updateSpaceName" value="提交更改">&nbsp;(空间名称只能为英文和数字的组合)
+		  </td>
+        </tr>
+		</form>
+		</tbody>
+      </table>      
+	  <form name="stylefrm" action="style.php" method="post">
+	  <input type="hidden" name="formhash" value="<{$formhash}>">
+      <table class="temp_style">
+        <tr>
+		<{foreach from=$Items item=item name="templet"}>
+          <td><img src="<{$item.picture}>">
+            <br>
+            <label for="style_<{$item.id}>"><input type="radio" value="<{$item.id}>" name="data[member][styleid]" id="style_<{$item.id}>" <{if $item.id==$templet_id}>checked<{/if}>><{$item.title}></label>
+		</td>
+		<{if $smarty.foreach.templet.iteration is div by 4}>
+		</tr><tr>
+		<{/if}>
+		<{foreachelse}>
+		<td>当前没有提供模板选择</td>
+        <{/foreach}>
+		</tr>
+        </table>
+		  <table class="trade_line">
+            <tr>
+              <td height="1" background="images/index_trade_line.gif"></td>
+            </tr>
+           <tr align="center" valign="bottom">
+          <td height="40">
+		  <input name="save" type="submit" id="Save" value="选择好了，确认提交！">
+		  </td>
+        </tr>
+      </table>
+	  </form>
+		<table class="attentions">
+            <tr>
+              <td class="bottom"><strong>如何更换我的建站风格？
+                </strong>
+                <p>　1、查看各个风格的效果图 <br>
+                  　2、选择你所喜爱的建站风格<br>
+                　3、一个工作日之内生效</p></td>
+            </tr>
+        </table>
+    </div>
    </div>
-</div>
- <div class="main_content">
- <div class="blank"></div>
- <div class="offer_banner"><img src="images/offer_01.gif" /></div>
- <div class="offer_info_title"><h2><{$page_title}></h2></div>
-  <table class="bggray">
-	<tr>
-	  <td class="gray" style="width:545px;"><span class="orange">温馨提醒：</span><{$_space_name}>风格可以随心换！</td>
-	  <td style="width:90px;"><a href="javascript:;" onclick="$('#SpaceNameModify').toggle();" class="btn_publish">修改<{$_space_name}>名称</a> </td>
-      <td style="width:100px;"> <{company id="`$COMPANYINFO.id`"}><a href="<{$COMPANYINFO.space_url}>" target="_blank" class="btn_publish" >点击预览</a><{/company}></td>
-	</tr>
-	<tbody id="SpaceNameModify" style="display:none;">
-	<form name="space_form" action="style.php" method="post">
-	<tr>
-	  <td  colspan="3" class="gray"><{$_space_name}>名称：<input type="text" name="data[space_name]" id="dataSpaceName" value="<{$COMPANYINFO.cache_spacename}>" style="text-align:center;ime-mode:disabled;width:350px;" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" maxlength="100">&nbsp;<input type="submit" name="updateSpaceName" value="提交更改">&nbsp;(<{$_space_name}>名称只能为英文和数字的组合)
-	  </td>
-      
-	</tr>
-	</form>
-	</tbody>
-  </table>      
-  <form name="stylefrm" action="style.php" method="post">
-  <input type="hidden" name="formhash" value="<{$formhash}>">
-  <table class="temp_style">
-	<tr>
-	<{foreach from=$Items item=item name="templet"}>
-	  <td>
-	  <label for="style_<{$item.id}>"><img src="<{$item.picture}>" disabled="disabled"></label>
-		<br>
-		<label for="style_<{$item.id}>"><input type="radio" value="<{$item.id}>" name="data[member][styleid]" id="style_<{$item.id}>" <{if $item.id==$templet_id}>checked<{/if}>><{$item.title}></label>
-	</td>
-	<{if $smarty.foreach.templet.iteration is div by 4}>
-	</tr><tr>
-	<{/if}>
-	<{foreachelse}>
-	<td>当前没有提供模板选择</td>
-	<{/foreach}>
-	</tr>
-	</table>
-	  <table class="trade_line">
-		<tr>
-		  <td height="1" background="images/index_trade_line.gif"></td>
-		</tr>
-	   <tr align="center" valign="bottom">
-	  <td height="40">
-	  <input name="save" type="submit" id="Save" value="选择好了，确认提交！">
-	  </td>
-	</tr>
-  </table>
-  </form>
-	<table class="attentions">
-		<tr>
-		  <td class="bottom"><strong>如何更换风格？
-			</strong>
-			<p>　1、查看各个风格的效果图 <br>
-			  　2、选择你所喜爱的建站风格<br>
-			　3、一个工作日之内生效</p></td>
-		</tr>
-	</table>
-</div>
-</div>
-<script type="text/javascript"> 
-var lb=document.getElementsByTagName('label'); 
-for (i=0;i<lb.length;i++) { 
-	lb[i].onclick=function () { 
-		var lbfor=this.getAttribute('for')?this.getAttribute('for'):this.getAttribute('HTMLfor')+''; 
-		document.getElementById(lbfor).click(); 
-		document.getElementById(lbfor).focus(); 
-	}             
-} 
-</script>
 <{include file="footer.html"}>

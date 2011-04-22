@@ -30,6 +30,17 @@ class Trades extends PbModel {
 			$instance[0] =& new Trades();
 		}
 		return $instance[0];
+	} 	 	
+
+	function getTodayPushAmount($trade_typeid){
+		global $_SESSION;
+ 		$tmp_day = mktime(0,0,0,date("m") ,date("d"),date("Y"));
+		if($trade_typeid>0){
+			$this->setTradeCat($trade_typeid);
+		}
+		$sql = "select count(id) from ".$this->getTable()." where member_id=".$_SESSION['MemberID']." and submit_time>".$tmp_day." and type_id in ".$this->getTradeTypeKeys($this->getTradeCat());
+		$return  = $this->dbstuff->GetOne($sql);
+		return $return;
 	}
  	
  	function checkExist($id, $extra = false)
@@ -45,7 +56,7 @@ class Trades extends PbModel {
  	
 	function getInfoById($pid)
 	{
-		$sql = "select tf.*,t.id,t.industry_id1,t.industry_id2,t.id,t.title,t.content,t.company_id,t.member_id,t.picture,t.area_id1,t.area_id2,t.status,t.type_id,t.submit_time AS pubdate,expire_time AS expdate,require_membertype,require_point,t.tag_ids,t.formattribute_ids,t.if_urgent from {$this->table_prefix}trades t left join {$this->table_prefix}tradefields tf on  tf.trade_id=t.id WHERE t.id=".$pid;
+		$sql = "select tf.*,t.id,t.industry_id1,t.industry_id2,t.id,t.title,t.content,t.company_id,t.member_id,t.picture,t.area_id1,t.area_id2,t.status,t.type_id,t.submit_time AS pubdate,expire_time AS expdate,require_membertype,require_point,t.tag_ids,t.formattribute_ids from {$this->table_prefix}trades t left join {$this->table_prefix}tradefields tf on  tf.trade_id=t.id WHERE t.id=".$pid;
 		$result = $this->dbstuff->GetRow($sql);
 		$result['tel'] = $result['prim_telnumber'];
 		if (!empty($result['picture'])) {
@@ -106,12 +117,12 @@ class Trades extends PbModel {
 		return true;
 	}
 	
-	function Add($params = '')
+	function Add()
 	{
 		$result = false;
 		if (!empty($this->params['expire_days'])) {
 			$trade_controller = & Trade::getInstance();
-			if (array_key_exists($this->params['expire_days'],$trade_controller->getOfferExpires())) {
+			if (array_key_exists($this->params['expire_days'],$trade_controller->offer_expires)) {
 				$this->params['data']['trade']['expire_time'] = $this->timestamp+(24*3600*$_POST['expire_days']);
 				$this->params['data']['trade']['expire_days'] = $_POST['expire_days'];
 			}else{
@@ -131,7 +142,7 @@ class Trades extends PbModel {
 		    $last_tradeid = $this->$key;
 			$_this = & Tradefields::getInstance();
 			$_this->params['data']['tradefield']['trade_id'] = $last_tradeid;
-			$tradefield_info = $_this->params['data']['tradefield']+$this->params['data']['tradefield'];
+			$tradefield_info = $_this->params['data']['tradefield'];
 			$_this->primaryKey = "trade_id";
 			$_this->save($tradefield_info);
 		}
@@ -154,12 +165,6 @@ class Trades extends PbModel {
 	function formatResult($result)
 	{
 		global $_PB_CACHE, $rewrite_able;
-		if(class_exists("Trade")){
-			$trade_controller = new Trade();
-		}else{
-			uses("trade");
-			$trade_controller = new Trade();
-		}
 		if(!empty($result)){
 			if (empty($_PB_CACHE['trusttype'])) {
 				require(CACHE_PATH. 'cache_trusttype.php');
@@ -168,12 +173,10 @@ class Trades extends PbModel {
 			for ($i=0; $i<$count; $i++){
 				$result[$i]['pubdate'] = @date("Y-m-d", $result[$i]['submit_time']);
 				$result[$i]['content'] = strip_tags($result[$i]['content']);
-				$result[$i]['url'] = $trade_controller->rewrite($result[$i]['id'], $result[$i]['type_id']);
-				if(!empty($result[$i]['membergroup_id'])) {
-					$result[$i]['gradeimg'] = 'images/group/'.$_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['avatar'];
-					$result[$i]['gradename'] = $_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['name'];
-				}
-				$result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture'], '', 'middle');
+				$result[$i]['url'] = ($rewrite_able)? "offer/detail/".$result[$i]['id'].".html":"offer/detail.php?id=".$result[$i]['id'];;
+				$result[$i]['gradeimg'] = 'images/group/'.$_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['avatar'];
+				$result[$i]['gradename'] = $_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['name'];
+				$result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture']);
 				$trusttype_images = null;
 				if(!empty($result[$i]['trusttype_ids'])){
 					$tmp_trusttype = explode(",", $result[$i]['trusttype_ids']);

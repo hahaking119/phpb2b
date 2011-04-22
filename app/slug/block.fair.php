@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.fair.php 1037 2010-02-26 02:53:29Z steven $
+ * @version $Id: block.fair.php 472 2009-12-27 04:12:35Z steven $
  */
 function smarty_block_fair($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -23,10 +23,8 @@ function smarty_block_fair($params, $content, &$smarty) {
 	require(CACHE_PATH."cache_area.php");
 	if (class_exists("Expoes")) {
 		$fair = new Expoes();
-		$fair_controller = new Expo();
 	}else{
 		uses("expo");
-		$fair_controller = new Expo();
 		$fair = new Expoes();
 	}
 	$conditions[] = "status=1";
@@ -76,15 +74,13 @@ function smarty_block_fair($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$fair->setLimitOffset($row, $col);
-	$sql = "SELECT *,name AS title FROM {$fair->table_prefix}expoes ".$fair->getCondition().$fair->getOrderby().$fair->getLimitOffset();
+	$sql = "SELECT id,name,name as title,description,expotype_id,begin_time,end_time,area_id1,area_id2,area_id3 FROM {$fair->table_prefix}expoes ".$fair->getCondition().$fair->getOrderby().$fair->getLimitOffset();
 	$result = $fair->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
-			$style = $h3_style = $area_name = $link_title = null;
-			$url = $fair_controller->rewrite($result[$i]['id'], $result[$i]['title']);
-			$link_title = "<a href='".$url."'>".$result[$i]['name']."</a>";
+			$url = ($rewrite_able)? "fair/detail/".$result[$i]['id'].".html":"fair/detail.php?id=".$result[$i]['id'];
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['name'] = utf_substr($result[$i]['name'], $params['titlelen']);
 	    	}
@@ -92,25 +88,7 @@ function smarty_block_fair($params, $content, &$smarty) {
 	    	if (isset($params['infolen'])) {
 	    		$result[$i]['description'] = utf_substr($result[$i]['description'], $params['infolen']);
 	    	}
-	    	if (!$result[$i]['begin_time']) {
-	    		$pubdate = L("invalid_datetime");
-	    	}else{
-	    		$pubdate = @date("Y-m-d", $result[$i]['begin_time']);
-	    	}
-	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', 'small'):pb_get_attachmenturl($result[$i]['picture'], '', 'small');
-	    	if (isset($params['magic']))  {
-	    		if ($i==0) {
-	    			if(!empty($result[$i]['picture'])){
-	    				$style = " style=\"height:70px; background:url(".URL."attachment/".$result[$i]['picture'].".small.jpg".") no-repeat; padding:0 0 0 90px; overflow:hidden; width:120px;\"";
-	    				$h3_style = " style=\"padding:0 0 0 5px;\"";
-	    			}
-	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['name']."</a></h3>".$result[$i]['description'];
-	    		}
-			}
-			if (!empty($_PB_CACHE['area'][1][$result[$i]['area_id1']])) {
-				$area_name = $_PB_CACHE['area'][1][$result[$i]['area_id1']];
-			}
-			$return.= str_replace(array("[link:title]", "[field:title]", "[field:fulltitle]", "[field:id]", "[field:areaname]", "[field:areaid]", "[field:typename]", "[field:typeid]", "[field:pubdate]", "[field:content]","[field:style]", "[field:url]", "[img:src]"), array($url, $result[$i]['name'], $result[$i]['title'], $result[$i]['id'], $area_name, $result[$i]['area_id1'], $_PB_CACHE['expotype'][$result[$i]['expotype_id']], $result[$i]['expotype_id'], $pubdate, $result[$i]['description'],$style, $link_title, $img), $content);
+			$return.= str_replace(array("[link:title]", "[field:title]", "[field:fulltitle]", "[field:id]", "[field:areaname]", "[field:areaid]", "[field:typename]", "[field:typeid]", "[field:pubdate]", "[field:content]"), array($url, $result[$i]['name'], $result[$i]['title'], $result[$i]['id'], $_PB_CACHE['area'][1][$result[$i]['area_id1']], $result[$i]['area_id1'], $_PB_CACHE['expotype'][$result[$i]['expotype_id']], $result[$i]['expotype_id'], @date("Y-m-d", $result[$i]['begin_time']), $result[$i]['description']), $content);
 		}
 	}
 	return $return;

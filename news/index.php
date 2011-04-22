@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 require(LIB_PATH .'time.class.php');
 require(CACHE_PATH. "cache_newstype.php");
 uses("news","newstype");

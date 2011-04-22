@@ -13,19 +13,17 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.news.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.news.php 472 2009-12-27 04:12:35Z steven $
  */
 function smarty_block_news($params, $content, &$smarty) {
-	global $cookiepre;
+	global $cookiepre, $rewrite_able;
 	if ($content === null) return;
 	$conditions = array();
 	if (class_exists("News")) {
 		$news = new Newses();
-		$news_controller = new News();
 	}else{
 	    uses("news");
 	    $news = new Newses();
-		$news_controller = new News();
 	}
 	$orderby = array();
 	require(CACHE_PATH. "cache_newstype.php");
@@ -56,12 +54,6 @@ function smarty_block_news($params, $content, &$smarty) {
 	}else{
 		$orderby[] = "id DESC ";
 	}
-	if (!empty($params['industryid'])) {
-		$conditions[] = "n.industry_id='".$params['industryid']."'";
-	}
-	if (!empty($params['areaid'])) {
-		$conditions[] = "n.area_id='".$params['areaid']."'";
-	}
 	$news->setOrderby($orderby);
 	$news->setCondition($conditions);
 	$row = $col = 0;
@@ -74,13 +66,13 @@ function smarty_block_news($params, $content, &$smarty) {
 	$news->setLimitOffset($row, $col);
 	$sql = "SELECT id,title as fulltitle,title,picture,type_id,created,content as fullcontent,content FROM {$news->table_prefix}newses n ".$news->getCondition().$news->getOrderby().$news->getLimitOffset();
 	$result = $news->dbstuff->GetArray($sql);
-	$return = $link_title = null;
+	$return = null;
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
 			$style = null;
 			$dt = @getdate($result[$i]['created']);
-			$url = $news_controller->rewrite($result[$i]['id'], $result[$i]['title'], $result[$i]['created']);
+			$url = ($rewrite_able)? "news/detail/".$result[$i]['id'].".html":"news/detail.php?id=".$result[$i]['id'];
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
 	    	}	    	
@@ -92,16 +84,16 @@ function smarty_block_news($params, $content, &$smarty) {
 	    		if ($i==0){
 	    			if(!empty($result[$i]['picture'])) {
 	    				$style = " style=\"height:70px; background:url(".URL."attachment/".$result[$i]['picture'].".small.jpg".") no-repeat; padding:0 0 0 90px;overflow:hidden; width:120px;\"";
-	    				$h3_style = " style=\"padding:0 0 0 5px;\"";
 	    			}else{
-	    				$style = " style=\"height:70px; background:url(".URL.pb_get_attachmenturl('', '', 'small').") no-repeat; padding:0 0 0 90px;\"";
+	    				$style = " style=\"height:70px; background:url(".URL."images/nopic.small.gif".") no-repeat; padding:0 0 0 90px;\"";
 	    			}
-	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['title']."</a></h3>".$result[$i]['content'];
+	    			$result[$i]['url'] = "<h3><a href='{$url}'>".$result[$i]['title']."</a></h3>
+				   <p>".$result[$i]['content']."</p>";
 	    		}else{
-	    			$link_title = "<a href='{$url}'>".$result[$i]['title']."</a>";
+	    			$result[$i]['url'] = "<a href='{$url}'>".$result[$i]['title']."</a>";
 	    		}
 			}
-			$return.= str_replace(array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:typename]", "[field:pubdate]", "[field:id]", "[field:type_id]", "[field:style]", "[field:url]"), array($url, $result[$i]['title'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['fulltitle'], $result[$i]['type_id']?$_PB_CACHE['newstype'][$result[$i]['type_id']]:L("undefined_sort", "tpl"), @date("Y-m-d", $result[$i]['created']),$result[$i]['id'], $result[$i]['type_id'], $style, $link_title), $content);
+			$return.= str_replace(array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:typename]", "[field:pubdate]", "[field:id]", "[field:type_id]", "[field:style]", "[field:url]"), array($url, $result[$i]['title'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['fulltitle'], $_PB_CACHE['newstype'][$result[$i]['type_id']], @date("Y-m-d", $result[$i]['created']),$result[$i]['id'], $result[$i]['type_id'], $style, $result[$i]['url']), $content);
 		}
 	}
 	return $return;

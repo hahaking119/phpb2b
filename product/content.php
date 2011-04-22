@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'content');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 include(CACHE_PATH."cache_industry.php");
 include(CACHE_PATH."cache_area.php");
 uses("product","company","member");
@@ -25,8 +24,7 @@ $company = new Companies();
 $member = new Members();
 $product = new Products();
 $tmp_status = explode(",",L('product_status', 'tpl'));
-$viewhelper->setPosition(L("product_center", 'tpl'), 'product/');
-$viewhelper->setTitle(L("product_center", 'tpl'));
+$viewhelper->setPosition(L("product_center", "tpl"), "product/");
 if (isset($_GET['id'])) {
 	$id = intval($_GET['id']);
 }
@@ -53,8 +51,8 @@ if (!empty($info['company_id'])) {
 	$info['address'] = $company_info['address'];
 	$info['zipcode'] = $company_info['zipcode'];
 	$info['site_url'] = $company_info['site_url'];
-	$info['tel'] = $company_info['tel'];
-	$info['fax'] = $company_info['fax'];
+	$info['tel'] = implode("-",array($company_info['telcode'],$company_info['telzone'],$company_info['tel']));
+	$info['fax'] = implode("-",array($company_info['faxcode'],$company_info['faxzone'],$company_info['fax']));
 	setvar("COMPANY", $company_info);
 }
 if (!empty($info['industry_id1'])) {
@@ -64,7 +62,6 @@ if (!empty($info['industry_id1'])) {
 $viewhelper->setTitle($info['name'], $info['picture']);
 setvar("Areas", $_PB_CACHE['area']);
 setvar("Industry", $_PB_CACHE['industry']);
-$info['title'] = strip_tags($info['name']);
 setvar("item", $info);
 $product->clicked($id);
 render("product.detail");

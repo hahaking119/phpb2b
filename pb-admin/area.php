@@ -56,12 +56,9 @@ if (isset($_POST['update_batch'])) {
 	if (!empty($_POST['data']['aname'])) {
 		for($i=0; $i<count($_POST['data']['aname']); $i++) {
 			$pdb->Execute("UPDATE {$tb_prefix}areas SET name = '".$_POST['data']['aname'][$i]."' WHERE id='".$_POST['aid'][$i]."'");
-		}		
-		for($i=0; $i<count($_POST['data']['aname']); $i++) {
-			$pdb->Execute("UPDATE {$tb_prefix}areas SET display_order = '".$_POST['data']['display_order'][$i]."' WHERE id='".$_POST['aid'][$i]."'");
 		}
+		flash("success");
 	}
-	flash("success");
 }
 if (isset($_POST['save'])) {
 	if (isset($_POST['data']['area']['parent_id'])) {
@@ -107,15 +104,15 @@ if (isset($_GET['do'])) {
 	if ($do == "level") {
 		if(!empty($id)){
 			if ($_GET['action']=="up") {
-				$pdb->Execute("UPDATE {$tb_prefix}areas SET display_order=display_order-1 WHERE id=".$id);
-			}elseif ($_GET['action']=="down"){
 				$pdb->Execute("UPDATE {$tb_prefix}areas SET display_order=display_order+1 WHERE id=".$id);
+			}elseif ($_GET['action']=="down"){
+				$pdb->Execute("UPDATE {$tb_prefix}areas SET display_order=display_order-1 WHERE id=".$id);
 			}
 		}
 	}
 	if ($do == "refresh") {
 		$cache->writeCache("area", "area");
-		flash("success");
+		pheader("location:area.php");
 	}
 	if ($do == "search") {
 		if (!empty($_GET['name'])) {
@@ -148,7 +145,7 @@ if (isset($_GET['do'])) {
 }
 $amount = $area->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $area->findAll("id,name,name as title,highlight,parent_id,areatype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order ASC,id ASC", $page->firstcount, $page->displaypg);
+$result = $area->findAll("id,name,name as title,highlight,parent_id,areatype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order DESC,id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$tmp_name = array();

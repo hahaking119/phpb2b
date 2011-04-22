@@ -25,10 +25,10 @@ $cache = new Caches();
 $page = new Pages();
 $conditions = array();
 $tpl_file = "newstype";
+setvar("NewstypeOptions", $newstype->getTypeOptions());
 if (isset($_POST['save']) && !empty($_POST['data']['newstype']['name'])) {
 	$vals = array();
 	$vals = $_POST['data']['newstype'];
-	$vals['level_id'] = intval($pdb->GetOne("SELECT level_id+1 AS new_levelid FROM {$tb_prefix}newstypes WHERE id='".$vals['parent_id']."'"));
 	if (!empty($_POST['id'])) {
 		$result = $newstype->save($vals, "update", $_POST['id']);
 	}else{
@@ -52,9 +52,9 @@ if (isset($_GET['do'])) {
 		$newstype->del($id);
 	}
 	if ($do == "edit") {
-		setvar("NewstypeOptions", $newstype->getTypeOptions());
 		if(!empty($id)){
 			$res= $newstype->read("*",$id);
+			setvar("NewstypeOptions", $newstype->getTypeOptions($res['parent_id']));
 			setvar("item",$res);
 		}
 		$tpl_file = "newstype.edit";

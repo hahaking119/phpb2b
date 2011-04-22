@@ -22,20 +22,22 @@ require(LIB_PATH. "typemodel.inc.php");
 check_permission("offer");
 $tpl_file = "offer";
 $page = new Pages();
-uses("trade", "tradefield", "product","tag","attachment", "form");
+uses("trade", "company", "tradefield", "product","tag","attachment", "form");
 $attachment = new Attachment("pic");
 $form = new Forms();
 $tradefield = new Tradefields();
 $tag = new Tags();
+$company = new Companies();
 $trade = new Trades();
 $trade_controller = new Trade();
 $conditions = array();
 $conditions[]= "member_id = ".$_SESSION['MemberID'];
 setvar("TradeTypes", $trade_controller->getTradeTypes());
 setvar("TradeNames", $trade_controller->getTradeTypeNames());
+
 $tmp_personalinfo = $memberinfo;
 setvar("MemberInfo", $tmp_personalinfo);
-$expires = $trade_controller->getOfferExpires();
+$expires = $trade_controller->offer_expires;
 setvar("TradeTypes",$trade_controller->getTradeTypes());
 setvar("PhoneTypes", get_cache_type("phone_type"));
 setvar("ImTypes", get_cache_type("im_type"));
@@ -60,7 +62,7 @@ if (isset($_GET['do'])) {
 	if ($do == "edit") {
 		if(!empty($company_id)) {
 			$company->primaryKey = "member_id";
-			$company->newCheckStatus($companyinfo['status']);
+			$company->checkStatus($company_id);
 			$company_info = $company->getInfoById($company_id);
 			setvar("CompanyInfo",$company_info);
 		}
@@ -167,7 +169,6 @@ if (isset($_GET['do'])) {
 if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
 	pb_submit_check('data');
     $res = $_POST['data']['trade'];
-    $now_offer_amount = $trade->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
     if(isset($_POST['id'])){
     	$id = intval($_POST['id']);
     }
@@ -185,7 +186,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
     }
 	$res['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
     $form_type_id = 1;
-    if (!empty($company_id)) {
+	  if (!empty($company_id)) {
     	$res['company_id'] = $company_id;
     }else{
     	$res['company_id'] = 0;
@@ -197,14 +198,11 @@ if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
         $res['modified'] = $time_stamp;
         $res = $trade->save($res, "update", $id, null, $conditions);
     }else {
-    	if ($g['max_offer'] && $now_offer_amount>=$g['max_offer']) {
-    		flash('one_day_max');
-    	}
         $res['member_id'] = $_SESSION['MemberID'];
         $res['company_id'] = $company_id;
         $res['submit_time'] = $res['created'] = $res['modified'] = $time_stamp;
         if (!empty($_POST['expire_days'])) {
-        	if (array_key_exists($_POST['expire_days'], $trade_controller->getOfferExpires())) {
+        	if (array_key_exists($_POST['expire_days'], $trade_controller->offer_expires)) {
         		$res['expire_days'] = $_POST['expire_days'];
         		$res['expire_time'] = $res['expire_days']*86400+$time_stamp;
         	}

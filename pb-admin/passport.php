@@ -79,9 +79,10 @@ if (isset($_GET['do'])) {
 	}
 	if (!empty($_GET['entry'])) {
 		$entry = trim($_GET['entry']);
-		$tpl_path = API_PATH. "passports".DS.$entry.DS."template".DS;
-		if (is_dir($tpl_path)) {
-			$tpl_file = $tpl_path. "setting";
+		$tpl_file = "passport.".$entry;
+		if (!file_exists($smarty->template_dir.$tpl_file.".html")) {
+			flash('tpl_not_exists', null, 0);
+		}else{
 			if ($do == "install") {
 				$item['name'] = $entry;
 			}elseif($do == "edit" && !empty($id)){

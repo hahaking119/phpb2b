@@ -17,8 +17,8 @@
  */
 //基本信息
 $cfg['name'] = 'paypal';
-$cfg['title'] = '贝宝支付';
-$cfg['description'] = '';
+$cfg['title'] = '贝宝';
+$cfg['description'] = '贝宝支付';
 //配置信息
 $cfg['params']['gateway'] = 'https://www.paypal.com/cgi-bin/webscr';
 $cfg['params']['cmd'] = '_xclick';

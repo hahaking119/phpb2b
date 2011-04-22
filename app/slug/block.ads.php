@@ -13,10 +13,11 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.ads.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.ads.php 458 2009-12-27 03:05:45Z steven $
  */
 function smarty_block_ads($params, $content, &$smarty){
-	global $theme_name;
+	global $pdb, $tb_prefix;
+	global $smarty, $time_stamp;
 	if ($content === null) return;
 	$conditions = array();
 	extract($params);
@@ -26,15 +27,13 @@ function smarty_block_ads($params, $content, &$smarty){
 	}else{
 		$ad = new Adses();
 	}
-	$conditions[] = "status='1' AND state='1'";
 	if(isset($params['id'])){
 		$result = $ad->read("*", intval($params['id']));
 	}else{
-		//如果不够广告位，并且参数中指定了default图片，则默认“rent”
 		if (isset($params['typeid'])) {
 			$typeid = intval($params['typeid']);
 			$conditions[] = "adzone_id=".$typeid;
-			$zone_res = $ad->dbstuff->GetRow("select * from {$ad->table_prefix}adzones where id=".$typeid);
+			$zone_res = $pdb->GetRow("select * from {$tb_prefix}adzones where id=".$typeid);
 			if ($zone_res['what']==2) {
 				echo stripslashes($zone_res['additional_adwords']);
 				return;
@@ -42,7 +41,6 @@ function smarty_block_ads($params, $content, &$smarty){
 			$adzone_name = $zone_res['name'];
 			$max_width = intval($zone_res['width']);
 			$max_height = intval($zone_res['height']);
-			$max_ad = intval($zone_res['max_ad']);
 			unset($zone_res);
 		}
 		if (isset($params['keyword'])) {
@@ -52,8 +50,6 @@ function smarty_block_ads($params, $content, &$smarty){
 		$orderby = null;
 		if (isset($params['row'])) {
 			$row = $params['row'];
-		}elseif ($max_ad){
-			$row = $max_ad;
 		}
 		if (isset($params['col'])) {
 			$col = $params['col'];
@@ -62,26 +58,18 @@ function smarty_block_ads($params, $content, &$smarty){
 		if (isset($params['orderby'])) {
 			$orderby = " ORDER BY ".trim($params['orderby']);
 		}else{
-			$orderby = " ORDER BY priority ASC";
+			$orderby = " ORDER BY priority ASC,id DESC";
 		}
 		$ad->setCondition($conditions);
-		$sql = "SELECT * FROM {$ad->table_prefix}adses ".$ad->getCondition()."{$orderby}".$ad->getLimitOffset()."";
-		$result = $ad->dbstuff->GetArray($sql);
+		$sql = "SELECT * FROM {$tb_prefix}adses ".$ad->getCondition()."{$orderby}".$ad->getLimitOffset()."";
+		$result = $pdb->GetArray($sql);
 	}
 	$return = null;
 	if(!empty($result)){
 		$count = count($result);
 		for($i=0; $i<$count; $i++) {
 			$url = $result[$i]['target_url'];
-			if (!empty($result[$i]['end_date']) && $result[$i]['end_date']<$ad->timestamp) {
-				if (!empty($result[$i]['picture_replace'])) {
-					$result[$i]['source_url'] = $result[$i]['picture_replace'];
-					$result[$i]['title'] = L("ads_on_sale");
-					$return .= str_replace(array("[link:url]", "[field:src]", "[field:title]"), array($url, $ad->getCode($result[$i], $max_width, $max_height), $result[$i]['title']), $content);
-				}
-			}else{
-				$return .= str_replace(array("[link:url]", "[field:src]", "[field:title]"), array($url, $ad->getCode($result[$i], $max_width, $max_height), $result[$i]['title']), $content);
-			}
+			$return .= str_replace(array("[link:url]", "[field:src]", "[field:title]"), array($url, $ad->getCode($result[$i], $max_width, $max_height), $result[$i]['title']), $content);
 		}
 	}else{
 		$return = $adzone_name;

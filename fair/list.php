@@ -18,7 +18,6 @@
 //$li = 7;
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
 require(CACHE_PATH. "cache_expotype.php");
 include(CACHE_PATH. "cache_industry.php");
@@ -60,18 +59,8 @@ if (isset($_GET['areaid'])) {
 $amount = $expo->findCount(null, $conditions);
 $page->setPagenav($amount);
 $result = $expo->findAll("*", null, $conditions, "id desc", $page->firstcount, $page->displaypg);
-if (!empty($result)) {
-	for ($i=0; $i<count($result); $i++){
-		if($result[$i]['begin_time']) $result[$i]['begin_date'] = @date("Y-m-d", $result[$i]['begin_time']);
-		if($result[$i]['end_time']) $result[$i]['end_date'] = @date("Y-m-d", $result[$i]['end_time']);
-		$result[$i]['description'] = strip_tags($result[$i]['description']);
-		if(!empty($result[$i]['area_id1'])){
-			$result[$i]['area'] = "(".$_PB_CACHE['area'][1][$result[$i]['area_id1']].$_PB_CACHE['area'][2][$result[$i]['area_id2']].$_PB_CACHE['area'][3][$result[$i]['area_id1']].")";
-		}
-	}
-	setvar("Items", $result);
-	setvar("Areas", $_PB_CACHE['area']);	
-}
+setvar("Items", $result);
+setvar("Areas", $_PB_CACHE['area']);
 setvar("Type",$_PB_CACHE['expotype']);
 $viewhelper->setTitle(L("search", "tpl"));
 $viewhelper->setPosition(L("search", "tpl"));

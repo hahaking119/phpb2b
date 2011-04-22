@@ -1,8 +1,7 @@
 <?php
 define('CURSCRIPT', 'rss');
 require("libraries/common.inc.php");
-require("share.inc.php");
-include_once(PHPB2B_ROOT. 'libraries/feedcreator.class.php');
+include_once(PHPB2B_ROOT. './libraries/feedcreator.class.php');
 $rss = new UniversalFeedCreator();
 $rss->useCached();
 $rss->title = $_PB_CACHE['setting']['site_name'];

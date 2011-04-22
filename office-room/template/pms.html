@@ -17,14 +17,14 @@
        <table class="news">
             <tr align="center">
               <th>选择</th>
-              <th class="w350">主题</th>
+              <th>主题</th>
               <th>状态</th>
               <th>时间</th>
             </tr>
 			<{foreach from=$Items item=item}>
             <tr align="center" class="bggray">
               <td><input type="checkbox" name="id[]" value="<{$item.id}>" id="item_<{$item.id}>"></td>
-              <td align="left" class="w350"><a href="pms.php?do=view&id=<{$item.id}>"><{$item.title|truncate:30}></a></td>
+              <td align="left"><a href="pms.php?do=view&id=<{$item.id}>"><{$item.title|truncate:30}></a></td>
               <td class="orange"><{$MessageStatus[$item.status]}></td>
               <td><{$item.created|date_format:"%Y-%m-%d"}></td>
             </tr>

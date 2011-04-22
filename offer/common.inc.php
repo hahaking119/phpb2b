@@ -18,7 +18,6 @@
 if(!defined('IN_PHPB2B')) {
 	exit('Access Denied');
 }
-require("../share.inc.php");
 uses("trade","industry","area","tradefield");
 require(CACHE_PATH. 'cache_trusttype.php');
 require(CACHE_PATH. 'cache_membergroup.php');

@@ -25,7 +25,7 @@
                 <tr align="center" class="bggray">
                   <td><input name="newsid[]" type="checkbox" id="newsid[]" onClick="uaCheckItem(this, 'newsidAll')" value="<{$item.CompanynewsId}>"></td>
                   <td><a href="news.php?do=edit&id=<{$item.CompanynewsId}>"><{$item.CompanynewsTitle|truncate:25}></a></td>
-                  <td><{$item.status}></td>
+                  <td>正常</td>
                   <td><{$item.CompanynewsCreated|date_format:"%Y-%m-%d"}></td>
                   <td><a href="news.php?do=edit&id=<{$item.CompanynewsId}>">修改</a></td>
                 </tr>

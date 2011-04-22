@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("industry");
 $industry = new Industries();
 setvar("IndustryList", $industry->getCacheIndustry());

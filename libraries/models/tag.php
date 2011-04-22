@@ -49,7 +49,6 @@ class Tags extends PbModel {
 
 	function setTagId($tags)
 	{
-		global $current_adminer_id;
 		$tmp_exist_tag = array();
 		if (empty($tags) || !$tags) {
 			return;
@@ -71,21 +70,11 @@ class Tags extends PbModel {
 		$not_exist_tag = array_diff($words, $tmp_exist_tag);
 		if (!empty($not_exist_tag)) {
 			$tmp_str = array();
-			if (!empty($current_adminer_id)) {
-				$member_id = $current_adminer_id;
-			}elseif (isset($_SESSION['member_id'])){
-				$member_id = $_SESSION['member_id'];
-			}
 			foreach ($not_exist_tag as $val2) {
-				if(!empty($member_id)){
-					$tmp_str[] = "('".$member_id."','".$val2."',1,".$this->timestamp.",".$this->timestamp.")";
-				}else{
-					$tmp_str[] = "(0,'".$val2."',1,".$this->timestamp.",".$this->timestamp.")";
-				}
+				if(isset($_SESSION['member_id']))
+				$tmp_str[] = "('".$_SESSION['member_id']."','".$val2."',1,".$this->timestamp.",".$this->timestamp.")";
 			}
-			if(!empty($tmp_str)) {
-				$this->dbstuff->Execute("INSERT INTO {$this->table_prefix}tags (member_id,name,numbers,created,modified) VALUES ".implode(",", $tmp_str));
-			}
+			if(!empty($tmp_str)) $this->dbstuff->Execute("INSERT INTO {$this->table_prefix}tags (member_id,name,numbers,created,modified) VALUES ".implode(",", $tmp_str));
 			$result = $this->dbstuff->GetArray("SELECT id,name FROM {$this->table_prefix}tags WHERE name IN ('".implode("','", $not_exist_tag)."')");
 			foreach ($result as $val3) {
 				$this->inserted_id[] = $val3['id'];

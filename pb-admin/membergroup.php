@@ -65,20 +65,8 @@ if (isset($_POST['save_data'])) {
 		}
 		if (!$result) {
 			flash();
-		}else{
-			$cache->writeCache("membergroup", "membergroup");
 		}
 	}
-}
-if (isset($_POST['del'])&&!empty($_POST['gid'])){
-	if(is_array($_POST['gid'])){
-     $count = count($_POST['gid']);
-	 for($i=0; $i<$count; $i++){
-       $membergroup->del($_POST['gid'][$i]);
-	    }
-     }else{
-        $membergroup->del($_POST['gid']);
-    }
 }
 if (isset($_GET['type'])) {
 	$conditions[] = "type='".$_GET['type']."'";
@@ -123,9 +111,6 @@ if (isset($_GET['do'])) {
 	if ($do=="permission") {
 		$tpl_file = "membergroup.permission";
 	}
-	if ($do=="del" && !empty($id)) {
-                $membergroup->del($id);                
-    }
 	if ($do == "edit") {
 		$data = array();
 		foreach ($_PB_CACHE['membergroup'] as $key1=>$val1) {
@@ -140,23 +125,23 @@ if (isset($_GET['do'])) {
 				$item['offer_allow'] = $allow_offer[0];
 				$item['offer_check'] = $allow_offer[1];
 				$allow_product = sprintf("%02d", decbin($item['allow_product']));
-				$item['product_allow'] = $allow_product[0];
-				$item['product_check'] = $allow_product[1];
+				$item['product_allow'] = $allow_offer[0];
+				$item['product_check'] = $allow_offer[1];
 				$allow_job = sprintf("%02d", decbin($item['allow_job']));
-				$item['job_allow'] = $allow_job[0];
-				$item['job_check'] = $allow_job[1];
+				$item['job_allow'] = $allow_offer[0];
+				$item['job_check'] = $allow_offer[1];
 				$allow_companynews = sprintf("%02d", decbin($item['allow_companynews']));
-				$item['companynews_allow'] = $allow_companynews[0];
-				$item['companynews_check'] = $allow_companynews[1];
+				$item['companynews_allow'] = $allow_offer[0];
+				$item['companynews_check'] = $allow_offer[1];
 				$allow_album = sprintf("%02d", decbin($item['allow_album']));
-				$item['album_allow'] = $allow_album[0];
-				$item['album_check'] = $allow_album[1];
+				$item['album_allow'] = $allow_offer[0];
+				$item['album_check'] = $allow_offer[1];
 				$allow_market = sprintf("%02d", decbin($item['allow_market']));
-				$item['market_allow'] = $allow_market[0];
-				$item['market_check'] = $allow_market[1];
+				$item['market_allow'] = $allow_offer[0];
+				$item['market_check'] = $allow_offer[1];
 				$allow_company = sprintf("%02d", decbin($item['allow_company']));
-				$item['company_allow'] = $allow_company[0];
-				$item['company_check'] = $allow_company[1];
+				$item['company_allow'] = $allow_offer[0];
+				$item['company_check'] = $allow_offer[1];
 				$item['image'] = URL."images/group/".$item['picture'];
 				setvar("item", $item);
 			}

@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.area.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.area.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_block_area($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -57,7 +57,7 @@ function smarty_block_area($params, $content, &$smarty) {
 	if (!isset($params['row']) && !isset($params['col'])) {
 		$limit = null;
 	}
-	$sql = "SELECT id,name,name as areaname,url,alias_name,highlight,url FROM {$area->table_prefix}areas a ".$area->getCondition()."{$orderby}{$limit}";
+	$sql = "SELECT id,name,name as areaname,url,alias_name,highlight FROM {$area->table_prefix}areas a ".$area->getCondition()."{$orderby}{$limit}";
 	$result = $area->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {
@@ -66,12 +66,7 @@ function smarty_block_area($params, $content, &$smarty) {
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['name'] = utf_substr($result[$i]['name'], $params['titlelen']);
 	    	}
-	    	if (!empty($result[$i]['url'])) {
-	    		$url = $result[$i]['url'];
-	    	}else{
-	    		$url = $area->rewrite($result[$i]['id'], $result[$i]['areaname']);
-	    	}
-			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[link:url]"), array($result[$i]['name'], $result[$i]['areaname'], $result[$i]['id'], $url), $content);
+			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]"), array($result[$i]['name'], $result[$i]['areaname'], $result[$i]['id']), $content);
 		}
 	}
 	return $return;

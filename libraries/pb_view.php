@@ -27,9 +27,6 @@ class PbView extends PbObject
 	var $here = null;
 	var $position = array();
 	var $addParams;
-	var $metaKeyword;
-	var $metaDescription;
-	var $caching = false;
 
 	function PbView(){
 		global $_PB_CACHE;
@@ -42,16 +39,6 @@ class PbView extends PbObject
 	function __construct(){
 		$this->PbView();
 	}
-	
-	function setMetaDescription($meta_description)
-	{
-		$this->metaDescription = utf_substr(strip_tags($meta_description, 100));
-	}
-	
-	function setMetaKeyword($meta_keyword)
-	{
-		$this->metaKeyword = str_replace(array(), ",", $meta_keyword);
-	}	
 
     function setTitle($title, $image = 0)
     {
@@ -125,7 +112,7 @@ class PbView extends PbObject
     }
     
 	function setUrlContainer($static_level){
-		global $_PB_CACHE;
+		global $media_paths, $_PB_CACHE;
 		$tmp_contain = array();
 		$reg_filename = (empty($_PB_CACHE['setting']['reg_filename']))?"register.php":$_PB_CACHE['setting']['reg_filename'];
 		$post_filename = (empty($_PB_CACHE['setting']['post_filename']))?"post.php":$_PB_CACHE['setting']['post_filename'];
@@ -154,23 +141,6 @@ class PbView extends PbObject
 
 	function getUrlContainer(){
 		return $this->url_container;
-	}
-	
-	function Start()
-	{
-		global $topleveldomain_support, $pdb, $tb_prefix;
-		//检测是否开启了顶级域名支持
-		if ($topleveldomain_support) {
-			$host = isset($_SERVER['HTTP_X_FORWARDED_HOST']) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
-			$result = $pdb->GetRow("SELECT id,cache_spacename FROM {$tb_prefix}companies WHERE topleveldomain='".$host."' AND status='1'");
-			if (!empty($result)) {
-				pheader("HTTP/1.1 301 Moved Permanently");
-				pheader("location:".URL."space.php?id=".$result['id']);
-				exit();
-			}
-		}
-		//如果是，则定向到企业商铺
-		formhash();
-	}
+	}    
 }
 ?>

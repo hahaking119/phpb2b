@@ -41,7 +41,7 @@ function smarty_block_textformat($params, $content, &$smarty)
     $wrap = 80;
     $wrap_char = "\n";
     $wrap_cut = false;
-    $assign = "foo";
+    $assign = null;
     
     foreach ($params as $_key => $_val) {
         switch ($_key) {
@@ -93,8 +93,7 @@ function smarty_block_textformat($params, $content, &$smarty)
         }
     }
     $_output = implode($wrap_char . $wrap_char, $_paragraphs);
-    $smarty->assign($assign, $_output);
-    //da($smarty->_tpl_vars['foo']);
+
     return $assign ? $smarty->assign($assign, $_output) : $_output;
 
 }

@@ -88,7 +88,7 @@ $tpl_file = "pms";
 $amount = $pms->findCount(null, $conditions);
 $page->setPagenav($amount);
 $res = $pms->findAll("id,from_member_id,cache_from_username,title,content,status,created", null, $conditions, "id DESC", $page->firstcount, $page->displaypg);
-setvar("MessageStatus", $pms->getReadStatus());
+setvar("MessageStatus", $pms->read_status);
 setvar("Items",$res);
 setvar("ByPages",$page->pagenav);
 template($tpl_file);

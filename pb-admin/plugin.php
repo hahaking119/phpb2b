@@ -15,7 +15,7 @@
  * @package phpb2b
  * @version $Id: plugin.php 427 2009-12-26 13:45:47Z steven $
  */
-define('CURSCRIPT', 'plugin');
+define('CURSCRIPT', 'templet');
 require("../libraries/common.inc.php");
 uses("plugin");
 require("session_cp.inc.php");
@@ -33,12 +33,8 @@ if(isset($_GET['do'])){
 	}
 	if ($do == "install" && !empty($_GET['entry'])) {
 		$entry = trim($_GET['entry']);
-		$last_id = $plugin->install($entry);
-		if($plugin->need_config){
-			flash("plugin_installed_and_config", "plugin.php?do=edit&id=".$last_id, 0);
-		}else{
-			flash("success");
-		}
+		$plugin->install($entry);
+		pheader("location:plugin.php");
 	}
 	if($do == "edit"){
 		if (!empty($id)) {
@@ -72,8 +68,6 @@ if (isset($_POST['save']) && !empty($_POST['pluginvar']) && !empty($_POST['entry
 	}
 	if(!$result){
 		flash();
-	}else{
-		flash("success");
 	}
 }
 $result = $plugin->getPlugins();

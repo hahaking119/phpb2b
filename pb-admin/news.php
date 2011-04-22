@@ -56,23 +56,21 @@ if (isset($_GET['do'])) {
 	}
 	if ($do == "edit") {
 		$news_info = null;
-		require(CACHE_PATH. "cache_area.php");
-		require(CACHE_PATH. "cache_industry.php");
-		setvar("CacheAreas", $_PB_CACHE['area']);
-		setvar("CacheIndustries", $_PB_CACHE['industry']);		
-		$result = $membertype->findAll("id,name",null, $conditions, " id desc");
+		$result = $membertype->findAll("id,name",null, $conditions, " id desc", 0,15);
 		$user_types = array();
 		foreach ($result as $key=>$val) {
 			$user_types[$val['id']] = $val['name'];
 		}
 		setvar("Membertypes", $user_types);
-		setvar("NewstypeOptions", $newstype->getTypeOptions());
 		if(!empty($id)){
 			$item_info = $news->read("*",$id);
+			setvar("NewstypeOptions", $newstype->getTypeOptions($item_info['type_id']));
 			if(($item_info['picture'])) $item_info['image'] = pb_get_attachmenturl($item_info['picture'], "../", 'small');
 			$tag->getTagsByIds($item_info['tag_ids'], true);
 			$item_info['tag'] = $tag->tag;
 			setvar("item",$item_info);
+		}else{
+			setvar("NewstypeOptions", $newstype->getTypeOptions());
 		}
 		$tpl_file = "news.edit";
 		template($tpl_file);

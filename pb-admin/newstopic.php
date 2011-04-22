@@ -33,9 +33,6 @@ if (isset($_POST['del']) && is_array($_POST['id'])) {
 if (isset($_POST['save']) && !empty($_POST['newstopic']['title'])) {
 	$vals = array();
 	$vals = $_POST['newstopic'];
-	if (isset($_POST['id'])) {
-		$id = intval($_POST['id']);
-	}
 	if (!empty($_FILES['pic']['name'])) {
 		$attachment->rename_file = "newstopic-".$time_stamp;
 		$attachment->insert_new = false;
@@ -43,21 +40,15 @@ if (isset($_POST['save']) && !empty($_POST['newstopic']['title'])) {
 		$attachment->upload_process();
 		$vals['picture'] = $attachment->file_full_url;
 	}
-	if (!empty($id)) {
+	if (!empty($_POST['id'])) {
 		$vals['modified'] = $time_stamp;
-		$pdb->Execute("DELETE FROM {$tb_prefix}topicnews WHERE topic_id=".$id);
-		$topic->addNews($id, $_POST['data']['news']);
-		$result = $topic->save($vals, "update", $id);
+		$result = $topic->save($vals, "update", $_POST['id']);
 	}else{
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		$result = $topic->save($vals);
-		$key = $topic->table_name."_id";
-		$topic->addNews($topic->$key, $_POST['data']['news']);
 	}
 	if (!$result) {
 		flash();
-	}else{
-		flash("success");
 	}
 }
 if (isset($_GET['do'])) {

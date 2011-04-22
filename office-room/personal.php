@@ -36,7 +36,6 @@ if (isset($_POST['save'])) {
 	$result = $member->save($vals, "update", $_SESSION['MemberID']);
 	$memberfield->primaryKey = "member_id";
 	$result = $memberfield->save($_POST['memberfield'], "update", $_SESSION['MemberID']);
-	$member->clearCache($_SESSION['MemberID']);
 	if(isset($_POST['personal']['resume_status']))
 	$pdb->Execute("REPLACE INTO {$tb_prefix}personals (member_id,resume_status,max_education) VALUE (".$_SESSION['MemberID'].",'".$_POST['personal']['resume_status']."','".$_POST['personal']['max_education']."')");
 	if(!$result){
@@ -47,7 +46,7 @@ if (isset($_POST['save'])) {
 }
 setvar("Genders",get_cache_type('gender', '', array(-1)));
 setvar("Educations",get_cache_type('education'));
-setvar("OfficeRedirects", explode(",", L("office_redirects", "tpl")));
+setvar("OfficeRedirects", $member_controller->office_redirects);
 if (!empty($memberinfo['photo'])) {
 	$memberinfo['image'] = pb_get_attachmenturl($memberinfo['photo'], "../", "small");
 }

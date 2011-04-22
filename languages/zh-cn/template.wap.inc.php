@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: template.wap.inc.php 58 2009-12-30 01:05:05Z steven $
+ * @version $Id$
  */
 $arrTemplate['_wap_browse'] = "手机浏览";
 $arrTemplate['_wap_search'] = "手机搜索";

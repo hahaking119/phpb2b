@@ -4,15 +4,12 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 用户中心 &raquo; 会员组</p>
-</div>
 <div id="rightTop"> 
-    <h3>会员</h3> 
+    <p>会员中心</p> 
     <ul class="subnav">
-		<li><a href="member.php">管理</a></li>
-		<li><a class="btn1" href="membertype.php">分类</a></li>
-        <li><a href="membertype.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="member.php">管理</a></li>
+		<li><span>分类</span></li>
+        <li><a class="btn1" href="membertype.php?do=edit">添加/编辑</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -37,11 +34,8 @@ body {background: #fcfdff}
 		  <td><{$item.description}></td>
 		  <td><a href="membergroup.php?do=permission" title="查看权限"><{$item.default_group}></a></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-            <li><a class="btn_delete" href="membertype.php?id=<{$item.id}>&do=del" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="membertype.php?do=edit&id=<{$item.id}>" title="编辑">编辑</a></li>
-          </ul>  
-		</td>
+		  <span style="width: 120px;">
+		  <a href="membertype.php?id=<{$item.id}>&do=del"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;&nbsp;<a href="membertype.php?do=edit&id=<{$item.id}>"><img src="images/edit.gif" border="0" alt="编辑"></a></span>		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -51,7 +45,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>

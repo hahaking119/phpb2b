@@ -12,19 +12,23 @@ jQuery(document).ready(function($) {
 	$('#color1').colorPicker();
 })
 </script>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 安全验证</p>
-</div>
 <div id="rightTop"> 
-    <h3>安全验证</h3> 
+    <p>全局</p> 
     <ul class="subnav">
-        <li><a href="setting.php?do=secure">安全</a></li>
-		<li><a href="setting.php?do=auth" class="btn1">验证码</a></li>
+        <li><a class="btn1" href="setting.php?do=basic">站点信息</a></li>
+		<li><a class="btn1" href="setting.php?do=functions">网站功能</a></li>
+        <li><a class="btn1" href="setting.php?do=register">注册与访问</a></li>
+		<li><a class="btn1" href="setting.php?do=email">Email</a></li>
+		<li><span>安全验证</span></li>
     </ul>
 </div>
 <div class="info"> 
     <form method="post" action="setting.php" name="edit_frm"> 
         <table class="infoTable"> 
+         	<tr> 
+                <th class="paddingT15">网站安全密钥:</th> 
+              	<td class="paddingT15 wordSpacing5"><input name="data[setting][auth_key]" value="<{$item.AUTH_KEY}>" /><label class="field_notice">用于识别网站身份的唯一字符串</label></td> 
+          	</tr> 
          	<tr> 
                 <th class="paddingT15">登陆验证码:</th> 
               	<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_logging]" options=$AskAction checked=$item.CAPT_LOGGING|default:0 separator=""}></td> 
@@ -54,13 +58,8 @@ jQuery(document).ready(function($) {
        			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][capt_service]" options=$AskAction checked=$item.CAPT_SERVICE|default:0 separator=""}></td> 
           	</tr> 
 			<tr> 
-                <th class="paddingT15">是否水印:</th> 
+                <th class="paddingT15">图片水印:</th> 
        			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][watermark]" options=$AskAction checked=$item.WATERMARK|default:0 separator=""}></td> 
-          	</tr>
-			<tbody id="tbWaterMark">
-			<tr> 
-                <th class="paddingT15">是否图片水印:</th> 
-       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][waterimage]" options=$AskAction checked=$item.WATERIMAGE|default:0 separator=""}></td> 
           	</tr> 
 			<tr> 
                 <th class="paddingT15">水印文字:</th> 
@@ -70,7 +69,26 @@ jQuery(document).ready(function($) {
                 <th class="paddingT15">文字颜色:</th> 
        			<td class="paddingT15 wordSpacing5"><input name="data[setting][watercolor]" id="color1" value="<{$item.WATERCOLOR|default:"#990000"}>" /></td> 
           	</tr> 
-			</tbody>
+			<tr> 
+                <th class="paddingT15">注册会员是否必须审核:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][regcheck]" options=$AskAction checked=$item.REGCHECK|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">是否允许游客发布供求:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][vis_post]" options=$AskAction checked=$item.VIS_POST|default:0 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">游客发布供求必须审核:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][vis_post_check]" options=$AskAction checked=$item.VIS_POST_CHECK|default:1 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">开放供应信息:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][sell_logincheck]" options=$AskAction checked=$item.SELL_LOGINCHECK|default:1 separator=""}></td> 
+          	</tr> 
+			<tr> 
+                <th class="paddingT15">开放求购信息:</th> 
+       			<td class="paddingT15 wordSpacing5"><{html_radios name="data[setting][buy_logincheck]" options=$AskAction checked=$item.BUY_LOGINCHECK|default:1 separator=""}></td> 
+          	</tr> 
             <tr> 
             <th></th> 
             <td class="ptb20"> 

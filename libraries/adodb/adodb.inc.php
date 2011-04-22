@@ -329,8 +329,6 @@
 	var $_affected = false;
 	var $_logsql = false;
 	var $_transmode = ''; // transaction mode
-	//Todo:debuginfo
-	var $_debuginfo = array();
 	
 
 	

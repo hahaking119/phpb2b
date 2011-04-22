@@ -23,18 +23,12 @@ if (!defined('DIRECTORY_SEPARATOR')) {
 }
 define('DS', DIRECTORY_SEPARATOR);
 require(PHPB2B_ROOT. 'configs'.DS.'config.inc.php');
-
-/**
- * PHPB2B DEBUG LEVEL:
- * MYABE 0-5
- */
-if(!isset($debug)) $debug = 0;
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.inc.php');
+require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.site.inc.php');
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'message.inc.php');
 require(PHPB2B_ROOT. 'libraries'.DS.'global.func.php');
 require(PHPB2B_ROOT. 'configs'.DS.'paths.php');
 include(CACHE_PATH. 'cache_setting.php');
-$httpHost = pb_getenv('HTTP_HOST');
 if(!defined('URL')) {
 	if (!empty($absolute_uri)) {
 		define('URL', $absolute_uri);	
@@ -43,11 +37,12 @@ if(!defined('URL')) {
 		if (pb_getenv('HTTPS')) {
 			$s ='s';
 		}
+		$httpHost = pb_getenv('HTTP_HOST');
 		$uri = $_SERVER['REQUEST_URI']?$_SERVER['REQUEST_URI']:($_SERVER['PHP_SELF']?$_SERVER['PHP_SELF']:$_SERVER['SCRIPT_NAME']);
 		define('URL', htmlspecialchars('http://'.$s.$_SERVER['HTTP_HOST'].substr($uri, 0, strrpos($uri, '/')+1)));	
 	}
 }
-$time_start = getmicrotime();
+$time_start = getMicrotime();
 $time_stamp = time();
 $date_line = date("Y-m-d H:i:s", $time_stamp);
 $includes = array(
@@ -71,8 +66,7 @@ $connected = $pdb->PConnect($dbhost,$dbuser,$dbpasswd,$dbname);
 if(!$connected or empty($connected)) {
 	$msg = L("db_conn_error", 'msg', $pdb->ErrorMsg());
 	$msg.= "<br />".L("db_conn_error_no", 'msg', $pdb->ErrorNo());
-	header_sent($msg);
-	exit;
+	die($msg);
 }
 if($dbcharset) {
 	$pdb->Execute("SET NAMES '{$dbcharset}'");
@@ -84,18 +78,10 @@ list($basefilename) = explode('.', $base_script);
 if($headercharset) {
     @header('Content-Type: text/html; charset='.$charset);
 }
-//timezone
-$time_offset = isset($_PB_CACHE['setting']['time_offset'])?$_PB_CACHE['setting']['time_offset']:0;
-$date_format = isset($_PB_CACHE['setting']['date_format'])?$_PB_CACHE['setting']['date_format']:"Y-m-d";
-$time_now = array('time' => gmdate("{$date_format} H:i", $time_stamp + 3600 * $time_offset),
-	'offset' => ($time_offset >= 0 ? ($time_offset == 0 ? '' : '+'.$time_offset) : $time_offset));
-
-if(PHP_VERSION > '5.1') {
-	@date_default_timezone_set('Etc/GMT'.($time_offset > 0 ? '-' : '+').(abs($time_offset)));
-}else{
-	@putenv("TZ=GMT".$time_now['offset']);
-}
-$viewhelper = new PbView();
+$smarty->flash_layout = $theme_name."/flash";
+$media_paths = $smarty->getRelativePath();
+uaAssign($media_paths);
+$viewhelper = new PbView($_PB_CACHE['setting']['site_name']);
 $conditions = null;
 $pb_userinfo = pb_get_member_info();
 if ($pb_userinfo) {
@@ -103,8 +89,12 @@ if ($pb_userinfo) {
 	$pb_user = pb_addslashes($pb_user);
 	uaAssign($pb_userinfo);
 }
-uaAssign(array('SiteUrl'=>URL, 'Charset'=>$charset));
+uaAssign(array('subdomain'=>$subdomain_support, 'SiteUrl'=>URL, 'ThemeName'=>$theme_name, 'Charset'=>$charset));
 uaAssign($_PB_CACHE['setting']);
+if(MAGIC_QUOTES_GPC) {
+    $_GET = pb_addslashes($_GET);
+    $_POST = pb_addslashes($_POST);
+}
 $pre_length = strlen($cookiepre);
 foreach($_COOKIE as $key => $val) {
 	if(substr($key, 0, $pre_length) == $cookiepre) {
@@ -117,5 +107,8 @@ if($gzipcompress && function_exists('ob_gzhandler')) {
 } else {
 	$gzipcompress = 0;
 	ob_start();
+}
+if (!empty($arrTemplate)) {
+    $smarty->assign($arrTemplate);
 }
 ?>

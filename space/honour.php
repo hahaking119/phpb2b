@@ -18,7 +18,7 @@
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 uses("attachment");
 $attach = new Attachments();
-$result = $attach->findAll("id,thumb,remote,title", null, "member_id='".$member->info['id']."'", "id desc");
+$result = $attach->findAll("id,thumb,remote,title", null, "member_id=".$member->info['id'], "id desc");
 if (!empty($result)) {
 	$count = count($result);
 	for($i=0; $i<$count; $i++){

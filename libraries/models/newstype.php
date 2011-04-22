@@ -19,37 +19,34 @@ class Newstypes extends PbModel {
 
  	var $name = "Newstype";
  	var $data;
- 	var $typeOptions;
- 	var $hasChildren;
 
  	function Newstypes()
  	{
 		parent::__construct();
  	}
  	
-
- 	
- 	function disSubOptions($parent_id, $level)
+ 	function getTypeOptions($selected = '', $level = 2)
  	{
- 		$data = $this->findAll("*", null, "parent_id='".$parent_id."'", "id ASC");
- 		if (!empty($data)) {
- 			$this->hasChildren=true;
- 			foreach ($data as $key=>$val) {
- 				$this->typeOptions.='<option value="'.$val['id'].'">';
- 				$this->typeOptions.=str_repeat('&nbsp;&nbsp;', $level) . $val['name'];
- 				$this->typeOptions.='</option>' . "\n";
- 				$this->disSubOptions($val['id'], $level+1);
+		$types = $this->findAll("*", null, null, "level_id ASC");
+		$type_opts = array();
+		$opt = null;
+		if (!empty($types)) {
+ 			foreach ($types as $ret) {
+ 				$this->data[$ret['id']] = $ret['name'];
  			}
- 		}else{
- 			$this->hasChildren=false;
- 		}
- 	}
- 	
- 	function getTypeOptions()
- 	{
- 		$this->typeOptions = '';
- 		$this->disSubOptions(0, 0);
- 		return $this->typeOptions;
+			for($i=1; $i<=$level; $i++){
+				$opt.='<optgroup label="'.L("type_level".$i, "tpl").'">';
+				foreach ($types as $key=>$val){
+					if($val['level_id']==$i){
+						$opt.='<option value="'.$val['id'].'"';
+						if($selected && $selected==$val['id']) $opt.=' selected="selected"';
+						$opt.='">'.$val['name'].'</option>';
+					}
+				}
+				$opt.='</optgroup>';
+			}
+		}
+		return $opt;
  	}
  	
  	function getCacheTypes()

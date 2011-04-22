@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'add');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 uses("market");
 $market = new Markets();
 if (isset($_POST['do']) && !empty($_POST['data']['market']['name'])) {

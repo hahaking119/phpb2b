@@ -30,7 +30,7 @@ if (!empty($company->info['manage_type'])) {
 		$manage_types .= $manage_type[$m_type]."&nbsp;&nbsp;";
 	}
 }
-$company->info['found_year'] = (!empty($company->info['found_date']))?(date("Y", $company->info['found_date'])):'';
+$company->info['found_year'] = (!empty($company->info['found_year']))?(date("Y", $company->info['found_year'])):'';
 $company->info['manage_type'] = $manage_types;
 $company->info['main_market'] = $main_markets;
 $company->info['ecnomy'] = get_cache_type("economic_type", $company->info['property']);

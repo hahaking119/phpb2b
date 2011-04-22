@@ -64,20 +64,6 @@ class Companies extends PbModel {
  		$sql = "SELECT * FROM {$this->table_prefix}companies c WHERE c.member_id='{$member_id}'";
  		$result = $this->dbstuff->GetRow($sql);
  		$this->info = $result; 		
- 	} 	
- 	
- 	function setInfoBySpaceName($user_id)
- 	{
- 		global $rewrite_able, $rewrite_compatible;
- 		$result = array();
- 		$sql = "SELECT * FROM {$this->table_prefix}companies c WHERE c.cache_spacename='{$user_id}'";
- 		$result = $this->dbstuff->GetRow($sql);
- 		if (empty($result) || !$result) {
- 			$user_id = rawurldecode($user_id);
- 			$sql = "SELECT * FROM {$this->table_prefix}companies c WHERE c.name='{$user_id}'";
- 			$result = $this->dbstuff->GetRow($sql);
- 		}
- 		$this->info = $result; 		
  	}
  	
  	function Delete($ids, $conditions = array())
@@ -139,23 +125,16 @@ class Companies extends PbModel {
 
 	function checkStatus($company_id)
 	{
-		$sql = "SELECT status FROM {$this->table_prefix}companies WHERE id='".$company_id."'";
+		$sql = "SELECT status FROM {$this->table_prefix}companies WHERE id=".$company_id;
 		$c_status = $this->dbstuff->GetRow($sql);
 		if (!$c_status['status'] || empty($c_status['status'])) {
 			flash("company_checking_or_invalid", "company.php");
 		}
 	}
 	
-	function newCheckStatus($status)
-	{
-		if (!$status || empty($status)) {
-			flash("company_checking_or_invalid", "company.php");
-		}
-	}
-	
 	function getInfoById($company_id)
 	{
-		$sql = "SELECT c.*,c.name as companyname,tel AS link_tel FROM {$this->table_prefix}companies c WHERE c.id={$company_id}";
+		$sql = "SELECT c.*,c.name as companyname,CONCAT(telcode,'-',telzone,'-',tel) AS link_tel FROM {$this->table_prefix}companies c WHERE c.id={$company_id}";
 		$result = $this->dbstuff->GetRow($sql);
 		$this->info = $result;
 		return $result;
@@ -216,7 +195,7 @@ class Companies extends PbModel {
 		for ($i=0; $i<$count; $i++){
 			$result[$i]['gradeimg'] = 'images/group/'.$_PB_CACHE['membergroup'][$result[$i]['cache_membergroupid']]['avatar'];
 			$result[$i]['managetype'] = $_PB_CACHE['manage_type'][$result[$i]['manage_type']];
-			if(!empty($result[$i]['membergroup_id'])) $result[$i]['gradename'] = $_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['name'];
+			if(isset($result[$i]['membergroup_id'])) $result[$i]['gradename'] = $_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['name'];
 			if (isset($result[$i]['space_name'])) {
 				$result[$i]['url'] = "space.php?userid=".$result[$i]['space_name'];
 			}else{
@@ -227,28 +206,6 @@ class Companies extends PbModel {
 			}
 		}
 		return $result;		
-	}
-	
-	function getPhone($code = 0, $zone = 0, $id = 0)
-	{
-		$p = null;
-		if (!empty($code)) {
-			$p.="(".$code.")";
-		}else{
-			$p.="(000)";
-		}
-		if (empty($zone)) {
-			$zone = "00";
-		}
-		$p.=@implode("-", array($zone, $id));
-		return trim($p);
-	}
-	
-	function splitPhone($phone)
-	{
-		$return = array();
-		ereg("\(+([0-9]{2,3})+\)([0-9]{1,3})-([0-9]{1,8})", $phone, $return);
-		return $return;
 	}
 }
 ?>

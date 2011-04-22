@@ -1,7 +1,6 @@
 <?php
 define('CURSCRIPT', 'query');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 require(LIB_PATH. "typemodel.inc.php");
 uses("product","member","message");
 $pms = new Messages();
@@ -14,7 +13,7 @@ if (isset($_POST['id']) && !empty($_POST['do'])) {
 	$vals['content'] = implode("<br />", $_POST['inquery']);
 	$result = $pms->SendToUser($pb_userinfo['pb_username'], $pdb->GetOne("SELECT username FROM {$tb_prefix}members WHERE id=".intval($_POST['to_member_id'])), $vals);
 	if(!$result){
-		flash("failed", '', 0);
+		flash("failed");
 	}else{
 		flash("success", '', 0);
 	}
@@ -27,10 +26,10 @@ if (empty($res) || !$res) {
 }else {
 	if (!empty($res['picture'])) {
 		$res['imgsmall'] = "attachment/".$res['picture'].".small.jpg";
-		$res['imgbig'] = "attachment/".$res['picture'];
-		$res['image'] = "attachment/".$res['picture'].".middle.jpg";
+		$res['imgmiddle'] = "attachment/".$res['picture'].".middle.jpg";
+		$res['image'] = "attachment/".$res['picture'];
 	}else{
-		$res['image'] = pb_get_attachmenturl('', '', 'middle');
+		$res['image'] = "images/nopic.large.jpg";
 	}
 	setvar("ImTypes", get_cache_type("im_type"));
 	setvar("TelTypes", get_cache_type("phone_type"));

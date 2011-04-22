@@ -1,7 +1,7 @@
 <{assign var="page_title" value="`$page_title`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
-<div class="wrapper">
+<div class="warpper">
   <div class="content">
    
       <p class="whitespace"></p>
@@ -10,7 +10,7 @@
           <p class="help_ltop"> <img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" /> <img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" /> </p>
           <div class="help_lcont">
             <div class="help_telborder">
-              <h2 class="tar"><{$_about_us}></h2>
+              <h2 class="tar">关于我们</h2>
             </div>
             <ul>
             	<{userpage row=15}>
@@ -21,11 +21,11 @@
             </ul>
           </div>
         </div>
-        <div class="fr help_r clearfix">
-           <div class="help_rtop"></div>
-              <div class="help_rcontbg">
-            <div class="foot_contact"><{$item.title}></div>
-            <div class="help_rbg"><{$item.content}></div>
+        <div class="fl help_r">
+          <p class="help_ltop"> <img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" /> <img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" /> </p>
+          <div class="help_rcontbg"> <img src="<{$theme_img_path}>images/helprbgl.jpg" class="fl" /> <img src="<{$theme_img_path}>images/helprbgr.jpg" class="fr" />
+            <p class="self_def_title"><{$item.title}></p>
+            <p class="self_def_con"><{$item.content}></p>
           </div>
         </div>
 

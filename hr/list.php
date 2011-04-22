@@ -17,7 +17,6 @@
  */
 define('CURSCRIPT', 'search');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
 require(LIB_PATH. "page.class.php");
 uses("job", "industry", "area");
 $job = new Jobs();

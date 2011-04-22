@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.friendlink.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: block.friendlink.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_block_friendlink($params, $content, &$smarty) {
 	global $pdb, $tb_prefix;
@@ -29,27 +29,17 @@ function smarty_block_friendlink($params, $content, &$smarty) {
 	$show_logo = false;
 	if (isset($params['type'])) {
 		if ($params['type']=='image') {
-			$conditions[] = "logo!=''";
+			$conditions[] = "picture!=''";
 		}
 	}
-	if (isset($params['typeid'])) {
-		$conditions[] = "friendlinktype_id='".$params['typeid']."'";
-	}
-	if (isset($params['seperate'])) {
-		//sep
-	}
-	if (isset($params['exclode'])) {
-		//$tmp_str = explode(",", $params['exclode']);
-		$conditions[] = "id NOT IN (".$params['exclode'].")";
-	}
 	$friendlink->setCondition($conditions);
-	$result = $pdb->GetArray("SELECT *,logo AS image FROM {$tb_prefix}friendlinks ".$friendlink->getCondition()." ORDER BY priority ASC");
+	$result = $pdb->GetArray("SELECT * FROM {$tb_prefix}friendlinks ".$friendlink->getCondition()." ORDER BY priority ASC");
 	$return = null;
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
 			$url = $result[$i]['url'];			
-			$return.= str_replace(array("[link:title]", "[field:title]", "[field:target]", "[field:style]", "[field:tip]", "[field:logo]", "[img:src]"), array($url, $result[$i]['title'], $result[$i]['target'], $result[$i]['style'], $result[$i]['tip'], $result[$i]['image'], $result[$i]['image']), $content);
+			$return.= str_replace(array("[link:title]", "[field:title]", "[field:target]", "[field:style]", "[field:tip]", "[field:logo]"), array($url, $result[$i]['title'], $result[$i]['target'], $result[$i]['style'], $result[$i]['tip'], $result[$i]['image']), $content);
 		}
 	}
 	return $return;

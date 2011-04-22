@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: function.plugin.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * @version $Id: function.plugin.php 438 2009-12-26 13:48:41Z steven $
  */
 function smarty_function_plugin($params){
 	global $pdb, $tb_prefix;
@@ -25,15 +25,13 @@ function smarty_function_plugin($params){
 			$plugin_var = unserialize($plugin_var);
 			extract($plugin_var);
 			$smarty->assign($plugin_var);
-		}else{
-			return;
 		}
 		$pb_plugin_name = $name;
 		if (!class_exists("Plugin")) {
 			uses("plugin");
 			$plugin = new Plugin($pb_plugin_name);
 		}else{
-			$plugin = new Plugin($pb_plugin_name);
+		    $plugin = new Plugin($pb_plugin_name);
 		}
 		include($plugin->plugin_path.$plugin->plugin_name.'/'.$plugin->plugin_name.'.php');
 	}

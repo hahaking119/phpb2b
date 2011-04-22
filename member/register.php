@@ -15,18 +15,12 @@
  * @package phpb2b
  * @version $Id: register.php 463 2009-12-27 03:25:16Z steven $
  */
+session_start();
 define('CURSCRIPT', 'register');
 require("../libraries/common.inc.php");
-require("../share.inc.php");
-if (session_id() == '' ) { 
-	require_once(LIB_PATH. "session_php.class.php");
-	$session = new PbSessions();
-}
 require(PHPB2B_ROOT."libraries/sendmail.inc.php");
 require(CACHE_PATH. 'cache_membergroup.php');
-require(CACHE_PATH. 'cache_setting1.php');
 require(API_PATH.'passport.class.php');
-require(PHPB2B_ROOT. "languages/".$app_lang."/emails.inc.php");
 $passport = new Passports();
 uses("member","company","companyfield", "memberfield","membergroup");
 $cfg['reg_time_seperate'] = 3*60;
@@ -42,6 +36,7 @@ $forbid_ip = $_PB_CACHE['setting']['forbid_ip'];
 $conditions = array();
 capt_check("capt_register");
 $tpl_file = "member.register";
+$member_reg_check = $_PB_CACHE['setting']['regcheck'];
 $member_reg_auth = $_PB_CACHE['setting']['new_userauth'];
 if (isset($_GET['action'])) {
 	$do = trim($_GET['action']);
@@ -49,8 +44,8 @@ if (isset($_GET['action'])) {
 		$reg_tips = null;
 		$reg_result = true;
 		$is_company = false;
-		if ($member_reg_auth) {
-			switch ($member_reg_auth) {
+		if ($member_reg_check) {
+			switch ($register_type) {
 				case 1:
 					$reg_tips = L("pls_active_your_account");
 					$reg_result = false;
@@ -58,10 +53,11 @@ if (isset($_GET['action'])) {
 				default:
 					$reg_tips = L("pls_wait_for_check");
 					$reg_result = false;
+			
 					break;
 			}
 		}else{
-			$member_info = $pdb->GetRow("SELECT membergroup_id,membertype_id FROM {$tb_prefix}members WHERE id='".$pb_user['pb_userid']."'");
+			$member_info = $pdb->GetRow("SELECT membergroup_id,membertype_id FROM {$tb_prefix}members WHERE id='".$_SESSION['MemberID']."'");
 			$gid = $member_info['membergroup_id'];
 			$smarty->assign("groupname", $_PB_CACHE['membergroup'][$gid]['name']);
 			$smarty->assign("groupimg", "images/group/".$_PB_CACHE['membergroup'][$gid]['avatar']);
@@ -108,7 +104,7 @@ if(isset($_POST['register'])){
 	$member->params['data']['member']['service_start_date'] = $time_stamp;
 	$member->params['data']['member']['service_end_date'] = $membergroup->getServiceEndtime($time_limits);
 	$member->params['data']['member']['membertype_id'] = ($is_company)?2:1;
-	if($member_reg_auth=="1" || $member_reg_auth!=0 || !empty($_PB_CACHE['setting']['new_userauth'])){
+	if($member_reg_check=="1" || $member_reg_auth!=0){
 		$member->params['data']['member']['status'] = 0;
 		$if_need_check = true;
 	}else{
@@ -119,24 +115,9 @@ if(isset($_POST['register'])){
 	if ($member_reg_auth == 1) {
 		$if_need_check = true;
 		$exp_time = $time_stamp+86400;
-		$tmp_username = $member->params['data']['member']['username'];
-		$hash = rawurlencode(authcode("{$tmp_username}\t".$exp_time, "ENCODE"));
-		$str = str_replace(array("%hash%"), $hash, L("pls_pending_account", "tpl"));
-		$sended = pb_sendmail($member->params['data']['member']['email'], $tmp_username, L("pls_active_your_account", "tpl"), $str);
-	}
-	if (!empty($_PB_CACHE['setting1']['welcome_msg'])) {
-		$sended = pb_sendmail($member->params['data']['member']['email'], $tmp_username, 
-		str_replace(
-		array("%username%", "%sitename%"), 
-		array($tmp_username, 
-		$_PB_CACHE['setting']['site_name']), 
-		$_PB_CACHE['setting1']['welcome_msg_title']), 
-		str_replace(
-		array("%username%", "%sitename%", "%serviceemail%"), 
-		array($tmp_username, 
-		$_PB_CACHE['setting']['site_name'], 
-		$_PB_CACHE['setting']['service_email']), 
-		$_PB_CACHE['setting1']['welcome_msg_content']));
+		$hash = urlencode(authcode($tmp_username."|".$exp_time, "ENCODE"));
+		$str = "Please active it through : <a href='".URL."pending.php?hash=".$hash."'>".URL."pending.php?hash=".$hash."</a>";
+		$sended = pb_sendmail($member->params['data']['member']['email'], $tmp_username, 'Please active your account', $str);
 	}
 	if($updated){
 		$key = $member->table_name."_id";
@@ -145,7 +126,7 @@ if(isset($_POST['register'])){
 		pheader("location:".$gopage);
 	}else{
 		setvar("member", $_POST['data']['member']);
-		if(isset($_POST['data']['memberfield'])) setvar("memberfield", $_POST['data']['memberfield']);
+		setvar("memberfield", $_POST['data']['memberfield']);
 		setvar("ErrorMsg", $member->getError());
 	}
 }
@@ -155,6 +136,5 @@ setvar("CompanyTypes",$company_types);
 }
 formhash();
 setvar("sid",md5(uniqid($time_stamp)));
-setvar("tmpname",pb_radom(6));
 render($tpl_file);
 ?>

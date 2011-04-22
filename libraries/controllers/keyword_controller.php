@@ -19,26 +19,18 @@ class Keyword extends PbController {
 	var $name = "Keyword";
 	var $keywords;
 	
-	/**
-	 * rewrite tag url
-	 *
-	 * @param mixed $titles
-	 */
-	function rewrite($id, $title = null)
+	function getKeywords($keyword)
 	{
-		$url = null;
-		global $rewrite_able, $rewrite_compatible;
-		if ($rewrite_able) {
-			if ($rewrite_compatible && !empty($title)) {
-				$url = "tag/".rawurlencode($title)."/";
-			}else{
-				$url = "tag/detail/".$id.".html";
-			}
-		}elseif(!empty($title)){
-			$url = "tag.php?name=".rawurlencode($title);
+		$return = null;
+		$_this =& Keywords::getInstance();
+		$keywords = $_this->getKeywordsByIds($keyword);
+		if (empty($keywords)) {
+			return;
 		}else{
-			$url = "tag.php?id=".$id;
+			foreach ($keywords as $key=>$val) {
+				$return.="<a href='tag.php?type=trades&keyword=".urlencode($val['title'])."' target='_blank'>".$val['title']."</a>&nbsp;";
+			}
+			return $return;
 		}
-		return $url;
-	}	
+	}
 }

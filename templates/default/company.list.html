@@ -1,32 +1,32 @@
-<{assign var="page_title" value="`$page_title` - `$_yellow_page`"}>
+<{assign var="page_title" value="`$page_title` - 公司库"}>
 <{assign var="nav_id" value="4"}>
 <{include file="`$ThemeName`/header.html"}>
-<div class="wrapper">
-	<div class="tips"><span><{$position}></span></div>
+<div class="warpper">
+	<div class="tips"><img src="<{$theme_img_path}>images/lhighs.jpg" /><span><{$position}></span></div>
     <div class="blank6"></div>
-    <div class="filter"><span class="quick_filter"><{$_fast_screening}></span><{foreach from=$OtherIndustry name=subindustry item=item1}>
+    <div class="filter"><span class="quick_filter">快速筛选:</span><{foreach from=$OtherIndustry name=subindustry item=item1}>
 		<a href="company/list.php?industryid=<{$item1.id}>" title="<{$item1.name}>"><{$item1.name}></a>
 		<{foreachelse}>
-		<a><{$_no_subclass}></a>
+		<a>该分类下无子分类</a>
 		<{/foreach}>
      </div>
     <div class="blank6"></div>
     <div class="filter">
     <form name="search_frm" id="OfferSearchFrm" action="" method="get">
-    <span class="quick_filter"><{$_industry_screening}></span>
+    <span class="quick_filter">按行业筛选:</span>
 		<select name="industryid" onchange="$('#OfferSearchFrm').submit();">
-			<option value="0"><{$_all_sort}></option>
+			<option value="0">所有分类</option>
 			<{foreach from=$OtherIndustry name=byindustry item=item1}>
 			<{if $item1.id eq $smarty.get.industryid}>selected="selected"<{/if}>><{$item1.name}><{if $item1.id eq $smarty.get.industryid}>selected="selected"<{/if}>><{$item1.name}><option value="<{$item1.id}>" <{if $item1.id eq $smarty.get.industryid}>selected="selected"<{/if}>><{$item1.name}></option>
 			<{/foreach}>
 		</select>
 		<select name="areaid" onchange="$('#OfferSearchFrm').submit();">
-				<option value="0"><{$_area}></option>
+				<option value="0">所有地区</option>
 				<{foreach from=$OtherArea name=byarea item=item2}>
 				<{if $item2.id eq $smarty.get.areaid}>selected="selected"<{/if}>><{$item2.name}><{if $item2.id eq $smarty.get.areaid}>selected="selected"<{/if}>><{$item2.name}><option value="<{$item2.id}>" <{if $item2.id eq $smarty.get.areaid}>selected="selected"<{/if}>><{$item2.name}></option>
 				<{/foreach}>
 		</select>
-		<input type="submit"  value="<{$_screening}>" class="btn_submit_w45"/>
+		<input type="submit"  value="筛选" class="btn_submit_w45"/>
 		
 		</form>
        </div>
@@ -34,25 +34,25 @@
      <div class="content clearfix">
     <div class="main_left_w750">
 	<div class="base_title">
-         <h2><span class="title_name"><{$_search_result}></span></h2>
+         <h2><span class="title_name">搜索结果</span></h2>
     </div>
     <div class="base_company_content clearfix">
      <table class="company_list_search">
       <tr>
-        <th class="company_info"><{$_add_time}></th>
-        <th><{$_location}></th>
-        <th><{$_integrity_index}></th>
-        <th><{$_guestbook}></th>
+        <th class="company_info">公司/加入日期</th>
+        <th>所在地</th>
+        <th>诚信指数</th>
+        <th>给我留言</th>
       </tr>
       <{foreach from=$Items name=company item=item}>
       <tr>
         <td class="company_info">
         <p><span class="span4"><a href="space.php?userid=<{$item.userid}>" target="_blank"><strong><{$item.name}></strong></a></span>[<{$item.managetype}>]<span class="span5">(<{$item.pubdate|date_format:"%Y-%m-%d"}>)</span></p>
 	    <p><{$item.description|strip_tags|truncate:100}></p>
-        <p><{$_mainly_products}><{$item.main_prod}></p></td>
+        <p>主营：<{$item.main_prod}></p></td>
         <td><p><{$Areas[1][$item.area_id1]}><br /><{$Areas[2][$item.area_id2]}></p></td>
-        <td><div><{if $item.gradename}><img src="<{$item.gradeimg}>" alt="<{$item.gradename}>" /><br /><{/if}><strong><{$item.credits}></strong></div></td>
-        <td><span class="span7"><a href="space.php?do=feedback&userid=<{$item.userid}>" target="_blank"><img src="<{$theme_img_path}>images/words.gif" alt="��<{$item.name}>����"/></a></span></td>
+        <td><span class="span6"><img src="<{$item.gradeimg}>" alt="<{$item.gradename}>" /><br /><strong><{$item.credits}></strong></span></td>
+        <td><span class="span7"><a href="space.php?do=feed&userid=<{$item.userid}>" target="_blank"><img src="<{$theme_img_path}>images/words.gif" alt="给<{$item.name}>留言"/></a></span></td>
       </tr>
       <{if !$smarty.foreach.company.last}>
       <tr>
@@ -68,7 +68,7 @@
     <div class="main_right_w200">
 	<div class="companylistconright">
 			<div class="lookcompany">
-				<div class="buymessagetop"><img src="<{$theme_img_path}>images/lhighs.gif" /><{$_industry_view_company}></div>
+				<div class="buymessagetop"><img src="<{$theme_img_path}>images/lhighs.gif" />按行业浏览公司</div>
 				<p>
 				<{industry level=1}>
 				<a href="company/list.php?industryid=[field:id]">[field:title]</a><br /> 
@@ -77,7 +77,7 @@
 				<div class="clear"></div>
 			</div>
 			<div class="companylistsee">
-				<div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" /><{$_area_view_company}></div>
+				<div class="recommendcompanytop"><img src="<{$theme_img_path}>images/lhighs.gif" />按地区浏览公司</div>
 				<div class="companylistseecon">
 					<{area level=1}>
 					<p><a href="company/list.php?areaid=[field:id]">[field:title]</a></p>

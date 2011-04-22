@@ -4,11 +4,12 @@
 body {background: #fcfdff}
 -->
 </style>
-<div id="currentPosition">
-	<p><{$_your_current_position}> 广告 &raquo; 订单中心</p>
-</div>
 <div id="rightTop"> 
-    <h3>订单中心</h3> 
+    <p>订单中心</p> 
+    <ul class="subnav"> 
+		<li><span>管理</span></li>
+        <li><a class="btn1" href="goods.php">查看服务</a></li>
+    </ul> 
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="order.php" method="post">
@@ -32,11 +33,8 @@ body {background: #fcfdff}
 		  <td><{$item.created|date_format:"%Y-%m-%d"}></td>
 		  <td><{$Status[$item.status]}></td>
 		  <td class="handler">
-          <ul id="handler_icon">
-            <li><a class="btn_delete"  href="order.php?id=<{$item.id}>&do=del" title="删除">删除</a></li>
-            <li><a class="btn_browse" href="order.php?id=<{$item.id}>&do=view" title="搜索">搜索</a></li>
-          </ul>  
-		 </td>
+		  <span style="width: 120px;">
+		  <a href="order.php?id=<{$item.id}>&do=del"><img src="images/del.gif" border="0" alt="删除"></a>&nbsp;<a href="order.php?id=<{$item.id}>&do=view"><img src="images/preview.gif" border="0" alt="搜索"></a></span></td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
@@ -46,7 +44,7 @@ body {background: #fcfdff}
     </tbody>
 	</table>
 	<div id="dataFuncs" title="操作区">
-    <div class="left paddingT15" id="batchAction">
+    <div class="left paddingT15" id="batchAction">   
       <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
       <select name="status" id="Status" onchange="$('#ListFrm').submit();">
       	<option>设置状态</option>
