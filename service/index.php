@@ -20,6 +20,5 @@ require("../libraries/common.inc.php");
 require("../share.inc.php");
 uses("service");
 $service = new Services();
-formhash();
 render("service");
 ?>

@@ -31,7 +31,6 @@ class Market extends PbController {
 		}else{
 			$url = "market/detail.php?id=".$id;
 		}
-		return $url;
 	}
 }
 ?>

@@ -141,25 +141,22 @@ function edit_config($configs) {
 	}
 }
 if (isset($_POST['savebasic'])) {
-        $sp_search = array('\\\"', "\\\'", "'");
-        $sp_replace = array('&amp;', '&quot;', '&#39;');
-        if (!empty($_POST['data']['setting1'])) {
-                $_POST['data']['setting1']['site_description'] = str_replace($sp_search, $sp_replace, $_POST['data']['setting1']['site_description']);
-                $updated = $setting->replace($_POST['data']['setting1'], 1);
-                if($updated) $cache->writeCache("setting1", "setting1");
-        }
-        if (!empty($_POST['data']['setting'])) {
-                $updated = $setting->replace($_POST['data']['setting']);
-                if($updated) $cache->writeCache("setting", "setting");
-        }
-        if($updated){
-                if (!empty($_POST['data']['setting']['site_url']) && (!pb_strcomp($_POST['data']['setting']['site_url'], $absolute_uri))) {
-                        edit_config(array("absolute_uri"=>$_POST['data']['setting']['site_url']));
-                }
-                flash("success", "setting.php?do=basic");
-        }else{
-                flash();
-        }
+	$sp_search = array('\\\"', "\\\'", "'");
+	$sp_replace = array('&amp;', '&quot;', '&#39;');
+	if (!empty($_POST['data']['setting1'])) {
+		$_POST['data']['setting1']['site_description'] = str_replace($sp_search, $sp_replace, $_POST['data']['setting1']['site_description']);
+		$setting->replace($_POST['data']['setting1'], 1);
+	}
+	$updated = $setting->replace($_POST['data']['setting']);
+	if($updated){
+		$cache->writeCache("setting", "setting");
+		if (!empty($_POST['data']['setting']['site_url']) && (!pb_strcomp($_POST['data']['setting']['site_url'], $absolute_uri))) {
+			edit_config(array("absolute_uri"=>$_POST['data']['setting']['site_url']));
+		}
+		flash("success", "setting.php?do=basic");
+	}else{
+		flash();
+	}
 }
 if (isset($_POST['saveauth'])) {
 	$updated = $setting->replace($_POST['data']['setting']);

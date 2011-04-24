@@ -27,7 +27,7 @@ uses("setting", "adminnote");
 $setting = new Settings();
 $adminnote = new Adminnotes();
 if (isset($_GET['do'])) {
-	$do = trim($_GET['do']);
+	$do == trim($_GET['do']);
 	if($do == "set_update_alert") {
 		$vals['update_alert_type'] = intval($_GET['type']);
 		$vals['update_alert_lasttime'] = $time_stamp;

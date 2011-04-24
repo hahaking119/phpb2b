@@ -233,16 +233,12 @@ switch($step)
 			$tables = $db->table_names();
 			if(!empty($tables)){
 				foreach ($tables as $names) {
-					if(!function_exists("stripos")){
-                          function stripos($str,$needle) {
-                                return strpos(strtolower($str),strtolower($needle));
-                                     }
-                           }
+					if(function_exists("stripos")){
 						if(stripos($names['table_name'],$tb_prefix) ===0){
 							$sqldump.=data2sql($names['table_name']);
 						}
 					}
-				
+				}
 				pb_create_folder(PHPB2B_ROOT. DS. "data".DS."backup_".$backupdir);
 				$file_path = PHPB2B_ROOT. DS. "data".DS."backup_".$backupdir.DS.date('ymd').'_'.pb_radom().".sql";
 				if(trim($sqldump)) {
@@ -323,7 +319,7 @@ function config_edit($configs) {
 	$configfiles = file_get_contents($configfile);
 	$configfiles = trim($configfiles);
 	$configfiles = preg_replace("/[$]dbhost\s*\=\s*[\"'].*?[\"'];/is", "\$dbhost = '$dbhost';", $configfiles);
-	//$configfiles = preg_replace("/[$]app_lang\s*\=\s*[\"'].*?[\"'];/is", "\$app_lang = '$app_lang';", $configfiles);
+	$configfiles = preg_replace("/[$]app_lang\s*\=\s*[\"'].*?[\"'];/is", "\$app_lang = '$app_lang';", $configfiles);
 	$configfiles = preg_replace("/[$]dbuser\s*\=\s*[\"'].*?[\"'];/is", "\$dbuser = '$dbuser';", $configfiles);
 	$configfiles = preg_replace("/[$]dbpasswd\s*\=\s*[\"'].*?[\"'];/is", "\$dbpasswd = '$dbpasswd';", $configfiles);
 	$configfiles = preg_replace("/[$]dbname\s*\=\s*[\"'].*?[\"'];/is", "\$dbname = '$dbname';", $configfiles);

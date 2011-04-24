@@ -10,13 +10,13 @@
 		<p>
 		<span><{$_sort_screening}></span>
 		<{foreach from=$TradeTypes item="type_item" key="type_key"}>
-		<a href="offer/list.php?<{$addParams}>typeid=<{$type_key}>" title="<{$type_item}>"><{$type_item}></a>
+		<a href="offer/list.php?typeid=<{$type_key}>" title="<{$type_item}>"><{$type_item}></a>
 		<{/foreach}>
 		</p>
 		<p>
 		<span><{$_industry_screening}></span>
 		<{foreach from=$OtherIndustry name=subindustry item=item1}>
-		<a href="offer/list.php?<{$addParams}>industryid=<{$item1.id}>" title="<{$item1.name}>"><{$item1.name}></a>
+		<a href="offer/list.php?industryid=<{$item1.id}>" title="<{$item1.name}>"><{$item1.name}></a>
 		<{foreachelse}>
 		<a><{$_no_subclass}></a>
 		<{/foreach}>

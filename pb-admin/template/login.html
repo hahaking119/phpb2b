@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
-<title><{$_cp_login}> - <{$site_title}></title>
+<title>控制台登陆 - <{$site_title}></title>
 <link rel="stylesheet" type="text/css" href="css/login.css" />
 <script language="javascript" src="../scripts/jquery.js"></script>
 <script language="javascript">
@@ -20,19 +20,19 @@ $(document).ready(function(){
 		function(){   
 			<{if $smarty.session.is_admin==""}>
 				if($('#username').val() == ""){
-					alert("<{$_pls_input_username}>");
+					alert("请输入用户名");
 					$('#username').focus();
 					return false;
 				}
 			<{/if}>
 			if($('#userpass').val() == ""){
-				alert("<{$_pls_input_passwd}>");
+				alert("请输入密码");
 				$('#userpass').focus();
 				return false;
 			}
 			<{if $ifcapt}>
 			if($('#capt_login_admin').val() == ""){
-				alert("<{$_pls_input_authcode}>");
+				alert("请输入验证码，不区分大小写");
 				$('#capt_login_admin').focus();
 				return false;
 			}
@@ -48,36 +48,36 @@ $(document).ready(function(){
 <div id="container">
 <div id="top">
 <div class="top_pan"> <img src="images/login.jpg" />
-  <p class="top_con"><{$_phpb2b_info}></p>
+  <p class="top_con"><span>PHPB2B</span> 是一个采用PHP和 <span>MySQL</span> 数据库构建的高效行业电子商务网站管理系统！ </p>
 </div>
 </div>
 <div id="login_body">
     <div id="login_pan" > 
-      <h2><{$_cp_login_first}><span>(Please Login First)</span></h2>
+      <h2>请您先登录<span>(Please Login First)</span></h2>
       <div class="loginmain">
       <form action="login.php" method="post" name="login_frm" id="LoginFrm" class="s_lo_f" autocomplete="off">
         <input type="hidden" name="do" value="login"  />
         <input type="hidden" name="formhash" value="<{$formhash}>" />
           <table width="280" class="login_main">
           <tr>
-            <th><{$_cp_username}></th>
+            <th>用户名:</th>
             <td><input tabindex="1" type="text" name="data[username]" id="username" size="15" maxLength="20" value=""><{$LoginError}></td>
           </tr>
           <tr>
-            <th><{$cp_passwd}></th>
+            <th>密　码:</th>
             <td><input tabindex="2" type="password" name="data[userpass]" id="userpass" size="15" maxLength="20" value=""><br clear="all" /></td>
           </tr>
           <{if $ifcapt}>
           <tr>
-            <th><{$_cp_capt}></th>
+            <th>验证码:</th>
             <td class="code"><input type="text" value="" name="data[capt_login_admin]" tabindex="3" id="capt_login_admin" />
 			<br />
-			<img id="imgcaptcha" src="../captcha.php?sid=<{$sid}>" alt="<{$_refresh_capt}>" /></td>
+			<img id="imgcaptcha" src="../captcha.php?sid=<{$sid}>" alt="如果看不清数字或字母?请点一下换一个!" title="如果看不清数字或字母?请点一下换一个!" /></td>
           </tr>
           <{/if}>
           <tr>
             <th>&nbsp;</th>
-            <td><span class="login_forget"><a href="<{$SiteUrl}>getpasswd.php"><{$_cp_forget_passwd}></a></span><span class="btn_forget"><input type="submit" name="login" id="Login" value="<{$_cp_login}>" class="button"/></span></td>
+            <td><span class="login_forget"><a href="<{$SiteUrl}>getpasswd.php">忘记密码？</a></span><span class="btn_forget"><input type="submit" name="login" id="Login" value="登陆" class="button"/></span></td>
           </tr>
         </table>
       </form>
@@ -88,7 +88,7 @@ $(document).ready(function(){
 </div>
 <div id="foot_pan">
 	<div id="foot_main">
-    <div class="foot_home"><a href="<{$SiteUrl}>" title="<{$_return_homepage}>"> <img src="images/home.jpg" id="ico_home" /></a></div>
+    <div class="foot_home"><a href="<{$SiteUrl}>" title="返回首页"> <img src="images/home.jpg" id="ico_home" /></a></div>
     <div class="clear"></div>
    	</div>
 </div>

@@ -34,12 +34,12 @@ if (isset($_POST['do']) && !empty($_POST['data']['company'])) {
 	if (isset($companyinfo)) {
 		if (empty($companyinfo)) {
 			if($company->isChinese($_POST['data']['company']['name'])){
-				require_once(LIB_PATH."covn.php");
-                $space_name = Pinyin($_POST['data']['company']['name'],'UTF-8');
+				require(LIB_PATH. "pinyin.inc.php");
+				$py = new utf8pinyin();
+				$space_name = $py->str2py($_POST['data']['company']['name'], true, false);
 			}else{
 				$space_name = preg_replace('/\s(?=\s)/', '', trim($_POST['data']['company']['name']));
 			}
-			$space_name = str_replace(' ', '', $space_name);
 			$vals['cache_spacename'] = $space_name;
 			$vals['first_letter'] = $py->first_letter;
 			$member->updateSpaceName(array("id"=>$_SESSION['MemberID']), $space_name);

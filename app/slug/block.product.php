@@ -59,10 +59,10 @@ function smarty_block_product($params, $content, &$smarty) {
 		$conditions[] = "p.producttype_id=".$params['typeid'];
 	}	
 	if (!empty($params['industryid'])) {
-		$conditions[] = "p.industry_id1='".$params['industryid']."' OR p.industry_id2='".$params['industryid']."' OR p.industry_id3='".$params['industryid']."'";
+		$conditions[] = "p.industry_id1='".$params['industryid']."'";
 	}
 	if (!empty($params['areaid'])) {
-		$conditions[] = "p.area_id1='".$params['areaid']."' OR p.area_id2='".$params['areaid']."' OR p.area_id3='".$params['areaid']."'";
+		$conditions[] = "p.area_id1='".$params['areaid']."'";
 	}
 	$orderby = null;
 	if (isset($params['orderby'])) {
@@ -79,7 +79,7 @@ function smarty_block_product($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$product->setLimitOffset($row, $col);
-	$sql = "SELECT p.id as productid,p.id,p.name as productname,p.name,price,picture,price,created,cache_companyname as companyname FROM {$product->table_prefix}products p ".$product->getCondition()."{$orderby}".$product->getLimitOffset();
+	$sql = "SELECT p.id as productid,p.id,p.name as productname,p.name,picture,created,cache_companyname as companyname FROM {$product->table_prefix}products p ".$product->getCondition()."{$orderby}".$product->getLimitOffset();
 	$result = $product->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {

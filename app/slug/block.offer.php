@@ -64,10 +64,10 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 		}
 	}
 	if (isset($params['industryid'])) {
-		$conditions[] = "t.industry_id1='".$params['industryid']."' OR t.industry_id2='".$params['industryid']."' OR t.industry_id3='".$params['industryid']."'";
+		$conditions[] = "t.industry_id1='".$params['industryid']."'";
 	}
 	if (isset($params['areaid'])) {
-		$conditions[] = " (t.area_id1='".$params['areaid']."' OR t.area_id2='".$params['areaid']."' OR t.area_id3='".$params['areaid']."')";
+		$conditions[] = "t.area_id1='".$params['areaid']."'";
 	}
 	if(isset($params['expday'])){
 		$conditions[] = "t.expire_time<'".($params['expday']*86400+$trade->timestamp)."'";
@@ -119,8 +119,6 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 			$style = null;
 			$dt = @getdate($result[$i]['created']);
 			$url = $trade_controller->rewrite($result[$i]['id'], $result[$i]['type_id'], $result[$i]['title'], $result[$i]['created']);
-			$result[$i]['title'] = strip_tags($result[$i]['title']);
-			$result[$i]['content'] = strip_tags($result[$i]['content']);
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
 	    	}		
@@ -133,12 +131,13 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	    				$style = " style=\"height:70px; background:url(".URL."attachment/".$result[$i]['picture'].".small.jpg".") no-repeat; padding:0 0 0 90px; overflow:hidden; width:120px;\"";
 	    				$h3_style = " style=\"padding:0 0 0 5px;\"";
 	    			}
-	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['title']."</a></h3>".$result[$i]['content'];
+	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['title']."</a></h3>
+				   <p>".$result[$i]['content']."</p>";
 	    		}else{
 	    			$link_title = "<a href='{$url}'>".$result[$i]['title']."</a>";
 	    		}
 			}
-			$return.= str_replace(array("[field:title]", "[field:fulltitle]","[field:typename]", "[link:title]", "[field:id]", "[field:pubdate]", "[img:thumb]", "[img:src]", "[field:content]", "[field:style]", "[field:url]", "[field:typeid]"), array($result[$i]['title'], $result[$i]['fulltitle'],$offer_typenames[$result[$i]['type_id']], $url, $result[$i]['id'], @date("m/d", $result[$i]['submit_time']), "attachment/".$result[$i]['picture'].".small.jpg", "attachment/".$result[$i]['picture'], $result[$i]['content'], $style, $link_title, $result[$i]['type_id']), $content);
+			$return.= str_replace(array("[field:title]", "[field:fulltitle]","[field:typename]", "[link:title]", "[filed:id]", "[field:pubdate]", "[img:thumb]", "[img:src]", "[field:content]", "[field:style]", "[field:url]", "[field:typeid]"), array($result[$i]['title'], $result[$i]['fulltitle'],$offer_typenames[$result[$i]['type_id']], $url, $result[$i]['id'], @date("m/d", $result[$i]['submit_time']), "attachment/".$result[$i]['picture'].".small.jpg", "attachment/".$result[$i]['picture'], $result[$i]['content'], $style, $link_title, $result[$i]['type_id']), $content);
 		}
 	}
 	return $return;

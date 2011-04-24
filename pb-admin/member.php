@@ -37,8 +37,7 @@ foreach($_PB_CACHE['trusttype'] as $key=>$val){
 }
 setvar("Trusttypes", $tmp_trusttypes);
 if (isset($_POST['del'])) {
-      $member->Delete($_POST['id']);
-	  flash("success");
+	$member->Delete($_POST['id']);
 }
 if (isset($_POST['check_in'])){
 	$vals['status'] = 1;
@@ -85,7 +84,9 @@ if (isset($_POST['save'])) {
 			$vals['userpass'] = $member->authPasswd($_POST['data']['userpass']);
 		}
 	}
+	if (!empty($_POST['data']['trusttype'])) {
 		$vals['trusttype_ids'] = implode(",", $_POST['data']['trusttype']);
+	}
 	if (!empty($_POST['data']['service_start_date'])) {
 		$vals['service_start_date'] = Times::dateConvert($_POST['data']['service_start_date']);
 	}	if (!empty($_POST['data']['service_end_date'])) {

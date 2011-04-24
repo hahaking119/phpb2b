@@ -39,7 +39,7 @@ if (isset($_POST['save'])) {
 	$company->newCheckStatus($companyinfo['status']);
 	if(!empty($_POST['data']['product'])){
 		$product->setParams();
-		$now_product_amount = $product->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
+		$now_product_amount = $product->findCount(null, "member_id=".$_SESSION['MemberID']);
 		$check_product_update = $g['product_check'];
 		if ($check_product_update == 0) {
 			$product->params['data']['product']['status'] = 1;

@@ -62,14 +62,14 @@ function smarty_block_company($params, $content, &$smarty) {
 	}
 	if(isset($params['industryid'])){
 		$industry_id = intval($params['industryid']);
-		if($industry_id) $conditions[] = "(c.industry_id1=".$industry_id." OR c.industry_id2=".$industry_id." OR c.industry_id3=".$industry_id.")";
+		if($industry_id) $conditions[] = "c.industry_id1=".$industry_id;
 	}
 	if(isset($params['areaid'])){
 		$area_id = intval($params['areaid']);
-		if($area_id) $conditions[] = "(c.area_id1=".$area_id." OR c.area_id2=".$area_id." OR c.area_id3=".$area_id.")";
+		if($area_id) $conditions[] = "c.area_id1=".$area_id;
 	}
 	if (isset($params['groupid'])) {
-		$conditions[] = "c.cache_membergroupid=".$params['groupid'];
+		$conditions[] = "c.cache_membergroup_id=".$params['groupid'];
 	}
 	$company->setCondition($conditions);
 	$row = $col = 0;

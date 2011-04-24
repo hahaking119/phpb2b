@@ -13,7 +13,7 @@
  * @since PHPB2B v 1.0.0
  * @link http://phpb2b.com
  * @package phpb2b
- * @version $Id: block.fair.php 1037 2010-02-26 02:53:29Z steven $
+ * @version $Id: block.fair.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
  */
 function smarty_block_fair($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -78,11 +78,10 @@ function smarty_block_fair($params, $content, &$smarty) {
 	$fair->setLimitOffset($row, $col);
 	$sql = "SELECT *,name AS title FROM {$fair->table_prefix}expoes ".$fair->getCondition().$fair->getOrderby().$fair->getLimitOffset();
 	$result = $fair->dbstuff->GetArray($sql);
-	$return = null;
+	$return = $style = $h3_style = $area_name = $link_title = null;
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
-			$style = $h3_style = $area_name = $link_title = null;
 			$url = $fair_controller->rewrite($result[$i]['id'], $result[$i]['title']);
 			$link_title = "<a href='".$url."'>".$result[$i]['name']."</a>";
 			if (isset($params['titlelen'])) {
@@ -97,14 +96,15 @@ function smarty_block_fair($params, $content, &$smarty) {
 	    	}else{
 	    		$pubdate = @date("Y-m-d", $result[$i]['begin_time']);
 	    	}
-	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', 'small'):pb_get_attachmenturl($result[$i]['picture'], '', 'small');
+	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', 'small'):$result[$i]['picture'];
 	    	if (isset($params['magic']))  {
 	    		if ($i==0) {
 	    			if(!empty($result[$i]['picture'])){
 	    				$style = " style=\"height:70px; background:url(".URL."attachment/".$result[$i]['picture'].".small.jpg".") no-repeat; padding:0 0 0 90px; overflow:hidden; width:120px;\"";
 	    				$h3_style = " style=\"padding:0 0 0 5px;\"";
 	    			}
-	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['name']."</a></h3>".$result[$i]['description'];
+	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['name']."</a></h3>
+				   <p>".$result[$i]['description']."</p>";
 	    		}
 			}
 			if (!empty($_PB_CACHE['area'][1][$result[$i]['area_id1']])) {

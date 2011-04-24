@@ -26,17 +26,14 @@ $company = new Companies();
 $templet = new Templets();
 $space_name = '';
 $pdb->setFetchMode(ADODB_FETCH_ASSOC);
-$smarty->flash_layout = $theme_name."/flash";
-$smarty->assign("theme_img_path", "templates/".$theme_name."/");
-$smarty->assign('ThemeName', $theme_name);
 //if caches
 $cache_data = array();
-if (isset($_PB_CACHE['setting']['space_cache']) && $_PB_CACHE['setting']['space_cache']) {
+if ($_PB_CACHE['setting']['space_cache']) {
 	$pdb->Execute("DELETE FROM {$tb_prefix}spacecaches WHERE expiration<".$time_stamp);
 }
 if (!empty($userid)) {
 	$userid = rawurldecode($userid);
-	if (isset($_PB_CACHE['setting']['space_cache']) && $_PB_CACHE['setting']['space_cache']) {
+	if ($_PB_CACHE['setting']['space_cache']) {
 		$cache_data = $pdb->GetRow("SELECT data1 AS member,data2 AS company FROM {$tb_prefix}spacecaches WHERE cache_spacename='".$userid."'");
 		$company->info = @unserialize($cache_data['company']);
 		$member->info = @unserialize($cache_data['member']);
@@ -57,7 +54,7 @@ if (!empty($userid)) {
 		}else{
 			$company->setInfoBySpaceName($userid);
 		}
-		if (isset($_PB_CACHE['setting']['space_cache']) && $_PB_CACHE['setting']['space_cache']) $pdb->Execute("REPLACE INTO {$tb_prefix}spacecaches (cache_spacename,company_id,data1,data2,expiration) VALUE ('".$userid."','".$company->info['id']."','".@serialize($member->info)."','".@serialize($company->info)."',".($time_stamp+3600).")");
+		if ($_PB_CACHE['setting']['space_cache']) $pdb->Execute("REPLACE INTO {$tb_prefix}spacecaches (cache_spacename,company_id,data1,data2,expiration) VALUE ('".$userid."','".$company->info['id']."','".@serialize($member->info)."','".@serialize($company->info)."',".($time_stamp+3600).")");
 	}
 }elseif(!empty($_GET['id'])) {
 	$id = intval($_GET['id']);
@@ -73,7 +70,7 @@ if (!empty($userid)) {
 		if ($_PB_CACHE['setting']['space_cache']) $pdb->Execute("REPLACE INTO {$tb_prefix}spacecaches (cache_spacename,company_id,data1,data2,expiration) VALUE ('".$company->info['cache_spacename']."','".$id."','".@serialize($member->info)."','".@serialize($company->info)."',".($time_stamp+3600).")");
 	}
 }
-if (isset($company->info['status']) && $company->info['status']===0) {
+if ($company->info['status']===0) {
     $smarty->flash('company_checking', null, 0);
 }elseif (empty($company->info) || !$company->info) {
 	$smarty->flash('data_not_exists', null, 0);
@@ -103,19 +100,11 @@ if (empty($skin_path_info)) {
 }
 list($skin_path, $skin_dir) = $skin_path_info;
 uaAssign(array(
-"SkinName"=>$skin_path,
-"ThemeName"=>$skin_path,
-"SkinPath"=>$skin_dir,
+"SKIN_URL"=>$skin_dir,
 "COMPANY"=>$company->info,
 "MEMBER"=>$member->info,
 ));
-$smarty->template_dir = PHPB2B_ROOT ."skins".DS;
-$smarty->flash_layout = $skin_path."/flash";
-if (!$smarty->template_exists($skin_path."flash")) {
-	setvar("SkinName", "default");
-	$smarty->template_dir = PHPB2B_ROOT ."skins".DS;
-	$smarty->flash_layout = 'default/flash';
-}
+$smarty->template_dir = PHPB2B_ROOT ."skins".DS.$skin_path.DS;
 $smarty->setCompileDir("skin".DS.$skin_path.DS);
 if(isset($member->info['id'])) $space->setLinks($member->info['id']);
 $space->setMenu($company->info['cache_spacename'], $space_actions);

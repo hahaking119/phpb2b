@@ -35,7 +35,7 @@ function smarty_block_market($params, $content, &$smarty) {
 					$conditions[] = "picture!=''";
 					break;
 				case 'commend':
-					$conditions[] = "if_commend='1'";
+					$conditions[] = "ifcommend='1'";
 					break;
 				default:
 					break;

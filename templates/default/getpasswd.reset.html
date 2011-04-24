@@ -1,4 +1,4 @@
-<{assign var="page_title" value="$_get_password"}>
+<{assign var="page_title" value="<{$_get_password}>"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
 <div class="content">
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <th><{$_re_enter_new_password}></th>
-            <td> <input type="password" name="data[password1]" id="password2" /> &nbsp;<{$_enter_new_password_again}></td>
+            <td> <input type="password" name="data[password1]" id="password1" /> &nbsp;<{$_enter_new_password_again}></td>
           </tr>
           <tr>
             <th>&nbsp;</th>

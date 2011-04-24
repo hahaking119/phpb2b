@@ -106,7 +106,7 @@ class Trades extends PbModel {
 		return true;
 	}
 	
-	function Add($params = '')
+	function Add()
 	{
 		$result = false;
 		if (!empty($this->params['expire_days'])) {
@@ -131,7 +131,7 @@ class Trades extends PbModel {
 		    $last_tradeid = $this->$key;
 			$_this = & Tradefields::getInstance();
 			$_this->params['data']['tradefield']['trade_id'] = $last_tradeid;
-			$tradefield_info = $_this->params['data']['tradefield']+$this->params['data']['tradefield'];
+			$tradefield_info = $_this->params['data']['tradefield'];
 			$_this->primaryKey = "trade_id";
 			$_this->save($tradefield_info);
 		}
@@ -154,12 +154,6 @@ class Trades extends PbModel {
 	function formatResult($result)
 	{
 		global $_PB_CACHE, $rewrite_able;
-		if(class_exists("Trade")){
-			$trade_controller = new Trade();
-		}else{
-			uses("trade");
-			$trade_controller = new Trade();
-		}
 		if(!empty($result)){
 			if (empty($_PB_CACHE['trusttype'])) {
 				require(CACHE_PATH. 'cache_trusttype.php');
@@ -168,7 +162,7 @@ class Trades extends PbModel {
 			for ($i=0; $i<$count; $i++){
 				$result[$i]['pubdate'] = @date("Y-m-d", $result[$i]['submit_time']);
 				$result[$i]['content'] = strip_tags($result[$i]['content']);
-				$result[$i]['url'] = $trade_controller->rewrite($result[$i]['id'], $result[$i]['type_id']);
+				$result[$i]['url'] = ($rewrite_able)? "offer/detail/".$result[$i]['id'].".html":"offer/detail.php?id=".$result[$i]['id'];;
 				if(!empty($result[$i]['membergroup_id'])) {
 					$result[$i]['gradeimg'] = 'images/group/'.$_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['avatar'];
 					$result[$i]['gradename'] = $_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['name'];

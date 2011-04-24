@@ -56,12 +56,6 @@ jQuery(document).ready(function($) {
           <span class="gray">网站 URL，将作为链接显示在页面底部, 必须以"/"结尾</span>
 		</td>
       </tr>
-	   <tr>
-        <th class="paddingT15"><label for="price_format"> 网站备案信息代码：</label></th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput" name="data[setting][icp_number]" type="text" id="icp_number" value="<{$item.ICP_NUMBER|default:$icpnumber}>" />
-          <span class="gray">如果网站已备案，在此输入您的ICP 备案信息，它将显示在页面底部，如果没有请留空</span>
-                </td>
-      </tr>
       <tr>
         <th></th>
         <td class="ptb20"><input class="formbtn" type="submit" name="savebasic" value="提交" />

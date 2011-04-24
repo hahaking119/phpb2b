@@ -30,8 +30,4 @@ $arrTemplate['_read_status'] = "未读,已读";
 $arrTemplate['_office_redirects'] = "返回上一页,网站首页,商务室首页,供求信息,短消息";
 $arrTemplate['_go_back'] = "返回上一步";
 $arrTemplate['_go_office_room'] = "返回商务室";
-//3.2
-$arrTemplate['_no_datas_now'] = "目前没有任何数据";
-$arrTemplate['_modify'] = "修改";
-$arrTemplate['_click_preview'] = "点击预览";
 ?>

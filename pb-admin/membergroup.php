@@ -70,16 +70,6 @@ if (isset($_POST['save_data'])) {
 		}
 	}
 }
-if (isset($_POST['del'])&&!empty($_POST['gid'])){
-	if(is_array($_POST['gid'])){
-     $count = count($_POST['gid']);
-	 for($i=0; $i<$count; $i++){
-       $membergroup->del($_POST['gid'][$i]);
-	    }
-     }else{
-        $membergroup->del($_POST['gid']);
-    }
-}
 if (isset($_GET['type'])) {
 	$conditions[] = "type='".$_GET['type']."'";
 	setvar("MembergroupType", $_GET['type']);
@@ -123,9 +113,6 @@ if (isset($_GET['do'])) {
 	if ($do=="permission") {
 		$tpl_file = "membergroup.permission";
 	}
-	if ($do=="del" && !empty($id)) {
-                $membergroup->del($id);                
-    }
 	if ($do == "edit") {
 		$data = array();
 		foreach ($_PB_CACHE['membergroup'] as $key1=>$val1) {

@@ -32,7 +32,6 @@ if(empty($_COOKIE[$cookiepre.'admin']) || !($_COOKIE[$cookiepre.'admin'])){
     uaAssign(array("current_adminer"=>$current_adminer, "current_adminer_id"=>$current_adminer_id));
 }
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.admin.inc.php');
-require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.adminmenu.inc.php');
 require(PHPB2B_ROOT. 'phpb2b_version.php');
 $smarty->template_dir = "template/";
 $smarty->setCompileDir("pb-admin".DS);

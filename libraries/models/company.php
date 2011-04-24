@@ -234,11 +234,6 @@ class Companies extends PbModel {
 		$p = null;
 		if (!empty($code)) {
 			$p.="(".$code.")";
-		}else{
-			$p.="(000)";
-		}
-		if (empty($zone)) {
-			$zone = "00";
 		}
 		$p.=@implode("-", array($zone, $id));
 		return trim($p);

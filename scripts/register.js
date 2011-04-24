@@ -4,28 +4,24 @@ $(document).ready(function(){
 	//event: "keyup",
     $("#regfrm").validate({
 		rules: {
-			"data[member][username]": { required: true,rangelength:[5,20]},
-			"data[member][userpass]": { required: true,rangelength:[6,20]},
+			"data[member][username]": { required: true,rangelength:[2,20]},
+			"data[member][userpass]": { required: true},
 			"data[member][email]": { required: true, email:true},
 			"re_memberpass": { required: true, equalTo: "#memberpass"}
 		},
 		messages: {
 			"data[member][username]": {
 				required:"请输入正确的用户名",
-				rangelength:"请输入介于5-20个字符的用户名"
+				rangelength:"请输入介于2-20个字符的用户名"
 			},
-			"data[member][userpass]": {
-				required:"请输入密码",
-				rangelength:"请输入介于6-20个字符的密码"
-			},
+			"data[member][userpass]": "请输入密码",
 			"data[member][email]": "请输入正确的Email",
-			"re_memberpass": "密码不一致请重新输入"
+			"re_memberpass": "请再次输入密码"
 		}
 	}); 
-
    $('#dataMemberUsername').blur(function (){
 	 var username = $("#dataMemberUsername").val();
-	 if(username.length<5){
+	 if(username.length<2){
 		 return;
 	 }
 	 var params = "username="+username;
@@ -38,12 +34,6 @@ $(document).ready(function(){
        success:update_checkusernameDiv
      });
    });	
-   	 $('#memberpass').blur(function (){
-	 var userpass = $("#memberpass").val();
-	  if(userpass.length<6){
-		 return;
-	    }
-	 });
    $('#exchange_imgcapt').click(function (){
 	 $('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());
 	 $('#login_auth').focus();

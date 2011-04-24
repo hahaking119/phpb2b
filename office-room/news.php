@@ -51,27 +51,16 @@ if (isset($_POST['save'])) {
 	$vals = null;
 	$vals['title'] = trim($_POST['title']);
 	$vals['content'] = trim($_POST['content']);
-	$now_companynews_amount = $companynews->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
-    if ($g['companynews_check']) {
-        $vals['status'] = 0;
-        $msg = 'msg_wait_check';
-    }else {
-        $vals['status'] = 1;
-        $msg = 'success';
-    }	
 	if(!empty($_POST['newsid'])){
 		$vals['modified'] = $time_stamp;
 		$companynews->save($vals, "update",$_POST['newsid'],null, "member_id=".$_SESSION['MemberID']);
 		pheader("location:news.php?action=list");
 	}else {
-    	if ($g['max_companynews'] && $now_companynews_amount>=$g['max_companynews']) {
-    		flash('one_day_max');
-    	}
 		$vals['created'] = $time_stamp;
 		$vals['member_id'] = $_SESSION['MemberID'];
 		$vals['company_id'] = $company_id;
 		$result = $companynews->save($vals);
-		flash($msg);
+		flash("success");
 	}
 }
 if (isset($_POST['del'])) {

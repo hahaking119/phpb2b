@@ -17,7 +17,6 @@
  */
 function sql_run($sql, $default_table_prefix = 'pb_') {
     global $dbcharset, $tb_prefix;
-	$return = false;
     if(mysql_get_server_info() > '4.1' && $dbcharset) {
         $sql = preg_replace("/TYPE=(InnoDB|MyISAM)( DEFAULT CHARSET=[^; ]+)?/", "TYPE=\\1 DEFAULT CHARSET=".$dbcharset,$sql);
     }
@@ -44,16 +43,16 @@ function sql_run($sql, $default_table_prefix = 'pb_') {
             if(trim($sql) != '') {
                 if(substr($sql, 0, 12) == 'CREATE TABLE') {
                     $name = preg_replace("/CREATE TABLE ([a-z0-9_]+) .*/is", "\\1", $sql);
-                    $return = mysql_query(createtable(stripslashes(trim($sql)), $dbcharset));
+                    mysql_query(createtable($sql, $dbcharset));
                 }else{
-                   $return = mysql_query(stripslashes(trim($sql)));
+                    mysql_query($sql);
                 }
             }
         }
     } else {
-        $return = mysql_query(stripslashes($sql_content));
+        mysql_query($sql_content);
     }
-    return $return;
+    return true;
 }
 
 function createtable($sql, $dbcharset) {

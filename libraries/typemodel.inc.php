@@ -22,7 +22,7 @@ function get_cache_key_unique($type_cachenames, $val)
 	return intval(array_search($val, $tmp_keys));
 }
 
-function get_cache_type($cache_name, $key = NULL, $addParams = '')
+function get_cache_type($cache_name, $key = '', $addParams = '')
 {
 	require(CACHE_PATH. "type_".$cache_name.".php");
 	if (!empty($addParams)) {
@@ -34,7 +34,7 @@ function get_cache_type($cache_name, $key = NULL, $addParams = '')
 			unset($_PB_CACHE[$cache_name][$addParams]);
 		}
 	}
-	if (!is_null($key)) {
+	if (!empty($key)) {
 		return $_PB_CACHE[$cache_name][$key];
 	}else{
 		return $_PB_CACHE[$cache_name];

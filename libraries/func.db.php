@@ -18,7 +18,7 @@
 function sqldumptable($table, $startfrom = 0, $currsize = 0) {
 	global $db;
 	$extendins = 0;
-	$sizelimit = 204800;
+	$sizelimit = 20480;
 	$offset = 300;
 	$tabledump = '';
 	$tablefields = array();

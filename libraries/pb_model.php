@@ -66,19 +66,7 @@ class PbModel extends PbObject
 				unset($params['form']['_method']);
 			}
 		}
-		$params = array_merge($extra, $params);
-		if (isset($_GET)) {
-			if (ini_get('magic_quotes_gpc') === '1') {
-				$url = stripslashes_deep($_GET);
-			} else {
-				$url = $_GET;
-			}
-			if (isset($params['url'])) {
-				$params['url'] = array_merge($params['url'], $url);
-			} else {
-				$params['url'] = $url;
-			}
-		}		
+
 		if (isset($params['action']) && strlen($params['action']) === 0) {
 			$params['action'] = 'list';
 		}
@@ -240,8 +228,8 @@ class PbModel extends PbObject
 		$rs = $this->dbstuff->Execute($sql);
 		$record = array();
 		foreach ($keys as $colname) {
-			$sp_search = array('\\\"', "\\\'", "'","&nbsp;", '\n');
-			$sp_replace = array('&quot;', '&#39;', '&#39;',' ', '<br />');
+			$sp_search = array('\\\"', "\\\'", "\t", "'", '\n');
+			$sp_replace = array('&quot;', '&#39;', '&nbsp; &nbsp; &nbsp; &nbsp; ', '&#39;', '<br />');
 			$slash_col = str_replace($sp_search, $sp_replace, $posts[$colname]);
 			$record[$colname] = $slash_col;
 			if($if_check_word_ban){

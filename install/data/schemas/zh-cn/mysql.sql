@@ -1,6 +1,6 @@
 -- 程序名称: PHPB2B
--- 程序版本: 3.2 - ATHENA
--- 最后更新: 2010-3-15
+-- 程序版本: 3.0 - ATHENA
+-- 最后更新: 2009-12-28
 
 -- --------------------------------------------------------
 
@@ -1132,7 +1132,6 @@ CREATE TABLE `pb_passports` (
   `description` text,
   `url` varchar(25) NOT NULL default '',
   `config` text,
-  `available` tinyint(1) NOT NULL default '1',
   `created` int(10) NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -1666,7 +1665,6 @@ CREATE TABLE `pb_typeoptions` (
 DROP TABLE IF EXISTS `pb_userpages`;
 CREATE TABLE `pb_userpages` (
   `id` int(5) NOT NULL auto_increment,
-  `templet_name` varchar(50) NOT NULL DEFAULT '',
   `name` varchar(50) NOT NULL default '',
   `title` varchar(50) NOT NULL default '',
   `digest` varchar(50) NOT NULL default '',

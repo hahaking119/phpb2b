@@ -96,7 +96,8 @@ function smarty_block_news($params, $content, &$smarty) {
 	    			}else{
 	    				$style = " style=\"height:70px; background:url(".URL.pb_get_attachmenturl('', '', 'small').") no-repeat; padding:0 0 0 90px;\"";
 	    			}
-	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['title']."</a></h3>".$result[$i]['content'];
+	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['title']."</a></h3>
+				   <p>".$result[$i]['content']."</p>";
 	    		}else{
 	    			$link_title = "<a href='{$url}'>".$result[$i]['title']."</a>";
 	    		}

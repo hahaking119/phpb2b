@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
 	if (empty($info)) {
 		flash("data_not_exists", '', 0);
 	}
-	$info['title'].=(($_PB_CACHE['setting1']['offer_expire_method']==1||$_PB_CACHE['setting1']['offer_expire_method']==3) && $info['expdate']<$time_stamp)?"[".L("has_expired", "tpl")."]":'';
+	$info['title'].=($_PB_CACHE['setting1']['offer_expire_method']==1 && $info['expdate']<$time_stamp)?"[".L("has_expired", "tpl")."]":'';
 	$info['title'].=(!empty($info['if_urgent']))?"[".L("urgent_buy", "tpl")."]":'';
 	if ($info['expdate']<$time_stamp && $_PB_CACHE['setting1']['offer_expire_method']==2) {
 		flash("has_been_expired", URL, 0, $info['title']);
@@ -48,19 +48,13 @@ if (isset($_GET['id'])) {
 }else{
 	flash("data_not_exists", '', 0);
 }
-if ($info['status']!=1) {
-	flash("under_checking", null, 0, $info['title']);
-}
 $trade_types = $trade->getTradeTypes();
 $viewhelper->setTitle($trade_types[$info['type_id']]);
 $viewhelper->setPosition($trade_types[$info['type_id']], "offer/list.php?typeid=".$info['type_id']);
 $trade_model->clicked($id);
 if ($info['require_point']>0) {
 	//check member points
-	if (empty($pb_user)) {
-		flash("please_login_first", URL."logging.php");
-	}
-	$point = $member->field("points", "id='".$pb_user['pb_userid']."'");
+	$point = $trade_model->field("points", "id='".$pb_user['pb_userid']."'");
 	if ($point<$info['require_point']) {
 		flash("not_enough_points", URL, 0, $info['require_point']);
 	}
@@ -103,7 +97,6 @@ if (!empty($info['company_id'])) {
 $viewhelper->setMetaDescription($info['content']);
 setvar("LoginCheck", $login_check);
 $info['title'] = strip_tags($info['title']);
-
 setvar("item",$info);
 $viewhelper->setTitle($info['title'], $info['picture']);
 setvar("Areas", $_PB_CACHE['area']);

@@ -16,12 +16,14 @@
                 <{foreach from=$Items name=fair item=item}>
 				<div class="companylistcontent clearfix"">
 					<div>
-						<p><span class="span4"><a href="fair/detail.php?id=<{$item.id}>"><{$item.name}></a></span><span class="span5"><{$item.area}></span></p>
+						<p><span class="span4"><a href="fair/detail.php?id=<{$item.id}>"><{$item.name}></a></span><span class="span5">(<{$item.area}>)</span></p>
                         <br />
 						<p class="ex_info"><{$item.description}></p>
 					</div>
 					<p class="fair_date">
-                   <span class="span6"><{$item.begin_time|date_format:"%Y.%m.%d"}>-<{$item.end_time|date_format:"%Y.%m.%d"}></span>
+                    <span class="span6"><{$item.begin_date}></span>
+                    <span class="span6">~</span>
+                    <span class="span6"><{$item.end_date}></span>
                     </p>
 				</div>
                 <{/foreach}>

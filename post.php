@@ -23,8 +23,7 @@ if (session_id() == '' ) {
 	$session = new PbSessions();
 }
 require(LIB_PATH. "typemodel.inc.php");
-uses("trade","member","tradefield","tag");
-$tag = new Tags();
+uses("trade","member","tradefield");
 $offer = new Tradefields();
 $member = new Members();
 $trade = new Trades();
@@ -43,9 +42,7 @@ capt_check("capt_post_free");
 if (isset($_POST['visit_post'])) {
 	pb_submit_check('visit_post');
 	$trade->setParams();
-	$tradefield->setParams();
 	$trade->params['expire_days'] = $_POST['expire_days'];
-	$trade->params['data']['trade']['tag_ids'] = $tag->setTagId($_POST['data']['tag']);;
 	$if_check = $_PB_CACHE['setting']['vis_post_check'];
 	$msg = null;
 	$words = $pdb->GetArray("SELECT * FROM {$tb_prefix}words");

@@ -30,7 +30,7 @@ class Topics extends PbModel {
 			if (!empty($news_ids)) {
 				$tmp_str = array();
 				foreach ($news_ids as $news_val) {
-					if(!empty($news_val)) $tmp_str[] = "(".$topic_id.",".$news_val.")";
+					$tmp_str[] = "(".$topic_id.",".$news_val.")";
 				}
 				$in_str = implode(",", $tmp_str);
 				return $this->dbstuff->Execute("REPLACE INTO {$this->table_prefix}topicnews VALUES {$in_str}");

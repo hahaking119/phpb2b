@@ -35,7 +35,6 @@ if (isset($_POST['del']) && is_array($_POST['id'])) {
 if (isset($_POST['save'])) {
 	$vals = array();
 	$vals = $_POST['data']['userpage'];
-	if(!empty($vals['title'])&&!empty($vals['name'])){
 	if (!empty($_POST['id'])) {
 		$vals['modified'] = $time_stamp;
 		$result = $userpage->save($vals, "update", $_POST['id']);
@@ -43,7 +42,6 @@ if (isset($_POST['save'])) {
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		$result = $userpage->save($vals);
 	}
-  }
 	if (!$result) {
 		flash();
 	}

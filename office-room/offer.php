@@ -167,7 +167,6 @@ if (isset($_GET['do'])) {
 if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
 	pb_submit_check('data');
     $res = $_POST['data']['trade'];
-    $now_offer_amount = $trade->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
     if(isset($_POST['id'])){
     	$id = intval($_POST['id']);
     }
@@ -197,9 +196,6 @@ if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
         $res['modified'] = $time_stamp;
         $res = $trade->save($res, "update", $id, null, $conditions);
     }else {
-    	if ($g['max_offer'] && $now_offer_amount>=$g['max_offer']) {
-    		flash('one_day_max');
-    	}
         $res['member_id'] = $_SESSION['MemberID'];
         $res['company_id'] = $company_id;
         $res['submit_time'] = $res['created'] = $res['modified'] = $time_stamp;

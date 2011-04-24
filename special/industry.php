@@ -35,7 +35,7 @@ if (isset($_GET['id']) || isset($_GET['name'])) {
 			$industry_id = $industry->field("id", "name='".$name."'");
 		}
 	}
-	$product_amount = $pdb->GetOne("SELECT count(id) FROM ".$tb_prefix."products WHERE industry_id1={$industry_id} OR industry_id3={$industry_id} OR industry_id3={$industry_id}");
+	$product_amount = $pdb->GetOne("SELECT count(id) FROM ".$tb_prefix."products WHERE industry_id1=".$industry_id);
 	if ($product_amount>0) {
 		setvar("HaveProducts", true);
 	}

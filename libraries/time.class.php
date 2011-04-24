@@ -37,9 +37,6 @@ class Times extends PbObject
 
 	function dateConvert($access_date, $ds = "-")
 	{
-		if (!strpos("-", $access_date)) {
-			$access_date.="-01-01";
-		}
 		$date_elements = explode($ds, $access_date);
 		$s_time = @mktime(0, 0, 0, $date_elements [1], $date_elements[2], $date_elements [0]);
 		return $s_time;

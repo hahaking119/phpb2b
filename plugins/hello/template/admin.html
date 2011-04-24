@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
     <table class="infoTable">
       <tr>
         <th class="paddingT15"> Flash地址：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[movie]" value="<{$movie|default:'plugins/hello/bcastr.swf'}>" /></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[movie]" value="<{$movie}>" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> 宽度：</th>
@@ -43,11 +43,11 @@ jQuery(document).ready(function($) {
       </tr>
       <tr>
         <th class="paddingT15"> 背景色：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" id="color1" name="pluginvar[bgcolor]" value="<{$bgcolor|default:'#ff0000'}>" /></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" id="color1" name="pluginvar[bgcolor]" value="<{$bgcolor}>" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> FlashVars：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[flashvars]" value="<{$flashvars|default:'xml=plugins/hello/hello.xml'}>" /><span class="gray">（图片请放置在plugins/hello目录）</span></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[flashvars]" value="<{$flashvars}>" /><span class="gray">（图片请放置在plugins/hello目录）</span></td>
       </tr>
       
       <tr>

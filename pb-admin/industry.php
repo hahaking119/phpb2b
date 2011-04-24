@@ -61,7 +61,7 @@ if (isset($_POST['update_batch'])) {
 			$pdb->Execute("UPDATE {$tb_prefix}industries SET display_order = '".$_POST['data']['display_order'][$i]."' WHERE id='".$_POST['iid'][$i]."'");
 		}
 	}
-	flash("success","industry.php");
+	flash("success");
 }
 if (isset($_POST['save'])) {
 	if (isset($_POST['data']['industry']['parent_id'])) {

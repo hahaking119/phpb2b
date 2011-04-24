@@ -65,9 +65,7 @@ if (!empty($result)) {
 		if($result[$i]['begin_time']) $result[$i]['begin_date'] = @date("Y-m-d", $result[$i]['begin_time']);
 		if($result[$i]['end_time']) $result[$i]['end_date'] = @date("Y-m-d", $result[$i]['end_time']);
 		$result[$i]['description'] = strip_tags($result[$i]['description']);
-		if(!empty($result[$i]['area_id1'])){
-			$result[$i]['area'] = "(".$_PB_CACHE['area'][1][$result[$i]['area_id1']].$_PB_CACHE['area'][2][$result[$i]['area_id2']].$_PB_CACHE['area'][3][$result[$i]['area_id1']].")";
-		}
+		$result[$i]['area'] = $_PB_CACHE['area'][$result[$i]['area_id1']].$_PB_CACHE['area'][$result[$i]['area_id2']];
 	}
 	setvar("Items", $result);
 	setvar("Areas", $_PB_CACHE['area']);	

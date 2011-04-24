@@ -102,7 +102,7 @@ h6 {font:12px arial,sans-serif;color:#300}
 body{ background: url(../images/bodybj.gif) repeat-x; }
 /*header*/
 .header{width:960px; margin:0 auto; height:33px;}
-.header_nav { float:left;}
+.header_nav { float:left; width:400px;}
 .header_nav a {text-decoration:none; }
 .header_nav a span { color:#004b69; font-size:12px; font-weight:bold; height:30px; line-height:30px; padding:0  5px; display:inline; overflow:hidden;}
 .login_info { float:right; width:500px;font-size:12px; font-weight:bold; text-align:right;color:#004b69;height:30px; line-height:30px;}

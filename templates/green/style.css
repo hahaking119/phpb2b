@@ -564,7 +564,7 @@ height: expression(this.height > 125 ? 125 : true);
 .loadingconleft p,.loadingconright p{color:#9be37a;font-weight:bold;font-size:14px;border-bottom:1px solid #9be37a;padding-bottom:5px;}
 .loadingconleft .loadingp1,.loadingconleft .loadingp2,.loadingconleft .loadingp3{font-weight:normal;border:none;color:#000;margin:10px 0 0 25px;font-size:12px;}
 .loadingconleft .loadingp1{margin-left:80px;color:#666;margin-top:8px;}
-.loadingconleft label{float:left;margin:5px 0; display:block; overflow:hidden}
+.loadingconleft label{float:left;width:220px;margin:5px 0; display:block; overflow:hidden}
 .loadingconleft label.loadingname{width:80px;text-align:right;font-weight:bold;}
 .loadingcheck input{width:60px;margin-right:3px; margin-bottom:3px;}
 .loadingcheck input,.loadingcheck img{float:left;}
@@ -787,8 +787,7 @@ height: expression(this.height > 125 ? 125 : true);
 
 /* news */
 .second_nav{background:url(images/quhuimima_03.jpg) repeat-x;width:950px;padding-left:10px;height:25px;padding-top:5px;_padding-top:4px;_height:25px;border:1px solid #f0f4f5; border-top:none}
-.second_nav li{display:inline; float:left; margin-right:1px; cursor:pointer; text-align:center; height:24px; line-height:24px;}
-.second_nav li a { float:left; margin-right:1px; cursor:pointer; text-align:center; height:24px; line-height:24px;display:block; padding:0 5px;}
+.second_nav li{ float:left; margin-right:1px; cursor:pointer; text-align:center; width:60px; height:24px; line-height:24px;display:block;}
 #second_all_nav{background:url(images/news_nav_bg.jpg) no-repeat;width:80px;height:24px;display:block; font-weight:bold; overflow:hidden}
 .news_mainbody{ width:960px;}
 .news_mainleft { width:770px; float:left;}
@@ -1049,7 +1048,7 @@ height: expression(this.height > 125 ? 125 : true);
   .substation_area h2 { padding:25px 0 0 270px; font-size:32px; font-weight:bold; line-height:180% }
      .substation_area h2 span {color:#1b496b; font-size:26px;}
 .substation_industry { width:728px; height:148px; border:1px solid #9BE37A; background:url(images/industry_substation.jpg) no-repeat;}
-  .substation_industry h2 { padding:30px 0 0 20px; font-size:32px; font-weight:bold; line-height:180%; }
+  .substation_industry h2 { padding:30px 0 0 140px; font-size:32px; font-weight:bold; line-height:180%; }
     .substation_industry h2 span {color:#1b496b; font-size:26px;}
 .substation_main { padding:10px 0;}
 	.substation_main p { line-height:20px; padding:0 0 15px 0; text-indent:20px;}

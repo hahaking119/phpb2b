@@ -441,26 +441,20 @@ function pb_get_member_info()
 	}
 }
 
-function authcode($string, $operation = "ENCODE", $key = '', $expire = 0) {
+function authcode($string, $operation = "ENCODE", $key = '') {
 	global $phpb2b_auth_key;
-	$ckey_length = 4;
 	$key = md5($key ? $key : $phpb2b_auth_key);
-	$keya = md5(substr($key, 0, 16));
-	$keyb = md5(substr($key, 16, 16));
-	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';
+	$key_length = strlen($key);
 
-	$cryptkey = $keya.md5($keya.$keyc);
-	$key_length = strlen($cryptkey);
-
-	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
+	$string = $operation == 'DECODE' ? base64_decode($string) : substr(md5($string.$key), 0, 8).$string;
 	$string_length = strlen($string);
 
+	$rndkey = $box = array();
 	$result = '';
-	$box = range(0, 255);
 
-	$rndkey = array();
 	for($i = 0; $i <= 255; $i++) {
-		$rndkey[$i] = ord($cryptkey[$i % $key_length]);
+		$rndkey[$i] = ord($key[$i % $key_length]);
+		$box[$i] = $i;
 	}
 
 	for($j = $i = 0; $i < 256; $i++) {
@@ -480,55 +474,37 @@ function authcode($string, $operation = "ENCODE", $key = '', $expire = 0) {
 	}
 
 	if($operation == 'DECODE') {
-		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) {
-			return substr($result, 26);
+		if(substr($result, 0, 8) == substr(md5(substr($result, 8).$key), 0, 8)) {
+			return substr($result, 8);
 		} else {
 			return '';
 		}
 	} else {
-		return $keyc.str_replace('=', '', base64_encode($result));
+		return str_replace('=', '', base64_encode($result));
 	}
+
 }
 
-function pb_substr($str, $start = 0, $len = 10)
+function utf_substr($str, $length=0, $start =0, $charset = "utf-8") 
 {
-	$tmpstr = ""; 
-	$strlen = $start + $len; 
-	for($i = 0; $i < $strlen; $i++) { 
-	if(ord(substr($str, $i, 1)) > 0xa0) { 
-	$tmpstr .= substr($str, $i, 2); 
-	$i++; 
-	} else 
-	$tmpstr .= substr($str, $i, 1); 
-	} 
-	return $tmpstr;
-}
-
-function utf_substr($str, $length=0, $start =0) 
-{
-	global $charset;
-	if($charset!="utf-8"){
-		return pb_substr($str, $start, $length);
-	}else{
-		if(strlen($str)<4) return $str;
-		$re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-		$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-		$re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-		$re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-		preg_match_all($re[$charset], $str, $match);
-		if($length==0) $length=count($match[0]);
-		for(;;)
+	if(strlen($str)<4) return $str;
+	$re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
+	$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
+	$re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
+	$re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
+	preg_match_all($re[$charset], $str, $match);
+	if($length==0) $length=count($match[0]);
+	for(;;)
+	{
+		if(isset($match[0][$start]))
 		{
-			if(isset($match[0][$start]))
-			{
-				if($match[0][$start])
-				return join("", array_slice($match[0], $start, $length));
-				else
-				++$start;
-			}
-			else
+			if($match[0][$start])
 			return join("", array_slice($match[0], $start, $length));
+			else
+			++$start;
 		}
+		else
+		return join("", array_slice($match[0], $start, $length));
 	}
 }
 
@@ -710,7 +686,7 @@ function capt_check($capt_name)
 				$img = new Securimage();
 				$post_code = trim($_POST['data'][$capt_name]);
 				if(!$img->check($post_code)){
-					flash('invalid_capt', null, 0);
+					flash('invalid_capt');
 				}
 			}
 			$smarty->assign("ifcapt", true);
@@ -747,20 +723,5 @@ function header_sent($msg)
 </div>
 </body>
 </html>';
-}
-
-if (!function_exists("array_combine")) {
-	function array_combine($arr1, $arr2) {
-		$out = array();
-
-		$arr1 = array_values($arr1);
-		$arr2 = array_values($arr2);
-
-		foreach($arr1 as $key1 => $value1) {
-			$out[(string)$value1] = $arr2[$key1];
-		}
-
-		return $out;
-	}
 }
 ?>

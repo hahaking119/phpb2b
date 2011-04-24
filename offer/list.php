@@ -24,11 +24,6 @@ $page = new Pages();
 $page->pagetpl_dir = $theme_name;
 $viewhelper->setTitle(L('offer', 'tpl'));
 $viewhelper->setPosition(L('offer', 'tpl'), "offer/");
-$trade->setParams();
-$tmp_q = http_build_query($trade->params['url']);
-if (!empty($tmp_q)) {
-	setvar("addParams", $tmp_q."&");
-}
 if (isset($_GET['typeid'])) {
 	$type_id = intval($_GET['typeid']);
 	$conditions[]= "t.type_id='".$type_id."'";

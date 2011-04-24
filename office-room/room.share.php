@@ -106,6 +106,5 @@ setvar("newpm", (empty($new_pm) || !$new_pm)? false : $new_pm);
 if (!empty($arrTemplate)) {
     $smarty->assign($arrTemplate);
 }
-$today_start = @mktime(0, 0, 0, date("m"), date("d"), date("Y"));
 formhash();
 ?>

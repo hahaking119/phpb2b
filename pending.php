@@ -22,22 +22,21 @@ uses("member");
 $member = new Members();
 $hash = trim($_GET['hash']);
 if (empty($hash)) {
-	flash("invalid_request", null, 0);
+	flash("invalid_request");
 }
-$validate_str = rawurldecode(authcode($hash, "DECODE"));
+$validate_str = authcode(rawurldecode($hash), 'DECODE');
 if (empty($validate_str)) {
-	flash("invalid_request", null, 0);
+	flash("auth_expired");
 }
-formhash();
 if (!empty($validate_str)) {
-	list($tmp_username, $exp_time) = explode("\t", $validate_str);
-    if ($exp_time<$time_stamp) {
-    	flash("auth_expired", null, 0);
+	list($tmp_username, $formhash) = explode("\t", $validate_str);
+    if ($formhash != formhash()) {
+    	flash("auth_expired");
     }
     $user_exists = $member->checkUserExist($tmp_username, true);
-    if ($user_exists && isset($_GET['action'])) {
+    if ($user_exists) {
     	switch ($_GET['action']) {
-    		case "activate":
+    		case "activation":
     			$result = $member->updateUserStatus($member->info['id']);
     			if ($result) {
     				flash("actived_and_login", "logging.php");
@@ -51,9 +50,9 @@ if (!empty($validate_str)) {
     			break;
     	}
     }else{
-        flash("member_not_exists", null, 0);
+        flash("member_not_exists");
     }
 }else{
-	flash("invalid_request", null, 0);
+	flash("invalid_request");
 }
 ?>

@@ -16,7 +16,7 @@
  * @version $Id: template.install.inc.php 639 2010-01-31 07:11:01Z steven $
  */
 $arrTemplate['_language_name'] = '简体中文';
-$arrTemplate['_language_switch'] = '切换安装语言';
+$arrTemplate['_language_switch'] = '切换语言';
 $arrTemplate['_software_intro'] = '软件介绍';
 $arrTemplate['_software_license'] = '软件许可协议';
 $arrTemplate['_administrator'] = '管理员';
@@ -86,7 +86,7 @@ $arrTemplate['_auth_key'] = '通信密钥';
 $arrTemplate['_auth_key_and_auto_create'] = '网站通信密钥，若不填写则系统自动生成一个';
 $arrTemplate['_db_error_and_back'] = '数据库链接错误，请返回上一步重新配置';
 $arrTemplate['_pls_input_site_info'] = '请输入网站的基本资料';
-$arrTemplate['_select_language'] = '选择安装语言';
+$arrTemplate['_select_language'] = '选择语言';
 $arrTemplate['_simple_chinese'] = '简体中文';
 $arrTemplate['_if_want_to_change_language'] = '如果你要修改网站语言,请在languages目录中添加相应语言包';
 $arrTemplate['_a_new_b2b_site'] = '一个新的B2B网站';

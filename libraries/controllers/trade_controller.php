@@ -39,7 +39,7 @@ class Trade extends PbController {
 				$url = $this->getModulenameById($typeid)."/detail/".$id.".html";
 			}
 		}else{
-			$url = "offer/detail.php?id=".$id;
+			$url = $this->getModulenameById($typeid)."/detail.php?id=".$id;
 		}
 		return $url; 		
  	}
@@ -53,7 +53,6 @@ class Trade extends PbController {
  				break;
  			case 2:
  				$module_name = "sell";
-				break;
  			default:
  				$module_name = "offer";
  				break;

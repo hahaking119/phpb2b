@@ -1,6 +1,6 @@
 -- 程序名称: PHPB2B
--- 程序版本: 3.2 - ATHENA
--- 最后更新: 2010-3-15
+-- 程序版本: 3.0 - ATHENA
+-- 最后更新: 2009-12-28
 
 -- 
 -- 导出表中的数据 `pb_adzones`
@@ -299,14 +299,14 @@ INSERT INTO `pb_typeoptions` VALUES (117, 18, '1', '是');
 -- 导出表中的数据 `pb_userpages`
 -- 
 
-INSERT INTO `pb_userpages` VALUES (1, '','aboutus', '关于我们', '', '关于网站的说明', '', 0, 1260534240, 1261735115);
-INSERT INTO `pb_userpages` VALUES (2, '','contactus', '联系我们', '', '联系方式', '', 0, 1260534240, 1261735050);
-INSERT INTO `pb_userpages` VALUES (3, '','aboutads', '广告服务', '', '广告以及价格的说明', '', 0, 1260534240, 0);
-INSERT INTO `pb_userpages` VALUES (4, '','sitemap', '网站地图', '', '网站站内地图', 'sitemap.php', 0, 1260534240, 1261885046);
-INSERT INTO `pb_userpages` VALUES (5, '','agreement', '法律声明', '', '法律声明', 'agreement.php', 0, 1260534240, 0);
-INSERT INTO `pb_userpages` VALUES (6, '','friendlink', '友情链接', '', '申请友情链接', 'friendlink.php', 0, 1260534240, 0);
-INSERT INTO `pb_userpages` VALUES (7, '','help', '帮助中心', '', '帮助中心', '', 0, 1260534240, 0);
-INSERT INTO `pb_userpages` VALUES (8, '','service', '意见投诉', '', '意见与建议、投诉', '', 0, 1260534240, 0);
+INSERT INTO `pb_userpages` VALUES (1, 'aboutus', '关于我们', '', '关于网站的说明', '', 0, 1260534240, 1261735115);
+INSERT INTO `pb_userpages` VALUES (2, 'contactus', '联系我们', '', '联系方式', '', 0, 1260534240, 1261735050);
+INSERT INTO `pb_userpages` VALUES (3, 'aboutads', '广告服务', '', '广告以及价格的说明', '', 0, 1260534240, 0);
+INSERT INTO `pb_userpages` VALUES (4, 'sitemap', '网站地图', '', '网站站内地图', 'sitemap.php', 0, 1260534240, 1261885046);
+INSERT INTO `pb_userpages` VALUES (5, 'agreement', '法律声明', '', '法律声明', 'agreement.php', 0, 1260534240, 0);
+INSERT INTO `pb_userpages` VALUES (6, 'friendlink', '友情链接', '', '申请友情链接', 'friendlink.php', 0, 1260534240, 0);
+INSERT INTO `pb_userpages` VALUES (7, 'help', '帮助中心', '', '帮助中心', '', 0, 1260534240, 0);
+INSERT INTO `pb_userpages` VALUES (8, 'service', '意见投诉', '', '意见与建议、投诉', '', 0, 1260534240, 0);
 
 -- 
 -- 导出表中的数据 `pb_forms`

@@ -16,10 +16,9 @@
  * @version $Id: login.php 504 2009-12-28 05:01:52Z steven $
  */
 require("../libraries/common.inc.php");
-require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.admin.inc.php');
 if (session_id() == '' ) { 
 	require_once(LIB_PATH. "session_php.class.php");
-	$session = new PbSessions(DATA_PATH."tmp");
+	$session = new PbSessions();
 }
 uses("adminfield","setting", "member");
 $adminer = new Adminfields();
@@ -52,9 +51,6 @@ if (isset($_POST['do'])) {
 formhash();
 $smarty->template_dir = "template/";
 $smarty->setCompileDir("pb-admin".DS);
-if (!empty($arrTemplate)) {
-    $smarty->assign($arrTemplate);
-}
 template("login");
 exit;
 ?>

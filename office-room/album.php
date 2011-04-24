@@ -33,7 +33,6 @@ if (isset($_POST['do'])) {
 	$title = trim($vals['title']);
 	$description = trim($vals['description']);
 	$id = intval($_POST['id']);
-	$now_album_amount = $album->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
 	if (!empty($_FILES['pic']['name'])) {
 		$attachment->title = $title;
 		$attachment->description = $description;
@@ -48,9 +47,6 @@ if (isset($_POST['do'])) {
 		}
 		$sql = "UPDATE {$tb_prefix}attachments a,{$tb_prefix}albums ab SET a.title='".$title."',a.description='".$description."',ab.attachment_id={$attachment_id} WHERE ab.id={$id} AND a.id=".$attachment_id;
 	}else{
-		if ($g['max_album'] && $now_album_amount>=$g['max_album']) {
-			flash('one_day_max');
-		}
 		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id) VALUES (".$_SESSION['MemberID'].",".$attachment->id.")";
 	}
 	$result = $pdb->Execute($sql);
