@@ -1,0 +1,35 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 全局 &raquo; 行业分类</p>
+</div>
+<div id="rightTop"> 
+    <h3>行业分类</h3> 
+    <ul class="subnav">
+		<li><a href="industry.php">管理</a></li>
+		<li><a href="industry.php?do=edit">添加/编辑</a></li>
+        <li><a href="industrytype.php">分类</a></li>
+        <li><a class="btn1" href="industry.php?do=clear">清理</a></li>
+        <li><a href="industry.php?do=refresh">更新缓存</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontl"> 
+        <form name="edit_frm" action="industry.php" id="EditFrm" method="post">
+        <input type="hidden" name="do" value="clear" />
+             <div class="left"> 
+               <label for="Level1"><input type="checkbox" name="data[level][]" id="Level1" value="1"/>一级分类</label>
+               <label for="Level2"><input type="checkbox" name="data[level][]" id="Level2" value="2" checked="checked"  />二级分类</label>
+               <label for="Level3"><input type="checkbox" name="data[level][]" id="Level3" value="3" checked="checked" />三级分类</label>
+                <input type="submit" name="save" id="Save" class="formbtn" value="立即清理" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare"></div>
+<{include file="footer.html"}>

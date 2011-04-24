@@ -1,0 +1,74 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 用户中心 &raquo; 会员组</p>
+</div>
+<div id="rightTop"> 
+    <h3>会员组</h3> 
+    <ul class="subnav">
+		<li><a class="btn1" href="membergroup.php">所有会员组</a></li>
+        <li><a href="membergroup.php?type=system">系统会员组</a></li>
+        <li><a href="membergroup.php?type=define">自定义会员组</a></li>
+        <li><a href="membergroup.php?type=special">特殊会员组</a></li>
+        <li><a href="membergroup.php?do=edit">添加/编辑</a></li>
+        <li><a href="membergroup.php?do=permission">权限</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontl">
+             <div class="left">会员组分系统会员组、自定义会员组以及特殊会员组。</div>
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'gid[]');" title="全选/全不选"></td>
+		  <td><span><label for="idAll">名称</label></span></td>
+		  <td>默认</td>
+		  <{if $MembergroupType=="system"}><td>积分介于</td><{/if}>
+		  <td><span>图例</span></td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item name=membergroup}>
+		<tr class="tatr2">
+		  <td class="firstCell">
+          <input type="checkbox" name="gid[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>">
+          <input type="hidden" name="id[]" value="<{$item.id}>" title="<{$item.id}>">
+          </td>
+		  <td><label for="item_<{$item.id}>"><input type="text" name="name[]" value="<{$item.name}>" id="dataMembergroupName<{$item.id}>" /></label></td>
+		  <td><{if $item.is_default==1}><img src="images/right.gif" /><{/if}></td>
+		  <{if $MembergroupType=="system"}><td><input type="text" name="point_min[]" size="5" value="<{$item.point_min}>" /> ~ <input type="text" name="point_max[]" size="5" value="<{$item.point_max}>" disabled="disabled" /></td><{/if}>
+		  <td><input type="text" name="picture[]" value="<{$item.avatar}>" class="infoTableInput" />&nbsp;<img src="<{$item.image}>" border="0" alt="<{$item.name}>" /></td>
+		  <td class="handler">
+              <ul id="handler_icon">
+                <li><a class="btn_delete" href="membergroup.php?do=del&id=<{$item.id}>" title="删除">删除</a></li>
+                <li><a class="btn_edit" href="membergroup.php?do=edit&id=<{$item.id}>" title="编辑" >编辑</a></li>
+              </ul>
+		 </td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="6">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+		<input type="submit" name="save_data" value="保存" class="formbtn batchButton"/>
+		<input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+		<input type="submit" name="updateDefault" value="设为默认" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"/>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>
