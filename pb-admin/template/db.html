@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 系统工具 &raquo; 数据库</p>
+	<p><{$_your_current_position}> <{$_system_tool}> &raquo; <{$_database}></p>
 </div>
 <div id="rightTop"> 
-    <h3>数据库</h3> 
+    <h3><{$_database}></h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="db.php">备份</a></li>
-        <li><a href="db.php?do=restore">还原</a></li>
-        <li><a href="db.php?do=query">升级</a></li>
+		<li><a class="btn1" href="db.php"><span><{$_db_backup}></span></a></li>
+        <li><a href="db.php?do=restore"><{$_db_restore}></a></li>
+        <li><a href="db.php?do=query"><{$_db_upgrade}></a></li>
     </ul>
 </div>
 <div class="info">
@@ -43,7 +38,7 @@ body {background: #fcfdff}
 $(document).ready(function() { 
 $('#BackupNow').click(function() {
 	$('#BackupNow').attr('disabled',"true");
-	$('#BackupNow').attr('value',"备份中...");
+	$('#BackupNow').val("备份中...");
 	$('#EditFrm').submit();
 });
 })

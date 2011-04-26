@@ -1,4 +1,4 @@
-<{assign var="page_title" value="`$page_title` - `$_hr`"}>
+<{assign var="page_title" value="`$page_title`"}>
 <{assign var="nav_id" value="9"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
@@ -12,7 +12,7 @@
            </div>
 			<div class="job_list_c">
 				<ul>
-					<li class="title"><h3 class="fl"><span><{$_hr_jobs}></span></h3><em class="fl"><span><{$_hr_company}></span></em><p class="fl"><{$_jobs_area}></p><p class="fl"><{$_post_time}></p></li>
+					<li class="title"><h3 class="fl"><span><{$_hr_jobs}></span></h3><em class="fl"><span><{$_hr_company}></span></em><p class="fl"><{$_jobs_area_n}></p><p class="fl"><{$_post_time_n}></p></li>
                     <{foreach from=$Items name=Items item=item key=key}>
 					<li><h3 class="fl"><a href="space.php?do=hr&userid=<{$item.userid}>" title=""><{$item.name}></a></h3><em class="fl co"><a href="space.php?userid=<{$item.userid}>"><{$item.companyname}></a></em><p class="fl"><{$item.work_station}></p><p class="fl"><{$item.pubdate|date_format:"%Y-%m-%d"}></p></li>
                     <{/foreach}>
@@ -33,7 +33,7 @@
 			  </ul>
 			</div>
 		</div>
-		<div class="h7"></div>
+		<div class="blank6"></div>
 		</div>
 </div>
 <{include file="`$ThemeName`/footer.html"}>

@@ -1,21 +1,21 @@
 <{assign var="page_title" value="`$_adv_search`"}>
 <{include file="`$ThemeName`/header.html"}>
 <style type="text/css">
-@import url(<{$theme_img_path}>style_tab.css);
+@import url(<{$theme_img_path}>effect.css);
 </style>
-<script src="scripts/jquery.tools.min.js"></script>
+<script src="scripts/jquery.tools.js"></script>
 <div class="wrapper">
-<div class="tips"><span><{$position}></span><{$_adv_search}></div>  
+<div class="tips"><span><{$position}></span></div>  
 <div class="advance_search">
 	 <!-- the tabs -->
-	<ul class="tabs">
-		  <li><a href="#"><{$_offer}></a></li>
-		  <li><a href="#"><{$_product}></a></li>
-		  <li><a href="#"><{$_yellow_page}></a></li>
-		  <li><a href="#"><{$_market}></a></li>
+	  <ul class="tabs2 title_mouse">
+		  <li><a href="javascript:;"><span><{$_offer}></span></a></li>
+		  <li><a href="javascript:;"><span><{$_product}></span></a></li>
+		  <li><a href="javascript:;"><span><{$_yellow_page}></span></a></li>
+		  <li><a href="javascript:;"><span><{$_market}></span></a></li>
 	</ul>
 	<!-- tab "panes" -->
-	<div class="panes">
+	<div class="panes box_bord">
 		<div class="tabs_search" id="SearchOffer">
 		<form name='form_send0' id='form_send0' method='GET' action='offer/list.php'>
 			<input type="hidden" name="do" value="search" />
@@ -91,7 +91,7 @@
 					<td><input type="text" name="q" id="q15" /></td>
 				  </tr>
 				  <tr>
-					<th><{$_main_prod}></th>
+					<th><{$_main_prod_n}></th>
 					<td><input type="text" name="main_prod" /></td>
 				  </tr>
 				  <tr>
@@ -163,14 +163,15 @@
 		</form>
 		</div>
 	</div>
-	<script>
-	$(function() {
-		$("ul.tabs").tabs("div.panes > div");
-	});
-	</script>
 	</div>
 </div>
-<script src="scripts/multi_select.js"></script>
+<script>
+var app_language = '<{$AppLanguage}>';
+$(function() {
+	$("ul.tabs2").tabs("div.panes > div");
+});
+</script>
+<script src="scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="scripts/script_area.js"></script>
 <script src="scripts/script_industry.js"></script>
 <{include file="`$ThemeName`/footer.html"}>

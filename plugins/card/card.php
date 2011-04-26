@@ -1,21 +1,21 @@
 <?php
 /*
-Plugin Name: card
-Plugin URI: 
-Description: 
-Version: 1.0
-Author: PHPB2B
-Author URI: http://www.phpb2b.com/
+The Name: ä¼ä¸šåç‰‡
+The URI: http://www.phpb2b.com/
+Description: é€šè¿‡flashå±•ç¤ºä¼ä¸šåç‰‡ï¼Œè°ƒç”¨æ–¹æ³•ï¼š<{plugin name=\"card\"}>
+Version: 1.0.0
+Author: PB_TEAM
+Author URI: http://www.phpb2b.com
 */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $pb_plugin_name = "card";
 /**
- * ´¦ÀíÒ»Ð©ÆäËû²Ù×÷
+ * å¤„ç†ä¸€äº›å…¶ä»–æ“ä½œ
  */
 if (isset($_POST['save'])) {
-	pb_submit_check("pluginvar");//¼ì²éÌá½»µÄ±ØÒª²ÎÊý
+	pb_submit_check("pluginvar");//æ£€æŸ¥æäº¤çš„å¿…è¦å‚æ•°
 }elseif(!defined("IN_PBADMIN")){
-	//ÏÔÊ¾Ä£°å
-	$plugin->display("show");//ÏÔÊ¾Ä£°åÎÄ¼þ
+	//æ˜¾ç¤ºæ¨¡æ¿
+	$plugin->display("show");//æ˜¾ç¤ºæ¨¡æ¿æ–‡ä»¶
 }
 ?>

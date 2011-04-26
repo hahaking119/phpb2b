@@ -1,22 +1,14 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.news.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 615 $
  */
 function smarty_block_news($params, $content, &$smarty) {
-	global $cookiepre;
 	if ($content === null) return;
 	$conditions = array();
 	if (class_exists("News")) {
@@ -28,7 +20,7 @@ function smarty_block_news($params, $content, &$smarty) {
 		$news_controller = new News();
 	}
 	$orderby = array();
-	require(CACHE_PATH. "cache_newstype.php");
+	require(CACHE_PATH. "cache_type.php");
 	$conditions[] = "n.status=1";
 	if(isset($params['type'])) {
 		$type = explode(",", $params['type']);
@@ -38,18 +30,31 @@ function smarty_block_news($params, $content, &$smarty) {
 				case 'image':
 					$conditions[] = "n.picture!=''";
 					break;
+				case 'commend':
+					$conditions[] = "if_commend>0";
+					break;
 				case 'hot':
 					$orderby[] = 'clicked DESC';
+					break;
+				case 'focus':
+					$conditions[] = "n.if_focus='1'";
+					break;
 				default:
 					break;
 			}
 		}
+	}
+	if (isset($params['flag'])) {
+		$conditions[] = "n.flag='".$params['flag']."'";
 	}
 	if (isset($params['tag'])) {
 		$conditions[] = "n.title like '%".$params['tag']."%'";
 	}
 	if (isset($params['typeid'])) {
 		$conditions[] = "n.type_id=".$params['typeid'];
+	}
+	if (isset($params['id'])) {
+		$conditions[] = "n.id='".$params['id']."'";
 	}
 	if (isset($params['orderby'])) {
 		$orderby[] = trim($params['orderby']);
@@ -72,7 +77,7 @@ function smarty_block_news($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$news->setLimitOffset($row, $col);
-	$sql = "SELECT id,title as fulltitle,title,picture,type_id,created,content as fullcontent,content FROM {$news->table_prefix}newses n ".$news->getCondition().$news->getOrderby().$news->getLimitOffset();
+	$sql = "SELECT *,title as fulltitle,content as fullcontent FROM {$news->table_prefix}newses n ".$news->getCondition().$news->getOrderby().$news->getLimitOffset();
 	$result = $news->dbstuff->GetArray($sql);
 	$return = $link_title = null;
 	if (!empty($result)) {
@@ -82,26 +87,32 @@ function smarty_block_news($params, $content, &$smarty) {
 			$dt = @getdate($result[$i]['created']);
 			$url = $news_controller->rewrite($result[$i]['id'], $result[$i]['title'], $result[$i]['created']);
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
-	    	}	    	
+	    		$result[$i]['title'] = mb_substr($result[$i]['title'], 0, $params['titlelen']);
+	    	}
 	    	$result[$i]['content'] = strip_tags($result[$i]['content']);
 	    	if (isset($params['infolen'])) {
-	    		$result[$i]['content'] = utf_substr($result[$i]['content'], $params['infolen']);
+	    		$result[$i]['content'] = mb_substr($result[$i]['content'], 0, $params['infolen']);
 	    	}
+	    	$image_type = isset($params['imagetype'])?trim($params['imagetype']):"small";
+	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', $image_type):pb_get_attachmenturl($result[$i]['picture'], '', $image_type);
 	    	if (isset($params['magic']))  {
 	    		if ($i==0){
 	    			if(!empty($result[$i]['picture'])) {
 	    				$style = " style=\"height:70px; background:url(".URL."attachment/".$result[$i]['picture'].".small.jpg".") no-repeat; padding:0 0 0 90px;overflow:hidden; width:120px;\"";
 	    				$h3_style = " style=\"padding:0 0 0 5px;\"";
 	    			}else{
-	    				$style = " style=\"height:70px; background:url(".URL.pb_get_attachmenturl('', '', 'small').") no-repeat; padding:0 0 0 90px;\"";
+	    				$style = " style=\"height:70px; background:url(".URL.$img.") no-repeat; padding:0 0 0 90px;\"";
 	    			}
 	    			$link_title = "<h3".$h3_style."><a href='{$url}'>".$result[$i]['title']."</a></h3>".$result[$i]['content'];
 	    		}else{
 	    			$link_title = "<a href='{$url}'>".$result[$i]['title']."</a>";
 	    		}
 			}
-			$return.= str_replace(array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:typename]", "[field:pubdate]", "[field:id]", "[field:type_id]", "[field:style]", "[field:url]"), array($url, $result[$i]['title'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['fulltitle'], $result[$i]['type_id']?$_PB_CACHE['newstype'][$result[$i]['type_id']]:L("undefined_sort", "tpl"), @date("Y-m-d", $result[$i]['created']),$result[$i]['id'], $result[$i]['type_id'], $style, $link_title), $content);
+			if ($result[$i]['type'] == 1) {
+				$link_title = "<a href='".$result[$i]['fullcontent']."'>".$result[$i]['title']."</a>";
+				$url = $result[$i]['fullcontent'];
+			}
+			$return.= str_replace(array("[link:title]", "[link:url]",  "[field:title]", "[img:src]", "[field:fulltitle]", "[field:typename]", "[field:pubdate]", "[field:id]", "[field:type_id]", "[field:style]", "[field:url]", "[field:content]"), array($url, '<a href="'.$url.'" title="'.$result[$i]['fulltitle'].'">'.$result[$i]['title'].'</a>', $result[$i]['title'], $img, $result[$i]['fulltitle'], $result[$i]['type_id']?$_PB_CACHE['newstype'][$result[$i]['type_id']]:L("undefined_sort", "tpl"), @date("Y-m-d", $result[$i]['created']),$result[$i]['id'], $result[$i]['type_id'], $style, $link_title, $result[$i]['content']), $content);
 		}
 	}
 	return $return;

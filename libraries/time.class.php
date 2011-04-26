@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: time.class.php 455 2009-12-26 14:26:35Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1251 $
  */
 class Times extends PbObject
 {
@@ -24,6 +17,14 @@ class Times extends PbObject
 		$tmp = $date2 - $date1;
 		$days = round($tmp/3600/24);
 		return $days;
+	}
+	
+	function getPassedDays($olddate, $exp = '-')
+	{
+		global $time_stamp;
+		$oldtime = strtotime($olddate);
+		$passtime = $time_stamp-$oldtime;
+		return floor($passtime/(24*60*60));
 	}
 
 	function dateChecker($ymd, $sep='-') {
@@ -43,6 +44,61 @@ class Times extends PbObject
 		$date_elements = explode($ds, $access_date);
 		$s_time = @mktime(0, 0, 0, $date_elements [1], $date_elements[2], $date_elements [0]);
 		return $s_time;
+	}
+	
+	function units($time){
+		$year   = floor($time / 60 / 60 / 24 / 365);
+		$time  -= $year * 60 * 60 * 24 * 365;
+		$month  = floor($time / 60 / 60 / 24 / 30);
+		$time  -= $month * 60 * 60 * 24 * 30;
+		$week   = floor($time / 60 / 60 / 24 / 7);
+		$time  -= $week * 60 * 60 * 24 * 7;
+		$day    = floor($time / 60 / 60 / 24);
+		$time  -= $day * 60 * 60 * 24;
+		$hour   = floor($time / 60 / 60);
+		$time  -= $hour * 60 * 60;
+		$minute = floor($time / 60);
+		$time  -= $minute * 60;
+		$second = $time;
+		$elapse = '';
+
+		$unitArr = array('年'  =>'year', '个月'=>'month',  '周'=>'week', '天'=>'day',
+		'小时'=>'hour', '分钟'=>'minute', '秒'=>'second'
+		);
+
+		foreach ( $unitArr as $cn => $u )  {
+			if ( $$u > 0 )      {
+				$elapse = $$u . $cn;
+				break;
+			}
+		}
+
+		return $elapse;
+	}
+
+	/**
+	 * $past = '2009-12-24 16:49:00';
+	 * echo stamp($past);   
+	 *
+	 * @param unknown_type $past
+	 * @return unknown
+	 */
+	function stamp($past){
+		date_default_timezone_set("America/New_York");
+
+		$year    =(int)substr($past,0,4);
+		$month   =(int)substr($past,5,2);
+		$day     =(int)substr($past,8,2);
+
+		$hour    =(int)substr($past,11,2);
+		$minutes =(int)substr($past,14,2);
+		$second  =(int)substr($past,17,2);
+
+		$past = mktime($hour,$minutes,$second,$month,$day,$year);
+		$now  = time();
+		$diff = $now - $past;
+
+		return '发表于' . units($diff) . '前';
 	}
 }
 ?>

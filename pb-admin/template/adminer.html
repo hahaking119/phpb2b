@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 用户中心 &raquo; 管理员</p>
+	<p><{$_your_current_position}> <{$_member_center}> &raquo; <{$_administrator}></p>
 </div>
 <div id="rightTop"> 
-    <h3>管理员</h3> 
+    <h3><{$_administrator}></h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="adminer.php">管理</a></li>
-		<li><a href="adminer.php?do=edit">添加/编辑</a></li>
-        <li><a href="adminer.php?do=password">密码修改</a></li>
+		<li><a class="btn1" href="adminer.php"><span><{$_management}></span></a></li>
+		<li><a href="adminer.php?do=edit"><{$_add_or_edit}></a></li>
+        <li><a href="adminer.php?do=password"><{$_change_pass}></a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -20,8 +15,8 @@ body {background: #fcfdff}
         <form name="search_frm" id="SearchFrm" method="get">
         <input type="hidden" name="do" value="search" />
              <div>
-				用户名 : <input class="queryInput" type="text" name="q" value="" /> 
-                <input type="submit" id="Search" class="formbtn" value="查询" /> 
+				<{$_cp_username_n}><input class="queryInput" type="text" name="q" value="" /> 
+                <input type="submit" id="Search" class="formbtn" value="<{$_searching}>" /> 
             </div> 
         </form> 
     </div> 
@@ -29,40 +24,42 @@ body {background: #fcfdff}
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">登陆用户名</label></td>
-		  <td><span>姓名</span></td>
-		  <td>最后登陆时间</td>
-		  <td><span>最后登陆IP地址</span></td>
-		  <td class="handler">操作</td>
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th><label for="idAll">登陆<{$_cp_username}></label></th>
+		  <th>姓名</th>
+		  <th>最后登陆时间</th>
+		  <th>最后登陆IP地址</th>
+		  <th><{$_action}></th>
 		</tr>
+    </thead>
+    <tbody>
 		<{foreach from=$Items item=item name=adzone}>
 		<tr class="tatr2">
-		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.member_id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.member_id}>" title="<{$item.member_id}>"></td>
+		  <td class="firstCell"><{if $AdministratorId!=$item.member_id}><input type="checkbox" name="id[]" value="<{$item.member_id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.member_id}>" title="<{$item.member_id}>"><{/if}></td>
 		  <td><label for="item_<{$item.id}>"><{$item.username}></label></td>
 		  <td><{$item.first_name}><{$item.last_name}></td>
 		  <td><{$item.last_login|date_format:"%Y-%m-%d"}></td>
 		  <td><{$item.last_ip}></td>
 		  <td class="handler">
            <ul id="handler_icon">
-            <li><a class="btn_delete" href="adminer.php?id=<{$item.member_id}>&do=del<{$addParams}>" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="adminer.php?do=edit&id=<{$item.member_id}><{$addParams}>" title="编辑">编辑</a></li>
+            <{if $AdministratorId!=$item.member_id}><li><a class="btn_delete" href="adminer.php?id=<{$item.member_id}>&do=del<{$addParams}>" title="<{$_delete}>"><{$_delete}></a></li><{/if}>
+            <li><a class="btn_edit" href="adminer.php?do=edit&id=<{$item.member_id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
           </ul>  
 		 </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="6">没有符合条件的记录</td>
+		  <td colspan="6"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>
     <div class="clear"/>

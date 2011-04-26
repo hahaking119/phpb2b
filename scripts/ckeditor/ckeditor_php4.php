@@ -467,7 +467,7 @@ class CKEditor
 
 		$out .= "<script type=\"text/javascript\" src=\"" . $ckeditorPath . 'ckeditor.js' . $args . "\"></script>\n";
 
-		$extraCode = "";
+		$extraCode = "apage";
 		if ($this->timestamp != $this->_timestamp) {
 			$extraCode .= ($extraCode ? "\n" : "") . "CKEDITOR.timestamp = '". $this->timestamp ."';";
 		}

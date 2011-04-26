@@ -1,29 +1,22 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: market.php 559 2009-12-28 11:11:11Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
-uses("market", "attachment");
 require(LIB_PATH. 'page.class.php');
 require("session_cp.inc.php");
-require(CACHE_PATH. "cache_industry.php");
-require(CACHE_PATH. "cache_area.php");
-require(LIB_PATH. "typemodel.inc.php");
+include(CACHE_PATH. "cache_industry.php");
+include(CACHE_PATH. "cache_area.php");
+uses("market", "attachment", "typeoption");
 $attachment = new Attachment('pic');
 $market = new Markets();
+$typeoption = new Typeoption();
 $page = new Pages();
 $conditions = null;
 $tpl_file = "market";
@@ -42,15 +35,37 @@ if (isset($_POST['uncheck']) && !empty($_POST['id'])) {
 	$sql = "UPDATE {$tb_prefix}markets SET status=0 WHERE ".$condition;
 	$result = $pdb->Execute($sql);
 }
+if (isset($_POST['recommend'])) {
+	foreach($_POST['id'] as $val){
+		$commend_now = $market->field("if_commend", "id=".$val);
+		if($commend_now=="0"){
+			$result = $market->saveField("if_commend", "1", intval($val));
+		}else{
+			$result = $market->saveField("if_commend", "0", intval($val));
+		}
+	}
+	if ($result) {
+		flash("success");
+	}else{
+		flash();
+	}
+}
 if (isset($_POST['save']) && !empty($_POST['data']['market'])) {
 	$vals = array();
 	$vals = $_POST['data']['market'];
+	$id = intval($_POST['id']);
 	if (!empty($_FILES['pic']['name'])) {
-		$attachment->rename_file = $time_stamp;
+		$attachment->if_thumb_large = true;
+		$attachment->large_scale = "410*226";
+		$attachment->if_watermark = false;
+		if (!empty($id)) {
+			$attachment->rename_file = "market-".$id;
+		}else{
+			$attachment->rename_file = "market-".($market->getMaxId()+1);
+		}
 		$attachment->upload_process();
 		$vals['picture'] = $attachment->file_full_url;
 	}
-	$id = intval($_POST['id']);
 	if (!empty($id)) {
 		$vals['modified'] = $time_stamp;
 		$result = $market->save($vals, "update", $id);
@@ -71,10 +86,12 @@ if (isset($_GET['do'])) {
 	if ($do == "edit") {
 		if(!empty($id)){
 			$sql = "select * FROM {$tb_prefix}markets WHERE id=".$id;
-			setvar("item", $pdb->GetRow($sql));
+			$res = $pdb->GetRow($sql);
+			$res['image'] = pb_get_attachmenturl($res['picture'], '../', 'small');
+			setvar("item", $res);
 		}
-		setvar("MarketStatus", get_cache_type("common_status"));
-		setvar("ParentIndustryOptions", $res);
+		setvar("MarketStatus", $typeoption->get_cache_type("common_status"));
+		setvar("AskAction", $typeoption->get_cache_type("common_option"));
 		$tpl_file = "market.edit";
 		template($tpl_file);
 		exit;

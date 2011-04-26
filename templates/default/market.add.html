@@ -3,7 +3,7 @@
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
   <div class="content">
-    <div class="tips"><span><{$position}></span><{$_added_market_info}></div>
+    <div class="tips"><span><{$position}></span></div>
     <div class="add_info">
       <div class="add_infoleft"> 
         <div class="add_infoleft_con">
@@ -20,9 +20,9 @@
       </div>
       <div class="add_inforight">
        <div class="base_title">
-	   <h2><span class="title_name"><{$_added_market}></span> <span class="search_more" ><a href="market/list.php"><span class="raquo">&raquo;</span><{$_more}><{$_market_info}></a></span></h2>
-	</div>
-        
+        <span class="search_more" ><a href="market/list.php"><span class="raquo">&raquo;</span><{$_more}><{$_market_info}></a></span>
+        <h2><span class="corner_t_l"></span><span class="corner_t_m title_mouse"><{$_added_market}></span><span class="corner_t_r"></span></h2>
+	</div>        
         <div class="add_inforight_con">
 				<form name="marketfrm" id="marketFrm" action="<{$smarty.server.PHP_SELF}>" method="post">
 				<input type="hidden" name="do" value="add_market" />
@@ -73,8 +73,11 @@
     </div>
     <div class="clear"></div>
 </div>
+<script>
+var app_language = '<{$AppLanguage}>';
+</script>
 <script src="scripts/jquery.js"></script>
-<script src="scripts/multi_select.js"></script>
+<script src="scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="scripts/script_area.js"></script>
 <script src="scripts/script_industry.js"></script>
 <script>

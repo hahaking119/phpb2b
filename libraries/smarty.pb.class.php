@@ -1,25 +1,16 @@
 <?php
 /**
- * Description ...
- *
- * PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: smarty.pb.class.php 462 2009-12-27 03:20:41Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require(LIB_PATH . "smarty/Smarty.class.php");
 class MySmarty extends Smarty {
-	var $flash_layout;
+	var $flash_layout = 'flash';
 	var $tpl_ext = '.html';
 
 	function MySmarty()
@@ -81,39 +72,34 @@ class MySmarty extends Smarty {
 		$styles = array("error", "true");
 		if (empty($message_code) || !$message_code || $message_code=="failed") {
 			$image = $images[0];
-			$message = L('action_failed');
+			$message = L('action_failed', "msg", $extra);
 			$style = $styles[0];
 		}elseif($message_code=="success" or true===$message_code or strstr("success", $message_code)){
 			$image = $images[1];
 			$style = $styles[1];
-			$message = L("success");
+			$message = L("success", "msg", $extra);
 		}else{
 			$image = $images[2];
 			$style = null;
-			$message = L($message_code);
+			$message = L($message_code, "msg", $extra);
 		}
 		$this->assign('action_img', $image);
 		$this->assign('action_style', $style);
 		$this->assign('url', $url);
-		if (!empty($extra)) {
-			$extra_data = func_get_args();
-			if (is_array($extra)) {
-				$message = sprintf($message, $extra_data[3][0]);
-			}else{
-				$message = sprintf($message, $extra_data[3]);
-			}
-		}
 		$this->assign('message', $message);
 		$this->assign('title', strip_tags($message));
 		if($pause!=0){
 			$this->assign('redirect', $this->redirect($url, $pause));
 		}
 		$this->assign('page_title', strip_tags($message));
-		if(strchr($this->flash_layout, "/")){
+		if(strstr($this->flash_layout, "/")){
 			if (!$this->template_exists($this->flash_layout.$this->tpl_ext)) {
 				$this->assign('ThemeName', 'default');
 				$this->flash_layout = 'default/flash';
 			}
+		}
+		if (!$this->template_exists($this->flash_layout.$this->tpl_ext)) {
+			die($message);
 		}
 		template($this->flash_layout);
 		exit();

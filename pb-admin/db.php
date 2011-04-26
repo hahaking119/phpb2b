@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: db.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
@@ -25,21 +18,24 @@ $conn = $db->connect($dbname,$dbhost,$dbuser,$dbpasswd);
 $tpl_file = "db";
 if(!$backupdir = $pdb->GetOne("SELECT valued FROM {$tb_prefix}settings WHERE variable='backup_dir'")) {
 	$backupdir = pb_radom(6);
-	pb_create_folder(DATA_PATH. "backup_".$backupdir);
 	$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) values ('backup_dir', '$backupdir')");
-}
-if (!file_exists(DATA_PATH. "backup_".$backupdir)) {
-	pb_create_folder(DATA_PATH. "backup_".$backupdir);
 }
 require(LIB_PATH. "func.db.php");
 require(LIB_PATH. "func.sql.php");
 if (isset($_POST['do'])) {
 	$do = trim($_POST['do']);
+	if (!file_exists(DATA_PATH. "backup_".$backupdir)) {
+		pb_create_folder(DATA_PATH. "backup_".$backupdir);
+	}
 	if ($do == "query" && !empty($_POST['sql_content'])) {
 		if ($admin_runquery) {
-			sql_run($_POST['sql_content']);
+			$result = sql_run($_POST['sql_content']);
+		if($result){
 			flash("success");
 		}else{
+			flash();
+		}
+	 }else{
 			flash("admin_runquery_forbidden");
 		}
 	}

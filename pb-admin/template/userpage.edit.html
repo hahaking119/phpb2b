@@ -1,17 +1,12 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 自定义页面</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_userpage}></p>
 </div>
 <div id="rightTop"> 
-    <h3>自定义页面</h3> 
+    <h3><{$_userpage}></h3> 
     <ul class="subnav">
-		<li><a href="userpage.php">管理</a></li>
-        <li><a class="btn1" href="userpage.php?do=edit">添加/编辑</a></li>
+		<li><a href="userpage.php"><{$_management}></a></li>
+        <li><a class="btn1" href="userpage.php?do=edit"><span><{$_add_or_edit}></span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -29,21 +24,17 @@ body {background: #fcfdff}
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[userpage][name]" value="<{$item.name}>" type="text" /></td>
       </tr>
       <tr>
-        <th class="paddingT15"> 摘要：</th>
+        <th class="paddingT15"> <{$_digest_n}></th>
         <td class="paddingT15 wordSpacing5">          
 		<input class="infoTableInput2" name="data[userpage][digest]" value="<{$item.digest}>" /></td>
       </tr>
       <tr>
-        <th class="paddingT15">显示顺序：</th>
+        <th class="paddingT15"><{$_display_order}></th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[userpage][display_order]" value="<{$item.display_order}>" type="text" /></td>
       </tr>
       <tr>
         <th class="paddingT15">链接地址：</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[userpage][url]" value="<{$item.url}>" type="text" /></td>
-      </tr>
-      <tr>
-        <th class="paddingT15">模板文件：</th>
-        <td class="paddingT15 wordSpacing5"><select name="data[userpage][templet_name]" /><option value="page.index">默认模板</option><{$other_templets}></select><label class="field_notice">某些页面有定制的模板，以“page.”为前缀，不填则默认为“page.index<{$tplext}>”。</label></td>
       </tr>
       <tr>
         <th class="paddingT15"> 详细内容：</th>
@@ -52,7 +43,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="保存发布" />		</td>
+			<input class="formbtn" type="submit" name="save" value="<{$_save_and_pub}>" />		</td>
       </tr>
     </table>
   </form>

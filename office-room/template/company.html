@@ -1,8 +1,11 @@
-<{assign var="page_title" value="企业基本资料"}>
+<{assign var="page_title" value="`$_company_information`"}>
 <{include file="header.html"}>
 <script src="../scripts/tiny_mce/tiny_mce.js" type="text/javascript"></script>
 <script type="text/javascript" src="../scripts/jquery/selectbox.js"></script>
-<script type="text/javascript" src="../data/cache/type.js"></script>
+<script>
+var app_language = '<{$AppLanguage}>';
+</script>
+<script type="text/javascript" src="../data/cache/<{$AppLanguage}>/type.js"></script>
 <script>
 jQuery(document).ready(function($) {
 	$('#dataCompanyEmployeeAmount').options(employee_amount);
@@ -30,23 +33,24 @@ jQuery(document).ready(function($) {
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2><{$page_title}></h2></div>
-      <div class="hint">（提示：带<font class="red"> * </font>号的为必填项）</div>  
+      <div class="hint"><{$_must_input_with_star}></div>
+	  <{$Errors}>
 	  <form name="company_frm" id="CompanyFrm" action="company.php" method="post" enctype="multipart/form-data">
 		 <input type="hidden" name="id" value="<{$item.id}>">        
+		 <input type="hidden" name="data[companyfield][company_id]" value="<{$item.id}>">        
 		 <input type="hidden" name="formhash" value="<{$formhash}>">        
-		<input type="hidden" name="do" id="Do" value="save" />
-
+		 <input type="hidden" name="do" id="Do" value="save" />
           <table class="offer_info_content">
               <tr>
-                <th class="circle_left"><font class="red">*</font> 公司名称：</th>
+                <th class="circle_left"><font class="red">*</font> <{$_company_name_n}></th>
                 <td class="circle_right"><input type="text" name="data[company][name]" id="dataCompanyName" value="<{$item.name}>" size="30"></td>
               </tr>
               <tr>
-                <th> 公司英文名称：</th>
+                <th> <{$_company_en_name}></th>
                 <td><input name="data[company][english_name]" type="text" id="english_name" value="<{$item.english_name}>" size="30"></td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 行业类别：</td>
+                <th><font class="red">*</font> <{$_sectors}></td>
                 <td>
                 <div id="dataIndustry">
                     <select name="data[company][industry_id1]" id="dataCompanyIndustryId1" class="level_1"  ></select>
@@ -56,29 +60,28 @@ jQuery(document).ready(function($) {
                 </td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 员工人数：</th>
-                <td><select id="dataCompanyEmployeeAmount" name="data[company][employee_amount]"><option value="0">请选择</option></select></td>
+                <th><font class="red">*</font> <{$_employees_number}></th>
+                <td><select id="dataCompanyEmployeeAmount" name="data[company][employee_amount]"><option value="0"><{$_select}></option></select></td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 年营业额：</th>
-                <td><select id="dataCompanyYearAnnual" name="data[company][year_annual]"><option value="0">请选择</option></select></td>
+                <th><font class="red">*</font> <{$_year_turnover}></th>
+                <td><select id="dataCompanyYearAnnual" name="data[company][year_annual]"><option value="0"><{$_select}></option></select></td>
               </tr>
               
               <tr>
-                <th><font class="red">*</font> 经营模式：</th>
-                <td><select id="dataCompanyManageType" name="data[company][manage_type]"><option value="0">请选择</option></select></td>
+                <th><font class="red">*</font> <{$_business_model}></th>
+                <td><select id="dataCompanyManageType" name="data[company][manage_type]"><option value="0"><{$_select}></option></select></td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 企业经济性质：</th>
-                <td><select id="dataCompanyEconomicType" name="data[company][property]"><option value="0">请选择</option></select></td>
+                <th><font class="red">*</font> <{$_company_nature}></th>
+                <td><select id="dataCompanyEconomicType" name="data[company][property]"><option value="0"><{$_select}></option></select></td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 主营产品：</th>
-                <td><textarea name="data[company][main_prod]" rows="4" id="main_prod" style="width:355px;"><{$item.main_prod}></textarea><font class=S><br>
-（100个字符以内）</font></td>
+                <th><font class="red">*</font> <{$_main_products}></th>
+                <td><textarea name="data[company][main_prod]" rows="4" id="main_prod" style="width:355px;"><{$item.main_prod}></textarea><font class=S><br><{$_character_limit}></font></td>
               </tr>
               <tr>
-                <th>所在地区：</th>
+                <th><{$_location}></th>
                 <td>						
                 <div id="dataArea">
                     <select name="data[company][area_id1]" id="dataCompanyAreaId1" class="level_1" style="width:120px;" ></select>
@@ -88,122 +91,119 @@ jQuery(document).ready(function($) {
                 </td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 详细地址：</th>
+                <th><font class="red">*</font> <{$_address}></th>
                 <td><input name="data[company][address]" type="text" id="address" value="<{$item.address}>"> </td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 邮编：</th>
+                <th><font class="red">*</font> <{$_zip}></th>
                 <td><input name="data[company][zipcode]" type="text" id="zipcode" value="<{$item.zipcode}>"> </td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 公司介绍：</th>
+                <th><font class="red">*</font> <{$_company_profile}></th>
                 <td><p>
-                    <textarea name="data[company][description]" rows="8" wrap="VIRTUAL" id="company_des" onKeyUp="checkLength(this);" class="mceEditor" style="width:355px;"><{$item.description}></textarea><br><small>文字最大长度: 250. 还剩: <span id="chLeft">250</span>.</small><br>
+                    <textarea name="data[company][description]" rows="8" wrap="VIRTUAL" id="company_des" onKeyUp="checkLength(this);" class="mceEditor" style="width:355px;"><{$item.description}></textarea><br><small><{$_text_length}><span id="chLeft">250</span>.</small><br>
                 </p></td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 法人代表：</th>
+                <th><font class="red">*</font> <{$_legal_person}></th>
                 <td><font color="#666666"> <span class="zi">
-                  <input name="data[company][boss_name]" type="text" id="bossname" value="<{$item.boss_name}>" size="25">
+                  <input name="data[company][boss_name]" type="text" id="bossname" value="<{$item.boss_name}>">
                 </span> </font></td>
               </tr>
               <tr>
-                <th>公司注册地：</th>
+                <th><{$_company_registration_place}></th>
                 <td><font color="#666666"> <span class="zi">
-                  <input name="data[company][reg_address]" type="text" id="reg_address" value="<{$item.reg_address}>" size="25">
+                  <input name="data[company][reg_address]" type="text" id="reg_address" value="<{$item.reg_address}>">
                 </span> </font></td>
               </tr>
               <tr>
-                <th>注册年份：</th>
-                <td><input type="text" name="data[company][found_date]" id="dataFoundDate" value="<{$item.found_date|date_format:"%Y"}>"></td>
+                <th><{$_registration_year}></th>
+                <td><input type="text" name="data[company][found_date]" id="dataFoundDate" value="<{$item.found_year}>"></td>
               </tr>
               <tr>
-                <th>注册资金：</th>
-                <td> <select id="dataCompanyRegFund" name="data[company][reg_fund]"><option value="0">请选择</option></select>(请如实填写)</td>
+                <th><{$_registration_funds}></th>
+                <td> <select id="dataCompanyRegFund" name="data[company][reg_fund]"><option value="0"><{$_select}></option></select><{$_real_fill}></td>
               </tr>
               <tr>
-                <th>开户银行：</th>
+                <th><{$_opening_bank}></th>
                 <td><input name="data[company][bank_from]" type="text" id="bank_from" value="<{$item.bank_from}>" size="32"></td>
               </tr>
               <tr>
-                <th>　帐 号：</th>
+                <th><{$_account}></th>
                 <td><input name="data[company][bank_account]" type="text" id="bank_account" value="<{$item.bank_account}>" size="32"></td>
               </tr>
               <tr>
-                <th>品牌名称：</th>
+                <th><{$_brand_name}></th>
                 <td><input name="data[company][main_brand]" type="text" id="main_brand" value="<{$item.main_brand}>" size="32"></td>
               </tr>
               <tr>
-                <th><font class="red">*</font> 主要经营地点：</th>
+                <th><font class="red">*</font> <{$_main_business_place}></th>
                 <td><input name="data[company][main_biz_place]" type="text" id="main_biz_place" value="<{$item.main_biz_place}>" size="32"> 
-                省市名</td>
+                <{$_provinces_city_name}></td>
               </tr>
               <tr>
-                <th>主要客户群：</th>
+                <th><{$_main_customer}></th>
                 <td><input name="data[company][main_customer]" type="text" id="main_customer" value="<{$item.main_customer}>" size="32">                          
-                （如超市，包装厂）                       </td>
+                <{$_example}>                       </td>
               </tr>
               <tr>
-                <th>主要市场：</th>
+                <th><{$_main_market}></th>
                 <td><{html_checkboxes name="data[company][main_market]" options=$MainMarkets checked=$SelectedMarket labels=false}></td>
               </tr>
               <tr>
-                <th>联系人：</th>
+                <th><{$_contact_people}></th>
                 <td><input name="data[company][link_man]" type="text" id="linkman" value="<{$item.link_man}>" size="32"></td>
               </tr>
               <tr>
-                <th>联系人职位：</th>
-                <td><select id="dataCompanyPosition" name="data[company][position]"><option value="0">请选择</option></select></td>
+                <th><{$_contact_jobs}></th>
+                <td><select id="dataCompanyPosition" name="data[company][position]"><option value="0"><{$_select}></option></select></td>
               </tr>
               <tr>
-                <th>联系电话：</th>
+                <th><{$_contact_phone}></th>
                 <td><input name="data[telcode]" type="text" id="telcode" value="<{$item.telcode}>" size="4" maxlength="4">
                 -
                   <input name="data[telzone]" type="text" id="telzone" value="<{$item.telzone}>" size="4" maxlength="4">
                 -
-                <input name="data[tel]" type="text" id="tel" value="<{$item.tel}>" size="15">格式：86-10-12345678</td>
+                <input name="data[tel]" type="text" id="tel" value="<{$item.tel}>" size="15"><{$_format}></td>
               </tr>
               <tr>
-                <th>传真号码：</th>
+                <th><{$_fax_number}></th>
                 <td><input name="data[faxcode]" type="text" id="faxcode" value="<{$item.faxcode}>" size="4" maxlength="4">
 -
 <input name="data[faxzone]" type="text" id="faxzone" value="<{$item.faxzone}>" size="4" maxlength="4">
 -
-<input name="data[fax]" type="text" id="fax" value="<{$item.fax}>" size="15">格式：86-10-12345678</td>
+<input name="data[fax]" type="text" id="fax" value="<{$item.fax}>" size="15"><{$_format}></td>
               </tr>
               
               <tr>
-                <th>手机号码：</th>
+                <th><{$_mobile_number}></th>
                 <td><input name="data[company][mobile]" type="text" id="mobile" value="<{$item.mobile}>" size="32"></td>
               </tr>
               <tr>
-                <th>公司主页：</th>
+                <th><{$_company_home}></th>
                 <td><input name="data[company][site_url]" type="text" id="site_url" value="<{$item.site_url}>" size="32"></td>
               </tr>
               <tr>
-                <th>业务Email：</th>
+                <th><{$_latitude}></th>
+                <td><input name="data[companyfield][map_latitude]" type="text" id="map_latitude" value="<{$item.map_latitude}>" size="32"></td>
+              </tr>
+              <tr>
+                <th><{$_longitude}></th>
+                <td><input name="data[companyfield][map_longitude]" type="text" id="map_longitude" value="<{$item.map_longitude}>" size="32"></td>
+              </tr>
+              <tr>
+                <th><{$_business_email_n}></th>
                 <td><input name="data[company][email]" type="text" id="email" value="<{$item.email}>" size="32"></td>
               </tr>
               <tr>
-                <th>企业Logo图片：</th>
-                <td><input name="pic" type="file" id="Picture" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'"><div id="CompanyLogo" style="width: 117px; height: 63px"><{if $item.logo}><img src="<{$item.logo}>" width="117" height="63" alt="企业标识图片" /><{/if}></div></td>
+                <th><{$_company_logo}></th>
+                <td><input name="pic" type="file" id="Picture" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'"><div id="CompanyLogo" style="width: 117px; height: 63px"><{if $item.logo}><img src="<{$item.logo}>" width="117" height="63" alt="<{$_logo_image}>" /><{/if}></div></td>
               </tr>
               <tr>
                <th class="circle_bottomleft"></th>
-               <td class="circle_bottomright"></td>
+               <td class="circle_bottomright"><input name="company_edit" type="submit" id="CompanyEdit" value="<{$_confirm_submit}>"></td>
               </tr>
           </table>
-                     
-        <table class="btn_save">
-          <tr>
-            <td>
-                <input name="company_edit" type="submit" id="CompanyEdit" value="确认提交">
-            </td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-    </table>
 	</form>
 
 </div>
@@ -218,7 +218,7 @@ var industry_id2 = <{$item.industry_id2|default:0}> ;
 var industry_id3 = <{$item.industry_id3|default:0}> ;
 </script>
 <script src="../scripts/jquery/jquery.validate"></script>
-<script src="../scripts/multi_select.js"></script>
+<script src="../scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="../scripts/script_area.js"></script>
 <script src="../scripts/script_industry.js"></script>
 <{include file="footer.html"}>

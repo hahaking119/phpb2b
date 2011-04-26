@@ -1,14 +1,9 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 时间设置</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_time_set}></p>
 </div>
 <div id="rightTop"> 
-    <h3>时间设置</h3> 
+    <h3><{$_time_set}></h3> 
 </div>
 <div class="info"> 
   <form action="setting.php" method="post" id="EditFrm" name="edit_frm">
@@ -27,7 +22,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save_datetime" value="保存设置" />		</td>
+			<input class="formbtn" type="submit" name="save_datetime" value="<{$_save_setting}>" />		</td>
       </tr>
     </table>
   </form>

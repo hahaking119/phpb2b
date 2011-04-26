@@ -1,25 +1,20 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: index.php 428 2009-12-26 13:45:57Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
+require(CACHE_PATH. "cache_typeoption.php");
 uses("membergroup", "trade");
 $membergroup = new Membergroups();
 $trade = new Trade();
+setvar("MenuHide", "display:none;");
 if (!empty($memberinfo)) {
 	$service_info = false;
 	$membergroup_id = $memberinfo['membergroup_id'];
@@ -45,8 +40,7 @@ if (!empty($memberinfo)) {
 	}
 	uaAssign(array(
 		"UserName"=>$memberinfo['first_name'].$memberinfo['last_name'],
-		"MemberGenger"=>$memberinfo['gender'],
-		"LastLogin"=>date("Y-m-d",$memberinfo['last_login']))
+		"LastLogin"=>date("Y-m-d H:i",$memberinfo['last_login']))
 	);
 	$offer_count = $pdb->GetArray("SELECT count(id) AS amount,type_id AS typeid FROM {$tb_prefix}trades WHERE member_id=".$_SESSION['MemberID']." GROUP BY type_id");
 	$offer_stat = array();
@@ -66,6 +60,10 @@ if (!empty($memberinfo)) {
 		setvar("pm", $pm_result);
 	}
 	setvar("ServiceInfo", $service_info);
+	$memberinfo['start_date'] = date("Y-m-d", $memberinfo['service_start_date']);
+	$memberinfo['end_date'] = date("Y-m-d", $memberinfo['service_end_date']);
+	$memberinfo['gender_name'] = $_PB_CACHE['calls'][$memberinfo['gender']];
+	$memberinfo['avatar'] = (!empty($memberinfo['photo']))?pb_get_attachmenturl($memberinfo['photo'], "../", "small"):(($memberinfo['gender']==2)?"images/female.png":"images/male.png");
 	setvar("MemberInfo", $memberinfo);
 	$group['name'] = $g['name'];
 	$group['image'] = $g['avatar'];

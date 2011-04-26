@@ -1,43 +1,34 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: template.install.inc.php 639 2010-01-31 07:11:01Z steven $
+ * The Name:简体中文
+ * Description:按照包
  */
 $arrTemplate['_language_name'] = '简体中文';
-$arrTemplate['_language_switch'] = '切换安装语言';
+$arrTemplate['_language_switch'] = '切换语言';
 $arrTemplate['_software_intro'] = '软件介绍';
 $arrTemplate['_software_license'] = '软件许可协议';
+$arrTemplate['_software_name'] = '友邻B2B';
+$arrTemplate['_install_step'] = '安装步骤';
+$arrTemplate['_upgrade_step'] = '升级步骤';
 $arrTemplate['_administrator'] = '管理员';
 $arrTemplate['_env_check'] = '运行环境检测';
 $arrTemplate['_perm_check'] = '文件权限检测';
 $arrTemplate['_db_setting'] = '数据库及管理员设置';
 $arrTemplate['_site_info_setting'] = '填写网站基本信息';
 $arrTemplate['_install_complete'] = '安装完成';
-$arrTemplate['_install_locked'] = '您已经安装过 PHPB2B '.PHPB2B_VERSION.'(Build:'.PHPB2B_RELEASE.')，如果需要重新安装，请删除 ../data/install.lock 文件后<a href="javascript:window.location.reload();">刷新</a>该页面！';
+$arrTemplate['_install_locked'] = '您已经安装过'.$arrTemplate['_software_name'].' '.PHPB2B_VERSION.'(Build:'.PHPB2B_RELEASE.')，如果需要重新安装，请删除 ../data/install.lock 文件后<a href="javascript:window.location.reload();">刷新</a>该页面！';
 $arrTemplate['_install_quide'] = '安装向导';
-$arrTemplate['_b2b_market_system'] = 'B2B行业电子商务网站管理系统';
+$arrTemplate['_b2b_market_system'] = '行业电子商务网站管理系统';
 $arrTemplate['_official_site'] = '官方网站';
 $arrTemplate['_official_community'] = '官方论坛';
-$arrTemplate['_welcome_to_install'] = '欢迎您使用PHPB2B';
-$arrTemplate['_the_guide_to_install'] = '本向导将指导您完成PHPB2B的正确安装。';
+$arrTemplate['_welcome_to_install'] = '欢迎您使用';
+$arrTemplate['_the_guide_to_install'] = '本向导将指导您完成软件的正确安装。';
 $arrTemplate['_to_install_please_attention'] = '为了能够顺利完成安装，您需要将您的数据库设置提前准备好。如果您不知道您的数据库设置，请联系您的主机商，并要求他们提供给您相关信息，同时您的服务器必须要有如下配置：';
 $arrTemplate['_or_higher_version'] = '或更高版本';
 $arrTemplate['_or_higher'] = '及以上';
 $arrTemplate['_attention'] = '注意:';
-$arrTemplate['_mysql_only_suppport'] = 'PHPB2B目前仅支持Mysql数据库。';
-$arrTemplate['_start_to_install'] = '开始安装 PHPB2B';
+$arrTemplate['_mysql_only_suppport'] = '目前仅支持Mysql数据库。';
+$arrTemplate['_start_to_install'] = '开始安装';
 $arrTemplate['_go_back'] = '返回上一步(P)';
 $arrTemplate['_next_step'] = '下一步(N)';
 $arrTemplate['_check_go_next'] = '检测通过，下一步(N)';
@@ -51,7 +42,7 @@ $arrTemplate['_operation_system'] = '操作系统';
 $arrTemplate['_server'] = '服务器';
 $arrTemplate['_version'] = '版本';
 $arrTemplate['_information'] = '信息';
-$arrTemplate['_view_information'] = '查看%s信息';
+$arrTemplate['_view_information'] = '查看{1}信息';
 $arrTemplate['_open_fine'] = '建议开启';
 $arrTemplate['_extension'] = '扩展';
 $arrTemplate['_cant_install'] = '无法安装';
@@ -89,11 +80,11 @@ $arrTemplate['_pls_input_site_info'] = '请输入网站的基本资料';
 $arrTemplate['_select_language'] = '选择安装语言';
 $arrTemplate['_simple_chinese'] = '简体中文';
 $arrTemplate['_if_want_to_change_language'] = '如果你要修改网站语言,请在languages目录中添加相应语言包';
-$arrTemplate['_a_new_b2b_site'] = '一个新的B2B网站';
+$arrTemplate['_a_new_b2b_site'] = '友邻B2B行业电子商务网站管理系统';
 $arrTemplate['_site_name'] = '网站名称';
 $arrTemplate['_for_site_name'] = '用于网站中使用的名称';
 $arrTemplate['_site_title'] = '网站标题';
-$arrTemplate['_a_new_b2b_title'] = '一个新的B2B网站的标题';
+$arrTemplate['_a_new_b2b_title'] = '友邻B2B行业电子商务网';
 $arrTemplate['_show_on_the_title'] = '显示在网站的标题栏以及网页的标题上';
 $arrTemplate['_site_url'] = '网站地址';
 $arrTemplate['_pls_enter_site_url'] = '请输入网站的访问URL，一般保持默认即可';

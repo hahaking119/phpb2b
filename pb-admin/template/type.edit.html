@@ -1,17 +1,12 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 扩展 &raquo; 分类选项</p>
+	<p><{$_your_current_position}> <{$_extension}> &raquo; <{$_options}></p>
 </div>
 <div id="rightTop"> 
-    <h3>分类选项</h3> 
+    <h3><{$_options}></h3> 
     <ul class="subnav">
 		<li><a href="type.php"><{$_management}></a></li>
-        <li><a class="btn1" href="type.php?do=edit"><{$_edit}></a></li>
+        <li><a class="btn1" href="type.php?do=edit"><span><{$_edit}></span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -21,7 +16,7 @@ body {background: #fcfdff}
 	<input type="hidden" name="do" value="typeoption" />
     <table class="infoTable">
       <tr>
-        <th class="paddingT15"> 标题：</th>
+        <th class="paddingT15"> <{$_title_n}></th>
         <td class="paddingT15 wordSpacing5">          
 		<input class="infoTableInput2" name="data[typeoption][option_label]" value="<{$item.option_label}>" /></td>
       </tr>

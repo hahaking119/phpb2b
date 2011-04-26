@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: companynews.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 uses("companynews","company","member");
@@ -74,10 +67,16 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 }
-$fields = "company_id,Companynews.id,Companynews.title,Companynews.status as CompanynewsStatus,Companynews.created AS pubdate,Companynews.clicked,c.name AS companyname";
+$fields = "company_id,Companynews.id,Companynews.title,Companynews.status as CompanynewsStatus,Companynews.created,Companynews.clicked,c.name AS companyname";
 $amount = $companynews->findCount(null, $conditions,"Companynews.id");
 $page->setPagenav($amount);
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Companynews.company_id";
-setvar("Items",$companynews->findAll($fields, $joins, $conditions, "Companynews.id DESC ",$page->firstcount,$page->displaypg));
+$result = $companynews->findAll($fields, $joins, $conditions, "Companynews.id DESC ",$page->firstcount,$page->displaypg);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		$result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
+	}
+	setvar("Items", $result);
+}
 template($tpl_file);
 ?>

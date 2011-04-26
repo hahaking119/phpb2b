@@ -1,14 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 网站功能</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_functions}></p>
 </div>
 <div id="rightTop"> 
-    <h3>网站功能</h3> 
+    <h3><{$_functions}></h3> 
+	<ul class="subnav">
+		<li><a class="btn1" href="setting.php?do=functions"><span>静态优化</span></a></li>
+		<li><a href="setting.php?do=attach">附件设置</a></li>
+	</ul>
 </div>
 <div class="info"> 
   <form action="setting.php" method="post" id="EditFrm" name="edit_frm">
@@ -35,7 +34,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save_functions" value="保存设置" />		</td>
+			<input class="formbtn" type="submit" name="save_functions" value="<{$_save_setting}>" />		</td>
       </tr>
     </table>
   </form>

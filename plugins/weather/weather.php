@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: 天气预报插件
-Plugin URI: http://www.phpb2b.com/
+The Name: 天气预报插件
+The URI: http://www.phpb2b.com/
 Description: 天气预报插件，可以显示在商务室等地方
 Version: 1.0.0
-Author: PB TEAM
-Author URI: http://www.phpb2b.com/
+Author: PB_TEAM
+Author URI: http://www.phpb2b.com
 */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 /**

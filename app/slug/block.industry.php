@@ -1,47 +1,47 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.industry.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1293 $
  */
 function smarty_block_industry($params, $content, &$smarty) {
 	if ($content === null) return;
 	$conditions = array();
 	if (class_exists("Industries")) {
 		$industry = new Industries();
+		$industry_controller = new Industry();
 	}else{
 		uses("industry");
 		$industry = new Industries();
+		$industry_controller = new Industry();
 	}
-	if(isset($params['typeid'])) {
+	if(!empty($params['typeid'])) {
 		$conditions[] = "indusrytype_id=".$params['typeid'];
 	}
-	if (isset($params['id'])) {
+	if (!empty($params['id'])) {
 		$conditions[] = "id=".$params['id'];
 	}
-	if (isset($params['topid'])) {
+	if (!empty($params['topid'])) {
 		$conditions[] = "top_parentid='".$params['topid']."'";
 	}
-	if (isset($params['level'])) {
+	if (!empty($params['level'])) {
 		$conditions[] = "level=".$params['level'];
 	}
-	//da($smarty->_tpl_vars);
-	if (isset($params['parentid'])) {
+	if (!empty($params['parentid'])) {
 			$conditions[] = "parent_id='".$params['parentid']."'";
 	}
-	if (isset($params['topparentid'])) {
+	if (!empty($params['topparentid'])) {
 		$conditions[] = "top_parentid='".$params['topparentid']."'";
+	}
+	if (!empty($params['exclude'])) {
+		$conditions[] = "id NOT IN (".$params['exclude'].")";
+	}
+	if (!empty($params['include'])) {
+		$conditions[] = "id IN (".$params['include'].")";
 	}
 	$orderby = null;
 	if (isset($params['orderby'])) {
@@ -66,20 +66,17 @@ function smarty_block_industry($params, $content, &$smarty) {
 	$return = null;
 	if (!empty($result)) {
 		$i_count = count($result);
-		//unset($smarty->_tpl_vars["inner_parentid"]);
 		for ($i=0; $i<$i_count; $i++){
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['name'] = utf_substr($result[$i]['name'], $params['titlelen']);
+	    		$result[$i]['name'] = mb_substr($result[$i]['name'], 0, $params['titlelen']);
 	    	}
 	    	if (!empty($result[$i]['url'])) {
 	    		$url = $result[$i]['url'];
 	    	}else{
-	    		$url = $industry->rewrite($result[$i]['id'], $result[$i]['industryname']);
+	    		$url = $industry_controller->rewriteUrl("industry", "special/industry.php", $result[$i]['id'], $result[$i]['industryname']);
 	    	}
-	    	//$smarty->_tpl_vars['industry'][$result[$i]['id']]['parentid'] = $result[$i]['id'];
 			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[field:style]", "[link:url]"), array($result[$i]['name'], $result[$i]['industryname'], $result[$i]['id'], parse_highlight($result[$i]['highlight']), $url), $content);
 		}
-		//$smarty->assign("level".$params['level'], $return);
 	}
 	return $return;
 }

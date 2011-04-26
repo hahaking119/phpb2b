@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: dicttype.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 uses("dicttype");
@@ -54,8 +47,18 @@ if (isset($_POST['save'])) {
 	$vals = $_POST['data']['dicttype'];
 	if (!empty($_POST['id'])) {
 		$result = $dicttype->save($vals, "update", $_POST['id']);
-	}else{
-		$result = $dicttype->save($vals);
+	}elseif (!empty($vals['name'])){
+		$names = explode("\r\n", $vals['name']);
+		$tmp_name = array();
+		if (!empty($names)) {
+			foreach ($names as $val) {
+				$name = $val;
+				if(!empty($name)) $tmp_name[] = "('".$name."','".$vals['parent_id']."','".$vals['display_order']."')";
+			}
+			$values = implode(",", $tmp_name);
+			$sql = "INSERT INTO {$tb_prefix}dicttypes (name,parent_id,display_order) VALUES ".$values;
+			$result = $pdb->Execute($sql);
+		}
 	}
 	if (!$result) {
 		flash();

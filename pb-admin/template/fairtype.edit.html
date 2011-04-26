@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 展会信息</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_fair}></p>
 </div>
 <div id="rightTop"> 
-    <h3>展会信息</h3> 
+    <h3><{$_fair}></h3> 
     <ul class="subnav">
-		<li><a href="fair.php">管理</a></li>
-		<li><a href="fairtype.php">分类</a></li>
-        <li><a class="btn1" href="fairtype.php?do=edit">添加/编辑</a></li>
+		<li><a href="fair.php"><{$_management}></a></li>
+		<li><a href="fairtype.php"><{$_sorts}></a></li>
+        <li><a class="btn1" href="fairtype.php?do=edit"><span><{$_add_or_edit}></span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -28,7 +23,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="保存" />		</td>
+			<input class="formbtn" type="submit" name="save" value="<{$_save}>" />		</td>
       </tr>
     </table>
   </form>

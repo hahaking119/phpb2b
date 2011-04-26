@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: room.share.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 if (session_id() == '' ) { 
 	require_once(LIB_PATH. "session_php.class.php");
@@ -44,7 +37,7 @@ if (empty($_SESSION['MemberID']) || empty($_SESSION['MemberName'])) {
 }
 //if caches
 $cache_data = array();
-if ($_PB_CACHE['setting']['member_cache']) {
+if (isset($_PB_CACHE['setting']['member_cache']) && $_PB_CACHE['setting']['member_cache']) {
 	$pdb->Execute("DELETE FROM {$tb_prefix}membercaches WHERE expiration<".$time_stamp);
 	$cache_data = $pdb->GetRow("SELECT data1 AS member,data2 AS company FROM {$tb_prefix}membercaches WHERE member_id='".$_SESSION['MemberID']."'");
 }
@@ -76,15 +69,16 @@ if (!empty($cache_data)) {
 			setvar("COMPANYINFO", $companyinfo);
 		}
 	}
-	if($_PB_CACHE['setting']['member_cache']) $pdb->Execute("REPLACE INTO {$tb_prefix}membercaches (member_id,data1,data2,expiration) VALUE ('".$_SESSION['MemberID']."','".@serialize($memberinfo)."','".@serialize($companyinfo)."',".($time_stamp+3600).")");
+	if(isset($_PB_CACHE['setting']['member_cache']) && $_PB_CACHE['setting']['member_cache']) $pdb->Execute("REPLACE INTO {$tb_prefix}membercaches (member_id,data1,data2,expiration) VALUE ('".$_SESSION['MemberID']."','".@serialize($memberinfo)."','".@serialize($companyinfo)."',".($time_stamp+3600).")");
 }
 $g = $_PB_CACHE['membergroup'][$memberinfo['membergroup_id']];
 if (!empty($g['auth_level'])) {
-	$auth = sprintf("%04b", $g['auth_level']);
+	$auth = sprintf("%05b", $g['auth_level']);
 	$menu['basic'] = $auth[0];
 	$menu['offer'] = $auth[1];
 	$menu['product'] = $auth[2];
 	$menu['company'] = $auth[3];
+	$menu['pms'] = $auth[4];
 	setvar("menu", $menu);
 }
 function check_permission($perm)
@@ -96,6 +90,7 @@ function check_permission($perm)
 		$smarty->assign('action_img', "failed.png");
 		$smarty->assign('url', 'javascript:;');
 		$smarty->assign('message', $message);
+		$smarty->assign('title', $message);
 		$smarty->assign('page_title', strip_tags($message));
 		template($smarty->flash_layout);
 		exit();
@@ -106,6 +101,6 @@ setvar("newpm", (empty($new_pm) || !$new_pm)? false : $new_pm);
 if (!empty($arrTemplate)) {
     $smarty->assign($arrTemplate);
 }
-$today_start = @mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+$today_start = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
 formhash();
 ?>

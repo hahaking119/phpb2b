@@ -1,16 +1,16 @@
-<{assign var="page_title" value="`$page_title` - `$_offer`"}>
+<{assign var="page_title" value="`$page_title`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
 	<div class="content">
-	<div class="tips"><span><{$position}></span><{$item.title}></div>
+	<div class="tips"><span><{$position}></span></div>
     <div class="blank6"></div>
     <div class="detailtopcon clearfix">
 			<h3><{$item.title}></h3>
             <{if $item.picture}>
 			<div class="detailtopconleft">
 				<p class="left1"><img src="<{$item.image}>" width="80" height="80" /></p>
-				<p class="left2"><a href="attachment.php?source=<{$item.image_url}>" target="_blank"><img src="<{$theme_img_path}>images/detail_17.jpg" alt="" /></a><span><{$_enlarge_image}></span></p>
+				<p class="left2"><a href="misc.php?source=<{$item.image_url}>" target="_blank"><img src="<{$theme_img_path}>images/detail_17.jpg" alt="" /></a><span><{$_enlarge_image}></span></p>
 			</div>
             <{/if}>
 			<div class="detailtopconleft2">
@@ -25,7 +25,7 @@
                      <input type="hidden" name="id" value="<{$item.id}>" />
                      <input type="hidden" name="do" value="favor" />
 					  <input type="button" name="favor" value="<{$_add_favorite}>"  class="btn_submit" id="favor" onclick="$('#FavorFrm').submit();" />
-				  <{if $pb_username}>
+				  <{if $pb_userid==$item.member_id}>
 					  <input type="button" name="edit" value="<{$_to_edit}>"  class="btn_submit" onclick="redirect('<{$SiteUrl}>office-room/offer.php?do=edit&id=<{$item.id}>');" />					
                     <{/if}>
                      </form>
@@ -35,9 +35,9 @@
 			<div class="detailtopconright">
 				<p class="right1"><{if $item.companyname}>
 <a href="space.php?userid=<{$item.space_name}>" target="_blank" title="<{$item.companyname}>"><{$item.companyname}></a><{else}><{$_released_by_personnal}><{/if}></p>
-				<p><{$_contact}><{$item.link_people}></p>
+				<p><{$_contact_people}><{$item.link_people}></p>
 				<p><{$_member_type}><{if $MEMBER.groupname}><img src="<{$MEMBER.groupimage}>" alt="<{$MEMBER.groupname}>" /><{/if}></p>
-				<p><{$_reputation_index}><{$MEMBER.credits}></p>
+				<p><{$_reputation_index_n}><{$MEMBER.credits}></p>
 				<p><{$_authentication_type}><{$MEMBER.trust_image}></p>
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 				<p class="right1"><{$_members_view}></p>
 				<p><{$_register_site_member}> 
                             <input type="button" name="btn_login" value="<{$_login}>" onclick="redirect('<{$SiteUrl}>logging.php?forward=<{$smarty.server.REQUEST_URI}>');" class="btn_submit"><{$_fenhao}></p>
-				<p><{$_not_register_site_member}><input type="button" name="btn_register" value="<{$_free}><{$_register}>" class="btn_submit" onclick="redirect('<{$SiteUrl}>member/');"><{$_registered_site_member}> 
+				<p><{$_not_register_site_member}><input type="button" name="btn_register" value="<{$_free}><{$_register}>" class="btn_submit" onclick="redirect('<{$SiteUrl}>member.php');"><{$_registered_site_member}> 
                 </p>
 			</div>
             <{else}>
@@ -77,7 +77,7 @@
 			</div>
             <{/if}>
 			<div class="contacttype">
-				<h3><img src="<{$theme_img_path}>images/lhighs.gif" alt="" /><{$_add_information_release}></h3>
+				<h3><img src="<{$theme_img_path}>images/lhighs.gif" /><{$_add_information_release}></h3>
 				<ul>
                 	<{offer memberid=`$item.member_id` row=10}>
 					<li><span class="title"><a href="[link:title]" title="[field:fulltitle]">[field:title]</a></span><span class="type"><a target="_blank" href="offer/list.php?typeid=[field:typeid]">[[field:typename]]</a></span></li>

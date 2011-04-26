@@ -1,14 +1,15 @@
 <{assign var="page_title" value="`$_fair`"}>
 <{assign var="nav_id" value="8"}>
 <{include file="`$ThemeName`/header.html"}>
-
-  <div class="adv mauto">
-    <{ads typeid=1 row="8"}><span><a href="[link:url]">[field:src]</a></span><{/ads}>
+<div class="adv mauto">
+    <{ads typeid=1 row="8"}><span><a href="[link:url]" rel="promotion">[field:src]</a></span><{/ads}>
 </div>
 <div class="wrapper">
    <div class="exh_con">
       <div class="exh_con_left">
-         <div class="exh_con_img"><img src="<{$theme_img_path}>images/exh_ad02.jpg" /></div>
+         <div class="exh_con_img">
+			<{ads type="focus" from="fair"}>This text is replaced by the Flash movie.<{/ads}>
+		 </div>
          <div class="exh_con_net">
              <div class="title_bar_s2">
              <span class="title_top_s2"><span></span></span>
@@ -20,14 +21,14 @@
                <div class="net_content_img"><img src="[img:src]" /></div>
                <div class="net_content_intro">
                  <h3><a href="[link:title]">[field:title]</a></h3>
-                 <p>[field:content]&nbsp;&nbsp;<span class="red"><a href="[link:title]"><{$_detail}></a></span> </p>
+                 <p>[field:content]&nbsp;&nbsp;<span><a href="[link:title]"><{$_detail}></a></span> </p>
                </div>
                <{/fair}>
               </div>
                <div class="net_meeting">
                  <ul>
-                 <{fair row=4}>
-                 <li><span class="net_meeting_title"><a href="fair/detail.php?id=[field:id]" target="_blank">[field:title]</a></span><span class="net_meeting_time">[[field:pubdate]]</span></li>
+                 <{fair row=2}>
+                 <li><span class="net_meeting_title"><a href="fair/detail.php?id=[field:id]" target="_blank">[field:title]</a></span><span class="net_meeting_time pb_datetime">[[field:pubdate]]</span></li>
                  <{/fair}>
                  </ul>
                  <div class="clear"></div>
@@ -43,7 +44,7 @@
         <div class="exh_recent">
             <ul class="exh_recentlist clearfix">
             <{fair row=24}>
-                <li><span class="sort">[<a href="fair/list.php?typeid=[field:typeid]">[field:typename]</a>]</span><span class="title"><a href="fair/detail.php?id=[field:id]">[field:title]</a></span><span class="date">[[field:pubdate]]</span></li>
+                <li><span class="sort"><a href="fair/list.php?typeid=[field:typeid]">[[field:typename]]</a></span><span class="title"><a href="fair/detail.php?id=[field:id]">[field:title]</a></span><span class="date pb_datetime">[[field:pubdate]]</span></li>
             <{/fair}>
             </ul>
         </div>
@@ -87,6 +88,6 @@
  <div class="clear"></div>  
 </div>
    <div class="blank6"></div>
-   <{ads typeid=2}><span><a href="[link:url]">[field:src]</a></span><{/ads}>
+   <{ads typeid=2}><span><a href="[link:url]" rel="promotion">[field:src]</a></span><{/ads}>
 </div>
 <{include file="`$ThemeName`/footer.html"}>

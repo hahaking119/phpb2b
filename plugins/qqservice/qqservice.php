@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: qqservice
-Plugin URI: 
-Description: 
-Version: 1.0
-Author: PHPB2B
-Author URI: http://www.phpb2b.com/
+The Name: QQ客服3
+The URI: http://www.phpb2b.com/
+Description: 客服QQ在线插件
+Version: 1.0.0
+Author: PB_TEAM
+Author URI: http://www.phpb2b.com
 */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $pb_plugin_name = "qqservice";

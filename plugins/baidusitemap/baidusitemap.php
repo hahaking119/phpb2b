@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: baidusitemap
-Plugin URI: 
-Description: 
-Version: 1.0
-Author: PHPB2B
-Author URI: http://www.phpb2b.com/
+The Name: 百度sitemap
+The URI: http://www.phpb2b.com/
+Description: 使用百度互联网论坛收录开放协议能提高网站流量
+Version: 1.0.0
+Author: PB_TEAM
+Author URI: http://www.phpb2b.com
 */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $pb_plugin_name = "baidusitemap";//必须的参数，即为文件夹的名称

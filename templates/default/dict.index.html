@@ -41,7 +41,7 @@
 				  </p>
 				<{/if}>
 				<{if !$smarty.foreach.Dicttypes.last}>
-					<hr />
+				    <hr class="hr_dashed" />
 				<{/if}>
 			 </li>
 			<{/foreach}>
@@ -67,7 +67,7 @@
 	   </div>
 	   <div class="dictionary">
 		<ul>
-			<{announce type="new" titlelen=15 infolen=35}>
+			<{announce row=4 titlelen=15 infolen=35}>
 				<li><a href="[link:title]" target="_blank">[field:title]</a></li>
 			<{/announce}>
 		</ul>

@@ -1,22 +1,14 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.companynews.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 657 $
  */
 function smarty_block_companynews($params, $content, &$smarty) {
-	global $cookiepre;
    if ($content === null) return;
    if (class_exists("Companynews")) {
 		$companynews = new Companynewses();
@@ -53,6 +45,9 @@ function smarty_block_companynews($params, $content, &$smarty) {
 	if (isset($params['tag'])) {
 		$conditions[] = "cn.title like '%".$params['tag']."%'";
 	}
+	if (!empty($params['companyid'])) {
+		$conditions[] = "cn.company_id='".$params['company_id']."'";
+	}
 	if (isset($params['orderby'])) {
 		$orderby[] = trim($params['orderby']);
 	}else{
@@ -76,14 +71,14 @@ function smarty_block_companynews($params, $content, &$smarty) {
 			$dt = @getdate($result[$i]['created']);
 			$space_controller->setBaseUrlByUserId($result[$i]['userid'], "news");
 			$url = $space_controller->rewriteDetail("news", $result[$i]['id']);
-			//$url = "space.php?id=".$result[$i]['company_id']."&do=news&nid=".$result[$i]['id'];
+			$result[$i]['title'] = strip_tags($result[$i]['title']);
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
+	    		$result[$i]['title'] = mb_substr($result[$i]['title'], 0, $params['titlelen']);
 	    		
 	    	}	    	
 	    	$result[$i]['content'] = strip_tags($result[$i]['content']);
 	    	if (isset($params['infolen'])) {
-	    		$result[$i]['content'] = utf_substr($result[$i]['content'], $params['infolen']);
+	    		$result[$i]['content'] = mb_substr($result[$i]['content'], 0, $params['infolen']);
 	    		
 	    	}
 	    	if (isset($params['magic']))  {

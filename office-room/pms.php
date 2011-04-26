@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: pms.php 428 2009-12-26 13:45:57Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
@@ -49,6 +42,7 @@ if (isset($_GET['do'])) {
 			flash();
 		}else{
 			$pdb->Execute("UPDATE {$tb_prefix}messages SET status=1 WHERE to_member_id=".$_SESSION['MemberID']." AND id=".$id);
+			$message_info['pubdate'] = date("Y-m-d", $message_info['created']);
 			setvar("item",$message_info);
 			$tpl_file = "pms_detail";
 			template($tpl_file);
@@ -85,11 +79,29 @@ if (isset($_POST['del'])) {
 	}
 }
 $tpl_file = "pms";
+$page->displaypg = 15;
 $amount = $pms->findCount(null, $conditions);
 $page->setPagenav($amount);
-$res = $pms->findAll("id,from_member_id,cache_from_username,title,content,status,created", null, $conditions, "id DESC", $page->firstcount, $page->displaypg);
+$result = $pms->findAll("id,from_member_id,cache_from_username,title,content,status,created", null, $conditions, "id DESC", $page->firstcount, $page->displaypg);
 setvar("MessageStatus", $pms->getReadStatus());
-setvar("Items",$res);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		$result[$i]['senddate'] = date("Y-m-d", $result[$i]['created']);
+		switch ($result[$i]['type']) {
+			case 'user':
+				$result[$i]['typename'] = L("private_message", "tpl");
+				break;
+			case 'inquery':
+				$result[$i]['typename'] = L("inquery_message", "tpl");
+				break;
+			default:
+				$result[$i]['typename'] = L("system_message", "tpl");
+				break;
+		}
+	}
+	setvar("Items",$result);
+}
+
 setvar("ByPages",$page->pagenav);
 template($tpl_file);
 ?>

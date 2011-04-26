@@ -1,5 +1,4 @@
 <{assign var="page_title" value="`$page_title`"}>
-<{assign var="nav_id" value="5"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
 	<div class="content">
@@ -16,7 +15,7 @@
 			<p><{$_receiver}></p>
 			<div class="content1">
 				<img src="<{$item.image}>" alt="" />
-				<p><{$_products_name}><a href="product/content.php?id=<{$item.id}>" target="_blank"><{$item.name}></a><br />
+				<p><{$_product_name}><a href="product/content.php?id=<{$item.id}>" target="_blank"><{$item.name}></a><br />
 					<{$_contact}><{$CompanyUser}>
 				</p>
 				<div class="clear"></div>
@@ -26,7 +25,7 @@
 				
 				  <label class="title"><{$_message_the_title}></label>
 				  <label class="text">
-				  <input name="title" type="text" value="我对您在<{$site_name}>发布的产品<{$item.names}>很感兴趣" size="45" />
+				  <input name="title" type="text" value="<{$item.names}>" size="45" />
 				  </label><br />
 				  <div class="clear"></div>
 				  <label class="title"><{$_additional_information}></label>

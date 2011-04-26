@@ -1,4 +1,4 @@
-<{assign var="page_title" value="自助广告"}>
+<{assign var="page_title" value="`$_self_advertising`"}>
 <{include file="header.html"}>
 <div class="wrap clearfix">
     <div class="sidebar">
@@ -10,25 +10,25 @@
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2><{$page_title}></h2></div>
-      <div class="hint">广告列表</div> 
+      <div class="hint"><{$_ads_list}></div> 
 
          <table class="news">
                       <tr>
-                        <th><p align="left">广告标题</p></th>
-                        <th>详细说明</th>
-                        <th>价格说明</th>
-                        <th>操作</th>
+                        <th><p align="left"><{$_ads_title}></p></th>
+                        <th><{$_details}></th>
+                        <th><{$_price_description}></th>
+                        <th><{$_operation}></th>
                       </tr><tr>
 		      <td height="5" colspan="4" align="center" valign="middle"></td></tr>
 			  <{foreach from=$Adzones item=item}>
 			  <tr bgcolor="<{cycle values="#CCFFCC,#ffffff"}>">
               <td height="25" align="left"><{$item.name}></td>
-		      <td align="center" valign="middle"><{$item.description}></td>
+		      <td align="left" valign="middle"><{$item.description}></td>
 		      <td align="center" valign="middle"><{$item.price}></td>
-		      <td align="center" valign="middle"><a href="../member/upgrade.php?do=buy" target="_blank">立即申请</a></td>
+		      <td align="center" valign="middle"><a href="../member/purchase.php?do=buy" target="_blank"><{$_apply}></a></td>
 			  </tr>
               <{foreachelse}>
-              <tr><td colspan="4"><div align="center">目前没有任何数据</div></td></tr>
+              <tr><td colspan="4"><div align="center"><{$_no_datas_now}></div></td></tr>
 			  <{/foreach}>
 				</table>				
        <table>      

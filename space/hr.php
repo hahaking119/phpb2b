@@ -1,24 +1,17 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: hr.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
-uses("job");
-require(LIB_PATH. "typemodel.inc.php");
+uses("job","typeoption");
 $job = new Jobs();
+$typeoption = new Typeoption();
 $conditions = "company_id=".$company->info['id'];
 if (isset($_GET['id'])) {
 	$id = intval(($_GET['id']));
@@ -28,10 +21,10 @@ if (isset($_GET['id'])) {
 			flash('data_not_exists');
 		}
 		$tpl_file = "hr_detail";
-		setvar("Salary",get_cache_type("salary"));
-        setvar("Worktype",get_cache_type("work_type"));
-		setvar("Gender",get_cache_type("gender"));
-		setvar("Education",get_cache_type("education"));
+		setvar("Salary",$typeoption->get_cache_type("salary"));
+        setvar("Worktype",$typeoption->get_cache_type("work_type"));
+		setvar("Gender",$typeoption->get_cache_type("gender"));
+		setvar("Education",$typeoption->get_cache_type("education"));
 		setvar("item",$info);
 		$space->render($tpl_file);
 		exit;

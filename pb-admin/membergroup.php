@@ -1,32 +1,25 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: membergroup.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
 require(LIB_PATH. 'cache.class.php');
-require(CACHE_PATH. "cache_membergroup.php");
-require(LIB_PATH. "typemodel.inc.php");
-require(CACHE_PATH. 'cache_membertype.php');
-uses("membergroup");
+include(CACHE_PATH. "cache_membergroup.php");
+include(CACHE_PATH. 'cache_type.php');
+uses("membergroup", "typeoption");
 $cache = new Caches();
 $conditions = array();
 $membergroup = new Membergroups();
+$typeoption = new Typeoption();
 $tpl_file = "membergroup";
-setvar("AskAction", get_cache_type("common_option"));
+setvar("AskAction", $typeoption->get_cache_type("common_option"));
 setvar("Membertypes", $_PB_CACHE['membertype']);
 if (isset($_POST['updateDefault']) && !empty($_POST['gid'])) {
 	$id = intval($_POST['gid'][0]);
@@ -84,7 +77,7 @@ if (isset($_GET['type'])) {
 	$conditions[] = "type='".$_GET['type']."'";
 	setvar("MembergroupType", $_GET['type']);
 }
-$result = $membergroup->find("exempt,id,name,description,picture,point_max,point_min,is_default", null, null, $conditions, "id ASC");
+$result = $membergroup->findAll("exempt,id,name,description,picture,point_max,point_min,is_default", null, $conditions, "id ASC");
 if(!function_exists('str_split')) {
   function str_split($string, $split_length = 1) {
     $array = explode("\r\n", chunk_split($string, $split_length));
@@ -93,7 +86,7 @@ if(!function_exists('str_split')) {
   }
 }
 for ($i=0; $i<count($result); $i++){
-	$tmp_power = sprintf("%04b", $result[$i]['exempt']);
+	$tmp_power = sprintf("%05b", $result[$i]['exempt']);
 	$result[$i]['exemptval'] = array_reverse(str_split($tmp_power));
 	$result[$i]['exemptval'] = str_split($tmp_power);
 	if(!empty($_PB_CACHE['membergroup'])) {
@@ -108,6 +101,7 @@ if (isset($_POST['save_permission'])) {
 		$exempt.=(in_array($val['id'], $_POST['offer']))?"1":"0";
 		$exempt.=(in_array($val['id'], $_POST['product']))?"1":"0";
 		$exempt.=(in_array($val['id'], $_POST['company']))?"1":"0";
+		$exempt.=(in_array($val['id'], $_POST['pms']))?"1":"0";
 		$exempt_value = bindec($exempt);
 		$sql = "UPDATE {$tb_prefix}membergroups SET exempt='{$exempt_value}',modified={$time_stamp} WHERE id={$val['id']}";
 		$pdb->Execute($sql);

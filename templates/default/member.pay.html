@@ -10,18 +10,19 @@
 		<div class="charge_online">
 		  <p><{$_confirm_pay_amount}></p>
 		<table>
-		<{if $OnlineSupport}>
+			<{if $OnlineSupport}>
 			<form method="post" name="pay_frm" id="PayFrm" action="<{$OnlineSupportUrl}>" target="_blank" />
+			<input type="hidden" name="total_price" value="<{$total_price}>" />
 			<tr>
 				<th><{$_pay_amount}></th>
-				<td><input name="total_price" value="<{$total_price}>" readonly type="text" />&nbsp;</td>
+				<td><input name="total_price_format" value="<{$total_price|number_format}>" readonly type="text" />&nbsp;</td>
 			</tr>
 			<tr>
 				<th>&nbsp;</th>
 				<td><input type="submit" class="submit_w118" value="<{$_next_pay_amount}>"/></td>
 			</tr>
 			</form>
-		<{else}>
+			<{else}>
 			<tr>
 				<th><{$_pay_description}></th>
 				<td class="pay_description"><{$Description}></td>

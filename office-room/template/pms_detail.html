@@ -1,4 +1,4 @@
-<{assign var="page_title" value="查看消息"}>
+<{assign var="page_title" value="`$_view_message`"}>
 <{include file="header.html"}>
 <div class="wrap clearfix">
     <div class="sidebar">
@@ -14,28 +14,26 @@
 	  <form name="message_frm" id="MessageFrm" action="pms.php?do=send&to=<{$item.cache_from_username}>" method="post">
          <table class="offer_info_content">
           <tr>
-            <th class="circle_left">发送者：</th>
+            <th class="circle_left"><{$_sender}></th>
           <td class="circle_right"><{$item.cache_from_username}></td>
           </tr>
            <tr>
-              <th>时 间：</th>
-              <td><{$item.created|date_format:"%Y-%m-%d"}></td>
+              <th><{$_time_n}></th>
+              <td><{$item.pubdate}></td>
             </tr>
            <tr>
-              <th> 主 题：</th>
+              <th><{$_theme_n}></th>
               <td><{$item.title}></td>
              </tr>
-           <tr>
-          <th class="circle_bottomleft">内 容：</th>
-          <td class="circle_bottomright"><{$item.content}></td>
+          <tr>
+			  <th><{$_content}></th>
+			  <td><{$item.content}></td>
           </tr>
-      </table>
-       <table class="btn_save">
-        <tr>
-          <td><input type="submit" value=" 回 复 " name="submit"> 　
-            <input type="button" value=" 返 回 " name="back" onclick="history.go(-1);"> 
-          </td>
-        </tr>
+          <tr>
+			  <th class="circle_bottomleft"></th>
+			  <td class="circle_bottomright"><input type="submit" value=" <{$_reply}> " name="submit">��
+				<input type="button" value=" <{$_back}> " name="back" onclick="history.go(-1);"></td>
+          </tr>
       </table>
 	  </form>
    </div>

@@ -1,38 +1,41 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: content.php 565 2009-12-28 11:21:36Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'content');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
 include(CACHE_PATH."cache_industry.php");
 include(CACHE_PATH."cache_area.php");
-uses("product","company","member");
+uses("product","company","member","form");
 $company = new Companies();
 $member = new Members();
 $product = new Products();
+$form = new Forms();
 $tmp_status = explode(",",L('product_status', 'tpl'));
 $viewhelper->setPosition(L("product_center", 'tpl'), 'product/');
 $viewhelper->setTitle(L("product_center", 'tpl'));
+if (isset($_GET['title'])) {
+	$title = rawurldecode(trim($_GET['title']));
+	$res = $product->findByName($title);
+	$id = $res['id'];
+}
 if (isset($_GET['id'])) {
 	$id = intval($_GET['id']);
 }
 $info = $product->getProductById($id);
 if(empty($info) || !$info){
 	flash("data_not_exists", '', 0);
+}
+if (isset($info['formattribute_ids'])) {
+	$form_vars = $form->getAttributes(explode(",", $info['formattribute_ids']));
+	setvar("ObjectParams", $form_vars);
 }
 if ($info['state']!=1) {
 	flash("unvalid_product", '', 0);
@@ -48,6 +51,7 @@ if (!empty($info['member_id'])) {
 }
 if (!empty($info['company_id'])) {
 	$company_info = $company->getInfoById($info['company_id']);
+	if (!empty($company_info)) {
 	$info['companyname'] = $company_info['name'];
 	$info['link_people'] = $company_info['link_man'];
 	$info['address'] = $company_info['address'];
@@ -56,12 +60,14 @@ if (!empty($info['company_id'])) {
 	$info['tel'] = $company_info['tel'];
 	$info['fax'] = $company_info['fax'];
 	setvar("COMPANY", $company_info);
+	}
 }
 if (!empty($info['industry_id1'])) {
 	$viewhelper->setTitle($_PB_CACHE['industry'][1][$info['industry_id1']]);
 	$viewhelper->setPosition($_PB_CACHE['industry'][1][$info['industry_id1']], "product/list.php?industryid=".$info['industry_id1']);
 }
 $viewhelper->setTitle($info['name'], $info['picture']);
+$viewhelper->setPosition($info['name'], $info['picture']);
 setvar("Areas", $_PB_CACHE['area']);
 setvar("Industry", $_PB_CACHE['industry']);
 $info['title'] = strip_tags($info['name']);

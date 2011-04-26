@@ -1,21 +1,18 @@
 <{assign var="page_title" value="`$page_title`"}>
 <{assign var="nav_id" value="`$nav_id`"}>
 <{include file="`$ThemeName`/header.html"}>
-<div class="container">
+<div class="wrapper">
 	<div class="contentbox">
-		<p class="breadnav"><{$position}></p>
-		<p class="whitespace"></p>
+		<div class="tips"><span><{$position}></span></div>
+		<div class="blank6"></div>
 		<div class="container">
 			<div class="fl help_l">
-				<p class="help_ltop">
-					<img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
-					<img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
-				</p>
+				 <div class="help_ltop">
+                     <span class="help_top_left"></span><span class="help_top_right"></span>
+                </div>
 				<div class="help_lcont">
 					<div class="help_telborder">
-						<div class="help_tel mauto">
-							<img src="<{$theme_img_path}>images/helpcontbgl.jpg" class="fl" />
-							<img src="<{$theme_img_path}>images/helpcontbgr.jpg" class="fr" />
+						<div class="help_tel">
 							<div class="help_telcont"><{$_help_center}><br /><p class="tar"><{$service_tel}></p></div>
 						</div>
 					</div>
@@ -30,25 +27,21 @@
 					</ul>
 					<{/foreach}>
 				</div>
+                 <div class="help_lcontnavs"></div>
 			</div>
-			<div class="fl help_r">
-				<p class="help_ltop">
-					<img src="<{$theme_img_path}>images/lbgt.jpg" class="fl" />
-					<img src="<{$theme_img_path}>images/rbgt.jpg" class="fr" />
-				</p>
-				<div class="help_rcontbg">
-					<img src="<{$theme_img_path}>images/helprbgl.jpg" class="fl" />
-					<img src="<{$theme_img_path}>images/helprbgr.jpg" class="fr" />
-					<p class="help_rsearch">
-					<form method="get" action="help/index.php">
-					<input type="hidden" name="search" value="search"/>
-						<em><{$_search}><{$_help}><{$_colon}></em><input name="q" value="" type="text" /><input name="submit" value="" type="submit" class="help_rgo" />
-					</form>
-					</p>
-					<div><{$item.content}></div>
+			<div class="fr help_r clearfix">
+				<div class="help_rcontbg">					
+                       <form method="get" action="help/index.php" >
+                        <input type="hidden" name="search" value="search"/>
+                         <p class="help_rsearch">
+                            <{$_search}><{$_help}><{$_colon}><input name="q" value="" type="text" /><input name="submit" value="<{$_search}>" type="submit" class="btn_submit_w45 search_en" />
+                          </p>
+                        </form>
+					<div class="help_rbg"><{$item.content}></div>
 				</div>
 			</div>
-		</div><br clear="all"/>
+		</div>
+        <div class="clear"></div>
 
 	</div>
 </div>

@@ -277,7 +277,7 @@
 	var $genID = 0; 			/// sequence id used by GenID();
 	var $raiseErrorFn = false; 	/// error function to call
 	var $isoDates = false; /// accepts dates in ISO format
-	var $cacheSecs = 3600; /// cache for 1 hour
+	var $cacheSecs = 3600; /// default cache for 1 hour
 
 	// memcache
 	var $memCache = false; /// should we use memCache instead of caching in files

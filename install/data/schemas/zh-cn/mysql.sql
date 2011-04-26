@@ -1,9 +1,3 @@
--- 程序名称: PHPB2B
--- 程序版本: 3.2 - ATHENA
--- 最后更新: 2010-3-15
-
--- --------------------------------------------------------
-
 -- 
 -- 表的结构 `pb_adminfields`
 -- 
@@ -18,6 +12,7 @@ CREATE TABLE `pb_adminfields` (
   `last_login` int(10) NOT NULL default '0',
   `last_ip` varchar(25) NOT NULL default '',
   `expired` int(10) NOT NULL default '0',
+  `permissions` text NOT NULL default '',
   `created` int(10) NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
   PRIMARY KEY  (`member_id`)
@@ -96,8 +91,8 @@ CREATE TABLE `pb_adses` (
   `is_image` tinyint(1) NOT NULL default '1',
   `source_name` varchar(100) NOT NULL default '',
   `source_type` varchar(100) NOT NULL default '',
-  `source_url` varchar(100) NOT NULL default '',
-  `target_url` varchar(100) NOT NULL default '',
+  `source_url` varchar(255) NOT NULL default '',
+  `target_url` varchar(255) NOT NULL default '',
   `width` smallint(6) NOT NULL default '0',
   `height` smallint(6) NOT NULL default '0',
   `alt_words` varchar(25) NOT NULL default '',
@@ -124,11 +119,13 @@ CREATE TABLE `pb_adses` (
 DROP TABLE IF EXISTS `pb_adzones`;
 CREATE TABLE `pb_adzones` (
   `id` smallint(6) NOT NULL auto_increment,
+  `membergroup_ids` varchar(50) NOT NULL default '',
   `what` varchar(10) NOT NULL default '',
+  `style` tinyint(1) NOT NULL default '0',
   `name` varchar(100) NOT NULL default '',
   `description` text,
   `additional_adwords` text,
-  `price` varchar(50) NOT NULL default '0',
+  `price` float(9,2) NOT NULL default '0',
   `file_name` varchar(100) NOT NULL default '',
   `width` smallint(6) NOT NULL default '0',
   `height` smallint(6) NOT NULL default '0',
@@ -150,6 +147,7 @@ CREATE TABLE `pb_albums` (
   `id` int(10) NOT NULL auto_increment,
   `member_id` int(10) NOT NULL default '0',
   `attachment_id` int(10) NOT NULL default '0',
+  `type_id` smallint(3) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
@@ -166,6 +164,7 @@ CREATE TABLE `pb_announcements` (
   `subject` varchar(255) NOT NULL default '',
   `message` text,
   `display_order` tinyint(1) NOT NULL default '0',
+  `display_expiration` int(10) unsigned NOT NULL default '0',
   `created` int(10) unsigned NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -180,7 +179,7 @@ CREATE TABLE `pb_announcements` (
 DROP TABLE IF EXISTS `pb_announcementtypes`;
 CREATE TABLE `pb_announcementtypes` (
   `id` smallint(3) NOT NULL auto_increment,
-  `title` varchar(255) NOT NULL default '',
+  `name` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
@@ -337,6 +336,7 @@ CREATE TABLE `pb_companynewses` (
   `id` int(10) NOT NULL auto_increment,
   `member_id` int(10) NOT NULL default '-1',
   `company_id` int(10) NOT NULL default '-1',
+  `type_id` smallint(3) NOT NULL default '0',
   `title` varchar(100) NOT NULL default '',
   `content` text,
   `picture` varchar(100) NOT NULL default '',
@@ -561,7 +561,7 @@ CREATE TABLE `pb_goods` (
   `id` smallint(6) NOT NULL auto_increment,
   `name` varchar(255) NOT NULL default '',
   `description` text,
-  `price` float(7,2) NOT NULL default '0.00',
+  `price` float(9,2) NOT NULL default '0',
   `closed` tinyint(1) NOT NULL default '1',
   `picture` varchar(100) NOT NULL default '',
   `if_commend` tinyint(1) NOT NULL default '0',
@@ -703,9 +703,9 @@ CREATE TABLE `pb_inqueries` (
   `title` varchar(50) NOT NULL default '',
   `content` text,
   `send_achive` tinyint(1) default NULL,
-  `know_more` varchar(50) default '',
-  `exp_quantity` varchar(15) default '',
-  `exp_price` varchar(15) default '',
+  `know_more` varchar(50) NOT NULL default '',
+  `exp_quantity` varchar(15) NOT NULL default '',
+  `exp_price` float(9,2) NOT NULL default '0.00',
   `contacts` text,
   `user_ip` varchar(11) default '',
   `created` int(10) NOT NULL default '0',
@@ -715,17 +715,18 @@ CREATE TABLE `pb_inqueries` (
 -- --------------------------------------------------------
 
 -- 
--- 表的结构 `pb_ipbanned`
+-- 表的结构 `pb_banned`
 -- 
 
-DROP TABLE IF EXISTS `pb_ipbanned`;
-CREATE TABLE `pb_ipbanned` (
+DROP TABLE IF EXISTS `pb_banned`;
+CREATE TABLE `pb_banned` (
   `id` smallint(6) NOT NULL auto_increment,
   `ip1` char(3) NOT NULL default '',
   `ip2` char(3) NOT NULL default '',
   `ip3` char(3) NOT NULL default '',
   `ip4` char(3) NOT NULL default '',
   `expiration` int(10) NOT NULL default '0',
+  `created` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `ip1` (`ip1`,`ip2`,`ip3`,`ip4`)
 ) TYPE=MyISAM;
@@ -768,6 +769,22 @@ CREATE TABLE `pb_jobs` (
 -- --------------------------------------------------------
 
 -- 
+-- 表的结构 `pb_jobtypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_jobtypes`;
+CREATE TABLE `pb_jobtypes` (
+  `id` smallint(6) NOT NULL auto_increment,
+  `parent_id` smallint(6) NOT NULL default '0',
+  `level` tinyint(1) NOT NULL default '1',
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
 -- 表的结构 `pb_keywords`
 -- 
 
@@ -799,26 +816,6 @@ CREATE TABLE `pb_logs` (
   `ip_address` int(10) NOT NULL default '0',
   `created` int(10) NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM;
-
--- --------------------------------------------------------
-
--- 
--- 表的结构 `pb_marketprice`
--- 
-
-DROP TABLE IF EXISTS `pb_marketprice`;
-CREATE TABLE `pb_marketprice` (
-  `id` int(10) NOT NULL auto_increment,
-  `product_id` int(10) default NULL,
-  `units` varchar(25) default '',
-  `max_price` smallint(6) default '0',
-  `min_price` smallint(6) default '0',
-  `av_price` smallint(6) default '0',
-  `content` text,
-  `created` int(10) default NULL,
-  `modified` int(10) default NULL,
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM;
 
@@ -873,6 +870,7 @@ CREATE TABLE `pb_memberfields` (
   `msn` varchar(50) NOT NULL default '',
   `icq` varchar(12) NOT NULL default '',
   `yahoo` varchar(50) NOT NULL default '',
+  `skype` varchar(50) NOT NULL default '',
   `address` varchar(50) NOT NULL default '',
   `zipcode` varchar(16) NOT NULL default '',
   `site_url` varchar(100) NOT NULL default '',
@@ -1047,7 +1045,8 @@ CREATE TABLE `pb_newscomments` (
 DROP TABLE IF EXISTS `pb_newses`;
 CREATE TABLE `pb_newses` (
   `id` int(10) NOT NULL auto_increment,
-  `type_id` int(5) NOT NULL default '0',
+  `type_id` smallint(3) NOT NULL default '0',
+  `type` tinyint(1) NOT NULL default '0',
   `industry_id` smallint(3) NOT NULL default '0',
   `area_id` smallint(3) NOT NULL default '0',
   `title` varchar(255) NOT NULL default '',
@@ -1059,6 +1058,7 @@ CREATE TABLE `pb_newses` (
   `highlight` tinyint(1) NOT NULL default '0',
   `clicked` int(10) NOT NULL default '1',
   `status` tinyint(1) NOT NULL default '1',
+  `flag` tinyint(1) NOT NULL default '0',
   `require_membertype` varchar(15) NOT NULL default '0',
   `tag_ids` varchar(255) default '',
   `created` int(10) NOT NULL default '0',
@@ -1075,7 +1075,7 @@ CREATE TABLE `pb_newses` (
 
 DROP TABLE IF EXISTS `pb_newstypes`;
 CREATE TABLE `pb_newstypes` (
-  `id` int(5) NOT NULL auto_increment,
+  `id` smallint(3) NOT NULL auto_increment,
   `name` varchar(25) NOT NULL default '',
   `level_id` tinyint(1) NOT NULL default '1',
   `status` tinyint(1) NOT NULL default '1',
@@ -1110,7 +1110,7 @@ CREATE TABLE `pb_orders` (
   `member_id` int(10) NOT NULL default '-1',
   `anonymous` tinyint(1) NOT NULL default '0',
   `cache_username` varchar(25) NOT NULL default '',
-  `total_price` smallint(3) NOT NULL default '0',
+  `total_price` float(9,2) NOT NULL default '0.00',
   `content` text,
   `status` tinyint(1) NOT NULL default '0',
   `created` int(10) NOT NULL default '0',
@@ -1225,6 +1225,8 @@ CREATE TABLE `pb_products` (
   `company_id` int(10) NOT NULL default '0',
   `cache_companyname` varchar(100) NOT NULL default '',
   `sort_id` tinyint(1) NOT NULL default '1',
+  `brand_id` smallint(6) NOT NULL default '0',
+  `category_id` smallint(6) NOT NULL default '0',
   `industry_id1` smallint(6) NOT NULL default '0',
   `industry_id2` smallint(6) NOT NULL default '0',
   `industry_id3` smallint(6) NOT NULL default '0',
@@ -1232,7 +1234,7 @@ CREATE TABLE `pb_products` (
   `area_id2` smallint(6) NOT NULL default '0',
   `area_id3` smallint(6) NOT NULL default '0',
   `name` varchar(255) NOT NULL default '',
-  `price` varchar(15) NOT NULL default '0',
+  `price` float(9,2) NOT NULL default '0.00',
   `sn` varchar(20) NOT NULL default '',
   `spec` varchar(20) NOT NULL default '',
   `produce_area` varchar(50) NOT NULL default '',
@@ -1345,6 +1347,7 @@ CREATE TABLE `pb_services` (
   `type_id` tinyint(1) NOT NULL default '0',
   `status` tinyint(1) NOT NULL default '0',
   `created` int(10) NOT NULL default '0',
+  `modified` int(10) NOT NULL default '0',
   `revert_content` text,
   `revert_date` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -1444,6 +1447,43 @@ CREATE TABLE `pb_stats` (
 -- --------------------------------------------------------
 
 -- 
+-- 表的结构 `pb_standards`
+-- 
+
+DROP TABLE IF EXISTS `pb_standards`;
+CREATE TABLE `pb_standards` (
+  `id` smallint(6) NOT NULL auto_increment,
+  `attachment_id` smallint(6) NOT NULL default '0',
+  `type_id` smallint(6) NOT NULL default '0',
+  `title` varchar(255) NOT NULL default '',
+  `source` varchar(255) NOT NULL,
+  `digest` varchar(255) NOT NULL default '' ,
+  `content` text NOT NULL,
+  `publish_time` int(10) NOT NULL default '0',
+  `force_time` int(10) NOT NULL default '0',
+  `clicked` smallint(6) NOT NULL default '1',
+  `created` int(10) NOT NULL default '0',
+  `modified` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_standardtypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_standardtypes`;
+CREATE TABLE `pb_standardtypes` (
+  `id` smallint(3) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
 -- 表的结构 `pb_tags`
 -- 
 
@@ -1454,6 +1494,7 @@ CREATE TABLE `pb_tags` (
   `name` varchar(255) NOT NULL default '',
   `numbers` smallint(6) NOT NULL default '0',
   `closed` tinyint(1) NOT NULL default '0',
+  `flag` tinyint(1) NOT NULL default '0',
   `created` int(10) NOT NULL default '0',
   `modified` int(10) NOT NULL default '0',
   PRIMARY KEY  (`id`),
@@ -1474,6 +1515,7 @@ CREATE TABLE `pb_templets` (
   `directory` varchar(100) NOT NULL default '',
   `type` enum('system','user') NOT NULL default 'system',
   `author` varchar(100) NOT NULL default '',
+  `style` varchar(255) NOT NULL default '',
   `description` text,
   `is_default` tinyint(1) NOT NULL default '0',
   `require_membertype` varchar(100) NOT NULL default '0',
@@ -1553,14 +1595,16 @@ CREATE TABLE `pb_trades` (
   `company_id` int(5) NOT NULL default '0',
   `cache_username` varchar(25) NOT NULL default '',
   `cache_companyname` varchar(100) NOT NULL default '',
+  `cache_contacts` varchar(255) NOT NULL default '',
   `title` varchar(100) NOT NULL default '',
   `content` text,
-  `price` float(8,2) NOT NULL default '0.00',
+  `price` float(9,2) NOT NULL default '0.00',
   `measuring_unit` varchar(15) NOT NULL default '0',
   `monetary_unit` varchar(15) NOT NULL default '0',
   `packing` varchar(150) NOT NULL default '',
   `quantity` varchar(25) NOT NULL default '',
-  `offer_expire` int(10) NOT NULL default '0',
+  `display_order` tinyint(1) NOT NULL default '0',
+  `display_expiration` int(10) NOT NULL default '0',
   `spec` varchar(200) NOT NULL default '',
   `sn` varchar(25) NOT NULL default '',
   `picture` varchar(50) NOT NULL default '',
@@ -1593,7 +1637,9 @@ CREATE TABLE `pb_trades` (
 DROP TABLE IF EXISTS `pb_tradetypes`;
 CREATE TABLE `pb_tradetypes` (
   `id` smallint(3) NOT NULL auto_increment,
+  `parent_id` smallint(3) NOT NULL default '0',
   `name` varchar(25) NOT NULL default '',
+  `level` tinyint(1) NOT NULL default '1',
   `display_order` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM ;
@@ -1808,3 +1854,206 @@ CREATE TABLE `pb_spacecaches` (
   `expiration` int(10) NOT NULL default '0',
   PRIMARY KEY  (`company_id`)
 ) TYPE=MyISAM;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_albumtypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_albumtypes`;
+CREATE TABLE `pb_albumtypes` (
+  `id` smallint(3) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_brands`
+-- 
+
+DROP TABLE IF EXISTS `pb_brands`;
+CREATE TABLE `pb_brands` (
+  `id` smallint(6) NOT NULL auto_increment,
+  `member_id` int(10) NOT NULL default '-1',
+  `company_id` int(10) NOT NULL default '-1',
+  `type_id` smallint(3) NOT NULL default '0',
+  `if_commend` tinyint(1) NOT NULL default '0',
+  `name` varchar(100) NOT NULL default '',
+  `alias_name` varchar(100) NOT NULL default '',
+  `picture` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `hits` smallint(6) NOT NULL default '0',
+  `ranks` smallint(3) NOT NULL default '0',
+  `letter` varchar(2) NOT NULL default '',
+  `created` int(10) NOT NULL default '0',
+  `modified` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_brandtypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_brandtypes`;
+CREATE TABLE `pb_brandtypes` (
+  `id` smallint(3) NOT NULL auto_increment,
+  `parent_id` smallint(3) NOT NULL default '0',
+  `level` tinyint(1) NOT NULL default '1',
+  `name` varchar(100) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_companynewstypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_companynewstypes`;
+CREATE TABLE `pb_companynewstypes` (
+  `id` smallint(3) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_feeds`
+-- 
+
+DROP TABLE IF EXISTS `pb_feeds`;
+CREATE TABLE `pb_feeds` (
+  `id` int(10) NOT NULL auto_increment,
+  `type_id` tinyint(1) NOT NULL default '0',
+  `type` varchar(100) NOT NULL default '',
+  `member_id` int(10) NOT NULL default '0',
+  `username` varchar(100) NOT NULL default '',
+  `data` text NOT NULL,
+  `created` int(10) NOT NULL default '0',
+  `modified` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_markettypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_markettypes`;
+CREATE TABLE `pb_markettypes` (
+  `id` smallint(3) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_productcategories`
+-- 
+
+DROP TABLE IF EXISTS `pb_productcategories`;
+CREATE TABLE `pb_productcategories` (
+  `id` smallint(6) NOT NULL auto_increment,
+  `parent_id` smallint(6) NOT NULL default '0',
+  `level` tinyint(1) NOT NULL default '1',
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_productprices`
+-- 
+
+DROP TABLE IF EXISTS `pb_productprices`;
+CREATE TABLE `pb_productprices` (
+  `id` int(10) NOT NULL auto_increment,
+  `type_id` tinyint(1) NOT NULL default '1',
+  `product_id` int(10) NOT NULL default '-1',
+  `brand_id` smallint(6) NOT NULL default '-1',
+  `member_id` int(10) NOT NULL default '-1',
+  `company_id` int(10) NOT NULL default '-1',
+  `area_id` smallint(6) NOT NULL default '0',
+  `price_trends` tinyint(1) NOT NULL default '0',
+  `category_id` smallint(6) NOT NULL default '0',
+  `source` varchar(255) NOT NULL default '',
+  `title` varchar(255) NOT NULL default '',
+  `description` text NOT NULL,
+  `units` tinyint(1) NOT NULL default '1',
+  `currency` tinyint(1) NOT NULL default '1',
+  `price` float(9,2) NOT NULL default '0.00',
+  `created` int(10) NOT NULL default '0',
+  `modified` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_productsorts`
+-- 
+
+DROP TABLE IF EXISTS `pb_productsorts`;
+CREATE TABLE `pb_productsorts` (
+  `id` smallint(3) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_quotes`
+-- 
+
+DROP TABLE IF EXISTS `pb_quotes`;
+CREATE TABLE `pb_quotes` (
+  `id` smallint(6) NOT NULL auto_increment,
+  `product_id` int(10) NOT NULL default '-1',
+  `market_id` smallint(6) NOT NULL default '-1',
+  `type_id` smallint(6) NOT NULL default '0',
+  `title` varchar(255) NOT NULL default '',
+  `content` text NOT NULL,
+  `area_id` smallint(6) NOT NULL default '0',
+  `area_id1` smallint(6) NOT NULL default '0',
+  `area_id2` smallint(6) NOT NULL default '0',
+  `area_id3` smallint(6) NOT NULL default '0',
+  `max_price` float(9,2) NOT NULL default '0.00',
+  `min_price` float(9,2) NOT NULL default '0.00',
+  `units` tinyint(1) NOT NULL default '1',
+  `currency` tinyint(1) NOT NULL default '1',
+  `created` int(10) NOT NULL default '0',
+  `modified` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+
+-- --------------------------------------------------------
+
+-- 
+-- 表的结构 `pb_quotetypes`
+-- 
+
+DROP TABLE IF EXISTS `pb_quotetypes`;
+CREATE TABLE `pb_quotetypes` (
+  `id` smallint(6) NOT NULL auto_increment,
+  `parent_id` smallint(6) NOT NULL default '0',
+  `level` tinyint(1) NOT NULL default '1',
+  `name` varchar(255) NOT NULL default '',
+  `display_order` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;

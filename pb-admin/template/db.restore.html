@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 系统工具 &raquo; 数据库</p>
+	<p><{$_your_current_position}> <{$_system_tool}> &raquo; <{$_database}></p>
 </div>
 <div id="rightTop"> 
-    <h3>数据库</h3> 
+    <h3><{$_database}></h3> 
     <ul class="subnav">
-		<li><a href="db.php">备份</a></li>
-        <li><a class="btn1" href="db.php?do=restore">还原</a></li>
-        <li><a href="db.php?do=query">升级</a></li>
+		<li><a href="db.php"><{$_db_backup}></a></li>
+        <li><a class="btn1" href="db.php?do=restore"><span><{$_db_restore}></span></a></li>
+        <li><a href="db.php?do=query"><{$_db_upgrade}></a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -21,15 +16,17 @@ body {background: #fcfdff}
 </div> 
 <div id="dataListDiv" class="tdare">
   <form name="list_frm" id="ListFrm" action="" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">文件名</label></td>
-		  <td><span>备份时间</span></td>
-		  <td>文件大小</td>
-		  <td class="handler">操作</td>
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th><label for="idAll">文件名</label></th>
+		  <th><span>备份时间</span></th>
+		  <th>文件大小</th>
+		  <th><{$_action}></th>
 		</tr>
+    </thead>
+    <tbody>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2" title="<{$item.directory}>">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.name}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.name}>" title="<{$item.name}>"></td>
@@ -38,14 +35,14 @@ body {background: #fcfdff}
 		  <td><{$item.filesize|get_custom_size}></td>
 		  <td class="handler">
           <ul id="handler_icon">
-              <li><a class="btn_delete" href="db.php?id=<{$item.name}>&do=del<{$addParams}>" title="删除">删除</a></li>
-              <li><a class="btn_resend" href="db.php?do=refresh&id=<{$item.name}><{$addParams}>" onclick="confirm('还原文件<{$item.name}>\n本操作不可恢复，确认继续吗');" title="还原">还原</a></li>
+              <li><a class="btn_delete" href="db.php?id=<{$item.name}>&do=del<{$addParams}>" title="<{$_delete}>"><{$_delete}></a></li>
+              <li><a class="btn_resend" href="db.php?do=refresh&id=<{$item.name}><{$addParams}>" onclick="confirm('还原文件<{$item.name}>\n本<{$_action}>不可恢复，确认继续吗');" title="还原"><{$_db_restore}></a></li>
            </ul> 
 		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="5">没有符合条件的记录</td>
+		  <td colspan="5"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>

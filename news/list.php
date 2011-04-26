@@ -1,26 +1,19 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: list.php 429 2009-12-26 13:46:09Z cht117 $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
 uses("news","newstype");
 require(LIB_PATH. 'page.class.php');
-require(CACHE_PATH. "cache_newstype.php");
+require(CACHE_PATH. "cache_type.php");
 $news = new Newses();
 $newstype = new Newstypes();
 $page = new Pages();
@@ -44,19 +37,27 @@ if (isset($_GET['topicid'])) {
 		setvar("Items", $pdb->GetArray("SELECT n.*,n.created AS pubdate FROM {$tb_prefix}topicnews tn RIGHT JOIN {$tb_prefix}newses n ON tn.news_id=n.id WHERE tn.topic_id=".$topic_id));
 		$viewhelper->setTitle($topic_res['title']);
 		$viewhelper->setPosition($topic_res['title'], "news/list.php?topicid=".$topic_id);
-		render($tpl_file);
-		exit;
+		render($tpl_file, true);
 	}
 }
+$newstype_id = 0;
 if(isset($_GET['typeid'])){
 	$newstype_id = intval($_GET['typeid']);
-	if ($newstype_id) {
-	$newstype_name = $_PB_CACHE['newstype'][$newstype_id];
-	$conditions[] = "News.type_id=".$newstype_id;
-	$viewhelper->setTitle($newstype_name);
-	$viewhelper->setPosition($newstype_name, "news/list.php?typeid=".$newstype_id);
+	if (!empty($newstype_id)) {
+		$newstype_name = $_PB_CACHE['newstype'][$newstype_id];
+		$conditions[] = "News.type_id=".$newstype_id;
+		$viewhelper->setTitle($newstype_name);
+		$viewhelper->setPosition($newstype_name, "news/list.php?typeid=".$newstype_id);
 	}
 
+}
+if (isset($_GET['filter'])) {
+	$filter = intval($_GET['filter']);
+	$conditions[] = "News.created>".($time_stamp-$filter);
+}
+$sub_result = $pdb->GetArray("SELECT id,name FROM ".$tb_prefix."newstypes WHERE parent_id='".$newstype_id."'");
+if (!empty($sub_result)) {
+	setvar("SubCats", $sub_result);
 }
 if (isset($_GET['type'])) {
 	$type = trim($_GET['type']);
@@ -66,8 +67,15 @@ if (isset($_GET['type'])) {
 }
 $amount = $news->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $news->findAll("News.*,News.created AS pubdate", null, $conditions, $orderby."News.id DESC", $page->firstcount, $page->displaypg);
-setvar("Items", $result);
+$result = $news->findAll("News.*", null, $conditions, $orderby."News.id DESC", $page->firstcount, $page->displaypg);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		$result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
+		$result[$i]['digest'] = mb_substr(ltrim(strip_tags($result[$i]['content'])), 0, 100);
+		$result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture'], '', 'small');
+	}
+	setvar("Items", $result);
+}
 setvar("ByPages", $page->pagenav);
 render($tpl_file);
 ?>

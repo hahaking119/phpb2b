@@ -1,23 +1,16 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: offer.php 560 2009-12-28 11:11:39Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require(LIB_PATH .'time.class.php');
-uses("trade","tag","tradefield","attachment","segment","membertype","setting");
+uses("trade","tag","tradefield","attachment","segment","membertype","setting","typeoption");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require("session_cp.inc.php");
 $attachment = new Attachment('pic');
@@ -26,6 +19,7 @@ $membertype = new Membertypes();
 $offer = new Tradefields();
 $tag = new Tags();
 $keyword = new Segments();
+$typeoption = new Typeoption();
 $trade = new Trades();
 $trade_controller = new Trade();
 $tpl_file = "offer";
@@ -33,6 +27,9 @@ $conditions = array();
 $page = new Pages();
 $trade_names = $trade_controller->getTradeTypes();
 setvar("TradeTypes", $trade_names);
+if (isset($_POST['batch_commend'])) {
+	flash("success");
+}
 if (isset($_POST['refresh']) && !empty($_POST['id'])) {
 	$result = $trade->refresh($_POST['id']);
 	if (!$result) {
@@ -77,6 +74,7 @@ if(isset($_GET['do'])){
 		$setting_offer_status = L("setting_offer_expired", "tpl");
 		$setting_offer_status = explode("|", $setting_offer_status);
 		setvar("SettingStatus", $setting_offer_status);
+		setvar("AskAction", $typeoption->get_cache_type("common_option"));
 		$item = $setting->getValues(1);
 		setvar("item", $item);
 		$tpl_file = "offer.setting";
@@ -120,8 +118,8 @@ if(isset($_GET['do'])){
 		if (!empty($_GET['q'])) {
 			$conditions[]= "Trade.title like '%".trim($_GET['q'])."%'";
 		}
-		if (!empty($_GET['companystatus']) && $_GET['companystatus']!="-1") {
-			$conditions[]= "Trade.status='".$_GET['companystatus']."'";
+		if (isset($_GET['status']) && $_GET['status']>=0) {
+			$conditions[]= "Trade.status='".$_GET['status']."'";
 		}
 		if (!empty($_GET['username'])) {
 			$conditions[] = "m.username like '%".$_GET['username']."%'";
@@ -151,7 +149,14 @@ if(isset($_GET['do'])){
 }
 if (isset($_POST['urgent_batch'])) {
 	$ids = implode(",",$_POST['id']);
-	$result = $pdb->Execute("update ".$trade->getTable()." set if_urgent='1' where id in (".$ids.")");
+	$result = $pdb->Execute("update ".$trade->getTable()." set if_urgent='1' where if_urgent='0' AND id in (".$ids.")");
+	if (!$result) {
+		flash();
+	}
+}
+if (isset($_POST['cancel_urgent_batch'])) {
+	$ids = implode(",",$_POST['id']);
+	$result = $pdb->Execute("update ".$trade->getTable()." set if_urgent='0' where if_urgent='1' AND id in (".$ids.")");
 	if (!$result) {
 		flash();
 	}
@@ -178,7 +183,7 @@ if(isset($_POST['down_batch'])) {
 		flash();
 	}
 }
-if (isset($_POST['status_batch'])) {
+if (isset($_POST['status_batch']) && ($_POST['status_batch']>=0)) {
 	if(!empty($_POST['id'])){
 		$tmp_to = intval($_POST['status_batch']);
 		$result = $trade->check($_POST['id'], $tmp_to);
@@ -201,12 +206,12 @@ if(isset($_POST['forbid'])){
 	}
 }
 if(isset($_POST['save'])){
-	if(isset($_POST['id'])){
-		$id = intval($_POST['id']);
-	}
 	$vals = $_POST['data']['trade'];
 	if($vals['title']==''){
 		flash();
+	}
+	if(isset($_POST['id'])){
+		$id = intval($_POST['id']);
 	}
 	if (isset($_POST['data']['company_name'])) {
 		if (!pb_strcomp($_POST['data']['company_name'], $_POST['company_name'])) {
@@ -222,9 +227,11 @@ if(isset($_POST['save'])){
 		if(!empty($_POST['submittime'])) {
 		    $vals['submit_time'] = Times::dateConvert($_POST['submittime']);
 		}
-		if(!empty($_POST['expiretime'])) {
-		    $vals['expire_time'] = Times::dateConvert($_POST['expiretime']);
-		}
+	}else{
+		$vals['submit_time'] = $time_stamp;
+	}
+	if(!empty($_POST['expiretime'])) {
+		$vals['expire_time'] = Times::dateConvert($_POST['expiretime']);
 	}
 	$attachment->rename_file = "offer-".$time_stamp;
 	if(!empty($id)){

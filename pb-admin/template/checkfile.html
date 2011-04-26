@@ -1,11 +1,6 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 系统工具 &raquo; 文件校验</p>
+	<p><{$_your_current_position}> <{$_system_tool}> &raquo; 文件校验</p>
 </div>
 <div id="rightTop"> 
     <h3>文件校验</h3> 
@@ -13,7 +8,7 @@ body {background: #fcfdff}
 <{if $flag=="0"}>
 <div class="mrightTop"> 
     <div class="fontl"> 
-	文件校验是针对PHPB2B官方发布的文件为基础进行核对，点击下面按钮开始进行校验。
+	文件校验是针对<{$_soft_name}>官方发布的文件为基础进行核对，点击下面按钮开始进行校验。
     </div> 
     <div class="fontl"></div> 
 </div> 
@@ -31,9 +26,9 @@ body {background: #fcfdff}
   </div>
   <{else}>
    <div class="tdare">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
     <tbody>
-		<tr class="tatr1">
+		<tr>
 		  <td>文件名称</td>
 		  <td>文件大小</td>
 		  <td>最后修改时间</td>
@@ -48,7 +43,7 @@ body {background: #fcfdff}
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="5">没有符合条件的记录</td>
+		  <td colspan="5"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
@@ -59,7 +54,7 @@ body {background: #fcfdff}
 $(document).ready(function() { 
 $('#Submit').click(function() {
 	$('#Submit').attr('disabled',"true");
-	$('#Submit').attr('value',"校验中...");
+	$('#Submit').val("校验中...");
 	$('#EditFrm').submit();
 });
 })

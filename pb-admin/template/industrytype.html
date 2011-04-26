@@ -1,20 +1,15 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 行业分类</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_industry}></p>
 </div>
 <div id="rightTop"> 
-    <h3>行业分类</h3> 
+    <h3><{$_industry}></h3> 
     <ul class="subnav">
-		<li><a href="industry.php">管理</a></li>
-        <li><a href="industry.php?do=edit">添加/编辑</a></li>
-        <li><a class="btn1" href="industrytype.php">分类</a></li>
-        <li><a href="industry.php?do=clear">清理</a></li>
-        <li><a href="industry.php?do=refresh">更新缓存</a></li>
+		<li><a href="industry.php"><{$_management}></a></li>
+        <li><a href="industry.php?do=edit"><{$_add_or_edit}></a></li>
+        <li><a class="btn1" href="industrytype.php"><span><{$_sorts}></span></a></li>
+        <li><a href="industry.php?do=clear"><{$_clearing}></a></li>
+        <li><a href="industry.php?do=refresh"><{$_update_cache}></a></li>
     </ul>
 </div>
 <div class="info">
@@ -29,7 +24,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" value="保存" />
+			<input class="formbtn" type="submit" value="<{$_save}>" />
 		</td>
 
       </tr>

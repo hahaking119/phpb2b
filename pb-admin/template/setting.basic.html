@@ -1,9 +1,4 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <link href="../images/jquery/colorpicker.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="../scripts/jquery/colorpicker.js"></script>
 <script>
@@ -13,14 +8,14 @@ jQuery(document).ready(function($) {
 })
 </script>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 站点信息</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_site_info}></p>
 </div>
 <div id="rightTop">
-	<h3>站点信息</h3>
+	<h3><{$_site_info}></h3>
 	<ul class="subnav">
-		<li><a class="btn1" href="setting.php?do=basic">基本信息</a></li>
-		<li><a href="setting.php?do=basic_contact">联系方式</a></li>
-		<li><a href="setting.php?do=basic_desc">站点描述</a></li>
+		<li><a class="btn1" href="setting.php?do=basic"><span><{$_basic_setting}></span></a></li>
+		<li><a href="setting.php?do=basic_contact"><{$_contact_method}></a></li>
+		<li><a href="setting.php?do=basic_desc"><{$_site_desc}></a></li>
 	</ul>
 </div>
 <div class="info">
@@ -64,8 +59,8 @@ jQuery(document).ready(function($) {
       </tr>
       <tr>
         <th></th>
-        <td class="ptb20"><input class="formbtn" type="submit" name="savebasic" value="提交" />
-          <input class="formbtn" type="reset" name="reset" value="重置" />
+        <td class="ptb20"><input class="formbtn" type="submit" name="savebasic" value="<{$_submit}>" />
+          <input class="formbtn" type="reset" name="reset" value="<{$_reset}>" />
         </td>
       </tr>
     </table>

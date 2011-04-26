@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: list.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
@@ -32,6 +25,7 @@ $company = new Companies();
 $conditions = array();
 $conditions[] = "Company.status=1 ";
 $industry_id = $area_id = 0;
+$viewhelper->setTitle(L("yellow_page", 'tpl'));
 $viewhelper->setPosition(L("yellow_page", 'tpl'), 'company/');
 if (isset($_GET['industryid'])) {
 	$industry_id = intval($_GET['industryid']);
@@ -93,8 +87,7 @@ setvar("Items", $result);
 uaAssign(array(
 "ByPages"=>$page->getPagenav(),
 "Industry"=>$_PB_CACHE['industry'],
-"Areas"=>$_PB_CACHE['area'],
-"Letters"=>range('A','Z')
+"Areas"=> $_PB_CACHE['area']
 ));
 $viewhelper->setTitle(L("search", "tpl"));
 $viewhelper->setPosition(L("search", "tpl"));

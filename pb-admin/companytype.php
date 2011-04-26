@@ -1,30 +1,35 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: product.php 525 2009-12-28 06:23:21Z cht117 $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
-require(CACHE_PATH. "cache_companytype.php");
 require(LIB_PATH. "cache.class.php");
+include(CACHE_PATH. "cache_type.php");
 $cache = new Caches();
 $tpl_file = "companytype";
 if (isset($_POST['do'])) {
 	$do = trim($_POST['do']);
 	if ($do == "save") {
-		if($cache->updateTypes("companytype", $_POST['data']['sort'])){
+		$ins_arr = array();
+		$tmp_arr = explode("\r\n", $_POST['data']['sort']);
+		array_filter($tmp_arr);
+		$i = 1;
+		foreach ($tmp_arr as $key=>$val) {
+			$ins_arr[$i] = "(".$i.",'".$val."')";
+			$i++;
+		}
+		if (!empty($ins_arr)) {
+			$ins_str = "REPLACE INTO {$tb_prefix}companytypes (id,name) VALUES ".implode(",", $ins_arr).";";
+			$pdb->Execute($ins_str);
+		}		
+		if($cache->updateTypes()){
 			flash("success");
 		}else{
 			flash();

@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: home.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 if (session_id() == '' ) { 
@@ -37,13 +30,13 @@ if (isset($_GET['do'])) {
 }
 $serverinfo = PHP_OS.' / PHP v'.PHP_VERSION;
 $serverinfo .= @ini_get('safe_mode') ? ' Safe Mode' : NULL;
-$dbversion = PbModel::getMysqlVersion();
+$dbversion = $pdb->GetOne("SELECT VERSION()");
 $system_info['PhpVersion'] = $serverinfo;
 $system_info["MysqlVersion"] = $dbversion;
 $when_to_backup = $_PB_CACHE['setting']['backup_type'];
 $system_info["LastBackupTime"] = $_PB_CACHE['setting']['last_backup'];
 $system_info['InstallDate'] = date('Y-m-d', file_exists(DATA_PATH. 'install.lock')?filemtime(DATA_PATH. 'install.lock'):$pdb->GetOne("SELECT valued FROM {$tb_prefix}settings WHERE variable='install_dateline'"));
-$system_info['last_login'] = (!empty($adminer_info['last_login']))?date("Y-m-d H:i:s", $adminer_info['last_login']):L("your_first_login", "tpl");
+$system_info['last_login'] = (!empty($adminer_info['last_login']))?date("Y-m-d H:i", $adminer_info['last_login']):L("your_first_login", "tpl");
 $system_info['last_ip'] = $adminer_info['last_ip'];
 if(!isset($_SESSION['last_adminer_time'])){
 	$pdb->Execute("update {$tb_prefix}adminfields set last_login={$time_stamp},last_ip='".pb_get_client_ip('str')."' where member_id={$adminer_info['member_id']}");
@@ -123,6 +116,12 @@ if($has_newversion){
 	setvar("VersionInfo", $content);
 	setvar("hasNewVersion", $has_newversion);
 }
+$ADODB_CACHE_DIR = DATA_PATH.'dbcache';
+$total_amounts['company'] = $pdb->CacheGetOne("SELECT COUNT(id) FROM ".$tb_prefix."companies WHERE status='0'");
+$total_amounts['product'] = $pdb->CacheGetOne("SELECT COUNT(id) FROM ".$tb_prefix."products WHERE status='0'");
+$total_amounts['member'] = $pdb->CacheGetOne("SELECT COUNT(id) FROM ".$tb_prefix."members WHERE status='0'");
+$total_amounts['trade'] = $pdb->CacheGetOne("SELECT COUNT(id) FROM ".$tb_prefix."trades WHERE status='0'");
+setvar("TotalAmounts", $total_amounts);
 setvar("SupportUrl", $support_url);
 template("welcome");
 ?>

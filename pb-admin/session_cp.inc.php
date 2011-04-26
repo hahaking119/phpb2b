@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: session_cp.inc.php 585 2009-12-28 13:41:44Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 define('IN_PBADMIN', TRUE);
 if(empty($_COOKIE[$cookiepre.'admin']) || !($_COOKIE[$cookiepre.'admin'])){
@@ -33,7 +26,7 @@ if(empty($_COOKIE[$cookiepre.'admin']) || !($_COOKIE[$cookiepre.'admin'])){
 }
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.admin.inc.php');
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.adminmenu.inc.php');
-require(PHPB2B_ROOT. 'phpb2b_version.php');
+require(PHPB2B_ROOT. 'data/phpb2b_version.php');
 $smarty->template_dir = "template/";
 $smarty->setCompileDir("pb-admin".DS);
 $smarty->flash_layout = "flash";

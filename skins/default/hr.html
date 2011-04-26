@@ -1,4 +1,4 @@
-<{assign var="PageTitle" value="企业招聘"}>
+<{assign var="PageTitle" value="`$_space_hr`"}>
 <{assign var="cur" value="space_hr"}>
 <{include file="header.html"}>
 <div class="wrapper">
@@ -7,9 +7,9 @@
 		<{include file="leftbar.html"}>
 			<div class="rightbarcontact">
 					<div class="playercontact">
-					<div class="playerheadcontact"><span class="playlistcontact">企业招聘</span><span class="player_head_concontact"></span><img src="images/contactus_13.jpg" /></div>
+					<div class="playerheadcontact"><span class="playlistcontact"><{$_space_hr}></span><span class="player_head_concontact"></span><img src="images/contactus_13.jpg" /></div>
 					<div class="clear"></div>
-					<div class="player_concontact">
+					<div class="hr_content">
 					<{foreach from=$Items item=item}>
 						<p class="companytitle"><a href="<{$item.url}>"><{$item.name}></a></p>
 						<p title="<{$item.content}>"><{$item.content|truncate:100}></p>

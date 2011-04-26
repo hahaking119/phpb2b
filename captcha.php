@@ -1,41 +1,53 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: captcha.php 416 2009-12-26 13:31:08Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1212 $
  */
 include 'libraries/captcha/securimage.php';
-include 'libraries/session_php.class.php';
-$session = new PbSessions('data/tmp/');
+include 'libraries/common.inc.php';
+include 'libraries/file.class.php';
 $img = new securimage();
-$img->wordlist_file = 'data/words/words.txt';
-$img->audio_path = 'data/audio/';
-$img->ttf_file = 'data/fonts/incite.ttf';
-$img->draw_lines = false;
-if ($handle = @opendir('data/background/'))
-{
-    while ($bgfile = @readdir($handle))
-    {
-        if (preg_match('/\.jpg$/i', $bgfile))
-        {
-            $backgrounds[] = 'data/background/'.$bgfile;
-        }
-    }
-    @closedir($handle);
+$file = new Files();
+if (isset($_GET['do'])) {
+	$do = trim($_GET['do']);
+	if ($do == "play") {
+		$img->audio_format = (isset($_GET['format']) && in_array(strtolower($_GET['format']), array('mp3', 'wav')) ? strtolower($_GET['format']) : 'wav');
+		$img->setAudioPath(DATA_PATH.'audio/');
+		$img->outputAudioFile();
+	}
+}else{
+	include 'libraries/session_php.class.php';
+	$session = new PbSessions();
+	$img->image_width = 110;
+	$img->image_height = 45;
+	$img->use_wordlist = true;
+	$img->wordlist_file = 'data/words/words.txt';
+	$img->audio_path = 'data/audio/';
+	$img->ttf_file = 'data/fonts/'.$file->fontFace;
+	$img->gd_font_file = 'data/fonts/automatic.gdf';
+	$img->perturbation = 0.65;
+	$img->image_bg_color = new Securimage_Color("#009900");
+	$img->text_color = new Securimage_Color("#006633");
+	$img->num_lines = 0;
+	if ($handle = @opendir('data/background/'))
+	{
+	    while ($bgfile = @readdir($handle))
+	    {
+	        if (preg_match('/\.jpg$/i', $bgfile))
+	        {
+	            $backgrounds[] = 'data/background/'.$bgfile;
+	        }
+	    }
+	    @closedir($handle);
+	}
+	srand ((float) microtime() * 10000000);
+	$rand_keys = array_rand ($backgrounds);
+	$background = $backgrounds[$rand_keys];
+	$img->show($background);
 }
-srand ((float) microtime() * 10000000);
-$rand_keys = array_rand ($backgrounds);
-$background = $backgrounds[$rand_keys];
-$img->show($background);
 ?>

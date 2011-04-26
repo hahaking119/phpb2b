@@ -20,7 +20,7 @@ if(typeof(industry_id3)=="undefined" || industry_id3==null){
 }else{
 	industryid3 = industry_id3;
 }
-document.write("<script type=\"text/javascript\" src=\""+data_path+"data/cache/industry.js\"></script>");
+document.write("<script type=\"text/javascript\" src=\""+data_path+"data/cache/"+app_language+"/industry.js\"></script>");
 $(function() {
 	var options	= {
 		data	: data_industry

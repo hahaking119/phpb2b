@@ -1,48 +1,58 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: template.inc.php 886 2010-02-08 01:27:39Z steven $
+ * The Name:简体中文
+ * Description:模板公用
  */
-//模板中一些共用的内容定义
 $arrTemplate['_colon'] = "：";
 $arrTemplate['_fenhao'] = "；";
 $arrTemplate['_left_bracket'] = "（";
 $arrTemplate['_right_bracket'] = "）";
+$arrTemplate['_lang_pack'] = "语言包";
 $arrTemplate['_offer'] = "供求信息";
 $arrTemplate['_buyer'] = "采购商";
+$arrTemplate['_standards'] = "标准法规";
 $arrTemplate['_seller'] = "供应商";
+$arrTemplate['_brands'] = "品牌";
+$arrTemplate['_brand_name'] = "品牌名称:";
+$arrTemplate['_alias_name'] = '别名：';
+$arrTemplate['_inquery_message'] = "询价消息";
+$arrTemplate['_system_message'] = "系统消息";
+$arrTemplate['_private_message'] = "私人消息";
+$arrTemplate['_prices'] = "报价";
+$arrTemplate['_product_prices'] = "产品报价";
+$arrTemplate['_quotes'] = "行情";
+$arrTemplate['_price_quotes'] = "价格行情";
+$arrTemplate['_investment'] = "招商加盟";
 $arrTemplate['_home_page'] = "首页";
 $arrTemplate['_yellow_page'] = "公司库";
 $arrTemplate['_fair'] = "展会";
 $arrTemplate['_market'] = "市场库";
+$arrTemplate['_pro_market'] = "专业市场";
 $arrTemplate['_info'] = "行业资讯";
 $arrTemplate['_dictionary'] = "行业词典";
 $arrTemplate['_announce'] = "网站公告";
 $arrTemplate['_forum'] = "论坛";
 $arrTemplate['_product_center'] = "产品中心";
+$arrTemplate['_product'] = "产品";
+$arrTemplate['_product_name'] = "产品名称：";
+$arrTemplate['_product_name_n'] = "产品名称";
 $arrTemplate['_help_center'] = "帮助中心";
 $arrTemplate['_help'] = "帮助";
+$arrTemplate['_keywords_sample'] = "关键字1 关键字2";
+$arrTemplate['_input_keywords'] = "请输入关键字";
 $arrTemplate['_site_map'] = "网站地图";
 $arrTemplate['_keyword_ship'] = "关键词竞价";
 $arrTemplate['_your_current_position'] = "您当前位置：";
 $arrTemplate['_unknown'] = "未知";
+$arrTemplate['_searching'] = "查询";
+$arrTemplate['_add'] = "添加";
+$arrTemplate['_save'] = "保存";
 $arrTemplate['_undefined_operation'] = "未定义操作";
 $arrTemplate['_have_picture'] = "有图片";
 $arrTemplate['_product_status'] = "等待审核,有效信息,审核不通过,无效";
 $arrTemplate['_passed'] = "验证通过";
 $arrTemplate['_type_level1'] = "一级分类";
+$arrTemplate['_categories'] = "分类：";
 $arrTemplate['_type_level2'] = "二级分类";
 $arrTemplate['_type_level3'] = "三级分类";
 $arrTemplate['_commend'] = "推荐";
@@ -56,19 +66,17 @@ $arrTemplate['_go_back'] = "返回上页";
 $arrTemplate['_close_window'] = "关闭页面";
 $arrTemplate['_action_tip'] = "操作提示";
 $arrTemplate['_industry_sort'] = "行业分类";
+$arrTemplate['_urgent'] = "紧急";
 $arrTemplate['_urgent_buy'] = "紧急采购";
 $arrTemplate['_hr'] = "人才招聘";
-//分页
 $arrTemplate['_prev_page'] = "上一页";
 $arrTemplate['_next_page'] = "下一页";
 $arrTemplate['_first_page'] = "首页";
 $arrTemplate['_last_page'] = "尾页";
-$arrTemplate['_the_page'] = "第%s页";
-//招呼
+$arrTemplate['_the_page'] = "第{1}页";
 $arrTemplate['_hello'] = "你好，";
 $arrTemplate['_anonymous'] = "匿名";
-//数据相关
-$arrTemplate['_search_for'] = "搜索含有%s的结果";
+$arrTemplate['_search_for'] = "搜索含有{1}的结果";
 $arrTemplate['_search'] = "搜索";
 $arrTemplate['_submit'] = "提交";
 $arrTemplate['_reset'] = "重置";
@@ -78,7 +86,42 @@ $arrTemplate['_arrive_to'] = "至";
 $arrTemplate['_space_name'] = "商铺";
 $arrTemplate['_email_addr'] = "电子邮件";
 $arrTemplate['_company_name'] = "公司名称";
+$arrTemplate['_company'] = "公司/企业";
 $arrTemplate['_tags'] = "标签";
 $arrTemplate['_has_expired'] = "已过期";
 $arrTemplate['_member_group'] = "会员等级";
+$arrTemplate['_password'] = "密码：";
+$arrTemplate['_password_n'] = "密码";
+$arrTemplate['_time_unit'] = "秒,分,小时,天,周,月,年";
+$arrTemplate['_money_unit'] = "元";
+$arrTemplate['_content'] = "内容：";
+$arrTemplate['_content_n'] = "内容";
+$arrTemplate['_digest'] = "简介";
+$arrTemplate['_digest_n'] = "简介：";
+$arrTemplate['_secure_auth'] = "安全验证";
+$arrTemplate['_auth_key_n'] = "验证码：";
+$arrTemplate['_basic_info'] = "基本信息";
+$arrTemplate['_lady_n_gentle'] = "先生,女士";
+$arrTemplate['_bump_to_top'] = "置顶";
+$arrTemplate['_user_name_n'] = "用户名";
+$arrTemplate['_user_name'] = "用户名：";
+$arrTemplate['_category'] = "类型";
+$arrTemplate['_category_n'] = "类型:";
+$arrTemplate['_sorts'] = "种类";
+$arrTemplate['_sorts_n'] = "种类:";
+$arrTemplate['_the_area'] = "地区";
+$arrTemplate['_the_industry'] = "行业";
+$arrTemplate['_the_price'] = "价格";
+$arrTemplate['_the_price_n'] = "价格：";
+$arrTemplate['_contact_people'] = "联系人：";
+$arrTemplate['_the_all'] = "所有";
+$arrTemplate['_issue_time'] = "颁布时间";
+$arrTemplate['_force_time'] = "实施时间";
+$arrTemplate['_digest'] = '摘要';
+$arrTemplate['_date_start'] = '开始日期：';
+$arrTemplate['_date_end'] = '截止日期：';
+$arrTemplate['_source'] = "来源：";
+$arrTemplate['_source_n'] = "来源";
+$arrTemplate['_soft_name'] = "友邻B2B";
+$arrTemplate['_register_now'] = "立即注册";
 ?>

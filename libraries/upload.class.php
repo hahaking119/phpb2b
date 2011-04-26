@@ -1,27 +1,20 @@
 <?php 
 /**
-  * NOTE   :  PHP versions 4 and 5
-  *
-  * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
-  * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
-  *
-  * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
-  * The above copyright notice and this permission notice shall be included in all
-  * copies or substantial portions of the Software.
-  * 
-  * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
-  * @since PHPB2B v 1.0.0
-  * @link http://phpb2b.com
-  * @package phpb2b
-  * @version $Id: upload.class.php 462 2009-12-27 03:20:41Z steven $
-  */ 
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
+ * 
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
+ */
 class FileUploads {
     var $the_file;
 	var $the_temp_file;
     var $upload_dir;
 	var $replace = "y";
 	var $do_filename_check;
-	var $max_length_filename = 32;
+	var $max_length_filename = 255;
     var $extensions;
     var $file_extension;
 	var $ext_string;

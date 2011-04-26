@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 公司库</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_yellow_page}></p>
 </div>
 <div id="rightTop"> 
-    <h3>公司库</h3> 
+    <h3><{$_yellow_page}></h3> 
     <ul class="subnav">
-		<li><a href="company.php">管理</a></li>
-        <li><a href="company.php?do=edit">添加/编辑</a></li>
-        <li><a class="btn1" href="companytype.php">类型</a></li>
+		<li><a href="company.php"><{$_management}></a></li>
+        <li><a class="btn1" href="companytype.php"><span><{$_types}></span></a></li>
+        <li><a href="albumtype.php">相册分类</a></li>
     </ul>
 </div>
 <div class="info">
@@ -27,7 +22,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" value="保存" />
+			<input class="formbtn" type="submit" value="<{$_save}>" />
 		</td>
 
       </tr>

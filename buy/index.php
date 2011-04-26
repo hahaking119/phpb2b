@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: index.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
@@ -25,7 +18,8 @@ $page = new Pages();
 $page->pagetpl_dir = $theme_name;
 $viewhelper->setTitle(L('buyer', 'tpl'));
 $viewhelper->setPosition(L('buyer', 'tpl'));
-$conditions[]= "t.type_id='1'";
+$type_id = $_GET['typeid'] = 1;
+$conditions[]= "t.type_id='$type_id'";
 if (isset($_GET['industryid'])) {
 	$industry_id = intval($_GET['industryid']);
 	$tmp_info = $industry->setInfo($industry_id);
@@ -51,12 +45,14 @@ if (isset($_GET['type'])) {
 		$conditions[]="t.if_urgent='1'";
 	}
 }
-$trade->setCondition($conditions);
+//$trade->setCondition($conditions);
 $amount = $trade->findCount(null, $conditions, null, "t");
 $page->setPagenav($amount);
-$sql = "SELECT m.space_name as userid,m.membertype_id,m.username,m.trusttype_ids,m.credits,m.membergroup_id,t.member_id,t.industry_id1,t.industry_id2,t.industry_id3,t.area_id1,t.area_id2,t.area_id3,t.id,t.type_id,t.company_id,t.title,t.content,t.submit_time,t.picture,t.expire_time,t.status,t.require_point,t.require_membertype,t.cache_companyname as companyname FROM {$tb_prefix}trades t LEFT JOIN {$tb_prefix}members m ON m.id=t.member_id ".$trade->getCondition()." ORDER BY t.id DESC LIMIT ".$page->firstcount.",".$page->displaypg;
-$result = $pdb->GetArray($sql);
-$result = $trade->formatResult($result);
+$result = $trade->getRenderDatas($conditions, $_PB_CACHE['setting1']['offer_filter']);
+$important_result = $trade->getStickyDatas();
+if (!empty($important_result)) {
+	setvar("StickyItems", $important_result);
+}
 setvar('Items', $result);
 uaAssign(array("ByPages"=>$page->getPagenav(), "Industries"=>$industry->getIndustry(), "Areas"=>$area->getCacheArea()));
 setvar("TradeTypes", $trade_controller->getTradeTypes());

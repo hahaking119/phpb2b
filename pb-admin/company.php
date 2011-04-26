@@ -1,44 +1,28 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: company.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 uses("company","member","area","companytype", "attachment", "membergroup");
 require(LIB_PATH .'time.class.php');
 require(LIB_PATH .'page.class.php');
-require(LIB_PATH .'data_xml.class.php');
 require(CACHE_PATH. 'cache_area.php');
 require(CACHE_PATH. 'cache_industry.php');
-require(CACHE_PATH. 'cache_companytype.php');
+require(CACHE_PATH. 'cache_type.php');
 require("session_cp.inc.php");
+include(CACHE_PATH. "cache_typeoption.php");
 $membergroup = new Membergroup();
 $page = new Pages();
 $company = new Companies();
 $member = new Members();
 $conditions = array();
 $tpl_file = "company";
-require(CACHE_PATH. "type_economic_type.php");
-require(CACHE_PATH. "type_manage_type.php");
-require(CACHE_PATH. "type_main_market.php");
-require(CACHE_PATH. "type_reg_fund.php");
-require(CACHE_PATH. "type_year_annual.php");
-require(CACHE_PATH. "type_position.php");
-require(CACHE_PATH. "type_employee_amount.php");
-require(CACHE_PATH. "type_gender.php");
-require(CACHE_PATH. "type_check_status.php");
 setvar('Membergroups', $membergroup->getUsergroups('define'));
 setvar('AllMembergroups', $membergroup->getUsergroups('all'));
 setvar("CompanyTypes", $_PB_CACHE['companytype']);
@@ -137,7 +121,7 @@ if (isset($_GET['do'])) {
 			$conditions[] = $condition;
 		}
 		if (!empty($_GET['industryid'])) $conditions[]= "Company.industry_id=".$_GET['industryid'];
-		if ($_GET['companystatus']) $conditions[]= "Company.status=".$_GET['companystatus'];
+		if (isset($_GET['status']) && $_GET['status']>=0) $conditions[]= "Company.status=".$_GET['status'];
 		if ($_GET['companytype']) $conditions[]= "Company.type_id=".$_GET['companytype'];
 	}	
     if ($do == "edit") {
@@ -166,6 +150,7 @@ if (isset($_GET['do'])) {
     }
 }
 $fields = "Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,area_id1,area_id2,area_id3,industry_id1,industry_id2,industry_id3,cache_credits";
+$total_amount = $pdb->GetOne("SELECT COUNT(id) AS amount FROM ".$tb_prefix."companies WHERE status='0'");
 $amount = $company->findCount(null, $conditions,"Company.id");
 $page->setPagenav($amount);
 $joins = array();
@@ -174,6 +159,6 @@ if(empty($lists)){
     $lists = $company->findAll($fields,$joins,$conditions,"Company.id DESC",$page->firstcount,$page->displaypg);
 }
 setvar("Items", $lists);
-uaAssign(array("ByPages"=>$page->pagenav));
+uaAssign(array("ByPages"=>$page->pagenav, "TotalAmount"=>$total_amount));
 template($tpl_file);
 ?>

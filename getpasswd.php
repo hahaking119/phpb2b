@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: getpasswd.php 416 2009-12-26 13:31:08Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1147 $
  */
 define('CURSCRIPT', 'getpasswd');
 require("libraries/common.inc.php");
@@ -68,8 +61,7 @@ if (isset($_POST['action'])) {
 			$hash = authcode(addslashes($member_info['username'])."\t".$exp_time,"ENCODE");
 			setvar("hash", rawurlencode($hash));
 			setvar("expire_date", date("Y-m-d",strtotime("+1 day")));
-			$body = $smarty->fetch('default/emails/getpasswd'.$smarty->tpl_ext);
-			$sended = pb_sendmail($member_info['email'], $login_name, L("pls_reset_passwd"), $body);
+			$sended = pb_sendmail(array($member_info['email'], $login_name), L("pls_reset_passwd"), "getpasswd");
 			if(!$sended)
 			{
 				flash("email_send_false");
@@ -79,6 +71,7 @@ if (isset($_POST['action'])) {
 		}
 	}
 }
+$viewhelper->setPosition(L("get_password", "tpl"));
 formhash();
 render("getpasswd");
 ?>

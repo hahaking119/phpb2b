@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: global.func.php 462 2009-12-27 03:20:41Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1241 $
  */
 function da($arr_str, $exit = false)
 {
@@ -121,23 +114,6 @@ function uaAssign($names)
 	}
 }
 
-/**
-function redirect($filename) {
-   if (!headers_sent()){
-       header('Location: '.$filename);
-       exit;
-   }else {
-       echo '<script type="text/javascript">';
-       echo 'window.location.href="'.$filename.'";';
-       echo '</script>';
-       echo '<noscript>';
-       echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
-       echo '</noscript>';
-       exit;
-   }
-}
-**/
-
 function pheader($string, $replace = true, $http_response_code = 0) {
 	$string = str_replace(array("\r", "\n"), array('', ''), $string);
 	if(empty($http_response_code) || PHP_VERSION < '4.3' ) {
@@ -171,17 +147,34 @@ function pb_create_folder($dir)
 	return is_dir($dir) or (pb_create_folder(dirname($dir)) and mkdir($dir, 0777));
 }
 
+function pb_get_cache($models, $path = '')
+{
+	if (is_array($models)) {
+		foreach ($models as $model) {
+			$cache_file = $path?CACHE_PATH.$path."cache_".$model.".php":CACHE_PATH."cache_".$model.".php";
+			if (file_exists($cache_file)) {
+				include $cache_file;
+			}
+		}
+	}else{
+		$cache_file = $path?CACHE_PATH.$path."cache_".$models.".php":CACHE_PATH."cache_".$models.".php";
+		if (file_exists($cache_file)) {
+			include $cache_file;
+		}
+	}
+}
+
 function render($filename = null, $exit = false)
 {
-	global $smarty, $viewhelper, $theme_name, $time_start, $_GET, $cache_id;
+	global $smarty, $viewhelper, $theme_name, $time_start, $cache_id;
 	$return = false;
 	$htmlize = false;
 	$allowed_file = array("index","post","industry","area");
 	$allowed_params = array("id");
 	$file_info = pathinfo(pb_getenv('PHP_SELF'));
 	$tmp_themename = '';
-	$smarty->assign('position', $viewhelper->getPosition(' &raquo; '));
-	$smarty->assign('page_title', $viewhelper->getTitle(' - '));
+	$smarty->assign('position', $viewhelper->getPosition());
+	$smarty->assign('page_title', $viewhelper->getTitle());
 	$tpl_file = $theme_name.DS.$filename.$smarty->tpl_ext;
 	if (in_array($file_info['filename'], $allowed_file)) {
 		$dir_name = str_replace(array("\\", "//"), "/", $file_info['dirname']);
@@ -215,9 +208,6 @@ function render($filename = null, $exit = false)
 		$tpl_file = 'default'.DS.$filename.$smarty->tpl_ext;
 	}
 	$smarty->assign('ThemeName', $tmp_themename?$tmp_themename:$theme_name);
-	if (!empty($viewhelper->metaKeyword)) {
-		$smarty->assign("metakeywords", $viewhelper->metaKeyword);		
-	}
 	if (!empty($viewhelper->metaDescription)) {
 		$smarty->assign("metadescription", $viewhelper->metaDescription);		
 	}
@@ -237,7 +227,6 @@ function render($filename = null, $exit = false)
 	uses('htmlcache');
 	$htmlcache = new Htmlcache();
 	$htmls_path = PHPB2B_ROOT.$htmlcache->archiver_dir.DS;
-	//取得文件名称， 作为最后目录名称之一
 	$htmls_path.=$dir_name;
 	if (!in_array($file_info['filename'], $allowed_file)) {
 		return;
@@ -245,7 +234,6 @@ function render($filename = null, $exit = false)
 	switch ($file_info['filename']) {
 		case "detail":
 			$htmls_path.="detail".DS;
-			//最后目录名称，默认以时间
 			$htmls_path.=date("Ymd").DS;
 			$file_name = $_GET['id'].$htmlcache->file_ext;
 			break;
@@ -353,36 +341,11 @@ function stripslashes_deep($value)
     return $value;
 }
 
-function pb_convert_comma($str){
-	$str = strip_tags($str);
-	if(strpos($str, "，")) $str = str_replace("，",",",$str);
-	if(strpos($str, ",")) {
-		$str = preg_replace("/\s*/","",$str);
-		$str = str_replace(",", " ", $str);
-	}else{
-		$str = trim($str);
-		$str = preg_replace("/\s(?=\s)/", "", $str);
-		$str = preg_replace("/[\n\r\t]/", "", $str);
-	}
-	$str = str_replace(" ", ",", $str);
-	return $str;
-}
-
 if (!function_exists('getmicrotime')) {
 	function getmicrotime() {
 		list($usec, $sec) = explode(' ', microtime());
 		return ((float)$usec + (float)$sec);
 	}
-}
-
-function pb_get_absolute_url()
-{
-	if ( isset( $_SERVER['HTTPS'] ) && ( strtolower( $_SERVER['HTTPS'] ) != 'off' ) ) {
-		$ul_protocol = 'https';
-	}else{
-		$ul_protocol = 'http';
-	}
-	return $ul_protocol."://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 }
 
 function pb_get_host($http = true)
@@ -400,27 +363,13 @@ function pb_get_host($http = true)
 	return $return;
 }
 
-function uatrim(&$val)
-{
-	$val = strip_tags(trim($val));
-}
-
 function uses() {
 	$args = func_get_args();
 	foreach($args as $arg) {
 		$class_name = strtolower($arg);
-		require(LIB_PATH . "controllers/".$class_name. '_controller.php');
-		require(LIB_PATH . "models/".$class_name. '.php');
+		require(LIB_PATH . "core/controllers/".$class_name. '_controller.php');
+		require(LIB_PATH . "core/models/".$class_name. '.php');
 	}
-}
-
-function pb_check_url($inputUrl){
-	$regUrl = "^(http://)?((localhost)|(([0-9a-z][0-9a-z_-]+.){1,3}[a-z]{2,4}))$";
-	$resultUrl = ereg($regUrl,$inputUrl);
-	if ($resultUrl == 1)
-	{return "true";}
-	else
-	{return "false";}
 }
 
 function pb_strip_spaces($string)
@@ -452,7 +401,7 @@ function authcode($string, $operation = "ENCODE", $key = '', $expire = 0) {
 	$cryptkey = $keya.md5($keya.$keyc);
 	$key_length = strlen($cryptkey);
 
-	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
+	$string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expire ? $expire + time() : 0).substr(md5($string.$keyb), 0, 16).$string;
 	$string_length = strlen($string);
 
 	$result = '';
@@ -490,73 +439,17 @@ function authcode($string, $operation = "ENCODE", $key = '', $expire = 0) {
 	}
 }
 
-function pb_substr($str, $start = 0, $len = 10)
-{
-	$tmpstr = ""; 
-	$strlen = $start + $len; 
-	for($i = 0; $i < $strlen; $i++) { 
-	if(ord(substr($str, $i, 1)) > 0xa0) { 
-	$tmpstr .= substr($str, $i, 2); 
-	$i++; 
-	} else 
-	$tmpstr .= substr($str, $i, 1); 
-	} 
-	return $tmpstr;
-}
-
-function utf_substr($str, $length=0, $start =0) 
-{
-	global $charset;
-	if($charset!="utf-8"){
-		return pb_substr($str, $start, $length);
-	}else{
-		if(strlen($str)<4) return $str;
-		$re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/";
-		$re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/";
-		$re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/";
-		$re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/";
-		preg_match_all($re[$charset], $str, $match);
-		if($length==0) $length=count($match[0]);
-		for(;;)
-		{
-			if(isset($match[0][$start]))
-			{
-				if($match[0][$start])
-				return join("", array_slice($match[0], $start, $length));
-				else
-				++$start;
-			}
-			else
-			return join("", array_slice($match[0], $start, $length));
-		}
-	}
-}
-
-function checkip($minIpAddress, $maxIpAddress) {
-	global $_SERVER;
-	$onlineip = empty($_SERVER['REMOTE_ADDR']) ? pb_getenv('REMOTE_ADDR') : $_SERVER['REMOTE_ADDR'];
-	$longip = ip2long($onlineip);
-	if(isInRange($longip, $minIpAddress, $maxIpAddress)) {
-		die("IP FOBIDDEN!");
-	}
-}
-
-function isInRange($x, $min, $max) {
-	return $x >= $min && $x <= $max;
-}
-
-function L($key, $type = "msg", $extra = '')
-{
+function __L() {
 	global $arrMessage, $arrTemplate;
-	if ("msg" == $type) {
-		$return = $arrMessage['_'.$key];
-	}elseif("tpl" == $type){
-		$return = $arrTemplate['_'.$key];
+	$args = func_get_args();
+	$return = ($args[1] == "msg")?$arrMessage['_'.$args[0]]:$arrTemplate['_'.$args[0]];
+	if (!empty($args[2])) {
+		$return = preg_replace(array("/{[0-9]+}/i", "/%[a-zA-Z]/"), $args[2], $return);
 	}
-	if (!empty($extra)) {
-		$return = sprintf($return, $extra);
-	}
-	return (!empty($return))?$return:$key;
+	return (!empty($return))?$return:$args[0];
+}
+function L($key, $type = "msg", $extra = ''){
+	return call_user_func_array("__L", array($key, $type, $extra));
 }
 
 if (!function_exists('file_get_contents')) {
@@ -646,7 +539,7 @@ function pb_submit_check($var) {
 		if((empty($referer) || preg_replace("/https?:\/\/([^\:\/]+).*/i", "\\1", $referer) == preg_replace("/([^\:]+).*/", "\\1", $_SERVER['HTTP_HOST'])) && $_POST['formhash'] == formhash()) {
 			return true;
 		} else {
-			flash("invalid_submit", null, 0);;
+			die(L("invalid_submit"));
 		}
 	} else {
 		return false;
@@ -762,5 +655,14 @@ if (!function_exists("array_combine")) {
 
 		return $out;
 	}
+}
+
+function check_proxy(){
+	$v = getenv("HTTP_VIA");
+	$f = getenv("HTTP_X_FORWARDED_FOR");
+	$c = getenv("HTTP_XROXY_CONNECTION");
+	$o = getenv("HTTP_PRAGMA");
+	if ( ($v=="")&&($f=="")&&($c=="")&&($o=="") ) return false;
+	return true;
 }
 ?>

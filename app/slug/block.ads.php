@@ -1,22 +1,14 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.ads.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1075 $
  */
 function smarty_block_ads($params, $content, &$smarty){
-	global $theme_name;
 	if ($content === null) return;
 	$conditions = array();
 	extract($params);
@@ -30,16 +22,33 @@ function smarty_block_ads($params, $content, &$smarty){
 	if(isset($params['id'])){
 		$result = $ad->read("*", intval($params['id']));
 	}else{
-		//如果不够广告位，并且参数中指定了default图片，则默认“rent”
+		if (isset($params['type'])) {
+			echo $ad->getFocus($params);
+			return;
+		}
 		if (isset($params['typeid'])) {
 			$typeid = intval($params['typeid']);
 			$conditions[] = "adzone_id=".$typeid;
 			$zone_res = $ad->dbstuff->GetRow("select * from {$ad->table_prefix}adzones where id=".$typeid);
+			if (isset($params['groupid'])) {
+				if (!empty($zone_res['membergroup_ids'])) {
+					$membergroup_ids = explode(",", $zone_res['membergroup_ids']);
+					if (!in_array($params['groupid'], $membergroup_ids)) {
+						return;
+					}
+				}
+			}
 			if ($zone_res['what']==2) {
 				echo stripslashes($zone_res['additional_adwords']);
 				return;
 			}
+			if (isset($zone_res['style']) && $zone_res['style'] == 1) {
+				//flash roll
+				echo $ad->getBreathe($zone_res);
+				return;
+			}
 			$adzone_name = $zone_res['name'];
+			$adzone_id = $zone_res['id'];
 			$max_width = intval($zone_res['width']);
 			$max_height = intval($zone_res['height']);
 			$max_ad = intval($zone_res['max_ad']);
@@ -84,7 +93,7 @@ function smarty_block_ads($params, $content, &$smarty){
 			}
 		}
 	}else{
-		$return = $adzone_name;
+		$return = $adzone_name.'#ID-'.$adzone_id;
 	}
 	return $return;
 }

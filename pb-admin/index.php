@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: index.php 456 2009-12-26 14:29:04Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
@@ -22,8 +15,48 @@ if(empty($_COOKIE[$cookiepre.'admin']) || !($_COOKIE[$cookiepre.'admin'])){
 }
 require("session_cp.inc.php");
 require("menu.php");
+if (!empty($adminer->info['permissions']) && $adminer->info['member_id']!=$administrator_id) {
+	$allowed_permissions = explode(",", $adminer->info['permissions']);
+	foreach ($menus as $key=>$val) {
+		if (!in_array($key, $allowed_permissions)) {
+			unset($menus[$key]);
+		}else{
+			foreach ($val['children'] as $key1=>$val1) {
+				if (!in_array($key1, $allowed_permissions)) {
+					unset($menus[$key]['children'][$key1]);
+				}
+			}
+		}
+	}
+}
 require(LIB_PATH. "json_config.php");
 $smarty->template_dir = "template/";
+if ($charset!="utf-8") {
+	$menus = iconv_all($charset, "utf-8", $menus);
+}
+function iconv_all($in_charset,$out_charset,$in)
+{
+    if(is_string($in))
+    {
+        $in=iconv($in_charset,$out_charset,$in);
+    }
+    elseif(is_array($in))
+    {
+        foreach($in as $key=>$value)
+        {
+            $in[$key]=iconv_all($in_charset,$out_charset,$value);
+        }
+    }
+    elseif(is_object($in))
+    {
+        foreach($in as $key=>$value)
+        {
+            $in->$key=iconv_all($in_charset,$out_charset,$value);
+        }
+    }
+ 
+    return $in;
+}
 $smarty->assign("ActionMenus", json_encode($menus));
 $tpl_file = "index";
 template($tpl_file);

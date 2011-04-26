@@ -1,17 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
+<{fetch file="../scripts/date.js"}>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 广告 &raquo; 广告</p>
+	<p><{$_your_current_position}> <{$_ads}> &raquo; <{$_ads}></p>
 </div>
 <div id="rightTop"> 
-    <h3>广告</h3> 
+    <h3><{$_ads}></h3> 
     <ul class="subnav">
-		<li><a href="ad.php">管理</a></li>
-        <li><a class="btn1" href="ad.php?do=edit">添加/编辑</a></li>
+		<li><a href="ad.php"><{$_management}></a></li>
+        <li><a class="btn1" href="ad.php?do=edit"><span><{$_add_or_edit}></span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -19,29 +15,29 @@ body {background: #fcfdff}
   <input type="hidden" name="id" value="<{$smarty.get.id}>" />  
     <table class="infoTable">
       <tr>
-        <th class="paddingT15"> 广告标题：</th>
+        <th class="paddingT15"> <{$_ads}><{$_title_n}></th>
         <td class="paddingT15 wordSpacing5">          
 		<input class="infoTableInput2" name="ad[title]" value="<{$item.title}>" /><label class="field_notice">广告显示文字</label>        </td>
       </tr>
       <tr>
-        <th class="paddingT15"> 广告描述：</th>
+        <th class="paddingT15"> <{$_ads}><{$_description_n}></th>
         <td class="paddingT15 wordSpacing5"><textarea style="width:550px;height:100px;" name="ad[description]" id="dataTradeContent"><{$item.description}></textarea></td>
       </tr>
       <tr>
-        <th class="paddingT15"> 广告容器名称：</th>
+        <th class="paddingT15"> <{$_adzone}><{$_naming_n}></th>
         <td class="paddingT15 wordSpacing5">
 		<select name="ad[adzone_id]" id="ad_adzone_id">
 		<{foreach from=$Adzones item=z name=sel_adzone}>
 		<option value="<{$z.id}>" <{if $z.id eq $item.adzone_id or $z.id eq $smarty.get.adzone_id}>selected<{/if}>>
 		<{$z.name}>
 		<{foreachelse}>
-		<option value="0">请补充广告位置
+		<option value="0">请补充<{$_adzone}>
 		<{/foreach}>
 		</select></td>
       </tr>
       <tr>
         <th class="paddingT15">链接方式：</th>
-        <td class="paddingT15 wordSpacing5"><label for="Sourcetype1"><input type="radio" name="m_sourcetype" id="Sourcetype1" value="1" onclick="$('#divSourceType1').show();$('#divSourceType2').hide();"/>本地上传</label><label for="Sourcetype2"><input type="radio" name="m_sourcetype" id="Sourcetype2" value="2" onclick="$('#divSourceType2').show();$('#divSourceType1').hide();"/>链接地址</label>
+        <td class="paddingT15 wordSpacing5"><label for="Sourcetype1"><input type="radio" name="m_sourcetype" id="Sourcetype1" value="1"/>本地上传</label><label for="Sourcetype2"><input type="radio" name="m_sourcetype" id="Sourcetype2" value="2"/>链接地址</label>
           </td>
       </tr>
       <tbody id="divSourceType2" style="display:none">
@@ -73,7 +69,7 @@ body {background: #fcfdff}
 		<input class="infoTableInput2" name="ad[target_url]" value="<{$item.target_url}>" />        </td>
       </tr>
       <tr>
-        <th class="paddingT15"> 显示顺序：</th>
+        <th class="paddingT15"> <{$_display_order}></th>
         <td class="paddingT15 wordSpacing5">
 		<input type="text" name="ad[priority]" id="AdPriority" value="<{$item.priority|default:0}>" style="width: 35px;" /></td>
       </tr>
@@ -83,32 +79,53 @@ body {background: #fcfdff}
 		<{html_radios name="ad[state]" options=$AdsStatus checked=$item.state|default:"1" separator=" "}>        </td>
       </tr>
       <tr>
-        <th class="paddingT15">是否有效：</th>
+        <th class="paddingT15"><{$_if_valid}></th>
         <td class="paddingT15 wordSpacing5">          
 		<{html_radios name="ad[status]" options=$AdsStatus checked=$item.status|default:"1" separator=" "}></td>
       </tr>
       <tr>
         <th class="paddingT15">有效期至：</th>
         <td class="paddingT15 wordSpacing5"> 
-		<input name="data[end_date]" value="<{$item.end_date}>" type="text" id="EndDate" class="Wdate" onclick="WdatePicker();" /><label class="field_notice">为空表示永不过期</label></td>
+		<input name="data[end_date]" value="<{$item.end_date}>" type="text" id="date1" /><span class="btn_calendar" id="calendar-date1"></span><label class="field_notice">为空表示永不过期</label></td>
       </tr>
       <tr>
         <th class="paddingT15">到期后显示图片：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="ad[picture_replace]" value="<{if $item.id}><{$item.picture_replace}><{else}>images/nopicture_small.gif<{$item.picture_replace}><{/if}>" /><{if $item.picture_replace}><img src="<{$item.picture_replace}>" /><{/if}><label class="field_notice">为空表示到期后即不显示任何媒体</label></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="ad[picture_replace]" value="<{if $item.id}><{$item.picture_replace}><{else}>images/nopicture_small.gif<{$item.picture_replace}><{/if}>" /><{if $item.picture_replace}><img src="<{$SiteUrl}><{$item.picture_replace}>" /><{/if}><label class="field_notice">为空表示到期后即不显示任何媒体</label></td>
       </tr>
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="保存发布" />		</td>
+			<input class="formbtn" type="submit" name="save" value="<{$_save_and_pub}>" />		</td>
       </tr>
     </table>
   </form>
 </div>
-<{fetch file="../scripts/date.js"}></script>
 <script>
+    Calendar.setup({
+        trigger    : "calendar-date1",
+		animation  : false,
+        inputField : "date1",
+		onSelect   : function() { this.hide() }
+    });
+</script>
+<script>
+var ad_url = "<{$item.source_url}>";
 jQuery(document).ready(function($) {
+	/* Using Name for selector */
+	$("#Sourcetype1").click(function() 
+	  {  
+		// hides matched elements if shown, shows if hidden 
+		$("#divSourceType1").show(); 
+		$("#divSourceType2").hide(); 
+	});
+	$("#Sourcetype2").click(function() 
+	  {  
+		// hides matched elements if shown, shows if hidden 
+		$("#divSourceType2").show(); 
+		$("#divSourceType1").hide(); 
+	});
 	if(ad_url!=""){
-		$('#Sourcetype2').attr("checked", "checked");
+		$("input[name='m_sourcetype']").val("2");
 	}
 })
 </script>

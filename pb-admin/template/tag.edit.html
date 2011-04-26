@@ -1,17 +1,12 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 标签库</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_tags}></p>
 </div>
 <div id="rightTop"> 
-    <h3>标签库</h3> 
+    <h3><{$_tags}></h3> 
     <ul class="subnav">
-		<li><a href="tag.php">管理</a></li>
-        <li><a class="btn1" href="tag.php?do=edit">编辑</a></li>
+		<li><a href="tag.php"><{$_management}></a></li>
+        <li><a class="btn1" href="tag.php?do=edit"><span><{$_edit}><span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -20,19 +15,19 @@ body {background: #fcfdff}
 	<input type="hidden" name="id" value="<{$item.id}>" />
     <table class="infoTable">
       <tr>
-        <th class="paddingT15"> 标题：</th>
+        <th class="paddingT15"> <{$_title_n}></th>
         <td class="paddingT15 wordSpacing5">          
 		<input class="infoTableInput2" name="data[tag][name]" value="<{$item.name}>" /></td>
       </tr>
       <tr>
-        <th class="paddingT15">是否有效：</th>
+        <th class="paddingT15"><{$_if_valid}></th>
         <td class="paddingT15 wordSpacing5">          
 		<{html_radios name="data[tag][closed]" options=$Status checked=$item.closed|default:"1" separator=" "}>        </td>
       </tr>
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="保存发布" />		</td>
+			<input class="formbtn" type="submit" name="save" value="<{$_save_and_pub}>" />		</td>
       </tr>
     </table>
   </form>

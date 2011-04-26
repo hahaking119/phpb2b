@@ -7,13 +7,16 @@
 				<{/foreach}>
 				</ul>
 			</div>
+			<!-- plugin -->
 			<div class="latest_news">
 				<div><img src="images/left-2.gif"/><p>友情链接</p><div class="clear"></div></div>
+				<{if $Links}>
 				<ul>
 					<{foreach from=$Links name=spacelink item=spacelink}>
 					<li><a href="<{$spacelink.url}>" target="_blank"><{$spacelink.title}></a></li>
 					<{/foreach}>
 				</ul>
+				<{/if}>
 			</div>
 			<div class="latest_news">
 				<div><img src="images/left-3.gif"/><p>联系方式</p><div class="clear"></div></div>

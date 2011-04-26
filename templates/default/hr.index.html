@@ -10,10 +10,10 @@
           </div>
 			
 			<div class="job_type_c">
-            	<{foreach from=$IndustryList name=IndustryList item=industry_item key=industry_key}>
-			  <h3><em class="fl"><a href="hr/list.php?industryid=<{$industry_item.id}>" title="<{$industry_item.name}>"><{$industry_item.name}></a></em></h3>
+            	<{foreach from=$IndustryList name=IndustryList item=industry_item}>
+			  <h3><em><a href="hr/list.php?industryid=<{$industry_item.id}>" title="<{$industry_item.name}>"><{$industry_item.name}></a></em></h3>
 				<div class="cb">
-                	<{foreach from=$industry_item.sub item=industry_item2 key=industry_key2}>
+                	<{foreach from=$industry_item.child item=industry_item2 key=industry_key2}>
                     <a href="hr/list.php?industryid=<{$industry_item2.id}>" title="<{$industry_item2.name}>"><{$industry_item2.name}></a><em>|</em>
                     <{/foreach}>
               </div>
@@ -37,9 +37,9 @@
 				<td align="right"><{$_jobs_area}></td>
 				<td align="left">
                 <div id="dataArea">
-							<select name="data[area_id1]" id="dataAreaId1" class="level_1" style="width:120px;" ></select>
-							<select name="data[area_id2]" id="dataAreaId2" class="level_2" style="width:120px;"></select>
-							<select name="data[area_id3]" id="dataAreaId3" class="level_3" style="width:120px;"></select>
+							<select name="data[area_id1]" id="dataAreaId1" class="level_1" style="width:90px;" ></select>
+							<select name="data[area_id2]" id="dataAreaId2" class="level_2" style="width:90px;"></select>
+							<select name="data[area_id3]" id="dataAreaId3" class="level_3" style="width:90px;"></select>
 						</div>
                         </td>
 			  </tr>
@@ -67,8 +67,8 @@
 				<p class="fl"><a><{$_post_offer_trade}></a></p>
 				<p class="fl"><a><{$_spread_your_products}></a></p>
 				<p class="fl"><a><{$_meet_more_friends}></a></p>
-				<div class="reg">
-                <span><a href="member/" class="submit_w165"><{$_free_reg}></a><span>
+				<div class="reg big-color-weight">
+                <span><a href="member.php" class="btn_free"><{$_free_reg}></a><span>
                 </div>
 			</div>
 		</div>
@@ -81,11 +81,12 @@
           </div>
 		</div>
 		<div class="job_new fl">
-			<div class="job_new_tt">
-				<h2 class="fl cur"><{$_new_hr}></h2>
-				<p class="fr"><a href="hr/list.php"><{$_more}>&raquo;</a></p>
+			<div class="base_title">
+                 <span class="more"><a href="hr/list.php"><{$_more}>&raquo;</a></span>
+				<h2><span class="corner_t_l"></span><span class="corner_t_m title_mouse"><{$_new_hr}></span><span class="corner_t_r"></span></h2> 
+				
 			</div>
-			<div class="job_new_c fl">
+			<div class="job_new_c fl box_bord">
 				<ul>
                 <{job row=28}>
 					<li><p class="fl"><a href="[link:title]" title="[field:fulltitle]" target="_blank">[field:title]</a></p><em class="fr">[field:companyname]</em></li>
@@ -93,14 +94,15 @@
 			  </ul>
 			</div>
 		</div>
-		<div class="h7"></div>
+		<div class="blank6"></div>
 		</div>
 </div>
 <script>
+var app_language = '<{$AppLanguage}>';
 var area_id1 = 0;
 var area_id2 = 0;
 var area_id3 = 0;
 </script>
-<script src="scripts/multi_select.js"></script>
+<script src="scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="scripts/script_area.js"></script>
 <{include file="`$ThemeName`/footer.html"}>

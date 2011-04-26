@@ -1,27 +1,34 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: index.php 433 2009-12-26 13:47:01Z cht117 $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
 uses("market","trade","area");
 $market = new Markets();
+$market_controller = new Market();
 $area = new Areas();
 $trade = new Trade();
 setvar("AreaItems", $area->getLevelAreas());
+$latest_commend_markets = $pdb->GetArray("SELECT * FROM ".$tb_prefix."markets WHERE if_commend='1' AND status='1' AND picture!=''");
+$urls = $infos = $images = array();
+if (!empty($latest_commend_markets)) {
+	while (list($key, $val) = each($latest_commend_markets)) {
+		$urls[] = $market_controller->rewrite($val['id'], $val['name']);
+		$infos[] = $val['name'];
+		$images[] = pb_get_attachmenturl($val['picture']);
+	}
+	$item['url'] = implode("|", $urls);
+	$item['info'] = implode("|", $infos);
+	$item['image'] = implode("|", $images);
+	setvar("flashvar", $item);
+}
 render("market.index");
 ?>
