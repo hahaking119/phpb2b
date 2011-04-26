@@ -1,0 +1,5 @@
+/**append**/
+.content1 img {max-width: 220px;} /* for Firefox & IE7 */
+* html .content1 img { /* for IE6 */
+width: expression(this.width > 220 && this.width > this.height ? 220 : true);
+}

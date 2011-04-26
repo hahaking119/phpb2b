@@ -1,0 +1,37 @@
+<{assign var="page_title" value="询价客户"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+    <table class="news">
+            <tr>
+              <th>询价商品</th>
+              <th>询价时间</th>
+            </tr>
+			<{foreach from=$Inqueries item=item}>
+            <tr align="center" class="bggray">
+              <td><a href="inquery.php?do=view&id=<{$item.InqueryId}>"><{$item.InqueryProduct}></a>&nbsp;</td>
+              <td><{$item.CreateDate|date_format:"%Y-%m-%d"}></td>
+            </tr>
+			<{foreachelse}>
+            <tr>
+            <td colspan="2">目前没有任何数据</td>
+            </tr>
+			<{/foreach}>
+          </table>
+    <table class="trade_line">
+      <tr>
+        <td height="1" background="images/index_trade_line.gif"></td>
+      </tr>
+    </table>
+        </div>
+    </div>
+<{include file="footer.html"}>
+

@@ -1,0 +1,87 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 信息管理 &raquo; 产品中心</p>
+</div>
+<div id="rightTop"> 
+    <h3>产品中心</h3> 
+    <ul class="subnav">
+		<li><a class="btn1" href="product.php">管理</a></li>
+        <li><a href="product.php?do=edit">添加/编辑</a></li>
+		<li><a href="productsort.php">分类</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontr"> 
+        <form name="search_frm" id="SearchFrm" method="get" action="product.php"> 
+        <input type="hidden" name="do" value="search" />
+             <div> 
+				会员名 : <input class="queryInput" type="text" name="data[username]" value="" /> 
+				公司名 : <input class="queryInput" type="text" name="data[companyname]" value="" /> 
+                <select class="querySelect" name="product[status]" id="ProductStatus">
+					<{html_options options=$CheckStatus selected=$smaty.post.product.status}>
+				</select>
+				产品名称关键字 : <input class="queryInput" type="text" name="data[q]" value="" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="product.php" method="post">
+  <input type="hidden" name="page" value="<{$smarty.get.page}>" />
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td><label for="idAll">产品名称</label></td>
+		  <td><span>公司名称</span></td>
+		  <td>上/下架</td>
+		  <td><span>状态</span></td>
+		  <td><span>发布时间</span></td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item}>
+		<tr class="tatr2">
+		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
+		  <td><label for="item_<{$item.id}>"><{$item.ProductName|truncate:35}><{if $item.CreateDate>$Today}>&nbsp;<img src="images/new.gif" /><{/if}></label><{if $item.ProductPicture!=''}><img src="../images/havepic.gif" border="0" alt="有图片" /><{/if}><{if $item.Ifcommend}>&nbsp;<img src="../images/recommend.gif" border="0" alt="推荐产品" /><{/if}></td>
+		  <td><a href="company.php?do=edit&id=<{$item.CID}>"><{$item.companyname}></a></td>
+		  <td><{$BooleanVars[$item.ProductState]}></td>
+		  <td><{$CheckStatus[$item.ProductStatus]}></td>
+		  <td><{$item.CreateDate|date_format:"%Y-%m-%d"}></td>
+		  <td class="handler">
+          <ul id="handler_icon">
+            <li><a class="btn_delete" href="product.php?id=<{$item.id}>&do=del" title="删除">删除</a></li>
+            <li><a class="btn_edit" href="product.php?do=edit&id=<{$item.id}>" title="编辑">编辑</a></li> 
+             <li><a class="btn_browse" href="<{$SiteUrl}>product/content.php?id=<{$item.id}>" target="_blank" title="预览">预览</a></li>
+          </ul>  
+		  </td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="7">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+      <input type="submit" name="recommend" value="推荐产品" class="formbtn batchButton"/>
+      <select name="status" id="Status" onchange="$('#ListFrm').submit();">
+      	<option>设置状态</option>
+        <option value="0">设为无效</option>
+        <option value="1">设为有效</option>
+      </select>
+    </div>
+    <div class="pageLinks"><{$ByPages}></div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>

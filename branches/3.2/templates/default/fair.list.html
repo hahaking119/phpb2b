@@ -1,0 +1,53 @@
+<{assign var="page_title" value="`$page_title` - `$_fair`"}>
+<{assign var="nav_id" value="8"}>
+<{include file="`$ThemeName`/header.html"}>
+<div class="wrapper">
+    <div class="tips"><span><{$position}></span></div>
+    <div class="blank6"></div>
+	<div class="content">
+        <div class="qiugoucontentleft">
+		<div class="base_title">
+	   <h2><span class="title_name"><{$_search_result}></span></h2>
+	</div>
+    
+		<div class="companylistcon exhibition_c clearfix">
+			<div class="companylistconhead"><span class="span1"><{$_fair_details}></span><span class="span2"><{$_fair_time}></span></div>
+			<div class="companylistconleft" style="width:756px; overflow:hidden">
+                <{foreach from=$Items name=fair item=item}>
+				<div class="companylistcontent clearfix"">
+					<div>
+						<p><span class="span4"><a href="fair/detail.php?id=<{$item.id}>"><{$item.name}></a></span><span class="span5"><{$item.area}></span></p>
+                        <br />
+						<p class="ex_info"><{$item.description}></p>
+					</div>
+					<p class="fair_date">
+                   <span class="span6"><{$item.begin_time|date_format:"%Y.%m.%d"}>-<{$item.end_time|date_format:"%Y.%m.%d"}></span>
+                    </p>
+				</div>
+                <{/foreach}>
+				<div class="companylistsubpage"><{$ByPages}></div>
+			</div>
+		</div>
+        </div>
+		<div class="companylistconright">
+			<div class="lookcompany ex_choose">
+				<div class="buymessagetop"><img src="<{$theme_img_path}>images/lhighs.gif" /><{$_area_choose}></div>
+				<p>
+                <{foreach from=$Areas[1] item=area_item key=area_key}>
+					<a href="fair/list.php?areaid=<{$area_key}>"><{$area_item}></a><br />
+                <{/foreach}>
+				</p>
+				<div class="clear"></div>
+			</div>
+			<div class="companylistsee ex_choose">
+				<div class="buymessagetop"><img src="<{$theme_img_path}>images/lhighs.gif" /><{$_sort_choose}></div>
+				<p>
+				<{foreach from=$Type item=item key=key}>
+					<a href="fair/list.php?typeid=<{$key}>"><{$item}></a><br />
+				<{/foreach}>
+				</p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="h7"></div>
+<{include file="`$ThemeName`/footer.html"}>

@@ -1,0 +1,75 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 信息管理 &raquo; 供求信息</p>
+</div>
+<div id="rightTop"> 
+    <h3>供求信息</h3> 
+    <ul class="subnav">
+		<li><a href="offer.php">管理</a></li>
+		<li><a href="offer.php?do=setting">设置</a></li>
+		<li><a class="btn1" href="offertype.php">分类</a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontl">如果你修改了某个类型的编号，可能会引起已有供求数据的错误。</div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="offertype.php" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
+		  <td>显示顺序</td>
+		  <td><label for="idAll">名称</label></td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item}>
+		<tr class="tatr2">
+		  <td class="firstCell">
+          <input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>">
+          <input type="hidden" name="tid[]" value="<{$item.id}>" />
+          
+          </td>
+		  <td><input type="text" name="display_order[]" value="<{$item.display_order}>" /></td>
+		  <td><input type="text" name="name[]" value="<{$item.name}>" /></td>
+		  <td class="handler">
+           <ul id="handler_icon">
+            <li><a class="btn_delete" href="offertype.php?id=<{$item.id}>&do=del" title="删除">删除</a></li>
+          </ul>   
+		  </td>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="4">没有符合条件的记录</td>
+		</tr>
+		<{/foreach}>
+    </tbody>
+	<tbody>
+	  <tr class="tatr2" id="tRow0" style="display : none ;">
+        <td></td>
+        <td></td>
+        <td colspan="2"><input type="text" name="name[]" value="" /></td>
+	  </tr>
+	</tbody>    
+	<tr class="tatr2">
+		<td></td>
+		<td colspan="3"><img src="images/add.gif" /><a href="javascript:;" onclick="$('#tRow0').clone().show().appendTo( $('#tRow0').parent() );" style="color: blue;">&nbsp;添加新类型</a></td>
+	</tr>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+      <input type="submit" name="update" value="提交" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"><{$ByPages}></div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<{include file="footer.html"}>

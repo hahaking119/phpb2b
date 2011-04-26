@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<{$Charset}>">
+<title><{$_cp_login}> - <{$site_title}></title>
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+<script language="javascript" src="../scripts/jquery.js"></script>
+<script language="javascript">
+<!-- 
+$(document).ready(function(){   
+	$('#username').focus();
+	$('#imgcaptcha').click(
+		function(){
+		$('#imgcaptcha').attr('src','../captcha.php?sid=' + Math.random());
+		$('#capt_login_admin').focus();
+		return false;
+		}
+	);
+	$("#Login").click(
+		function(){   
+			<{if $smarty.session.is_admin==""}>
+				if($('#username').val() == ""){
+					alert("<{$_pls_input_username}>");
+					$('#username').focus();
+					return false;
+				}
+			<{/if}>
+			if($('#userpass').val() == ""){
+				alert("<{$_pls_input_passwd}>");
+				$('#userpass').focus();
+				return false;
+			}
+			<{if $ifcapt}>
+			if($('#capt_login_admin').val() == ""){
+				alert("<{$_pls_input_authcode}>");
+				$('#capt_login_admin').focus();
+				return false;
+			}
+			<{/if}>
+			$("#LoginFrm").submit();   
+			$("#Login").attr("disabled", "disabled");
+		}
+	);
+});
+//-->
+</script>
+<body class="bodybj">
+<div id="container">
+<div id="top">
+<div class="top_pan"> <img src="images/login.jpg" />
+  <p class="top_con"><{$_phpb2b_info}></p>
+</div>
+</div>
+<div id="login_body">
+    <div id="login_pan" > 
+      <h2><{$_cp_login_first}><span>(Please Login First)</span></h2>
+      <div class="loginmain">
+      <form action="login.php" method="post" name="login_frm" id="LoginFrm" class="s_lo_f" autocomplete="off">
+        <input type="hidden" name="do" value="login"  />
+        <input type="hidden" name="formhash" value="<{$formhash}>" />
+          <table width="280" class="login_main">
+          <tr>
+            <th><{$_cp_username}></th>
+            <td><input tabindex="1" type="text" name="data[username]" id="username" size="15" maxLength="20" value=""><{$LoginError}></td>
+          </tr>
+          <tr>
+            <th><{$cp_passwd}></th>
+            <td><input tabindex="2" type="password" name="data[userpass]" id="userpass" size="15" maxLength="20" value=""><br clear="all" /></td>
+          </tr>
+          <{if $ifcapt}>
+          <tr>
+            <th><{$_cp_capt}></th>
+            <td class="code"><input type="text" value="" name="data[capt_login_admin]" tabindex="3" id="capt_login_admin" />
+			<br />
+			<img id="imgcaptcha" src="../captcha.php?sid=<{$sid}>" alt="<{$_refresh_capt}>" /></td>
+          </tr>
+          <{/if}>
+          <tr>
+            <th>&nbsp;</th>
+            <td><span class="login_forget"><a href="<{$SiteUrl}>getpasswd.php"><{$_cp_forget_passwd}></a></span><span class="btn_forget"><input type="submit" name="login" id="Login" value="<{$_cp_login}>" class="button"/></span></td>
+          </tr>
+        </table>
+      </form>
+      
+      </div>
+     <div class="blank28"></div>
+    </div>
+</div>
+<div id="foot_pan">
+	<div id="foot_main">
+    <div class="foot_home"><a href="<{$SiteUrl}>" title="<{$_return_homepage}>"> <img src="images/home.jpg" id="ico_home" /></a></div>
+    <div class="clear"></div>
+   	</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<{assign var="page_title" value="产品分类"}>
+<{include file="header.html"}>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <{include file="menu.html"}>
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2><{$page_title}></h2></div>
+      <div class="hint">友情提醒：</span>产品系列（或产品系列中各产品）调整后的顺序，将立即体现在您的企业网站上。</div>
+
+		  <form name="prodtypefrm" action="producttype.php" method="post">
+		  <input type="hidden" name="formhash" value="{$formhash}>">
+		   <table class="product_type">
+            <tr>
+              <th colspan="4"><strong>按系列分类的产品</strong></th>
+            </tr>
+			 <{foreach from=$Items name=producttype item=item}>
+            <tr>
+              <td width="6%" align="center"><img src="images/on.gif" width="15" height="16"></td>
+              <td width="40%" align="left"><{$item.name}></td>
+              <td align="center"><a href="producttype.php?do=edit&id=<{$item.id}>">修改</a></td>
+              <td align="center"><a href="producttype.php?do=del&id=<{$item.id}>">删除</a></td>
+            </tr>
+			<{/foreach}>
+          </table>
+		  </form>
+		 
+		<form name="edit_frm" method="post" action="producttype.php" autocomplete="off">
+		<input type="hidden" name="formhash" value="<{$formhash}>">
+        <table>
+        <tr>
+          <td colspan="2">&nbsp;产品分类名称：
+            <input name="data[name]" type="Text" value="" size="25">
+            <input type="Submit" name="save" value="&nbsp;添&nbsp;加&nbsp;"></td>
+        </tr>
+        </table>
+		</form>
+        <table>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="1" colspan="2" background="images/index_trade_line.gif"></td>
+        </tr>
+      </table>
+
+</div>
+</div>
+<{include file="footer.html"}>

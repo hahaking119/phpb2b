@@ -1,0 +1,39 @@
+<{assign var="page_title" value="`$page_title`"}>
+<{include file="`$ThemeName`/header.html"}>
+<style type="text/css">
+@import url(<{$theme_img_path}>style_tab.css);
+</style>
+<script src="scripts/jquery.tools.min.js"></script>
+<div class="wrapper">
+	<div class="tips"><span><{$position}></span><{$special_name}></div>
+	<div class="blank6"></div>  
+	<div class="content clearfix">
+	  <div class="main_left_w720"> 
+	   <!-- the tabs -->
+		<ul class="tabs">
+			  <li><a href="special/index.php?type=industry"><{$_sub_industry}></a></li>
+			  <li><a href="special/index.php?type=area"><{$_sub_area}></a></li>
+		</ul>
+		<!-- tab "panes" --> 
+		<div class="panes">
+		   <div class="substation clearfix">
+				<{get_special from="industry" depth=3}>
+		   </div>
+		   <div class="substation clearfix" style="display:block;">
+				<{get_special from="area" depth=3}>
+		   </div>
+		</div>
+	  </div>
+	  <div class="main_right_w230">
+	   <div class="title_bar_s4">
+	   <span class="title_top_s4"><span></span></span>
+	   <h3><{$_advertising}></h3>
+	   <div class="reports_ads">
+		<img src="<{$theme_img_path}>temp/ads.jpg" />
+		<img src="<{$theme_img_path}>temp/ads.jpg" />
+	   </div>
+	   </div>
+	  </div>
+	</div>
+</div>
+<{include file="`$ThemeName`/footer.html"}>

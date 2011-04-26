@@ -1,0 +1,60 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 广告 &raquo; 订单中心</p>
+</div>
+<div id="rightTop"> 
+    <h3>订单中心</h3> 
+    <ul class="subnav"> 
+		<li><a href="order.php">管理</a></li>
+        <li><a class="btn1" href="order.php?do=view&id=<{$smarty.get.id}>">查看服务</a></li>
+    </ul> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="order.php" method="post">
+  <input type="hidden" name="order_id" value="<{$smarty.get.id}>" />
+  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
+    <tbody>
+		<tr class="tatr1">
+		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onClick="pbCheckAll(this,'goods_id[]');" title="全选/全不选"></td>
+		  <td><label for="idAll">订单编号</label></td>
+		  <td><span>服务名称</span></td>
+		  <td>小计</td>
+		  <td class="handler">操作</td>
+		</tr>
+		<{foreach from=$Items item=item}>
+		<tr class="tatr2">
+		  <td class="firstCell"><input type="checkbox" name="goods_id[]" value="<{$item.goods_id}>" onClick="pbCheckItem(this,'idAll');" id="item_<{$item.goods_id}>" title="<{$item.id}>"></td>
+		  <td><label for="item_<{$item.goods_id}>"><{$item.order_id}></label></td>
+		  <td><{$item.name}></td>
+		  <td><{$item.price}></td>
+		  <td class="handler">
+              <ul id="handler_icon">
+                <li><a class="btn_delete" href="order.php?goods_id=<{$item.goods_id}>&order_id=<{$item.id}>&do=del" title="删除">删除</a></li>
+              </ul>
+		</tr>
+		<{foreachelse}>
+		<tr class="no_data info">
+		  <td colspan="5">订单里没有任何服务数据</td>
+		</tr>
+		<{/foreach}>
+		<tr class="tatr1">
+		  <td colspan="3" class="firstCell">合计</td>
+		  <td colspan="2"><{$TotalPrice}></td>
+	    </tr>
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="操作区">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del_ordergoods" value="删除" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks"><{$ByPages}></div>
+    <div class="clear"/>
+    </div>
+  </form>
+</div>
+<{include file="footer.html"}>

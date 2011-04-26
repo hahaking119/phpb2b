@@ -1,0 +1,103 @@
+<{include file="header.html"}>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 用户中心 &raquo; 会员中心</p>
+</div>
+<div id="rightTop"> 
+    <h3>会员</h3> 
+    <ul class="subnav">
+		<li><a href="member.php">管理</a></li>
+        <li><a class="btn1" href="member.php?do=edit">添加/编辑</a></li>
+        <li><a href="membertype.php">分类</a></li>
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="member.php" id="EditFrm" name="edit_frm">
+  	<input type="hidden" name="page" value="<{$smarty.get.page}>" />
+	<input type="hidden" name="id" value="<{$item.id}>" />
+    <table class="infoTable">
+      <tr>
+        <th class="paddingT15"> 用户名：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[member][username]" value="<{$item.username}>" /></td>
+      </tr>   
+      <tr>
+        <th class="paddingT15"> 空间名：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[member][space_name]" value="<{$item.space_name}>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> Email地址：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[member][email]" value="<{$item.email}>" /></td>
+      </tr>   
+      <tr>
+        <th class="paddingT15"> 用户类型：</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="data[member][membertype_id]" id="dataMemberTypeId">
+        <{html_options options=$Membertypes selected=$item.membertype_id}>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 积分：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[member][points]" value="<{$item.points|default:0}>" /></td>
+      </tr>   
+      <tr>
+        <th class="paddingT15"> 余额：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[member][balance_amount]" value="<{$item.balance_amount|default:0}>" /></td>
+      </tr>   
+      <tr>
+        <th class="paddingT15"> 信誉指数：</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="data[member][credits]" value="<{$item.credits|default:0}>" /></td>
+      </tr>   
+      <tr>
+        <th class="paddingT15">会员组：</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="data[member][membergroup_id]" id="dataMemberGroupId">
+        <{html_options options=$MembergroupOptions selected=$item.membergroup_id}>
+        </select>
+        <{if $item.groupimage}><img src="<{$item.groupimage}>" /><{/if}>
+        </td>
+      </tr>
+      <tr>
+        <th class="paddingT15">信用认证：</th>
+        <td class="paddingT15 wordSpacing5"><{html_checkboxes name="data[trusttype]" options=$Trusttypes checked=$item.selected_trusttypeid separator=" "}></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">商业服务时间：</th>
+        <td class="paddingT15 wordSpacing5"><input name="data[service_start_date]" value="<{$item.service_start_date}>" class="Wdate" onclick="WdatePicker();" />至<input name="data[service_end_date]" value="<{$item.service_end_date}>" class="Wdate" onclick="WdatePicker();" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">状态：</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="data[member][status]" id="dataMemberStatus">
+        <{html_options options=$MemberStatus selected=$item.status|default:1}>
+        </select>       
+        </td>
+      </tr>
+      <tr>
+        <th class="paddingT15">新密码：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[userpass]" id="dataUserpass" value="" type="password" /><label class="field_notice">如果不想修改，则不必填写</label></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">再次输入密码：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[re_userpass]" id="dataReUserpass" value="" type="password" /></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="保存" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<{fetch file="../scripts/date.js"}></script>
+<{include file="footer.html"}>
