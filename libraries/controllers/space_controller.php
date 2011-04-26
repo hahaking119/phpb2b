@@ -22,7 +22,6 @@ class Space extends PbController {
 	var $member_id;
 	var $company_id;
 	var $base_url;
-	var $skins_dir;
 	
 	function Space()
 	{
@@ -118,30 +117,15 @@ class Space extends PbController {
 		$this->menu = $tmp_menus;
 	}
 
-	function setBaseUrlByUserId($user_id, $space_actions){
-		global $subdomain_support, $rewrite_able;
-		$user_id = rawurlencode($user_id);
-		if($subdomain_support){
-			$this->base_url = "http://".$user_id.$subdomain_support."/space/";
-		}elseif($rewrite_able){
-			$this->base_url = URL."space/".$user_id."/";
-		}else{
-			$this->base_url = URL."space.php?userid=".$user_id;
-		}
-		return $this->base_url;
-	}
-
 	function getMenu(){
 		return $this->menu;
 	}
 	
 	function render($tpl_file, $ext = ".html")
 	{
-		global $smarty, $skin_path;
-		if(!file_exists($smarty->template_dir.$skin_path.DS.$tpl_file.$ext)){
+		global $smarty;
+		if(!file_exists($smarty->template_dir.$tpl_file.$ext)){
 			$smarty->template_dir = PHPB2B_ROOT ."skins".DS."default".DS;
-		}else{
-			$smarty->template_dir = PHPB2B_ROOT ."skins".DS.$skin_path.DS;
 		}
 		$smarty->display("{$tpl_file}{$ext}");
 	}

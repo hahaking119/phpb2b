@@ -67,33 +67,30 @@
     </div>
 	</div>
 	<div class="co_store_c">
+        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
+        	<input type="hidden" name="action" value="logging">
+			<input type="hidden" name="formhash" value="<{$formhash}>">
+			<input type="hidden" name="forward" value="<{$smarty.get.forward}>" />
 		<table width="275" border="0" cellspacing="0" cellpadding="0">
-			<{if $pb_username!=""}>
-			  <tr>
-				<td>&nbsp;</td>
-				<td colspan="2"><p class="co_tg fl"><a href="redirect.php?url=office-room/company" class="submit_w67"><{$_promotion_company}></a></p><p class="co_fb fl"><a href="redirect.php?url=office-room/product" class="submit_w67"><{$_release_product}></a></p></td>
-			  </tr>
-			<{else}>
-				<form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
-					<input type="hidden" name="action" value="logging">
-					<input type="hidden" name="formhash" value="<{$formhash}>">
-					<input type="hidden" name="forward" value="<{$smarty.get.forward}>" />
-				  <tr>
-					<td align="left" width="60"><{$_user_name}></td>
-					<td align="left" width="150"><input type="text" name="data[login_name]" id="LoginName" tabindex="1" class="co_add_in" /></td>
-					<td width="65" rowspan="2" align="center"><input type="submit" value="<{$_login}>" class="co_login_but" /></td>
-				  </tr>
-				  <tr>
-					<td align="left"><{$_password}></td>
-					<td align="left"><input name="data[login_pass]" type="password" id="LoginPass" tabindex="2" class="co_add_in" /></td>
-				  </tr>
-				</form>
-			  <tr>
-				<td>&nbsp;</td>
-				<td colspan="2" align="left"><p class="co_reg"><a href="member/" class="submit_w165"><{$_logon_deal}></a></p></td>
-			  </tr>
-			<{/if}>
+		  <tr>
+			<td align="left" width="60"><{$_user_name}></td>
+			<td align="left" width="150"><input type="text" name="data[login_name]" id="LoginName" tabindex="1" class="co_add_in" /></td>
+			<td width="65" rowspan="2" align="center"><input type="submit" value="<{$_login}>" class="co_login_but" /></td>
+		  </tr>
+		  <tr>
+			<td align="left"><{$_password}></td>
+			<td align="left"><input name="data[login_pass]" type="password" id="LoginPass" tabindex="2" class="co_add_in" /></td>
+		  </tr>
+		  <tr>
+			<td>&nbsp;</td>
+			<td colspan="2"><p class="co_tg fl"><a href="redirect.php?url=office-room/company" class="submit_w67"><{$_promotion_company}></a></p><p class="co_fb fl"><a href="redirect.php?url=office-room/product" class="submit_w67"><{$_release_product}></a></p></td>
+		  </tr>
+		  <tr>
+			<td>&nbsp;</td>
+			<td colspan="2" align="left"><p class="co_reg"><a href="member/" class="submit_w165"><{$_logon_deal}></a></p></td>
+		  </tr>
 		</table>
+		</form>
 	</div>
 </div>
 <div class="co_type fl">

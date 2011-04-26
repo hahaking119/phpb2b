@@ -26,12 +26,6 @@ function smarty_block_companynews($params, $content, &$smarty) {
 	    $companynews = new Companynewses();
 		$companynews_controller = new Companynews();
 	}
-   if (class_exists("Space")) {
-		$space_controller = new Space();
-	}else{
-	    uses("space");
-		$space_controller = new Space();
-	}
 	$conditions = array();
 	$orderby = array();
 	$conditions[] = "cn.status=1";
@@ -66,7 +60,7 @@ function smarty_block_companynews($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$companynews->setLimitOffset($row, $col);
-	$sql = "SELECT cn.id,cn.company_id,cn.title as fulltitle,cn.title,cn.picture,cn.created,cn.content as fullcontent,cn.content,m.username AS userid FROM {$companynews->table_prefix}companynewses cn LEFT JOIN {$companynews->table_prefix}members m ON m.id=cn.member_id ".$companynews->getCondition().$companynews->getOrderby().$companynews->getLimitOffset();
+	$sql = "SELECT id ,company_id ,title as fulltitle,title,picture,created,content as fullcontent,content FROM {$companynews->table_prefix}companynewses cn ".$companynews->getCondition().$companynews->getOrderby().$companynews->getLimitOffset();
 	$result = $companynews->dbstuff->GetArray($sql);
 	$return = $link_title = null;
 	if (!empty($result)) {
@@ -74,9 +68,8 @@ function smarty_block_companynews($params, $content, &$smarty) {
 		for ($i=0; $i<$i_count; $i++){
 			$style = null;
 			$dt = @getdate($result[$i]['created']);
-			$space_controller->setBaseUrlByUserId($result[$i]['userid'], "news");
-			$url = $space_controller->rewriteDetail("news", $result[$i]['id']);
-			//$url = "space.php?id=".$result[$i]['company_id']."&do=news&nid=".$result[$i]['id'];
+			//$url = $companynews_controller->rewrite($result[$i]['id'], $result[$i]['title'], $result[$i]['created']);
+			$url = "space.php?id=".$result[$i]['company_id']."&do=news&nid=".$result[$i]['id'];
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
 	    		
@@ -100,7 +93,7 @@ function smarty_block_companynews($params, $content, &$smarty) {
 	    		}
 			}
 			
-			$return.= str_replace(array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:pubdate]", "[field:id]",  "[field:style]", "[field:url]"), array($url, $result[$i]['title'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['fulltitle'],  @date("Y-m-d", $result[$i]['created']),$result[$i]['id'], $style, $url), $content);
+			$return.= str_replace(array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:pubdate]", "[field:id]",  "[field:style]", "[field:url]"), array($url, $result[$i]['title'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['fulltitle'],  @date("Y-m-d", $result[$i]['created']),$result[$i]['id'], $style, $link_title), $content);
 			
 		}
 	}

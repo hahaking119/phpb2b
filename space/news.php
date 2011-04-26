@@ -28,7 +28,7 @@ if (isset($_GET['nid'])) {
 	if ($id) {
 		$info = $companynews->read("*", intval($_GET['nid'], $conditions));
 		if (empty($info)) {
-			flash('data_not_exists', null, 0);
+			flash('data_not_exists');
 		}
 		$tpl_file = "news_detail";
 		setvar("item",$info);

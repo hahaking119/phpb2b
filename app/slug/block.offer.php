@@ -119,8 +119,6 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 			$style = null;
 			$dt = @getdate($result[$i]['created']);
 			$url = $trade_controller->rewrite($result[$i]['id'], $result[$i]['type_id'], $result[$i]['title'], $result[$i]['created']);
-			$result[$i]['title'] = strip_tags($result[$i]['title']);
-			$result[$i]['content'] = strip_tags($result[$i]['content']);
 			if (isset($params['titlelen'])) {
 	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
 	    	}		
@@ -138,7 +136,7 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	    			$link_title = "<a href='{$url}'>".$result[$i]['title']."</a>";
 	    		}
 			}
-			$return.= str_replace(array("[field:title]", "[field:fulltitle]","[field:typename]", "[link:title]", "[field:id]", "[field:pubdate]", "[img:thumb]", "[img:src]", "[field:content]", "[field:style]", "[field:url]", "[field:typeid]"), array($result[$i]['title'], $result[$i]['fulltitle'],$offer_typenames[$result[$i]['type_id']], $url, $result[$i]['id'], @date("m/d", $result[$i]['submit_time']), "attachment/".$result[$i]['picture'].".small.jpg", "attachment/".$result[$i]['picture'], $result[$i]['content'], $style, $link_title, $result[$i]['type_id']), $content);
+			$return.= str_replace(array("[field:title]", "[field:fulltitle]","[field:typename]", "[link:title]", "[filed:id]", "[field:pubdate]", "[img:thumb]", "[img:src]", "[field:content]", "[field:style]", "[field:url]", "[field:typeid]"), array($result[$i]['title'], $result[$i]['fulltitle'],$offer_typenames[$result[$i]['type_id']], $url, $result[$i]['id'], @date("m/d", $result[$i]['submit_time']), "attachment/".$result[$i]['picture'].".small.jpg", "attachment/".$result[$i]['picture'], $result[$i]['content'], $style, $link_title, $result[$i]['type_id']), $content);
 		}
 	}
 	return $return;

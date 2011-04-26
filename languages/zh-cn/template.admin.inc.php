@@ -65,7 +65,7 @@ $arrTemplate['_cp_login'] = "控制台登陆";
 $arrTemplate['_pls_input_username'] = "请输入用户名";
 $arrTemplate['_pls_input_passwd'] = "请输入密码";
 $arrTemplate['_pls_input_authcode'] = "请输入验证码，不区分大小写";
-$arrTemplate['_phpb2b_info'] = "<span>PHPB2B</span> 是一个采用PHP和 <span>MySQL</span> 数据库构建的高效行业电子商务网站管理系统！";
+$arrTemplate['_phpb2b_info'] = "<span>PHPB2B</span> 是一个采用PHP和 <span>MySQL</span> 数据库构建的高效行业电子商务网站<{$_management}>系统！";
 $arrTemplate['_cp_login_first'] = "请您先登录";
 $arrTemplate['_cp_username'] = "用户名:";
 $arrTemplate['cp_passwd'] = "密　码:";
@@ -74,13 +74,4 @@ $arrTemplate['_refresh_capt'] = "如果看不清数字或字母?请点一下换�
 $arrTemplate['_cp_forget_passwd'] = "忘记密码？";
 $arrTemplate['_cp_login'] = "登陆";
 $arrTemplate['_return_homepage'] = "返回首页";
-$arrTemplate['_save_and_pub'] = "保存发布";
-$arrTemplate['_manage'] = "管理";
-$arrTemplate['_management'] = "管理";
-$arrTemplate['_add_or_edit'] = "添加/编辑";
-$arrTemplate['_data_zone'] = "数据显示区";
-$arrTemplate['_select_switch'] = "全选/全不选";
-$arrTemplate['_action_zone'] = "操作区";
-$arrTemplate['_title_keywords'] = "标题关键字";
-
 ?>

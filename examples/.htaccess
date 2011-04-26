@@ -18,7 +18,7 @@ RewriteRule ^(.*)page/([a-zA-Z]+)\.html$ /page.php\?name=$2 [QSA]
 RewriteRule ^(.*)dict/detail/([0-9]+)\.html$ /dict/detail.php\?id=$2 [QSA]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/$ /space.php\?userid=$2 [L]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/$ /space.php\?userid=$2&do=$3 [L]
-RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)\.html$ /space.php\?userid=$2&do=$3&typeid=$4 [L]
+RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/type-([0-9]+)\.html$ /space.php\?userid=$2&do=$3&typeid=$4 [L]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/list-([0-9]+)\.html$ /space.php\?userid=$2&do=$3&page=$4 [L]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/detail-([0-9]+)\.html$ /space.php\?userid=$2&do=$3&nid=$4[L]
 RewriteCond %{HTTP_HOST} ^(www.)?(?!/.|www|bbs|demo)(.*)\.yourdomain.com$

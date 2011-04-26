@@ -22,5 +22,5 @@ $arrTemplate['_dear_user'] = "尊敬的客户";
 $arrTemplate['_a_test_email'] = "这是一封来自".$_PB_CACHE['setting']['site_name']."的测试邮件。";
 $arrTemplate['_a_test_email_delete'] = "这是一封来自<a href=\"".URL."\" target='_blank'>".$_PB_CACHE['setting']['site_name']."</a>的测试邮件，你可以删除它。";
 $arrTemplate['_pls_active_your_account'] = "请激活您的帐号";
-$arrTemplate['_pls_pending_account'] = "请点击 : <a href='".URL."pending.php?do=member&action=activate&hash=%hash%'>".URL."pending.php?hash=%hash%</a>激活您的帐号。";
+$arrTemplate['_pls_pending_account'] = "请点击 : <a href='".URL."pending.php?hash=%hash%'>".URL."pending.php?hash=%hash%</a>激活您的帐号。";
 ?>

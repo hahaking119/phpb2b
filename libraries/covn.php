@@ -1,5 +1,5 @@
 <?php
-function Pinyin($_String, $_Code='gb2312')
+function Pinyin($_String, $_Code)
 {
 $_DataKey = "a|ai|an|ang|ao|ba|bai|ban|bang|bao|bei|ben|beng|bi|bian|biao|bie|bin|bing|bo|bu|ca|cai|can|cang|cao|ce|ceng|cha".
 "|chai|chan|chang|chao|che|chen|cheng|chi|chong|chou|chu|chuai|chuan|chuang|chui|chun|chuo|ci|cong|cou|cu|".
@@ -49,7 +49,7 @@ $_TDataValue = explode('|', $_DataValue);
 $_Data = (PHP_VERSION>='5.0') ? array_combine($_TDataKey, $_TDataValue) : _Array_Combine($_TDataKey, $_TDataValue);
 arsort($_Data);
 reset($_Data);
-if($_Code != 'gb2312') $_String = _U2_Utf8_Gb($_String);
+if($_Code != 'GBK') $_String = _U2_Utf8_Gb($_String);
 $_Res = '';
 for($i=0; $i<strlen($_String); $i++)
 {
@@ -70,23 +70,29 @@ return $k;
 }
 function _U2_Utf8_Gb($_C)
 {
-$_String = '';
-if($_C < 0x80) $_String .= $_C;
-elseif($_C < 0x800)
-{
-$_String .= chr(0xC0 | $_C>>6);
-$_String .= chr(0x80 | $_C & 0x3F);
-}elseif($_C < 0x10000){
-$_String .= chr(0xE0 | $_C>>12);
-$_String .= chr(0x80 | $_C>>6 & 0x3F);
-$_String .= chr(0x80 | $_C & 0x3F);
-} elseif($_C < 0x200000) {
-$_String .= chr(0xF0 | $_C>>18);
-$_String .= chr(0x80 | $_C>>12 & 0x3F);
-$_String .= chr(0x80 | $_C>>6 & 0x3F);
-$_String .= chr(0x80 | $_C & 0x3F);
-}
-return mb_convert_encoding($_String, 'GB2312','UTF-8' );
+	$_String = '';
+	if($_C < 0x80) $_String .= $_C;
+	elseif($_C < 0x800)
+	{
+	$_String .= chr(0xC0 | $_C>>6);
+	$_String .= chr(0x80 | $_C & 0x3F);
+	}elseif($_C < 0x10000){
+	$_String .= chr(0xE0 | $_C>>12);
+	$_String .= chr(0x80 | $_C>>6 & 0x3F);
+	$_String .= chr(0x80 | $_C & 0x3F);
+	} elseif($_C < 0x200000) {
+	$_String .= chr(0xF0 | $_C>>18);
+	$_String .= chr(0x80 | $_C>>12 & 0x3F);
+	$_String .= chr(0x80 | $_C>>6 & 0x3F);
+	$_String .= chr(0x80 | $_C & 0x3F);
+	}
+	if (function_exists("iconv")) {
+		return iconv('GBK','UTF-8' ,$_String);
+	}elseif (function_exists("mb_convert_encoding")){
+		return mb_convert_encoding($_String, 'GBK','UTF-8' );
+	}else{
+		return $_String;
+	}
 }
 function _Array_Combine($_Arr1, $_Arr2)
 {

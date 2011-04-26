@@ -17,6 +17,7 @@
  */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 uses("message");
+$smarty->flash_layout = "flash";
 $companymessage = new Messages();
 if (isset($_POST['companyid']) && !empty($_POST['feed']) && !empty($pb_user)) {
 	$vals = $_POST['feed'];
