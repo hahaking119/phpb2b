@@ -1,4 +1,13 @@
 <?php
+/**
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
+ * 
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
+ */
 function bread_compare($a, $b){
     if ($a['displayorder'] == $b['displayorder']) return 0;
     return ($a['displayorder'] < $b['displayorder']) ? -1 : 1;

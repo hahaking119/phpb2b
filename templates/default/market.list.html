@@ -15,14 +15,14 @@
                 	<{foreach from=$Items name=market item=item}>
 					<li>
 						<{if $item.picture}><a href="market/detail.php?id=<{$item.id}>"><img src="<{$item.image}>" alt="<{$item.name}>" class="fl" /></a><{/if}>
-						<h2 class="fl"><a href="market/detail.php?id=<{$item.id}>" title=""><{$item.name}></a><em>(<{$AreaItems[1][$item.area_id1]}> <{$AreaItems[2][$item.area_id2]}>)</em></h2>
-						<p class="fl"><{$_introduction}><{$item.content|strip_tags|truncate:100}></p>
+                        <div class="fl">
+						<h2><a href="market/detail.php?id=<{$item.id}>" title=""><{$item.name}></a><{if $item.area_id1}><em>(<{$AreaItems[1][$item.area_id1]}><{$AreaItems[2][$item.area_id2]}>)</em><{/if}></h2>
+						<p><{$_introduction}><{$item.digest}></p>
+                        </div>
+                        <hr class="hr_dashed" />
 					</li>
                     <{/foreach}>
 				</ul>
-				 <div class="title_bar_s4">
-                    <h4><{$SearchAmount}><{if $Amount}>:<{$Amount}><{/if}></h4>
-                 </div>
 				<div><{$ByPages}></div>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
             </div>
 			<div class="job_good_c cb">
 				<ul>
-                	<{company row=12 industryid=1}>
+                	<{company row=12 industryid="`$IndustryIds`"}>
 					<li><a href="[link:title]" title="[field:fulltitle]" target="_blank">[field:title]</a></li>
                     <{/company}>
 				</ul>
@@ -45,11 +45,11 @@
 		<div class="job_good mart_good">
             <div class="title_bar_s4">
             <span class="title_top_s4"><span></span></span>
-             <h3><{$_industry_recommended}></h3>
+             <h3><{$_area_recommended}></h3>
             </div>
 			<div class="job_good_c cb">
 				<ul>
-                	<{company row=12 areaid=1}>
+                	<{company row=12 areaid="`$AreaIds`"}>
 					<li><a href="[link:title]" title="[field:fulltitle]" target="_blank">[field:title]</a></li>
                     <{/company}>
 				</ul>

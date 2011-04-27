@@ -1,25 +1,19 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: detail.php 433 2009-12-26 13:47:01Z cht117 $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'detail');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
 uses("market");
 $market = new Markets();
+$viewhelper->setTitle(L("market", "tpl"));
 $viewhelper->setPosition(L("market", "tpl"), "market/");
 if (isset($_GET['id'])) {
 	$id = intval($_GET['id']);
@@ -30,6 +24,7 @@ if (!empty($item)) {
 	$viewhelper->setMetaDescription($item['content']);
 	$item['content'] = nl2br($item['content']);
 	$viewhelper->setTitle($item['name']);
+	$viewhelper->setPosition($item['name']);
 	if (isset($item['status'])) {
 		if($item['status']==0){
 			$item['content'] = L('under_checking', 'msg', $item['name']);

@@ -1,7 +1,3 @@
-function redirect(url) {
-	window.location.replace(url);
-}
-
 function checkAll(type, form, value, checkall) {
 	var checkall = checkall ? checkall : 'chkall';
 	for(var i = 0; i < form.elements.length; i++) {

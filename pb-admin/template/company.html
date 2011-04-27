@@ -1,21 +1,20 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 公司库</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_yellow_page}></p>
 </div>
 <div id="rightTop"> 
-    <h3>公司库</h3> 
+    <h3><{$_yellow_page}></h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="company.php">管理</a></li>
-        <li><a href="company.php?do=edit">添加/编辑</a></li>
-        <li><a href="companytype.php">类型</a></li>
+		<li><a class="btn1" href="company.php"><span><{$_management}></span></a></li>
+        <li><a href="company.php?do=edit"><{$_add_or_edit}></a></li>
+        <li><a href="companytype.php"><{$_types}></a></li>
+        <li><a href="albumtype.php">相册分类</a></li>
     </ul>
 </div>
-<div class="mrightTop"> 
+<div class="mrightTop">
+	<div class="fontl">
+		<{if $TotalAmount>0}><span><a href="<{$smarty.server.PHP_SELF}>?do=search&status=0">待审核</a><em>(<{$TotalAmount}>)</em></span><{/if}>
+	</div>
     <div class="fontr"> 
         <form name="search_frm" id="SearchFrm" method="get"> 
         <input type="hidden" name="do" value="search" />
@@ -24,13 +23,13 @@ body {background: #fcfdff}
 					<option value="0">企业类型</option>
                 	<{html_options options=$CompanyTypes selected=$smaty.get.companytype}>
               	</select>
-                <select class="querySelect" name="companystatus" id="companystatus">
-					<option value="0">审核状态</option>
-                    <{html_options options=$CheckStatus selected=$smaty.get.companystatus}>
+                <select class="querySelect" name="status" id="companystatus">
+					<option>审核状态</option>
+                    <{html_options options=$CheckStatus selected=$smaty.get.status}>
                 </select>
-				用户名: <input class="queryInput" type="text" name="member[username]" value="<{$smarty.get.member.username}>" /> 
-				公司名: <input class="queryInput" type="text" name="company[name]" value="<{$smarty.get.company.name}>" />
-                <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
+				<{$_cp_username_n}><input class="queryInput" type="text" name="member[username]" value="<{$smarty.get.member.username}>" /> 
+				公司名：<input class="queryInput" type="text" name="company[name]" value="<{$smarty.get.company.name}>" />
+                <input type="submit" name="search" id="Search" class="formbtn" value="<{$_searching}>" /> 
             </div> 
         </form> 
     </div> 
@@ -38,23 +37,30 @@ body {background: #fcfdff}
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">公司名称</label></td>
-		  <td><span>用户名</span></td>
-		  <td>信用指数</td>
-		  <td><span>审核状态</span></td>
-		  <td><span>所在地区</span></td>
-		  <td><span>所属行业</span></td>
-		  <td class="handler">操作</td>
-		</tr>
-		<{foreach from=$Items item=item}>
 		<input type="hidden" name="member_id[]" value="<{$item.member_id}>">
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th><label for="idAll">公司名称</label></th>
+		  <th><{$_cp_username}></th>
+		  <th>信用指数</th>
+		  <th>审核状态</th>
+		  <th>所在地区</th>
+		  <th>所属行业</th>
+		  <th><{$_action}></th>
+		</tr>
+    </thead>
+    <tfoot>
+		<tr>
+		  <th colspan="8"><div class="pageLinks"><{$ByPages}></div></th>
+		</tr>
+    <tfoot>
+    <tbody>
+		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
-		  <td><label for="item_<{$item.id}>"><{$item.CompanyName|truncate:35}></label><{if $item.if_commend==1}><img src="../images/recommend.gif" /><{/if}></td>
+		  <td><label for="item_<{$item.id}>"><{$item.CompanyName}></label><{if $item.if_commend==1}><span class="icon-commend"></span><{/if}></td>
 		  <td><a href="member.php?do=edit&id=<{$item.member_id}>" title="<{$item.NickName}>"><{$item.username}></a>[<{$AllMembergroups[$item.membergroup_id]}>]</td>
 		  <td><{$item.cache_credits}></td>
 		  <td><{$CheckStatus[$item.CompanyStatus]}></td>
@@ -62,27 +68,27 @@ body {background: #fcfdff}
 		  <td><{$Industries[1][$item.industry_id1]}><{$Industries[2][$item.industry_id2]}></td>
 		  <td class="handler">
            <ul id="handler_icon">
-            <li><a class="btn_browse" href="<{$SiteUrl}>space.php?userid=<{$item.space_name}>" target="_blank" title="预览主页">预览</a></li>
-            <li><a class="btn_edit" href="company.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
+            <li><a class="btn_browse" href="<{$SiteUrl}>space.php?userid=<{$item.space_name}>" target="_blank" title="<{$_preview}>主页"><{$_preview}></a></li>
+            <li><a class="btn_edit" href="company.php?do=edit&id=<{$item.id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
           </ul>  
          
 		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="8">没有符合条件的记录</td>
+		  <td colspan="8"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="删除" class="formbtn batchButton" onclick="return confirmAction('确定删除吗?');"/>
+      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton" onclick="return confirmAction('确定<{$_delete}>吗?');"/>
       <input type="submit" name="check[in]" value="审核通过" class="formbtn batchButton"/>
       <input type="submit" name="check[out]" value="审核无效" class="formbtn batchButton"/>
-      <input type="submit" name="recommend" value="企业推荐" class="formbtn batchButton"/>
+      <input type="submit" name="recommend" value="企业<{$_commend}>" class="formbtn batchButton"/>
 	  <select name="set_group" id="SetGroup" class="actionsel" onchange="$('#ListFrm').submit()">
-	  <option value="0">请选择会员组</option>
+	  <option value="0"><{$_pls_select}><{$_membergroup}></option>
 	  <optgroup label="会员组">
       <{foreach from=$Membergroups item=groupname key=key}>
 	  	<option value="<{$key}>"><{$groupname}></option>
@@ -90,7 +96,6 @@ body {background: #fcfdff}
 	  </optgroup>
 	  </select>
     </div>
-    <div class="pageLinks"><{$ByPages}></div>
     <div class="clear"/>
     </div>
 	</form>

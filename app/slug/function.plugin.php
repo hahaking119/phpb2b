@@ -1,28 +1,20 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: function.plugin.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1024 $
  */
 function smarty_function_plugin($params){
-	global $pdb, $tb_prefix;
-	global $smarty, $time_stamp;
+	global $pdb, $tb_prefix, $smarty;
 	extract($params);
 	if (isset($name)) {
-		$plugin_var = $pdb->GetOne("SELECT pluginvar FROM {$tb_prefix}plugins WHERE available=1 AND name='{$name}'");
-		if (!empty($plugin_var)) {
-			$plugin_var = unserialize($plugin_var);
+		$plugin_vars = $pdb->GetRow("SELECT id,pluginvar FROM {$tb_prefix}plugins WHERE available=1 AND name='{$name}'");
+		if (!empty($plugin_vars)) {
+			$plugin_var = unserialize($plugin_vars['pluginvar']);
 			extract($plugin_var);
 			$smarty->assign($plugin_var);
 		}else{

@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: menu.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 $menus = array(
     'dashboard' => array(
@@ -69,7 +62,7 @@ $menus = array(
             ),
 			 'auth' => array(
                 'text'  => L("secure_set", "tpl"),
-                'url'   => 'setting.php?do=auth',
+                'url'   => 'setting.php?do=secure',
             ),
 			 'industry' => array(
                 'text'  => L("industry", "tpl"),
@@ -130,9 +123,17 @@ $menus = array(
                 'text'  => L("industry_news", "tpl"),
                 'url'   => 'news.php',
             ),
+            'standard' => array(
+                'text'  => L('cp_standard', 'tpl'),
+                'url'   => 'standard.php',
+            ),
             'tag' => array(
                 'text'  => L("tag_center", "tpl"),
                 'url'   => 'tag.php',
+            ),
+            'keyword' => array(
+                'text'  => L("keyword_center", "tpl"),
+                'url'   => 'keyword.php',
             ),
             'companynews' => array(
                 'text'  => L("companynews", "tpl"),
@@ -211,9 +212,17 @@ $menus = array(
         'text'      => L("templet", "tpl"),
         'default'   => 'skin',
         'children'  => array(
+			 'language' => array(
+                'text'  => L("templet_language", "tpl"),
+                'url'   => 'language.php',
+            ),
 			 'skin' => array(
                 'text'  => L("company_templet", "tpl"),
                 'url'   => 'templet.php?type=user',
+            ),
+			 'system' => array(
+                'text'  => L("system_templet", "tpl"),
+                'url'   => 'templet.php?type=system',
             ),
 			 'nav' => array(
                 'text'  => L("nav", "tpl"),
@@ -229,7 +238,7 @@ $menus = array(
                 'text'  => L("cache", "tpl"),
                 'url'   => 'htmlcache.php',
             ),
-			 'log' => array(
+			'log' => array(
                 'text'  => L("log_browse", "tpl"),
                 'url'   => 'log.php',
             ),
@@ -237,19 +246,19 @@ $menus = array(
                 'text'  => L("database", "tpl"),
                 'url'   => 'db.php',
             ),
-			 'passport' => array(
+			'passport' => array(
                 'text'  => L("passport", "tpl"),
                 'url'   => 'passport.php',
             ),
-			 'checkfile' => array(
+			'checkfile' => array(
 			     'text'  =>L("check_file", "tpl"),
 				 'url'   =>'checkfile.php',
 		    ),
-            'payment' => array(
+           'payment' => array(
                 'text'  => L("payment_method", "tpl"),
                 'url'   => 'payment.php',
             ),
-			 'note' => array(
+			'note' => array(
                 'text'  => L("my_notes", "tpl"),
                 'url'   => 'adminnote.php',
             ),
@@ -267,6 +276,10 @@ $menus = array(
                 'text'  => L("options", "tpl"),
                 'url'   => 'type.php',
             ),
+			 'trust' => array(
+                'text'  => L("trusts", "tpl"),
+                'url'   => 'trust.php',
+            ),
         ),
     ),
     'plugins' => array(
@@ -274,7 +287,7 @@ $menus = array(
         'default'   => 'plugin',
         'children'  => array(
             'plugin'   => array(
-                'text'  => L("manage", "tpl"),
+                'text'  => L("management", "tpl"),
                 'url'   => 'plugin.php',
             ),
         ),

@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: newstype.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 uses("newstype");
@@ -28,17 +21,27 @@ $tpl_file = "newstype";
 if (isset($_POST['save']) && !empty($_POST['data']['newstype']['name'])) {
 	$vals = array();
 	$vals = $_POST['data']['newstype'];
-	$vals['level_id'] = intval($pdb->GetOne("SELECT level_id+1 AS new_levelid FROM {$tb_prefix}newstypes WHERE id='".$vals['parent_id']."'"));
+	$vals['level_id'] = intval($pdb->GetOne("SELECT level_id AS new_levelid FROM {$tb_prefix}newstypes WHERE id='".$vals['parent_id']."'")+1);
 	if (!empty($_POST['id'])) {
 		$result = $newstype->save($vals, "update", $_POST['id']);
-	}else{
+	}elseif (!empty($vals['name'])){
 		$vals['created'] = $time_stamp;
-		$result = $newstype->save($vals);
+		$names = explode("\r\n", $vals['name']);
+		$tmp_name = array();
+		if (!empty($names)) {
+			foreach ($names as $val) {
+				$name = $val;
+				if(!empty($name)) $tmp_name[] = "('".$name."','".$vals['level_id']."','".$vals['parent_id']."','".$vals['created']."')";
+			}
+			$values = implode(",", $tmp_name);
+			$sql = "INSERT INTO {$tb_prefix}newstypes (name,level_id,parent_id,created) VALUES ".$values;
+			$result = $pdb->Execute($sql);
+		}
 	}
 	if (!$result) {
 		flash();
 	}
-	$cache->writeCache('newstype', 'newstype');
+	$cache->updateTypes();
 }
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
@@ -64,7 +67,8 @@ if (isset($_GET['do'])) {
 }
 $amount = $newstype->findCount(null, $conditions,"id");
 $page->setPagenav($amount);
-$newstype_list = $newstype->findAll("*", null, $conditions, "id DESC", $page->firstcount, $page->displaypg);
+$sql = "SELECT nt.*,(SELECT count(n.id)) AS news_amount FROM ".$tb_prefix."newstypes nt LEFT JOIN ".$tb_prefix."newses n ON n.type_id=nt.id GROUP BY nt.id ORDER BY nt.id DESC LIMIT $page->firstcount,$page->displaypg";
+$newstype_list = $pdb->GetArray($sql);
 setvar("Items",$newstype_list);
 uaAssign(array("ByPages"=>$page->pagenav));
 if (isset($_POST['del']) && is_array($_POST['id'])) {

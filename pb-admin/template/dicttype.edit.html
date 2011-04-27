@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 行业词典</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; 行业词典</p>
 </div>
 <div id="rightTop"> 
     <h3>行业词典</h3> 
     <ul class="subnav">
-		<li><a href="dict.php">管理</a></li>
-        <li><a href="dicttype.php">类型</a></li>
-        <li><a class="btn1" href="dicttype.php?do=edit">添加/编辑</a></li>
+		<li><a href="dict.php"><{$_management}></a></li>
+        <li><a href="dicttype.php"><{$_types}></a></li>
+        <li><a class="btn1" href="dicttype.php?do=edit"><span><{$_add_or_edit}></span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -20,13 +15,21 @@ body {background: #fcfdff}
   <input type="hidden" name="id" value="<{$item.id}>" />
   <input type="hidden" name="page" value="<{$smarty.get.page}>" />
     <table class="infoTable">
+	    <{if $smarty.get.id}>
+      <input type="hidden" name="id" value="<{$smarty.get.id}>" />
+      <input type="hidden" name="page" value="<{$smarty.request.page}>" />
       <tr>
-        <th class="paddingT15"> 类型名称：</th>
-        <td class="paddingT15 wordSpacing5">          
-		<input class="infoTableInput2" name="data[dicttype][name]" value="<{$item.name}>" /></td>
+        <th class="paddingT15"> 分类名称：</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[dicttype][name]" value="<{$item.name}>" type="text" /><label class="field_notice">一级分类名称不要有符号出现</label>        </td>
       </tr>
+    <{else}>
+	      <tr>
+        <th class="paddingT15"> 分类名称：</th>
+        <td class="paddingT15 wordSpacing5"><textarea name="data[dicttype][name]" id="dataNames"></textarea><label class="field_notice">可以添加多个，一行代表一个分类,一级分类名称不要有符号</label></td>
+      </tr>
+    <{/if}>
       <tr>
-        <th class="paddingT15"> 显示顺序：</th>
+        <th class="paddingT15"> <{$_display_order}></th>
         <td class="paddingT15 wordSpacing5">          
 		<input class="infoTableInput2" name="data[dicttype][display_order]" value="<{$item.display_order|default:0}>" /></td>
       </tr>
@@ -42,15 +45,14 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="保存" />		</td>
+			<input class="formbtn" type="submit" name="save" value="<{$_save}>" />		</td>
       </tr>
     </table>
   </form>
 </div>
 <script>
-var parent_id = "<{$item.parent_id|default:0}>";
 jQuery(document).ready(function($) {
-	$("#DicttypeParentId option[value='"+parent_id+"']").attr("selected","selected")
+	$("#DicttypeParentId").val("<{$item.parent_id|default:0}>")
 })
 </script>
 <{include file="footer.html"}>

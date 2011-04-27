@@ -1,34 +1,32 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: logging.php 416 2009-12-26 13:31:08Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1285 $
  */
 define('CURSCRIPT', 'logging');
 require("libraries/common.inc.php");
 require("share.inc.php");
 require_once(LIB_PATH. "session_php.class.php");
-$session = new PbSessions(DATA_PATH. 'tmp/');
-uses("member","company","point");
+require(LIB_PATH. "validation.class.php");
 require(PHPB2B_ROOT. 'libraries/sendmail.inc.php');
-require(API_PATH.'passport.class.php');
+require(LIB_PATH.'passport.class.php');
+$session = new PbSessions();
+uses("member","company","point");
+$validate = new Validation();
 $passport = new Passports();
 $company = new Companies();
 $point = new Points();
 $member = new Members();
 $referer = "";
 capt_check("capt_logging");
+if (empty($_GET['forward'])) {
+	$_GET['forward'] = $_SERVER['HTTP_REFERER'];
+}
 if(isset($_POST['action']) && ($_POST['action']=="logging")){
 	if(!empty($_POST['data']['login_name']) && !empty($_POST['data']['login_pass'])){
 		unset($_SESSION['authnum_session']);
@@ -56,26 +54,26 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 					$goto_page = "office-room/pms.php";
 					break;
 				default:
-					$goto_page = URL;
+					$goto_page = URL."index.php";
 					break;
 			}
 			pheader('location: '.$goto_page);
 		}elseif ($checked == (-2) ) {
-			$errmsg = L('member_not_exists');
+			$member->validationErrors[] = L('member_not_exists');
 		}elseif ($checked == (-3)) {
-			$errmsg = L('login_pwd_false');
+			$member->validationErrors[] = L('login_pwd_false');
 		}elseif ($checked == (-4)) {
-			$errmsg = L('member_checking');
+			$member->validationErrors[] = L('member_checking');
 		}else {
-			$errmsg = L('login_faild');
+			$member->validationErrors[] = L('login_faild');
 		}
-		setvar("LoginError",$errmsg);
+		setvar("LoginError", $validate->show($member));
 	}
 }
 
 function ua_referer($default = '') {
 	global $referer;
-	$indexname = URL;
+	$indexname = URL."index.php";
 	$default = empty($default) ? $indexname : '';
 	$referer = pb_htmlspecialchar($referer);
 	if(!preg_match("/(\.php|[a-z]+(\-\d+)+\.html)/", $referer) || strpos($referer, 'logging.php')) {
@@ -93,6 +91,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "logout")){
 			usetcookie("admin", '');
 		}
 	}
+	$member->logOut();
 	$gopage = $referer;
 	if (!empty($_GET['forward'])) {
 		pheader("location:".$_GET['forward']);

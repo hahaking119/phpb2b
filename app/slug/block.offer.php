@@ -1,23 +1,16 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.offer.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1221 $
  */
 function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	if ($content === null) return;
-	global $rewrite_able;
+	global $_PB_CACHE;
 	$conditions[] = "t.status='1'";
 	//old version has no setting1,so @
 	@require(CACHE_PATH. "cache_setting1.php");
@@ -56,7 +49,7 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 					$conditions[] = "t.company_id>0";
 					break;
 				case 'commend':
-					$conditions[] = "t.if_commend=1";
+					$conditions[] = "t.if_commend>0";
 					break;
 				default:
 					break;
@@ -110,22 +103,28 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	}
 	$trade->setLimitOffset($row, $col);
 	$sql = "SELECT id,type_id,title as fulltitle,title,content,content as fullcontent,created,submit_time,picture FROM {$trade->table_prefix}trades t ".$trade->getCondition()."{$orderby}".$trade->getLimitOffset();
-	$result = $trade->dbstuff->GetArray($sql);
+	if ($_PB_CACHE['setting']['label_cache']) {
+		$result = $trade->dbstuff->CacheGetArray($sql);
+	}else{
+		$result = $trade->dbstuff->GetArray($sql);
+	}
 	$return = $style = $h3_style = $link_title = null;
 	$offer_typenames = $trade_controller->getTradeTypes();	
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
 			$style = null;
-			$dt = @getdate($result[$i]['created']);
-			$url = $trade_controller->rewrite($result[$i]['id'], $result[$i]['type_id'], $result[$i]['title'], $result[$i]['created']);
+			$url = $trade_controller->rewrite($result[$i]['id'], $result[$i]['type_id'], $result[$i]['title']);
 			$result[$i]['title'] = strip_tags($result[$i]['title']);
 			$result[$i]['content'] = strip_tags($result[$i]['content']);
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['title'] = utf_substr($result[$i]['title'], $params['titlelen']);
+	    		$result[$i]['title'] = mb_substr($result[$i]['title'], 0, $params['titlelen']);
 	    	}		
 	    	if (isset($params['infolen'])) {
-	    		$result[$i]['content'] = utf_substr($result[$i]['content'], $params['infolen']);
+	    		$result[$i]['content'] = mb_substr($result[$i]['content'], 0, $params['infolen']);
+	    	}
+	    	if (isset($params['titlestart'])) {
+	    		$result[$i]['title'] = $params['titlestart'].$result[$i]['title'];
 	    	}
 	    	if (isset($params['magic']))  {
 	    		if ($i==0) {
@@ -138,7 +137,7 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	    			$link_title = "<a href='{$url}'>".$result[$i]['title']."</a>";
 	    		}
 			}
-			$return.= str_replace(array("[field:title]", "[field:fulltitle]","[field:typename]", "[link:title]", "[field:id]", "[field:pubdate]", "[img:thumb]", "[img:src]", "[field:content]", "[field:style]", "[field:url]", "[field:typeid]"), array($result[$i]['title'], $result[$i]['fulltitle'],$offer_typenames[$result[$i]['type_id']], $url, $result[$i]['id'], @date("m/d", $result[$i]['submit_time']), "attachment/".$result[$i]['picture'].".small.jpg", "attachment/".$result[$i]['picture'], $result[$i]['content'], $style, $link_title, $result[$i]['type_id']), $content);
+			$return.= str_replace(array("[field:title]", "[field:fulltitle]","[field:typename]", "[link:title]", "[link:url]", "[field:id]", "[field:pubdate]", "[img:thumb]", "[img:src]", "[field:content]", "[field:style]", "[field:url]", "[field:typeid]"), array($result[$i]['title'], $result[$i]['fulltitle'], $offer_typenames[$result[$i]['type_id']], $url, '<a href="'.$url.'" title="'.$result[$i]['fulltitle'].'">'.$result[$i]['title'].'</a>',$result[$i]['id'], @date("m/d", $result[$i]['submit_time']), "attachment/".$result[$i]['picture'].".small.jpg", "attachment/".$result[$i]['picture'], $result[$i]['content'], $style, $link_title, $result[$i]['type_id']), $content);
 		}
 	}
 	return $return;

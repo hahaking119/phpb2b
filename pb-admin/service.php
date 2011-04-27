@@ -1,35 +1,68 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: service.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
-uses("service");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
 require("session_cp.inc.php");
-require(LIB_PATH. "typemodel.inc.php");
+require(LIB_PATH. "cache.class.php");
+uses("service","typeoption","setting");
 $page = new Pages();
+$cache = new Caches();
+$setting = new Settings();
+$typeoption = new Typeoption();
 $service = new Services();
 $conditions = null;
 $tpl_file = "service";
-setvar("Status", get_cache_type("common_status"));
-setvar("ServiceTypes", get_cache_type("service_type"));
+setvar("Status", $typeoption->get_cache_type("common_status"));
+setvar("ServiceTypes", $typeoption->get_cache_type("service_type"));
+
+if (isset($_POST['save_client'])) {
+	if (!empty($_POST['data']['setting1'])) {
+		$updated = $setting->replace($_POST['data']['setting1'], 1);
+		if($updated) {
+			$cache->writeCache("setting1", "setting1");
+			flash("success");
+		}
+	}
+	flash();
+}
+if (isset($_POST['save']) && !empty($_POST['data']['service'])) {
+	$vals = array();
+	$vals = $_POST['data']['service'];
+	$vals['modified'] = $time_stamp;
+	$result = $service->save($vals, "update", $_POST['id']);
+	if (!empty($vals['revert_content'])) {
+		$datas = array(
+		"actor"=>$adminer_info['last_name'],
+		"action"=> L("feed_revert", "tpl"),
+		"do"=> L("feed_problem", "tpl"),
+		"subject"=> '<a href="service/detail.php?id='.$_POST['id'].'">'.$vals['title'].'</a>',
+		);
+		$sql = "INSERT INTO {$tb_prefix}feeds (type_id,type,member_id,username,data,created,modified,revert_date) VALUE ('1','service',".$current_adminer_id.",'".$adminer_info['last_name']."','".serialize($datas)."',".$time_stamp.",".$time_stamp.",".$time_stamp.")";
+		$pdb->Execute($sql);
+	}
+	if (!$result) {
+		flash();
+	}
+}
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
 	if (!empty($_GET['id'])) {
 		$id = intval($_GET['id']);
+	}
+	if ($do == "client") {
+		$item = $setting->getValues();
+		$tpl_file = "service.client";
+		setvar("item", $item);
+		template($tpl_file);
+		exit;
 	}
 	if ($do == "edit" && !empty($id)) {
 		$sql = "SELECT * FROM {$tb_prefix}services WHERE id=".$id;
@@ -51,11 +84,6 @@ if (isset($_GET['do'])) {
 			$conditions[] = "Service.title like '%".$_GET['q']."%' OR Service.content like '%".$_GET['q']."%'";
 		}
 	}
-}
-if (isset($_POST['save']) && !empty($_POST['data']['service'])) {
-	$vals = array();
-	$vals = $_POST['data']['service'];
-	$service->save($vals, "update", $_POST['id']);
 }
 $amount = $service->findCount(null, $conditions,"Service.id");
 $page->setPagenav($amount);

@@ -1,106 +1,122 @@
-<?php
-/** 
- * xml2array() will convert the given XML text to an array in the XML structure. 
- * Link: http://www.bin-co.com/php/scripts/xml2array/ 
- * Arguments : $contents - The XML text 
- *                $get_attributes - 1 or 0. If this is 1 the function will get the attributes as well as the tag values - this results in a different array structure in the return value. 
- *                $priority - Can be 'tag' or 'attribute'. This will change the way the resulting array sturcture. For 'tag', the tags are given more importance. 
- * Return: The parsed XML in an array form. Use print_r() to see the resulting array structure. 
- * Examples: $array =  xml2array(file_get_contents('feed.xml')); 
- *              $array =  xml2array(file_get_contents('feed.xml', 1, 'attribute')); 
- */ 
-function xml2array(&$xml, $isnormal = FALSE) {
-	$xml_parser = new XMLparse($isnormal);
-	$data = $xml_parser->parse($xml);
-	$xml_parser->destruct();
-	return $data;
-}
+<?php 
+################################################################################### 
+# 
+# XML Library, by Keith Devens, version 1.2b 
+# http://keithdevens.com/software/phpxml 
+# 
+# This code is Open Source, released under terms similar to the Artistic License. 
+# Read the license at http://keithdevens.com/software/license 
+# 
+################################################################################### 
 
-function array2xml($arr, $htmlon = FALSE, $isnormal = FALSE, $level = 1) {
-	$s = $level == 1 ? "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n<root>\r\n" : '';
-	$space = str_repeat("\t", $level);
-	foreach($arr as $k => $v) {
-		if(!is_array($v)) {
-			$s .= $space."<item id=\"$k\">".($htmlon ? '<![CDATA[' : '').$v.($htmlon ? ']]>' : '')."</item>\r\n";
-		} else {
-			$s .= $space."<item id=\"$k\">\r\n".array2xml($v, $htmlon, $isnormal, $level + 1).$space."</item>\r\n";
-		}
-	}
-	$s = preg_replace("/([\x01-\x08\x0b-\x0c\x0e-\x1f])+/", ' ', $s);
-	return $level == 1 ? $s."</root>" : $s;
-}
+################################################################################### 
+# XML_unserialize: takes raw XML as a parameter (a string) 
+# and returns an equivalent PHP data structure 
+################################################################################### 
+function & XML_unserialize(&$xml){ 
+    $xml_parser = &new XML(); 
+    $data = &$xml_parser->parse($xml); 
+    $xml_parser->destruct(); 
+    return $data; 
+} 
+################################################################################### 
+# XML_serialize: serializes any PHP data structure into XML 
+# Takes one parameter: the data to serialize. Must be an array. 
+################################################################################### 
+function & XML_serialize(&$data, $level = 0, $prior_key = NULL){ 
+    if($level == 0){ ob_start(); echo '<?xml version="1.0" ?>',"\n"; } 
+    while(list($key, $value) = each($data)) 
+        if(!strpos($key, ' attr')) #if it's not an attribute 
+            #we don't treat attributes by themselves, so for an empty element 
+            # that has attributes you still need to set the element to NULL 
 
-class XMLparse {
+            if(is_array($value) and array_key_exists(0, $value)){ 
+                XML_serialize($value, $level, $key); 
+            }else{ 
+                $tag = $prior_key ? $prior_key : $key; 
+                echo str_repeat("\t", $level),'<',$tag; 
+                if(array_key_exists("$key attr", $data)){ #if there's an attribute for this element 
+                    while(list($attr_name, $attr_value) = each($data["$key attr"])) 
+                        echo ' ',$attr_name,'="',htmlspecialchars($attr_value),'"'; 
+                    reset($data["$key attr"]); 
+                } 
 
-	var $parser;
-	var $document;
-	var $stack;
-	var $data;
-	var $last_opened_tag;
-	var $isnormal;
-	var $attrs = array();
-	var $failed = FALSE;
+                if(is_null($value)) echo " />\n"; 
+                elseif(!is_array($value)) echo '>',htmlspecialchars($value),"</$tag>\n"; 
+                else echo ">\n",XML_serialize($value, $level+1),str_repeat("\t", $level),"</$tag>\n"; 
+            } 
+    reset($data); 
+    if($level == 0){ $str = &ob_get_contents(); ob_end_clean(); return $str; } 
+} 
+################################################################################### 
+# XML class: utility class to be used with PHP's XML handling functions 
+################################################################################### 
+class XML{ 
+    var $parser;   #a reference to the XML parser 
+    var $document; #the entire XML structure built up so far 
+    var $parent;   #a pointer to the current parent - the parent will be an array 
+    var $stack;    #a stack of the most recent parent at each nesting level 
+    var $last_opened_tag; #keeps track of the last tag opened. 
 
-	function __construct($isnormal) {
-		$this->XMLparse($isnormal);
-	}
-
-	function XMLparse($isnormal) {
-		$this->isnormal = $isnormal;
-		$this->parser = xml_parser_create('ISO-8859-1');
-		xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
-		xml_set_object($this->parser, $this);
-		xml_set_element_handler($this->parser, 'open','close');
-		xml_set_character_data_handler($this->parser, 'data');
-	}
-
-	function destruct() {
-		xml_parser_free($this->parser);
-	}
-
-	function parse(&$data) {
-		$this->document = array();
-		$this->stack	= array();
-		return xml_parse($this->parser, $data, true) && !$this->failed ? $this->document : '';
-	}
-
-	function open(&$parser, $tag, $attributes) {
-		$this->data = '';
-		$this->failed = FALSE;
-		if(!$this->isnormal) {
-			if(isset($attributes['id']) && !is_string($this->document[$attributes['id']])) {
-				$this->document  = &$this->document[$attributes['id']];
-			} else {
-				$this->failed = TRUE;
-			}
-		} else {
-			if(!isset($this->document[$tag]) || !is_string($this->document[$tag])) {
-				$this->document  = &$this->document[$tag];
-			} else {
-				$this->failed = TRUE;
-			}
-		}
-		$this->stack[] = &$this->document;
-		$this->last_opened_tag = $tag;
-		$this->attrs = $attributes;
-	}
-
-	function data(&$parser, $data) {
-		if($this->last_opened_tag != NULL) {
-			$this->data .= $data;
-		}
-	}
-
-	function close(&$parser, $tag) {
-		if($this->last_opened_tag == $tag) {
-			$this->document = $this->data;
-			$this->last_opened_tag = NULL;
-		}
-		array_pop($this->stack);
-		if($this->stack) {
-			$this->document = &$this->stack[count($this->stack)-1];
-		}
-	}
-
-}
+    function XML(){ 
+         $this->parser = &xml_parser_create(); 
+        xml_parser_set_option(&$this->parser, XML_OPTION_CASE_FOLDING, false); 
+        xml_set_object(&$this->parser, &$this); 
+        xml_set_element_handler(&$this->parser, 'open','close'); 
+        xml_set_character_data_handler(&$this->parser, 'data'); 
+    } 
+    function destruct(){ xml_parser_free(&$this->parser); } 
+    function & parse(&$data){
+        $this->document = array(); 
+        $this->stack    = array(); 
+        $this->parent   = &$this->document; 
+        $return = xml_parse(&$this->parser, &$data, true);
+        if ($return) {
+        	return $this->document;
+        }else{
+        	return NULL; 
+        }
+    } 
+    function open(&$parser, $tag, $attributes){ 
+        $this->data = ''; #stores temporary cdata 
+        $this->last_opened_tag = $tag; 
+        if(is_array($this->parent) and array_key_exists($tag,$this->parent)){ #if you've seen this tag before 
+            if(is_array($this->parent[$tag]) and array_key_exists(0,$this->parent[$tag])){ #if the keys are numeric 
+                #this is the third or later instance of $tag we've come across 
+                $key = count_numeric_items($this->parent[$tag]); 
+            }else{ 
+                #this is the second instance of $tag that we've seen. shift around 
+                if(array_key_exists("$tag attr",$this->parent)){ 
+                    $arr = array('0 attr'=>&$this->parent["$tag attr"], &$this->parent[$tag]); 
+                    unset($this->parent["$tag attr"]); 
+                }else{ 
+                    $arr = array(&$this->parent[$tag]); 
+                } 
+                $this->parent[$tag] = &$arr; 
+                $key = 1; 
+            } 
+            $this->parent = &$this->parent[$tag]; 
+        }else{ 
+            $key = $tag; 
+        } 
+        if($attributes) $this->parent["$key attr"] = $attributes; 
+        $this->parent  = &$this->parent[$key]; 
+        $this->stack[] = &$this->parent; 
+    } 
+    function data(&$parser, $data){ 
+        if($this->last_opened_tag != NULL) #you don't need to store whitespace in between tags 
+            $this->data .= $data; 
+    } 
+    function close(&$parser, $tag){ 
+        if($this->last_opened_tag == $tag){ 
+            $this->parent = $this->data; 
+            $this->last_opened_tag = NULL; 
+        } 
+        array_pop($this->stack); 
+        if($this->stack) $this->parent = &$this->stack[count($this->stack)-1]; 
+    } 
+} 
+function count_numeric_items(&$array){ 
+    return is_array($array) ? count(array_filter(array_keys($array), 'is_numeric')) : 0; 
+} 
 ?>

@@ -1,25 +1,20 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: tradetype.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
 uses("tradetype");
 require(LIB_PATH. "cache.class.php");
+require(LIB_PATH. "file.class.php");
 $cache = new Caches();
+$file = new Files();
 $conditions = null;
 $tradetype = new Tradetypes();
 $tpl_file = "offertype";
@@ -28,7 +23,7 @@ if (isset($_POST['del']) && !empty($_POST['id'])) {
 	if (!$result) {
 		flash();
 	}else{
-		$cache->writeCache("offertype","offertype");
+		$cache->updateTypes();
 	}
 }
 if (isset($_POST['update'])) {
@@ -36,7 +31,7 @@ if (isset($_POST['update'])) {
 		$type_count = count($_POST['tid']);
 		for($i=0; $i<$type_count; $i++){
 			if (!empty($_POST['name'][$i])) {
-				$pdb->Execute("UPDATE {$tb_prefix}tradetypes SET name='".$_POST['name'][$i]."',display_order='".$_POST['display_order'][$i]."' WHERE id=".$_POST['tid'][$i]);
+				$pdb->Execute("UPDATE {$tb_prefix}tradetypes SET name='".$_POST['name'][$i]."',display_order='".$_POST['display_order'][$i]."',id=".$_POST['tid'][$i]." WHERE id=".$_POST['tid'][$i]);
 			}
 		}
 		$name_count = count($_POST['name']);
@@ -49,7 +44,7 @@ if (isset($_POST['update'])) {
 				}
 			}
 		}
-		$cache->writeCache("offertype", "offertype");
+		$cache->updateTypes();
 		flash("success");;
 	}
 }
@@ -64,9 +59,11 @@ if(isset($_POST['save'])){
 	if(!$result){
 		flash();
 	}else{
-		$cache->writeCache("tradetype","tradetype");
+		$cache->updateTypes();
 	}
 }
+$fileststus = $file->safe_glob("../templates/default/offer.list*.html");
+setvar("OfferListTemplates", $fileststus);
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
 	if (!empty($_GET['id'])) {
@@ -84,7 +81,7 @@ if (isset($_GET['do'])) {
 		if (!$result) {
 			flash();
 		}else{
-			$cache->writeCache("offertype","offertype");
+			$cache->updateTypes();
 		}
 	}
 }

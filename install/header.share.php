@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: header.share.php 571 2009-12-28 12:00:59Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 $steps = array(
 '1'=>$_software_intro,
@@ -29,16 +22,16 @@ $steps = array(
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset;?>">
-<title><?php echo $steps[$step];?> - PHPB2B Athena <?php echo $_install_quide;?></title>
+<title><?php echo $steps[$step];?> - <?php echo $_software_name;?><?php echo $_install_quide;?></title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="../scripts/jquery.js"></script>
-<script language="JavaScript" src="../scripts/install.js"></script>
-<script language="JavaScript" src="../scripts/pngfix.js"></script>
+<script language="JavaScript" src="../scripts/install.js" charset="<?php echo $charset;?>"></script>
 </head>
 <body>
 <div id="main">
-<div id="ads">- <?php echo $_b2b_market_system;?></div>
-<div id="top"><a href="http://www.phpb2b.com/" target="_blank"><?php echo $_official_site;?></a> | <a href="http://www.phpb2b.com/bbs/" target="_blank"><?php echo $_official_community;?></a></div>
+<div id="ads">- <?php echo $_software_name.$_b2b_market_system;?></div>
+<div id="top"><a href="http://www.phpb2b.com/" target="_blank"><?php echo $_official_site;?></a> | <a href="http://bbs.phpb2b.com/" target="_blank"><?php echo $_official_community;?></a></div>
+	<div id="step-title"><?php echo $_install_step;?></div>
   <div id="left">
     <ul>
 	<?php

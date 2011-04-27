@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: googlesitemap
-Plugin URI: 
-Description: 
-Version: 1.1
-Author: PHPB2B
-Author URI: http://www.phpb2b.com/
+The Name: 企业名片
+The URI: http://www.phpb2b.com/
+Description: 通过flash展示企业名片，调用方法：<{plugin name=\"card\"}>
+Version: 1.0.0
+Author: PB_TEAM
+Author URI: http://www.phpb2b.com
 */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $pb_plugin_name = "googlesitemap";//必须的参数，即为文件夹的名称
@@ -18,9 +18,19 @@ if (isset($_POST['save'])) {
 	if(empty($_POST['pluginvar']['lastmod'])){
 		$_POST['pluginvar']['lastmod'] = date("Y-m-d H:i:s");
 	}
-	buildsitemap($_POST['pluginvar']['lastmod']);
+	buildsitemap($_POST['pluginvar']['lastmod'], '', $_POST['pluginvar']['filename']);
+	if ($_POST['pingnow'] == 1 && function_exists("curl_init")) {
+		$ch = curl_init();
+		$ping_url = "www.google.com/webmasters/tools/ping?sitemap=".URL.$_POST['pluginvar']['filename'];
+		$timeout = 10; // set to zero for no timeout
+		curl_setopt ($ch, CURLOPT_URL, urlencode($ping_url));
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		$handles = curl_exec($ch);
+		curl_close($ch);
+	}
 }
-function buildsitemap($lastmod,$encoding = '') {
+function buildsitemap($lastmod,$encoding = '', $filename = 'sitemap.xml') {
 	/*****************
 	* $loc			url地址 符号要转义
 	符号 	& 	&amp;
@@ -33,7 +43,7 @@ function buildsitemap($lastmod,$encoding = '') {
 	* $priority		重要性 0.1-1.0之间
 	*******************/
 	$s='';
-	$filename = PHPB2B_ROOT."sitemap.xml";
+	$filename = PHPB2B_ROOT.$filename;
 	if(empty($encoding)){
 		$encoding = "UTF-8";
 	}

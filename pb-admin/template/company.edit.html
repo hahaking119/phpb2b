@@ -1,18 +1,14 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 公司库</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_yellow_page}></p>
 </div>
 <div id="rightTop"> 
-    <h3>公司库</h3> 
+    <h3><{$_yellow_page}></h3> 
     <ul class="subnav">
-		<li><a href="company.php">管理</a></li>
-        <li><a class="btn1" href="company.php?do=edit">添加/编辑</a></li>
-        <li><a href="companytype.php">类型</a></li>
+		<li><a href="company.php"><{$_management}></a></li>
+        <li><a class="btn1" href="company.php?do=edit"><span><{$_add_or_edit}></span></a></li>
+        <li><a href="companytype.php"><{$_types}></a></li>
+        <li><a href="albumtype.php">相册分类</a></li>
     </ul>
 </div>
 <div class="info">
@@ -27,7 +23,7 @@ body {background: #fcfdff}
       <{if $smarty.get.id}>
       <input type="hidden" name="id" value="<{$smarty.get.id}>">
       <tr>
-        <th class="paddingT15"> 用户名：</th>
+        <th class="paddingT15"> <{$_cp_username_n}></th>
         <td class="paddingT15 wordSpacing5"><{$item.username}></td>
       </tr>
       <tr>
@@ -36,16 +32,16 @@ body {background: #fcfdff}
       </tr>
       <tr>
         <th class="paddingT15"> 顶级域名支持：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[company][topleveldomain]" value="<{$item.topleveldomain}>" /><label class="field_notice">如：www.phpb2b.com，必须先做好相关<a href="setting.php?do=functions">设置</a>及解析</label></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[company][topleveldomain]" value="<{$item.topleveldomain}>" /><label class="field_notice">如：www.phpb2b.com，必须先做好相关<a href="setting.php?do=functions"><{$_setting}></a>及解析</label></td>
       </tr>
       <{else}>
       <tr>
-        <th class="paddingT15"> 用户名：</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[username]" value="" /><label class="field_notice">用户名</label></td>
+        <th class="paddingT15"> <{$_cp_username_n}></th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[username]" value="" /><label class="field_notice"><{$_cp_username}></label></td>
       </tr>
       <{/if}>
       <tr>
-        <th class="paddingT15"> 行业类别：</th>
+        <th class="paddingT15"> <{$_in_industry}></th>
         <td class="paddingT15 wordSpacing5">
         <span id="dataIndustry">
 					<select name="data[company][industry_id1]" id="dataMarketIndustryId1" class="level_1" style="width:120px;" ></select>
@@ -55,7 +51,7 @@ body {background: #fcfdff}
         </td>
       </tr>
       <tr>
-        <th class="paddingT15"> 所在地区：</th>
+        <th class="paddingT15"> <{$_in_area}></th>
         <td class="paddingT15 wordSpacing5">
 			<span id="dataArea">
 						<select name="data[company][area_id1]" id="dataMarketAreaId1" class="level_1" style="width:120px;" ></select>
@@ -77,7 +73,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="保存" />
+			<input class="formbtn" type="submit" name="save" value="<{$_save}>" />
 		</td>
       </tr>
     </table>
@@ -85,6 +81,7 @@ body {background: #fcfdff}
 </div>
 <script>
 var cache_path = "../";
+var app_language = '<{$AppLanguage}>';
 var area_id1 = <{$item.area_id1|default:0}> ;
 var area_id2 = <{$item.area_id2|default:0}> ;
 var area_id3 = <{$item.area_id3|default:0}> ;
@@ -92,7 +89,7 @@ var industry_id1 = <{$item.industry_id1|default:0}> ;
 var industry_id2 = <{$item.industry_id2|default:0}> ;
 var industry_id3 = <{$item.industry_id3|default:0}> ;
 </script>
-<script src="../scripts/multi_select.js"></script>
+<script src="../scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="../scripts/script_area.js"></script>
 <script src="../scripts/script_industry.js"></script>
 <{editor type="tiny_mce"}>

@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 展会信息</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_fair}></p>
 </div>
 <div id="rightTop"> 
-    <h3>展会信息</h3> 
+    <h3><{$_fair}></h3> 
     <ul class="subnav">
-		<li><a href="fair.php">管理</a></li>
-		<li><a class="btn1" href="fairtype.php">分类</a></li>
-        <li><a href="fairtype.php?do=edit">添加/编辑</a></li>
+		<li><a href="fair.php"><{$_management}></a></li>
+		<li><a class="btn1" href="fairtype.php"><span><{$_sorts}></span></a></li>
+        <li><a href="fairtype.php?do=edit"><{$_add_or_edit}></a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -21,34 +16,36 @@ body {background: #fcfdff}
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="fairtype.php" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">名称</label></td>
-		  <td class="handler">操作</td>
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th><label for="idAll"><{$_naming}></label></th>
+		  <th><{$_action}></th>
 		</tr>
+    </thead>
+    <tbody>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
 		  <td><label for="item_<{$item.id}>"><{$item.name}></label></td>
 		  <td class="handler">
           <ul id="handler_icon">
-            <li><a class="btn_delete" href="fairtype.php?id=<{$item.id}>&do=del" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="fairtype.php?do=edit&id=<{$item.id}>" title="编辑">编辑</a></li>
+            <li><a class="btn_delete" href="fairtype.php?id=<{$item.id}>&do=del" title="<{$_delete}>"><{$_delete}></a></li>
+            <li><a class="btn_edit" href="fairtype.php?do=edit&id=<{$item.id}>" title="<{$_edit}>"><{$_edit}></a></li>
           </ul>  
 		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="3">没有符合条件的记录</td>
+		  <td colspan="3"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>
     <div class="clear"/>

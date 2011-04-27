@@ -1,29 +1,22 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: order.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require(LIB_PATH .'page.class.php');
 require("session_cp.inc.php");
-require(LIB_PATH. "typemodel.inc.php");
-uses("order");
+uses("order", "typeoption");
 $order = new Orders();
+$typeoption = new Typeoption();
 $tpl_file = "order";
 $page = new Pages();
-setvar("Status", get_cache_type("common_status"));
+setvar("Status", $typeoption->get_cache_type("common_status"));
 if (isset($_POST['status'])) {
 	$id = $_POST['id'];
 	$tmp_to = intval($_POST['status']);
@@ -57,7 +50,7 @@ if (isset($_GET['do'])){
 	if ($do == "view") {
 		if (!empty($id)) {
 			$order_content = $pdb->GetOne("SELECT content FROM {$tb_prefix}orders WHERE id={$id}");
-			$sql = "SELECT g.name,og.amount,g.price,og.order_id,og.goods_id FROM {$tb_prefix}ordergoods og LEFT JOIN {$tb_prefix}goods g ON g.id=og.goods_id WHERE og.order_id=".$id;
+			$sql = "SELECT g.name,og.amount,g.price,og.order_id,og.goods_id,o.total_price,o.content FROM {$tb_prefix}ordergoods og LEFT JOIN {$tb_prefix}goods g ON g.id=og.goods_id LEFT JOIN {$tb_prefix}orders o ON o.id=og.order_id WHERE og.order_id=".$id;
 			if (!empty($order_content)) {
 				$contents = explode("|", $order_content);
 				$product_id = $contents[0];
@@ -72,7 +65,14 @@ if (isset($_GET['do'])){
 			if (!empty($result)) {
 				$total_price = 0;
 				for ($i=0; $i<count($result); $i++){
-					$total_price += $result[$i]['price']*$result[$i]['amount'];
+					$tmp_str = explode("|", $result[$i]['content']);
+					if($result[$i]['goods_id']=="2" && strpos($result[$i]['content'],"|")===false){
+						$total_price = $result[$i]['total_price'];
+						$result[$i]['price'] = $result[$i]['total_price'];
+						$result[$i]['charge'] = 1;
+					}else{
+						$total_price += $result[$i]['price']*$result[$i]['amount'];
+					}
 				}
 				setvar("Items",$result);
 				setvar("TotalPrice", $total_price);

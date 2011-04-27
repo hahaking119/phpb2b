@@ -1,10 +1,19 @@
 <?php
+/**
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
+ * 
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
+ */
 define('CURSCRIPT', 'query');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
-require(LIB_PATH. "typemodel.inc.php");
-uses("product","member","message");
+uses("product","member","message","typeoption");
 $pms = new Messages();
+$typeoption = new Typeoption();
 $member = new Members();
 $product = new Products();
 if (isset($_POST['id']) && !empty($_POST['do'])) {
@@ -32,8 +41,8 @@ if (empty($res) || !$res) {
 	}else{
 		$res['image'] = pb_get_attachmenturl('', '', 'middle');
 	}
-	setvar("ImTypes", get_cache_type("im_type"));
-	setvar("TelTypes", get_cache_type("phone_type"));
+	setvar("ImTypes", $typeoption->get_cache_type("im_type"));
+	setvar("TelTypes", $typeoption->get_cache_type("phone_type"));
 	setvar("item",$res);
 }
 

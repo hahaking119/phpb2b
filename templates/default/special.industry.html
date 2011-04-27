@@ -1,7 +1,7 @@
 <{assign var="page_title" value="`$page_title`"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
-	<div class="tips"><span><{$position}></span><{$item.name}></div>
+	<div class="tips"><span><{$position}></span></div>
 	<div class="blank6"></div>  
 	<div class="content clearfix">
 	  <div class="main_left_w220">
@@ -11,7 +11,7 @@
 		<h3><{$_recommend_company_database}></h3>
 		</div>
 		 <ul class="sub_nominate_txt">
-			<{company row="10" type="commend" industryid="`$item.id`"}>
+			<{company row="10" industryid="`$item.id`"}>
 				<li><a href="[link:title]" title="[field:name]">[field:name]</a></li>
 			<{/company}>
 		 </ul>
@@ -26,7 +26,7 @@
             <h3><{$_recommended_supply_demand}></h3>
             </div>
 		 	<ul class="sub_nominate_txt">
-			<{offer row="10" type="commend" industryid="`$item.id`"}>
+			<{offer row="10" industryid="`$item.id`"}>
 				<li><a href="[link:title]">[field:title]</a></li>
 			<{/offer}>
 		   </ul>
@@ -44,6 +44,21 @@
 			<{news row="10" industryid="`$item.id`"}>
 				<li><a href="[link:title]">[field:title]</a></li>
 			<{/news}>
+		   </ul>
+            <div class="corner_bottom_bar">
+                 <span class="corner_bottom_s1"><span></span></span>
+            </div>
+		</div>
+		<div class="blank6"></div>
+		<div class="sub_nominate">
+            <div class="title_bar_s1">
+            <span class="title_top_s1"><span></span></span>
+            <h3><{$_market}></h3>
+            </div>
+		 	<ul class="sub_nominate_txt">
+			<{market row="10" industryid="`$item.id`"}>
+				<li><a href="[link:title]">[field:title]</a></li>
+			<{/market}>
 		   </ul>
             <div class="corner_bottom_bar">
                  <span class="corner_bottom_s1"><span></span></span>

@@ -1,41 +1,47 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: post.php 416 2009-12-26 13:31:08Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'post');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
+require(LIB_PATH. "validation.class.php");
 uses("service");
+$validate = new Validation();
 $service = new Services();
-if (isset($_POST['save_service']) && !empty($_POST['service']['content'])) {
+if (isset($_POST['save_service'])) {
 	pb_submit_check('service');
 	$vals = array();
 	$vals['status'] = 0;
 	$vals['member_id'] = 0;
-	$vals['title'] = L("comments_and_suggestions", "tpl");
 	$vals['content'] = $_POST['service']['content'];
 	if(isset($_POST['service']['nick_name'])) $vals['nick_name'] = $_POST['service']['nick_name'];
 	$vals['email'] = $_POST['service']['email'];
-	$vals['type_id'] = 1;
+	$vals['type_id'] = $_POST['service']['type_id'];
 	$vals['created'] = $time_stamp;
 	$vals['user_ip'] = pb_get_client_ip();
-	if($service->save($vals)){
-		flash('thanks_for_advise', URL);
-	}else {
-		flash();
+	$vals['title'] = $_POST['service']['title'];
+	$service->doValidation($vals);
+	if (!empty($service->validationErrors)) {
+		setvar("item", $vals);
+		setvar("Errors", $validate->show($service));
+		formhash();
+		render("service");
+	}else{
+		if (empty($vals['title'])) {
+			$vals['title'] = L("comments_and_suggestions", "tpl");
+		}
+		if($service->save($vals)){
+			flash('thanks_for_advise', URL);
+		}else {
+			flash();
+		}
 	}
 }else{
 	flash("pls_enter_your_advise", "index.php");

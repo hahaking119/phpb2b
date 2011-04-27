@@ -1,17 +1,12 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 用户中心 &raquo; 会员组</p>
+	<p><{$_your_current_position}> <{$_member_center}> &raquo; <{$_membergroup}></p>
 </div>
 <div id="rightTop"> 
-    <h3>会员组</h3> 
+    <h3><{$_membergroup}></h3> 
     <ul class="subnav">
-        <li><a href="membergroup.php">所有会员组</a></li>
-		<li><a class="btn1" href="membergroup.php?do=edit">添加/编辑</a></li>
+        <li><a href="membergroup.php">所有<{$_membergroup}></a></li>
+		<li><a class="btn1" href="membergroup.php?do=edit"><span><{$_add_or_edit}></span></a></li>
         <li><a href="membergroup.php?do=permission">权限</a></li>
     </ul>
 </div>
@@ -103,7 +98,7 @@ body {background: #fcfdff}
             <tr> 
             <th></th> 
             <td class="ptb20"> 
-                <input class="formbtn" type="submit" name="saveauth" value="提交" />            </td> 
+                <input class="formbtn" type="submit" name="saveauth" value="<{$_submit}>" />            </td> 
         </tr> 
         </table> 
   </form> 

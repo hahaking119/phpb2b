@@ -1,4 +1,4 @@
-<{assign var="page_title" value="供求信息"}>
+<{assign var="page_title" value="`$_offer`"}>
 <{include file="header.html"}>
 <script src="../scripts/tiny_mce/tiny_mce.js" type="text/javascript"></script>
 <script src="../scripts/jquery/facebox.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@ theme_advanced_toolbar_align : "left"
 <script type="text/javascript">
 function CheckInput(){
 	if($('#trade_topic').val()==""){
-		alert("请输入信息标题");
+		alert("<{$_enter_title}>");
 		$('#trade_topic').focus();
 		return false;
 	}
@@ -38,52 +38,53 @@ function CheckInput(){
      <div class="offer_info_title"><h2><{$page_title}></h2></div>
 		<form name="TradeFrm" enctype="multipart/form-data" method="post" action="<{$smarty.server.PHP_SELF}>" onsubmit="$('#Save').attr('disabled',true);">
 		<input type="hidden" name="formhash" value="<{$formhash}>">
-		<input type="hidden" name="id" value="<{$smarty.get.id}>">
+		<input type="hidden" name="id" value="<{$item.id}>">
 		<input type="hidden" name="do" value="save" />
-        <div class="hint">（提示：带<font class="red"> * </font>号的为必填项）</div>
+        <div class="hint"><{$_must_input_with_star}></div>
 			 <table class="offer_info_content">
-				  <{if $smarty.get.id}>
+				  <{if $item.id}>
                       <tr>
-                        <th class="circle_left"><font class="red">*</font> 方 向：</th>
-                        <td class="circle_right"><{if $item.if_urgent=="1"}>紧急!<{/if}><{$TradeTypes[$item.type_id]}></td>
+                        <th class="circle_left"><font class="red">*</font><{$_direction}></th>
+                        <td class="circle_right"><{if $item.if_urgent=="1"}><{$_urgent}><{/if}><{$TradeTypes[$item.type_id]}></td>
                       </tr>
                       <tr>
-                        <th><font class="red">*</font> 主 题：</th>
+                        <th><font class="red">*</font><{$_theme_n}></th>
                         <td><{$item.title}></td>
+                      </tr>
+                      <tr>
+                        <th><font class="red">*</font> <{$_duration}></th>
+                        <td><{$item.expire_date}></td>
                       </tr>
 				<{else}>
                       <tr>
-                        <th class="circle_left"><font class="red">*</font> 方 向：</th>
+                        <th class="circle_left"><font class="red">*</font><{$_direction}></th>
                         <td class="circle_right">
-						<{foreach from=$TradeTypes name=TradeTypes item=item1 key=key1}>
-						<input type="radio" name="data[trade][type_id]" value="<{$key1}>" <{if $item.type_id==$key1}>checked="checked"<{/if}> <label id="TypeId<{$key1}>"><{$item1}></label>
-						<{/foreach}><{if $item.if_urgent=="1"}>checked<{/if}> 
-                        紧急 !<input type="checkbox" name="data[trade][if_urgent]" <{if $item.if_urgent=="1"}>checked<{/if}> 
-                        紧急 !</td>
+						<{html_radios name='data[trade][type_id]' options=$TradeTypes checked='2' separator='&nbsp;'}>
+                        <{$_emergency}><input type="checkbox" name="data[trade][if_urgent]" value="1" <{if $item.if_urgent=="1"}>checked<{/if}></td>
                       </tr>
                       <tr>
-                        <th><font class="red">*</font> 主 题：</th>
-                        <td><input name="data[trade][title]" id="trade_topic" type="text" size="25" value="<{$item.title}>" />
-(25字以内最佳)</td>
+                        <th><font class="red">*</font><{$_theme_n}></th>
+                        <td><input name="data[trade][title]" id="trade_topic" type="text" value="<{$item.title}>" /><font color="#666666">
+<{$_optimal_number}></font></td>
+                      </tr>
+                      <tr>
+                        <th><font class="red">*</font> <{$_duration}></th>
+                        <td><{html_radios name="expire_days" options=$OfferExpires checked=$item.expire_days|default:30 separator=" "}></td>
                       </tr>
 				<{/if}>
                       <tr>
-                        <th>标签：</th>
-                        <td><input class="infoTableInput2" name="data[tag]" type="text" id="tag" value="<{$item.tag}>" /><label class="field_notice">(多个请用&quot;,&quot;号或者空格隔开)</label></td>
-                      </tr>
-                      <tr>
-                        <th><font class="red">*</font> 有效期：</th>
-                        <td><{html_radios name="expire_days" options=$OfferExpires checked=$item.expire_days|default:30 separator=" "}></td>
+                        <th><{$_tags_n}></th>
+                        <td><input name="data[tag]" type="text" id="tag" value="<{$item.tag}>" /><font color="#666666"><{$_space_separate}></font></td>
                       </tr>
 					  <{foreach from=$Forms name=form item=item1 key=key1}>
                       <tr>
-                        <th> <{$item1.label}>：</th>
+                        <th> <{$item1.label}><{$_colon}></th>
                         <td><font color="#666666">
-                          <input name="data[formitem][<{$key1}>]" type="text" id="<{$item1.id}>" value="<{$item1.value}>" size="25"></font></td>
+                          <input name="data[formitem][<{$key1}>]" type="text" id="<{$item1.id}>" value="<{$item1.value}>"></font></td>
                       </tr>
 					  <{/foreach}>
                       <tr>
-                        <th> 行 业：</th>
+                        <th><{$_industry}></th>
                         <td>
 						<div id="dataIndustry">
 							<select name="data[trade][industry_id1]" id="dataTradeIndustryId1" class="level_1" ></select>
@@ -93,7 +94,7 @@ function CheckInput(){
 						</td>
                       </tr>
                       <tr>
-                        <th> 地 区：</th>
+                        <th><{$_area}></th>
                         <td>
 						<div id="dataArea">
 							<select name="data[trade][area_id1]" id="dataTradeAreaId1" class="level_1" ></select>
@@ -104,80 +105,71 @@ function CheckInput(){
 						</td>
                       </tr>
                       <tr>
-                        <th ><font class="red"> *</font> 详细说明：</th>
-                        <td class="tdright"><textarea name="data[trade][content]" rows="8" wrap="VIRTUAL" style="width:370px;"><{$item.content|nl2br}></textarea><br /><font color="#FF3300">（详细说明中请勿包含公司名称、地址、联系方式等）<br>
+                        <th ><font class="red"> *</font><{$_details_n}></th>
+                        <td class="tdright"><textarea name="data[trade][content]" rows="8" wrap="VIRTUAL" style="width:370px;"><{$item.content|nl2br}></textarea><br /><font color="#FF3300"><{$_attention_explain}><br>
                         </font></td>
                       </tr>
                       <tr>
-                        <th>　图片：</th>
+                        <th><{$_image}></th>
                         <td><input name="pic" type="file" id="uploadfile" onchange="showPreview(uploadpic,this.form.pic);" />
                             <span class="gray"><br>
-                    （图片大小不要超过200K ,格式gif,jpg,png 图片宽度最大为220像素效果最佳！）</span></td>
+                    <{$_image_size_format_provision}></span></td>
                       </tr>
                       <tr>
-                        <th>　当前图片: </th>
+                        <th><{$_now_image}></th>
                         <td class="tdright">
 						<div class="img-preview">
-						<a href="<{$item.image|default:"javascript:;"}>" id="uploadpic_hover" rel="facebox"><img id="uploadpic" src="<{$item.image}>.small.jpg" style='<{if !$item.image}>display:none;<{/if}>width:220px;' alt="<{$item.title|default:"预览图片"}>"  /></a>
+						<a href="<{$item.image|default:"javascript:;"}>" id="uploadpic_hover" rel="facebox"><img id="uploadpic" src="<{$item.image}>.small.jpg" style='<{if !$item.image}>display:none;<{/if}>width: 80px;' alt="<{$item.title|default:"`$_preview_image`"}>"  /></a>
 						<div>
 						<div style="display:none"></div>
 						</td>
                      </tr>
                   <tr>
                       <th></th>
-                       <td>请务必检查联系资料!（若有误，客户无法找到您，信息也不能被审核通过！） <br>
-                        需要的话，您可点此 <a href="personal.php" target="_self" class="font14b_org"><strong>修改联系资料</strong></a></td>
+                       <td><{$_check_information}><br>
+                        <{$_need_click}><a href="personal.php" target="_self" class="font14b_org"><strong><{$_modify_information}></strong></a></td>
                    </tr>
 
                    <tr>
-                        <th >联系人：</td>
-                        <td><{$COMPANYINFO.link_man|default:$MemberInfo.last_name}><font color="#999999">（全名） </font> </td>
+                        <th ><{$_contact_people}></td>
+                        <td><{$COMPANYINFO.link_man|default:$MemberInfo.last_name}><font color="#999999"><{$_full_name}> </font> </td>
                     </tr>
 					<{if $CompanyId!=""}>
                   <tr>
-                    <th>公司名称：</th>
-                    <td><{$COMPANYINFO.name}><font color="#999999">（公司全称）</font></td>
+                    <th><{$_company_name_n}></th>
+                    <td><{$COMPANYINFO.name}><font color="#999999"><{$_company_full_name}></font></td>
                   </tr>
 					<{/if}>
                       <tr>
-                        <th>首选联系电话：</th>
+                        <th><{$_first_contact_phone}></th>
                         <td><select name="data[prim_tel]">
         <{html_options options=$PhoneTypes}>
-      </select>&nbsp;号码：<input type="text" name="data[prim_telnumber]" id="prim_telnumber" value="<{$item.prim_telnumber|default:$MemberInfo.tel}>" /></td>
+      </select>&nbsp;<{$_number_n}><input type="text" name="data[prim_telnumber]" id="prim_telnumber" value="<{$item.prim_telnumber|default:$MemberInfo.tel}>" /></td>
                       </tr>
                       <tr>
-                        <th>首选即时通讯：</th>
+                        <th><{$_first_instant_message}></th>
                         <td><select name="data[prim_im]">
         <{html_options options=$ImTypes}>
-      </select>&nbsp;号码：<input type="text" name="data[prim_imaccount]" id="prim_imaccount" value="<{$item.prim_imaccount|default:$MemberInfo.qq}>" /></td>
+      </select>&nbsp;<{$_number_n}><input type="text" name="data[prim_imaccount]" id="prim_imaccount" value="<{$item.prim_imaccount|default:$MemberInfo.qq}>" /></td>
                       </tr>
                       
                       <tr >
-                        <th>电子邮件：</th>
+                        <th><{$_email_addr}></th>
                         <td><{$MemberInfo.email}></td>
                       </tr>
                       <tr>
                       <th class="circle_bottomleft"></th>
-                        <td class="circle_bottomright"></td>
+                        <td class="circle_bottomright"><input type="hidden" name="edit_trade" id="EditTrade" value="y" />
+                        <input type="submit" name="save" id="Save" value="<{$_finish_release}>" onclick="return CheckInput();"></td>
                       </tr>
                </table>
-             <table class="btn_save">
-                  <tr>
-                    <td>
-                        <input type="hidden" name="edit_trade" id="EditTrade" value="y" />
-                        <input type="submit" name="save" id="Save" value="一切完成，请发布！" onclick="return CheckInput();">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                 </table>
 		</form>
 
      </div>
 </div>
 <script>
 var cache_path = "../";
+var app_language = '<{$AppLanguage}>';
 var area_id1 = <{$item.area_id1|default:0}> ;
 var area_id2 = <{$item.area_id2|default:0}> ;
 var area_id3 = <{$item.area_id3|default:0}> ;
@@ -186,7 +178,7 @@ var industry_id2 = <{$item.industry_id2|default:0}> ;
 var industry_id3 = <{$item.industry_id3|default:0}> ;
 </script>
 <script src="../scripts/jquery/jquery.validate"></script>
-<script src="../scripts/multi_select.js"></script>
+<script src="../scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="../scripts/script_area.js"></script>
 <script src="../scripts/script_industry.js"></script>
 <{include file="footer.html"}>

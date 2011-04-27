@@ -1,24 +1,18 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: adzone.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
 uses("adzone");
 require(PHPB2B_ROOT.'libraries/page.class.php');
+include(CACHE_PATH. "cache_membergroup.php");
 $tpl_file = "adzone";
 $adzone = new Adzones();
 $page = new Pages();
@@ -44,8 +38,18 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 	if ($do == "edit") {
+		$user_groups = array();
+		foreach ($_PB_CACHE['membergroup'] as $key=>$val) {
+			$user_groups[$key] = $val['name'];
+		}
+		setvar("Membergroups", $user_groups);
 		if (!empty($id)) {
 			$result = $adzone->read("*", $id);
+			if (!empty($result['membergroup_ids'])) {
+				$tmp_arr = explode(",", $result['membergroup_ids']);
+				$tmp_str = "['".implode("','", $tmp_arr)."']";
+				$result['sel_membergroup_ids'] = $tmp_str;
+			}
 			setvar("item",$result);
 		}
 		$tpl_file = "adzone.edit";
@@ -59,6 +63,12 @@ if (isset($_POST['save'])) {
 	if (empty($vals['what'])) {
 		$vals['what'] = 1;
 	}
+	if(!empty($_POST['membergroup_ids']) && !in_array(0, $_POST['membergroup_ids'])){
+		$reses = implode(",", $_POST['membergroup_ids']);
+		$vals['membergroup_ids'] = $reses;
+	}elseif(!empty($_POST['membergroup_ids'])){
+		$vals['membergroup_ids'] = 0;
+	}	
 	if (!empty($vals['additional_adwords'])) {
 		$vals['additional_adwords'] = stripcslashes($vals['additional_adwords']);
 	}

@@ -1,25 +1,24 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: service.php 416 2009-12-26 13:31:08Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 445 $
  */
 define('CURSCRIPT', 'service');
 require("libraries/common.inc.php");
 require("share.inc.php");
+require(CACHE_PATH. "cache_typeoption.php");
 uses("service");
 $service = new Services();
+$answered_result = $service->findAll("id,title,created,revert_content,revert_date,type_id", null, "status=1 AND revert_content!=''", "id DESC", 0, 15);
+$result = $service->findAll("id,title,created,revert_content,revert_date,type_id", null, "status=1", "id DESC", 0, 15);
+setvar("AnsweredService", $service->formatResult($answered_result));
+setvar("LatestService", $service->formatResult($result));
 formhash();
+setvar("ServiceTypes", $_PB_CACHE['service_type']);
 render("service");
 ?>

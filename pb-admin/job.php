@@ -1,29 +1,22 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: job.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
-uses("job","company","member");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require("session_cp.inc.php");
-require(LIB_PATH. "typemodel.inc.php");
+uses("job","company","member","typeoption");
 $job = new Jobs();
 $page = new Pages();
 $member = new Members();
 $company = new Companies();
+$typeoption = new Typeoption();
 $conditions = null;
 $table = array();
 $job_status = explode(",",L('product_status', 'tpl'));
@@ -42,10 +35,10 @@ if (isset($_GET['do'])) {
 		$sql = "SELECT j.name,j.work_station,j.content,j.require_gender_id,j.peoples,j.require_education_id,j.require_age,j.salary_id,j.worktype_id,j.clicked,j.created,j.expire_time,c.name as cache_companyname,m.username as cache_username from {$tb_prefix}jobs as j LEFT JOIN {$tb_prefix}companies c ON j.company_id=c.id LEFT JOIN {$tb_prefix}members m ON j.member_id=m.id where j.id=".$id;
 		$result = $pdb->GetRow($sql);
 		setvar("item", $result);
-		setvar("Genders", get_cache_type("gender"));
-		setvar("Educations", get_cache_type('education'));
-		setvar("Worktypes", get_cache_type('work_type'));
-		setvar("SalaryLevels", get_cache_type('salary'));
+		setvar("Genders", $typeoption->get_cache_type("gender"));
+		setvar("Educations", $typeoption->get_cache_type('education'));
+		setvar("Worktypes", $typeoption->get_cache_type('work_type'));
+		setvar("SalaryLevels", $typeoption->get_cache_type('salary'));
 		template($tpl_file);
 		exit;
 	}
@@ -64,13 +57,19 @@ if(isset($_POST['del'])){
 		$job->del($_POST['id']);
 	}
 }
-$fields = "Job.id,Job.name as jobname,Job.created as pubdate,Job.status as jobstatus, c.name as companyname,m.username";
+$fields = "Job.id,Job.name as jobname,Job.created,Job.status as jobstatus, c.name as companyname,m.username";
 $sql = "SELECT count(id) AS Amount FROM {$tb_prefix}jobs";
 $amount = $pdb->GetOne($sql);
 $joins = "LEFT JOIN {$tb_prefix}companies c ON Job.company_id=c.id LEFT JOIN {$tb_prefix}members m ON Job.member_id=m.id";
 $page->setPagenav($amount);
 $sql = "SELECT ".$fields." FROM {$tb_prefix}jobs AS Job {$joins} ORDER BY Job.id DESC LIMIT $page->firstcount,$page->displaypg";
-setvar("Items", $pdb->GetArray($sql));
+$result = $pdb->GetArray($sql);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		$result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
+	}
+	setvar("Items", $result);
+}
 uaAssign(array("ByPages"=>$page->pagenav));
 template($tpl_file);
 ?>

@@ -1,44 +1,38 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: setting.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../configs/config.inc.php");
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
 require(LIB_PATH. "cache.class.php");
 require(LIB_PATH. "string.class.php");
-require(LIB_PATH. "typemodel.inc.php");
 require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'emails.inc.php');
-uses("setting");
+uses("setting","typeoption","attachment");
 $cache = new Caches();
+$attachment_controller = new Attachment();
+$typeoption = new Typeoption();
 $string = new Strings();
 $setting = new Settings();
-setvar("AskAction", get_cache_type("common_option"));
+setvar("AskAction", $typeoption->get_cache_type("common_option"));
 $tpl_file = "setting.basic";
 $item = $setting->getValues();
-if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
-	//echo "win";
+if (eregi("iis", strtolower(pb_getenv("SERVER_SOFTWARE")))){
+	$is_iis = true;
 }
 if (isset($_POST['do'])) {
 	$do = trim($_POST['do']);
 	switch ($do) {
 		case "testemail":
 			require(LIB_PATH. 'sendmail.inc.php');
-			if (!empty($_POST['data']['testemail'])) {
-				$sended = pb_sendmail($_POST['data']['testemail'], L("dear_user", "tpl"), L("a_test_email", "tpl"), L("a_test_email_delete", "tpl"));
+			if (!empty($_POST['data']['setting']['testemail'])) {
+				$sended = pb_sendmail(array($_POST['data']['setting']['testemail'], $_POST['data']['setting']['testemail']), L("dear_user", "tpl"), null, L("a_test_email_delete", "tpl", $_PB_CACHE['setting']['site_name']));
 				if (!$sended) {
 					flash("email_sended_false");
 				}else{
@@ -58,6 +52,34 @@ if (isset($_GET['do'])) {
 			break;
 		case "basic_desc":
 			$tpl_file = "setting.basic.desc";
+			break;
+		case "attach":
+			require(LIB_PATH. "file.class.php");
+			$folder = new Files();
+			if (!empty($_PB_CACHE['setting']['thumb_small'])) {
+				list($item['small_width'], $item['small_height']) = explode($attachment_controller->seperator, $_PB_CACHE['setting']['thumb_small']);
+			}else{
+				list($item['small_width'], $item['small_height']) = explode($attachment_controller->seperator,$attachment_controller->small_scale);
+			}
+			if (!empty($_PB_CACHE['setting']['thumb_middle'])) {
+				list($item['middle_width'], $item['middle_height']) = explode($attachment_controller->seperator, $_PB_CACHE['setting']['thumb_middle']);
+			}else{
+				list($item['middle_width'], $item['middle_height']) = explode($attachment_controller->seperator,$attachment_controller->middle_scale);
+			}
+			if (!empty($_PB_CACHE['setting']['thumb_large'])) {
+				list($item['large_width'], $item['large_height']) = explode($attachment_controller->seperator, $_PB_CACHE['setting']['thumb_large']);
+			}else{
+				list($item['large_width'], $item['large_height']) = explode($attachment_controller->seperator,$attachment_controller->large_scale);
+			}
+			$face_list = $folder->getFiles(DATA_PATH. "fonts".DS);
+			if (!empty($face_list)) {
+				foreach ($face_list as $val) {
+					$tmp_arr[$val['name']] = "data/fonts/".$val['name'];
+				}
+				setvar("DefaultFace", $folder->fontFace);
+				setvar("FontFaces", $tmp_arr);
+			}
+			$tpl_file = "setting.attach";
 			break;
 		case "basic_contact":
 			$tpl_file = "setting.basic.contact";
@@ -106,14 +128,16 @@ if (isset($_GET['do'])) {
 				}
 				$item['forbid_word'] = implode("\r\n", $tmp_str);
 			}
-			$ips = $pdb->GetArray("SELECT CONCAT(ip1,'.',ip2,'.',ip3,'.',ip4) AS ip FROM {$tb_prefix}ipbanned");
+			$ips = $pdb->GetArray("SELECT CONCAT(ip1,'.',ip2,'.',ip3,'.',ip4) AS ip FROM {$tb_prefix}banned");
 			if (!empty($ips)) {
 				foreach ($ips as $ip_val) {
 					if(!empty($ip_val['ip'])) $tmp_ip[] = $ip_val['ip'];
 				}
 				$item['forbid_ip'] = implode("\r\n", $tmp_ip);
 			}
-			$item['agreement'] = file_get_contents(CACHE_PATH. "cache_agreement.php");
+			if (empty($item['agreement']) && file_exists(CACHE_PATH. "cache_agreement.php")) {
+				$item['agreement'] = @file_get_contents(CACHE_PATH. "cache_agreement.php");
+			}
 			$tpl_file = "setting.register";
 			break;
 		case "registerfile":
@@ -143,6 +167,9 @@ function edit_config($configs) {
 if (isset($_POST['savebasic'])) {
         $sp_search = array('\\\"', "\\\'", "'");
         $sp_replace = array('&amp;', '&quot;', '&#39;');
+        if (!empty($_POST['data']['setting']['site_url']) && substr($_POST['data']['setting']['site_url'], -1, 1)!='/') {
+        	$_POST['data']['setting']['site_url'].="/";
+        }
         if (!empty($_POST['data']['setting1'])) {
                 $_POST['data']['setting1']['site_description'] = str_replace($sp_search, $sp_replace, $_POST['data']['setting1']['site_description']);
                 $updated = $setting->replace($_POST['data']['setting1'], 1);
@@ -168,6 +195,23 @@ if (isset($_POST['saveauth'])) {
 		pheader("location:setting.php?do=auth");
 	}
 }
+if (isset($_POST['save_attach'])) {
+	$vals = $_POST['data']['setting'];
+	if (!empty($_POST['data']['small_width']) && !empty($_POST['data']['small_height'])) {
+		$vals['thumb_small'] = $_POST['data']['small_width']."*".$_POST['data']['small_height'];
+	}
+	if (!empty($_POST['data']['middle_width']) && !empty($_POST['data']['middle_height'])) {
+		$vals['thumb_middle'] = $_POST['data']['middle_width']."*".$_POST['data']['middle_height'];
+	}
+	if (!empty($_POST['data']['large_width']) && !empty($_POST['data']['large_height'])) {
+		$vals['thumb_large'] = $_POST['data']['large_width']."*".$_POST['data']['large_height'];
+	}
+	$updated = $setting->replace($vals);
+	if($updated){
+		$cache->writeCache("setting", "setting");
+		pheader("location:setting.php?do=attach");
+	}
+}
 if (isset($_POST['save_datetime'])) {
 	$vals = array();
 	if (isset($_POST['data']['time_offset'])) {
@@ -185,9 +229,6 @@ if (isset($_POST['save_datetime'])) {
 if (isset($_POST['saveregister'])) {
 	$updated = false;
 	if (isset($_POST['data']['setting']['register_type']) && $_POST['data']['setting']['register_type']!="close_register") {
-		if (!empty($_POST['data']['agreement'])) {
-			$cache->updateAgreement($_POST['data']['agreement']);
-		}
 		if (!empty($_POST['data']['setting']['reg_filename']) && !pb_strcomp($_POST['data']['setting']['reg_filename'],$_POST['data']['reg_filename'])) {
 		    $renameResult = rename(PHPB2B_ROOT. 'register.php', PHPB2B_ROOT.$_POST['data']['setting']['reg_filename']);
 		}
@@ -204,7 +245,7 @@ if (isset($_POST['saveregister'])) {
 			}
 			$values = implode(",", $tmp_ip);
 			if (!empty($tmp_ip)) {
-				$pdb->Execute("INSERT INTO {$tb_prefix}ipbanned (ip1,ip2,ip3,ip4) VALUES ".$values);
+				$pdb->Execute("INSERT INTO {$tb_prefix}banned (ip1,ip2,ip3,ip4) VALUES ".$values);
 			}
 		}
 	}
@@ -281,39 +322,38 @@ function edit_function($data){
 if (isset($_POST['save_functions'])) {
 	$rs = ''; 
 	$data = $_POST['data'];
-	if($_POST['data']['rewrite_able']==1){
-		$htaccess = PHPB2B_ROOT.'examples/.htaccess';
-		$files = file_get_contents($htaccess);
-		$pattern = "/(http){1}\:\/\/[w]{3}[\.]yourdomain[\.]com[\/]/";
-		$replacement = $absolute_uri;
-		$file = preg_replace($pattern,$replacement,$files);
-		file_put_contents(PHPB2B_ROOT.'.htaccess',$file);
-		copy(PHPB2B_ROOT.'examples/httpd.ini',PHPB2B_ROOT.'httpd.ini');
+	$example_dir = PHPB2B_ROOT.'examples'.DS;
+	if($data['rewrite_able']==1){
+		if ($is_iis) {
+			$rewrite_file = $example_dir.'rewrite.iis.txt';
+			copy($example_dir.'rewrite.iis.txt', PHPB2B_ROOT.'httpd.ini');
 		}else{
-			@unlink(PHPB2B_ROOT.'.htaccess');
-			@unlink(PHPB2B_ROOT.'httpd.ini');
+			$rewrite_file = $example_dir.'rewrite.apache.txt';
+			$files = file_get_contents($rewrite_file);
+			$pattern = "/(http){1}\:\/\/[w]{3}[\.]yourdomain[\.]com[\/]/";
+			$replacement = $absolute_uri;
+			$file = preg_replace($pattern,$replacement,$files);
+			file_put_contents(PHPB2B_ROOT.'.htaccess',$file);
 		}
-		if($_POST['data']['subdomain_support']==1&&$_POST['data']['subdomain']!=''){
-		$subdomain = $_POST['data']['subdomain'];
+	}else{
+		@unlink(PHPB2B_ROOT.'.htaccess');
+		@unlink(PHPB2B_ROOT.'httpd.ini');
+	}
+	if($data['subdomain_support']==1 && $data['subdomain']!=''){
+		$subdomain = $data['subdomain'];
 		if(file_exists(PHPB2B_ROOT.'.htaccess')){
-		$htaccess = PHPB2B_ROOT.'.htaccess';
-		$files = file_get_contents($htaccess);
-		$pattern = "/[\.]yourdomain[\.]com/";
-		$replacement = $subdomain;
-		$file = preg_replace($pattern,$replacement,$files);
-		file_put_contents(PHPB2B_ROOT.'.htaccess',$file);
+			$rewrite_file = PHPB2B_ROOT.'.htaccess';
 		}else{
-		$htaccess = PHPB2B_ROOT.'examples/.htaccess';
-		$files = file_get_contents($htaccess);
+			$rewrite_file = $example_dir.'rewrite.apache.txt';
+		}
+		$files = file_get_contents($rewrite_file);
 		$pattern = "/[\.]yourdomain[\.]com/";
 		$replacement = $subdomain;
-		$file = preg_replace($pattern,$replacement,$files);
-		file_put_contents(PHPB2B_ROOT.'.htaccess',$file);
-		}
-		}
+		$file = preg_replace($pattern,$replacement, $files);
+		file_put_contents(PHPB2B_ROOT.'.htaccess', $file);
+	}
 	$updated = edit_function($data);
 	if($updated){
-		
 		flash("success");
 	}else{
 		flash();

@@ -1,12 +1,13 @@
 <{assign var="page_title" value="`$_apply_friendlink`"}>
 <{include file="`$ThemeName`/header.html"}>
 <div class="content">
-  <div class="tips"><span><{$position}></span><{$_apply_friendlink}></div>
+  <div class="tips"><span><{$position}></span></div>
   <div class="blank6"></div>
   <div class="add_link clearfix">
     <div class="add_link_left">    
-        <div class="add_link_title">
-         <h2><{$_friend_links}></h2>
+         <div class="title_bar_s1">
+            <span class="title_top_s1"><span></span></span>
+            <h2><{$_friend_links}></h2>
        </div>
         <div class="add_link_leftcon">
           <ul>
@@ -17,8 +18,9 @@
         </div>
     </div>
     <div class="add_link_right">
-      <div class="add_link_title">
-      <h2><{$_apply_friendlink}></h2>
+       <div class="title_bar_s1">
+            <span class="title_top_s1"><span></span></span>
+            <h2><{$_apply_friendlink}></h2>
       </div>
       <div class="add_link_rightcon">
           <form action="friendlink.php" method="post" name="friendlink_frm" id="FriendlinkFrm">

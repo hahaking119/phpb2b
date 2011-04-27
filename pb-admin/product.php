@@ -1,35 +1,28 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: product.php 525 2009-12-28 06:23:21Z cht117 $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
-uses("product","attachment", "tag");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
 require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
-require(LIB_PATH. "typemodel.inc.php");
-require(CACHE_PATH. 'cache_productsort.php');
+require(CACHE_PATH. 'cache_type.php');
+uses("product","attachment", "tag", "typeoption");
+$typeoption = new Typeoption();
 $attachment = new Attachment('pic');
 $tag = new Tags();
 $product = new Products();
 $page = new Pages();
 $conditions = array();
 $tpl_file = "product";
-setvar("CheckStatus", get_cache_type("common_status"));
-setvar("BooleanVars", get_cache_type("common_option"));
+setvar("CheckStatus", $typeoption->get_cache_type("common_status"));
+setvar("BooleanVars", $typeoption->get_cache_type("common_option"));
 setvar("ProductSorts",$_PB_CACHE['productsort']);
 if (isset($_POST['save']) && !empty($_POST['data']['product']['name'])) {
 	$result = false;
@@ -174,10 +167,11 @@ $amount = $product->findCount(null, $conditions,"Product.id", null);
 unset($joins);
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
 $page->setPagenav($amount);
-$fields = "Product.id,Product.company_id AS CompanyID,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created AS CreateDate,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
+$fields = "Product.id,Product.company_id AS CompanyID,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
 $result = $product->findAll($fields, $joins, $conditions,"Product.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
+		$result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
 		if(!empty($result[$i]['picture'])){
 			$result[$i]['image'] = pb_get_attachmenturl($result[$i]['ProductPicture'], "../", "small");
 		}

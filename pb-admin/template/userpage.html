@@ -1,30 +1,27 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 自定义页面</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_userpage}></p>
 </div>
 <div id="rightTop"> 
-    <h3>自定义页面</h3> 
+    <h3><{$_userpage}></h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="userpage.php">管理</a></li>
-        <li><a href="userpage.php?do=edit">添加/编辑</a></li>
+		<li><a class="btn1" href="userpage.php"><span><{$_management}></span></a></li>
+        <li><a href="userpage.php?do=edit"><{$_add_or_edit}></a></li>
     </ul>
 </div>
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="userpage.php" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">显示名称</label></td>
-		  <td>内容摘要</td>
-		  <td><span>页面次序</span></td>
-		  <td class="handler">操作</td>
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th><label for="idAll">显示名称</label></th>
+		  <th>内容摘要</th>
+		  <th>页面次序</th>
+		  <th><{$_action}></th>
 		</tr>
+    </thead>
+    <tbody>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
@@ -33,22 +30,22 @@ body {background: #fcfdff}
 		  <td><{$item.display_order}></td>
 		  <td class="handler">
            <ul id="handler_icon">
-            <li><a class="btn_delete" href="userpage.php?id=<{$item.id}>&do=del<{$addParams}>" title="删除">删除</a></li>
-            <li><a class="btn_edit" href="userpage.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-            <li><a class="btn_browse" href="<{if $item.url}><{$item.url}><{else}><{$SiteUrl}>page.php?id=<{$item.id}><{/if}>" target="_blank" title="点击预览">预览</a></li>
+            <li><a class="btn_delete" href="userpage.php?id=<{$item.id}>&do=del<{$addParams}>" title="<{$_delete}>"><{$_delete}></a></li>
+            <li><a class="btn_edit" href="userpage.php?do=edit&id=<{$item.id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
+            <li><a class="btn_browse" href="<{if $item.url}><{$item.url}><{else}><{$SiteUrl}>page.php?id=<{$item.id}><{/if}>" target="_blank" title="<{$_click_preview}>"><{$_preview}></a></li>
           </ul>  
 		 </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="5">没有符合条件的记录</td>
+		  <td colspan="5"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><{$ByPages}></div>
     <div class="clear"/>

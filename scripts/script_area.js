@@ -20,7 +20,7 @@ if(typeof(area_id3)=="undefined" || area_id3==null){
 }else{
 	areaid3 = area_id3;
 }
-document.write("<script type=\"text/javascript\" src=\""+data_path+"data/cache/area.js\"></script>");
+document.write("<script type=\"text/javascript\" src=\""+data_path+"data/cache/"+app_language+"/area.js\"></script>");
 $(function() {
 	var options	= {
 		data	: data_area

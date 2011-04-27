@@ -1,1361 +1,0 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页 - B2B网站的标题-显示在标题栏</title>
-<base href="http://localhost/athena/">
-<meta name ="keywords" content="">
-<meta name ="description" content=""> 
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
-<link rel="stylesheet" type="text/css" href="templates/default/header.css" />
-<link rel="stylesheet" type="text/css" href="templates/default/public.css" />
-<link rel="stylesheet" type="text/css" href="templates/default/style.css" />
-<link rel="shorcut icon" type="image/x-ico" href="favicon.ico" />
-<link rel="bookmark" type="image/x-ico" href="favicon.ico" />
-<script src="scripts/jquery.js"></script>
-<script src="scripts/general.js"></script>
-<script language="javascript">
-<!--
-$(document).ready(function() {
-	if($("#mn_1").length>0){
-		$("#mn_1").addClass("current_nav");
-	}
-})
-//-->
-</script>
-<body id="bd_index">
-<div class="headtop mauto">
-<p class="headtopcon mauto">
-	<a class="index" href="javascript:;" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://localhost/athena/');">设为首页</a>
-	<a href="javascript: myAddPanel(document.title,location.href,document.title);" rel="sidebar" title="B2B网站的名称">加入收藏</a>
-    	<em>您好，admin</em>
-    <a href="redirect.php?url=office-room">[我的商务室]</a>
-    <a  href="pb-admin/login.php" target="_blank">[控制台]</a>    <a href="logging.php?action=logout">[退出]</a>
-    	<a href="service.php" style="float:right;">客户服务</a>
-	<a href="post.php" style="float:right;">免费发布</a>
-</p>
-</div>
-<div class="logobg">
-	<div class="logobox mauto">
-        <h1 class="fl"><a href="http://localhost/athena/"><img src="images/logo.jpg" alt="网站的宣传语" /></a></h1>
-        <div class="fr logobox_r">
-            <div class="fl logobox_r">
-                <ul>
-                    <li id="topMenuProduct"><a href="product/">找产品</a></li>
-                    <li id="topMenuCompany"><a href="company/">找公司</a></li>
-                    <li id="topMenuOffer"><a href="offer/">找商机</a></li>
-                    <li id="topMenuNews"><a href="news/">找资讯</a></li>
-                </ul>
-            </div>
-            <form name="search_frm" id="SearchFrm" action="offer/list.php" method="get">
-            <input type="hidden" name="do" value="search" />
-            <div class="fl logobox_r">
-                <div class="lcbg">
-                  <span class="searchcont">
-                    <input type="text" name="q" id="SearchKeyword" value="请输入关键字" onfocus="if(this.value=='请输入关键字'){this.value=''}" onblur="if(this.value==''){this.value='请输入关键字'}" />
-                  </span>
-                  <button type="submit" value="搜索" onclick="if($('#SearchKeyword').val()=='请输入关键字') {alert('请输入关键字');$('#SearchKeyword').focus();return false;}">搜索</button>
-                </div>
-            </div>
-            </form>
-        </div>
-	</div>
-</div>
-<div class="navbg">    
-    <div id="wd">
-	<ul class="menu">
-    				<li><a href="index.php" title="首页" id="mn_1">首页</a></li>
-					<li><a href="buy/" title="求购" id="mn_2">求购</a></li>
-					<li><a href="sell/" title="供应" id="mn_3">供应</a></li>
-					<li><a href="offer/list.php?typeid=8&navid=10" title="库存" id="mn_10">库存</a></li>
-					<li><a href="company/index.php" title="公司库" id="mn_4">公司库</a></li>
-					<li><a href="product/index.php" title="产品库" id="mn_5">产品库</a></li>
-					<li><a href="news/index.php" title="资讯" id="mn_6">资讯</a></li>
-					<li><a href="market/index.php" title="市场库" id="mn_7">市场库</a></li>
-					<li><a href="fair/index.php" title="展会" id="mn_8">展会</a></li>
-					<li><a href="hr/index.php" title="人才招聘" id="mn_9">人才招聘</a></li>
-			</ul>
-	</div>
-</div><script src="scripts/index.js"></script>
-<script>//htmlize('index');//����ѵ�¼���򽫵�¼״̬innerHTML()����������</script>
-<div class="adv mauto">
-	<span><a href=""><img border='0' src='attachment/sample/png.png' width='152' height='52' alt='PNG图片' /></a></span><span><a href=""><img border='0' src='attachment/sample/png.png' width='152' height='52' alt='PNG图片' /></a></span><span><a href=""><img border='0' src='attachment/sample/png-2.png' width='152' height='52' alt='PNG' /></a></span><span><a href=""><img border='0' src='attachment/sample/png-1.png' width='152' height='52' alt='PNG' /></a></span><span><a href=""><img border='0' src='attachment/sample/jpg.jpg' width='152' height='52' alt='JPG' /></a></span><span><a href=""><img border='0' src='attachment/sample/gif.gif' width='152' height='52' alt='GIF' /></a></span></div>
-<div class="container">
-	<div class="content mauto ">
-	   <div class="fl notebox mr7">
-        <div class="title_bar_s2">
-            <span class="title_top_s2"><span></span></span>
-            <h2><span class="title_more"><a href="announce.php" title="更多" target="_blank"><span class="raquo">&raquo;</span>更多</a></span>公告栏</h2>
-            </div>
-			<div class="notecont clearfix">
-               <div class="note_bar">
-				<a href="javascript:;" title="公告栏" class="fl"><img src="templates/default/images/notice.gif" /></a>
-								<dl>
-					<dt><strong><a href="announce.php?id=4">VIP会员服务升级通知</a></strong></dt>
-					<dd><a href="announce.php?id=4" title="<p>为更好的为大家提供服务，我们将对对服务器进行升级，在此期间，系统"><p>为更好的为大家提供服务，我们将对对服务器进行升级，在此期间，系统</a></dd>
-				</dl>
-				               </div>
-				<ul class="note_title">
-										<li><a href="announce.php?id=4" title="VIP会员服务升级通知">VIP会员服务升级通知</a></li>
-										<li><a href="announce.php?id=3" title="春节放假通知">春节放假通知</a></li>
-										<li><a href="announce.php?id=2" title="采购直通车服务">采购直通车服务</a></li>
-										<li><a href="announce.php?id=1" title="推出“会员动态”栏目">推出“会员动态”栏目</a></li>
-									</ul>
-			</div>
-			<div class="corner_bottom_bar">
-                 <span class="corner_bottom_s1"><span></span></span>
-			</div>
-		</div>
-	   <div class="fl advertise">
-					<object type="application/x-shockwave-flash" data="plugins/hello/bcastr.swf" width="473" height="170" id="bcastr" bgColor="#ff0000">
-				<param name="movie" value="plugins/hello/bcastr.swf"/>
-				<param name="allowFullScreen" value="true" />
-				<param name="FlashVars" value="xml=plugins/hello/hello.xml" />
-		</object>
-		</div>
-       <div class="fr freereg">
-                <div class="reg_bar_s1">
-                   <span class="reg_top_s1"><span></span></span>
-                  <h2>免费注册后您可以：</h2>
-                  <div class="freeregc clearfix">
-                    <p class="fl freetit"><a>免费企业建站</a></p>
-                    <p class="fl freetit"><a>发布供求商机</a></p>
-                    <p class="fl freetit"><a>在线推广产品</a></p>
-                    <p class="fl freetit"><a>结交更多商友</a></p>
-                    <p class="fl mt10"><a href="member/" title="注册"><img src="templates/default/images/freebtn.jpg" /></a></p>
-                   </div>
-                </div>
-                <div class="reg_bottom_bar">
-                    <span class="reg_bottom_s1"><span></span></span>
-                </div>
-            </div>
-	</div>
-	<div class="blank6"></div>
-	<div class="content mauto">
-		<a href="javascript:;" class="fl advertise"><img src="templates/default/images/temp_04.jpg" width="958" height="62" /></a>
-	</div>
-	<div class="whitespace"></div>
-	<div class="content mauto">
-		<div class="fl notebox mr7">
-			<div class="title_bar_s1">
-            <span class="title_top_s1"><span></span></span>
-            <h2><span class="title_more"><a href="fair/" title="更多"><span class="raquo">&raquo;</span>更多</a></span>热门展会</h2>
-            </div>
-			<div class="hotcont clearfix">
-               <div class="hot_bar">
-				<a href="javascript:;" class="fl"><img src="templates/default/images/hot_fair.gif" /></a>
-								<dl>
-					<dt><strong><a href="fair/detail.php?id=1">2010孟加拉国际建</a></strong></dt>
-					<dd>孟加拉国际建筑工业工程展览会是孟加拉国内及周边地区最有影响力的展览会，</dd>
-				</dl>
-				                </div>
-			   <ul class="hotcont_list">
-					 
-					<li><a href="fair/detail.php?id=8">加拿大多伦多国际游艇展</a></li>
-					 
-					<li><a href="fair/detail.php?id=7">WMG3数字娱乐游戏博览会</a></li>
-					 
-					<li><a href="fair/detail.php?id=6">全球美容美发展会</a></li>
-					 
-					<li><a href="fair/detail.php?id=5">日本零售业展2010</a></li>
-					 
-					<li><a href="fair/detail.php?id=4">青岛国际奢侈品展览会</a></li>
-					 
-					<li><a href="fair/detail.php?id=3">广州锦汉展览中心</a></li>
-					 
-					<li><a href="fair/detail.php?id=2">深圳首届婴童教育产业博览会暨亲子购物节</a></li>
-					 
-					<li><a href="fair/detail.php?id=1">2010孟加拉国际建筑工业工程展览会</a></li>
-									</ul>
-			</div>
-		</div>
-		<div class="fl latest">
-			<div class="latest latestbox">
-				<ul>
-					<li class="lasestcur" onmouseover="toogleOffer(1);" id="tab1"><a href="offer/list.php?typeid=2">最新供应</a></li>
-					<li onmouseover="toogleOffer(2);" id="tab2"><a href="offer/list.php?typeid=1">最新求购</a></li>
-				</ul>
-				<a href="javascript:void(0);" onclick="redirect('redirect.php?url=office-room/offer');return false;" class="fr lasestsend">立即发布自己的信息</a>
-			</div>
-			<div class="lasestcontbox" id="latest-offer-1">
-				<div class="lasestcontboxh">
-					<ul>
-												<li><a href="offer/detail.php?id=32"><img src="attachment/sample/offer/9.jpg.small.jpg" alt="供应精密pH/离子/" /></a><p><a href="offer/detail.php?id=32" title="供应精密pH/离子/">供应精密pH/离子/</a></p></li>
-												<li><a href="offer/detail.php?id=31"><img src="attachment/sample/offer/10.jpg.small.jpg" alt="供应自动电位滴定仪 " /></a><p><a href="offer/detail.php?id=31" title="供应自动电位滴定仪 ">供应自动电位滴定仪 </a></p></li>
-												<li><a href="offer/detail.php?id=30"><img src="attachment/sample/offer/4.jpg.small.jpg" alt="供应浓度计DWS-5" /></a><p><a href="offer/detail.php?id=30" title="供应浓度计DWS-5">供应浓度计DWS-5</a></p></li>
-												<li><a href="offer/detail.php?id=29"><img src="attachment/sample/offer/3.jpg.small.jpg" alt="供应钠离子浓度计" /></a><p><a href="offer/detail.php?id=29" title="供应钠离子浓度计">供应钠离子浓度计</a></p></li>
-												<li><a href="offer/detail.php?id=28"><img src="attachment/sample/offer/2.jpg.small.jpg" alt="供应电子式水分计MO" /></a><p><a href="offer/detail.php?id=28" title="供应电子式水分计MO">供应电子式水分计MO</a></p></li>
-											</ul>
-				</div>
-				<div class="lasestcontboxb">
-					<ul>
-												<li><a href="offer/detail.php?id=32" title="供应精密pH/离子/ORP/oC/o">供应精密pH/离子/ORP/oC/o</a></li>
-												<li><a href="offer/detail.php?id=31" title="供应自动电位滴定仪 ZD-2">供应自动电位滴定仪 ZD-2</a></li>
-												<li><a href="offer/detail.php?id=30" title="供应浓度计DWS-51">供应浓度计DWS-51</a></li>
-												<li><a href="offer/detail.php?id=29" title="供应钠离子浓度计">供应钠离子浓度计</a></li>
-												<li><a href="offer/detail.php?id=28" title="供应电子式水分计MOC-120H">供应电子式水分计MOC-120H</a></li>
-												<li><a href="offer/detail.php?id=27" title="供应生物显微镜 XSP-2C">供应生物显微镜 XSP-2C</a></li>
-												<li><a href="offer/detail.php?id=25" title="供应台式高速冷冻离心机 H1750R">供应台式高速冷冻离心机 H1750R</a></li>
-												<li><a href="offer/detail.php?id=24" title="供应微量可调整支消毒移液器SL20">供应微量可调整支消毒移液器SL20</a></li>
-												<li><a href="offer/detail.php?id=23" title="供应电热恒温鼓风干燥箱 DHG-9076A">供应电热恒温鼓风干燥箱 DHG-9076A</a></li>
-												<li><a href="offer/detail.php?id=22" title="供应电子分析天平 FA1104">供应电子分析天平 FA1104</a></li>
-												<li><a href="offer/detail.php?id=21" title="供应气相色谱仪（GC）GC112A-1">供应气相色谱仪（GC）GC112A-1</a></li>
-												<li><a href="offer/detail.php?id=20" title="供应紫外可见可见光度计752S">供应紫外可见可见光度计752S</a></li>
-												<li><a href="offer/detail.php?id=83" title="这是一个化号的\\\\\\\"序号\\\\\\\"">这是一个化号的\\\\\\\"序号\\\\\\\"</a></li>
-											</ul>
-				</div>
-			</div>
-			<div class="lasestcontbox" id="latest-offer-2" style="display:none;">
-				<div class="lasestcontboxh">
-					<ul>
-											</ul>
-				</div>
-				<div class="lasestcontboxb">
-					<ul>
-												<li><a href="offer/detail.php?id=26" title="供应酸度计PHB-5">供应酸度计PHB-5</a></li>
-												<li><a href="offer/detail.php?id=19" title="供应 远红外快速干燥箱">供应 远红外快速干燥箱</a></li>
-												<li><a href="offer/detail.php?id=18" title="供应原料和燃料油中的沉淀物试验器SYA-6531">供应原料和燃料油中的沉淀物试验器SYA-6531</a></li>
-												<li><a href="offer/detail.php?id=17" title="供应YX-450A不锈钢双层立式消毒器">供应YX-450A不锈钢双层立式消毒器</a></li>
-												<li><a href="offer/detail.php?id=16" title="2X-8A皮带式真空泵">2X-8A皮带式真空泵</a></li>
-												<li><a href="offer/detail.php?id=15" title="供应电子精密天平 JA41002">供应电子精密天平 JA41002</a></li>
-												<li><a href="offer/detail.php?id=14" title="供应比重/密度电子天平MP5002J">供应比重/密度电子天平MP5002J</a></li>
-												<li><a href="offer/detail.php?id=13" title="供应ATH-500弹簧拉压试验机">供应ATH-500弹簧拉压试验机</a></li>
-												<li><a href="offer/detail.php?id=12" title="供应电子分析天平 FA2104S">供应电子分析天平 FA2104S</a></li>
-												<li><a href="offer/detail.php?id=11" title="供应电子天平 MP41001">供应电子天平 MP41001</a></li>
-												<li><a href="offer/detail.php?id=10" title="供应YHG.400远红外快速干燥箱">供应YHG.400远红外快速干燥箱</a></li>
-												<li><a href="offer/detail.php?id=9" title="供应水泥胶砂试模 40×40×160">供应水泥胶砂试模 40×40×160</a></li>
-												<li><a href="offer/detail.php?id=8" title="GZX-300BSH-III光照培养箱">GZX-300BSH-III光照培养箱</a></li>
-												<li><a href="offer/detail.php?id=7" title="JA2003电子精密天平/电子天平/精密天平">JA2003电子精密天平/电子天平/精密天平</a></li>
-											</ul>
-				</div>
-			</div>
-		</div>
-		<div class="fr notebox">
-            <div class="title_bar_s1">
-            <span class="title_top_s1"><span></span></span>
-            <h2><span class="title_more"><a href="member/upgrade.php">我要成为VIP会员</a></span>最新加入企业</h2>
-            </div>
-			<div class="vipcont clearfix">
-				<ul>
-										<li><a href="http://localhost/athena/space.php?userid=dajiadegsi" title="阳明公司" target="_blank">阳明公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena11" title="嘉禾欣袜业" target="_blank">嘉禾欣袜业</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena10" title="义乌市枫悦袜业" target="_blank">义乌市枫悦袜业</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena9" title="南通杭天纺织品有限公司" target="_blank">南通杭天纺织品有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena8" title="宝艺德制帽有限公司" target="_blank">宝艺德制帽有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena7" title="泰州市海锋洗涤机械有限公司" target="_blank">泰州市海锋洗涤机械有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena6" title="天阳照明科技有限公司" target="_blank">天阳照明科技有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena5" title="深圳华联发贸易有限公司" target="_blank">深圳华联发贸易有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena4" title="杭州约拿摩擦材料有限公司" target="_blank">杭州约拿摩擦材料有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena3" title="华南高科水处理设备有限公司" target="_blank">华南高科水处理设备有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena2" title="宁波市江东兴丰铜制有限公司" target="_blank">宁波市江东兴丰铜制有限公司</a></li>
-										<li><a href="http://localhost/athena/space.php?userid=athena1" title="东莞市创忆塑胶原料有限公司" target="_blank">东莞市创忆塑胶原料有限公司</a></li>
-									</ul>
-			</div>
-		</div>
-
-	</div>
-	<div class="blank6"></div>
-<div class="content mauto">
-
-		<div class="type">
-        
-			<div class="title_bar_s1">
-            <span class="title_top_s1"><span></span></span>
-            <h4><span class="title_more">选择类别，立即发布商机</span>行业分类</h4>
-            </div>
-			<div class="typecont">
-            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=1">数字娱乐</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=10" title="数字视频/高清在线" class="typeboxlet01">数字视频/高清在线</a><br />
-                        							<a href="offer/list.php?industryid=18" title="热门">热门</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=19" title="新片">新片</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=20" title="经典">经典</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=21" title="排行榜">排行榜</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=11" title="热门电影/最新大片" class="typeboxlet01">热门电影/最新大片</a><br />
-                        							<a href="offer/list.php?industryid=23" title="动作片">动作片</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=24" title="爆笑片">爆笑片</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=25" title="爱情">爱情</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=26" title="动画">动画</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=27" title="嫌疑">嫌疑</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=28" title="偶像">偶像</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=29" title="伦理">伦理</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=30" title="都市">都市</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=31" title="言情">言情</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=12" title="连播剧场/抢先观看" class="typeboxlet01">连播剧场/抢先观看</a><br />
-                        							<a href="offer/list.php?industryid=32" title="港台">港台</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=33" title="日韩">日韩</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=34" title="欧美">欧美</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=36" title="内地">内地</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=37" title="剧情">剧情</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=13" title="女性杂志" class="typeboxlet01">女性杂志</a><br />
-                        							<a href="offer/list.php?industryid=38" title="女性">女性</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=39" title="时尚">时尚</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=40" title="休闲">休闲</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=41" title="娱乐">娱乐</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=42" title="美容">美容</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=43" title="健康保养">健康保养</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=49" title="育儿">育儿</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=14" title="视觉盛宴" class="typeboxlet01">视觉盛宴</a><br />
-                        							<a href="offer/list.php?industryid=44" title="时尚大典">时尚大典</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=45" title="购物">购物</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=46" title="减肥">减肥</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=47" title="服饰">服饰</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=48" title="装饰装潢">装饰装潢</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=15" title="风尚先生/资讯杂志" class="typeboxlet01">风尚先生/资讯杂志</a><br />
-                        							<a href="offer/list.php?industryid=50" title="电脑">电脑</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=51" title="经济">经济</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=52" title="金融">金融</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=53" title="游戏">游戏</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=54" title="男人">男人</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=16" title="娱乐杂志" class="typeboxlet01">娱乐杂志</a><br />
-                        							<a href="offer/list.php?industryid=56" title="明星">明星</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=57" title="电影">电影</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=58" title="美女">美女</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=59" title="娱乐">娱乐</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=60" title="职场">职场</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=17" title="时尚生活 " class="typeboxlet01">时尚生活 </a><br />
-                        							<a href="offer/list.php?industryid=61" title="时尚">时尚</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=2">虚拟</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=62" title="移动/联通/电信充值卡" class="typeboxlet01">移动/联通/电信充值卡</a><br />
-                        							<a href="offer/list.php?industryid=66" title="移动">移动</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=67" title="联通">联通</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=68" title="电信">电信</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=69" title="IP卡">IP卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=70" title="IC卡">IC卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=71" title="充值卡">充值卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=72" title="100">100</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=73" title="50">50</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=74" title="skype">skype</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=63" title="网游虚拟物品交易区" class="typeboxlet01">网游虚拟物品交易区</a><br />
-                        							<a href="offer/list.php?industryid=75" title="魔兽">魔兽</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=76" title="梦幻">梦幻</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=77" title="蜀门">蜀门</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=78" title="DNF">DNF</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=79" title="QQ币">QQ币</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=80" title="游戏币">游戏币</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=81" title="劲舞团">劲舞团</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=64" title="彩票/大乐透/七星彩/排列三" class="typeboxlet01">彩票/大乐透/七星彩/排列三</a><br />
-                        							<a href="offer/list.php?industryid=82" title="双色球">双色球</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=83" title="超级大乐透">超级大乐透</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=84" title="3D">3D</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=85" title="七星彩">七星彩</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=86" title="七乐彩">七乐彩</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=87" title="排列三">排列三</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=88" title="福彩">福彩</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=89" title="体彩">体彩</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=65" title="折扣区" class="typeboxlet01">折扣区</a><br />
-                        							<a href="offer/list.php?industryid=90" title="酒店">酒店</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=91" title="机票">机票</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=92" title="火车票">火车票</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=93" title="客栈">客栈</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=94" title="旅游路线">旅游路线</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=95" title="景区门票">景区门票</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=3">数码</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=96" title="手机/NOKIA/三星/MOTO" class="typeboxlet01">手机/NOKIA/三星/MOTO</a><br />
-                        							<a href="offer/list.php?industryid=105" title="国货">国货</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=106" title="iPhone">iPhone</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=107" title="LG">LG</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=108" title="索爱">索爱</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=109" title="多普达">多普达</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=110" title="诺基亚">诺基亚</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=111" title="三星">三星</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=112" title="MOTO">MOTO</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=113" title="山寨">山寨</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=97" title="笔记本/ThinkPad/DELL" class="typeboxlet01">笔记本/ThinkPad/DELL</a><br />
-                        							<a href="offer/list.php?industryid=114" title="上网本">上网本</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=115" title="IBM">IBM</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=116" title="苹果">苹果</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=117" title="联想">联想</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=118" title="HP">HP</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=119" title="二手">二手</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=120" title="戴尔">戴尔</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=121" title="清华同方">清华同方</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=122" title="方正 ">方正 </a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=98" title="电脑硬件/LCD/台式整机/网络" class="typeboxlet01">电脑硬件/LCD/台式整机/网络</a><br />
-                        							<a href="offer/list.php?industryid=123" title="LED">LED</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=124" title="LCD">LCD</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=125" title="主板">主板</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=126" title="显卡">显卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=127" title="内存条">内存条</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=128" title="CPU">CPU</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=129" title="硬盘">硬盘</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=130" title="上网卡">上网卡</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=99" title="数码相机/摄像机/摄影器材" class="typeboxlet01">数码相机/摄像机/摄影器材</a><br />
-                        							<a href="offer/list.php?industryid=132" title="索尼">索尼</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=133" title="佳能">佳能</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=134" title="LOMO">LOMO</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=135" title="三星">三星</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=136" title="松下">松下</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=137" title="尼康">尼康</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=100" title="MP3/MP4/MP5/iPod/录音笔" class="typeboxlet01">MP3/MP4/MP5/iPod/录音笔</a><br />
-                        							<a href="offer/list.php?industryid=166" title="iPod">iPod</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=167" title="蓝魔">蓝魔</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=168" title="昂达">昂达</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=169" title="索尼">索尼</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=170" title="艾诺">艾诺</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=171" title="电玩">电玩</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=101" title="闪存/U盘/记忆棒/移动存储" class="typeboxlet01">闪存/U盘/记忆棒/移动存储</a><br />
-                        							<a href="offer/list.php?industryid=158" title="U盘">U盘</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=159" title="内存卡">内存卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=160" title="SD卡">SD卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=161" title="4G">4G</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=162" title="8G">8G</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=163" title="16G">16G</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=164" title="记忆棒">记忆棒</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=165" title="移动硬盘">移动硬盘</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=102" title="手机配件/相机配件/数码配件" class="typeboxlet01">手机配件/相机配件/数码配件</a><br />
-                        							<a href="offer/list.php?industryid=149" title="3G上网">3G上网</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=175" title="摄像头">摄像头</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=174" title="保暖">保暖</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=173" title="电池">电池</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=172" title="3G上网">3G上网</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=157" title=""></a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=156" title="SD卡">SD卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=155" title="鼠标">鼠标</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=154" title="鼠标垫">鼠标垫</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=153" title="蓝牙">蓝牙</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=152" title="摄像头">摄像头</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=151" title="保暖">保暖</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=150" title="电池">电池</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=176" title="蓝牙">蓝牙</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=103" title="办公设备/文具/耗材" class="typeboxlet01">办公设备/文具/耗材</a><br />
-                        							<a href="offer/list.php?industryid=144" title="投影仪">投影仪</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=145" title="打印机">打印机</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=146" title="文具">文具</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=147" title="电子辞典">电子辞典</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=148" title="墨盒">墨盒</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=131" title="家电/HiFi音箱/取暖/加湿/烟灶" class="typeboxlet01">家电/HiFi音箱/取暖/加湿/烟灶</a><br />
-                        							<a href="offer/list.php?industryid=138" title="液晶显示器">液晶显示器</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=139" title="耳机">耳机</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=140" title="锅煲">锅煲</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=141" title="豆浆机">豆浆机</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=142" title="油汀">油汀</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=143" title="洗衣机">洗衣机</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=4">护肤</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=177" title="美容护肤/美体/精油" class="typeboxlet01">美容护肤/美体/精油</a><br />
-                        							<a href="offer/list.php?industryid=180" title="爽肤水">爽肤水</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=181" title="精华液">精华液</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=182" title="面膜">面膜</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=183" title="隔离霜">隔离霜</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=184" title="精油">精油</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=178" title="彩妆/香水/美发/工具" class="typeboxlet01">彩妆/香水/美发/工具</a><br />
-                        							<a href="offer/list.php?industryid=185" title="香水">香水</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=186" title="粉饼">粉饼</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=187" title="粉底">粉底</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=188" title="眼影">眼影</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=189" title="腮红">腮红</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=190" title="BB霜">BB霜</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=179" title="个人护理/保健/美容/飞利浦" class="typeboxlet01">个人护理/保健/美容/飞利浦</a><br />
-                        							<a href="offer/list.php?industryid=191" title="电吹风">电吹风</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=192" title="足浴盆">足浴盆</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=193" title="暖膝">暖膝</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=194" title="剃须">剃须</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=195" title="按摩">按摩</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=5">服饰</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=196" title="精品女装/韩版/羽绒服/外套" class="typeboxlet01">精品女装/韩版/羽绒服/外套</a><br />
-                        							<a href="offer/list.php?industryid=370" title="女装5折">女装5折</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=371" title="毛衣">毛衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=372" title="呢大衣">呢大衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=373" title="棉衣">棉衣</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=206" title="时尚饰品/流行饰品/韩版" class="typeboxlet01">时尚饰品/流行饰品/韩版</a><br />
-                        							<a href="offer/list.php?industryid=318" title="毛衣链">毛衣链</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=319" title="耳环">耳环</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=320" title="发饰">发饰</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=321" title="戒指">戒指</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=322" title="银饰">银饰</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=205" title="手表/西铁城/雷达/Swatch" class="typeboxlet01">手表/西铁城/雷达/Swatch</a><br />
-                        							<a href="offer/list.php?industryid=323" title="天梭">天梭</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=324" title="卡西欧">卡西欧</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=325" title="欧米茄">欧米茄</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=326" title="浪琴">浪琴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=327" title="劳力士">劳力士</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=204" title="童装/童鞋/哈衣/孕妇装" class="typeboxlet01">童装/童鞋/哈衣/孕妇装</a><br />
-                        							<a href="offer/list.php?industryid=328" title="棉服">棉服</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=329" title="毛衣">毛衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=330" title="童裤">童裤</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=331" title="外套">外套</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=332" title="冬靴">冬靴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=333" title="羽绒">羽绒</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=203" title="运动鞋/Nike/Adidas/李宁" class="typeboxlet01">运动鞋/Nike/Adidas/李宁</a><br />
-                        							<a href="offer/list.php?industryid=334" title="跑步鞋">跑步鞋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=335" title="篮球鞋">篮球鞋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=336" title="足球鞋">足球鞋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=337" title="板鞋">板鞋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=338" title="帆布">帆布</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=202" title="运动服/羽绒服/运动套装" class="typeboxlet01">运动服/羽绒服/运动套装</a><br />
-                        							<a href="offer/list.php?industryid=339" title="运动套装">运动套装</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=340" title="棉衣">棉衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=341" title="卫衣">卫衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=342" title="耐克">耐克</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=343" title="李宁">李宁</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=201" title="围巾/帽子/保暖套件/腰带" class="typeboxlet01">围巾/帽子/保暖套件/腰带</a><br />
-                        							<a href="offer/list.php?industryid=344" title="围巾">围巾</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=345" title="帽子">帽子</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=346" title="毛线围巾">毛线围巾</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=347" title="毛线帽">毛线帽</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=348" title="皮带">皮带</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=200" title="女包/男包/钱包/皮包/卡包" class="typeboxlet01">女包/男包/钱包/皮包/卡包</a><br />
-                        							<a href="offer/list.php?industryid=349" title="肩包">肩包</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=350" title="手提包">手提包</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=351" title="斜挎包">斜挎包</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=352" title="钱包">钱包</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=353" title="牛皮包">牛皮包</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=199" title="男装/棉衣/羽绒服/御寒服" class="typeboxlet01">男装/棉衣/羽绒服/御寒服</a><br />
-                        							<a href="offer/list.php?industryid=354" title="羽绒服">羽绒服</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=355" title="棉衣">棉衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=356" title="风衣">风衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=357" title="毛衣">毛衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=358" title="牛仔裤">牛仔裤</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=198" title="男女内衣/睡衣/黛安芬/猫人" class="typeboxlet01">男女内衣/睡衣/黛安芬/猫人</a><br />
-                        							<a href="offer/list.php?industryid=359" title="文胸">文胸</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=360" title="睡衣">睡衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=361" title="保暖">保暖</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=362" title="裤袜">裤袜</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=363" title="塑身">塑身</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=364" title="内裤">内裤</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=197" title="女鞋/靴子/皮靴/Ugg/玖熙" class="typeboxlet01">女鞋/靴子/皮靴/Ugg/玖熙</a><br />
-                        							<a href="offer/list.php?industryid=365" title="靴子">靴子</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=366" title="短靴">短靴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=367" title="雪地靴">雪地靴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=368" title="长靴">长靴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=369" title="男鞋">男鞋</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=207" title="珠宝/钻石/翡翠/黄金/周生生" class="typeboxlet01">珠宝/钻石/翡翠/黄金/周生生</a><br />
-                        							<a href="offer/list.php?industryid=313" title="婚钻">婚钻</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=314" title="翡翠">翡翠</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=315" title="施华洛">施华洛</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=316" title="千足金">千足金</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=317" title="周大福">周大福</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=6">家居</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=208" title="居家日用/厨房餐饮/卫浴洗浴" class="typeboxlet01">居家日用/厨房餐饮/卫浴洗浴</a><br />
-                        							<a href="offer/list.php?industryid=307" title="收纳">收纳</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=308" title="杯">杯</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=309" title="特价区">特价区</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=310" title="婚庆">婚庆</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=311" title="餐具">餐具</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=312" title="保暖">保暖</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=209" title="床上用品/靠垫/窗帘/布艺" class="typeboxlet01">床上用品/靠垫/窗帘/布艺</a><br />
-                        							<a href="offer/list.php?industryid=302" title="冬被">冬被</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=303" title="四件套">四件套</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=304" title="靠垫">靠垫</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=305" title="毯子">毯子</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=306" title="居家鞋">居家鞋</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=210" title="家具/家具定制/宜家代购" class="typeboxlet01">家具/家具定制/宜家代购</a><br />
-                        							<a href="offer/list.php?industryid=296" title="床">床</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=297" title="宜家">宜家</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=298" title="衣柜">衣柜</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=299" title="沙发">沙发</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=300" title="电脑桌">电脑桌</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=301" title="架类">架类</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=211" title="奶粉/尿片/母婴用品" class="typeboxlet01">奶粉/尿片/母婴用品</a><br />
-                        							<a href="offer/list.php?industryid=291" title="奶粉">奶粉</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=292" title="辅食">辅食</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=293" title="营养品">营养品</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=294" title="睡袋">睡袋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=295" title="纸尿裤">纸尿裤</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=212" title="益智玩具/早教/童车床/出行" class="typeboxlet01">益智玩具/早教/童车床/出行</a><br />
-                        							<a href="offer/list.php?industryid=285" title="益智">益智</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=286" title="童车">童车</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=287" title="推车">推车</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=288" title="童床">童床</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=289" title="餐椅">餐椅</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=290" title="早教">早教</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=7">文体</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=213" title="运动/舞蹈/健身/羽毛球" class="typeboxlet01">运动/舞蹈/健身/羽毛球</a><br />
-                        							<a href="offer/list.php?industryid=280" title="羽拍">羽拍</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=281" title="温泉">温泉</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=282" title="跳舞毯">跳舞毯</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=283" title="乒乓">乒乓</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=284" title="跑步机">跑步机</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=214" title="书籍/计算机/经管/文艺" class="typeboxlet01">书籍/计算机/经管/文艺</a><br />
-                        							<a href="offer/list.php?industryid=274" title="考试">考试</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=275" title="小说">小说</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=276" title="童书">童书</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=277" title="外语">外语</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=278" title="漫画">漫画</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=279" title="养生">养生</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=215" title="乐器/音乐/影视/明星/动画片" class="typeboxlet01">乐器/音乐/影视/明星/动画片</a><br />
-                        							<a href="offer/list.php?industryid=269" title="电影">电影</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=270" title="电视剧">电视剧</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=271" title="吉他">吉他</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=272" title="音乐">音乐</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=273" title="儿童音像">儿童音像</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=216" title="户外/登山/野营/旅行装备" class="typeboxlet01">户外/登山/野营/旅行装备</a><br />
-                        							<a href="offer/list.php?industryid=264" title="登山鞋">登山鞋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=265" title="冲锋衣">冲锋衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=266" title="抓绒衣">抓绒衣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=267" title="睡袋">睡袋</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=268" title="滑雪">滑雪</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=217" title="鲜花速递/宠物食品/用品" class="typeboxlet01">鲜花速递/宠物食品/用品</a><br />
-                        							<a href="offer/list.php?industryid=258" title="狗粮">狗粮</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=259" title="零食">零食</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=260" title="猫粮">猫粮</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=261" title="水族">水族</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=262" title="鲜花">鲜花</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=263" title="园艺">园艺</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=218" title="Zippo/眼镜/护眼/军刀/烟具" class="typeboxlet01">Zippo/眼镜/护眼/军刀/烟具</a><br />
-                        							<a href="offer/list.php?industryid=253" title="zippo">zippo</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=254" title="太阳镜">太阳镜</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=255" title="眼镜架">眼镜架</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=256" title="烟嘴">烟嘴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=257" title="戒烟">戒烟</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=8">收藏</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=219" title="古董/邮币/字画/收藏" class="typeboxlet01">古董/邮币/字画/收藏</a><br />
-                        							<a href="offer/list.php?industryid=248" title="钱币">钱币</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=249" title="紫砂">紫砂</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=250" title="和田玉">和田玉</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=251" title="宗教">宗教</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=252" title="古玩街">古玩街</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=220" title="玩具/模型/娃娃/人偶" class="typeboxlet01">玩具/模型/娃娃/人偶</a><br />
-                        							<a href="offer/list.php?industryid=238" title="毛绒">毛绒</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=246" title="娃娃">娃娃</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=245" title="机器人">机器人</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=244" title="玩具">玩具</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=243" title="毛绒">毛绒</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=242" title="模型">模型</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=241" title="娃娃">娃娃</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=240" title="机器人">机器人</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=239" title="玩具">玩具</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=247" title="模型">模型</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=221" title="时尚家饰/工艺品/十字绣" class="typeboxlet01">时尚家饰/工艺品/十字绣</a><br />
-                        							<a href="offer/list.php?industryid=233" title="工艺摆设">工艺摆设</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=234" title="墙贴">墙贴</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=235" title="十字绣">十字绣</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=236" title="装饰">装饰</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=237" title="画钟">画钟</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                				<div class="line"></div>                
-                            			  <div class="typebox">
-              <table cellspacing="0">
-              <tr>
-                <th class="type_tit"><a href="offer/list.php?industryid=9">其他</a></th>
-                <td>					<ul>
-                    							<li>
-							<a href="offer/list.php?industryid=222" title="网店/网络服务/个性定制/软件" class="typeboxlet01">网店/网络服务/个性定制/软件</a><br />
-                        							<a href="offer/list.php?industryid=224" title="网络服务">网络服务</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=225" title="软件">软件</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=226" title="摄影">摄影</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=227" title="网店">网店</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=228" title="跑腿">跑腿</a>
-                                                    						</li>
-                        						<li>
-							<a href="offer/list.php?industryid=223" title="折扣券/演唱会/旅游/吃喝玩乐" class="typeboxlet01">折扣券/演唱会/旅游/吃喝玩乐</a><br />
-                        							<a href="offer/list.php?industryid=229" title="超市卡">超市卡</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=230" title="蛋糕券">蛋糕券</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=231" title="电影票">电影票</a>
-                                                        <span> | </span>
-                                                    							<a href="offer/list.php?industryid=232" title="体检卡">体检卡</a>
-                                                    						</li>
-                        					</ul>
-                    </td>
-              </tr>
-            </table>
-                    
-				</div>
-                            			</div>
-		</div>
-		<div class="fr notebox">
-			<div class="fl notebox">
-				<div class="title_bar_s1">
-               <span class="title_top_s1"><span></span></span>
-               <h2><span class="title_more"><a href="office-room/ad.php" title="我要上榜">我要上榜</a></span>行业品牌</h2>
-              </div>
-				<div class="brandcont clearfix">
-									<li><a href="http://localhost/athena/space.php?userid=athena11" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="嘉禾欣袜业" /></a><p>嘉禾欣袜业</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena10" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="义乌市枫悦袜业" /></a><p>义乌市枫悦袜业</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena9" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="南通杭天纺织品有限公司" /></a><p>南通杭天纺织品有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena8" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="宝艺德制帽有限公司" /></a><p>宝艺德制帽有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena7" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="泰州市海锋洗涤机械有限公司" /></a><p>泰州市海锋洗涤机械有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena6" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="天阳照明科技有限公司" /></a><p>天阳照明科技有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena5" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="深圳华联发贸易有限公司" /></a><p>深圳华联发贸易有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena4" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="杭州约拿摩擦材料有限公司" /></a><p>杭州约拿摩擦材料有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena3" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="华南高科水处理设备有限公司" /></a><p>华南高科水处理设备有限公司</p></li>
-									<li><a href="http://localhost/athena/space.php?userid=athena2" target="_blank"><img src="attachment/sample/company/no.jpg.small.jpg" alt="宁波市江东兴丰铜制有限公司" /></a><p>宁波市江东兴丰铜制有限公司</p></li>
-								</div>
-				<div class="corner_bottom_bar">
-                 <span class="corner_bottom_s1"><span></span></span>
-			    </div>
-			</div>
-			<div class="blank6"></div>
-			<a href="http://www.phpb2b.com/bbs/forumdisplay.php?fid=30" title="立即访问PHPB2B技术论坛，和更多的人交流PB使用技巧" class="fl" target="_blank"><img src="templates/default/images/phpb2b_dev.jpg" width="230" height="70" style="border:1px solid #CFCFCF;" /></a>
-			<div class="blank6"></div>
-			<div class="fl notebox">
-				<div class="title_bar_s1">
-                <span class="title_top_s1"><span></span></span>
-                <h2><span class="title_more"><a href="offer/list.php?typeid=3" title="更多"><span class="raquo">&raquo;</span>更多</a></span>代理合作</h2>
-                </div>
-			   <ul class="hot_list">
-								 <li><h3><a href='offer/detail.php?id=26'>供应酸度计PHB-5</a></h3>
-				   <p>供应酸度计PHB-5</p></li>
-								 <li><a href='offer/detail.php?id=19'>供应 远红外快速干燥箱</a></li>
-								 <li><a href='offer/detail.php?id=18'>供应原料和燃料油中的沉淀物试验器SYA-6531</a></li>
-								 <li><a href='offer/detail.php?id=17'>供应YX-450A不锈钢双层立式消毒器</a></li>
-								 <li><a href='offer/detail.php?id=16'>2X-8A皮带式真空泵</a></li>
-								 <li><a href='offer/detail.php?id=15'>供应电子精密天平 JA41002</a></li>
-								 <li><a href='offer/detail.php?id=14'>供应比重/密度电子天平MP5002J</a></li>
-								 <li><a href='offer/detail.php?id=13'>供应ATH-500弹簧拉压试验机</a></li>
-								 <li><a href='offer/detail.php?id=12'>供应电子分析天平 FA2104S</a></li>
-							   </ul>
-			</div>
-			<div class="blank6"></div>
-			<div class="fl notebox">
-				 <div class="title_bar_s1">
-                <span class="title_top_s1"><span></span></span>
-                <h2><span class="title_more"><a href="offer/list.php?typeid=5" title="更多"><span class="raquo">&raquo;</span>更多</a></span>招商加盟</h2>
-                </div>
-			   <ul class="hot_list">
-								 <li style="height:70px; background:url(http://localhost/athena/attachment/sample/offer/9.jpg.small.jpg) no-repeat; padding:0 0 0 90px; overflow:hidden; width:120px;"><h3><a href='offer/detail.php?id=32'>供应精密pH/离子/ORP/oC/o</a></h3>
-				   <p>供应精密pH/离子/ORP/oC/o</p></li>
-								 <li><a href='offer/detail.php?id=31'>供应自动电位滴定仪 ZD-2</a></li>
-								 <li><a href='offer/detail.php?id=30'>供应浓度计DWS-51</a></li>
-								 <li><a href='offer/detail.php?id=29'>供应钠离子浓度计</a></li>
-								 <li><a href='offer/detail.php?id=28'>供应电子式水分计MOC-120H</a></li>
-								 <li><a href='offer/detail.php?id=27'>供应生物显微镜 XSP-2C</a></li>
-								 <li><a href='offer/detail.php?id=25'>供应台式高速冷冻离心机 H1750R</a></li>
-								 <li><a href='offer/detail.php?id=24'>供应微量可调整支消毒移液器SL20</a></li>
-								 <li><a href='offer/detail.php?id=23'>供应电热恒温鼓风干燥箱 DHG-9076A</a></li>
-							   </ul>
-			</div>
-			<div class="blank6"></div>
-			<div class="fl notebox">
-				<div class="title_bar_s1">
-                <span class="title_top_s1"><span></span></span>
-                <h2><span class="title_more"><a href="news/list.php?typeid=1" title="更多"><span class="raquo">&raquo;</span>更多</a></span>本网动态</h2>
-                </div>
-			   <ul class="hot_list">
-								 <li style="height:70px; background:url(http://localhost/athena/attachment/sample/news/1.jpg.small.jpg) no-repeat; padding:0 0 0 90px;overflow:hidden; width:120px;"><h3><a href='news/detail.php?id=14'>2009服装B2C市场 群雄争霸局面已现</a></h3>
-				   <p>2009服装B2C市场 群雄争霸局面已现</p></li>
-								 <li><a href='news/detail.php?id=13'>珠三角服装企业转内需 服装加工路在何方</a></li>
-								 <li><a href='news/detail.php?id=12'>毛主席诞辰纪念日 收藏家捐赠近亿文物</a></li>
-								 <li><a href='news/detail.php?id=11'>海外回流艺术品市场正热 价格屡创新高</a></li>
-								 <li><a href='news/detail.php?id=10'>信用消费明年有望获利息补贴</a></li>
-								 <li><a href='news/detail.php?id=7'>电脑横机成市场香饽饽 包装机械的发展</a></li>
-								 <li><a href='news/detail.php?id=6'>对华钢铁贸易新战略 华中成钢铁业先锋</a></li>
-								 <li><a href='news/detail.php?id=4'>移动物联网目标初定 苏州明年购物刷手机</a></li>
-								 <li><a href='news/detail.php?id=1'>甲流快速检测试剂盒上市 30分钟即可确诊</a></li>
-							   </ul>
-			</div>
-			<div class="blank6"></div>
-			<div class="fl notebox">
-				<h2>
-				 <p class="faqtit"><strong>意见或建议</strong></p>
-				</h2>
-				<div class="hotcont_service">
-					欢迎您对我们的网站和服务提出宝贵的意见或建议：
-					<form action="service.php" name="service_frm" id="ServiceFrm" method="post">
-					<input type="hidden" name="formhash" value="cd93716e">
-					<input type="hidden" name="save_service" value="save_service">
-					<textarea name="service[content]" cols="" rows=""></textarea>
-					您的Email地址：<input type="text" name="service[email]" value="">
-					<br />
-					<input type="button" name="btn_submit" value="提交" class="btn_cont" onclick="$('#ServiceFrm').submit();" />
-					<input type="reset" value="重置" name="" class="btn_cont"/>
-					</form>
-				   
-				</div>
-			</div>
-		</div>
-	   
-	</div>
-	<div class="blank6"></div>
-	<div class="content mauto">
-		<div class="news">
-			<h3 class="newstit"><strong>新品速递</strong></h3>
-			<ul>
-							<li><a href="product/content.php?id=14"><img src="attachment/sample/product/14.jpg.small.jpg" alt="W200韩版秋冬装 " /></a>
-                <p><a href="product/content.php?id=14">W200韩版秋冬装 </a></p>
-                </li>
-							<li><a href="product/content.php?id=13"><img src="attachment/sample/product/13.jpg.small.jpg" alt="厂家直供 W217冬" /></a>
-                <p><a href="product/content.php?id=13">厂家直供 W217冬</a></p>
-                </li>
-							<li><a href="product/content.php?id=12"><img src="attachment/sample/product/12.jpg.small.jpg" alt="W194淑女长款卫衣" /></a>
-                <p><a href="product/content.php?id=12">W194淑女长款卫衣</a></p>
-                </li>
-							<li><a href="product/content.php?id=11"><img src="attachment/sample/product/11.jpg.small.jpg" alt="欧美流行 瑞丽卫衣 " /></a>
-                <p><a href="product/content.php?id=11">欧美流行 瑞丽卫衣 </a></p>
-                </li>
-							<li><a href="product/content.php?id=10"><img src="attachment/sample/product/10.jpg.small.jpg" alt="女装代理 韩版T恤 " /></a>
-                <p><a href="product/content.php?id=10">女装代理 韩版T恤 </a></p>
-                </li>
-							<li><a href="product/content.php?id=9"><img src="attachment/sample/product/9.jpg.small.jpg" alt="厂家直供 淘宝热销，" /></a>
-                <p><a href="product/content.php?id=9">厂家直供 淘宝热销，</a></p>
-                </li>
-							<li><a href="product/content.php?id=8"><img src="attachment/sample/product/8.jpg.small.jpg" alt="厂家直销 高领T恤 " /></a>
-                <p><a href="product/content.php?id=8">厂家直销 高领T恤 </a></p>
-                </li>
-							<li><a href="product/content.php?id=7"><img src="attachment/sample/product/7.jpg.small.jpg" alt="高领T恤 瑞丽女装 " /></a>
-                <p><a href="product/content.php?id=7">高领T恤 瑞丽女装 </a></p>
-                </li>
-						</ul>
-		</div>
-	</div>
-	<div class="blank6"></div>
-	<div class="content mauto">
-		<div class="bottomh">
-			<img src="templates/default/images/bottom_01.jpg" class="fl" />
-			<img src="templates/default/images/bottom_03.jpg" class="fr" />
-		</div>
-		<div class="bottomc">
-			<div class="fl newscar mr7">
-				<div class="newscar latestbox">
-					<ul>
-					  <li class="lasestcur" id="NewstypeId1" onmouseover="toogleNews(1)">
-					  <a href="news/list.php?typeid=4">综合资讯</a>					  </li>
-					  <li id="NewstypeId2" onmouseover="toogleNews(2)"><a href="news/list.php?typeid=1">行业聚焦</a></li>
-					</ul>
-				</div>
-				<div class="law" id="Newstype1List">
-					<ul class="law_list">
-										<li style="height:70px; background:url(http://localhost/athena/attachment/sample/news/1.jpg.small.jpg) no-repeat; padding:0 0 0 90px;overflow:hidden; width:120px;"><h3><a href='news/detail.php?id=14'>2009服装B2C市场 群雄争霸局面已现</a></h3>
-				   <p>2009服装B2C市场 群雄争霸局面已现</p></li>
-										<li><a href='news/detail.php?id=13'>珠三角服装企业转内需 服装加工路在何方</a></li>
-										<li><a href='news/detail.php?id=12'>毛主席诞辰纪念日 收藏家捐赠近亿文物</a></li>
-										<li><a href='news/detail.php?id=11'>海外回流艺术品市场正热 价格屡创新高</a></li>
-										<li><a href='news/detail.php?id=10'>信用消费明年有望获利息补贴</a></li>
-										<li><a href='news/detail.php?id=7'>电脑横机成市场香饽饽 包装机械的发展</a></li>
-										<li><a href='news/detail.php?id=6'>对华钢铁贸易新战略 华中成钢铁业先锋</a></li>
-										<li><a href='news/detail.php?id=4'>移动物联网目标初定 苏州明年购物刷手机</a></li>
-										<li><a href='news/detail.php?id=1'>甲流快速检测试剂盒上市 30分钟即可确诊</a></li>
-										</ul>
-				</div>
-				<div class="law" id="Newstype2List" style="display:none;">
-					<ul class="law_list">
-										<li style="height:70px; background:url(http://localhost/athena/images/nopic.small.gif) no-repeat; padding:0 0 0 90px;"><h3><a href='news/detail.php?id=17'>dafssdf</a></h3>
-				   <p>tesfdasfd</p></li>
-										<li><a href='news/detail.php?id=3'>中国食品工业发展数据 食品工业诚信体系</a></li>
-										<li><a href='news/detail.php?id=2'>表面处理年终盘点 厌氧胶提高工业可靠性</a></li>
-									 </ul>
-				</div>
-			</div>
-			<div class="fl latest02">
-				<div class="title_bar_s1">
-                <span class="title_top_s1"><span></span></span>
-                <h2><span class="title_more"><a href="news/list.php?type=hot" title="更多"><span class="raquo">&raquo;</span>更多</a></span>热点新闻</h2>
-                </div>
-				<div class="newscarcontbox">
-					<div class="lasestcontboxh02">
-						<ul>
-														<li><a href="news/detail.php?id=14"><img src="attachment/sample/news/1.jpg.small.jpg" alt="2009服装B2C市" /></a>
-                            <p><a href="news/detail.php?id=14" title="2009服装B2C市">2009服装B2C市</a></p>
-                            </li>
-														<li><a href="news/detail.php?id=13"><img src="attachment/sample/news/5.jpg.small.jpg" alt="珠三角服装企业转内需" /></a>
-                            <p><a href="news/detail.php?id=13" title="珠三角服装企业转内需">珠三角服装企业转内需</a></p>
-                            </li>
-														<li><a href="news/detail.php?id=12"><img src="attachment/sample/news/6.jpg.small.jpg" alt="毛主席诞辰纪念日 收" /></a>
-                            <p><a href="news/detail.php?id=12" title="毛主席诞辰纪念日 收">毛主席诞辰纪念日 收</a></p>
-                            </li>
-														<li><a href="news/detail.php?id=4"><img src="attachment/sample/news/3.jpg.small.jpg" alt="移动物联网目标初定 " /></a>
-                            <p><a href="news/detail.php?id=4" title="移动物联网目标初定 ">移动物联网目标初定 </a></p>
-                            </li>
-													</ul>
-					</div>
-					<div class="newscarcontboxb">
-						<ul>
-														<li><a href="news/detail.php?id=17" title="dafssdf">dafssdf</a></li>
-														<li><a href="news/detail.php?id=16" title="test">test</a></li>
-														<li><a href="news/detail.php?id=15" title="北京公共自行车租赁输在哪儿">北京公共自行车租赁输在哪儿</a></li>
-														<li><a href="news/detail.php?id=14" title="2009服装B2C市场 群雄争霸局面已现">2009服装B2C市场 群雄争霸局面已现</a></li>
-														<li><a href="news/detail.php?id=13" title="珠三角服装企业转内需 服装加工路在何方">珠三角服装企业转内需 服装加工路在何方</a></li>
-														<li><a href="news/detail.php?id=12" title="毛主席诞辰纪念日 收藏家捐赠近亿文物">毛主席诞辰纪念日 收藏家捐赠近亿文物</a></li>
-														<li><a href="news/detail.php?id=11" title="海外回流艺术品市场正热 价格屡创新高">海外回流艺术品市场正热 价格屡创新高</a></li>
-														<li><a href="news/detail.php?id=10" title="信用消费明年有望获利息补贴">信用消费明年有望获利息补贴</a></li>
-														<li><a href="news/detail.php?id=9" title="北汽海外闪购“击中”什么？">北汽海外闪购“击中”什么？</a></li>
-														<li><a href="news/detail.php?id=8" title="席梦思没有在华转让 家纺业热门话题">席梦思没有在华转让 家纺业热门话题</a></li>
-														<li><a href="news/detail.php?id=7" title="电脑横机成市场香饽饽 包装机械的发展">电脑横机成市场香饽饽 包装机械的发展</a></li>
-														<li><a href="news/detail.php?id=6" title="对华钢铁贸易新战略 华中成钢铁业先锋">对华钢铁贸易新战略 华中成钢铁业先锋</a></li>
-														<li><a href="news/detail.php?id=5" title="纺机业四大关键调整理念 纺企仍看高棉价">纺机业四大关键调整理念 纺企仍看高棉价</a></li>
-														<li><a href="news/detail.php?id=4" title="移动物联网目标初定 苏州明年购物刷手机">移动物联网目标初定 苏州明年购物刷手机</a></li>
-													</ul>
-					</div>
-				</div>
-			</div>
-			<div class="fr hotzt">
-				<div class="hotztbox">
-					<p><strong>专题新闻</strong><a href="news/list.php?type=topic" class="fr"><span class="raquo">&raquo;</span>更多</a></p>
-										<a href="news/list.php?topicid=3" title=""><img src="attachment/sample/news/topic3.jpg" width="202" height="51" /></a><br />
-					<a href="news/list.php?topicid=3" title="">经济周刊:再有4万亿会投向哪</a><br />
-										<a href="news/list.php?topicid=2" title=""><img src="attachment/sample/news/topic2.jpg" width="202" height="51" /></a><br />
-					<a href="news/list.php?topicid=2" title="">2009中国改革年度评选候选名单公示</a><br />
-										<a href="news/list.php?topicid=1" title=""><img src="attachment/sample/news/topic1.jpg" width="202" height="51" /></a><br />
-					<a href="news/list.php?topicid=1" title="">南方人物：华语电影最好时光 </a><br />
-									</div>
-			</div>
-		</div>
-		<div class="bottomb">
-			<img src="templates/default/images/bottom_04.jpg" class="fl" />
-			<img src="templates/default/images/bottom_06.jpg" class="fr" />
-		</div>
-	</div>
-	<div class="blank6"></div>
-	<div class="content mauto">
-		<div class="pardent">
-			<p><a href="friendlink.php" title="申请合作或链接" class="fr"><span class="raquo">&raquo;</span>申请合作或链接</a></p>
-			<div class="pardentbox clearfix">
-			<table width="100%" border="0">
-			  <tr>
-				<th class="friend_link">友情链接:</th>
-				<td class="friend_link_content">
-									<a href="http://www.phpb2b.com/" title="" target="_blank">PHPB2B</a><span>|</span>
-									<a href="http://demo.phpb2b.com/" title="" target="_blank">PHP B2B电子商务网演示</a><span>|</span>
-								</td>
-			  </tr>
-			</table>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="footer">
-	<div class="ins"> 
-			<a href="sitemap.php" title="网站地图">网站地图</a><span>|</span>
-			<a href="agreement.php" title="法律声明">法律声明</a><span>|</span>
-			<a href="friendlink.php" title="友情链接">友情链接</a><span>|</span>
-			<a href="page.php?name=aboutus" title="关于我们">关于我们</a><span>|</span>
-			<a href="page.php?name=contactus" title="联系我们">联系我们</a><span>|</span>
-			<a href="page.php?name=aboutads" title="广告服务">广告服务</a><span>|</span>
-		<p>
-		B2B网站的名称版权所有&copy;&nbsp;客户服务热线:(86)10-84128912&nbsp;客户服务邮箱:<script type="text/javascript">eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%73%65%72%76%69%63%65%5f%65%6d%61%69%6c%40%79%6f%75%72%64%6f%6d%61%69%6e%2e%63%6f%6d%22%20%3e%73%65%72%76%69%63%65%5f%65%6d%61%69%6c%40%79%6f%75%72%64%6f%6d%61%69%6e%2e%63%6f%6d%3c%2f%61%3e%27%29%3b'))</script>&nbsp;<a href="javascript:;" onclick="$('html, body').animate({scrollTop: '0px'}, 300);return false;">返回顶部</a><br />ICP备案号码[ID]<br />
-		<a href="tencent://message/?&Uin=100864825&Site=http://localhost/athena/&Menu=yes" target='_blank' title="qq100864825"><img src="http://localhost/athena/images/qq_online.jpg" align="absmiddle" border="0" alt="100864825" /></a>&nbsp;<a href="http://webmessenger.msn.com/?contact=service_msn@yourdomain.com" title="msnservice_msn@yourdomain.com"><img src="http://localhost/athena/images/msn.gif" align="absmiddle" border="0" alt="service_msn@yourdomain.com" /></a>
-	</p>
-    </div>
- </div>
-</body>
-</html>

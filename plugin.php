@@ -1,27 +1,20 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: plugin.php 416 2009-12-26 13:31:08Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 135 $
  */
 define('CURSCRIPT', 'plugin');
 require("libraries/common.inc.php");
 if (isset($_GET['name'])) {
 	$name = htmlspecialchars(trim($_GET['name']));
-	$plugin_info = $pdb->GetRow("SELECT * FROM {$tb_prefix}plugins WHERE name='".$name."'");
+	$plugin_info = $pdb->GetRow($sql = "SELECT * FROM {$tb_prefix}plugins WHERE name='".$name."'");
 	if (!$plugin_info OR empty($plugin_info)) {
-		flash("plugin_not_exists", URL);
+		die(L("plugin_not_exists"));
 	}else{
 		if (!class_exists("Plugin")) {
 			uses("plugin");
@@ -30,8 +23,8 @@ if (isset($_GET['name'])) {
 		    $plugin = new Plugin($name);
 		}
 		/**
- * Sends http headers
- */
+		 * Sends http headers
+		 */
 		header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // rfc2616 - Section 14.21
 		header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 		header('Cache-Control: no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0'); // HTTP/1.1
@@ -46,7 +39,7 @@ if (isset($_GET['name'])) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset='.$charset.'" />
 <meta name="keywords" content="" />
-<meta name="description" content="'.utf_substr(htmlspecialchars($plugin_info['description']), 100).'" />
+<meta name="description" content="'.mb_substr(htmlspecialchars($plugin_info['description']), 0, 5).'" />
 <title>'.implode(" - ", array($name, $plugin_info['title'])).'</title>
 </head>
 <body>';

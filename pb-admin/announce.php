@@ -1,32 +1,27 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: announce.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 uses("announcement");
 require("session_cp.inc.php");
 require(LIB_PATH. "page.class.php");
-require(CACHE_PATH. "cache_announcetype.php");
+require(LIB_PATH. "cache.class.php");
+require(LIB_PATH. "time.class.php");
+include(CACHE_PATH. "cache_type.php");
 $page = new Pages();
+$cache = new Caches();
 $announce = new Announcements();
 $tpl_file = "announce";
-setvar("Types", $_PB_CACHE['announcetype']);
+setvar("Types", $_PB_CACHE['announcementtype']);
 if (isset($_POST['del']) && is_array($_POST['id'])) {
 	$deleted = $announce->del($_POST['id']);
-	$announce->updateCache();
 	if (!$deleted) {
 		flash();
 	}
@@ -42,6 +37,7 @@ if (isset($_GET['do'])) {
 	if($do=="edit"){
 		if(!empty($id)){
 			$res= $announce->read("*",$id);
+			$res['display_expiration'] = date("Y-m-d", $res['display_expiration']);
 			setvar("item",$res);
 		}
 		$tpl_file = "announce.edit";
@@ -54,6 +50,9 @@ if (isset($_POST['save']) && !empty($_POST['data']['announcement'])) {
 	if(isset($_POST['id'])){
 		$id = intval($_POST['id']);
 	}
+	if (!empty($_POST['data']['display_expiration'])) {
+		$vals['display_expiration'] = Times::dateConvert($_POST['data']['display_expiration']);
+	}
 	if (!empty($id)) {
 		$vals['modified'] = $time_stamp;
 		$result = $announce->save($vals, "update", $id);
@@ -63,14 +62,18 @@ if (isset($_POST['save']) && !empty($_POST['data']['announcement'])) {
 	}
 	if (!$result) {
 		flash();
-	}else{
-		$announce->updateCache();
 	}
 }
 $amount = $announce->findCount(null, "id");
 $page->setPagenav($amount);
-$fields = "id,announcetype_id,announcetype_id as typeid,subject,message,subject AS title,message AS content,created,created as pubdate";
+$fields = "id,announcetype_id,announcetype_id as typeid,subject,message,subject AS title,message AS content,created";
 setvar("ByPages", $page->pagenav);
-setvar("Items",$announce->findAll($fields, null, null, "id DESC", $page->firstcount, $page->displaypg));
+$result = $announce->findAll($fields, null, null, "id DESC", $page->firstcount, $page->displaypg);
+if (!empty($result)) {
+	for($i=0; $i<count($result); $i++){
+		if(!empty($result[$i]['created'])) $result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
+	}
+	setvar("Items", $result);
+}
 template($tpl_file);
 ?>

@@ -1,33 +1,28 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: list.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
-//$li = 7;
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
 require("../share.inc.php");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
-require(CACHE_PATH. "cache_expotype.php");
+require(CACHE_PATH. "cache_type.php");
 include(CACHE_PATH. "cache_industry.php");
 include(CACHE_PATH. "cache_area.php");
 uses("expo","area");
+$page = new Pages();
 $expo = new Expoes();
 $page = new Pages();
 $area = new Areas();
 $conditions = array();
+$viewhelper->setTitle(L("fair", "tpl"));
+$viewhelper->setPosition(L("fair", "tpl"), "fair/");
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
 	if ($do == "search") {
@@ -64,16 +59,20 @@ if (!empty($result)) {
 	for ($i=0; $i<count($result); $i++){
 		if($result[$i]['begin_time']) $result[$i]['begin_date'] = @date("Y-m-d", $result[$i]['begin_time']);
 		if($result[$i]['end_time']) $result[$i]['end_date'] = @date("Y-m-d", $result[$i]['end_time']);
-		$result[$i]['description'] = strip_tags($result[$i]['description']);
+		$result[$i]['description'] = mb_substr(strip_tags(trim($result[$i]['description'])), 0, 100);
+		$result[$i]['typename'] = $_PB_CACHE['expotype'][$result[$i]['expotype_id']];
+		$result[$i]['title'] = $result[$i]['name'];
+		if(isset($result[$i]['picture'])) $result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture'], '', 'small');
 		if(!empty($result[$i]['area_id1'])){
 			$result[$i]['area'] = "(".$_PB_CACHE['area'][1][$result[$i]['area_id1']].$_PB_CACHE['area'][2][$result[$i]['area_id2']].$_PB_CACHE['area'][3][$result[$i]['area_id1']].")";
 		}
 	}
 	setvar("Items", $result);
-	setvar("Areas", $_PB_CACHE['area']);	
 }
+setvar("Areas", $_PB_CACHE['area']);	
 setvar("Type",$_PB_CACHE['expotype']);
 $viewhelper->setTitle(L("search", "tpl"));
 $viewhelper->setPosition(L("search", "tpl"));
+setvar("ByPages",$page->pagenav);
 render("fair.list");
 ?>

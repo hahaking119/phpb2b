@@ -1,41 +1,31 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: industry.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
-require(LIB_PATH. 'wordsconvert.class.php');
 require(LIB_PATH. 'page.class.php');
-require(CACHE_PATH. "cache_industrytype.php");
-require(CACHE_PATH. "cache_industry.php");
 require("session_cp.inc.php");
 require(LIB_PATH. "json_config.php");
 require(LIB_PATH. "cache.class.php");
-require(LIB_PATH. "typemodel.inc.php");
-require(LIB_PATH. "chinese.class.php");
-$chinese = new Chinese("GBK", "UTF-8");
-uses("industry");
+include(CACHE_PATH. "cache_type.php");
+include(CACHE_PATH. "cache_industry.php");
+uses("industry", "typeoption");
 $cache = new Caches();
+$typeoption = new Typeoption();
 $industry = new Industries();
 $condition = null;
 $conditions = array();
 $tpl_file = "industry";
 $page = new Pages();
 setvar("Types", $_PB_CACHE['industrytype']);
-setvar("CacheItems", $cache_items = $_PB_CACHE['industry']);
-setvar("AskAction", get_cache_type("common_option"));
+$cache_items = $_PB_CACHE['industry'];
+setvar("AskAction", $typeoption->get_cache_type("common_option"));
 if (isset($_POST['del'])) {
 	if (!empty($_POST['id'])) {
 		$industry->del($_POST['id']);
@@ -115,49 +105,7 @@ if (isset($_GET['do'])) {
 	}
 	if ($do == "refresh") {
 		$cache->writeCache("industry", "industry");
-		$data = array();
-		$op = "<?php\n";
-		$op.="return ";
-		foreach ($_PB_CACHE['industry'][1] as $key1=>$val1) {
-			$data[$key1]['id'] = $key1;
-			$data[$key1]['name'] = $val1;
-			$url = $pdb->GetOne("SELECT url FROM {$tb_prefix}industries WHERE id={$key1} ORDER BY display_order ASC");
-			if ($url) {
-				$data[$key1]['url'] = $url;
-			}else{
-				$data[$key1]['url'] = $industry->rewrite($key1, $val1);
-			}
-			$tmp_result1 = $pdb->GetArray("SELECT id,name,level FROM {$tb_prefix}industries WHERE level=2 AND parent_id=".$key1." ORDER BY display_order ASC");
-			if (!empty($tmp_result1)) {
-				foreach ($tmp_result1 as $key2=>$val2) {
-					$data[$key1]['sub'][$key2]['id'] = $val2['id'];
-					$data[$key1]['sub'][$key2]['name'] = $val2['name'];
-					$url = $pdb->GetOne("SELECT url FROM {$tb_prefix}industries WHERE id={$val2['id']}");
-					if ($url) {
-						$data[$key1]['sub'][$key2]['url'] = $url;
-					}else{
-						$data[$key1]['sub'][$key2]['url'] = $industry->rewrite($val2['id'], $val2['name']);
-					}
-					$tmp_result2 = $pdb->GetArray("SELECT id,name,level FROM {$tb_prefix}industries WHERE level=3 AND parent_id=".$val2['id']." ORDER BY display_order ASC");
-					if (!empty($tmp_result2)) {
-						foreach ($tmp_result2 as $key3=>$val3) {
-							$data[$key1]['sub'][$key2]['sub'][$key3]['id'] = $val3['id'];
-							$data[$key1]['sub'][$key2]['sub'][$key3]['name'] = $val3['name'];
-							$url = $pdb->GetOne("SELECT url FROM {$tb_prefix}industries WHERE id={$val3['id']}");
-							if ($url) {
-								$data[$key1]['sub'][$key2]['sub'][$key3]['url'] = $url;
-							}else{
-								$data[$key1]['sub'][$key2]['sub'][$key3]['url'] = $industry->rewrite($val3['id'], $val3['name']);
-							}
-						}
-					}
-				}
-			}
-		}
-		$op.=$cache->evalArray($data);
-		$op.="\n";
-		$op.="?>";
-		$fp = file_put_contents(CACHE_PATH. "industry.php", $op);
+		$industry->updateCache();
 		flash("success");
 	}
 	if ($do == "search") {
@@ -175,6 +123,7 @@ if (isset($_GET['do'])) {
 		}
 	}
 	if ($do == "edit") {
+		setvar("CacheItems", $industry->getTypeOptions());
 		if (!empty($id)) {
 			$res = $pdb->GetRow("SELECT * FROM {$tb_prefix}industries WHERE id=".$id);
 			setvar("item", $res);
@@ -212,5 +161,7 @@ if (!empty($result)) {
 	setvar("Items", $result);
 	setvar("ByPages", $page->pagenav);
 }
+$stats = $pdb->GetArray("SELECT level,count(id) as amount FROM ".$tb_prefix."industries GROUP BY level");
+setvar("LevelStats", $stats);
 template($tpl_file);
 ?>

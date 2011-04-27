@@ -1,20 +1,15 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 全局 &raquo; 地区</p>
+	<p><{$_your_current_position}> <{$_setting_global}> &raquo; <{$_area}></p>
 </div>
 <div id="rightTop"> 
-    <h3>地区</h3> 
+    <h3><{$_area}></h3> 
     <ul class="subnav">
-		<li><a href="area.php">管理</a></li>
-        <li><a href="area.php?do=edit">添加/编辑</a></li>
-        <li><a class="btn1" href="areatype.php">分类</a></li>
-        <li><a href="area.php?do=clear">清理</a></li>
-        <li><a href="area.php?do=refresh">更新缓存</a></li>
+		<li><a href="area.php"><{$_management}></a></li>
+        <li><a href="area.php?do=edit"><{$_add_or_edit}></a></li>
+        <li><a class="btn1" href="areatype.php"><span><{$_sorts}></span></a></li>
+        <li><a href="area.php?do=clear"><{$_clearing}></a></li>
+        <li><a href="area.php?do=refresh"><{$_update_cache}></a></li>
     </ul>
 </div>
 <div class="info">
@@ -29,7 +24,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" value="保存" />
+			<input class="formbtn" type="submit" value="<{$_save}>" />
 		</td>
 
       </tr>

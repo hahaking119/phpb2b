@@ -3,7 +3,7 @@
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
   <div class="content">
-    <div class="tips"><span><{$position}></span><{$_lists}></div>
+    <div class="tips"><span><{$position}></span></div>
     <div class="blank"></div>
     <div class="body_content">
         <div class="title_bar_s3">
@@ -12,7 +12,7 @@
          </div>  
 		<ul class="announce_list">
 			<{foreach from=$Items name=announce item=item}>
-			<li><a href="announce.php?id=<{$item.id}>" target="_blank"><{$item.subject}></a>&nbsp;[<{$item.created|date_format:"%Y-%m-%d"}>]</li>
+			<li><a href="announce.php?id=<{$item.id}>" target="_blank"><{$item.subject}></a>&nbsp;[<{$item.pubdate}>]</li>
 			<{/foreach}>
 		</ul>
 	 

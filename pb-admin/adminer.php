@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: adminer.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
@@ -46,6 +39,13 @@ if (isset($_POST['changepass']) && !empty($_POST['data']['adminer'])) {
 if (isset($_POST['save']) && !empty($_POST['data']['adminfield'])) {
 	$vals = array();
 	$vals = $_POST['data']['adminfield'];
+	if ($_POST['auth'] == 1) {
+		if (!empty($_POST['priv']) && is_array($_POST['priv'])) {
+			$vals['permissions'] = implode(",", $_POST['priv']);
+		}
+	}else{
+		$vals['permissions'] = '';
+	}
 	if (!empty($_POST['data']['adminer']['user_pass'])) {
 		$vals['user_pass'] = $member->authPasswd($_POST['data']['adminer']['user_pass']);
 	}
@@ -75,6 +75,8 @@ if (isset($_POST['save']) && !empty($_POST['data']['adminfield'])) {
 	}
 	if(!$result){
 		flash('', '', 0);
+	}else{
+		flash("success");
 	}
 }
 if (isset($_GET['do'])) {
@@ -100,11 +102,24 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 	if ($do == "edit") {
+		require("menu.php");
 		if(!empty($id)){
 			$res = $pdb->GetRow("SELECT m.*,af.* FROM {$tb_prefix}adminfields af LEFT JOIN {$tb_prefix}members m ON m.id=af.member_id WHERE af.member_id={$id}");
 			if($res['expired']) $res['expire_date'] = @date("Y-m-d", $res['expired']);
+			$allowed_permissions = explode(",", $res['permissions']);
+			foreach ($menus as $key=>$val) {
+				if (in_array($key, $allowed_permissions)) {
+					$menus[$key]['check'] = 1;
+					foreach ($val['children'] as $key1=>$val1) {
+						if (in_array($key1, $allowed_permissions)) {
+							$menus[$key]['children'][$key1]['check'] = 1;
+						}
+					}
+				}
+			}
 			setvar("item",$res);
 		}
+		setvar("Privileges", $menus);
 		$tpl_file = "adminer.edit";
 		template($tpl_file);
 		exit;
@@ -115,6 +130,7 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 }
+setvar("AdministratorId", $administrator_id);
 setvar("Items", $result = $pdb->GetArray("SELECT m.username,af.first_name,af.last_login,af.last_ip,af.last_name,m.id,af.member_id FROM {$tb_prefix}adminfields af LEFT JOIN {$tb_prefix}members m ON m.id=af.member_id"));
 template($tpl_file);
 ?>

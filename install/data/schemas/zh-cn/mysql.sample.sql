@@ -1,64 +1,61 @@
-
--- 
--- 导出表中的数据 `pb_adses`
--- 
-
-INSERT INTO `pb_adses` VALUES (1, 1, 'GIF', '示例广告1', 1, '', 'image/gif', 'attachment/sample/default/blue.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, '', 1261888037, 1261888037);
-INSERT INTO `pb_adses` VALUES (2, 1, 'JPG', '示例广告2', 1, '', 'image/gif', 'attachment/sample/default/blue.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, '', 1261888054, 1261888054);
-INSERT INTO `pb_adses` VALUES (3, 1, 'PNG', '示例广告3', 1, '', 'image/gif', 'attachment/sample/default/blue.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, '', 1261888065, 1261888065);
-INSERT INTO `pb_adses` VALUES (4, 1, '示例广告4', '', 1, '', 'image/gif', 'attachment/sample/default/blue.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, '', 1261888266, 1261888266);
-INSERT INTO `pb_adses` VALUES (5, 1, '示例广告5', 'PNG', 1, '', 'image/gif', 'attachment/sample/default/blue.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, '', 1261888221, 1261888221);
-INSERT INTO `pb_adses` VALUES (6, 1, '示例广告6', '', 1, '', 'image/gif', 'attachment/sample/default/blue.gif', '', 152, 52, '', 0, 0, 0, 1, '_blank', 0, 1, 1, '', 1261888231, 1261888231);
-INSERT INTO `pb_adses` VALUES (7, 2, '新一代行业电子商务平台', '', 1, '', 'image/pjpeg', 'attachment/sample/banner_958.jpg', 'http://www.phpb2b.com', 958, 52, '', 1265678881, 0, 0, 1, '_blank', 0, 1, 1, 'attachment/sample/banner_958.jpg', 1265678881, 1265678881);
+INSERT INTO `pb_brands` (`id`, `member_id`, `company_id`, `type_id`, `if_commend`, `name`, `alias_name`, `picture`, `description`, `hits`, `ranks`, `letter`, `created`, `modified`) VALUES 
+(1, -1, 0, 1, 1, 'palm', 'palm', 'sample/brand/1.jpg', '', 1, 0, 'p', unix_timestamp(now()), 0),
+(2, -1, 0, 1, 1, 'LG', 'LG', 'sample/brand/2.jpg', '', 1, 0, 'l', unix_timestamp(now()), 0),
+(3, -1, 0, 1, 0, '摩托罗拉', 'motolola', 'sample/brand/3.jpg', '', 1, 0, 'm', unix_timestamp(now()), 0),
+(4, -1, 1, 1, 1, '诺基亚', 'nokia', 'sample/brand/4.jpg', '', 1, 0, 'n', unix_timestamp(now()), 0),
+(5, 1, 1, 4, 1, '飞利浦', 'philips', 'sample/brand/5.jpg', '', 0, 0, 'f', unix_timestamp(now()), 0),
+(26, -1, 1, 4, 0, '三星', 'samsung', 'sample/brand/6.jpg', '', 0, 0, 's', unix_timestamp(now()), 0),
+(27, -1, -1, 4, 0, '松下', 'panasonic', 'sample/brand/7.jpg', '', 0, 0, 's', unix_timestamp(now()), 0),
+(28, -1, 0, 4, 0, '索爱', 'sony', 'sample/brand/8.jpg', '', 0, 0, 's', unix_timestamp(now()), 0),
+(29, -1, -1, 4, 0, '西门子', 'simens', 'sample/brand/9.jpg', '', 0, 0, 'x', unix_timestamp(now()), 0),
+(32, 1, 1, 275, 0, '阿尔卡特', 'alcatel', 'sample/brand/10.jpg', 'asdf', 0, 0, 'a', unix_timestamp(now()), 0);
 
 -- 
 -- 导出表中的数据 `pb_expoes`
 -- 
 
-INSERT INTO `pb_expoes` VALUES (1, 2, '2010孟加拉国际建筑工业工程展览会', '<p>孟加拉国际建筑工业工程展览会是孟加拉国内及周边地区最有影响力的展览会，为其本国内及国际建筑行业的相关企业开拓孟加拉这个潜在市场提供了商务交流的平台。该展会将呈现建筑领域的最先进的科技、设备、材料、服务及相关技术，为该行业的生产商、贸易商、风险投资商、专利转让及寻求代理、分销、合作等的所有相关人士提供了平台。</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261987939, 1261988010);
-INSERT INTO `pb_expoes` VALUES (2, 1, '深圳首届婴童教育产业博览会暨亲子购物节', '<p>深圳首届婴童教育产业博览会暨亲子购物节</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988097, 1261988107);
-INSERT INTO `pb_expoes` VALUES (3, 1, '广州锦汉展览中心', '<p>广州锦汉展览中心</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988134, 1261988134);
-INSERT INTO `pb_expoes` VALUES (4, 2, '青岛国际奢侈品展览会', '<p>2010青岛国际奢侈品展览会 2010-5-28</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988174, 1261988174);
-INSERT INTO `pb_expoes` VALUES (5, 2, '日本零售业展2010', '<p>日本零售业展2010 2010-3-9</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988212, 1261988212);
-INSERT INTO `pb_expoes` VALUES (6, 2, '全球美容美发展会', '<p>2010全球美容美发展会 2010-1-28</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988241, 1261988241);
-INSERT INTO `pb_expoes` VALUES (7, 1, 'WMG3数字娱乐游戏博览会', '<p>首届WMG3数字娱乐游戏博览圣诞期间在杭州举行</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988360, 1261988360);
-INSERT INTO `pb_expoes` VALUES (8, 2, '加拿大多伦多国际游艇展', '<p>加拿大多伦多国际游艇展 2010-1-9</p>', 0, 0, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, 1261988375, 1261988375);
+INSERT INTO `pb_expoes` (`id`, `expotype_id`, `name`, `description`, `begin_time`, `end_time`, `industry_ids`, `industry_id1`, `industry_id2`, `industry_id3`, `area_id1`, `area_id2`, `area_id3`, `address`, `stadium_name`, `refresh_method`, `scope`, `hosts`, `organisers`, `co_organisers`, `sponsors`, `contacts`, `important_notice`, `picture`, `if_commend`, `status`, `hits`, `created`, `modified`) VALUES 
+(1, 1, '第14届中国美容博览会开幕', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(2, 1, '第29届广州国际美博会看点精彩呈现', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(3, 1, '第十届中国国际营养健康产业博览会', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(4, 1, '中国上海产业用纺织品及非织造布展览会', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(5, 2, '日本东京国际鞋类及皮革制品展览会', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(6, 2, '第二十一届中国国际玻璃工业技术展览会', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(7, 1, '第五届中国内蒙古食品加工与包装机械展览会', '', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, 1, 1, unix_timestamp(now()), 0),
+(8, 2, '第七届中国国际食品加工与包装设备展览会', NULL, unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, '', 0, 1, 1, unix_timestamp(now()), 0),
+(9, 1, '第十届中国北京国际绿色食品及有机食品展览会', NULL, unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, '', 0, 1, 1, unix_timestamp(now()), 0),
+(10, 2, '第十五届中国国际建筑装饰材料展览会', NULL, unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, '', 0, 1, 1, unix_timestamp(now()), 0),
+(11, 1, '第三届中国西部建筑科技展览会', NULL, unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, 'sample/other/fair-2.jpg', 1, 1, 1, unix_timestamp(now()), 0),
+(12, 1, '中国2010上海世博会', '上海世博会是我们的机遇', unix_timestamp(now()), unix_timestamp(now())+2592000, '0', 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', NULL, NULL, 'sample/other/fair-1.jpg', 1, 1, 1, unix_timestamp(now()), 0);
 
 -- 
 -- 导出表中的数据 `pb_dicts`
 -- 
 
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (31, 8, '', '草本植物', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (27, 8, '', '修剪', 'pinch', '', NULL, '', NULL, 19, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (28, 8, '', '叶', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (29, 8, '', '营养繁殖', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (30, 8, '', '摘心', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (23, 8, '', '豆瓣绿', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (24, 8, '', '卡拉斯榕', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (25, 8, '', '刚玉坩埚', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (26, 8, '', '休眠', 'dormancy', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (36, 8, '', '花序', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (33, 8, '', '根系', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (34, 8, '', '灌木', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (39, 8, '', '三尖齿龙', 'trimucrodon', '', '拉丁文学名( name)→ trimucrodon 发音( pronounced)→ .. 含义( meaning)→ 三面的，尖锐的牙齿 目(order)→ ornithischia 鸟臀目 亚目( suborder)→ [未定] 类(infraorder)→ [未定] 属(genus)→ trimucrodon 三尖齿龙', '', NULL, 4, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (22, 8, '', '木槿属', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (37, 8, '', '花期', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (32, 8, '', '插花', 'flower arrangement', '', NULL, '', NULL, 1, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (38, 8, '', '完全肥料', 'complete fertilizer', '', NULL, '', NULL, 2, 0, 0, 0, 0);
-INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES (35, 8, '', '果', '', '', NULL, '', NULL, 1, 0, 0, 0, 0);
+INSERT INTO `pb_dicts` (`id`, `dicttype_id`, `extend_dicttypeid`, `word`, `word_name`, `digest`, `content`, `picture`, `refer`, `hits`, `closed`, `if_commend`, `created`, `modified`) VALUES 
+(1, 7, '', '成本加运费', 'Cost and Freight', '成本加运费（Cost and Freight）(named port of shipment)，指定目的港。</p>', '<p>成本加运费（Cost and Freight）(named port of shipment)，指定目的港。它指卖方必须支付把货物运至指定目的港所需的开支和运费，但从货物交至船上甲板后，货物的风险、灭失或损坏以及发生事故后造成的额外开支，在货物越过指定港的船舷后，就由卖方转向买方负担．另外要求卖方办理货物的出口结关手续。本术语适用于海运或内河运输。', '', '', 2, 0, 0, unix_timestamp(), unix_timestamp()),
+(2, 0, '', '多式联运', '', '多式联运，是指从装运地到目的地的运输过程中包含两种以上的运输方式，海、陆、空、内河等。', '', '', '', 1, 0, 0, unix_timestamp(), unix_timestamp());
 
 -- 
 -- 导出表中的数据 `pb_dicttypes`
 -- 
 
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (2, '包装机械', 1, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (1, '食品工业', 0, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (3, '啤酒机械', 2, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (4, '乳品机械', 0, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (5, '包装工艺', 4, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (6, '包装流通', 4, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (7, '种植行业', 1, 0);
-INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES (8, '花卉学', 1, 0);
+INSERT INTO `pb_dicttypes` (`id`, `name`, `parent_id`, `display_order`) VALUES 
+(1, '物流知识', 0, 0),
+(2, '物流管理', 0, 0),
+(3, '物流公司', 0, 0),
+(4, '法律法规', 0, 0),
+(5, '电子商务', 0, 0),
+(6, '相关知识', 0, 0),
+(7, '常用术语', 1, 0),
+(8, '运输知识', 1, 0),
+(9, '仓储知识', 1, 0),
+(10, '物流设备', 1, 0),
+(11, '物流保险', 1, 0),
+(12, '第三方物流', 1, 0),
+(13, '供应链', 1, 0),
+(14, '其他', 1, 0);
+
 
 -- 
 -- 导出表中的数据 `pb_expotypes`
@@ -71,59 +68,64 @@ INSERT INTO `pb_expotypes` VALUES (2, '国际展会', 0, 0);
 -- 导出表中的数据 `pb_companies`
 -- 
 
-INSERT INTO `pb_companies` VALUES (2, 2, 'athena', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '友邻电子商务网', 'PHPB2B(以下简称PB)的前身是UALINK B2B, 是一家专业从事电子商务软件研发、推广及销售的企业，本公司位于北京市优美的青年湖公园湖畔，毗邻北京繁华的商业大街 - 安定门外大街。\r\nPB专注于互联网行业电子商务平台建设及解决方案的研发和运营，是中国最早对B2B电子商务类程序进行开源的团队之一。\r\n公司建立了一整套以PHPB2B为基础的行业电子商务解决方案，包含了行业网站建设、企业网站建设等业务，并致力于行业电子商务网站的创新和运营。\r\n我们正在为电子商务行业的发展与应用积极地提供各种应用与解决方案。方便为行业电子商务客户提供领先的技术和卓越的服务是我们不懈的追求。\r\n企业战略：致力于行业电子商务的发展', 'Ualink E-Commerce Tech.', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '北京市东城区安德路甲17号', '', '友邻', '', '北京', '超市', '李四', 1, 7, '010-84128912', '010-84128912', '13712345678', 'phpb2b@163.com', 'http://www.phpb2b.com/', 'sample/company/2.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (3, 2, 'athena1', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '东莞市创忆塑胶原料有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (4, 2, 'athena2', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '宁波市江东兴丰铜制有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (5, 2, 'athena3', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '华南高科水处理设备有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (6, 2, 'athena4', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '杭州约拿摩擦材料有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (7, 2, 'athena5', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '深圳华联发贸易有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (8, 2, 'athena6', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '天阳照明科技有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (9, 2, 'athena7', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '泰州市海锋洗涤机械有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (10, 2, 'athena8', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '宝艺德制帽有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (11, 2, 'athena9', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '南通杭天纺织品有限公司', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (12, 2, 'athena10', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '义乌市枫悦袜业', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
-INSERT INTO `pb_companies` VALUES (13, 2, 'athena11', 9, 0, '', 1, 10, 18, '1', '2', '3', 0, '嘉禾欣袜业', '此为演示数据，不保证数据的真实性', '', '', '张三', '1', 1, 1, NULL, '北京银行', '086-246', '', '1', '1228003200', 0, '北京', '', '', '', '', '北京', '超市', '李四', 1, 7, '', '', '13712345678', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, 1261989229, 1261989229);
+INSERT INTO `pb_companies` (`id`, `member_id`, `cache_spacename`, `cache_membergroupid`, `cache_credits`, `topleveldomain`, `industry_id1`, `industry_id2`, `industry_id3`, `area_id1`, `area_id2`, `area_id3`, `type_id`, `name`, `description`, `english_name`, `keywords`, `boss_name`, `manage_type`, `year_annual`, `property`, `configs`, `bank_from`, `bank_account`, `main_prod`, `employee_amount`, `found_date`, `reg_fund`, `reg_address`, `address`, `zipcode`, `main_brand`, `main_market`, `main_biz_place`, `main_customer`, `link_man`, `link_man_gender`, `position`, `tel`, `fax`, `mobile`, `email`, `site_url`, `picture`, `status`, `first_letter`, `if_commend`, `clicked`, `created`, `modified`) VALUES 
+(13, 1, 'admin', 9, 0, '', 0, 0, 0, '1', '0', '0', 2, '北京友邻电子商务科技有限公司', '北京友邻电子商务科技有限公司', 'Ualink', '', '', '0', 0, 1, NULL, '', '', '友邻', '', '', 5, '北京', '北京市东城区', '100010', '友邻', '', '北京市', '', '', 1, 4, '(000)10-84128912', '(000)10-84128912', '', 'service@phpb2b.com', 'http://www.phpb2b.com/', 'sample/company/1.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(3, 2, 'athena1', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '东莞市创忆塑胶原料有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(4, 2, 'athena2', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '宁波市江东兴丰铜制有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(5, 2, 'athena3', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '深圳市信诺达电子科技有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(6, 2, 'athena4', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '杭州约拿摩擦材料有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(7, 2, 'athena5', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '深圳华联发贸易有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(8, 2, 'athena6', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '北京圣轩建筑装饰有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(9, 2, 'athena7', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '上海西博思流体控制有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(10, 2, 'athena8', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '四川锦明建材有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(11, 2, 'athena9', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '苏州百硕自动化环保设备有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(1, 2, 'athena10', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '广州远杨机械设备有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(12, 2, 'athena12', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '广东马可波罗陶瓷有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(14, 2, 'athena14', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '广东佛山信德利陶瓷有限公司', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0),
+(2, 2, 'athena11', 9, 0, '', 0, 0, 0, '1', '2', '3', 0, '江苏省海安石油化工厂', '此为演示数据，不保证数据的真实性', '', '', '', '0', 0, 1, NULL, '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 1, 7, '', '', '', '', '', 'sample/company/no.jpg', 1, 'Z', 1, 1, unix_timestamp(now()), 0);
 
+-- 
 -- 
 -- 导出表中的数据 `pb_newses`
 -- 
 
-INSERT INTO `pb_newses` VALUES (1, 4, 0, 0, '甲流快速检测试剂盒上市 30分钟即可确诊', '<p>甲流快速检测试剂盒上市 30分钟即可确诊</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991122, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (2, 1, 0, 0, '表面处理年终盘点 厌氧胶提高工业可靠性', '<p>表面处理年终盘点 厌氧胶提高工业可靠性</p>', '', 'sample/news/2.jpg', 0, 0, 0, 1, 1, '0', NULL, 1261991181, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (3, 1, 0, 0, '中国食品工业发展数据 食品工业诚信体系', '<p>中国食品工业发展数据 食品工业诚信体系</p>', '', 'sample/news/4.jpg', 0, 0, 0, 1, 1, '0', NULL, 1261991211, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (4, 4, 0, 0, '移动物联网目标初定 苏州明年购物刷手机', '<p>移动物联网目标初定 苏州明年购物刷手机</p>', '', 'sample/news/3.jpg', 0, 0, 0, 2, 1, '0', NULL, 1261991231, '0000-00-00 00:00:00', 1261991511);
-INSERT INTO `pb_newses` VALUES (5, 6, 0, 0, '纺机业四大关键调整理念 纺企仍看高棉价', '<p>纺机业四大关键调整理念 纺企仍看高棉价</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991264, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (6, 4, 0, 0, '对华钢铁贸易新战略 华中成钢铁业先锋', '<p>对华钢铁贸易新战略 华中成钢铁业先锋</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991306, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (7, 4, 0, 0, '电脑横机成市场香饽饽 包装机械的发展', '<p>电脑横机成市场香饽饽 包装机械的发展</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991330, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (8, 3, 0, 0, '席梦思没有在华转让 家纺业热门话题', '<p>席梦思没有在华转让 家纺业热门话题</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991357, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (9, 5, 0, 0, '北汽海外闪购“击中”什么？', '<p>北汽海外闪购&ldquo;击中&rdquo;什么？</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991432, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (10, 4, 0, 0, '信用消费明年有望获利息补贴', '<p>信用消费明年有望获利息补贴</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991463, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (11, 4, 0, 0, '海外回流艺术品市场正热 价格屡创新高', '<p>海外回流艺术品市场正热 价格屡创新高</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261991913, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (12, 4, 0, 0, '毛主席诞辰纪念日 收藏家捐赠近亿文物', '<p>毛主席诞辰纪念日 收藏家捐赠近亿文物</p>', '', 'sample/news/6.jpg', 0, 0, 0, 1, 1, '0', NULL, 1261991967, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (13, 4, 0, 0, '珠三角服装企业转内需 服装加工路在何方', '<p></p>', '', 'sample/news/5.jpg', 0, 0, 0, 1, 1, '0', NULL, 1261992065, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (14, 4, 0, 0, '2009服装B2C市场 群雄争霸局面已现', '<p>2009服装B2C市场 群雄争霸局面已现</p>', '', 'sample/news/1.jpg', 0, 0, 0, 1, 1, '0', NULL, 1261992105, '0000-00-00 00:00:00', 0);
-INSERT INTO `pb_newses` VALUES (15, 6, 0, 0, '北京公共自行车租赁输在哪儿', '<p>北京公共自行车租赁输在哪儿</p>', '', '', 0, 0, 0, 1, 1, '0', NULL, 1261992478, '0000-00-00 00:00:00', 0);
+INSERT INTO `pb_newses` (`id`, `type_id`, `type`, `industry_id`, `area_id`, `title`, `content`, `source`, `picture`, `if_focus`, `if_commend`, `highlight`, `clicked`, `status`, `flag`, `require_membertype`, `tag_ids`, `created`, `create_time`, `modified`) VALUES 
+(1, 1, 0, 0, 0, '国内口腔文化发展引动无限商机', '', '', '', 0, 0, 0, 1, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(2, 1, 0, 0, 0, '欧盟CEP认证相关问题答疑', '', '', '', 0, 0, 0, 1, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(3, 1, 0, 0, 0, '保健品假冒药品销售的六种方式', '', '', '', 0, 0, 0, 4, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(4, 1, 0, 0, 0, '创意推动中国礼品业', '', '', 'sample/news/1.jpg', 0, 0, 0, 1, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(5, 2, 0, 0, 0, '铁矿项目反浮选工程招标公告', '', '', '', 0, 0, 0, 2, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(6, 2, 0, 0, 0, '众鞋企打响品牌营销大战', '', '', '', 0, 0, 0, 3, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(7, 2, 0, 0, 0, '笨笨鼠秋冬季订货会取得圆满成功', '', '', '', 0, 0, 0, 1, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(8, 2, 0, 0, 0, '可可鸭魔法乐园奏响童年欢乐曲', '', '', 'sample/news/1.jpg', 0, 0, 0, 2, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(9, 2, 0, 0, 0, '专访蓝星玻璃股份销售处长韩利军', '', '', 'sample/news/2.jpg', 0, 0, 0, 4, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(10, 2, 0, 0, 0, '浙江客商两个亿元玻璃钻石项目落户武宁', '', '', 'sample/news/3.jpg', 0, 0, 0, 4, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(11, 2, 0, 0, 0, '蓝秀提升其品牌形象', '', '', 'sample/news/4.jpg', 0, 0, 0, 3, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(12, 2, 0, 0, 0, '2010年南京市石材市场现状和未来解析', '', '', 'sample/news/5.jpg', 0, 0, 0, 6, 1, 0, '0', '', unix_timestamp(now()), now(), 0),
+(13, 2, 0, 0, 0, '中国制笔行业标准制修订情况', '', '', 'sample/news/6.jpg', 0, 0, 0, 13, 1, 0, '0', '', unix_timestamp(now()), now(), 0);
+
 
 -- 
 -- 导出表中的数据 `pb_newstypes`
 -- 
 
-INSERT INTO `pb_newstypes` VALUES (1, '行业聚焦', 1, 1, 0, 1248601001);
-INSERT INTO `pb_newstypes` VALUES (2, '商务指南', 1, 1, 0, 1248601001);
-INSERT INTO `pb_newstypes` VALUES (3, '商业评论', 1, 1, 0, 1248601053);
-INSERT INTO `pb_newstypes` VALUES (4, '综合资讯', 1, 1, 0, 1248601053);
-INSERT INTO `pb_newstypes` VALUES (5, '媒体精粹', 1, 1, 0, 1248601081);
-INSERT INTO `pb_newstypes` VALUES (6, '热点专题', 1, 1, 0, 1248601081);
-INSERT INTO `pb_newstypes` VALUES (7, '财富人物', 2, 1, 5, 1248601108);
-INSERT INTO `pb_newstypes` VALUES (8, '资本市场', 2, 1, 3, 1248601108);
+INSERT INTO `pb_newstypes` (`name`, `level_id`, `status`, `parent_id`, `created`) VALUES 
+('行业聚焦', 1, 1, 0, unix_timestamp(now())),
+('头条要闻', 1, 1, 0, unix_timestamp(now())),
+('本网动态', 1, 1, 0, unix_timestamp(now())),
+('企业报道', 1, 1, 0, unix_timestamp(now())),
+('媒体精粹', 1, 1, 0, unix_timestamp(now())),
+('热点专题', 1, 1, 0, unix_timestamp(now())),
+('高端访谈', 1, 1, 0, unix_timestamp(now())),
+('新闻速递', 1, 1, 0, unix_timestamp(now()));
 
 -- 
 -- 导出表中的数据 `pb_topics`
 -- 
 
-INSERT INTO `pb_topics` VALUES (1, '南方人物：华语电影最好时光 ', 'sample/news/topic1.jpg', '', 1261993266, 1261993266);
-INSERT INTO `pb_topics` VALUES (2, '2009中国改革年度评选候选名单公示', 'sample/news/topic2.jpg', '', 1261993278, 1261993278);
-INSERT INTO `pb_topics` VALUES (3, '经济周刊:再有4万亿会投向哪', 'sample/news/topic3.jpg', '', 1261993313, 1261993313);
+INSERT INTO `pb_topics` (`id`, `title`, `picture`, `description`, `created`, `modified`) VALUES (1, '探索神秘的红色星球火星', 'sample/news/topic1.jpg', '', unix_timestamp(now()), 0);
+INSERT INTO `pb_topics` (`id`, `title`, `picture`, `description`, `created`, `modified`) VALUES (2, '冰岛南部火山再度喷发', 'sample/news/topic2.jpg', '', unix_timestamp(now()), 0);
+INSERT INTO `pb_topics` (`id`, `title`, `picture`, `description`, `created`, `modified`) VALUES (3, '探索全程直播地球一小时 ', 'sample/news/topic3.jpg', '', unix_timestamp(now()), 0);
 
 -- 
 -- 导出表中的数据 `pb_areatypes`
@@ -142,207 +144,1915 @@ INSERT INTO `pb_areatypes` VALUES (8, '特区');
 -- 导出表中的数据 `pb_areas`
 -- 
 
-INSERT INTO `pb_areas` VALUES (1, 0, 1, '', 0, 1, '北京市', '', '', 0, 0, 0, '', 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (150, 0, 1, NULL, 210, 3, '平山县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (143, 0, 1, NULL, 210, 3, '栾城县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (6, 0, 1, '', 0, 1, '浙江省', '', '', 0, 0, 0, '', 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (149, 0, 1, NULL, 210, 3, '无极县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (161, 0, 1, NULL, 210, 3, '古冶区', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (10, 0, 2, '', 6, 2, '宁波市', '', '', 0, 6, 1, '', 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (148, 0, 1, NULL, 210, 3, '赞皇县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (147, 0, 1, NULL, 210, 3, '深泽县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (146, 0, 1, NULL, 210, 3, '高邑县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (145, 0, 1, NULL, 210, 3, '灵寿县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (16, 0, 2, '', 0, 1, '江苏省', '', '', 0, 0, 0, '', 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (215, 0, 2, NULL, 16, 2, '无锡市', '', '', 0, 16, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (18, 0, 2, '', 0, 1, '山东省', '', '', 0, 0, -1, '', 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (144, 0, 1, NULL, 210, 3, '行唐县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (142, 0, 1, NULL, 210, 3, '正定县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (141, 0, 1, NULL, 210, 3, '井陉县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (140, 0, 1, NULL, 210, 3, '裕华区', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (139, 0, 1, NULL, 210, 3, '井陉矿区', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (138, 0, 1, NULL, 210, 3, '新华区', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (137, 0, 1, NULL, 210, 3, '桥西区', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (136, 0, 1, NULL, 210, 3, '桥东区', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (135, 0, 1, NULL, 210, 3, '长安区', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (134, 0, 1, NULL, 92, 3, '蓟县', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (133, 0, 1, NULL, 92, 3, '静海县', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (132, 0, 1, NULL, 92, 3, '宁河县', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (131, 0, 1, NULL, 92, 3, '宝坻区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (130, 0, 1, NULL, 92, 3, '武清区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (129, 0, 1, NULL, 92, 3, '北辰区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (128, 0, 1, NULL, 92, 3, '津南区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (127, 0, 1, NULL, 92, 3, '西青区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (126, 0, 1, NULL, 92, 3, '东丽区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (125, 0, 1, NULL, 92, 3, '大港区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (124, 0, 1, NULL, 92, 3, '汉沽区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (123, 0, 1, NULL, 92, 3, '塘沽区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (122, 0, 1, NULL, 92, 3, '红桥区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (121, 0, 1, NULL, 92, 3, '河北区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (120, 0, 1, NULL, 92, 3, '南开区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (119, 0, 1, NULL, 92, 3, '河西区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (118, 0, 1, NULL, 92, 3, '河东区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (117, 0, 1, NULL, 92, 3, '和平区', '', '', 0, 93, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (164, 0, 1, NULL, 210, 3, '丰润区', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (163, 0, 1, NULL, 210, 3, '丰南区', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (162, 0, 1, NULL, 210, 3, '开平区', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (92, 0, 1, NULL, 0, 1, '天津市', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (93, 0, 1, NULL, 92, 2, '天津直辖市', '', '', 0, 92, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (160, 0, 1, NULL, 210, 3, '路北区', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (159, 0, 1, NULL, 210, 3, '路南区', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (158, 0, 1, NULL, 210, 2, '唐山市', '', '', 0, 210, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (157, 0, 1, NULL, 210, 3, '鹿泉市', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (156, 0, 1, NULL, 210, 3, '新乐市', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (155, 0, 1, NULL, 210, 3, '晋州市', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (154, 0, 1, NULL, 210, 3, '藁城市', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (153, 0, 1, NULL, 210, 3, '辛集市', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (152, 0, 1, NULL, 210, 3, '赵县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (151, 0, 1, NULL, 210, 3, '元氏县', '', '', 0, 116, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (210, 0, 1, NULL, 0, 1, '河北省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (116, 0, 1, NULL, 210, 2, '石家庄', '', '', 0, 210, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (165, 0, 1, NULL, 210, 3, '滦县', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (166, 0, 1, NULL, 210, 3, '滦南县', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (167, 0, 1, NULL, 210, 3, '乐亭县', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (168, 0, 1, NULL, 210, 3, '迁西县', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (169, 0, 1, NULL, 210, 3, '玉田县', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (170, 0, 1, NULL, 210, 3, '唐海县', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (171, 0, 1, NULL, 210, 3, '遵化市', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (172, 0, 1, NULL, 210, 3, '迁安市', '', '', 0, 158, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (173, 0, 1, NULL, 210, 2, '秦皇岛市', '', '', 0, 210, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (174, 0, 1, NULL, 210, 3, '海港区', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (175, 0, 1, NULL, 210, 3, '山海关区', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (176, 0, 1, NULL, 210, 3, '北戴河区', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (177, 0, 1, NULL, 210, 3, '青龙县', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (178, 0, 1, NULL, 210, 3, '昌黎县', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (179, 0, 1, NULL, 210, 3, '抚宁县', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (180, 0, 1, NULL, 210, 3, '卢龙县', '', '', 0, 173, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (181, 0, 4, NULL, 0, 1, '辽宁省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (182, 0, 4, NULL, 181, 2, '沈阳市', '', '', 0, 181, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (183, 0, 4, NULL, 181, 3, '和平区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (184, 0, 4, NULL, 181, 3, '沈河区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (185, 0, 4, NULL, 181, 3, '大东区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (186, 0, 4, NULL, 181, 3, '皇姑区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (187, 0, 4, NULL, 181, 3, '铁西区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (188, 0, 4, NULL, 181, 3, '苏家屯区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (189, 0, 4, NULL, 181, 3, '东陵区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (190, 0, 4, NULL, 181, 3, '沈北新区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (191, 0, 4, NULL, 181, 3, '于洪区', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (192, 0, 4, NULL, 181, 3, '辽中县', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (193, 0, 4, NULL, 181, 3, '康平县', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (194, 0, 4, NULL, 181, 3, '法库县', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (195, 0, 4, NULL, 181, 3, '新民市', '', '', 0, 182, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (196, 0, 4, NULL, 181, 2, '大连市', '', '', 0, 181, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (197, 0, 4, NULL, 181, 3, '中山区', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (198, 0, 4, NULL, 181, 3, '西岗区', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (199, 0, 4, NULL, 181, 3, '沙河口区', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (200, 0, 4, NULL, 181, 3, '甘井子区', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (201, 0, 4, NULL, 181, 3, '旅顺口区', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (202, 0, 4, NULL, 181, 3, '金州区', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (203, 0, 4, NULL, 181, 3, '长海县', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (204, 0, 4, NULL, 181, 3, '瓦房店市', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (205, 0, 4, NULL, 181, 3, '普兰店市', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (206, 0, 1, NULL, 181, 3, '庄河市', '', '', 0, 196, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (207, 0, 1, NULL, 18, 2, '济南市', '', '', 0, 18, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (208, 0, 1, NULL, 18, 2, '青岛市', '', '', 0, 18, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (209, 0, 1, NULL, 18, 2, '淄博市', '', '', 0, 18, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (214, 0, 2, NULL, 16, 2, '徐州市', '', '', 0, 16, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (216, 0, 2, NULL, 16, 2, '南京市', '', '', 0, 16, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (217, 0, 2, NULL, 16, 3, '玄武区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (218, 0, 2, NULL, 16, 3, '白下区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (219, 0, 2, NULL, 16, 3, '秦淮区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (220, 0, 2, NULL, 16, 3, '建邺区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (221, 0, 2, NULL, 16, 3, '鼓楼区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (222, 0, 2, NULL, 16, 3, '下关区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (223, 0, 2, NULL, 16, 3, '浦口区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (224, 0, 2, NULL, 16, 3, '栖霞区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (225, 0, 2, NULL, 16, 3, '雨花台区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (226, 0, 2, NULL, 16, 3, '江宁区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (227, 0, 2, NULL, 16, 3, '六合区', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (228, 0, 2, NULL, 16, 3, '溧水县', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (229, 0, 2, NULL, 16, 3, '高淳县', '', '', 0, 216, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (230, 0, 2, NULL, 16, 3, '崇安区', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (231, 0, 2, NULL, 16, 3, '南长区', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (232, 0, 2, NULL, 16, 3, '北塘区', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (233, 0, 2, NULL, 16, 3, '锡山区', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (234, 0, 2, NULL, 16, 3, '惠山区', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (235, 0, 2, NULL, 16, 3, '滨湖区', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (236, 0, 2, NULL, 16, 3, '江阴市', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (237, 0, 2, NULL, 16, 3, '宜兴市', '', '', 0, 215, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (238, 0, 2, NULL, 16, 3, '鼓楼区', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (239, 0, 2, NULL, 16, 3, '云龙区', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (240, 0, 2, NULL, 16, 3, '九里区', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (241, 0, 2, NULL, 16, 3, '贾汪区', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (242, 0, 2, NULL, 16, 3, '泉山区', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (243, 0, 2, NULL, 16, 3, '丰县', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (244, 0, 2, NULL, 16, 3, '沛县', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (245, 0, 2, NULL, 16, 3, '铜山县', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (246, 0, 2, NULL, 16, 3, '睢宁县', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (247, 0, 2, NULL, 16, 3, '新沂市', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (248, 0, 2, NULL, 16, 3, '邳州市', '', '', 0, 214, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (249, 0, 2, NULL, 6, 3, '海曙区', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (250, 0, 2, NULL, 6, 3, '江东区', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (251, 0, 2, NULL, 6, 3, '江北区', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (252, 0, 2, NULL, 6, 3, '北仑区', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (253, 0, 2, NULL, 6, 3, '镇海区', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (254, 0, 2, NULL, 6, 3, '鄞州区', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (255, 0, 2, NULL, 6, 3, '象山县', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (256, 0, 2, NULL, 6, 3, '宁海县', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (257, 0, 2, NULL, 6, 3, '余姚市', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (258, 0, 2, NULL, 6, 3, '慈溪市', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (259, 0, 2, NULL, 6, 3, '奉化市', '', '', 0, 10, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (260, 0, 2, NULL, 6, 2, '温州市', '', '', 0, 6, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (261, 0, 2, NULL, 6, 3, '鹿城区', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (262, 0, 2, NULL, 6, 3, '龙湾区', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (263, 0, 2, NULL, 6, 3, '瓯海区', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (264, 0, 2, NULL, 6, 3, '洞头县', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (265, 0, 2, NULL, 6, 3, '永嘉县', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (266, 0, 2, NULL, 6, 3, '平阳县', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (267, 0, 2, NULL, 6, 3, '苍南县', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (268, 0, 2, NULL, 6, 3, '文成县', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (269, 0, 2, NULL, 6, 3, '泰顺县', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (270, 0, 2, NULL, 6, 3, '瑞安市', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (271, 0, 2, NULL, 6, 3, '乐清市', '', '', 0, 260, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (272, 0, 2, NULL, 6, 2, '杭州市', '', '', 0, 6, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (273, 0, 2, NULL, 6, 3, '上城区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (274, 0, 2, NULL, 6, 3, '下城区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (275, 0, 2, NULL, 6, 3, '江干区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (276, 0, 2, NULL, 6, 3, '拱墅区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (277, 0, 2, NULL, 6, 3, '西湖区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (278, 0, 2, NULL, 6, 3, '滨江区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (279, 0, 2, NULL, 6, 3, '萧山区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (280, 0, 2, NULL, 6, 3, '余杭区', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (281, 0, 2, NULL, 6, 3, '桐庐县', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (282, 0, 2, NULL, 6, 3, '淳安县', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (283, 0, 2, NULL, 6, 3, '建德市', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (284, 0, 2, NULL, 6, 3, '富阳市', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (285, 0, 2, NULL, 6, 3, '临安市', '', '', 0, 272, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (286, 0, 1, NULL, 0, 1, '山西省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (287, 0, 1, NULL, 0, 1, '内蒙古自治区', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (288, 0, 4, NULL, 0, 1, '吉林省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (289, 0, 4, NULL, 0, 1, '黑龙江省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (290, 0, 2, NULL, 0, 1, '上海市', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (291, 0, 2, NULL, 0, 1, '安徽省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (292, 0, 2, NULL, 0, 1, '福建省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (293, 0, 2, NULL, 0, 1, '江西省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (294, 0, 6, NULL, 0, 1, '河南省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (295, 0, 6, NULL, 0, 1, '湖北省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (296, 0, 6, NULL, 0, 1, '湖南省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (297, 0, 6, NULL, 0, 1, '广东省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (298, 0, 6, NULL, 0, 1, '广西自治区', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (299, 0, 6, NULL, 0, 1, '海南省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (300, 0, 5, NULL, 0, 1, '重庆市', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (301, 0, 5, NULL, 0, 1, '四川省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (302, 0, 5, NULL, 0, 1, '贵州省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (303, 0, 5, NULL, 0, 1, '云南省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (304, 0, 5, NULL, 0, 1, '西藏自治区', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (305, 0, 6, NULL, 0, 1, '陕西省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (306, 0, 6, NULL, 0, 1, '甘肃省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (307, 0, 6, NULL, 0, 1, '青海省', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (308, 0, 6, NULL, 0, 1, '宁夏自治区', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (309, 0, 6, NULL, 0, 1, '新疆自治区', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (310, 0, 8, NULL, 0, 1, '香港', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (311, 0, 8, NULL, 0, 1, '澳门', '', '', 0, 0, 0, NULL, 1, 1, 0);
-INSERT INTO `pb_areas` VALUES (312, 0, 8, NULL, 0, 1, '台湾省', '', '', 0, 0, 0, NULL, 1, 1, 0);
+INSERT INTO `pb_areas` (`id`, `attachment_id`, `areatype_id`, `child_ids`, `top_parentid`, `level`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `display_order`, `description`, `available`, `created`, `modified`) VALUES 
+(1, 0, 1, NULL, 0, 1, '北京', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(2, 0, 1, NULL, 0, 1, '天津', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(3, 0, 1, NULL, 0, 1, '河北', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(4, 0, 1, NULL, 0, 1, '山西', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(5, 0, 1, NULL, 0, 1, '内蒙古', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(6, 0, 1, NULL, 0, 1, '辽宁', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(7, 0, 1, NULL, 0, 1, '吉林', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(8, 0, 1, NULL, 0, 1, '黑龙江', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(9, 0, 1, NULL, 0, 1, '上海', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(10, 0, 1, NULL, 0, 1, '江苏', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(11, 0, 1, NULL, 0, 1, '浙江', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(12, 0, 1, NULL, 0, 1, '安徽', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(13, 0, 1, NULL, 0, 1, '福建', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(14, 0, 1, NULL, 0, 1, '江西', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(15, 0, 1, NULL, 0, 1, '山东', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(16, 0, 1, NULL, 0, 1, '河南', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(17, 0, 1, NULL, 0, 1, '湖北', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(18, 0, 1, NULL, 0, 1, '湖南', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(19, 0, 1, NULL, 0, 1, '广东', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(20, 0, 1, NULL, 0, 1, '广西', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(21, 0, 1, NULL, 0, 1, '海南', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(22, 0, 1, NULL, 0, 1, '重庆', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(23, 0, 1, NULL, 0, 1, '四川', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(24, 0, 1, NULL, 0, 1, '贵州', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(25, 0, 1, NULL, 0, 1, '云南', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(26, 0, 1, NULL, 0, 1, '西藏', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(27, 0, 1, NULL, 0, 1, '陕西', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(28, 0, 1, NULL, 0, 1, '甘肃', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(29, 0, 1, NULL, 0, 1, '青海', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(30, 0, 1, NULL, 0, 1, '宁夏', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(31, 0, 1, NULL, 0, 1, '新疆', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(32, 0, 1, NULL, 0, 1, '台湾', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(33, 0, 1, NULL, 0, 1, '香港', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(34, 0, 1, NULL, 0, 1, '澳门', '', '', 0, 0, 0, NULL, 1, 0, 0),
+(35, 0, 1, NULL, 1, 2, '市辖区', '', '', 0, 1, 0, NULL, 1, 0, 0),
+(36, 0, 1, NULL, 1, 2, '县', '', '', 0, 1, 0, NULL, 1, 0, 0),
+(37, 0, 1, NULL, 2, 2, '市辖区', '', '', 0, 2, 0, NULL, 1, 0, 0),
+(38, 0, 1, NULL, 2, 2, '县', '', '', 0, 2, 0, NULL, 1, 0, 0),
+(39, 0, 1, NULL, 3, 2, '石家庄市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(40, 0, 1, NULL, 3, 2, '唐山市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(41, 0, 1, NULL, 3, 2, '秦皇岛市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(42, 0, 1, NULL, 3, 2, '邯郸市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(43, 0, 1, NULL, 3, 2, '邢台市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(44, 0, 1, NULL, 3, 2, '保定市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(45, 0, 1, NULL, 3, 2, '张家口市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(46, 0, 1, NULL, 3, 2, '承德市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(47, 0, 1, NULL, 3, 2, '沧州市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(48, 0, 1, NULL, 3, 2, '廊坊市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(49, 0, 1, NULL, 3, 2, '衡水市', '', '', 0, 3, 0, NULL, 1, 0, 0),
+(50, 0, 1, NULL, 4, 2, '太原市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(51, 0, 1, NULL, 4, 2, '大同市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(52, 0, 1, NULL, 4, 2, '阳泉市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(53, 0, 1, NULL, 4, 2, '长治市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(54, 0, 1, NULL, 4, 2, '晋城市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(55, 0, 1, NULL, 4, 2, '朔州市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(56, 0, 1, NULL, 4, 2, '晋中市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(57, 0, 1, NULL, 4, 2, '运城市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(58, 0, 1, NULL, 4, 2, '忻州市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(59, 0, 1, NULL, 4, 2, '临汾市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(60, 0, 1, NULL, 4, 2, '吕梁市', '', '', 0, 4, 0, NULL, 1, 0, 0),
+(61, 0, 1, NULL, 5, 2, '呼和浩特市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(62, 0, 1, NULL, 5, 2, '包头市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(63, 0, 1, NULL, 5, 2, '乌海市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(64, 0, 1, NULL, 5, 2, '赤峰市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(65, 0, 1, NULL, 5, 2, '通辽市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(66, 0, 1, NULL, 5, 2, '鄂尔多斯市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(67, 0, 1, NULL, 5, 2, '呼伦贝尔市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(68, 0, 1, NULL, 5, 2, '巴彦淖尔市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(69, 0, 1, NULL, 5, 2, '乌兰察布市', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(70, 0, 1, NULL, 5, 2, '兴安盟', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(71, 0, 1, NULL, 5, 2, '锡林郭勒盟', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(72, 0, 1, NULL, 5, 2, '阿拉善盟', '', '', 0, 5, 0, NULL, 1, 0, 0),
+(73, 0, 1, NULL, 6, 2, '沈阳市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(74, 0, 1, NULL, 6, 2, '大连市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(75, 0, 1, NULL, 6, 2, '鞍山市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(76, 0, 1, NULL, 6, 2, '抚顺市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(77, 0, 1, NULL, 6, 2, '本溪市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(78, 0, 1, NULL, 6, 2, '丹东市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(79, 0, 1, NULL, 6, 2, '锦州市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(80, 0, 1, NULL, 6, 2, '营口市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(81, 0, 1, NULL, 6, 2, '阜新市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(82, 0, 1, NULL, 6, 2, '辽阳市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(83, 0, 1, NULL, 6, 2, '盘锦市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(84, 0, 1, NULL, 6, 2, '铁岭市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(85, 0, 1, NULL, 6, 2, '朝阳市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(86, 0, 1, NULL, 6, 2, '葫芦岛市', '', '', 0, 6, 0, NULL, 1, 0, 0),
+(87, 0, 1, NULL, 7, 2, '长春市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(88, 0, 1, NULL, 7, 2, '吉林市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(89, 0, 1, NULL, 7, 2, '四平市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(90, 0, 1, NULL, 7, 2, '辽源市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(91, 0, 1, NULL, 7, 2, '通化市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(92, 0, 1, NULL, 7, 2, '白山市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(93, 0, 1, NULL, 7, 2, '松原市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(94, 0, 1, NULL, 7, 2, '白城市', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(95, 0, 1, NULL, 7, 2, '延边朝鲜族自治州', '', '', 0, 7, 0, NULL, 1, 0, 0),
+(96, 0, 1, NULL, 8, 2, '哈尔滨市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(97, 0, 1, NULL, 8, 2, '齐齐哈尔市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(98, 0, 1, NULL, 8, 2, '鸡西市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(99, 0, 1, NULL, 8, 2, '鹤岗市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(100, 0, 1, NULL, 8, 2, '双鸭山市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(101, 0, 1, NULL, 8, 2, '大庆市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(102, 0, 1, NULL, 8, 2, '伊春市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(103, 0, 1, NULL, 8, 2, '佳木斯市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(104, 0, 1, NULL, 8, 2, '七台河市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(105, 0, 1, NULL, 8, 2, '牡丹江市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(106, 0, 1, NULL, 8, 2, '黑河市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(107, 0, 1, NULL, 8, 2, '绥化市', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(108, 0, 1, NULL, 8, 2, '大兴安岭地区', '', '', 0, 8, 0, NULL, 1, 0, 0),
+(109, 0, 1, NULL, 9, 2, '市辖区', '', '', 0, 9, 0, NULL, 1, 0, 0),
+(110, 0, 1, NULL, 9, 2, '县', '', '', 0, 9, 0, NULL, 1, 0, 0),
+(111, 0, 1, NULL, 10, 2, '南京市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(112, 0, 1, NULL, 10, 2, '无锡市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(113, 0, 1, NULL, 10, 2, '徐州市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(114, 0, 1, NULL, 10, 2, '常州市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(115, 0, 1, NULL, 10, 2, '苏州市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(116, 0, 1, NULL, 10, 2, '南通市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(117, 0, 1, NULL, 10, 2, '连云港市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(118, 0, 1, NULL, 10, 2, '淮安市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(119, 0, 1, NULL, 10, 2, '盐城市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(120, 0, 1, NULL, 10, 2, '扬州市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(121, 0, 1, NULL, 10, 2, '镇江市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(122, 0, 1, NULL, 10, 2, '泰州市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(123, 0, 1, NULL, 10, 2, '宿迁市', '', '', 0, 10, 0, NULL, 1, 0, 0),
+(124, 0, 1, NULL, 11, 2, '杭州市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(125, 0, 1, NULL, 11, 2, '宁波市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(126, 0, 1, NULL, 11, 2, '温州市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(127, 0, 1, NULL, 11, 2, '嘉兴市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(128, 0, 1, NULL, 11, 2, '湖州市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(129, 0, 1, NULL, 11, 2, '绍兴市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(130, 0, 1, NULL, 11, 2, '金华市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(131, 0, 1, NULL, 11, 2, '衢州市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(132, 0, 1, NULL, 11, 2, '舟山市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(133, 0, 1, NULL, 11, 2, '台州市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(134, 0, 1, NULL, 11, 2, '丽水市', '', '', 0, 11, 0, NULL, 1, 0, 0),
+(135, 0, 1, NULL, 12, 2, '合肥市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(136, 0, 1, NULL, 12, 2, '芜湖市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(137, 0, 1, NULL, 12, 2, '蚌埠市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(138, 0, 1, NULL, 12, 2, '淮南市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(139, 0, 1, NULL, 12, 2, '马鞍山市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(140, 0, 1, NULL, 12, 2, '淮北市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(141, 0, 1, NULL, 12, 2, '铜陵市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(142, 0, 1, NULL, 12, 2, '安庆市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(143, 0, 1, NULL, 12, 2, '黄山市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(144, 0, 1, NULL, 12, 2, '滁州市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(145, 0, 1, NULL, 12, 2, '阜阳市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(146, 0, 1, NULL, 12, 2, '宿州市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(147, 0, 1, NULL, 12, 2, '巢湖市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(148, 0, 1, NULL, 12, 2, '六安市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(149, 0, 1, NULL, 12, 2, '亳州市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(150, 0, 1, NULL, 12, 2, '池州市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(151, 0, 1, NULL, 12, 2, '宣城市', '', '', 0, 12, 0, NULL, 1, 0, 0),
+(152, 0, 1, NULL, 13, 2, '福州市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(153, 0, 1, NULL, 13, 2, '厦门市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(154, 0, 1, NULL, 13, 2, '莆田市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(155, 0, 1, NULL, 13, 2, '三明市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(156, 0, 1, NULL, 13, 2, '泉州市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(157, 0, 1, NULL, 13, 2, '漳州市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(158, 0, 1, NULL, 13, 2, '南平市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(159, 0, 1, NULL, 13, 2, '龙岩市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(160, 0, 1, NULL, 13, 2, '宁德市', '', '', 0, 13, 0, NULL, 1, 0, 0),
+(161, 0, 1, NULL, 14, 2, '南昌市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(162, 0, 1, NULL, 14, 2, '景德镇市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(163, 0, 1, NULL, 14, 2, '萍乡市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(164, 0, 1, NULL, 14, 2, '九江市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(165, 0, 1, NULL, 14, 2, '新余市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(166, 0, 1, NULL, 14, 2, '鹰潭市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(167, 0, 1, NULL, 14, 2, '赣州市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(168, 0, 1, NULL, 14, 2, '吉安市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(169, 0, 1, NULL, 14, 2, '宜春市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(170, 0, 1, NULL, 14, 2, '抚州市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(171, 0, 1, NULL, 14, 2, '上饶市', '', '', 0, 14, 0, NULL, 1, 0, 0),
+(172, 0, 1, NULL, 15, 2, '济南市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(173, 0, 1, NULL, 15, 2, '青岛市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(174, 0, 1, NULL, 15, 2, '淄博市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(175, 0, 1, NULL, 15, 2, '枣庄市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(176, 0, 1, NULL, 15, 2, '东营市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(177, 0, 1, NULL, 15, 2, '烟台市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(178, 0, 1, NULL, 15, 2, '潍坊市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(179, 0, 1, NULL, 15, 2, '济宁市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(180, 0, 1, NULL, 15, 2, '泰安市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(181, 0, 1, NULL, 15, 2, '威海市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(182, 0, 1, NULL, 15, 2, '日照市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(183, 0, 1, NULL, 15, 2, '莱芜市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(184, 0, 1, NULL, 15, 2, '临沂市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(185, 0, 1, NULL, 15, 2, '德州市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(186, 0, 1, NULL, 15, 2, '聊城市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(187, 0, 1, NULL, 15, 2, '滨州市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(188, 0, 1, NULL, 15, 2, '荷泽市', '', '', 0, 15, 0, NULL, 1, 0, 0),
+(189, 0, 1, NULL, 16, 2, '郑州市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(190, 0, 1, NULL, 16, 2, '开封市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(191, 0, 1, NULL, 16, 2, '洛阳市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(192, 0, 1, NULL, 16, 2, '平顶山市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(193, 0, 1, NULL, 16, 2, '安阳市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(194, 0, 1, NULL, 16, 2, '鹤壁市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(195, 0, 1, NULL, 16, 2, '新乡市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(196, 0, 1, NULL, 16, 2, '焦作市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(197, 0, 1, NULL, 16, 2, '濮阳市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(198, 0, 1, NULL, 16, 2, '许昌市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(199, 0, 1, NULL, 16, 2, '漯河市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(200, 0, 1, NULL, 16, 2, '三门峡市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(201, 0, 1, NULL, 16, 2, '南阳市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(202, 0, 1, NULL, 16, 2, '商丘市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(203, 0, 1, NULL, 16, 2, '信阳市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(204, 0, 1, NULL, 16, 2, '周口市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(205, 0, 1, NULL, 16, 2, '驻马店市', '', '', 0, 16, 0, NULL, 1, 0, 0),
+(206, 0, 1, NULL, 17, 2, '武汉市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(207, 0, 1, NULL, 17, 2, '黄石市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(208, 0, 1, NULL, 17, 2, '十堰市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(209, 0, 1, NULL, 17, 2, '宜昌市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(210, 0, 1, NULL, 17, 2, '襄樊市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(211, 0, 1, NULL, 17, 2, '鄂州市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(212, 0, 1, NULL, 17, 2, '荆门市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(213, 0, 1, NULL, 17, 2, '孝感市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(214, 0, 1, NULL, 17, 2, '荆州市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(215, 0, 1, NULL, 17, 2, '黄冈市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(216, 0, 1, NULL, 17, 2, '咸宁市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(217, 0, 1, NULL, 17, 2, '随州市', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(218, 0, 1, NULL, 17, 2, '恩施土家族苗族自治州', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(219, 0, 1, NULL, 17, 2, '省直辖行政单位', '', '', 0, 17, 0, NULL, 1, 0, 0),
+(220, 0, 1, NULL, 18, 2, '长沙市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(221, 0, 1, NULL, 18, 2, '株洲市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(222, 0, 1, NULL, 18, 2, '湘潭市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(223, 0, 1, NULL, 18, 2, '衡阳市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(224, 0, 1, NULL, 18, 2, '邵阳市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(225, 0, 1, NULL, 18, 2, '岳阳市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(226, 0, 1, NULL, 18, 2, '常德市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(227, 0, 1, NULL, 18, 2, '张家界市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(228, 0, 1, NULL, 18, 2, '益阳市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(229, 0, 1, NULL, 18, 2, '郴州市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(230, 0, 1, NULL, 18, 2, '永州市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(231, 0, 1, NULL, 18, 2, '怀化市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(232, 0, 1, NULL, 18, 2, '娄底市', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(233, 0, 1, NULL, 18, 2, '湘西土家族苗族自治州', '', '', 0, 18, 0, NULL, 1, 0, 0),
+(234, 0, 1, NULL, 19, 2, '广州市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(235, 0, 1, NULL, 19, 2, '韶关市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(236, 0, 1, NULL, 19, 2, '深圳市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(237, 0, 1, NULL, 19, 2, '珠海市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(238, 0, 1, NULL, 19, 2, '汕头市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(239, 0, 1, NULL, 19, 2, '佛山市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(240, 0, 1, NULL, 19, 2, '江门市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(241, 0, 1, NULL, 19, 2, '湛江市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(242, 0, 1, NULL, 19, 2, '茂名市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(243, 0, 1, NULL, 19, 2, '肇庆市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(244, 0, 1, NULL, 19, 2, '惠州市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(245, 0, 1, NULL, 19, 2, '梅州市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(246, 0, 1, NULL, 19, 2, '汕尾市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(247, 0, 1, NULL, 19, 2, '河源市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(248, 0, 1, NULL, 19, 2, '阳江市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(249, 0, 1, NULL, 19, 2, '清远市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(250, 0, 1, NULL, 19, 2, '东莞市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(251, 0, 1, NULL, 19, 2, '中山市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(252, 0, 1, NULL, 19, 2, '潮州市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(253, 0, 1, NULL, 19, 2, '揭阳市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(254, 0, 1, NULL, 19, 2, '云浮市', '', '', 0, 19, 0, NULL, 1, 0, 0),
+(255, 0, 1, NULL, 20, 2, '南宁市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(256, 0, 1, NULL, 20, 2, '柳州市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(257, 0, 1, NULL, 20, 2, '桂林市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(258, 0, 1, NULL, 20, 2, '梧州市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(259, 0, 1, NULL, 20, 2, '北海市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(260, 0, 1, NULL, 20, 2, '防城港市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(261, 0, 1, NULL, 20, 2, '钦州市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(262, 0, 1, NULL, 20, 2, '贵港市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(263, 0, 1, NULL, 20, 2, '玉林市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(264, 0, 1, NULL, 20, 2, '百色市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(265, 0, 1, NULL, 20, 2, '贺州市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(266, 0, 1, NULL, 20, 2, '河池市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(267, 0, 1, NULL, 20, 2, '来宾市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(268, 0, 1, NULL, 20, 2, '崇左市', '', '', 0, 20, 0, NULL, 1, 0, 0),
+(269, 0, 1, NULL, 21, 2, '海口市', '', '', 0, 21, 0, NULL, 1, 0, 0),
+(270, 0, 1, NULL, 21, 2, '三亚市', '', '', 0, 21, 0, NULL, 1, 0, 0),
+(271, 0, 1, NULL, 21, 2, '省直辖县级行政单位', '', '', 0, 21, 0, NULL, 1, 0, 0),
+(272, 0, 1, NULL, 22, 2, '市辖区', '', '', 0, 22, 0, NULL, 1, 0, 0),
+(273, 0, 1, NULL, 22, 2, '县', '', '', 0, 22, 0, NULL, 1, 0, 0),
+(274, 0, 1, NULL, 22, 2, '市', '', '', 0, 22, 0, NULL, 1, 0, 0),
+(275, 0, 1, NULL, 23, 2, '成都市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(276, 0, 1, NULL, 23, 2, '自贡市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(277, 0, 1, NULL, 23, 2, '攀枝花市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(278, 0, 1, NULL, 23, 2, '泸州市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(279, 0, 1, NULL, 23, 2, '德阳市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(280, 0, 1, NULL, 23, 2, '绵阳市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(281, 0, 1, NULL, 23, 2, '广元市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(282, 0, 1, NULL, 23, 2, '遂宁市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(283, 0, 1, NULL, 23, 2, '内江市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(284, 0, 1, NULL, 23, 2, '乐山市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(285, 0, 1, NULL, 23, 2, '南充市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(286, 0, 1, NULL, 23, 2, '眉山市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(287, 0, 1, NULL, 23, 2, '宜宾市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(288, 0, 1, NULL, 23, 2, '广安市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(289, 0, 1, NULL, 23, 2, '达州市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(290, 0, 1, NULL, 23, 2, '雅安市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(291, 0, 1, NULL, 23, 2, '巴中市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(292, 0, 1, NULL, 23, 2, '资阳市', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(293, 0, 1, NULL, 23, 2, '阿坝藏族羌族自治州', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(294, 0, 1, NULL, 23, 2, '甘孜藏族自治州', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(295, 0, 1, NULL, 23, 2, '凉山彝族自治州', '', '', 0, 23, 0, NULL, 1, 0, 0),
+(296, 0, 1, NULL, 24, 2, '贵阳市', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(297, 0, 1, NULL, 24, 2, '六盘水市', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(298, 0, 1, NULL, 24, 2, '遵义市', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(299, 0, 1, NULL, 24, 2, '安顺市', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(300, 0, 1, NULL, 24, 2, '铜仁地区', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(301, 0, 1, NULL, 24, 2, '黔西南布依族苗族自治州', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(302, 0, 1, NULL, 24, 2, '毕节地区', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(303, 0, 1, NULL, 24, 2, '黔东南苗族侗族自治州', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(304, 0, 1, NULL, 24, 2, '黔南布依族苗族自治州', '', '', 0, 24, 0, NULL, 1, 0, 0),
+(305, 0, 1, NULL, 25, 2, '昆明市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(306, 0, 1, NULL, 25, 2, '曲靖市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(307, 0, 1, NULL, 25, 2, '玉溪市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(308, 0, 1, NULL, 25, 2, '保山市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(309, 0, 1, NULL, 25, 2, '昭通市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(310, 0, 1, NULL, 25, 2, '丽江市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(311, 0, 1, NULL, 25, 2, '思茅市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(312, 0, 1, NULL, 25, 2, '临沧市', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(313, 0, 1, NULL, 25, 2, '楚雄彝族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(314, 0, 1, NULL, 25, 2, '红河哈尼族彝族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(315, 0, 1, NULL, 25, 2, '文山壮族苗族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(316, 0, 1, NULL, 25, 2, '西双版纳傣族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(317, 0, 1, NULL, 25, 2, '大理白族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(318, 0, 1, NULL, 25, 2, '德宏傣族景颇族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(319, 0, 1, NULL, 25, 2, '怒江傈僳族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(320, 0, 1, NULL, 25, 2, '迪庆藏族自治州', '', '', 0, 25, 0, NULL, 1, 0, 0),
+(321, 0, 1, NULL, 26, 2, '拉萨市', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(322, 0, 1, NULL, 26, 2, '昌都地区', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(323, 0, 1, NULL, 26, 2, '山南地区', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(324, 0, 1, NULL, 26, 2, '日喀则地区', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(325, 0, 1, NULL, 26, 2, '那曲地区', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(326, 0, 1, NULL, 26, 2, '阿里地区', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(327, 0, 1, NULL, 26, 2, '林芝地区', '', '', 0, 26, 0, NULL, 1, 0, 0),
+(328, 0, 1, NULL, 27, 2, '西安市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(329, 0, 1, NULL, 27, 2, '铜川市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(330, 0, 1, NULL, 27, 2, '宝鸡市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(331, 0, 1, NULL, 27, 2, '咸阳市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(332, 0, 1, NULL, 27, 2, '渭南市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(333, 0, 1, NULL, 27, 2, '延安市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(334, 0, 1, NULL, 27, 2, '汉中市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(335, 0, 1, NULL, 27, 2, '榆林市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(336, 0, 1, NULL, 27, 2, '安康市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(337, 0, 1, NULL, 27, 2, '商洛市', '', '', 0, 27, 0, NULL, 1, 0, 0),
+(338, 0, 1, NULL, 28, 2, '兰州市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(339, 0, 1, NULL, 28, 2, '嘉峪关市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(340, 0, 1, NULL, 28, 2, '金昌市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(341, 0, 1, NULL, 28, 2, '白银市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(342, 0, 1, NULL, 28, 2, '天水市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(343, 0, 1, NULL, 28, 2, '武威市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(344, 0, 1, NULL, 28, 2, '张掖市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(345, 0, 1, NULL, 28, 2, '平凉市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(346, 0, 1, NULL, 28, 2, '酒泉市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(347, 0, 1, NULL, 28, 2, '庆阳市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(348, 0, 1, NULL, 28, 2, '定西市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(349, 0, 1, NULL, 28, 2, '陇南市', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(350, 0, 1, NULL, 28, 2, '临夏回族自治州', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(351, 0, 1, NULL, 28, 2, '甘南藏族自治州', '', '', 0, 28, 0, NULL, 1, 0, 0),
+(352, 0, 1, NULL, 29, 2, '西宁市', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(353, 0, 1, NULL, 29, 2, '海东地区', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(354, 0, 1, NULL, 29, 2, '海北藏族自治州', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(355, 0, 1, NULL, 29, 2, '黄南藏族自治州', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(356, 0, 1, NULL, 29, 2, '海南藏族自治州', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(357, 0, 1, NULL, 29, 2, '果洛藏族自治州', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(358, 0, 1, NULL, 29, 2, '玉树藏族自治州', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(359, 0, 1, NULL, 29, 2, '海西蒙古族藏族自治州', '', '', 0, 29, 0, NULL, 1, 0, 0),
+(360, 0, 1, NULL, 30, 2, '银川市', '', '', 0, 30, 0, NULL, 1, 0, 0),
+(361, 0, 1, NULL, 30, 2, '石嘴山市', '', '', 0, 30, 0, NULL, 1, 0, 0),
+(362, 0, 1, NULL, 30, 2, '吴忠市', '', '', 0, 30, 0, NULL, 1, 0, 0),
+(363, 0, 1, NULL, 30, 2, '固原市', '', '', 0, 30, 0, NULL, 1, 0, 0),
+(364, 0, 1, NULL, 30, 2, '中卫市', '', '', 0, 30, 0, NULL, 1, 0, 0),
+(365, 0, 1, NULL, 31, 2, '乌鲁木齐市', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(366, 0, 1, NULL, 31, 2, '克拉玛依市', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(367, 0, 1, NULL, 31, 2, '吐鲁番地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(368, 0, 1, NULL, 31, 2, '哈密地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(369, 0, 1, NULL, 31, 2, '昌吉回族自治州', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(370, 0, 1, NULL, 31, 2, '博尔塔拉蒙古自治州', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(371, 0, 1, NULL, 31, 2, '巴音郭楞蒙古自治州', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(372, 0, 1, NULL, 31, 2, '阿克苏地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(373, 0, 1, NULL, 31, 2, '克孜勒苏柯尔克孜自治州', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(374, 0, 1, NULL, 31, 2, '喀什地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(375, 0, 1, NULL, 31, 2, '和田地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(376, 0, 1, NULL, 31, 2, '伊犁哈萨克自治州', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(377, 0, 1, NULL, 31, 2, '塔城地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(378, 0, 1, NULL, 31, 2, '阿勒泰地区', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(379, 0, 1, NULL, 31, 2, '省直辖行政单位', '', '', 0, 31, 0, NULL, 1, 0, 0),
+(380, 0, 1, NULL, 33, 2, '香港', '', '', 0, 33, 0, NULL, 1, 0, 0),
+(381, 0, 1, NULL, 34, 2, '澳门', '', '', 0, 34, 0, NULL, 1, 0, 0),
+(382, 0, 1, NULL, 32, 2, '台北', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(383, 0, 1, NULL, 32, 2, '高雄', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(384, 0, 1, NULL, 32, 2, '基隆', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(385, 0, 1, NULL, 32, 2, '台中', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(386, 0, 1, NULL, 32, 2, '台南', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(387, 0, 1, NULL, 32, 2, '新竹', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(388, 0, 1, NULL, 32, 2, '嘉义', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(389, 0, 1, NULL, 32, 2, '台北县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(390, 0, 1, NULL, 32, 2, '宜兰县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(391, 0, 1, NULL, 32, 2, '桃园县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(392, 0, 1, NULL, 32, 2, '新竹县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(393, 0, 1, NULL, 32, 2, '苗栗县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(394, 0, 1, NULL, 32, 2, '台中县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(395, 0, 1, NULL, 32, 2, '彰化县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(396, 0, 1, NULL, 32, 2, '南投县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(397, 0, 1, NULL, 32, 2, '云林县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(398, 0, 1, NULL, 32, 2, '嘉义县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(399, 0, 1, NULL, 32, 2, '台南县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(400, 0, 1, NULL, 32, 2, '高雄县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(401, 0, 1, NULL, 32, 2, '屏东县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(402, 0, 1, NULL, 32, 2, '台东县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(403, 0, 1, NULL, 32, 2, '花莲县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(404, 0, 1, NULL, 32, 2, '澎湖县', '', '', 0, 32, 0, NULL, 1, 0, 0),
+(405, 0, 0, NULL, 1, 3, '东城区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(406, 0, 0, NULL, 1, 3, '西城区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(407, 0, 0, NULL, 1, 3, '崇文区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(408, 0, 0, NULL, 1, 3, '宣武区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(409, 0, 0, NULL, 1, 3, '朝阳区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(410, 0, 0, NULL, 1, 3, '丰台区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(411, 0, 0, NULL, 1, 3, '石景山区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(412, 0, 0, NULL, 1, 3, '海淀区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(413, 0, 0, NULL, 1, 3, '门头沟区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(414, 0, 0, NULL, 1, 3, '房山区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(415, 0, 0, NULL, 1, 3, '通州区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(416, 0, 0, NULL, 1, 3, '顺义区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(417, 0, 0, NULL, 1, 3, '昌平区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(418, 0, 0, NULL, 1, 3, '大兴区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(419, 0, 0, NULL, 1, 3, '怀柔区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(420, 0, 0, NULL, 1, 3, '平谷区', '', '', 0, 35, 0, NULL, 1, 0, 0),
+(421, 0, 0, NULL, 1, 3, '密云县', '', '', 0, 36, 0, NULL, 1, 0, 0),
+(422, 0, 0, NULL, 1, 3, '延庆县', '', '', 0, 36, 0, NULL, 1, 0, 0),
+(423, 0, 0, NULL, 2, 3, '和平区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(424, 0, 0, NULL, 2, 3, '河东区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(425, 0, 0, NULL, 2, 3, '河西区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(426, 0, 0, NULL, 2, 3, '南开区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(427, 0, 0, NULL, 2, 3, '河北区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(428, 0, 0, NULL, 2, 3, '红桥区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(429, 0, 0, NULL, 2, 3, '塘沽区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(430, 0, 0, NULL, 2, 3, '汉沽区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(431, 0, 0, NULL, 2, 3, '大港区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(432, 0, 0, NULL, 2, 3, '东丽区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(433, 0, 0, NULL, 2, 3, '西青区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(434, 0, 0, NULL, 2, 3, '津南区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(435, 0, 0, NULL, 2, 3, '北辰区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(436, 0, 0, NULL, 2, 3, '武清区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(437, 0, 0, NULL, 2, 3, '宝坻区', '', '', 0, 37, 0, NULL, 1, 0, 0),
+(438, 0, 0, NULL, 2, 3, '宁河县', '', '', 0, 38, 0, NULL, 1, 0, 0),
+(439, 0, 0, NULL, 2, 3, '静海县', '', '', 0, 38, 0, NULL, 1, 0, 0),
+(440, 0, 0, NULL, 2, 3, '蓟县', '', '', 0, 38, 0, NULL, 1, 0, 0),
+(441, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(442, 0, 0, NULL, 3, 3, '长安区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(443, 0, 0, NULL, 3, 3, '桥东区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(444, 0, 0, NULL, 3, 3, '桥西区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(445, 0, 0, NULL, 3, 3, '新华区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(446, 0, 0, NULL, 3, 3, '井陉矿区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(447, 0, 0, NULL, 3, 3, '裕华区', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(448, 0, 0, NULL, 3, 3, '井陉县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(449, 0, 0, NULL, 3, 3, '正定县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(450, 0, 0, NULL, 3, 3, '栾城县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(451, 0, 0, NULL, 3, 3, '行唐县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(452, 0, 0, NULL, 3, 3, '灵寿县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(453, 0, 0, NULL, 3, 3, '高邑县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(454, 0, 0, NULL, 3, 3, '深泽县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(455, 0, 0, NULL, 3, 3, '赞皇县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(456, 0, 0, NULL, 3, 3, '无极县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(457, 0, 0, NULL, 3, 3, '平山县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(458, 0, 0, NULL, 3, 3, '元氏县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(459, 0, 0, NULL, 3, 3, '赵县', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(460, 0, 0, NULL, 3, 3, '辛集市', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(461, 0, 0, NULL, 3, 3, '藁城市', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(462, 0, 0, NULL, 3, 3, '晋州市', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(463, 0, 0, NULL, 3, 3, '新乐市', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(464, 0, 0, NULL, 3, 3, '鹿泉市', '', '', 0, 39, 0, NULL, 1, 0, 0),
+(465, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(466, 0, 0, NULL, 3, 3, '路南区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(467, 0, 0, NULL, 3, 3, '路北区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(468, 0, 0, NULL, 3, 3, '古冶区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(469, 0, 0, NULL, 3, 3, '开平区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(470, 0, 0, NULL, 3, 3, '丰南区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(471, 0, 0, NULL, 3, 3, '丰润区', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(472, 0, 0, NULL, 3, 3, '滦县', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(473, 0, 0, NULL, 3, 3, '滦南县', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(474, 0, 0, NULL, 3, 3, '乐亭县', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(475, 0, 0, NULL, 3, 3, '迁西县', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(476, 0, 0, NULL, 3, 3, '玉田县', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(477, 0, 0, NULL, 3, 3, '唐海县', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(478, 0, 0, NULL, 3, 3, '遵化市', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(479, 0, 0, NULL, 3, 3, '迁安市', '', '', 0, 40, 0, NULL, 1, 0, 0),
+(480, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(481, 0, 0, NULL, 3, 3, '海港区', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(482, 0, 0, NULL, 3, 3, '山海关区', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(483, 0, 0, NULL, 3, 3, '北戴河区', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(484, 0, 0, NULL, 3, 3, '青龙满族自治县', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(485, 0, 0, NULL, 3, 3, '昌黎县', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(486, 0, 0, NULL, 3, 3, '抚宁县', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(487, 0, 0, NULL, 3, 3, '卢龙县', '', '', 0, 41, 0, NULL, 1, 0, 0),
+(488, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(489, 0, 0, NULL, 3, 3, '邯山区', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(490, 0, 0, NULL, 3, 3, '丛台区', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(491, 0, 0, NULL, 3, 3, '复兴区', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(492, 0, 0, NULL, 3, 3, '峰峰矿区', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(493, 0, 0, NULL, 3, 3, '邯郸县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(494, 0, 0, NULL, 3, 3, '临漳县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(495, 0, 0, NULL, 3, 3, '成安县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(496, 0, 0, NULL, 3, 3, '大名县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(497, 0, 0, NULL, 3, 3, '涉县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(498, 0, 0, NULL, 3, 3, '磁县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(499, 0, 0, NULL, 3, 3, '肥乡县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(500, 0, 0, NULL, 3, 3, '永年县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(501, 0, 0, NULL, 3, 3, '邱县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(502, 0, 0, NULL, 3, 3, '鸡泽县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(503, 0, 0, NULL, 3, 3, '广平县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(504, 0, 0, NULL, 3, 3, '馆陶县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(505, 0, 0, NULL, 3, 3, '魏县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(506, 0, 0, NULL, 3, 3, '曲周县', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(507, 0, 0, NULL, 3, 3, '武安市', '', '', 0, 42, 0, NULL, 1, 0, 0),
+(508, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(509, 0, 0, NULL, 3, 3, '桥东区', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(510, 0, 0, NULL, 3, 3, '桥西区', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(511, 0, 0, NULL, 3, 3, '邢台县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(512, 0, 0, NULL, 3, 3, '临城县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(513, 0, 0, NULL, 3, 3, '内丘县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(514, 0, 0, NULL, 3, 3, '柏乡县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(515, 0, 0, NULL, 3, 3, '隆尧县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(516, 0, 0, NULL, 3, 3, '任县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(517, 0, 0, NULL, 3, 3, '南和县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(518, 0, 0, NULL, 3, 3, '宁晋县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(519, 0, 0, NULL, 3, 3, '巨鹿县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(520, 0, 0, NULL, 3, 3, '新河县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(521, 0, 0, NULL, 3, 3, '广宗县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(522, 0, 0, NULL, 3, 3, '平乡县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(523, 0, 0, NULL, 3, 3, '威县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(524, 0, 0, NULL, 3, 3, '清河县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(525, 0, 0, NULL, 3, 3, '临西县', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(526, 0, 0, NULL, 3, 3, '南宫市', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(527, 0, 0, NULL, 3, 3, '沙河市', '', '', 0, 43, 0, NULL, 1, 0, 0),
+(528, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(529, 0, 0, NULL, 3, 3, '新市区', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(530, 0, 0, NULL, 3, 3, '北市区', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(531, 0, 0, NULL, 3, 3, '南市区', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(532, 0, 0, NULL, 3, 3, '满城县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(533, 0, 0, NULL, 3, 3, '清苑县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(534, 0, 0, NULL, 3, 3, '涞水县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(535, 0, 0, NULL, 3, 3, '阜平县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(536, 0, 0, NULL, 3, 3, '徐水县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(537, 0, 0, NULL, 3, 3, '定兴县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(538, 0, 0, NULL, 3, 3, '唐县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(539, 0, 0, NULL, 3, 3, '高阳县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(540, 0, 0, NULL, 3, 3, '容城县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(541, 0, 0, NULL, 3, 3, '涞源县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(542, 0, 0, NULL, 3, 3, '望都县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(543, 0, 0, NULL, 3, 3, '安新县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(544, 0, 0, NULL, 3, 3, '易县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(545, 0, 0, NULL, 3, 3, '曲阳县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(546, 0, 0, NULL, 3, 3, '蠡县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(547, 0, 0, NULL, 3, 3, '顺平县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(548, 0, 0, NULL, 3, 3, '博野县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(549, 0, 0, NULL, 3, 3, '雄县', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(550, 0, 0, NULL, 3, 3, '涿州市', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(551, 0, 0, NULL, 3, 3, '定州市', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(552, 0, 0, NULL, 3, 3, '安国市', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(553, 0, 0, NULL, 3, 3, '高碑店', '', '', 0, 44, 0, NULL, 1, 0, 0),
+(554, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(555, 0, 0, NULL, 3, 3, '桥东区', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(556, 0, 0, NULL, 3, 3, '桥西区', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(557, 0, 0, NULL, 3, 3, '宣化区', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(558, 0, 0, NULL, 3, 3, '下花园区', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(559, 0, 0, NULL, 3, 3, '宣化县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(560, 0, 0, NULL, 3, 3, '张北县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(561, 0, 0, NULL, 3, 3, '康保县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(562, 0, 0, NULL, 3, 3, '沽源县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(563, 0, 0, NULL, 3, 3, '尚义县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(564, 0, 0, NULL, 3, 3, '蔚县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(565, 0, 0, NULL, 3, 3, '阳原县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(566, 0, 0, NULL, 3, 3, '怀安县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(567, 0, 0, NULL, 3, 3, '万全县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(568, 0, 0, NULL, 3, 3, '怀来县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(569, 0, 0, NULL, 3, 3, '涿鹿县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(570, 0, 0, NULL, 3, 3, '赤城县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(571, 0, 0, NULL, 3, 3, '崇礼县', '', '', 0, 45, 0, NULL, 1, 0, 0),
+(572, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(573, 0, 0, NULL, 3, 3, '双桥区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(574, 0, 0, NULL, 3, 3, '双滦区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(575, 0, 0, NULL, 3, 3, '鹰手营子矿区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(576, 0, 0, NULL, 3, 3, '承德县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(577, 0, 0, NULL, 3, 3, '兴隆县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(578, 0, 0, NULL, 3, 3, '平泉县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(579, 0, 0, NULL, 3, 3, '滦平县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(580, 0, 0, NULL, 3, 3, '隆化县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(581, 0, 0, NULL, 3, 3, '丰宁满族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(582, 0, 0, NULL, 3, 3, '宽城满族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(583, 0, 0, NULL, 3, 3, '围场满族蒙古族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(588, 0, 0, NULL, 3, 3, '承德县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(596, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(597, 0, 0, NULL, 3, 3, '双桥区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(598, 0, 0, NULL, 3, 3, '双滦区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(599, 0, 0, NULL, 3, 3, '鹰手营子矿区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(600, 0, 0, NULL, 3, 3, '承德县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(601, 0, 0, NULL, 3, 3, '兴隆县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(602, 0, 0, NULL, 3, 3, '平泉县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(603, 0, 0, NULL, 3, 3, '滦平县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(604, 0, 0, NULL, 3, 3, '隆化县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(605, 0, 0, NULL, 3, 3, '丰宁满族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(606, 0, 0, NULL, 3, 3, '宽城满族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(607, 0, 0, NULL, 3, 3, '围场满族蒙古族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(608, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(609, 0, 0, NULL, 3, 3, '双桥区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(610, 0, 0, NULL, 3, 3, '双滦区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(611, 0, 0, NULL, 3, 3, '鹰手营子矿区', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(612, 0, 0, NULL, 3, 3, '承德县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(613, 0, 0, NULL, 3, 3, '兴隆县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(614, 0, 0, NULL, 3, 3, '平泉县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(615, 0, 0, NULL, 3, 3, '滦平县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(616, 0, 0, NULL, 3, 3, '隆化县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(617, 0, 0, NULL, 3, 3, '丰宁满族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(618, 0, 0, NULL, 3, 3, '宽城满族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(619, 0, 0, NULL, 3, 3, '围场满族蒙古族自治县', '', '', 0, 46, 0, NULL, 1, 0, 0),
+(620, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(621, 0, 0, NULL, 3, 3, '新华区', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(622, 0, 0, NULL, 3, 3, '运河区', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(623, 0, 0, NULL, 3, 3, '沧县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(624, 0, 0, NULL, 3, 3, '青县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(625, 0, 0, NULL, 3, 3, '东光县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(626, 0, 0, NULL, 3, 3, '海兴县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(627, 0, 0, NULL, 3, 3, '盐山县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(628, 0, 0, NULL, 3, 3, '肃宁县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(629, 0, 0, NULL, 3, 3, '南皮县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(630, 0, 0, NULL, 3, 3, '吴桥县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(631, 0, 0, NULL, 3, 3, '献县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(632, 0, 0, NULL, 3, 3, '孟村回族自治县', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(633, 0, 0, NULL, 3, 3, '泊头市', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(634, 0, 0, NULL, 3, 3, '任丘市', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(635, 0, 0, NULL, 3, 3, '黄骅市', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(636, 0, 0, NULL, 3, 3, '河间市', '', '', 0, 47, 0, NULL, 1, 0, 0),
+(637, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(638, 0, 0, NULL, 3, 3, '安次区', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(639, 0, 0, NULL, 3, 3, '广阳区', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(640, 0, 0, NULL, 3, 3, '固安县', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(641, 0, 0, NULL, 3, 3, '永清县', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(642, 0, 0, NULL, 3, 3, '香河县', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(643, 0, 0, NULL, 3, 3, '大城县', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(644, 0, 0, NULL, 3, 3, '文安县', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(645, 0, 0, NULL, 3, 3, '大厂回族自治县', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(646, 0, 0, NULL, 3, 3, '霸州市', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(647, 0, 0, NULL, 3, 3, '三河市', '', '', 0, 48, 0, NULL, 1, 0, 0),
+(648, 0, 0, NULL, 3, 3, '市辖区', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(649, 0, 0, NULL, 3, 3, '桃城区', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(650, 0, 0, NULL, 3, 3, '枣强县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(651, 0, 0, NULL, 3, 3, '武邑县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(652, 0, 0, NULL, 3, 3, '武强县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(653, 0, 0, NULL, 3, 3, '饶阳县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(654, 0, 0, NULL, 3, 3, '安平县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(655, 0, 0, NULL, 3, 3, '故城县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(656, 0, 0, NULL, 3, 3, '景县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(657, 0, 0, NULL, 3, 3, '阜城县', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(658, 0, 0, NULL, 3, 3, '冀州市', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(659, 0, 0, NULL, 3, 3, '深州市', '', '', 0, 49, 0, NULL, 1, 0, 0),
+(660, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(661, 0, 0, NULL, 4, 3, '小店区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(662, 0, 0, NULL, 4, 3, '迎泽区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(663, 0, 0, NULL, 4, 3, '杏花岭区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(664, 0, 0, NULL, 4, 3, '尖草坪区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(665, 0, 0, NULL, 4, 3, '万柏林区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(666, 0, 0, NULL, 4, 3, '晋源区', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(667, 0, 0, NULL, 4, 3, '清徐县', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(668, 0, 0, NULL, 4, 3, '阳曲县', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(669, 0, 0, NULL, 4, 3, '娄烦县', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(670, 0, 0, NULL, 4, 3, '古交市', '', '', 0, 50, 0, NULL, 1, 0, 0),
+(671, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(672, 0, 0, NULL, 4, 3, '城区', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(673, 0, 0, NULL, 4, 3, '矿区', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(674, 0, 0, NULL, 4, 3, '南郊区', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(675, 0, 0, NULL, 4, 3, '新荣区', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(676, 0, 0, NULL, 4, 3, '阳高县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(677, 0, 0, NULL, 4, 3, '天镇县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(678, 0, 0, NULL, 4, 3, '广灵县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(679, 0, 0, NULL, 4, 3, '灵丘县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(680, 0, 0, NULL, 4, 3, '浑源县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(681, 0, 0, NULL, 4, 3, '左云县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(682, 0, 0, NULL, 4, 3, '大同县', '', '', 0, 51, 0, NULL, 1, 0, 0),
+(683, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 52, 0, NULL, 1, 0, 0),
+(684, 0, 0, NULL, 4, 3, '城区', '', '', 0, 52, 0, NULL, 1, 0, 0),
+(685, 0, 0, NULL, 4, 3, '矿区', '', '', 0, 52, 0, NULL, 1, 0, 0),
+(686, 0, 0, NULL, 4, 3, '郊区', '', '', 0, 52, 0, NULL, 1, 0, 0),
+(687, 0, 0, NULL, 4, 3, '平定县', '', '', 0, 52, 0, NULL, 1, 0, 0),
+(688, 0, 0, NULL, 4, 3, '盂县', '', '', 0, 52, 0, NULL, 1, 0, 0),
+(689, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(690, 0, 0, NULL, 4, 3, '城区', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(691, 0, 0, NULL, 4, 3, '郊区', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(692, 0, 0, NULL, 4, 3, '长治县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(693, 0, 0, NULL, 4, 3, '襄垣县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(694, 0, 0, NULL, 4, 3, '屯留县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(695, 0, 0, NULL, 4, 3, '平顺县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(696, 0, 0, NULL, 4, 3, '黎城县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(697, 0, 0, NULL, 4, 3, '壶关县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(698, 0, 0, NULL, 4, 3, '长子县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(699, 0, 0, NULL, 4, 3, '武乡县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(700, 0, 0, NULL, 4, 3, '沁县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(701, 0, 0, NULL, 4, 3, '沁源县', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(702, 0, 0, NULL, 4, 3, '潞城市', '', '', 0, 53, 0, NULL, 1, 0, 0),
+(703, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(704, 0, 0, NULL, 4, 3, '城区', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(705, 0, 0, NULL, 4, 3, '沁水县', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(706, 0, 0, NULL, 4, 3, '阳城县', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(707, 0, 0, NULL, 4, 3, '陵川县', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(708, 0, 0, NULL, 4, 3, '泽州县', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(709, 0, 0, NULL, 4, 3, '高平市', '', '', 0, 54, 0, NULL, 1, 0, 0),
+(710, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(711, 0, 0, NULL, 4, 3, '朔城区', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(712, 0, 0, NULL, 4, 3, '平鲁区', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(713, 0, 0, NULL, 4, 3, '山阴县', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(714, 0, 0, NULL, 4, 3, '应县', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(715, 0, 0, NULL, 4, 3, '右玉县', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(716, 0, 0, NULL, 4, 3, '怀仁县', '', '', 0, 55, 0, NULL, 1, 0, 0),
+(717, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(718, 0, 0, NULL, 4, 3, '榆次区', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(719, 0, 0, NULL, 4, 3, '榆社县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(720, 0, 0, NULL, 4, 3, '左权县', '', '', 0, 56, 0, NULL, 1, 0, 0);
+INSERT INTO `pb_areas` (`id`, `attachment_id`, `areatype_id`, `child_ids`, `top_parentid`, `level`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `display_order`, `description`, `available`, `created`, `modified`) VALUES 
+(721, 0, 0, NULL, 4, 3, '和顺县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(722, 0, 0, NULL, 4, 3, '昔阳县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(723, 0, 0, NULL, 4, 3, '寿阳县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(724, 0, 0, NULL, 4, 3, '太谷县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(725, 0, 0, NULL, 4, 3, '祁县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(726, 0, 0, NULL, 4, 3, '平遥县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(727, 0, 0, NULL, 4, 3, '灵石县', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(728, 0, 0, NULL, 4, 3, '介休市', '', '', 0, 56, 0, NULL, 1, 0, 0),
+(729, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(730, 0, 0, NULL, 4, 3, '盐湖区', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(731, 0, 0, NULL, 4, 3, '临猗县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(732, 0, 0, NULL, 4, 3, '万荣县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(733, 0, 0, NULL, 4, 3, '闻喜县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(734, 0, 0, NULL, 4, 3, '稷山县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(735, 0, 0, NULL, 4, 3, '新绛县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(736, 0, 0, NULL, 4, 3, '绛县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(737, 0, 0, NULL, 4, 3, '垣曲县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(738, 0, 0, NULL, 4, 3, '夏县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(739, 0, 0, NULL, 4, 3, '平陆县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(740, 0, 0, NULL, 4, 3, '芮城县', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(741, 0, 0, NULL, 4, 3, '永济市', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(742, 0, 0, NULL, 4, 3, '河津市', '', '', 0, 57, 0, NULL, 1, 0, 0),
+(743, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(744, 0, 0, NULL, 4, 3, '忻府区', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(745, 0, 0, NULL, 4, 3, '定襄县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(746, 0, 0, NULL, 4, 3, '五台县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(747, 0, 0, NULL, 4, 3, '代县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(748, 0, 0, NULL, 4, 3, '繁峙县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(749, 0, 0, NULL, 4, 3, '宁武县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(750, 0, 0, NULL, 4, 3, '静乐县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(751, 0, 0, NULL, 4, 3, '神池县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(752, 0, 0, NULL, 4, 3, '五寨县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(753, 0, 0, NULL, 4, 3, '岢岚县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(754, 0, 0, NULL, 4, 3, '河曲县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(755, 0, 0, NULL, 4, 3, '保德县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(756, 0, 0, NULL, 4, 3, '偏关县', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(757, 0, 0, NULL, 4, 3, '原平市', '', '', 0, 58, 0, NULL, 1, 0, 0),
+(758, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(759, 0, 0, NULL, 4, 3, '尧都区', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(760, 0, 0, NULL, 4, 3, '曲沃县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(761, 0, 0, NULL, 4, 3, '翼城县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(762, 0, 0, NULL, 4, 3, '襄汾县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(763, 0, 0, NULL, 4, 3, '洪洞县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(764, 0, 0, NULL, 4, 3, '古县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(765, 0, 0, NULL, 4, 3, '安泽县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(766, 0, 0, NULL, 4, 3, '浮山县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(767, 0, 0, NULL, 4, 3, '吉县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(768, 0, 0, NULL, 4, 3, '乡宁县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(769, 0, 0, NULL, 4, 3, '大宁县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(770, 0, 0, NULL, 4, 3, '隰县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(771, 0, 0, NULL, 4, 3, '永和县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(772, 0, 0, NULL, 4, 3, '蒲县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(773, 0, 0, NULL, 4, 3, '汾西县', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(774, 0, 0, NULL, 4, 3, '侯马市', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(775, 0, 0, NULL, 4, 3, '霍州市', '', '', 0, 59, 0, NULL, 1, 0, 0),
+(776, 0, 0, NULL, 4, 3, '市辖区', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(777, 0, 0, NULL, 4, 3, '离石区', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(778, 0, 0, NULL, 4, 3, '文水县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(779, 0, 0, NULL, 4, 3, '交城县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(780, 0, 0, NULL, 4, 3, '兴县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(781, 0, 0, NULL, 4, 3, '临县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(782, 0, 0, NULL, 4, 3, '柳林县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(783, 0, 0, NULL, 4, 3, '石楼县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(784, 0, 0, NULL, 4, 3, '岚县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(785, 0, 0, NULL, 4, 3, '方山县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(786, 0, 0, NULL, 4, 3, '中阳县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(787, 0, 0, NULL, 4, 3, '交口县', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(788, 0, 0, NULL, 4, 3, '孝义市', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(789, 0, 0, NULL, 4, 3, '汾阳市', '', '', 0, 60, 0, NULL, 1, 0, 0),
+(790, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(791, 0, 0, NULL, 5, 3, '新城区', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(792, 0, 0, NULL, 5, 3, '回民区', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(793, 0, 0, NULL, 5, 3, '玉泉区', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(794, 0, 0, NULL, 5, 3, '赛罕区', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(795, 0, 0, NULL, 5, 3, '土默特左旗', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(796, 0, 0, NULL, 5, 3, '托克托县', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(797, 0, 0, NULL, 5, 3, '和林格尔县', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(798, 0, 0, NULL, 5, 3, '清水河县', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(799, 0, 0, NULL, 5, 3, '武川县', '', '', 0, 61, 0, NULL, 1, 0, 0),
+(800, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(801, 0, 0, NULL, 5, 3, '东河区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(802, 0, 0, NULL, 5, 3, '昆都仑区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(803, 0, 0, NULL, 5, 3, '青山区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(804, 0, 0, NULL, 5, 3, '石拐区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(805, 0, 0, NULL, 5, 3, '白云矿区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(806, 0, 0, NULL, 5, 3, '九原区', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(807, 0, 0, NULL, 5, 3, '土默特右旗', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(808, 0, 0, NULL, 5, 3, '固阳县', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(809, 0, 0, NULL, 5, 3, '达尔罕茂明安联合旗', '', '', 0, 62, 0, NULL, 1, 0, 0),
+(810, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 63, 0, NULL, 1, 0, 0),
+(811, 0, 0, NULL, 5, 3, '海勃湾区', '', '', 0, 63, 0, NULL, 1, 0, 0),
+(812, 0, 0, NULL, 5, 3, '海南区', '', '', 0, 63, 0, NULL, 1, 0, 0),
+(813, 0, 0, NULL, 5, 3, '乌达区', '', '', 0, 63, 0, NULL, 1, 0, 0),
+(814, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(815, 0, 0, NULL, 5, 3, '红山区', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(816, 0, 0, NULL, 5, 3, '元宝山区', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(817, 0, 0, NULL, 5, 3, '松山区', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(818, 0, 0, NULL, 5, 3, '阿鲁科尔沁旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(819, 0, 0, NULL, 5, 3, '巴林左旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(820, 0, 0, NULL, 5, 3, '巴林右旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(821, 0, 0, NULL, 5, 3, '林西县', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(822, 0, 0, NULL, 5, 3, '克什克腾旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(823, 0, 0, NULL, 5, 3, '翁牛特旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(824, 0, 0, NULL, 5, 3, '喀喇沁旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(825, 0, 0, NULL, 5, 3, '宁城县', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(826, 0, 0, NULL, 5, 3, '敖汉旗', '', '', 0, 64, 0, NULL, 1, 0, 0),
+(827, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(828, 0, 0, NULL, 5, 3, '科尔沁区', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(829, 0, 0, NULL, 5, 3, '科尔沁左翼中旗', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(830, 0, 0, NULL, 5, 3, '科尔沁左翼后旗', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(831, 0, 0, NULL, 5, 3, '开鲁县', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(832, 0, 0, NULL, 5, 3, '库伦旗', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(833, 0, 0, NULL, 5, 3, '奈曼旗', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(834, 0, 0, NULL, 5, 3, '扎鲁特旗', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(835, 0, 0, NULL, 5, 3, '霍林郭勒市', '', '', 0, 65, 0, NULL, 1, 0, 0),
+(836, 0, 0, NULL, 5, 3, '东胜区', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(837, 0, 0, NULL, 5, 3, '达拉特旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(838, 0, 0, NULL, 5, 3, '准格尔旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(839, 0, 0, NULL, 5, 3, '鄂托克前旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(840, 0, 0, NULL, 5, 3, '鄂托克旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(841, 0, 0, NULL, 5, 3, '杭锦旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(842, 0, 0, NULL, 5, 3, '乌审旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(843, 0, 0, NULL, 5, 3, '伊金霍洛旗', '', '', 0, 66, 0, NULL, 1, 0, 0),
+(844, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(845, 0, 0, NULL, 5, 3, '海拉尔区', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(846, 0, 0, NULL, 5, 3, '阿荣旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(847, 0, 0, NULL, 5, 3, '莫力达瓦达斡尔族自治旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(848, 0, 0, NULL, 5, 3, '鄂伦春自治旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(849, 0, 0, NULL, 5, 3, '鄂温克族自治旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(850, 0, 0, NULL, 5, 3, '陈巴尔虎旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(851, 0, 0, NULL, 5, 3, '新巴尔虎左旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(852, 0, 0, NULL, 5, 3, '新巴尔虎右旗', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(853, 0, 0, NULL, 5, 3, '满洲里市', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(854, 0, 0, NULL, 5, 3, '牙克石市', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(855, 0, 0, NULL, 5, 3, '扎兰屯市', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(856, 0, 0, NULL, 5, 3, '额尔古纳市', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(857, 0, 0, NULL, 5, 3, '根河市', '', '', 0, 67, 0, NULL, 1, 0, 0),
+(858, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(859, 0, 0, NULL, 5, 3, '临河区', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(860, 0, 0, NULL, 5, 3, '五原县', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(861, 0, 0, NULL, 5, 3, '磴口县', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(862, 0, 0, NULL, 5, 3, '乌拉特前旗', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(863, 0, 0, NULL, 5, 3, '乌拉特中旗', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(864, 0, 0, NULL, 5, 3, '乌拉特后旗', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(865, 0, 0, NULL, 5, 3, '杭锦后旗', '', '', 0, 68, 0, NULL, 1, 0, 0),
+(866, 0, 0, NULL, 5, 3, '市辖区', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(867, 0, 0, NULL, 5, 3, '集宁区', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(868, 0, 0, NULL, 5, 3, '卓资县', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(869, 0, 0, NULL, 5, 3, '化德县', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(870, 0, 0, NULL, 5, 3, '商都县', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(871, 0, 0, NULL, 5, 3, '兴和县', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(872, 0, 0, NULL, 5, 3, '凉城县', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(873, 0, 0, NULL, 5, 3, '察哈尔右翼前旗', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(874, 0, 0, NULL, 5, 3, '察哈尔右翼中旗', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(875, 0, 0, NULL, 5, 3, '察哈尔右翼后旗', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(876, 0, 0, NULL, 5, 3, '四子王旗', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(877, 0, 0, NULL, 5, 3, '丰镇市', '', '', 0, 69, 0, NULL, 1, 0, 0),
+(878, 0, 0, NULL, 5, 3, '乌兰浩特市', '', '', 0, 70, 0, NULL, 1, 0, 0),
+(879, 0, 0, NULL, 5, 3, '阿尔山市', '', '', 0, 70, 0, NULL, 1, 0, 0),
+(880, 0, 0, NULL, 5, 3, '科尔沁右翼前旗', '', '', 0, 70, 0, NULL, 1, 0, 0),
+(881, 0, 0, NULL, 5, 3, '科尔沁右翼中旗', '', '', 0, 70, 0, NULL, 1, 0, 0),
+(882, 0, 0, NULL, 5, 3, '扎赉特旗', '', '', 0, 70, 0, NULL, 1, 0, 0),
+(883, 0, 0, NULL, 5, 3, '突泉县', '', '', 0, 70, 0, NULL, 1, 0, 0),
+(884, 0, 0, NULL, 5, 3, '二连浩特市', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(885, 0, 0, NULL, 5, 3, '锡林浩特市', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(886, 0, 0, NULL, 5, 3, '阿巴嘎旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(887, 0, 0, NULL, 5, 3, '苏尼特左旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(888, 0, 0, NULL, 5, 3, '苏尼特右旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(889, 0, 0, NULL, 5, 3, '东乌珠穆沁旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(890, 0, 0, NULL, 5, 3, '西乌珠穆沁旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(891, 0, 0, NULL, 5, 3, '太仆寺旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(892, 0, 0, NULL, 5, 3, '镶黄旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(893, 0, 0, NULL, 5, 3, '正镶白旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(894, 0, 0, NULL, 5, 3, '正蓝旗', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(895, 0, 0, NULL, 5, 3, '多伦县', '', '', 0, 71, 0, NULL, 1, 0, 0),
+(896, 0, 0, NULL, 5, 3, '阿拉善左旗', '', '', 0, 72, 0, NULL, 1, 0, 0),
+(897, 0, 0, NULL, 5, 3, '阿拉善右旗', '', '', 0, 72, 0, NULL, 1, 0, 0),
+(898, 0, 0, NULL, 5, 3, '额济纳旗', '', '', 0, 72, 0, NULL, 1, 0, 0),
+(899, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(900, 0, 0, NULL, 6, 3, '和平区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(901, 0, 0, NULL, 6, 3, '沈河区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(902, 0, 0, NULL, 6, 3, '大东区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(903, 0, 0, NULL, 6, 3, '皇姑区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(904, 0, 0, NULL, 6, 3, '铁西区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(905, 0, 0, NULL, 6, 3, '苏家屯区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(906, 0, 0, NULL, 6, 3, '东陵区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(907, 0, 0, NULL, 6, 3, '新城子区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(908, 0, 0, NULL, 6, 3, '于洪区', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(909, 0, 0, NULL, 6, 3, '辽中县', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(910, 0, 0, NULL, 6, 3, '康平县', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(911, 0, 0, NULL, 6, 3, '法库县', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(912, 0, 0, NULL, 6, 3, '新民市', '', '', 0, 73, 0, NULL, 1, 0, 0),
+(913, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(914, 0, 0, NULL, 6, 3, '中山区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(915, 0, 0, NULL, 6, 3, '西岗区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(916, 0, 0, NULL, 6, 3, '沙河口区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(917, 0, 0, NULL, 6, 3, '甘井子区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(918, 0, 0, NULL, 6, 3, '旅顺口区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(919, 0, 0, NULL, 6, 3, '金州区', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(920, 0, 0, NULL, 6, 3, '长海县', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(921, 0, 0, NULL, 6, 3, '瓦房店市', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(922, 0, 0, NULL, 6, 3, '普兰店市', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(923, 0, 0, NULL, 6, 3, '庄河市', '', '', 0, 74, 0, NULL, 1, 0, 0),
+(924, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(925, 0, 0, NULL, 6, 3, '铁东区', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(926, 0, 0, NULL, 6, 3, '铁西区', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(927, 0, 0, NULL, 6, 3, '立山区', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(928, 0, 0, NULL, 6, 3, '千山区', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(929, 0, 0, NULL, 6, 3, '台安县', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(930, 0, 0, NULL, 6, 3, '岫岩满族自治县', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(931, 0, 0, NULL, 6, 3, '海城市', '', '', 0, 75, 0, NULL, 1, 0, 0),
+(932, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(933, 0, 0, NULL, 6, 3, '新抚区', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(934, 0, 0, NULL, 6, 3, '东洲区', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(935, 0, 0, NULL, 6, 3, '望花区', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(936, 0, 0, NULL, 6, 3, '顺城区', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(937, 0, 0, NULL, 6, 3, '抚顺县', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(938, 0, 0, NULL, 6, 3, '新宾满族自治县', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(939, 0, 0, NULL, 6, 3, '清原满族自治县', '', '', 0, 76, 0, NULL, 1, 0, 0),
+(940, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(941, 0, 0, NULL, 6, 3, '平山区', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(942, 0, 0, NULL, 6, 3, '溪湖区', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(943, 0, 0, NULL, 6, 3, '明山区', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(944, 0, 0, NULL, 6, 3, '南芬区', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(945, 0, 0, NULL, 6, 3, '本溪满族自治县', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(946, 0, 0, NULL, 6, 3, '桓仁满族自治县', '', '', 0, 77, 0, NULL, 1, 0, 0),
+(947, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(948, 0, 0, NULL, 6, 3, '元宝区', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(949, 0, 0, NULL, 6, 3, '振兴区', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(950, 0, 0, NULL, 6, 3, '振安区', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(951, 0, 0, NULL, 6, 3, '宽甸满族自治县', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(952, 0, 0, NULL, 6, 3, '东港市', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(953, 0, 0, NULL, 6, 3, '凤城市', '', '', 0, 78, 0, NULL, 1, 0, 0),
+(954, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(955, 0, 0, NULL, 6, 3, '古塔区', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(956, 0, 0, NULL, 6, 3, '凌河区', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(957, 0, 0, NULL, 6, 3, '太和区', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(958, 0, 0, NULL, 6, 3, '黑山县', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(959, 0, 0, NULL, 6, 3, '义县', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(960, 0, 0, NULL, 6, 3, '凌海市', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(961, 0, 0, NULL, 6, 3, '北宁市', '', '', 0, 79, 0, NULL, 1, 0, 0),
+(962, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(963, 0, 0, NULL, 6, 3, '站前区', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(964, 0, 0, NULL, 6, 3, '西市区', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(965, 0, 0, NULL, 6, 3, '鲅鱼圈区', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(966, 0, 0, NULL, 6, 3, '老边区', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(967, 0, 0, NULL, 6, 3, '盖州市', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(968, 0, 0, NULL, 6, 3, '大石桥市', '', '', 0, 80, 0, NULL, 1, 0, 0),
+(969, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(970, 0, 0, NULL, 6, 3, '海州区', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(971, 0, 0, NULL, 6, 3, '新邱区', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(972, 0, 0, NULL, 6, 3, '太平区', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(973, 0, 0, NULL, 6, 3, '清河门区', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(974, 0, 0, NULL, 6, 3, '细河区', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(975, 0, 0, NULL, 6, 3, '阜新蒙古族自治县', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(976, 0, 0, NULL, 6, 3, '彰武县', '', '', 0, 81, 0, NULL, 1, 0, 0),
+(977, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(978, 0, 0, NULL, 6, 3, '白塔区', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(979, 0, 0, NULL, 6, 3, '文圣区', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(980, 0, 0, NULL, 6, 3, '宏伟区', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(981, 0, 0, NULL, 6, 3, '弓长岭区', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(982, 0, 0, NULL, 6, 3, '太子河区', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(983, 0, 0, NULL, 6, 3, '辽阳县', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(984, 0, 0, NULL, 6, 3, '灯塔市', '', '', 0, 82, 0, NULL, 1, 0, 0),
+(985, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 83, 0, NULL, 1, 0, 0),
+(986, 0, 0, NULL, 6, 3, '双台子区', '', '', 0, 83, 0, NULL, 1, 0, 0),
+(987, 0, 0, NULL, 6, 3, '兴隆台区', '', '', 0, 83, 0, NULL, 1, 0, 0),
+(988, 0, 0, NULL, 6, 3, '大洼县', '', '', 0, 83, 0, NULL, 1, 0, 0),
+(989, 0, 0, NULL, 6, 3, '盘山县', '', '', 0, 83, 0, NULL, 1, 0, 0),
+(990, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(991, 0, 0, NULL, 6, 3, '银州区', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(992, 0, 0, NULL, 6, 3, '清河区', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(993, 0, 0, NULL, 6, 3, '铁岭县', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(994, 0, 0, NULL, 6, 3, '西丰县', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(995, 0, 0, NULL, 6, 3, '昌图县', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(996, 0, 0, NULL, 6, 3, '调兵山市', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(997, 0, 0, NULL, 6, 3, '开原市', '', '', 0, 84, 0, NULL, 1, 0, 0),
+(998, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(999, 0, 0, NULL, 6, 3, '双塔区', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1000, 0, 0, NULL, 6, 3, '龙城区', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1001, 0, 0, NULL, 6, 3, '朝阳县', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1002, 0, 0, NULL, 6, 3, '建平县', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1003, 0, 0, NULL, 6, 3, '喀喇沁左翼蒙古族自治县', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1004, 0, 0, NULL, 6, 3, '北票市', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1005, 0, 0, NULL, 6, 3, '凌源市', '', '', 0, 85, 0, NULL, 1, 0, 0),
+(1006, 0, 0, NULL, 6, 3, '市辖区', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1007, 0, 0, NULL, 6, 3, '连山区', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1008, 0, 0, NULL, 6, 3, '龙港区', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1009, 0, 0, NULL, 6, 3, '南票区', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1010, 0, 0, NULL, 6, 3, '绥中县', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1011, 0, 0, NULL, 6, 3, '建昌县', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1012, 0, 0, NULL, 6, 3, '兴城市', '', '', 0, 86, 0, NULL, 1, 0, 0),
+(1013, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1014, 0, 0, NULL, 7, 3, '南关区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1015, 0, 0, NULL, 7, 3, '宽城区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1016, 0, 0, NULL, 7, 3, '朝阳区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1017, 0, 0, NULL, 7, 3, '二道区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1018, 0, 0, NULL, 7, 3, '绿园区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1019, 0, 0, NULL, 7, 3, '双阳区', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1020, 0, 0, NULL, 7, 3, '农安县', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1021, 0, 0, NULL, 7, 3, '九台市', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1022, 0, 0, NULL, 7, 3, '榆树市', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1023, 0, 0, NULL, 7, 3, '德惠市', '', '', 0, 87, 0, NULL, 1, 0, 0),
+(1024, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1025, 0, 0, NULL, 7, 3, '昌邑区', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1026, 0, 0, NULL, 7, 3, '龙潭区', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1027, 0, 0, NULL, 7, 3, '船营区', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1028, 0, 0, NULL, 7, 3, '丰满区', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1029, 0, 0, NULL, 7, 3, '永吉县', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1030, 0, 0, NULL, 7, 3, '蛟河市', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1031, 0, 0, NULL, 7, 3, '桦甸市', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1032, 0, 0, NULL, 7, 3, '舒兰市', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1033, 0, 0, NULL, 7, 3, '磐石市', '', '', 0, 88, 0, NULL, 1, 0, 0),
+(1034, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1035, 0, 0, NULL, 7, 3, '铁西区', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1036, 0, 0, NULL, 7, 3, '铁东区', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1037, 0, 0, NULL, 7, 3, '梨树县', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1038, 0, 0, NULL, 7, 3, '伊通满族自治县', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1039, 0, 0, NULL, 7, 3, '公主岭市', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1040, 0, 0, NULL, 7, 3, '双辽市', '', '', 0, 89, 0, NULL, 1, 0, 0),
+(1041, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 90, 0, NULL, 1, 0, 0),
+(1042, 0, 0, NULL, 7, 3, '龙山区', '', '', 0, 90, 0, NULL, 1, 0, 0),
+(1043, 0, 0, NULL, 7, 3, '西安区', '', '', 0, 90, 0, NULL, 1, 0, 0),
+(1044, 0, 0, NULL, 7, 3, '东丰县', '', '', 0, 90, 0, NULL, 1, 0, 0),
+(1045, 0, 0, NULL, 7, 3, '东辽县', '', '', 0, 90, 0, NULL, 1, 0, 0),
+(1046, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1047, 0, 0, NULL, 7, 3, '东昌区', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1048, 0, 0, NULL, 7, 3, '二道江区', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1049, 0, 0, NULL, 7, 3, '通化县', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1050, 0, 0, NULL, 7, 3, '辉南县', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1051, 0, 0, NULL, 7, 3, '柳河县', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1052, 0, 0, NULL, 7, 3, '梅河口市', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1053, 0, 0, NULL, 7, 3, '集安市', '', '', 0, 91, 0, NULL, 1, 0, 0),
+(1054, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1055, 0, 0, NULL, 7, 3, '八道江区', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1056, 0, 0, NULL, 7, 3, '抚松县', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1057, 0, 0, NULL, 7, 3, '靖宇县', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1058, 0, 0, NULL, 7, 3, '长白朝鲜族自治县', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1059, 0, 0, NULL, 7, 3, '江源县', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1060, 0, 0, NULL, 7, 3, '临江市', '', '', 0, 92, 0, NULL, 1, 0, 0),
+(1061, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 93, 0, NULL, 1, 0, 0),
+(1062, 0, 0, NULL, 7, 3, '宁江区', '', '', 0, 93, 0, NULL, 1, 0, 0),
+(1063, 0, 0, NULL, 7, 3, '前郭尔罗斯蒙古族自治县', '', '', 0, 93, 0, NULL, 1, 0, 0),
+(1064, 0, 0, NULL, 7, 3, '长岭县', '', '', 0, 93, 0, NULL, 1, 0, 0),
+(1065, 0, 0, NULL, 7, 3, '乾安县', '', '', 0, 93, 0, NULL, 1, 0, 0),
+(1066, 0, 0, NULL, 7, 3, '扶余县', '', '', 0, 93, 0, NULL, 1, 0, 0),
+(1067, 0, 0, NULL, 7, 3, '市辖区', '', '', 0, 94, 0, NULL, 1, 0, 0),
+(1068, 0, 0, NULL, 7, 3, '洮北区', '', '', 0, 94, 0, NULL, 1, 0, 0),
+(1069, 0, 0, NULL, 7, 3, '镇赉县', '', '', 0, 94, 0, NULL, 1, 0, 0),
+(1070, 0, 0, NULL, 7, 3, '通榆县', '', '', 0, 94, 0, NULL, 1, 0, 0),
+(1071, 0, 0, NULL, 7, 3, '洮南市', '', '', 0, 94, 0, NULL, 1, 0, 0),
+(1072, 0, 0, NULL, 7, 3, '大安市', '', '', 0, 94, 0, NULL, 1, 0, 0),
+(1073, 0, 0, NULL, 7, 3, '延吉市', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1074, 0, 0, NULL, 7, 3, '图们市', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1075, 0, 0, NULL, 7, 3, '敦化市', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1076, 0, 0, NULL, 7, 3, '珲春市', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1077, 0, 0, NULL, 7, 3, '龙井市', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1078, 0, 0, NULL, 7, 3, '和龙市', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1079, 0, 0, NULL, 7, 3, '汪清县', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1080, 0, 0, NULL, 7, 3, '安图县', '', '', 0, 95, 0, NULL, 1, 0, 0),
+(1081, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1082, 0, 0, NULL, 8, 3, '道里区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1083, 0, 0, NULL, 8, 3, '南岗区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1084, 0, 0, NULL, 8, 3, '道外区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1085, 0, 0, NULL, 8, 3, '香坊区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1086, 0, 0, NULL, 8, 3, '动力区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1087, 0, 0, NULL, 8, 3, '平房区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1088, 0, 0, NULL, 8, 3, '松北区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1089, 0, 0, NULL, 8, 3, '呼兰区', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1090, 0, 0, NULL, 8, 3, '依兰县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1091, 0, 0, NULL, 8, 3, '方正县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1092, 0, 0, NULL, 8, 3, '宾县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1093, 0, 0, NULL, 8, 3, '巴彦县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1094, 0, 0, NULL, 8, 3, '木兰县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1095, 0, 0, NULL, 8, 3, '通河县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1096, 0, 0, NULL, 8, 3, '延寿县', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1097, 0, 0, NULL, 8, 3, '阿城市', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1098, 0, 0, NULL, 8, 3, '双城市', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1099, 0, 0, NULL, 8, 3, '尚志市', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1100, 0, 0, NULL, 8, 3, '五常市', '', '', 0, 96, 0, NULL, 1, 0, 0),
+(1101, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1102, 0, 0, NULL, 8, 3, '龙沙区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1103, 0, 0, NULL, 8, 3, '建华区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1104, 0, 0, NULL, 8, 3, '铁锋区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1105, 0, 0, NULL, 8, 3, '昂昂溪区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1106, 0, 0, NULL, 8, 3, '富拉尔基区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1107, 0, 0, NULL, 8, 3, '碾子山区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1108, 0, 0, NULL, 8, 3, '梅里斯达斡尔族区', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1109, 0, 0, NULL, 8, 3, '龙江县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1110, 0, 0, NULL, 8, 3, '依安县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1111, 0, 0, NULL, 8, 3, '泰来县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1112, 0, 0, NULL, 8, 3, '甘南县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1113, 0, 0, NULL, 8, 3, '富裕县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1114, 0, 0, NULL, 8, 3, '克山县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1115, 0, 0, NULL, 8, 3, '克东县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1116, 0, 0, NULL, 8, 3, '拜泉县', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1117, 0, 0, NULL, 8, 3, '讷河市', '', '', 0, 97, 0, NULL, 1, 0, 0),
+(1118, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1119, 0, 0, NULL, 8, 3, '鸡冠区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1120, 0, 0, NULL, 8, 3, '恒山区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1121, 0, 0, NULL, 8, 3, '滴道区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1122, 0, 0, NULL, 8, 3, '梨树区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1123, 0, 0, NULL, 8, 3, '城子河区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1124, 0, 0, NULL, 8, 3, '麻山区', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1125, 0, 0, NULL, 8, 3, '鸡东县', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1126, 0, 0, NULL, 8, 3, '虎林市', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1127, 0, 0, NULL, 8, 3, '密山市', '', '', 0, 98, 0, NULL, 1, 0, 0),
+(1128, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1129, 0, 0, NULL, 8, 3, '向阳区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1130, 0, 0, NULL, 8, 3, '工农区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1131, 0, 0, NULL, 8, 3, '南山区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1132, 0, 0, NULL, 8, 3, '兴安区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1133, 0, 0, NULL, 8, 3, '东山区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1134, 0, 0, NULL, 8, 3, '兴山区', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1135, 0, 0, NULL, 8, 3, '萝北县', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1136, 0, 0, NULL, 8, 3, '绥滨县', '', '', 0, 99, 0, NULL, 1, 0, 0),
+(1137, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1138, 0, 0, NULL, 8, 3, '尖山区', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1139, 0, 0, NULL, 8, 3, '岭东区', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1140, 0, 0, NULL, 8, 3, '四方台区', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1141, 0, 0, NULL, 8, 3, '宝山区', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1142, 0, 0, NULL, 8, 3, '集贤县', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1143, 0, 0, NULL, 8, 3, '友谊县', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1144, 0, 0, NULL, 8, 3, '宝清县', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1145, 0, 0, NULL, 8, 3, '饶河县', '', '', 0, 100, 0, NULL, 1, 0, 0),
+(1146, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1147, 0, 0, NULL, 8, 3, '萨尔图区', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1148, 0, 0, NULL, 8, 3, '龙凤区', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1149, 0, 0, NULL, 8, 3, '让胡路区', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1150, 0, 0, NULL, 8, 3, '红岗区', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1151, 0, 0, NULL, 8, 3, '大同区', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1152, 0, 0, NULL, 8, 3, '肇州县', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1153, 0, 0, NULL, 8, 3, '肇源县', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1154, 0, 0, NULL, 8, 3, '林甸县', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1155, 0, 0, NULL, 8, 3, '杜尔伯特蒙古族自治县', '', '', 0, 101, 0, NULL, 1, 0, 0),
+(1156, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1157, 0, 0, NULL, 8, 3, '伊春区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1158, 0, 0, NULL, 8, 3, '南岔区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1159, 0, 0, NULL, 8, 3, '友好区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1160, 0, 0, NULL, 8, 3, '西林区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1161, 0, 0, NULL, 8, 3, '翠峦区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1162, 0, 0, NULL, 8, 3, '新青区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1163, 0, 0, NULL, 8, 3, '美溪区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1164, 0, 0, NULL, 8, 3, '金山屯区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1165, 0, 0, NULL, 8, 3, '五营区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1166, 0, 0, NULL, 8, 3, '乌马河区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1167, 0, 0, NULL, 8, 3, '汤旺河区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1168, 0, 0, NULL, 8, 3, '带岭区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1169, 0, 0, NULL, 8, 3, '乌伊岭区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1170, 0, 0, NULL, 8, 3, '红星区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1171, 0, 0, NULL, 8, 3, '上甘岭区', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1172, 0, 0, NULL, 8, 3, '嘉荫县', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1173, 0, 0, NULL, 8, 3, '铁力市', '', '', 0, 102, 0, NULL, 1, 0, 0),
+(1174, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1175, 0, 0, NULL, 8, 3, '永红区', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1176, 0, 0, NULL, 8, 3, '向阳区', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1177, 0, 0, NULL, 8, 3, '前进区', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1178, 0, 0, NULL, 8, 3, '东风区', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1179, 0, 0, NULL, 8, 3, '郊区', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1180, 0, 0, NULL, 8, 3, '桦南县', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1181, 0, 0, NULL, 8, 3, '桦川县', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1182, 0, 0, NULL, 8, 3, '汤原县', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1183, 0, 0, NULL, 8, 3, '抚远县', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1184, 0, 0, NULL, 8, 3, '同江市', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1185, 0, 0, NULL, 8, 3, '富锦市', '', '', 0, 103, 0, NULL, 1, 0, 0),
+(1186, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 104, 0, NULL, 1, 0, 0),
+(1187, 0, 0, NULL, 8, 3, '新兴区', '', '', 0, 104, 0, NULL, 1, 0, 0),
+(1188, 0, 0, NULL, 8, 3, '桃山区', '', '', 0, 104, 0, NULL, 1, 0, 0),
+(1189, 0, 0, NULL, 8, 3, '茄子河区', '', '', 0, 104, 0, NULL, 1, 0, 0),
+(1190, 0, 0, NULL, 8, 3, '勃利县', '', '', 0, 104, 0, NULL, 1, 0, 0),
+(1202, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1203, 0, 0, NULL, 8, 3, '爱辉区', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1204, 0, 0, NULL, 8, 3, '嫩江县', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1205, 0, 0, NULL, 8, 3, '逊克县', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1206, 0, 0, NULL, 8, 3, '孙吴县', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1207, 0, 0, NULL, 8, 3, '北安市', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1208, 0, 0, NULL, 8, 3, '五大连池市', '', '', 0, 106, 0, NULL, 1, 0, 0),
+(1209, 0, 0, NULL, 8, 3, '市辖区', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1210, 0, 0, NULL, 8, 3, '北林区', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1211, 0, 0, NULL, 8, 3, '望奎县', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1212, 0, 0, NULL, 8, 3, '兰西县', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1213, 0, 0, NULL, 8, 3, '青冈县', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1214, 0, 0, NULL, 8, 3, '庆安县', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1215, 0, 0, NULL, 8, 3, '明水县', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1216, 0, 0, NULL, 8, 3, '绥棱县', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1217, 0, 0, NULL, 8, 3, '安达市', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1218, 0, 0, NULL, 8, 3, '肇东市', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1219, 0, 0, NULL, 8, 3, '海伦市', '', '', 0, 107, 0, NULL, 1, 0, 0),
+(1220, 0, 0, NULL, 8, 3, '呼玛县', '', '', 0, 108, 0, NULL, 1, 0, 0),
+(1221, 0, 0, NULL, 8, 3, '塔河县', '', '', 0, 108, 0, NULL, 1, 0, 0),
+(1222, 0, 0, NULL, 8, 3, '漠河县', '', '', 0, 108, 0, NULL, 1, 0, 0),
+(1223, 0, 0, NULL, 8, 3, '黄浦区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1224, 0, 0, NULL, 8, 3, '卢湾区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1225, 0, 0, NULL, 8, 3, '徐汇区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1226, 0, 0, NULL, 8, 3, '长宁区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1227, 0, 0, NULL, 8, 3, '静安区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1228, 0, 0, NULL, 8, 3, '普陀区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1229, 0, 0, NULL, 8, 3, '闸北区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1230, 0, 0, NULL, 8, 3, '虹口区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1231, 0, 0, NULL, 8, 3, '杨浦区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1232, 0, 0, NULL, 8, 3, '闵行区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1233, 0, 0, NULL, 8, 3, '宝山区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1234, 0, 0, NULL, 8, 3, '嘉定区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1235, 0, 0, NULL, 8, 3, '浦东新区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1236, 0, 0, NULL, 8, 3, '金山区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1237, 0, 0, NULL, 8, 3, '松江区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1238, 0, 0, NULL, 8, 3, '青浦区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1239, 0, 0, NULL, 8, 3, '南汇区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1240, 0, 0, NULL, 8, 3, '奉贤区', '', '', 0, 109, 0, NULL, 1, 0, 0),
+(1241, 0, 0, NULL, 9, 3, '崇明县', '', '', 0, 110, 0, NULL, 1, 0, 0),
+(1242, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1243, 0, 0, NULL, 10, 3, '玄武区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1244, 0, 0, NULL, 10, 3, '白下区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1245, 0, 0, NULL, 10, 3, '秦淮区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1246, 0, 0, NULL, 10, 3, '建邺区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1247, 0, 0, NULL, 10, 3, '鼓楼区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1248, 0, 0, NULL, 10, 3, '下关区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1249, 0, 0, NULL, 10, 3, '浦口区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1250, 0, 0, NULL, 10, 3, '栖霞区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1251, 0, 0, NULL, 10, 3, '雨花台区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1252, 0, 0, NULL, 10, 3, '江宁区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1253, 0, 0, NULL, 10, 3, '六合区', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1254, 0, 0, NULL, 10, 3, '溧水县', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1255, 0, 0, NULL, 10, 3, '高淳县', '', '', 0, 111, 0, NULL, 1, 0, 0),
+(1256, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1257, 0, 0, NULL, 10, 3, '崇安区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1258, 0, 0, NULL, 10, 3, '南长区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1259, 0, 0, NULL, 10, 3, '北塘区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1260, 0, 0, NULL, 10, 3, '锡山区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1261, 0, 0, NULL, 10, 3, '惠山区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1262, 0, 0, NULL, 10, 3, '滨湖区', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1263, 0, 0, NULL, 10, 3, '江阴市', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1264, 0, 0, NULL, 10, 3, '宜兴市', '', '', 0, 112, 0, NULL, 1, 0, 0),
+(1265, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1266, 0, 0, NULL, 10, 3, '鼓楼区', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1267, 0, 0, NULL, 10, 3, '云龙区', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1268, 0, 0, NULL, 10, 3, '九里区', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1269, 0, 0, NULL, 10, 3, '贾汪区', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1270, 0, 0, NULL, 10, 3, '泉山区', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1271, 0, 0, NULL, 10, 3, '丰县', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1272, 0, 0, NULL, 10, 3, '沛县', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1273, 0, 0, NULL, 10, 3, '铜山县', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1274, 0, 0, NULL, 10, 3, '睢宁县', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1275, 0, 0, NULL, 10, 3, '新沂市', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1276, 0, 0, NULL, 10, 3, '邳州市', '', '', 0, 113, 0, NULL, 1, 0, 0),
+(1278, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1279, 0, 0, NULL, 10, 3, '天宁区', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1280, 0, 0, NULL, 10, 3, '钟楼区', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1281, 0, 0, NULL, 10, 3, '戚墅堰区', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1282, 0, 0, NULL, 10, 3, '新北区', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1283, 0, 0, NULL, 10, 3, '武进区', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1284, 0, 0, NULL, 10, 3, '溧阳市', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1285, 0, 0, NULL, 10, 3, '金坛市', '', '', 0, 114, 0, NULL, 1, 0, 0),
+(1286, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1287, 0, 0, NULL, 10, 3, '沧浪区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1288, 0, 0, NULL, 10, 3, '平江区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1289, 0, 0, NULL, 10, 3, '金阊区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1290, 0, 0, NULL, 10, 3, '虎丘区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1291, 0, 0, NULL, 10, 3, '吴中区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1292, 0, 0, NULL, 10, 3, '相城区', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1293, 0, 0, NULL, 10, 3, '常熟市', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1294, 0, 0, NULL, 10, 3, '张家港市', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1295, 0, 0, NULL, 10, 3, '昆山市', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1296, 0, 0, NULL, 10, 3, '吴江市', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1297, 0, 0, NULL, 10, 3, '太仓市', '', '', 0, 115, 0, NULL, 1, 0, 0),
+(1298, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1299, 0, 0, NULL, 10, 3, '崇川区', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1300, 0, 0, NULL, 10, 3, '港闸区', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1301, 0, 0, NULL, 10, 3, '海安县', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1302, 0, 0, NULL, 10, 3, '如东县', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1303, 0, 0, NULL, 10, 3, '启东市', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1304, 0, 0, NULL, 10, 3, '如皋市', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1305, 0, 0, NULL, 10, 3, '通州市', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1306, 0, 0, NULL, 10, 3, '海门市', '', '', 0, 116, 0, NULL, 1, 0, 0),
+(1307, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1308, 0, 0, NULL, 10, 3, '连云区', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1309, 0, 0, NULL, 10, 3, '新浦区', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1310, 0, 0, NULL, 10, 3, '海州区', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1311, 0, 0, NULL, 10, 3, '赣榆县', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1312, 0, 0, NULL, 10, 3, '东海县', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1313, 0, 0, NULL, 10, 3, '灌云县', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1314, 0, 0, NULL, 10, 3, '灌南县', '', '', 0, 117, 0, NULL, 1, 0, 0),
+(1315, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1316, 0, 0, NULL, 10, 3, '清河区', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1317, 0, 0, NULL, 10, 3, '楚州区', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1318, 0, 0, NULL, 10, 3, '淮阴区', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1319, 0, 0, NULL, 10, 3, '清浦区', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1320, 0, 0, NULL, 10, 3, '涟水县', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1321, 0, 0, NULL, 10, 3, '洪泽县', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1322, 0, 0, NULL, 10, 3, '盱眙县', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1323, 0, 0, NULL, 10, 3, '金湖县', '', '', 0, 118, 0, NULL, 1, 0, 0),
+(1324, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1325, 0, 0, NULL, 10, 3, '亭湖区', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1326, 0, 0, NULL, 10, 3, '盐都区', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1327, 0, 0, NULL, 10, 3, '响水县', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1328, 0, 0, NULL, 10, 3, '滨海县', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1329, 0, 0, NULL, 10, 3, '阜宁县', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1330, 0, 0, NULL, 10, 3, '射阳县', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1331, 0, 0, NULL, 10, 3, '建湖县', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1332, 0, 0, NULL, 10, 3, '东台市', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1333, 0, 0, NULL, 10, 3, '大丰市', '', '', 0, 119, 0, NULL, 1, 0, 0),
+(1334, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1335, 0, 0, NULL, 10, 3, '广陵区', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1336, 0, 0, NULL, 10, 3, '邗江区', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1337, 0, 0, NULL, 10, 3, '郊区', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1338, 0, 0, NULL, 10, 3, '宝应县', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1339, 0, 0, NULL, 10, 3, '仪征市', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1340, 0, 0, NULL, 10, 3, '高邮市', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1341, 0, 0, NULL, 10, 3, '江都市', '', '', 0, 120, 0, NULL, 1, 0, 0),
+(1342, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1343, 0, 0, NULL, 10, 3, '京口区', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1344, 0, 0, NULL, 10, 3, '润州区', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1345, 0, 0, NULL, 10, 3, '丹徒区', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1346, 0, 0, NULL, 10, 3, '丹阳市', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1347, 0, 0, NULL, 10, 3, '扬中市', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1348, 0, 0, NULL, 10, 3, '句容市', '', '', 0, 121, 0, NULL, 1, 0, 0),
+(1349, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1350, 0, 0, NULL, 10, 3, '海陵区', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1351, 0, 0, NULL, 10, 3, '高港区', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1352, 0, 0, NULL, 10, 3, '兴化市', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1353, 0, 0, NULL, 10, 3, '靖江市', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1354, 0, 0, NULL, 10, 3, '泰兴市', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1355, 0, 0, NULL, 10, 3, '姜堰市', '', '', 0, 122, 0, NULL, 1, 0, 0),
+(1356, 0, 0, NULL, 10, 3, '市辖区', '', '', 0, 123, 0, NULL, 1, 0, 0),
+(1357, 0, 0, NULL, 10, 3, '宿城区', '', '', 0, 123, 0, NULL, 1, 0, 0),
+(1358, 0, 0, NULL, 10, 3, '宿豫区', '', '', 0, 123, 0, NULL, 1, 0, 0),
+(1359, 0, 0, NULL, 10, 3, '沭阳县', '', '', 0, 123, 0, NULL, 1, 0, 0),
+(1360, 0, 0, NULL, 10, 3, '泗阳县', '', '', 0, 123, 0, NULL, 1, 0, 0),
+(1361, 0, 0, NULL, 10, 3, '泗洪县', '', '', 0, 123, 0, NULL, 1, 0, 0),
+(1362, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1363, 0, 0, NULL, 11, 3, '上城区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1364, 0, 0, NULL, 11, 3, '下城区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1365, 0, 0, NULL, 11, 3, '江干区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1366, 0, 0, NULL, 11, 3, '拱墅区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1367, 0, 0, NULL, 11, 3, '西湖区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1368, 0, 0, NULL, 11, 3, '滨江区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1369, 0, 0, NULL, 11, 3, '萧山区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1370, 0, 0, NULL, 11, 3, '余杭区', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1371, 0, 0, NULL, 11, 3, '桐庐县', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1372, 0, 0, NULL, 11, 3, '淳安县', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1373, 0, 0, NULL, 11, 3, '建德市', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1374, 0, 0, NULL, 11, 3, '富阳市', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1375, 0, 0, NULL, 11, 3, '临安市', '', '', 0, 124, 0, NULL, 1, 0, 0),
+(1376, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1377, 0, 0, NULL, 11, 3, '海曙区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1378, 0, 0, NULL, 11, 3, '江东区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1379, 0, 0, NULL, 11, 3, '江北区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1380, 0, 0, NULL, 11, 3, '北仑区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1381, 0, 0, NULL, 11, 3, '镇海区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1382, 0, 0, NULL, 11, 3, '鄞州区', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1383, 0, 0, NULL, 11, 3, '象山县', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1384, 0, 0, NULL, 11, 3, '宁海县', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1385, 0, 0, NULL, 11, 3, '余姚市', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1386, 0, 0, NULL, 11, 3, '慈溪市', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1387, 0, 0, NULL, 11, 3, '奉化市', '', '', 0, 125, 0, NULL, 1, 0, 0),
+(1388, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1389, 0, 0, NULL, 11, 3, '鹿城区', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1390, 0, 0, NULL, 11, 3, '龙湾区', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1391, 0, 0, NULL, 11, 3, '瓯海区', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1392, 0, 0, NULL, 11, 3, '洞头县', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1393, 0, 0, NULL, 11, 3, '永嘉县', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1394, 0, 0, NULL, 11, 3, '平阳县', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1395, 0, 0, NULL, 11, 3, '苍南县', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1396, 0, 0, NULL, 11, 3, '文成县', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1397, 0, 0, NULL, 11, 3, '泰顺县', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1398, 0, 0, NULL, 11, 3, '瑞安市', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1399, 0, 0, NULL, 11, 3, '乐清市', '', '', 0, 126, 0, NULL, 1, 0, 0),
+(1400, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1401, 0, 0, NULL, 11, 3, '秀城区', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1402, 0, 0, NULL, 11, 3, '秀洲区', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1403, 0, 0, NULL, 11, 3, '嘉善县', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1404, 0, 0, NULL, 11, 3, '海盐县', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1405, 0, 0, NULL, 11, 3, '海宁市', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1406, 0, 0, NULL, 11, 3, '平湖市', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1407, 0, 0, NULL, 11, 3, '桐乡市', '', '', 0, 127, 0, NULL, 1, 0, 0),
+(1408, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 128, 0, NULL, 1, 0, 0),
+(1409, 0, 0, NULL, 11, 3, '吴兴区', '', '', 0, 128, 0, NULL, 1, 0, 0),
+(1410, 0, 0, NULL, 11, 3, '南浔区', '', '', 0, 128, 0, NULL, 1, 0, 0),
+(1411, 0, 0, NULL, 11, 3, '德清县', '', '', 0, 128, 0, NULL, 1, 0, 0),
+(1412, 0, 0, NULL, 11, 3, '长兴县', '', '', 0, 128, 0, NULL, 1, 0, 0),
+(1413, 0, 0, NULL, 11, 3, '安吉县', '', '', 0, 128, 0, NULL, 1, 0, 0),
+(1414, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1415, 0, 0, NULL, 11, 3, '越城区', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1416, 0, 0, NULL, 11, 3, '绍兴县', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1417, 0, 0, NULL, 11, 3, '新昌县', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1418, 0, 0, NULL, 11, 3, '诸暨市', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1419, 0, 0, NULL, 11, 3, '上虞市', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1420, 0, 0, NULL, 11, 3, '嵊州市', '', '', 0, 129, 0, NULL, 1, 0, 0),
+(1421, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1422, 0, 0, NULL, 11, 3, '婺城区', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1423, 0, 0, NULL, 11, 3, '金东区', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1424, 0, 0, NULL, 11, 3, '武义县', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1425, 0, 0, NULL, 11, 3, '浦江县', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1426, 0, 0, NULL, 11, 3, '磐安县', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1427, 0, 0, NULL, 11, 3, '兰溪市', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1428, 0, 0, NULL, 11, 3, '义乌市', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1429, 0, 0, NULL, 11, 3, '东阳市', '', '', 0, 130, 0, NULL, 1, 0, 0),
+(1430, 0, 0, NULL, 11, 3, '永康市', '', '', 0, 131, 0, NULL, 1, 0, 0);
+INSERT INTO `pb_areas` (`id`, `attachment_id`, `areatype_id`, `child_ids`, `top_parentid`, `level`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `display_order`, `description`, `available`, `created`, `modified`) VALUES 
+(1431, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1432, 0, 0, NULL, 11, 3, '柯城区', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1433, 0, 0, NULL, 11, 3, '衢江区', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1434, 0, 0, NULL, 11, 3, '常山县', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1435, 0, 0, NULL, 11, 3, '开化县', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1436, 0, 0, NULL, 11, 3, '龙游县', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1437, 0, 0, NULL, 11, 3, '江山市', '', '', 0, 131, 0, NULL, 1, 0, 0),
+(1438, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 132, 0, NULL, 1, 0, 0),
+(1439, 0, 0, NULL, 11, 3, '定海区', '', '', 0, 132, 0, NULL, 1, 0, 0),
+(1440, 0, 0, NULL, 11, 3, '普陀区', '', '', 0, 132, 0, NULL, 1, 0, 0),
+(1441, 0, 0, NULL, 11, 3, '岱山县', '', '', 0, 132, 0, NULL, 1, 0, 0),
+(1442, 0, 0, NULL, 11, 3, '嵊泗县', '', '', 0, 132, 0, NULL, 1, 0, 0),
+(1443, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1444, 0, 0, NULL, 11, 3, '椒江区', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1445, 0, 0, NULL, 11, 3, '黄岩区', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1446, 0, 0, NULL, 11, 3, '路桥区', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1447, 0, 0, NULL, 11, 3, '玉环县', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1448, 0, 0, NULL, 11, 3, '三门县', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1449, 0, 0, NULL, 11, 3, '天台县', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1450, 0, 0, NULL, 11, 3, '仙居县', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1451, 0, 0, NULL, 11, 3, '温岭市', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1452, 0, 0, NULL, 11, 3, '临海市', '', '', 0, 133, 0, NULL, 1, 0, 0),
+(1453, 0, 0, NULL, 11, 3, '市辖区', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1454, 0, 0, NULL, 11, 3, '莲都区', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1455, 0, 0, NULL, 11, 3, '青田县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1456, 0, 0, NULL, 11, 3, '缙云县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1457, 0, 0, NULL, 11, 3, '遂昌县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1458, 0, 0, NULL, 11, 3, '松阳县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1459, 0, 0, NULL, 11, 3, '云和县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1460, 0, 0, NULL, 11, 3, '庆元县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1461, 0, 0, NULL, 11, 3, '景宁畲族自治县', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1462, 0, 0, NULL, 11, 3, '龙泉市', '', '', 0, 134, 0, NULL, 1, 0, 0),
+(1463, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1464, 0, 0, NULL, 12, 3, '瑶海区', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1465, 0, 0, NULL, 12, 3, '庐阳区', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1466, 0, 0, NULL, 12, 3, '蜀山区', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1467, 0, 0, NULL, 12, 3, '包河区', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1468, 0, 0, NULL, 12, 3, '长丰县', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1469, 0, 0, NULL, 12, 3, '肥东县', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1470, 0, 0, NULL, 12, 3, '肥西县', '', '', 0, 135, 0, NULL, 1, 0, 0),
+(1471, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1472, 0, 0, NULL, 12, 3, '镜湖区', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1473, 0, 0, NULL, 12, 3, '马塘区', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1474, 0, 0, NULL, 12, 3, '新芜区', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1475, 0, 0, NULL, 12, 3, '鸠江区', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1476, 0, 0, NULL, 12, 3, '芜湖县', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1477, 0, 0, NULL, 12, 3, '繁昌县', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1478, 0, 0, NULL, 12, 3, '南陵县', '', '', 0, 136, 0, NULL, 1, 0, 0),
+(1479, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1480, 0, 0, NULL, 12, 3, '龙子湖区', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1481, 0, 0, NULL, 12, 3, '蚌山区', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1482, 0, 0, NULL, 12, 3, '禹会区', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1483, 0, 0, NULL, 12, 3, '淮上区', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1484, 0, 0, NULL, 12, 3, '怀远县', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1485, 0, 0, NULL, 12, 3, '五河县', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1486, 0, 0, NULL, 12, 3, '固镇县', '', '', 0, 137, 0, NULL, 1, 0, 0),
+(1487, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1488, 0, 0, NULL, 12, 3, '大通区', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1489, 0, 0, NULL, 12, 3, '田家庵区', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1490, 0, 0, NULL, 12, 3, '谢家集区', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1491, 0, 0, NULL, 12, 3, '八公山区', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1492, 0, 0, NULL, 12, 3, '潘集区', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1493, 0, 0, NULL, 12, 3, '凤台县', '', '', 0, 138, 0, NULL, 1, 0, 0),
+(1494, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 139, 0, NULL, 1, 0, 0),
+(1495, 0, 0, NULL, 12, 3, '金家庄区', '', '', 0, 139, 0, NULL, 1, 0, 0),
+(1496, 0, 0, NULL, 12, 3, '花山区', '', '', 0, 139, 0, NULL, 1, 0, 0),
+(1497, 0, 0, NULL, 12, 3, '雨山区', '', '', 0, 139, 0, NULL, 1, 0, 0),
+(1498, 0, 0, NULL, 12, 3, '当涂县', '', '', 0, 139, 0, NULL, 1, 0, 0),
+(1499, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 140, 0, NULL, 1, 0, 0),
+(1500, 0, 0, NULL, 12, 3, '杜集区', '', '', 0, 140, 0, NULL, 1, 0, 0),
+(1501, 0, 0, NULL, 12, 3, '相山区', '', '', 0, 140, 0, NULL, 1, 0, 0),
+(1502, 0, 0, NULL, 12, 3, '烈山区', '', '', 0, 140, 0, NULL, 1, 0, 0),
+(1503, 0, 0, NULL, 12, 3, '濉溪县', '', '', 0, 140, 0, NULL, 1, 0, 0),
+(1504, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 141, 0, NULL, 1, 0, 0),
+(1505, 0, 0, NULL, 12, 3, '铜官山区', '', '', 0, 141, 0, NULL, 1, 0, 0),
+(1506, 0, 0, NULL, 12, 3, '狮子山区', '', '', 0, 141, 0, NULL, 1, 0, 0),
+(1507, 0, 0, NULL, 12, 3, '郊区', '', '', 0, 141, 0, NULL, 1, 0, 0),
+(1508, 0, 0, NULL, 12, 3, '铜陵县', '', '', 0, 141, 0, NULL, 1, 0, 0),
+(1509, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1510, 0, 0, NULL, 12, 3, '迎江区', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1511, 0, 0, NULL, 12, 3, '大观区', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1512, 0, 0, NULL, 12, 3, '郊区', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1513, 0, 0, NULL, 12, 3, '怀宁县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1514, 0, 0, NULL, 12, 3, '枞阳县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1515, 0, 0, NULL, 12, 3, '潜山县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1516, 0, 0, NULL, 12, 3, '太湖县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1517, 0, 0, NULL, 12, 3, '宿松县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1518, 0, 0, NULL, 12, 3, '望江县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1519, 0, 0, NULL, 12, 3, '岳西县', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1520, 0, 0, NULL, 12, 3, '桐城市', '', '', 0, 142, 0, NULL, 1, 0, 0),
+(1521, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1522, 0, 0, NULL, 12, 3, '屯溪区', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1523, 0, 0, NULL, 12, 3, '黄山区', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1524, 0, 0, NULL, 12, 3, '徽州区', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1525, 0, 0, NULL, 12, 3, '歙县', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1526, 0, 0, NULL, 12, 3, '休宁县', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1527, 0, 0, NULL, 12, 3, '黟县', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1528, 0, 0, NULL, 12, 3, '祁门县', '', '', 0, 143, 0, NULL, 1, 0, 0),
+(1529, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1530, 0, 0, NULL, 12, 3, '琅琊区', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1531, 0, 0, NULL, 12, 3, '南谯区', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1532, 0, 0, NULL, 12, 3, '来安县', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1533, 0, 0, NULL, 12, 3, '全椒县', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1534, 0, 0, NULL, 12, 3, '定远县', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1535, 0, 0, NULL, 12, 3, '凤阳县', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1536, 0, 0, NULL, 12, 3, '天长市', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1537, 0, 0, NULL, 12, 3, '明光市', '', '', 0, 144, 0, NULL, 1, 0, 0),
+(1538, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1539, 0, 0, NULL, 12, 3, '颍州区', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1540, 0, 0, NULL, 12, 3, '颍东区', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1541, 0, 0, NULL, 12, 3, '颍泉区', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1542, 0, 0, NULL, 12, 3, '临泉县', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1543, 0, 0, NULL, 12, 3, '太和县', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1544, 0, 0, NULL, 12, 3, '阜南县', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1545, 0, 0, NULL, 12, 3, '颍上县', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1546, 0, 0, NULL, 12, 3, '界首市', '', '', 0, 145, 0, NULL, 1, 0, 0),
+(1547, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 146, 0, NULL, 1, 0, 0),
+(1548, 0, 0, NULL, 12, 3, '墉桥区', '', '', 0, 146, 0, NULL, 1, 0, 0),
+(1549, 0, 0, NULL, 12, 3, '砀山县', '', '', 0, 146, 0, NULL, 1, 0, 0),
+(1550, 0, 0, NULL, 12, 3, '萧县', '', '', 0, 146, 0, NULL, 1, 0, 0),
+(1551, 0, 0, NULL, 12, 3, '灵璧县', '', '', 0, 146, 0, NULL, 1, 0, 0),
+(1552, 0, 0, NULL, 12, 3, '泗县', '', '', 0, 146, 0, NULL, 1, 0, 0),
+(1553, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 147, 0, NULL, 1, 0, 0),
+(1554, 0, 0, NULL, 12, 3, '居巢区', '', '', 0, 147, 0, NULL, 1, 0, 0),
+(1555, 0, 0, NULL, 12, 3, '庐江县', '', '', 0, 147, 0, NULL, 1, 0, 0),
+(1556, 0, 0, NULL, 12, 3, '无为县', '', '', 0, 147, 0, NULL, 1, 0, 0),
+(1557, 0, 0, NULL, 12, 3, '含山县', '', '', 0, 147, 0, NULL, 1, 0, 0),
+(1558, 0, 0, NULL, 12, 3, '和县', '', '', 0, 147, 0, NULL, 1, 0, 0),
+(1559, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1560, 0, 0, NULL, 12, 3, '金安区', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1561, 0, 0, NULL, 12, 3, '裕安区', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1562, 0, 0, NULL, 12, 3, '寿县', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1563, 0, 0, NULL, 12, 3, '霍邱县', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1564, 0, 0, NULL, 12, 3, '舒城县', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1565, 0, 0, NULL, 12, 3, '金寨县', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1566, 0, 0, NULL, 12, 3, '霍山县', '', '', 0, 148, 0, NULL, 1, 0, 0),
+(1567, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 149, 0, NULL, 1, 0, 0),
+(1568, 0, 0, NULL, 12, 3, '谯城区', '', '', 0, 149, 0, NULL, 1, 0, 0),
+(1569, 0, 0, NULL, 12, 3, '涡阳县', '', '', 0, 149, 0, NULL, 1, 0, 0),
+(1570, 0, 0, NULL, 12, 3, '蒙城县', '', '', 0, 149, 0, NULL, 1, 0, 0),
+(1571, 0, 0, NULL, 12, 3, '利辛县', '', '', 0, 149, 0, NULL, 1, 0, 0),
+(1572, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1573, 0, 0, NULL, 12, 3, '贵池区', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1574, 0, 0, NULL, 12, 3, '东至县', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1575, 0, 0, NULL, 12, 3, '石台县', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1576, 0, 0, NULL, 12, 3, '青阳县', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1577, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1578, 0, 0, NULL, 12, 3, '贵池区', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1579, 0, 0, NULL, 12, 3, '东至县', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1580, 0, 0, NULL, 12, 3, '石台县', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1581, 0, 0, NULL, 12, 3, '青阳县', '', '', 0, 150, 0, NULL, 1, 0, 0),
+(1582, 0, 0, NULL, 12, 3, '市辖区', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1583, 0, 0, NULL, 12, 3, '宣州区', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1584, 0, 0, NULL, 12, 3, '郎溪县', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1585, 0, 0, NULL, 12, 3, '广德县', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1586, 0, 0, NULL, 12, 3, '泾县', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1587, 0, 0, NULL, 12, 3, '绩溪县', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1588, 0, 0, NULL, 12, 3, '旌德县', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1589, 0, 0, NULL, 12, 3, '宁国市', '', '', 0, 151, 0, NULL, 1, 0, 0),
+(1590, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1591, 0, 0, NULL, 13, 3, '鼓楼区', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1592, 0, 0, NULL, 13, 3, '台江区', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1593, 0, 0, NULL, 13, 3, '仓山区', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1594, 0, 0, NULL, 13, 3, '马尾区', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1595, 0, 0, NULL, 13, 3, '晋安区', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1596, 0, 0, NULL, 13, 3, '闽侯县', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1597, 0, 0, NULL, 13, 3, '连江县', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1598, 0, 0, NULL, 13, 3, '罗源县', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1599, 0, 0, NULL, 13, 3, '闽清县', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1600, 0, 0, NULL, 13, 3, '永泰县', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1601, 0, 0, NULL, 13, 3, '平潭县', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1602, 0, 0, NULL, 13, 3, '福清市', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1603, 0, 0, NULL, 13, 3, '长乐市', '', '', 0, 152, 0, NULL, 1, 0, 0),
+(1604, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1605, 0, 0, NULL, 13, 3, '思明区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1606, 0, 0, NULL, 13, 3, '海沧区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1607, 0, 0, NULL, 13, 3, '湖里区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1608, 0, 0, NULL, 13, 3, '集美区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1609, 0, 0, NULL, 13, 3, '同安区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1610, 0, 0, NULL, 13, 3, '翔安区', '', '', 0, 153, 0, NULL, 1, 0, 0),
+(1611, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 154, 0, NULL, 1, 0, 0),
+(1612, 0, 0, NULL, 13, 3, '城厢区', '', '', 0, 154, 0, NULL, 1, 0, 0),
+(1613, 0, 0, NULL, 13, 3, '涵江区', '', '', 0, 154, 0, NULL, 1, 0, 0),
+(1614, 0, 0, NULL, 13, 3, '荔城区', '', '', 0, 154, 0, NULL, 1, 0, 0),
+(1615, 0, 0, NULL, 13, 3, '秀屿区', '', '', 0, 154, 0, NULL, 1, 0, 0),
+(1616, 0, 0, NULL, 13, 3, '仙游县', '', '', 0, 154, 0, NULL, 1, 0, 0),
+(1617, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1618, 0, 0, NULL, 13, 3, '梅列区', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1619, 0, 0, NULL, 13, 3, '三元区', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1620, 0, 0, NULL, 13, 3, '明溪县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1621, 0, 0, NULL, 13, 3, '清流县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1622, 0, 0, NULL, 13, 3, '宁化县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1623, 0, 0, NULL, 13, 3, '大田县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1624, 0, 0, NULL, 13, 3, '尤溪县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1625, 0, 0, NULL, 13, 3, '沙县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1626, 0, 0, NULL, 13, 3, '将乐县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1627, 0, 0, NULL, 13, 3, '泰宁县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1628, 0, 0, NULL, 13, 3, '建宁县', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1629, 0, 0, NULL, 13, 3, '永安市', '', '', 0, 155, 0, NULL, 1, 0, 0),
+(1630, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1631, 0, 0, NULL, 13, 3, '鲤城区', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1632, 0, 0, NULL, 13, 3, '丰泽区', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1633, 0, 0, NULL, 13, 3, '洛江区', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1634, 0, 0, NULL, 13, 3, '泉港区', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1635, 0, 0, NULL, 13, 3, '惠安县', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1636, 0, 0, NULL, 13, 3, '安溪县', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1637, 0, 0, NULL, 13, 3, '永春县', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1638, 0, 0, NULL, 13, 3, '德化县', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1639, 0, 0, NULL, 13, 3, '金门县', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1640, 0, 0, NULL, 13, 3, '石狮市', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1641, 0, 0, NULL, 13, 3, '晋江市', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1642, 0, 0, NULL, 13, 3, '南安市', '', '', 0, 156, 0, NULL, 1, 0, 0),
+(1643, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1644, 0, 0, NULL, 13, 3, '芗城区', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1645, 0, 0, NULL, 13, 3, '龙文区', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1646, 0, 0, NULL, 13, 3, '云霄县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1647, 0, 0, NULL, 13, 3, '漳浦县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1648, 0, 0, NULL, 13, 3, '诏安县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1649, 0, 0, NULL, 13, 3, '长泰县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1650, 0, 0, NULL, 13, 3, '东山县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1651, 0, 0, NULL, 13, 3, '南靖县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1652, 0, 0, NULL, 13, 3, '平和县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1653, 0, 0, NULL, 13, 3, '华安县', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1654, 0, 0, NULL, 13, 3, '龙海市', '', '', 0, 157, 0, NULL, 1, 0, 0),
+(1655, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1656, 0, 0, NULL, 13, 3, '延平区', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1657, 0, 0, NULL, 13, 3, '顺昌县', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1658, 0, 0, NULL, 13, 3, '浦城县', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1659, 0, 0, NULL, 13, 3, '光泽县', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1660, 0, 0, NULL, 13, 3, '松溪县', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1661, 0, 0, NULL, 13, 3, '政和县', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1662, 0, 0, NULL, 13, 3, '邵武市', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1663, 0, 0, NULL, 13, 3, '武夷山市', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1664, 0, 0, NULL, 13, 3, '建瓯市', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1665, 0, 0, NULL, 13, 3, '建阳市', '', '', 0, 158, 0, NULL, 1, 0, 0),
+(1666, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1667, 0, 0, NULL, 13, 3, '新罗区', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1668, 0, 0, NULL, 13, 3, '长汀县', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1669, 0, 0, NULL, 13, 3, '永定县', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1670, 0, 0, NULL, 13, 3, '上杭县', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1671, 0, 0, NULL, 13, 3, '武平县', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1672, 0, 0, NULL, 13, 3, '连城县', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1673, 0, 0, NULL, 13, 3, '漳平市', '', '', 0, 159, 0, NULL, 1, 0, 0),
+(1674, 0, 0, NULL, 13, 3, '市辖区', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1675, 0, 0, NULL, 13, 3, '蕉城区', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1676, 0, 0, NULL, 13, 3, '霞浦县', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1677, 0, 0, NULL, 13, 3, '古田县', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1678, 0, 0, NULL, 13, 3, '屏南县', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1679, 0, 0, NULL, 13, 3, '寿宁县', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1680, 0, 0, NULL, 13, 3, '周宁县', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1681, 0, 0, NULL, 13, 3, '柘荣县', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1682, 0, 0, NULL, 13, 3, '福安市', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1683, 0, 0, NULL, 13, 3, '福鼎市', '', '', 0, 160, 0, NULL, 1, 0, 0),
+(1684, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1685, 0, 0, NULL, 14, 3, '东湖区', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1686, 0, 0, NULL, 14, 3, '西湖区', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1687, 0, 0, NULL, 14, 3, '青云谱区', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1688, 0, 0, NULL, 14, 3, '湾里区', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1689, 0, 0, NULL, 14, 3, '青山湖区', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1690, 0, 0, NULL, 14, 3, '南昌县', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1691, 0, 0, NULL, 14, 3, '新建县', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1692, 0, 0, NULL, 14, 3, '安义县', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1693, 0, 0, NULL, 14, 3, '进贤县', '', '', 0, 161, 0, NULL, 1, 0, 0),
+(1694, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 162, 0, NULL, 1, 0, 0),
+(1695, 0, 0, NULL, 14, 3, '昌江区', '', '', 0, 162, 0, NULL, 1, 0, 0),
+(1696, 0, 0, NULL, 14, 3, '珠山区', '', '', 0, 162, 0, NULL, 1, 0, 0),
+(1697, 0, 0, NULL, 14, 3, '浮梁县', '', '', 0, 162, 0, NULL, 1, 0, 0),
+(1698, 0, 0, NULL, 14, 3, '乐平市', '', '', 0, 162, 0, NULL, 1, 0, 0),
+(1699, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 163, 0, NULL, 1, 0, 0),
+(1700, 0, 0, NULL, 14, 3, '安源区', '', '', 0, 163, 0, NULL, 1, 0, 0),
+(1701, 0, 0, NULL, 14, 3, '湘东区', '', '', 0, 163, 0, NULL, 1, 0, 0),
+(1702, 0, 0, NULL, 14, 3, '莲花县', '', '', 0, 163, 0, NULL, 1, 0, 0),
+(1703, 0, 0, NULL, 14, 3, '上栗县', '', '', 0, 163, 0, NULL, 1, 0, 0),
+(1704, 0, 0, NULL, 14, 3, '芦溪县', '', '', 0, 163, 0, NULL, 1, 0, 0),
+(1718, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1719, 0, 0, NULL, 14, 3, '庐山区', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1720, 0, 0, NULL, 14, 3, '浔阳区', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1721, 0, 0, NULL, 14, 3, '九江县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1722, 0, 0, NULL, 14, 3, '武宁县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1723, 0, 0, NULL, 14, 3, '修水县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1724, 0, 0, NULL, 14, 3, '永修县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1725, 0, 0, NULL, 14, 3, '德安县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1726, 0, 0, NULL, 14, 3, '星子县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1727, 0, 0, NULL, 14, 3, '都昌县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1728, 0, 0, NULL, 14, 3, '湖口县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1729, 0, 0, NULL, 14, 3, '彭泽县', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1730, 0, 0, NULL, 14, 3, '瑞昌市', '', '', 0, 164, 0, NULL, 1, 0, 0),
+(1731, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 165, 0, NULL, 1, 0, 0),
+(1732, 0, 0, NULL, 14, 3, '渝水区', '', '', 0, 165, 0, NULL, 1, 0, 0),
+(1733, 0, 0, NULL, 14, 3, '分宜县', '', '', 0, 165, 0, NULL, 1, 0, 0),
+(1734, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 166, 0, NULL, 1, 0, 0),
+(1735, 0, 0, NULL, 14, 3, '月湖区', '', '', 0, 166, 0, NULL, 1, 0, 0),
+(1736, 0, 0, NULL, 14, 3, '余江县', '', '', 0, 166, 0, NULL, 1, 0, 0),
+(1737, 0, 0, NULL, 14, 3, '贵溪市', '', '', 0, 166, 0, NULL, 1, 0, 0),
+(1738, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1739, 0, 0, NULL, 14, 3, '章贡区', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1740, 0, 0, NULL, 14, 3, '赣县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1741, 0, 0, NULL, 14, 3, '信丰县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1742, 0, 0, NULL, 14, 3, '大余县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1743, 0, 0, NULL, 14, 3, '上犹县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1744, 0, 0, NULL, 14, 3, '崇义县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1745, 0, 0, NULL, 14, 3, '安远县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1746, 0, 0, NULL, 14, 3, '龙南县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1747, 0, 0, NULL, 14, 3, '定南县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1748, 0, 0, NULL, 14, 3, '全南县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1749, 0, 0, NULL, 14, 3, '宁都县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1750, 0, 0, NULL, 14, 3, '于都县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1751, 0, 0, NULL, 14, 3, '兴国县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1752, 0, 0, NULL, 14, 3, '会昌县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1753, 0, 0, NULL, 14, 3, '寻乌县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1754, 0, 0, NULL, 14, 3, '石城县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1755, 0, 0, NULL, 14, 3, '瑞金市', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1756, 0, 0, NULL, 14, 3, '南康市', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1757, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1758, 0, 0, NULL, 14, 3, '章贡区', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1759, 0, 0, NULL, 14, 3, '赣县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1760, 0, 0, NULL, 14, 3, '信丰县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1761, 0, 0, NULL, 14, 3, '大余县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1762, 0, 0, NULL, 14, 3, '上犹县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1763, 0, 0, NULL, 14, 3, '崇义县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1764, 0, 0, NULL, 14, 3, '安远县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1765, 0, 0, NULL, 14, 3, '龙南县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1766, 0, 0, NULL, 14, 3, '定南县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1767, 0, 0, NULL, 14, 3, '全南县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1768, 0, 0, NULL, 14, 3, '宁都县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1769, 0, 0, NULL, 14, 3, '于都县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1770, 0, 0, NULL, 14, 3, '兴国县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1771, 0, 0, NULL, 14, 3, '会昌县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1772, 0, 0, NULL, 14, 3, '寻乌县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1773, 0, 0, NULL, 14, 3, '石城县', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1774, 0, 0, NULL, 14, 3, '瑞金市', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1775, 0, 0, NULL, 14, 3, '南康市', '', '', 0, 167, 0, NULL, 1, 0, 0),
+(1776, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1777, 0, 0, NULL, 14, 3, '吉州区', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1778, 0, 0, NULL, 14, 3, '青原区', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1779, 0, 0, NULL, 14, 3, '吉安县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1780, 0, 0, NULL, 14, 3, '吉水县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1781, 0, 0, NULL, 14, 3, '峡江县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1782, 0, 0, NULL, 14, 3, '新干县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1783, 0, 0, NULL, 14, 3, '永丰县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1784, 0, 0, NULL, 14, 3, '泰和县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1785, 0, 0, NULL, 14, 3, '遂川县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1786, 0, 0, NULL, 14, 3, '万安县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1787, 0, 0, NULL, 14, 3, '安福县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1788, 0, 0, NULL, 14, 3, '永新县', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1789, 0, 0, NULL, 14, 3, '井冈山市', '', '', 0, 168, 0, NULL, 1, 0, 0),
+(1790, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1791, 0, 0, NULL, 14, 3, '袁州区', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1792, 0, 0, NULL, 14, 3, '奉新县', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1793, 0, 0, NULL, 14, 3, '万载县', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1794, 0, 0, NULL, 14, 3, '上高县', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1795, 0, 0, NULL, 14, 3, '宜丰县', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1796, 0, 0, NULL, 14, 3, '靖安县', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1797, 0, 0, NULL, 14, 3, '铜鼓县', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1798, 0, 0, NULL, 14, 3, '丰城市', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1799, 0, 0, NULL, 14, 3, '樟树市', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1800, 0, 0, NULL, 14, 3, '高安市', '', '', 0, 169, 0, NULL, 1, 0, 0),
+(1801, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1802, 0, 0, NULL, 14, 3, '临川区', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1803, 0, 0, NULL, 14, 3, '南城县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1804, 0, 0, NULL, 14, 3, '黎川县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1805, 0, 0, NULL, 14, 3, '南丰县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1806, 0, 0, NULL, 14, 3, '崇仁县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1807, 0, 0, NULL, 14, 3, '乐安县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1808, 0, 0, NULL, 14, 3, '宜黄县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1809, 0, 0, NULL, 14, 3, '金溪县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1810, 0, 0, NULL, 14, 3, '资溪县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1811, 0, 0, NULL, 14, 3, '东乡县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1812, 0, 0, NULL, 14, 3, '广昌县', '', '', 0, 170, 0, NULL, 1, 0, 0),
+(1813, 0, 0, NULL, 14, 3, '市辖区', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1814, 0, 0, NULL, 14, 3, '信州区', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1815, 0, 0, NULL, 14, 3, '上饶县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1816, 0, 0, NULL, 14, 3, '广丰县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1817, 0, 0, NULL, 14, 3, '玉山县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1818, 0, 0, NULL, 14, 3, '铅山县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1819, 0, 0, NULL, 14, 3, '横峰县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1820, 0, 0, NULL, 14, 3, '弋阳县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1821, 0, 0, NULL, 14, 3, '余干县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1822, 0, 0, NULL, 14, 3, '鄱阳县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1823, 0, 0, NULL, 14, 3, '万年县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1824, 0, 0, NULL, 14, 3, '婺源县', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1825, 0, 0, NULL, 14, 3, '德兴市', '', '', 0, 171, 0, NULL, 1, 0, 0),
+(1826, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1827, 0, 0, NULL, 15, 3, '历下区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1828, 0, 0, NULL, 15, 3, '市中区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1829, 0, 0, NULL, 15, 3, '槐荫区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1830, 0, 0, NULL, 15, 3, '天桥区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1831, 0, 0, NULL, 15, 3, '历城区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1832, 0, 0, NULL, 15, 3, '长清区', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1833, 0, 0, NULL, 15, 3, '平阴县', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1834, 0, 0, NULL, 15, 3, '济阳县', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1835, 0, 0, NULL, 15, 3, '商河县', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1836, 0, 0, NULL, 15, 3, '章丘市', '', '', 0, 172, 0, NULL, 1, 0, 0),
+(1837, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1838, 0, 0, NULL, 15, 3, '市南区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1839, 0, 0, NULL, 15, 3, '市北区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1840, 0, 0, NULL, 15, 3, '四方区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1841, 0, 0, NULL, 15, 3, '黄岛区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1842, 0, 0, NULL, 15, 3, '崂山区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1843, 0, 0, NULL, 15, 3, '李沧区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1844, 0, 0, NULL, 15, 3, '城阳区', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1845, 0, 0, NULL, 15, 3, '胶州市', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1846, 0, 0, NULL, 15, 3, '即墨市', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1847, 0, 0, NULL, 15, 3, '平度市', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1848, 0, 0, NULL, 15, 3, '胶南市', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1849, 0, 0, NULL, 15, 3, '莱西市', '', '', 0, 173, 0, NULL, 1, 0, 0),
+(1850, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1851, 0, 0, NULL, 15, 3, '淄川区', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1852, 0, 0, NULL, 15, 3, '张店区', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1853, 0, 0, NULL, 15, 3, '博山区', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1854, 0, 0, NULL, 15, 3, '临淄区', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1855, 0, 0, NULL, 15, 3, '周村区', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1856, 0, 0, NULL, 15, 3, '桓台县', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1857, 0, 0, NULL, 15, 3, '高青县', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1858, 0, 0, NULL, 15, 3, '沂源县', '', '', 0, 174, 0, NULL, 1, 0, 0),
+(1859, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1860, 0, 0, NULL, 15, 3, '市中区', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1861, 0, 0, NULL, 15, 3, '薛城区', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1862, 0, 0, NULL, 15, 3, '峄城区', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1863, 0, 0, NULL, 15, 3, '台儿庄区', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1864, 0, 0, NULL, 15, 3, '山亭区', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1865, 0, 0, NULL, 15, 3, '滕州市', '', '', 0, 175, 0, NULL, 1, 0, 0),
+(1866, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 176, 0, NULL, 1, 0, 0),
+(1867, 0, 0, NULL, 15, 3, '东营区', '', '', 0, 176, 0, NULL, 1, 0, 0),
+(1868, 0, 0, NULL, 15, 3, '河口区', '', '', 0, 176, 0, NULL, 1, 0, 0),
+(1869, 0, 0, NULL, 15, 3, '垦利县', '', '', 0, 176, 0, NULL, 1, 0, 0),
+(1870, 0, 0, NULL, 15, 3, '利津县', '', '', 0, 176, 0, NULL, 1, 0, 0),
+(1871, 0, 0, NULL, 15, 3, '广饶县', '', '', 0, 176, 0, NULL, 1, 0, 0),
+(1872, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1873, 0, 0, NULL, 15, 3, '芝罘区', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1874, 0, 0, NULL, 15, 3, '福山区', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1875, 0, 0, NULL, 15, 3, '牟平区', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1876, 0, 0, NULL, 15, 3, '莱山区', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1877, 0, 0, NULL, 15, 3, '长岛县', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1878, 0, 0, NULL, 15, 3, '龙口市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1879, 0, 0, NULL, 15, 3, '莱阳市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1880, 0, 0, NULL, 15, 3, '莱州市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1881, 0, 0, NULL, 15, 3, '蓬莱市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1882, 0, 0, NULL, 15, 3, '招远市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1883, 0, 0, NULL, 15, 3, '栖霞市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1884, 0, 0, NULL, 15, 3, '海阳市', '', '', 0, 177, 0, NULL, 1, 0, 0),
+(1885, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1886, 0, 0, NULL, 15, 3, '潍城区', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1887, 0, 0, NULL, 15, 3, '寒亭区', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1888, 0, 0, NULL, 15, 3, '坊子区', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1889, 0, 0, NULL, 15, 3, '奎文区', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1890, 0, 0, NULL, 15, 3, '临朐县', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1891, 0, 0, NULL, 15, 3, '昌乐县', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1892, 0, 0, NULL, 15, 3, '青州市', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1893, 0, 0, NULL, 15, 3, '诸城市', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1894, 0, 0, NULL, 15, 3, '寿光市', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1895, 0, 0, NULL, 15, 3, '安丘市', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1896, 0, 0, NULL, 15, 3, '高密市', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1897, 0, 0, NULL, 15, 3, '昌邑市', '', '', 0, 178, 0, NULL, 1, 0, 0),
+(1898, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1899, 0, 0, NULL, 15, 3, '市中区', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1900, 0, 0, NULL, 15, 3, '任城区', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1901, 0, 0, NULL, 15, 3, '微山县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1902, 0, 0, NULL, 15, 3, '鱼台县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1903, 0, 0, NULL, 15, 3, '金乡县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1904, 0, 0, NULL, 15, 3, '嘉祥县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1905, 0, 0, NULL, 15, 3, '汶上县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1906, 0, 0, NULL, 15, 3, '泗水县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1907, 0, 0, NULL, 15, 3, '梁山县', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1908, 0, 0, NULL, 15, 3, '曲阜市', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1909, 0, 0, NULL, 15, 3, '兖州市', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1910, 0, 0, NULL, 15, 3, '邹城市', '', '', 0, 179, 0, NULL, 1, 0, 0),
+(1911, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1912, 0, 0, NULL, 15, 3, '泰山区', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1913, 0, 0, NULL, 15, 3, '岱岳区', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1914, 0, 0, NULL, 15, 3, '宁阳县', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1915, 0, 0, NULL, 15, 3, '东平县', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1916, 0, 0, NULL, 15, 3, '新泰市', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1917, 0, 0, NULL, 15, 3, '肥城市', '', '', 0, 180, 0, NULL, 1, 0, 0),
+(1918, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 181, 0, NULL, 1, 0, 0),
+(1919, 0, 0, NULL, 15, 3, '环翠区', '', '', 0, 181, 0, NULL, 1, 0, 0),
+(1920, 0, 0, NULL, 15, 3, '文登市', '', '', 0, 181, 0, NULL, 1, 0, 0),
+(1921, 0, 0, NULL, 15, 3, '荣成市', '', '', 0, 181, 0, NULL, 1, 0, 0),
+(1922, 0, 0, NULL, 15, 3, '乳山市', '', '', 0, 181, 0, NULL, 1, 0, 0),
+(1923, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 182, 0, NULL, 1, 0, 0),
+(1924, 0, 0, NULL, 15, 3, '东港区', '', '', 0, 182, 0, NULL, 1, 0, 0),
+(1925, 0, 0, NULL, 15, 3, '岚山区', '', '', 0, 182, 0, NULL, 1, 0, 0),
+(1926, 0, 0, NULL, 15, 3, '五莲县', '', '', 0, 182, 0, NULL, 1, 0, 0),
+(1927, 0, 0, NULL, 15, 3, '莒县', '', '', 0, 182, 0, NULL, 1, 0, 0),
+(1928, 0, 0, NULL, 15, 3, '市辖区', '', '', 0, 183, 0, NULL, 1, 0, 0),
+(1929, 0, 0, NULL, 15, 3, '莱城区', '', '', 0, 183, 0, NULL, 1, 0, 0),
+(1930, 0, 0, NULL, 15, 3, '钢城区', '', '', 0, 183, 0, NULL, 1, 0, 0),
+(1931, 0, 0, NULL, 15, 3, '兰山区', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1932, 0, 0, NULL, 15, 3, '罗庄区', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1933, 0, 0, NULL, 15, 3, '河东区', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1934, 0, 0, NULL, 15, 3, '沂南县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1935, 0, 0, NULL, 15, 3, '郯城县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1936, 0, 0, NULL, 15, 3, '沂水县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1937, 0, 0, NULL, 15, 3, '苍山县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1938, 0, 0, NULL, 15, 3, '费县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1939, 0, 0, NULL, 15, 3, '平邑县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1940, 0, 0, NULL, 15, 3, '莒南县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1941, 0, 0, NULL, 15, 3, '蒙阴县', '', '', 0, 184, 0, NULL, 1, 0, 0),
+(1942, 0, 0, NULL, 15, 3, '临沭县', '', '', 0, 184, 0, NULL, 1, 0, 0);
 
 -- 
 -- 导出表中的数据 `pb_industrytypes`
@@ -358,384 +2068,283 @@ INSERT INTO `pb_industrytypes` VALUES (5, '其他');
 -- 导出表中的数据 `pb_industries`
 -- 
 
-INSERT INTO `pb_industries` VALUES (1, 0, 1, '', '数字娱乐', '', '', 0, 0, 0, 1, -3, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (2, 0, 1, '', '虚拟', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (3, 0, 1, '', '数码', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (4, 0, 1, '', '护肤', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (5, 0, 1, '', '服饰', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (6, 0, 1, '', '家居', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (7, 0, 1, '', '文体', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (8, 0, 1, '', '收藏', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (9, 0, 1, '', '其他', '', '', 0, 0, 0, 1, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (10, 0, 1, '', '数字视频/高清在线', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (11, 0, 1, '', '热门电影/最新大片', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (12, 0, 1, '', '连播剧场/抢先观看', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (13, 0, 1, '', '女性杂志', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (14, 0, 1, '', '视觉盛宴', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (15, 0, 1, '', '风尚先生/资讯杂志', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (16, 0, 1, '', '娱乐杂志', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (17, 0, 1, '', '时尚生活 ', '', '', 0, 1, 1, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (18, 0, 1, '', '热门', '', '', 0, 10, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (19, 0, 1, '', '新片', '', '', 0, 10, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (20, 0, 1, '', '经典', '', '', 0, 10, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (21, 0, 1, '', '排行榜', '', '', 0, 10, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (23, 0, 1, '', '动作片', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (24, 0, 1, '', '爆笑片', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (25, 0, 1, '', '爱情', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (26, 0, 1, '', '动画', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (27, 0, 1, '', '嫌疑', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (28, 0, 1, '', '偶像', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (29, 0, 1, '', '伦理', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (30, 0, 1, '', '都市', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (31, 0, 1, '', '言情', '', '', 0, 11, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (32, 0, 1, '', '港台', '', '', 0, 12, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (33, 0, 1, '', '日韩', '', '', 0, 12, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (34, 0, 1, '', '欧美', '', '', 0, 12, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (36, 0, 1, '', '内地', '', '', 0, 12, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (37, 0, 1, '', '剧情', '', '', 0, 12, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (38, 0, 1, '', '女性', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (39, 0, 1, '', '时尚', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (40, 0, 1, '', '休闲', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (41, 0, 1, '', '娱乐', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (42, 0, 1, '', '美容', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (43, 0, 1, '', '健康保养', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (44, 0, 1, '', '时尚大典', '', '', 0, 14, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (45, 0, 1, '', '购物', '', '', 0, 14, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (46, 0, 1, '', '减肥', '', '', 0, 14, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (47, 0, 1, '', '服饰', '', '', 0, 14, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (48, 0, 1, '', '装饰装潢', '', '', 0, 14, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (49, 0, 1, '', '育儿', '', '', 0, 13, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (50, 0, 1, '', '电脑', '', '', 0, 15, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (51, 0, 1, '', '经济', '', '', 0, 15, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (52, 0, 1, '', '金融', '', '', 0, 15, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (53, 0, 1, '', '游戏', '', '', 0, 15, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (54, 0, 1, '', '男人', '', '', 0, 15, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (61, 0, 1, '', '时尚', '', '', 0, 17, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (56, 0, 1, '', '明星', '', '', 0, 16, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (57, 0, 1, '', '电影', '', '', 0, 16, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (58, 0, 1, '', '美女', '', '', 0, 16, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (59, 0, 1, '', '娱乐', '', '', 0, 16, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (60, 0, 1, '', '职场', '', '', 0, 16, 1, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (62, 0, 1, '', '移动/联通/电信充值卡', '', '', 0, 2, 2, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (63, 0, 1, '', '网游虚拟物品交易区', '', '', 0, 2, 2, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (64, 0, 1, '', '彩票/大乐透/七星彩/排列三', '', '', 0, 2, 2, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (65, 0, 1, '', '折扣区', '', '', 0, 2, 2, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (66, 0, 1, '', '移动', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (67, 0, 1, '', '联通', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (68, 0, 1, '', '电信', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (69, 0, 1, '', 'IP卡', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (70, 0, 1, '', 'IC卡', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (71, 0, 1, '', '充值卡', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (72, 0, 1, '', '100', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (73, 0, 1, '', '50', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (74, 0, 1, '', 'skype', '', '', 0, 62, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (75, 0, 1, '', '魔兽', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (76, 0, 1, '', '梦幻', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (77, 0, 1, '', '蜀门', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (78, 0, 1, '', 'DNF', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (79, 0, 1, '', 'QQ币', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (80, 0, 1, '', '游戏币', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (81, 0, 1, '', '劲舞团', '', '', 0, 63, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (82, 0, 1, '', '双色球', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (83, 0, 1, '', '超级大乐透', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (84, 0, 1, '', '3D', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (85, 0, 1, '', '七星彩', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (86, 0, 1, '', '七乐彩', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (87, 0, 1, '', '排列三', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (88, 0, 1, '', '福彩', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (89, 0, 1, '', '体彩', '', '', 0, 64, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (90, 0, 1, '', '酒店', '', '', 0, 65, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (91, 0, 1, '', '机票', '', '', 0, 65, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (92, 0, 1, '', '火车票', '', '', 0, 65, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (93, 0, 1, '', '客栈', '', '', 0, 65, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (94, 0, 1, '', '旅游路线', '', '', 0, 65, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (95, 0, 1, '', '景区门票', '', '', 0, 65, 2, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (96, 0, 1, '', '手机/NOKIA/三星/MOTO', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (97, 0, 1, '', '笔记本/ThinkPad/DELL', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (98, 0, 1, '', '电脑硬件/LCD/台式整机/网络', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (99, 0, 1, '', '数码相机/摄像机/摄影器材', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (100, 0, 1, '', 'MP3/MP4/MP5/iPod/录音笔', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (101, 0, 1, '', '闪存/U盘/记忆棒/移动存储', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (102, 0, 1, '', '手机配件/相机配件/数码配件', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (103, 0, 1, '', '办公设备/文具/耗材', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (131, 0, 1, '', '家电/HiFi音箱/取暖/加湿/烟灶', '', '', 0, 3, 3, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (105, 0, 1, '', '国货', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (106, 0, 1, '', 'iPhone', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (107, 0, 1, '', 'LG', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (108, 0, 1, '', '索爱', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (109, 0, 1, '', '多普达', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (110, 0, 1, '', '诺基亚', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (111, 0, 1, '', '三星', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (112, 0, 1, '', 'MOTO', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (113, 0, 1, '', '山寨', '', '', 0, 96, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (114, 0, 1, '', '上网本', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (115, 0, 1, '', 'IBM', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (116, 0, 1, '', '苹果', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (117, 0, 1, '', '联想', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (118, 0, 1, '', 'HP', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (119, 0, 1, '', '二手', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (120, 0, 1, '', '戴尔', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (121, 0, 1, '', '清华同方', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (122, 0, 1, '', '方正 ', '', '', 0, 97, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (123, 0, 1, '', 'LED', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (124, 0, 1, '', 'LCD', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (125, 0, 1, '', '主板', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (126, 0, 1, '', '显卡', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (127, 0, 1, '', '内存条', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (128, 0, 1, '', 'CPU', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (129, 0, 1, '', '硬盘', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (130, 0, 1, '', '上网卡', '', '', 0, 98, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (132, 0, 1, '', '索尼', '', '', 0, 99, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (133, 0, 1, '', '佳能', '', '', 0, 99, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (134, 0, 1, '', 'LOMO', '', '', 0, 99, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (135, 0, 1, '', '三星', '', '', 0, 99, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (136, 0, 1, '', '松下', '', '', 0, 99, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (137, 0, 1, '', '尼康', '', '', 0, 99, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (138, 0, 1, '', '液晶显示器', '', '', 0, 131, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (139, 0, 1, '', '耳机', '', '', 0, 131, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (140, 0, 1, '', '锅煲', '', '', 0, 131, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (141, 0, 1, '', '豆浆机', '', '', 0, 131, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (142, 0, 1, '', '油汀', '', '', 0, 131, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (143, 0, 1, '', '洗衣机', '', '', 0, 131, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (144, 0, 1, '', '投影仪', '', '', 0, 103, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (145, 0, 1, '', '打印机', '', '', 0, 103, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (146, 0, 1, '', '文具', '', '', 0, 103, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (147, 0, 1, '', '电子辞典', '', '', 0, 103, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (148, 0, 1, '', '墨盒', '', '', 0, 103, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (149, 0, 1, '', '3G上网', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (150, 0, 1, '', '电池', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (151, 0, 1, '', '保暖', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (152, 0, 1, '', '摄像头', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (153, 0, 1, '', '蓝牙', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (154, 0, 1, '', '鼠标垫', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (155, 0, 1, '', '鼠标', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (156, 0, 1, '', 'SD卡', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (157, 0, 1, '', '', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (158, 0, 1, '', 'U盘', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (159, 0, 1, '', '内存卡', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (160, 0, 1, '', 'SD卡', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (161, 0, 1, '', '4G', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (162, 0, 1, '', '8G', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (163, 0, 1, '', '16G', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (164, 0, 1, '', '记忆棒', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (165, 0, 1, '', '移动硬盘', '', '', 0, 101, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (166, 0, 1, '', 'iPod', '', '', 0, 100, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (167, 0, 1, '', '蓝魔', '', '', 0, 100, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (168, 0, 1, '', '昂达', '', '', 0, 100, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (169, 0, 1, '', '索尼', '', '', 0, 100, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (170, 0, 1, '', '艾诺', '', '', 0, 100, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (171, 0, 1, '', '电玩', '', '', 0, 100, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (172, 0, 1, '', '3G上网', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (173, 0, 1, '', '电池', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (174, 0, 1, '', '保暖', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (175, 0, 1, '', '摄像头', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (176, 0, 1, '', '蓝牙', '', '', 0, 102, 3, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (177, 0, 1, '', '美容护肤/美体/精油', '', '', 0, 4, 4, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (178, 0, 1, '', '彩妆/香水/美发/工具', '', '', 0, 4, 4, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (179, 0, 1, '', '个人护理/保健/美容/飞利浦', '', '', 0, 4, 4, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (180, 0, 1, '', '爽肤水', '', '', 0, 177, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (181, 0, 1, '', '精华液', '', '', 0, 177, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (182, 0, 1, '', '面膜', '', '', 0, 177, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (183, 0, 1, '', '隔离霜', '', '', 0, 177, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (184, 0, 1, '', '精油', '', '', 0, 177, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (185, 0, 1, '', '香水', '', '', 0, 178, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (186, 0, 1, '', '粉饼', '', '', 0, 178, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (187, 0, 1, '', '粉底', '', '', 0, 178, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (188, 0, 1, '', '眼影', '', '', 0, 178, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (189, 0, 1, '', '腮红', '', '', 0, 178, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (190, 0, 1, '', 'BB霜', '', '', 0, 178, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (191, 0, 1, '', '电吹风', '', '', 0, 179, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (192, 0, 1, '', '足浴盆', '', '', 0, 179, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (193, 0, 1, '', '暖膝', '', '', 0, 179, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (194, 0, 1, '', '剃须', '', '', 0, 179, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (195, 0, 1, '', '按摩', '', '', 0, 179, 4, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (196, 0, 1, '', '精品女装/韩版/羽绒服/外套', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (197, 0, 1, '', '女鞋/靴子/皮靴/Ugg/玖熙', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (198, 0, 1, '', '男女内衣/睡衣/黛安芬/猫人', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (199, 0, 1, '', '男装/棉衣/羽绒服/御寒服', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (200, 0, 1, '', '女包/男包/钱包/皮包/卡包', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (201, 0, 1, '', '围巾/帽子/保暖套件/腰带', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (202, 0, 1, '', '运动服/羽绒服/运动套装', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (203, 0, 1, '', '运动鞋/Nike/Adidas/李宁', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (204, 0, 1, '', '童装/童鞋/哈衣/孕妇装', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (205, 0, 1, '', '手表/西铁城/雷达/Swatch', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (206, 0, 1, '', '时尚饰品/流行饰品/韩版', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (207, 0, 1, '', '珠宝/钻石/翡翠/黄金/周生生', '', '', 0, 5, 5, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (208, 0, 1, '', '居家日用/厨房餐饮/卫浴洗浴', '', '', 0, 6, 6, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (209, 0, 1, '', '床上用品/靠垫/窗帘/布艺', '', '', 0, 6, 6, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (210, 0, 1, '', '家具/家具定制/宜家代购', '', '', 0, 6, 6, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (211, 0, 1, '', '奶粉/尿片/母婴用品', '', '', 0, 6, 6, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (212, 0, 1, '', '益智玩具/早教/童车床/出行', '', '', 0, 6, 6, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (213, 0, 1, '', '运动/舞蹈/健身/羽毛球', '', '', 0, 7, 7, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (214, 0, 1, '', '书籍/计算机/经管/文艺', '', '', 0, 7, 7, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (215, 0, 1, '', '乐器/音乐/影视/明星/动画片', '', '', 0, 7, 7, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (216, 0, 1, '', '户外/登山/野营/旅行装备', '', '', 0, 7, 7, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (217, 0, 1, '', '鲜花速递/宠物食品/用品', '', '', 0, 7, 7, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (218, 0, 1, '', 'Zippo/眼镜/护眼/军刀/烟具', '', '', 0, 7, 7, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (219, 0, 1, '', '古董/邮币/字画/收藏', '', '', 0, 8, 8, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (220, 0, 1, '', '玩具/模型/娃娃/人偶', '', '', 0, 8, 8, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (221, 0, 1, '', '时尚家饰/工艺品/十字绣', '', '', 0, 8, 8, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (222, 0, 1, '', '网店/网络服务/个性定制/软件', '', '', 0, 9, 9, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (223, 0, 1, '', '折扣券/演唱会/旅游/吃喝玩乐', '', '', 0, 9, 9, 2, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (224, 0, 1, '', '网络服务', '', '', 0, 222, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (225, 0, 1, '', '软件', '', '', 0, 222, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (226, 0, 1, '', '摄影', '', '', 0, 222, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (227, 0, 1, '', '网店', '', '', 0, 222, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (228, 0, 1, '', '跑腿', '', '', 0, 222, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (229, 0, 1, '', '超市卡', '', '', 0, 223, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (230, 0, 1, '', '蛋糕券', '', '', 0, 223, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (231, 0, 1, '', '电影票', '', '', 0, 223, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (232, 0, 1, '', '体检卡', '', '', 0, 223, 9, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (233, 0, 1, '', '工艺摆设', '', '', 0, 221, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (234, 0, 1, '', '墙贴', '', '', 0, 221, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (235, 0, 1, '', '十字绣', '', '', 0, 221, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (236, 0, 1, '', '装饰', '', '', 0, 221, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (237, 0, 1, '', '画钟', '', '', 0, 221, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (238, 0, 1, '', '毛绒', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (239, 0, 1, '', '玩具', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (240, 0, 1, '', '机器人', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (241, 0, 1, '', '娃娃', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (242, 0, 1, '', '模型', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (243, 0, 1, '', '毛绒', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (244, 0, 1, '', '玩具', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (245, 0, 1, '', '机器人', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (246, 0, 1, '', '娃娃', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (247, 0, 1, '', '模型', '', '', 0, 220, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (248, 0, 1, '', '钱币', '', '', 0, 219, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (249, 0, 1, '', '紫砂', '', '', 0, 219, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (250, 0, 1, '', '和田玉', '', '', 0, 219, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (251, 0, 1, '', '宗教', '', '', 0, 219, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (252, 0, 1, '', '古玩街', '', '', 0, 219, 8, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (253, 0, 1, '', 'zippo', '', '', 0, 218, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (254, 0, 1, '', '太阳镜', '', '', 0, 218, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (255, 0, 1, '', '眼镜架', '', '', 0, 218, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (256, 0, 1, '', '烟嘴', '', '', 0, 218, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (257, 0, 1, '', '戒烟', '', '', 0, 218, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (258, 0, 1, '', '狗粮', '', '', 0, 217, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (259, 0, 1, '', '零食', '', '', 0, 217, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (260, 0, 1, '', '猫粮', '', '', 0, 217, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (261, 0, 1, '', '水族', '', '', 0, 217, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (262, 0, 1, '', '鲜花', '', '', 0, 217, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (263, 0, 1, '', '园艺', '', '', 0, 217, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (264, 0, 1, '', '登山鞋', '', '', 0, 216, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (265, 0, 1, '', '冲锋衣', '', '', 0, 216, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (266, 0, 1, '', '抓绒衣', '', '', 0, 216, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (267, 0, 1, '', '睡袋', '', '', 0, 216, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (268, 0, 1, '', '滑雪', '', '', 0, 216, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (269, 0, 1, '', '电影', '', '', 0, 215, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (270, 0, 1, '', '电视剧', '', '', 0, 215, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (271, 0, 1, '', '吉他', '', '', 0, 215, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (272, 0, 1, '', '音乐', '', '', 0, 215, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (273, 0, 1, '', '儿童音像', '', '', 0, 215, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (274, 0, 1, '', '考试', '', '', 0, 214, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (275, 0, 1, '', '小说', '', '', 0, 214, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (276, 0, 1, '', '童书', '', '', 0, 214, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (277, 0, 1, '', '外语', '', '', 0, 214, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (278, 0, 1, '', '漫画', '', '', 0, 214, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (279, 0, 1, '', '养生', '', '', 0, 214, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (280, 0, 1, '', '羽拍', '', '', 0, 213, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (281, 0, 1, '', '温泉', '', '', 0, 213, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (282, 0, 1, '', '跳舞毯', '', '', 0, 213, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (283, 0, 1, '', '乒乓', '', '', 0, 213, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (284, 0, 1, '', '跑步机', '', '', 0, 213, 7, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (285, 0, 1, '', '益智', '', '', 0, 212, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (286, 0, 1, '', '童车', '', '', 0, 212, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (287, 0, 1, '', '推车', '', '', 0, 212, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (288, 0, 1, '', '童床', '', '', 0, 212, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (289, 0, 1, '', '餐椅', '', '', 0, 212, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (290, 0, 1, '', '早教', '', '', 0, 212, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (291, 0, 1, '', '奶粉', '', '', 0, 211, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (292, 0, 1, '', '辅食', '', '', 0, 211, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (293, 0, 1, '', '营养品', '', '', 0, 211, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (294, 0, 1, '', '睡袋', '', '', 0, 211, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (295, 0, 1, '', '纸尿裤', '', '', 0, 211, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (296, 0, 1, '', '床', '', '', 0, 210, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (297, 0, 1, '', '宜家', '', '', 0, 210, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (298, 0, 1, '', '衣柜', '', '', 0, 210, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (299, 0, 1, '', '沙发', '', '', 0, 210, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (300, 0, 1, '', '电脑桌', '', '', 0, 210, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (301, 0, 1, '', '架类', '', '', 0, 210, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (302, 0, 1, '', '冬被', '', '', 0, 209, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (303, 0, 1, '', '四件套', '', '', 0, 209, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (304, 0, 1, '', '靠垫', '', '', 0, 209, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (305, 0, 1, '', '毯子', '', '', 0, 209, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (306, 0, 1, '', '居家鞋', '', '', 0, 209, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (307, 0, 1, '', '收纳', '', '', 0, 208, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (308, 0, 1, '', '杯', '', '', 0, 208, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (309, 0, 1, '', '特价区', '', '', 0, 208, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (310, 0, 1, '', '婚庆', '', '', 0, 208, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (311, 0, 1, '', '餐具', '', '', 0, 208, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (312, 0, 1, '', '保暖', '', '', 0, 208, 6, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (313, 0, 1, '', '婚钻', '', '', 0, 207, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (314, 0, 1, '', '翡翠', '', '', 0, 207, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (315, 0, 1, '', '施华洛', '', '', 0, 207, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (316, 0, 1, '', '千足金', '', '', 0, 207, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (317, 0, 1, '', '周大福', '', '', 0, 207, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (318, 0, 1, '', '毛衣链', '', '', 0, 206, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (319, 0, 1, '', '耳环', '', '', 0, 206, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (320, 0, 1, '', '发饰', '', '', 0, 206, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (321, 0, 1, '', '戒指', '', '', 0, 206, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (322, 0, 1, '', '银饰', '', '', 0, 206, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (323, 0, 1, '', '天梭', '', '', 0, 205, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (324, 0, 1, '', '卡西欧', '', '', 0, 205, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (325, 0, 1, '', '欧米茄', '', '', 0, 205, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (326, 0, 1, '', '浪琴', '', '', 0, 205, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (327, 0, 1, '', '劳力士', '', '', 0, 205, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (328, 0, 1, '', '棉服', '', '', 0, 204, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (329, 0, 1, '', '毛衣', '', '', 0, 204, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (330, 0, 1, '', '童裤', '', '', 0, 204, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (331, 0, 1, '', '外套', '', '', 0, 204, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (332, 0, 1, '', '冬靴', '', '', 0, 204, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (333, 0, 1, '', '羽绒', '', '', 0, 204, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (334, 0, 1, '', '跑步鞋', '', '', 0, 203, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (335, 0, 1, '', '篮球鞋', '', '', 0, 203, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (336, 0, 1, '', '足球鞋', '', '', 0, 203, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (337, 0, 1, '', '板鞋', '', '', 0, 203, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (338, 0, 1, '', '帆布', '', '', 0, 203, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (339, 0, 1, '', '运动套装', '', '', 0, 202, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (340, 0, 1, '', '棉衣', '', '', 0, 202, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (341, 0, 1, '', '卫衣', '', '', 0, 202, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (342, 0, 1, '', '耐克', '', '', 0, 202, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (343, 0, 1, '', '李宁', '', '', 0, 202, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (344, 0, 1, '', '围巾', '', '', 0, 201, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (345, 0, 1, '', '帽子', '', '', 0, 201, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (346, 0, 1, '', '毛线围巾', '', '', 0, 201, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (347, 0, 1, '', '毛线帽', '', '', 0, 201, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (348, 0, 1, '', '皮带', '', '', 0, 201, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (349, 0, 1, '', '肩包', '', '', 0, 200, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (350, 0, 1, '', '手提包', '', '', 0, 200, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (351, 0, 1, '', '斜挎包', '', '', 0, 200, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (352, 0, 1, '', '钱包', '', '', 0, 200, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (353, 0, 1, '', '牛皮包', '', '', 0, 200, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (354, 0, 1, '', '羽绒服', '', '', 0, 199, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (355, 0, 1, '', '棉衣', '', '', 0, 199, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (356, 0, 1, '', '风衣', '', '', 0, 199, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (357, 0, 1, '', '毛衣', '', '', 0, 199, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (358, 0, 1, '', '牛仔裤', '', '', 0, 199, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (359, 0, 1, '', '文胸', '', '', 0, 198, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (360, 0, 1, '', '睡衣', '', '', 0, 198, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (361, 0, 1, '', '保暖', '', '', 0, 198, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (362, 0, 1, '', '裤袜', '', '', 0, 198, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (363, 0, 1, '', '塑身', '', '', 0, 198, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (364, 0, 1, '', '内裤', '', '', 0, 198, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (365, 0, 1, '', '靴子', '', '', 0, 197, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (366, 0, 1, '', '短靴', '', '', 0, 197, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (367, 0, 1, '', '雪地靴', '', '', 0, 197, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (368, 0, 1, '', '长靴', '', '', 0, 197, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (369, 0, 1, '', '男鞋', '', '', 0, 197, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (370, 0, 1, '', '女装5折', '', '', 0, 196, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (371, 0, 1, '', '毛衣', '', '', 0, 196, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (372, 0, 1, '', '呢大衣', '', '', 0, 196, 5, 3, 0, '', 1, 0, 0);
-INSERT INTO `pb_industries` VALUES (373, 0, 1, '', '棉衣', '', '', 0, 196, 5, 3, 0, '', 1, 0, 0);
+INSERT INTO `pb_industries` (`id`, `attachment_id`, `industrytype_id`, `child_ids`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `top_parentid`, `level`, `display_order`, `description`, `available`, `created`, `modified`) VALUES 
+(1, 0, 0, NULL, '服装服饰', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(2, 0, 0, NULL, '日用百货', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(3, 0, 0, NULL, '机电设备', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(4, 0, 0, NULL, '原材料', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(5, 0, 0, NULL, '其他服务', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(6, 0, 0, NULL, '女装', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(7, 0, 0, NULL, '男装', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(8, 0, 0, NULL, '童装', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(9, 0, 0, NULL, '内衣', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(10, 0, 0, NULL, '鞋', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(11, 0, 0, NULL, '运动服', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(12, 0, 0, NULL, '纺织', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(13, 0, 0, NULL, '饰品', '', '', 0, 1, 1, 2, 0, NULL, 1, 0, 0),
+(14, 0, 0, NULL, '瑞丽', '', '', 0, 6, 1, 3, 0, NULL, 1, 0, 0),
+(15, 0, 0, NULL, '韩货', '', '', 0, 6, 1, 3, 0, NULL, 1, 0, 0),
+(16, 0, 0, NULL, '春装', '', '', 0, 6, 1, 3, 0, NULL, 1, 0, 0),
+(17, 0, 0, NULL, '外套', '', '', 0, 6, 1, 3, 0, NULL, 1, 0, 0),
+(18, 0, 0, NULL, '牛仔裤', '', '', 0, 6, 1, 3, 0, NULL, 1, 0, 0),
+(19, 0, 0, NULL, '商务', '', '', 0, 7, 1, 3, 0, NULL, 1, 0, 0),
+(20, 0, 0, NULL, '休闲', '', '', 0, 7, 1, 3, 0, NULL, 1, 0, 0),
+(21, 0, 0, NULL, '英伦', '', '', 0, 7, 1, 3, 0, NULL, 1, 0, 0),
+(22, 0, 0, NULL, '外贸', '', '', 0, 7, 1, 3, 0, NULL, 1, 0, 0),
+(23, 0, 0, NULL, '品牌', '', '', 0, 7, 1, 3, 0, NULL, 1, 0, 0),
+(24, 0, 0, NULL, '婴儿装', '', '', 0, 8, 1, 3, 0, NULL, 1, 0, 0),
+(25, 0, 0, NULL, '品牌', '', '', 0, 8, 1, 3, 0, NULL, 1, 0, 0),
+(26, 0, 0, NULL, '1到3岁', '', '', 0, 8, 1, 3, 0, NULL, 1, 0, 0),
+(27, 0, 0, NULL, '孕妇装', '', '', 0, 8, 1, 3, 0, NULL, 1, 0, 0),
+(28, 0, 0, NULL, '文胸', '', '', 0, 9, 1, 3, 0, NULL, 1, 0, 0),
+(29, 0, 0, NULL, '内裤', '', '', 0, 9, 1, 3, 0, NULL, 1, 0, 0),
+(30, 0, 0, NULL, '情趣', '', '', 0, 9, 1, 3, 0, NULL, 1, 0, 0),
+(31, 0, 0, NULL, '品牌', '', '', 0, 9, 1, 3, 0, NULL, 1, 0, 0),
+(32, 0, 0, NULL, '套装', '', '', 0, 9, 1, 3, 0, NULL, 1, 0, 0),
+(33, 0, 0, NULL, '女鞋', '', '', 0, 10, 1, 3, 0, NULL, 1, 0, 0),
+(34, 0, 0, NULL, '男鞋', '', '', 0, 10, 1, 3, 0, NULL, 1, 0, 0),
+(35, 0, 0, NULL, '童鞋', '', '', 0, 10, 1, 3, 0, NULL, 1, 0, 0),
+(36, 0, 0, NULL, '外贸鞋', '', '', 0, 10, 1, 3, 0, NULL, 1, 0, 0),
+(37, 0, 0, NULL, '品牌鞋', '', '', 0, 10, 1, 3, 0, NULL, 1, 0, 0),
+(38, 0, 0, NULL, '腰带', '', '', 0, 11, 1, 3, 0, NULL, 1, 0, 0),
+(39, 0, 0, NULL, '女包', '', '', 0, 11, 1, 3, 0, NULL, 1, 0, 0),
+(40, 0, 0, NULL, '男包', '', '', 0, 11, 1, 3, 0, NULL, 1, 0, 0),
+(41, 0, 0, NULL, '运动包', '', '', 0, 11, 1, 3, 0, NULL, 1, 0, 0),
+(42, 0, 0, NULL, '衬料', '', '', 0, 12, 1, 3, 0, NULL, 1, 0, 0),
+(43, 0, 0, NULL, '皮革', '', '', 0, 12, 1, 3, 0, NULL, 1, 0, 0),
+(44, 0, 0, NULL, '纽扣', '', '', 0, 12, 1, 3, 0, NULL, 1, 0, 0),
+(45, 0, 0, NULL, '拉链', '', '', 0, 12, 1, 3, 0, NULL, 1, 0, 0),
+(46, 0, 0, NULL, '花边', '', '', 0, 12, 1, 3, 0, NULL, 1, 0, 0),
+(47, 0, 0, NULL, '头饰', '', '', 0, 13, 1, 3, 0, NULL, 1, 0, 0),
+(48, 0, 0, NULL, '耳饰', '', '', 0, 13, 1, 3, 0, NULL, 1, 0, 0),
+(49, 0, 0, NULL, '项饰', '', '', 0, 13, 1, 3, 0, NULL, 1, 0, 0),
+(50, 0, 0, NULL, '手饰', '', '', 0, 13, 1, 3, 0, NULL, 1, 0, 0),
+(51, 0, 0, NULL, '韩版', '', '', 0, 13, 1, 3, 0, NULL, 1, 0, 0),
+(52, 0, 0, NULL, '家居', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(53, 0, 0, NULL, '家装', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(54, 0, 0, NULL, '礼品', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(55, 0, 0, NULL, '玩具', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(56, 0, 0, NULL, '办公文教', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(57, 0, 0, NULL, '运动休闲', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(58, 0, 0, NULL, '食品', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(59, 0, 0, NULL, '家电', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(60, 0, 0, NULL, '数码', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(61, 0, 0, NULL, '通讯', '', '', 0, 2, 2, 2, 0, NULL, 1, 0, 0),
+(62, 0, 0, NULL, '护肤', '', '', 0, 52, 2, 3, 0, NULL, 1, 0, 0),
+(63, 0, 0, NULL, '彩妆', '', '', 0, 52, 2, 3, 0, NULL, 1, 0, 0),
+(64, 0, 0, NULL, '日化', '', '', 0, 52, 2, 3, 0, NULL, 1, 0, 0),
+(65, 0, 0, NULL, '母婴', '', '', 0, 52, 2, 3, 0, NULL, 1, 0, 0),
+(66, 0, 0, NULL, '百货', '', '', 0, 52, 2, 3, 0, NULL, 1, 0, 0),
+(67, 0, 0, NULL, '灯具', '', '', 0, 53, 2, 3, 0, NULL, 1, 0, 0),
+(68, 0, 0, NULL, '家具', '', '', 0, 53, 2, 3, 0, NULL, 1, 0, 0),
+(69, 0, 0, NULL, '壁纸', '', '', 0, 53, 2, 3, 0, NULL, 1, 0, 0),
+(70, 0, 0, NULL, '家饰', '', '', 0, 53, 2, 3, 0, NULL, 1, 0, 0),
+(71, 0, 0, NULL, '家纺', '', '', 0, 53, 2, 3, 0, NULL, 1, 0, 0),
+(72, 0, 0, NULL, '十字绣', '', '', 0, 54, 2, 3, 0, NULL, 1, 0, 0),
+(73, 0, 0, NULL, '新奇特', '', '', 0, 54, 2, 3, 0, NULL, 1, 0, 0),
+(74, 0, 0, NULL, '居家', '', '', 0, 54, 2, 3, 0, NULL, 1, 0, 0),
+(75, 0, 0, NULL, '节庆', '', '', 0, 54, 2, 3, 0, NULL, 1, 0, 0),
+(76, 0, 0, NULL, '公仔', '', '', 0, 55, 2, 3, 0, NULL, 1, 0, 0),
+(77, 0, 0, NULL, '积木', '', '', 0, 55, 2, 3, 0, NULL, 1, 0, 0),
+(78, 0, 0, NULL, '动漫', '', '', 0, 55, 2, 3, 0, NULL, 1, 0, 0),
+(79, 0, 0, NULL, '模型', '', '', 0, 55, 2, 3, 0, NULL, 1, 0, 0),
+(80, 0, 0, NULL, '益智', '', '', 0, 55, 2, 3, 0, NULL, 1, 0, 0),
+(81, 0, 0, NULL, '文具', '', '', 0, 56, 2, 3, 0, NULL, 1, 0, 0),
+(82, 0, 0, NULL, '笔具', '', '', 0, 56, 2, 3, 0, NULL, 1, 0, 0),
+(83, 0, 0, NULL, '本子', '', '', 0, 56, 2, 3, 0, NULL, 1, 0, 0),
+(84, 0, 0, NULL, '韩国文具', '', '', 0, 56, 2, 3, 0, NULL, 1, 0, 0),
+(85, 0, 0, NULL, '户外', '', '', 0, 57, 2, 3, 0, NULL, 1, 0, 0),
+(86, 0, 0, NULL, '体育', '', '', 0, 57, 2, 3, 0, NULL, 1, 0, 0),
+(87, 0, 0, NULL, '垂钓', '', '', 0, 57, 2, 3, 0, NULL, 1, 0, 0),
+(88, 0, 0, NULL, '棋牌', '', '', 0, 57, 2, 3, 0, NULL, 1, 0, 0),
+(89, 0, 0, NULL, '零食', '', '', 0, 58, 2, 3, 0, NULL, 1, 0, 0),
+(90, 0, 0, NULL, '糖果', '', '', 0, 58, 2, 3, 0, NULL, 1, 0, 0),
+(91, 0, 0, NULL, '蜜饯', '', '', 0, 58, 2, 3, 0, NULL, 1, 0, 0),
+(92, 0, 0, NULL, '饮料', '', '', 0, 58, 2, 3, 0, NULL, 1, 0, 0),
+(93, 0, 0, NULL, '茶叶', '', '', 0, 58, 2, 3, 0, NULL, 1, 0, 0),
+(94, 0, 0, NULL, '小家电', '', '', 0, 59, 2, 3, 0, NULL, 1, 0, 0),
+(95, 0, 0, NULL, '热水器', '', '', 0, 59, 2, 3, 0, NULL, 1, 0, 0),
+(96, 0, 0, NULL, '洗衣机', '', '', 0, 59, 2, 3, 0, NULL, 1, 0, 0),
+(97, 0, 0, NULL, '电视', '', '', 0, 59, 2, 3, 0, NULL, 1, 0, 0),
+(98, 0, 0, NULL, 'MP3', '', '', 0, 60, 2, 3, 0, NULL, 1, 0, 0),
+(99, 0, 0, NULL, 'U盘', '', '', 0, 60, 2, 3, 0, NULL, 1, 0, 0),
+(100, 0, 0, NULL, '笔记本', '', '', 0, 60, 2, 3, 0, NULL, 1, 0, 0),
+(101, 0, 0, NULL, '数码相机', '', '', 0, 60, 2, 3, 0, NULL, 1, 0, 0),
+(102, 0, 0, NULL, '手机', '', '', 0, 61, 2, 3, 0, NULL, 1, 0, 0),
+(103, 0, 0, NULL, '诺基亚', '', '', 0, 61, 2, 3, 0, NULL, 1, 0, 0),
+(104, 0, 0, NULL, '三星', '', '', 0, 61, 2, 3, 0, NULL, 1, 0, 0),
+(105, 0, 0, NULL, '索爱', '', '', 0, 61, 2, 3, 0, NULL, 1, 0, 0),
+(117, 0, 0, NULL, '电子', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(116, 0, 0, NULL, '行业设备', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(115, 0, 0, NULL, '五金', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(114, 0, 0, NULL, '机械', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(118, 0, 0, NULL, '机加工', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(119, 0, 0, NULL, '电工', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(120, 0, 0, NULL, '汽车', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(121, 0, 0, NULL, '安防', '', '', 0, 3, 3, 2, 0, NULL, 1, 0, 0),
+(122, 0, 0, NULL, '轴承', '', '', 0, 114, 3, 3, 0, NULL, 1, 0, 0),
+(123, 0, 0, NULL, '阀门', '', '', 0, 114, 3, 3, 0, NULL, 1, 0, 0),
+(124, 0, 0, NULL, '模具', '', '', 0, 114, 3, 3, 0, NULL, 1, 0, 0),
+(125, 0, 0, NULL, '刀具夹具', '', '', 0, 114, 3, 3, 0, NULL, 1, 0, 0),
+(126, 0, 0, NULL, '泵', '', '', 0, 114, 3, 3, 0, NULL, 1, 0, 0),
+(127, 0, 0, NULL, '紧固件', '', '', 0, 115, 3, 3, 0, NULL, 1, 0, 0),
+(128, 0, 0, NULL, '五金件', '', '', 0, 115, 3, 3, 0, NULL, 1, 0, 0),
+(129, 0, 0, NULL, '水龙头', '', '', 0, 115, 3, 3, 0, NULL, 1, 0, 0),
+(130, 0, 0, NULL, '锁具', '', '', 0, 115, 3, 3, 0, NULL, 1, 0, 0),
+(131, 0, 0, NULL, '工程机械', '', '', 0, 116, 3, 3, 0, NULL, 1, 0, 0),
+(132, 0, 0, NULL, '食品机械', '', '', 0, 116, 3, 3, 0, NULL, 1, 0, 0),
+(133, 0, 0, NULL, '纺机', '', '', 0, 116, 3, 3, 0, NULL, 1, 0, 0),
+(134, 0, 0, NULL, '仪器仪表', '', '', 0, 117, 3, 3, 0, NULL, 1, 0, 0),
+(135, 0, 0, NULL, 'LED', '', '', 0, 117, 3, 3, 0, NULL, 1, 0, 0),
+(136, 0, 0, NULL, 'PCB', '', '', 0, 117, 3, 3, 0, NULL, 1, 0, 0),
+(137, 0, 0, NULL, '二极管', '', '', 0, 117, 3, 3, 0, NULL, 1, 0, 0),
+(138, 0, 0, NULL, '钣金加工', '', '', 0, 118, 3, 3, 0, NULL, 1, 0, 0),
+(139, 0, 0, NULL, '激光加工', '', '', 0, 118, 3, 3, 0, NULL, 1, 0, 0),
+(140, 0, 0, NULL, '冲压', '', '', 0, 118, 3, 3, 0, NULL, 1, 0, 0),
+(141, 0, 0, NULL, '电池', '', '', 0, 119, 3, 3, 0, NULL, 1, 0, 0),
+(142, 0, 0, NULL, '开关', '', '', 0, 119, 3, 3, 0, NULL, 1, 0, 0),
+(143, 0, 0, NULL, '电线电缆', '', '', 0, 119, 3, 3, 0, NULL, 1, 0, 0),
+(144, 0, 0, NULL, '发电机', '', '', 0, 119, 3, 3, 0, NULL, 1, 0, 0),
+(145, 0, 0, NULL, '交通运输', '', '', 0, 120, 3, 3, 0, NULL, 1, 0, 0),
+(146, 0, 0, NULL, '内饰', '', '', 0, 120, 3, 3, 0, NULL, 1, 0, 0),
+(147, 0, 0, NULL, '外饰', '', '', 0, 120, 3, 3, 0, NULL, 1, 0, 0),
+(148, 0, 0, NULL, '电动车', '', '', 0, 120, 3, 3, 0, NULL, 1, 0, 0),
+(149, 0, 0, NULL, '监控系统', '', '', 0, 121, 3, 3, 0, NULL, 1, 0, 0),
+(150, 0, 0, NULL, '消防器材', '', '', 0, 121, 3, 3, 0, NULL, 1, 0, 0),
+(151, 0, 0, NULL, '二手设备', '', '', 0, 121, 3, 3, 0, NULL, 1, 0, 0),
+(152, 0, 0, NULL, '化工', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(153, 0, 0, NULL, '精细化学品', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(154, 0, 0, NULL, '橡塑', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(155, 0, 0, NULL, '建筑', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(156, 0, 0, NULL, '医药', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(157, 0, 0, NULL, '农业', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(158, 0, 0, NULL, '冶金', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(159, 0, 0, NULL, '能源', '', '', 0, 4, 4, 2, 0, NULL, 1, 0, 0),
+(160, 0, 0, NULL, '醇类', '', '', 0, 152, 4, 3, 0, NULL, 1, 0, 0),
+(161, 0, 0, NULL, '烃类', '', '', 0, 152, 4, 3, 0, NULL, 1, 0, 0),
+(162, 0, 0, NULL, '无机盐', '', '', 0, 152, 4, 3, 0, NULL, 1, 0, 0),
+(163, 0, 0, NULL, '合成树脂', '', '', 0, 152, 4, 3, 0, NULL, 1, 0, 0),
+(164, 0, 0, NULL, '润滑油', '', '', 0, 153, 4, 3, 0, NULL, 1, 0, 0),
+(165, 0, 0, NULL, '涂料油漆', '', '', 0, 153, 4, 3, 0, NULL, 1, 0, 0),
+(166, 0, 0, NULL, '化肥', '', '', 0, 153, 4, 3, 0, NULL, 1, 0, 0),
+(167, 0, 0, NULL, '通用塑料', '', '', 0, 154, 4, 3, 0, NULL, 1, 0, 0),
+(168, 0, 0, NULL, '工程塑料', '', '', 0, 154, 4, 3, 0, NULL, 1, 0, 0),
+(169, 0, 0, NULL, '废塑料', '', '', 0, 154, 4, 3, 0, NULL, 1, 0, 0),
+(170, 0, 0, NULL, '管件', '', '', 0, 155, 4, 3, 0, NULL, 1, 0, 0),
+(171, 0, 0, NULL, '石材', '', '', 0, 155, 4, 3, 0, NULL, 1, 0, 0),
+(172, 0, 0, NULL, '水泥', '', '', 0, 155, 4, 3, 0, NULL, 1, 0, 0),
+(173, 0, 0, NULL, '耐火材料', '', '', 0, 155, 4, 3, 0, NULL, 1, 0, 0),
+(174, 0, 0, NULL, '保健品', '', '', 0, 156, 4, 3, 0, NULL, 1, 0, 0),
+(175, 0, 0, NULL, '医药中间体', '', '', 0, 156, 4, 3, 0, NULL, 1, 0, 0),
+(176, 0, 0, NULL, '医疗设备', '', '', 0, 156, 4, 3, 0, NULL, 1, 0, 0),
+(177, 0, 0, NULL, '特种养殖', '', '', 0, 157, 4, 3, 0, NULL, 1, 0, 0),
+(178, 0, 0, NULL, '畜牧', '', '', 0, 157, 4, 3, 0, NULL, 1, 0, 0),
+(179, 0, 0, NULL, '水产品', '', '', 0, 157, 4, 3, 0, NULL, 1, 0, 0),
+(180, 0, 0, NULL, '玉米', '', '', 0, 157, 4, 3, 0, NULL, 1, 0, 0),
+(181, 0, 0, NULL, '钢材', '', '', 0, 158, 4, 3, 0, NULL, 1, 0, 0),
+(182, 0, 0, NULL, '不锈钢', '', '', 0, 158, 4, 3, 0, NULL, 1, 0, 0),
+(183, 0, 0, NULL, '铝型材', '', '', 0, 158, 4, 3, 0, NULL, 1, 0, 0),
+(184, 0, 0, NULL, '废金属', '', '', 0, 158, 4, 3, 0, NULL, 1, 0, 0),
+(185, 0, 0, NULL, '环保', '', '', 0, 159, 4, 3, 0, NULL, 1, 0, 0),
+(186, 0, 0, NULL, '天然气', '', '', 0, 159, 4, 3, 0, NULL, 1, 0, 0),
+(187, 0, 0, NULL, '柴油', '', '', 0, 159, 4, 3, 0, NULL, 1, 0, 0),
+(188, 0, 0, NULL, '无烟煤', '', '', 0, 159, 4, 3, 0, NULL, 1, 0, 0),
+(189, 0, 0, NULL, '商务服务', '', '', 0, 5, 5, 2, 0, NULL, 1, 0, 0),
+(190, 0, 0, NULL, '物流', '', '', 0, 5, 5, 2, 0, NULL, 1, 0, 0),
+(191, 0, 0, NULL, '展会网', '', '', 0, 5, 5, 2, 0, NULL, 1, 0, 0),
+(192, 0, 0, NULL, '广告', '', '', 0, 5, 5, 2, 0, NULL, 1, 0, 0),
+(193, 0, 0, NULL, '印刷', '', '', 0, 5, 5, 2, 0, NULL, 1, 0, 0),
+(194, 0, 0, NULL, '包装', '', '', 0, 5, 5, 2, 0, NULL, 1, 0, 0),
+(195, 0, 0, NULL, '招聘求职', '', '', 0, 189, 5, 3, 0, NULL, 1, 0, 0),
+(196, 0, 0, NULL, '网络兼职', '', '', 0, 189, 5, 3, 0, NULL, 1, 0, 0),
+(197, 0, 0, NULL, '销售', '', '', 0, 189, 5, 3, 0, NULL, 1, 0, 0),
+(198, 0, 0, NULL, '国内陆运', '', '', 0, 190, 5, 3, 0, NULL, 1, 0, 0),
+(199, 0, 0, NULL, '国际海运', '', '', 0, 190, 5, 3, 0, NULL, 1, 0, 0),
+(200, 0, 0, NULL, '进出口', '', '', 0, 190, 5, 3, 0, NULL, 1, 0, 0),
+(201, 0, 0, NULL, '广交会', '', '', 0, 191, 5, 3, 0, NULL, 1, 0, 0),
+(202, 0, 0, NULL, '服装展会', '', '', 0, 191, 5, 3, 0, NULL, 1, 0, 0),
+(203, 0, 0, NULL, '礼品展会', '', '', 0, 191, 5, 3, 0, NULL, 1, 0, 0),
+(204, 0, 0, NULL, '平面设计', '', '', 0, 192, 5, 3, 0, NULL, 1, 0, 0),
+(205, 0, 0, NULL, '广告代理', '', '', 0, 192, 5, 3, 0, NULL, 1, 0, 0),
+(206, 0, 0, NULL, '广告制作', '', '', 0, 192, 5, 3, 0, NULL, 1, 0, 0),
+(207, 0, 0, NULL, '纸类印刷', '', '', 0, 193, 5, 3, 0, NULL, 1, 0, 0),
+(208, 0, 0, NULL, '特种印刷', '', '', 0, 193, 5, 3, 0, NULL, 1, 0, 0),
+(209, 0, 0, NULL, '热转印', '', '', 0, 193, 5, 3, 0, NULL, 1, 0, 0),
+(210, 0, 0, NULL, '塑料制品', '', '', 0, 194, 5, 3, 0, NULL, 1, 0, 0),
+(211, 0, 0, NULL, '玻璃制品', '', '', 0, 194, 5, 3, 0, NULL, 1, 0, 0),
+(212, 0, 0, NULL, '纸制品', '', '', 0, 194, 5, 3, 0, NULL, 1, 0, 0),
+(213, 0, 0, NULL, '虚拟', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(214, 0, 0, NULL, '母婴', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(215, 0, 0, NULL, '保险', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0),
+(216, 0, 0, NULL, '充值中心', '', '', 0, 213, 213, 2, 0, NULL, 1, 0, 0),
+(217, 0, 0, NULL, '网游', '', '', 0, 213, 213, 2, 0, NULL, 1, 0, 0),
+(218, 0, 0, NULL, '彩票', '', '', 0, 213, 213, 2, 0, NULL, 1, 0, 0),
+(219, 0, 0, NULL, 'IP卡', '', '', 0, 213, 213, 2, 0, NULL, 1, 0, 0),
+(220, 0, 0, NULL, '点卡', '', '', 0, 213, 213, 2, 0, NULL, 1, 0, 0),
+(221, 0, 0, NULL, '机票', '', '', 0, 213, 213, 2, 0, NULL, 1, 0, 0),
+(222, 0, 0, NULL, '话费', '', '', 0, 216, 213, 3, 0, NULL, 1, 0, 0),
+(223, 0, 0, NULL, '移动', '', '', 0, 216, 213, 3, 0, NULL, 1, 0, 0),
+(224, 0, 0, NULL, '联通', '', '', 0, 216, 213, 3, 0, NULL, 1, 0, 0),
+(225, 0, 0, NULL, '电信', '', '', 0, 216, 213, 3, 0, NULL, 1, 0, 0),
+(226, 0, 0, NULL, '征途', '', '', 0, 217, 213, 3, 0, NULL, 1, 0, 0),
+(227, 0, 0, NULL, '天龙2', '', '', 0, 217, 213, 3, 0, NULL, 1, 0, 0),
+(228, 0, 0, NULL, '梦幻西游', '', '', 0, 217, 213, 3, 0, NULL, 1, 0, 0),
+(229, 0, 0, NULL, 'DNF', '', '', 0, 217, 213, 3, 0, NULL, 1, 0, 0),
+(230, 0, 0, NULL, '大乐透', '', '', 0, 218, 213, 3, 0, NULL, 1, 0, 0),
+(231, 0, 0, NULL, '排三', '', '', 0, 218, 213, 3, 0, NULL, 1, 0, 0),
+(232, 0, 0, NULL, '双色球', '', '', 0, 218, 213, 3, 0, NULL, 1, 0, 0),
+(233, 0, 0, NULL, '足彩', '', '', 0, 218, 213, 3, 0, NULL, 1, 0, 0),
+(234, 0, 0, NULL, '网络电话', '', '', 0, 219, 213, 3, 0, NULL, 1, 0, 0),
+(235, 0, 0, NULL, 'skype', '', '', 0, 219, 213, 3, 0, NULL, 1, 0, 0),
+(236, 0, 0, NULL, '手机号码', '', '', 0, 219, 213, 3, 0, NULL, 1, 0, 0),
+(237, 0, 0, NULL, '魔兽', '', '', 0, 220, 213, 3, 0, NULL, 1, 0, 0),
+(238, 0, 0, NULL, '蜀门', '', '', 0, 220, 213, 3, 0, NULL, 1, 0, 0),
+(239, 0, 0, NULL, '完美国际', '', '', 0, 220, 213, 3, 0, NULL, 1, 0, 0),
+(240, 0, 0, NULL, 'QQ', '', '', 0, 220, 213, 3, 0, NULL, 1, 0, 0),
+(241, 0, 0, NULL, '酒店', '', '', 0, 221, 213, 3, 0, NULL, 1, 0, 0),
+(242, 0, 0, NULL, '门票', '', '', 0, 221, 213, 3, 0, NULL, 1, 0, 0),
+(243, 0, 0, NULL, '特色客栈', '', '', 0, 221, 213, 3, 0, NULL, 1, 0, 0),
+(244, 0, 0, NULL, '旅游', '', '', 0, 221, 213, 3, 0, NULL, 1, 0, 0),
+(245, 0, 0, NULL, '奶粉', '', '', 0, 214, 214, 2, 0, NULL, 1, 0, 0),
+(246, 0, 0, NULL, '用品', '', '', 0, 214, 214, 2, 0, NULL, 1, 0, 0),
+(247, 0, 0, NULL, '益智', '', '', 0, 214, 214, 2, 0, NULL, 1, 0, 0),
+(248, 0, 0, NULL, '辅食', '', '', 0, 245, 214, 3, 0, NULL, 1, 0, 0),
+(249, 0, 0, NULL, '营养', '', '', 0, 245, 214, 3, 0, NULL, 1, 0, 0),
+(250, 0, 0, NULL, '妈妈保健', '', '', 0, 245, 214, 3, 0, NULL, 1, 0, 0),
+(251, 0, 0, NULL, '更多', '', '', 0, 245, 214, 3, 0, NULL, 1, 0, 0),
+(252, 0, 0, NULL, '尿片', '', '', 0, 246, 214, 3, 0, NULL, 1, 0, 0),
+(253, 0, 0, NULL, '睡袋', '', '', 0, 246, 214, 3, 0, NULL, 1, 0, 0),
+(254, 0, 0, NULL, '洗护', '', '', 0, 246, 214, 3, 0, NULL, 1, 0, 0),
+(255, 0, 0, NULL, '喂哺', '', '', 0, 246, 214, 3, 0, NULL, 1, 0, 0),
+(256, 0, 0, NULL, '湿巾', '', '', 0, 246, 214, 3, 0, NULL, 1, 0, 0),
+(257, 0, 0, NULL, '玩具', '', '', 0, 247, 214, 3, 0, NULL, 1, 0, 0),
+(258, 0, 0, NULL, '早教', '', '', 0, 247, 214, 3, 0, NULL, 1, 0, 0),
+(259, 0, 0, NULL, '推车', '', '', 0, 247, 214, 3, 0, NULL, 1, 0, 0),
+(260, 0, 0, NULL, '床', '', '', 0, 247, 214, 3, 0, NULL, 1, 0, 0),
+(261, 0, 0, NULL, '户外', '', '', 0, 247, 214, 3, 0, NULL, 1, 0, 0),
+(262, 0, 0, NULL, '意外险', '', '', 0, 215, 215, 2, 0, NULL, 1, 0, 0),
+(263, 0, 0, NULL, '保险公司', '', '', 0, 215, 215, 2, 0, NULL, 1, 0, 0),
+(264, 0, 0, NULL, '特色', '', '', 0, 215, 215, 2, 0, NULL, 1, 0, 0),
+(265, 0, 0, NULL, '交通', '', '', 0, 262, 215, 3, 0, NULL, 1, 0, 0),
+(266, 0, 0, NULL, '旅行', '', '', 0, 262, 215, 3, 0, NULL, 1, 0, 0),
+(267, 0, 0, NULL, '意外医疗', '', '', 0, 262, 215, 3, 0, NULL, 1, 0, 0),
+(268, 0, 0, NULL, '泰康', '', '', 0, 263, 215, 3, 0, NULL, 1, 0, 0),
+(269, 0, 0, NULL, '华泰', '', '', 0, 263, 215, 3, 0, NULL, 1, 0, 0),
+(270, 0, 0, NULL, '阳光产险', '', '', 0, 263, 215, 3, 0, NULL, 1, 0, 0),
+(271, 0, 0, NULL, '阳光人寿', '', '', 0, 263, 215, 3, 0, NULL, 1, 0, 0),
+(272, 0, 0, NULL, '出国留学', '', '', 0, 264, 215, 3, 0, NULL, 1, 0, 0),
+(273, 0, 0, NULL, '自驾车', '', '', 0, 264, 215, 3, 0, NULL, 1, 0, 0),
+(274, 0, 0, NULL, '家财', '', '', 0, 264, 215, 3, 0, NULL, 1, 0, 0);
 
 -- 
 -- 导出表中的数据 `pb_announcements`
 -- 
 
-INSERT INTO `pb_announcements` VALUES (1, 1, '推出“会员动态”栏目', '<p>&nbsp;&nbsp;&nbsp;&nbsp;希望各位会员企业积极、踊跃报道企业新闻，让更多客户有更多机会认识你、了解你，并与您合作！</p>', 0, 1258381361, 0);
-INSERT INTO `pb_announcements` VALUES (2, 1, '采购直通车服务', '<p><span>&nbsp;&nbsp;&nbsp;&nbsp;为了方便采购信息的发布，活跃行业供求互动，特别推出免注册、免费发布采购信息服务。</span></p>', 0, 1258381361, 0);
-INSERT INTO `pb_announcements` VALUES (3, 1, '春节放假通知', '<p>恭祝各位会员和网友春节快乐，牛年大吉!</p>', 0, 1258381361, 0);
-INSERT INTO `pb_announcements` VALUES (4, 1, 'VIP会员服务升级通知', '<p>为更好的为大家提供服务，我们将对对服务器进行升级，在此期间，系统暂不能提供服务！</p>', 0, 1258381361, 0);
+INSERT INTO `pb_announcements` (`id`, `announcetype_id`, `subject`, `message`, `display_order`, `display_expiration`, `created`, `modified`) VALUES (13, 0, '如何让您的产品排名更靠前', NULL, 0, 0, unix_timestamp(now()), 0);
+INSERT INTO `pb_announcements` (`id`, `announcetype_id`, `subject`, `message`, `display_order`, `display_expiration`, `created`, `modified`) VALUES (14, 0, '网站会员服务介绍', '通过金牌会员，您不仅可以把自己的企业、产品及其他商业信息发布互联网上，更可以主动出击，与众多买家建立联系。', 0, 0, unix_timestamp(now()), 0);
+INSERT INTO `pb_announcements` (`id`, `announcetype_id`, `subject`, `message`, `display_order`, `display_expiration`, `created`, `modified`) VALUES (11, 0, '2009中国企业500强发布', NULL, 0, 0, unix_timestamp(now()), 0);
+INSERT INTO `pb_announcements` (`id`, `announcetype_id`, `subject`, `message`, `display_order`, `display_expiration`, `created`, `modified`) VALUES (12, 0, '开通金牌旺铺', NULL, 0, 0, unix_timestamp(now()), 0);
+INSERT INTO `pb_announcements` (`id`, `announcetype_id`, `subject`, `message`, `display_order`, `display_expiration`, `created`, `modified`) VALUES (4, 1, '精彩世博，关注环保 ', NULL, 0, 0, unix_timestamp(now()), 0);
 
 -- 
 -- 导出表中的数据 `pb_announcementtypes`
@@ -745,72 +2354,201 @@ INSERT INTO `pb_announcementtypes` VALUES (1, '网站公告');
 INSERT INTO `pb_announcementtypes` VALUES (2, '广告时间');
 
 -- 
+-- 导出表中的数据 `pb_markets`
+-- 
+
+INSERT INTO `pb_markets` (`name`, `content`, `area_id1`, `area_id2`, `area_id3`, `industry_id1`, `industry_id2`, `industry_id3`, `picture`, `ip_address`, `status`, `clicked`, `if_commend`, `created`, `modified`) VALUES 
+('五金产品交易市场', '', 0, 0, 0, 2, 0, 0, 'sample/market/01.jpg', 0, 1, 1, 1, unix_timestamp(), 0),
+('化纤专业市场', '', 0, 0, 0, 2, 0, 0, 'sample/market/02.jpg', 0, 1, 1, 1, unix_timestamp(), 0),
+('海宁中国皮革城', '', 0, 0, 0, 0, 0, 0, 'sample/market/03.jpg', 0, 1, 1, 1, unix_timestamp(), 0),
+('浙江崇福皮草大世界', '', 0, 0, 0, 0, 0, 0, 'sample/market/04.jpg', 0, 1, 1, 1, unix_timestamp(), 0);
+
+-- 
 -- 导出表中的数据 `pb_products`
 -- 
 
-INSERT INTO `pb_products` VALUES (1, 2, 2, '友邻电子商务网', 0, 5, 196, 0, 1, 0, 0, '十二月促销休闲时尚女士西装', '0', '', '', '', '', 'sample/product/1.jpg', '<p>细节图黑的拍得不清晰，所以只能上灰的</p>\r\n<p>品牌：休闲时尚女士西装</p>\r\n<p>颜色：黑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 灰(已经售完)</p>\r\n<p>材料：全棉</p>\r\n<p><strong>尺码：M&nbsp;&nbsp; 长&nbsp;106&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 胸围&nbsp;&nbsp;&nbsp;43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 袖长 56&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 肩宽&nbsp; &nbsp;35&nbsp;&nbsp;</strong></p>\r\n<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;L&nbsp;&nbsp; &nbsp;长&nbsp;110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 胸围&nbsp;&nbsp;&nbsp;&nbsp;44&nbsp;&nbsp;&nbsp;&nbsp; 袖长&nbsp;&nbsp;57&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 肩宽 36</strong></p>\r\n<p>买家必读：<br /><span>1:</span><span>支持混批</span><span>,500元</span><span>起批</span><span>,</span><span>且每款</span><span>(</span><span>一个图片</span><span>)</span><span>最少整手起批</span><span>;</span><span>只批单款需达到</span><span>500</span><span>元起点。</span><span>.<br />2:</span><span>不挑码</span><span>,</span><span>我们在选中的图片中随机发货</span><span>.</span><span>有货的基本都会放上</span><span>,</span><span>且尽量会平均</span><span>.<br /><br /></span>本店发货均以拍下的订单为依据，聊天记录仅作为参考，付款前请亲们仔细核对订单。如果订单内容错误，请联系销售客服取消后重新下单。特别注意，页面的可选尺码、颜色是现有的库存，我们只以拍下时选择的尺码、颜色为准，订单留言和聊天记录不作为颜色、尺码的发货依据。</p>\r\n<p>［款式色差］本店所有商品除厂家提供的杂志图片以外，均有本店拍摄的实物图片，款式完全和实物一样。图片会国光线、设备的原因产生一点点的色差是难以避免的。</p>\r\n<p>［尺寸尺码］本店商品均标明实际的测量尺寸，请按照实际测量尺寸选择商品。不接受尺寸原因的退货要求。<br />［退换问题］本店承诺确认属非人为损坏的质量问题（未缝合、面料原因的自然破洞）包退、包换。受理的时间为收到货48小时内，预期不予受理！退换商品不可洗涤、不可人为损坏，保持吊牌、配件完整，原封寄回。<br />特别强调：无质量问题，本店不承担因退换而产生的任何运费成本，包括寄出已产生的运费成本，需买家自理。<br />质量鉴定：1、未缝合（拉开、剪开的情况属于人为损坏）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2、面料自然原因的破损<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3、明显位置的大面积油污（以一分硬币大小为标准）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4、发货前就存在，影响穿着且使用者无法自行修复的</p>', 0, 1, 1, 0, 1, 0, '', 1, NULL, 1261806205, 1261978847);
-INSERT INTO `pb_products` VALUES (2, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 1, 0, 0, '厂家直销 瑞丽 W193韩版', '0', '', '', '', '', 'sample/product/2.jpg', '', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261980200, 1261992494);
-INSERT INTO `pb_products` VALUES (3, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 1, 0, 0, '弹力纯棉裤 贴身裤', '0', '', '', '', '', 'sample/product/3.jpg', '', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261980585, 1261992725);
-INSERT INTO `pb_products` VALUES (4, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 1, 0, 0, '瑞丽女装 绵羊绒外套', '0', '', '', '', '', 'sample/product/4.jpg', 'W214韩版冬装 大衣 风衣 瑞丽女装 绵羊绒外套  ', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261992559, 1261992649);
-INSERT INTO `pb_products` VALUES (5, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '弹力裤 休闲长裤', '0', '', '', '', '', 'sample/product/5.jpg', 'W218 韩版女裤 铅笔裤 弹力裤 休闲长裤  ', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993534, 1261993542);
-INSERT INTO `pb_products` VALUES (6, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '销售过万 高领T恤', '0', '', '', '', '', 'sample/product/6.jpg', 'W224打底衫 冬装 韩版女装 销售过万 高领T恤', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993581, 1261993588);
-INSERT INTO `pb_products` VALUES (7, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '糖果色打底衫 淑女衫', '0', '', '', '', '', 'sample/product/7.jpg', '高领T恤 瑞丽女装 韩版冬装 糖果色打底衫 淑女衫', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993628, 1261993628);
-INSERT INTO `pb_products` VALUES (8, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '瑞丽女装 打底衫批发', '0', '', '', '', '', 'sample/product/8.jpg', '厂家直销 高领T恤 韩版服装 瑞丽女装 打底衫批发 ', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993650, 1261993650);
-INSERT INTO `pb_products` VALUES (9, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 1, 24, 0, '百搭打底衫 韩版T恤 ', '0', '', '', '', '', 'sample/product/9.jpg', '厂家直供 淘宝热销，代理加盟，百搭打底衫 韩版T恤 ', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993677, 1261993677);
-INSERT INTO `pb_products` VALUES (10, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 1, 28, 0, '打底衫 冬装 外套 ', '0', '', '', '', '', 'sample/product/10.jpg', '女装代理 韩版T恤 厂家直供 打底衫 冬装 外套 ', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993703, 1261993703);
-INSERT INTO `pb_products` VALUES (11, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '淑女最爱 秋冬女装批发', '0', '', '', '', '', 'sample/product/11.jpg', '欧美流行 瑞丽卫衣 韩版 淑女最爱 秋冬女装批发', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993740, 1261993740);
-INSERT INTO `pb_products` VALUES (12, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '韩版春装 外套批发', '0', '', '', '', '', 'sample/product/12.jpg', 'W194淑女长款卫衣 韩版春装 外套批发', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993765, 1261993765);
-INSERT INTO `pb_products` VALUES (13, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '厂家直供 W217冬装加厚全棉卫衣', '0', '', '', '', '', 'sample/product/13.jpg', '厂家直供 W217冬装加厚全棉卫衣  ', 0, 1, 1, 0, 1, 0, NULL, 1, NULL, 1261993787, 1261993787);
-INSERT INTO `pb_products` VALUES (14, 2, 2, '友邻电子商务网', 1, 0, 0, 0, 0, 0, 0, '瑞丽女装批发 卫衣连帽衫', '0', '', '', '', '', 'sample/product/14.jpg', 'W200韩版秋冬装 外套 瑞丽女装批发 卫衣连帽衫  ', 0, 1, 1, 0, 1, 0, NULL, 10, NULL, 1261993816, 1261993816);
+INSERT INTO `pb_products` (`id`, `member_id`, `company_id`, `cache_companyname`, `sort_id`, `brand_id`, `industry_id1`, `industry_id2`, `industry_id3`, `area_id1`, `area_id2`, `area_id3`, `name`, `price`, `sn`, `spec`, `produce_area`, `packing_content`, `picture`, `content`, `producttype_id`, `status`, `state`, `ifnew`, `ifcommend`, `priority`, `tag_ids`, `clicked`, `formattribute_ids`, `created`, `modified`) VALUES 
+(1, 1, 13, '友邻电子商务网', 0, 0, 5, 196, 0, 1, 0, 0, '32英寸高清液晶电视', '0', '', '', '', '', 'sample/product/1.jpg', NULL, 0, 1, 1, 0, 1, 0, '', 1, NULL, unix_timestamp(now()), 1261978847),
+(2, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 1, 0, 0, 'dv_sx_c10', '0', '', '', '', '', 'sample/product/2.jpg', NULL, 0, 1, 1, 0, 1, 0, NULL, 1, NULL, unix_timestamp(now()), 1261992494),
+(3, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 1, 0, 0, '电子词典', '0', '', '', '', '', 'sample/product/3.jpg', '', 0, 1, 1, 0, 1, 0, NULL, 2, NULL, unix_timestamp(now()), 1261992725),
+(4, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 1, 0, 0, 'e导航', '0', '', '', '', '', 'sample/product/4.jpg', NULL, 0, 1, 1, 0, 0, 0, NULL, 1, NULL, unix_timestamp(now()), 1261992649),
+(5, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 0, 0, 0, '超值独显笔记本', '0', '', '', '', '', 'sample/product/5.jpg', NULL, 0, 1, 1, 0, 0, 0, NULL, 1, NULL, unix_timestamp(now()), 0),
+(6, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 0, 0, 0, 'MP4视频播放机', '0', '', '', '', '', 'sample/product/6.jpg', NULL, 0, 1, 1, 0, 0, 0, NULL, 1, NULL, unix_timestamp(now()), 0),
+(7, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 0, 0, 0, '高贵不贵1080高清', '0', '', '', '', '', 'sample/product/7.jpg', NULL, 0, 1, 1, 0, 0, 0, NULL, 1, NULL, unix_timestamp(now()), 0),
+(8, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 0, 0, 0, '可背式旅行包', '0', '', '', '', '', 'sample/product/8.jpg', NULL, 0, 1, 1, 0, 0, 0, NULL, 3, NULL, unix_timestamp(now()), 0),
+(9, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 1, 24, 0, '千万像素数码相机', '0', '', '', '', '', 'sample/product/9.jpg', NULL, 0, 1, 1, 0, 0, 0, NULL, 1, NULL, unix_timestamp(now()), 0),
+(10, 1, 13, '友邻电子商务网', 1, 0, 1, 0, 0, 1, 28, 0, '时尚DV', '0', '', '', '', '', 'sample/product/10.jpg', NULL, 0, 1, 1, 0, 1, 0, NULL, 11, NULL, unix_timestamp(now()), 0);
+
 
 -- 
 -- 导出表中的数据 `pb_trades`
 -- 
 
-INSERT INTO `pb_trades` VALUES (1, '8', 0, 0, 0, 0, 0, 0, 1, 0, '', '', 'DKZ-5000电动抗折试验机', 'DKZ-5000电动抗折试验机(图)  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381601, 1265973601, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381601, 1263381601);
-INSERT INTO `pb_trades` VALUES (2, '8', 0, 0, 0, 0, 0, 0, 1, 0, '', '', 'VBR-II数显混凝土拌合物维勃稠度仪/数显稠度仪', 'VBR-II数显混凝土拌合物维勃稠度仪/数显稠度仪  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381625, 1265973625, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381625, 1263381625);
-INSERT INTO `pb_trades` VALUES (3, '8', 0, 0, 0, 0, 0, 0, 1, 0, '', '', '电热鼓风干燥箱/电热干燥箱', '电热鼓风干燥箱/电热干燥箱(图)(带价)  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381653, 1265973653, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381653, 1263381653);
-INSERT INTO `pb_trades` VALUES (4, '1', 0, 0, 0, 0, 0, 0, 1, 0, '', '', 'BC-Ⅱ数显比长仪/数显比长仪', 'BC-Ⅱ数显比长仪/数显比长仪(图)(带价)  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381678, 1265973678, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381678, 1263381678);
-INSERT INTO `pb_trades` VALUES (5, '1', 0, 0, 0, 0, 0, 0, 1, 0, '', '', 'BM-I摆动式摩擦系数测定仪/摩擦系数测定仪', 'BM-I摆动式摩擦系数测定仪/摩擦系数测定仪（图）  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381696, 1265973696, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381696, 1263381696);
-INSERT INTO `pb_trades` VALUES (6, '1', 0, 0, 0, 0, 0, 0, 1, 0, '', '', 'TM-Ⅱ混凝土弹性模量测定仪/弹性测定仪', 'TM-Ⅱ混凝土弹性模量测定仪/弹性测定仪(图)  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381711, 1265973711, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381711, 1263381711);
-INSERT INTO `pb_trades` VALUES (7, '1', 0, 0, 0, 0, 0, 0, 1, 0, '', '', 'JA2003电子精密天平/电子天平/精密天平', 'JA2003电子精密天平/电子天平/精密天平(图)  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381733, 1265973733, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381733, 1263381733);
-INSERT INTO `pb_trades` VALUES (8, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', 'GZX-300BSH-III光照培养箱', 'GZX-300BSH-III光照培养箱', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381758, 1265973758, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381758, 1263381758);
-INSERT INTO `pb_trades` VALUES (9, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应水泥胶砂试模 40×40×160', '供应水泥胶砂试模 40×40×160', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381781, 1265973781, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381781, 1263381781);
-INSERT INTO `pb_trades` VALUES (10, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应YHG.400远红外快速干燥箱', '供应YHG.400远红外快速干燥箱', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381793, 1265973793, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381793, 1263381793);
-INSERT INTO `pb_trades` VALUES (11, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应电子天平 MP41001', '供应电子天平 MP41001', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381804, 1265973804, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381804, 1263381804);
-INSERT INTO `pb_trades` VALUES (12, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应电子分析天平 FA2104S', '供应电子分析天平 FA2104S', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381815, 1265973815, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381815, 1263381815);
-INSERT INTO `pb_trades` VALUES (13, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应ATH-500弹簧拉压试验机', '供应ATH-500弹簧拉压试验机', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381826, 1265973826, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381826, 1263381826);
-INSERT INTO `pb_trades` VALUES (14, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应比重/密度电子天平MP5002J', '供应比重/密度电子天平MP5002J', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381836, 1265973836, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381836, 1263381836);
-INSERT INTO `pb_trades` VALUES (15, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应电子精密天平 JA41002', '供应电子精密天平 JA41002', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381846, 1265973846, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381846, 1263381846);
-INSERT INTO `pb_trades` VALUES (16, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '2X-8A皮带式真空泵', '2X-8A皮带式真空泵', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381856, 1265973856, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381856, 1263381856);
-INSERT INTO `pb_trades` VALUES (17, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应YX-450A不锈钢双层立式消毒器', '供应YX-450A不锈钢双层立式消毒器', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381867, 1265973867, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381867, 1263381867);
-INSERT INTO `pb_trades` VALUES (18, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应原料和燃料油中的沉淀物试验器SYA-6531', '供应原料和燃料油中的沉淀物试验器SYA-6531', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381879, 1265973879, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381879, 1263381879);
-INSERT INTO `pb_trades` VALUES (19, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应 远红外快速干燥箱', '供应 远红外快速干燥箱 ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263381892, 1265973892, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381892, 1263381892);
-INSERT INTO `pb_trades` VALUES (20, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应紫外可见可见光度计752S', '供应紫外可见可见光度计752S  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382034, 1265974034, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382034, 1263382034);
-INSERT INTO `pb_trades` VALUES (21, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应气相色谱仪（GC）GC112A-1', '供应气相色谱仪（GC）GC112A-1  ', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382053, 1265974053, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382053, 1263382053);
-INSERT INTO `pb_trades` VALUES (22, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应电子分析天平 FA1104', '供应电子分析天平 FA1104', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382064, 1265974064, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382064, 1263382064);
-INSERT INTO `pb_trades` VALUES (23, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应电热恒温鼓风干燥箱 DHG-9076A', '供应电热恒温鼓风干燥箱 DHG-9076A', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382078, 1265974078, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382078, 1263382078);
-INSERT INTO `pb_trades` VALUES (24, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应微量可调整支消毒移液器SL20', '供应微量可调整支消毒移液器SL20', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382095, 1265974095, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382095, 1263382095);
-INSERT INTO `pb_trades` VALUES (25, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应台式高速冷冻离心机 H1750R', '供应台式高速冷冻离心机 H1750R', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382129, 1265974129, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382129, 1263382129);
-INSERT INTO `pb_trades` VALUES (26, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应酸度计PHB-5', '供应酸度计PHB-5', 0.00, '0', '0', '', '', 0, '', '', '', '', 1, 1263382142, 1265974142, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382142, 1263382142);
-INSERT INTO `pb_trades` VALUES (27, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应生物显微镜 XSP-2C', '供应生物显微镜 XSP-2C', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/1.jpg', '', 1, 1263382153, 1265974153, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382153, 1263382153);
-INSERT INTO `pb_trades` VALUES (28, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应电子式水分计MOC-120H', '供应电子式水分计MOC-120H', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/2.jpg', '', 1, 1263382166, 1265974166, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382166, 1263382166);
-INSERT INTO `pb_trades` VALUES (29, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应钠离子浓度计', '供应钠离子浓度计', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/3.jpg', '', 1, 1263382176, 1265974176, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382176, 1263382176);
-INSERT INTO `pb_trades` VALUES (30, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应浓度计DWS-51', '供应浓度计DWS-51', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/4.jpg', '', 1, 1263382186, 1265974186, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382186, 1263382186);
-INSERT INTO `pb_trades` VALUES (31, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应自动电位滴定仪 ZD-2', '供应自动电位滴定仪 ZD-2', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/10.jpg', '', 1, 1263382197, 1265974197, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382197, 1263382197);
-INSERT INTO `pb_trades` VALUES (32, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应精密pH/离子/ORP/oC/o', '供应精密pH/离子/ORP/oC/o', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/9.jpg', '', 1, 1263382210, 1265974210, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382210, 1263382210);
-INSERT INTO `pb_trades` VALUES (33, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应循环水真空泵 SHZ-D（III）', '供应循环水真空泵 SHZ-D（III）', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/8.jpg', '', 1, 1263382220, 1265974220, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382220, 1263382220);
-INSERT INTO `pb_trades` VALUES (34, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应自动滴定仪 ZDJ-5', '供应自动滴定仪 ZDJ-5', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/7.jpg', '', 1, 1263382235, 1265974235, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382235, 1263382235);
-INSERT INTO `pb_trades` VALUES (35, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应西餐陶瓷餐具', '供应西餐陶瓷餐具', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/6.jpg', '', 1, 1263382252, 1265974252, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382252, 1263382252);
-INSERT INTO `pb_trades` VALUES (36, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应膨润土粉', '供应膨润土粉', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/5.jpg', '', 1, 1263382263, 1265974263, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382263, 1263382263);
-INSERT INTO `pb_trades` VALUES (37, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应自动变频微波消解/萃取仪 MDS-6', '供应自动变频微波消解/萃取仪 MDS-6', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/4.jpg', '', 1, 1263382274, 1265974274, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382274, 1263382274);
-INSERT INTO `pb_trades` VALUES (38, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应低温试验箱 WD400', '供应低温试验箱 WD400', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/3.jpg', '', 1, 1263382285, 1265974285, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382285, 1263382285);
-INSERT INTO `pb_trades` VALUES (39, '2', 0, 0, 0, 0, 0, 0, 2, 0, '', '', '供应活性白土', '供应活性白土', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/2.jpg', '', 1, 1263382296, 1265974296, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263382296, 1263382296);
-INSERT INTO `pb_trades` VALUES (40, '1', 0, 0, 0, 0, 0, 0, 2, 0, '', '', 'TYE-3000混凝土压力机', 'TYE-3000混凝土压力机', 0.00, '0', '0', '', '', 0, '', '', 'sample/offer/1.jpg', '', 1, 1263312000, 1264608000, 0, 0, '0', '0', 0, 0, 0, '', 1, NULL, NULL, 1263381313, 1263381313);
+INSERT INTO `pb_trades` (`id`, `type_id`, `industry_id1`, `industry_id2`, `industry_id3`, `area_id1`, `area_id2`, `area_id3`, `member_id`, `company_id`, `cache_username`, `cache_companyname`, `cache_contacts`, `title`, `content`, `price`, `measuring_unit`, `monetary_unit`, `display_order`, `display_expiration`, `picture`, `picture_remote`, `status`, `submit_time`, `expire_time`, `expire_days`, `if_commend`, `if_urgent`, `if_locked`, `require_point`, `require_membertype`, `require_freedate`, `ip_addr`, `clicked`, `tag_ids`, `formattribute_ids`, `created`, `modified`) VALUES 
+(1, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '求购双门不锈钢工作台 ', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/12.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(2, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '求购玉米大米花生红小豆', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(3, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '爱沙尼亚客商采购淡水鲈鱼', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(4, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'SLEEPCO公司求购', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(5, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '求购樟松树苗株', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(6, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '求购西瓜', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(7, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '亚商求购中国产各种金属家具', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(8, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '尼泊尔烟草招标', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(9, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '亚商求购中国产食品包装设备', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(10, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '亚商求购中国布料', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/8.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 1, '1', '0', 0, 0, 0, '', 2, '', NULL, unix_timestamp(now()), 0),
+(11, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '亚商求购中国产电脑配件', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/9.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(12, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '利比亚客商有意购买中国产薯条制作设备', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/11.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(13, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '供应日本落叶松苗', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/12.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(14, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '供应各种花卉', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(15, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Aspen信托集团寻求与中国公司合作', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(16, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '寻找蜂蜜购买商', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(17, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '克罗地亚游艇公司欲向中国出售游艇', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(18, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '以色列蔬果及农产品公司寻求国内买家', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(19, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '科一可可加工公司寻求中国购买商', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(20, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '爱尔兰ECOBUILD展览', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(21, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '供应台湾优种果苗', NULL, 0.00, '0', '0', 0, 0, '', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(22, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', '供应7元整款T恤库存服装批发', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/7.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(23, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Promotional Wooden Comb ', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/6.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(24, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Sell Aida Arm Chairs ', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/5.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(25, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Vacuum Dehydrator For Emulsified', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/4.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(26, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Samsung Cartridge Chips ', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/3.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(27, '2', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Sell Polarized Lens', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/2.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(28, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Buy Cattle Fence From', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/12.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0),
+(29, '1', 0, 0, 0, 0, 0, 0, 1, 13, '', '', '', 'Bosch Engine', NULL, 0.00, '0', '0', 0, 0, 'sample/offer/1.jpg', '', 1, unix_timestamp(now()), unix_timestamp(now())+86400, 0, 0, '0', '0', 0, 0, 0, '', 1, '', NULL, unix_timestamp(now()), 0);
 
 -- 
 -- 导出表中的数据 `pb_goods`
 -- 
 
-INSERT INTO `pb_goods` VALUES (2, '高级会员升级', '', 1500.00, 1, '', 0, 1260847596, 1260847617);
-INSERT INTO `pb_goods` VALUES (1, '普通会员升级', '', 1000.00, 1, '', 0, 1260847648, 1260847648);
+INSERT INTO `pb_goods` VALUES (2, '高级会员升级', '', 1500.00, 1, '', 0, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO `pb_goods` VALUES (1, '普通会员升级', '', 1000.00, 1, '', 0, unix_timestamp(now()), unix_timestamp(now()));
+
+INSERT INTO `pb_standards` (`id`, `attachment_id`, `type_id`, `title`, `source`, `digest`, `content`, `publish_time`, `force_time`, `clicked`, `created`, `modified`) VALUES 
+(1, 0, 1, '建筑幕墙用铝塑复合板', '', '', 0, 0, 1000, unix_timestamp(), 0),
+(2, 0, 2, '加工中空玻璃合同标准条款', '', '', '', 0, 0, 2, unix_timestamp(), 0),
+(3, 0, 3, '国家十项室内有害物质强制性标准', '', '', '', 0, 0, 1, unix_timestamp(), 0),
+(4, 0, 4, '国际贸易中木质包装材料管理准则', '', '', '', 0, 0, 3, unix_timestamp(), 0),
+(5, 0, 5, '建筑起重机械安全监督管理规定', '', '', '', 0, 0, 2, unix_timestamp(), 0),
+(6, 0, 6, '无公害食品绿色食品有机食品标准知识', '', '', '', 0, 0, 3, unix_timestamp(), 0);
+
+-- 
+-- 导出表中的数据 `pb_brandtypes`
+-- 
+
+INSERT INTO `pb_brandtypes` (`id`, `parent_id`, `level`, `name`, `display_order`) VALUES 
+(1, 0, 1, '装饰建材', 0),
+(2, 0, 1, '服装鞋帽', 0),
+(3, 0, 1, '家具日用', 0),
+(4, 0, 1, '食品', 0),
+(5, 0, 1, '家电数码', 0),
+(6, 0, 1, '汽车房产', 0),
+(7, 0, 1, '餐饮娱乐', 0),
+(8, 0, 1, '机械化工', 0),
+(9, 5, 2, '洗衣机', 0),
+(10, 5, 2, '饮水机', 0),
+(11, 5, 2, '电脑', 0),
+(12, 5, 2, '手机', 0);
+
+-- 
+-- 导出表中的数据 `pb_productcategories`
+-- 
+
+INSERT INTO `pb_productcategories` (`id`, `parent_id`, `level`, `name`, `display_order`) VALUES 
+(1, 0, 1, '电子元器 ', 0),
+(2, 0, 1, '美容护理 ', 0),
+(3, 0, 1, '医疗保养 ', 0),
+(4, 0, 1, '仪器仪表 ', 0),
+(5, 0, 1, '家居用品 ', 0),
+(6, 0, 1, '礼品玩具 ', 0),
+(7, 0, 1, '汽摩与配 ', 0),
+(8, 0, 1, '冶金钢铁 ', 0),
+(9, 0, 1, '包装 ', 0),
+(10, 0, 1, '电脑软件 ', 0),
+(11, 0, 1, '建筑建材 ', 0),
+(12, 0, 1, '印刷 ', 0),
+(13, 0, 1, '家电 ', 0),
+(14, 0, 1, '交通运输 ', 0),
+(15, 0, 1, '通讯 ', 0),
+(16, 0, 1, '照明工业 ', 0),
+(17, 0, 1, '电工电气 ', 0),
+(18, 0, 1, '石油化工 ', 0),
+(19, 0, 1, '涂装与表 ', 0),
+(20, 0, 1, '橡胶塑料 ', 0),
+(21, 0, 1, '安全防护 ', 0),
+(22, 0, 1, '办公文教 ', 0),
+(23, 0, 1, '传媒 ', 0),
+(24, 0, 1, '环保与水处理 ', 0),
+(25, 0, 1, '工程机械 ', 0),
+(26, 0, 1, '五金工具 ', 0),
+(27, 0, 1, '运动休闲 ', 0),
+(28, 0, 1, '纸业 ', 0),
+(29, 0, 1, '纺织皮革 ', 0),
+(30, 0, 1, '服装 ', 0),
+(31, 0, 1, '农业 ', 0),
+(32, 0, 1, '食品饮料 ', 0),
+(33, 0, 1, '服饰 ', 0),
+(34, 0, 1, '商务服务 ', 0),
+(35, 0, 1, '机械工业行业', 0),
+(36, 1, 2, '保险元器件  ', 0),
+(37, 1, 2, '半导体材料  ', 0),
+(38, 1, 2, '其它电子材料  ', 0),
+(39, 1, 2, '电容器  ', 0),
+(40, 1, 2, '其它电子元器件  ', 0),
+(41, 1, 2, '三极管  ', 0),
+(42, 1, 2, '二极管  ', 0),
+(43, 1, 2, '频率元件  ', 0),
+(44, 1, 2, '变频器  ', 0),
+(45, 1, 2, '电感器  ', 0),
+(46, 1, 2, '电声配件  ', 0),
+(47, 1, 2, '电声器件  ', 0),
+(48, 1, 2, '电真空器件  ', 0),
+(49, 1, 2, '连接器  ', 0),
+(50, 1, 2, '继电器  ', 0),
+(51, 1, 2, '压电晶体材料  ', 0),
+(52, 1, 2, '电子浆料  ', 0),
+(53, 1, 2, '电子用塑胶制品  ', 0),
+(54, 1, 2, '场效应管  ', 0),
+(55, 1, 2, '电子加工  ', 0),
+(56, 1, 2, '磁性元器件  ', 0),
+(57, 1, 2, '印刷线路板  ', 0),
+(58, 1, 2, '开关元件  ', 0),
+(59, 1, 2, '光电与显示器件  ', 0),
+(60, 1, 2, '电位器  ', 0),
+(61, 1, 2, '显示器件  ', 0),
+(62, 1, 2, '传感器  ', 0),
+(63, 1, 2, '电工仪器仪表  ', 0),
+(64, 1, 2, '电工陶瓷材料  ', 0),
+(65, 1, 2, '集成电路  ', 0),
+(66, 1, 2, '电阻器  ', 0),
+(67, 1, 2, '翻板  ', 0),
+(68, 1, 2, '屏蔽材料  ', 0),
+(69, 1, 2, '红外技术及应用  ', 0),
+(70, 1, 2, '电子项目合作  ', 0),
+(71, 1, 2, '变压器  ', 0),
+(72, 1, 2, '激光器件  ', 0),
+(73, 1, 2, '电子五金件  ', 0),
+(74, 1, 2, '工业编码器  ', 0),
+(75, 1, 2, '覆铜板材料 ', 0);
+
+-- 
+-- 导出表中的数据 `pb_jobtypes`
+-- 
+
+INSERT INTO `pb_jobtypes` (`id`, `parent_id`, `level`, `name`, `display_order`) VALUES 
+(1, 0, 1, '软件类', 0),
+(2, 0, 1, '网站网络管理', 0),
+(3, 0, 1, '数据库类', 0),
+(4, 0, 1, 'IT管理类', 0),
+(5, 0, 1, 'IT品管和技术支持及其它', 0),
+(6, 0, 1, '通信类', 0),
+(7, 0, 1, '设计类', 0),
+(8, 0, 1, '客户服务类', 0),
+(9, 0, 1, '销售顾问类', 0),
+(10, 0, 1, '市场类', 0),
+(11, 0, 1, '其他', 0),
+(12, 1, 2, '软件工程师', 0),
+(13, 1, 2, '高级软件工程师', 0),
+(14, 1, 2, '系统架构师', 0),
+(15, 1, 2, '系统分析员', 0),
+(16, 1, 2, '系统集成工程师', 0),
+(17, 1, 2, '软件测试', 0),
+(18, 1, 2, '其他', 0);

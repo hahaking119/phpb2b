@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: list.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'list');
 require("../libraries/common.inc.php");
@@ -65,7 +58,16 @@ $result = $market->findAll("*", null, $conditions, "Market.id DESC", $page->firs
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		if(!empty($result[$i]['picture'])) $result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture']);
+		if (!empty($result[$i]['area_id1'])) {
+			$area_ids[] = $result[$i]['area_id1'];
+		}
+		if (!empty($result[$i]['industry_id1'])) {
+			$industry_ids[] = $result[$i]['industry_id1'];
+		}
+		$result[$i]['digest'] = mb_substr(strip_tags(trim($result[$i]['content'])), 0, 100);
 	}
+	setvar("AreaIds", implode(",", $area_ids));
+	setvar("IndustryIds", implode(",", $industry_ids));
 }
 setvar("SearchAmount", L("search_amount", "tpl"));
 setvar("Items", $result);

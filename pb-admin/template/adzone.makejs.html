@@ -1,18 +1,13 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 广告 &raquo; 广告位置</p>
+	<p><{$_your_current_position}> <{$_ads}> &raquo; <{$_adzone}></p>
 </div>
 <div id="rightTop"> 
-    <h3>广告位置</h3> 
+    <h3><{$_adzone}></h3> 
     <ul class="subnav">
-		<li><a href="adzone.php">管理</a></li>
-        <li><a href="adzone.php?do=edit&id=<{$id}>">添加/编辑</a></li>
-		<li><a class="btn1" href="adzone.php?do=makejs&id=<{$id}>">查看调用代码</a></li>
+		<li><a href="adzone.php"><{$_management}></a></li>
+        <li><a href="adzone.php?do=edit&id=<{$id}>"><{$_add_or_edit}></a></li>
+		<li><a class="btn1" href="adzone.php?do=makejs&id=<{$id}>"><span>查看调用代码</span></a></li>
     </ul>
 </div>
 <div class="info">

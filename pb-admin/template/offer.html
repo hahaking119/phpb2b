@@ -1,19 +1,14 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 供求信息</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_offer}></p>
 </div>
 <div id="rightTop"> 
-    <h3>供求信息</h3> 
+    <h3><{$_offer}></h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="offer.php">管理</a></li>
-        <li><a href="offer.php?do=edit">添加/编辑</a></li>
-        <li><a href="offer.php?do=setting">设置</a></li>
-        <li><a href="offertype.php">分类</a></li>
+		<li><a class="btn1" href="offer.php"><span><{$_management}></span></a></li>
+        <li><a href="offer.php?do=edit"><{$_add_or_edit}></a></li>
+        <li><a href="offer.php?do=setting"><{$_setting}></a></li>
+        <li><a href="offertype.php"><{$_sorts}></a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -27,15 +22,15 @@ body {background: #fcfdff}
                 <option value="<{$key}>"><{$item}></option>
                 <{/foreach}>
 				</select>
-				标题关键字 : <input class="queryInput" type="text" name="q" value="" /> 
-				用户名 : <input class="queryInput" type="text" name="username" value="" />
+				<{$_title_keywords}> : <input class="queryInput" type="text" name="q" value="" /> 
+				<{$_cp_username}> : <input class="queryInput" type="text" name="username" value="" />
                 <select class="querySelect" name="display_pg">
-				<option value="0">每页显示数量</option>
-				<option value="10" <{if $smarty.get.display_pg==10}>selected="selected"<{/if}>>每页显示10</option>
-				<option value="20" <{if $smarty.get.display_pg==20}>selected="selected"<{/if}>>每页显示20</option>
-				<option value="30" <{if $smarty.get.display_pg==30}>selected="selected"<{/if}>>每页显示30</option>
+				<option value="0"><{$_eve_page_display}>数量</option>
+				<option value="10" <{if $smarty.get.display_pg==10}>selected="selected"<{/if}>><{$_eve_page_display}>10</option>
+				<option value="20" <{if $smarty.get.display_pg==20}>selected="selected"<{/if}>><{$_eve_page_display}>20</option>
+				<option value="30" <{if $smarty.get.display_pg==30}>selected="selected"<{/if}>><{$_eve_page_display}>30</option>
 				</select>
-                <input type="submit" class="formbtn" value="查询" /> 
+                <input type="submit" class="formbtn" value="<{$_searching}>" /> 
             </div> 
         </form> 
     </div> 
@@ -44,57 +39,66 @@ body {background: #fcfdff}
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="" method="post">
   <input type="hidden" name="page" value="<{$smarty.get.page}>" />
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">类型</label></td>
-		  <td><span><label for="idAll">主题</label></span></td>
-		  <td>用户名</td>
-		  <td><span>审核状态</span></td>
-		  <td><span>发布时间</span></td>
-		  <td><span>到期时间</span></td>
-		  <td class="handler">操作</td>
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th></th>
+		  <th><label for="idAll">主题</label></th>
+		  <th><label for="idAll"><{$_types}></label></th>
+		  <th><{$_cp_username}></th>
+		  <th><{$_checked_status}></th>
+		  <th><{$_pub_date}></th>
+		  <th><{$_expire_date}></th>
+		  <th><{$_action}></th>
 		</tr>
+    <thead>
+    <tfoot>
+		<tr>
+		  <th colspan="9"><div class="pageLinks"><{$ByPages}></div></th>
+		</tr>
+    <tfoot>
+    <tbody>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
-		  <td><{$TradeTypes[$item.type_id]}></td>
-		  <td><label for="item_<{$item.id}>"><{$item.title}></label><{if $item.pubdate>=$today_timestamp}>&nbsp;<img src="./images/new.gif" /><{/if}><{if $item.if_commend==1}><img src="../images/recommend.gif" alt="推荐" /><{/if}><{if $item.TradePicture!=''}>&nbsp;<img src="../images/havepic.gif" border="0" alt="有图片" /><{/if}><{if $item.if_urgent}>&nbsp;<img src="../images/urgent.gif" border="0" alt="紧急" /><{/if}></td>
+		  <td><{if $item.created>=$today_timestamp}><span class="icon-new"></span><{/if}><{if $item.if_commend==1}><span class="icon-commend"></span><{/if}><{if $item.TradePicture!=''}><span class="icon-pic"></span><{/if}><{if $item.if_urgent}><span class="icon-hurry"></span><{/if}></td>
+		  <td><label for="item_<{$item.id}>"><{$item.title}></label></td>
+		  <td><a href="offer.php?do=search&type_id=<{$item.type_id}>" style="text-decoration: none;"><{$TradeTypes[$item.type_id]}></a></td>
 		  <td><a href="member.php?do=edit&id=<{$item.member_id}>"><{$item.username}></a></td>
 		  <td><{$CheckStatus[$item.status]}></td>
-		  <td><{$item.pubdate}></td>
-		  <td><{if $item.if_expire}><span style="color:red;" title="<{$item.expdate}>"><{$item.if_expire}></span><{else}><{$item.expdate}><{/if}></td>
+		  <td class="pb_datetime"><{$item.pubdate}></td>
+		  <td class="pb_datetime"><{if $item.if_expire}><span style="color:red;" title="<{$item.expdate}>"><{$item.if_expire}></span><{else}><{$item.expdate}><{/if}></td>
 		  <td class="handler">
            <ul id="handler_icon">
-            <li><a class="btn_resend" href="offer.php?id=<{$item.id}>&do=refresh<{$addParams}>" title="重发">重发</a></li>
-             <li><a class="btn_browse"  href="<{$SiteUrl}>offer/detail.php?id=<{$item.id}><{$addParams}>" target="_blank" title="预览">预览</a></li>
-            <li><a class="btn_edit" href="offer.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
+            <li><a class="btn_resend" href="offer.php?id=<{$item.id}>&do=refresh<{$addParams}>" title="<{$_trade_refresh}>"><{$_trade_refresh}></a></li>
+             <li><a class="btn_browse"  href="<{$SiteUrl}>offer/detail.php?id=<{$item.id}><{$addParams}>" target="_blank" title="<{$_preview}>"><{$_preview}></a></li>
+            <li><a class="btn_edit" href="offer.php?do=edit&id=<{$item.id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
           </ul>  
 		  
 		  </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="8">没有符合条件的记录</td>
+		  <td colspan="8"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
-      <input type="submit" name="commend" value="推荐" class="formbtn batchButton"/>
-      <input type="submit" name="urgent_batch" value="设为紧急" class="formbtn batchButton"/>
-      <input type="submit" name="refresh" value="重发" class="formbtn batchButton"/>
+      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton"/>
+      <input type="submit" name="commend" value="<{$_commend}>" class="formbtn batchButton"/>
+      <input type="submit" name="urgent_batch" value="<{$_set_urgent}>" class="formbtn batchButton"/>
+      <input type="submit" name="cancel_urgent_batch" value="取消紧急" class="formbtn batchButton"/>
+      <input type="submit" name="refresh" value="<{$_trade_refresh}>" class="formbtn batchButton"/>
 	  <select name="status_batch" id="StatusBatch" onchange="$('#ListFrm').submit();">
-      	<option>设置状态</option>
-        <option value="0">审核无效</option>
-        <option value="1">审核通过</option>
+      	<option value="-1"><{$_set_status}></option>
+        <option value="0"><{$_check_invalid}></option>
+        <option value="1"><{$_check_passed}></option>
       </select>
-    </div>
-    <div class="pageLinks"><{$ByPages}></div>
-    <div class="clear"/>
+		</div>
+		<div class="clear"/>
     </div>
 	</form>
 </div>

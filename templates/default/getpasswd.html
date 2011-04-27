@@ -8,11 +8,11 @@ label.error {
 </style>
 <div class="wrapper">
   <div class="content">
-    <div class="tips"><span><{$position}></span><{$_get_Password}></div>
+    <div class="tips"><span><{$position}></span></div>
     <div class="blank6"></div>
    <div class="quhuimima">  
       <div class="base_title">
-         <h2><span class="title_name"><{$_add_details}></span><span class="title_telephone"><{$_issue_contact}><{$service_tel}></span></h2>
+         <h2><span class="corner_t_l"></span><span class="corner_t_m title_mouse"><{$_add_details}></span><span class="corner_t_r"></span><span class="title_telephone"><{$_issue_contact}><{$service_tel}></span></h2> 
       </div>
       <div class="messagecon">
               <div class="messageconleft">
@@ -23,7 +23,7 @@ label.error {
                     <table class="messagecon_list">
                       <tr>
                         <th><{$_login_name}></th>
-                        <td><input type="text" name="data[username]" value="" id="dataMemberUsername" /></td>
+                        <td><input type="text" name="data[username]" value="" id="dataUsername" /></td>
                       </tr>
                       <tr>
                         <th><{$_your_email}></th>
@@ -50,6 +50,6 @@ label.error {
 </div>
 <script language="javascript" src="scripts/jquery/validate.js"></script>
 <script language="javascript">
-<{fetch file="scripts/logging.js"}>
+<{fetch file="scripts/validate.js"}>
 </script>
 <{include file="`$ThemeName`/footer.html"}>

@@ -1,43 +1,41 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: news.php 458 2009-12-27 03:05:45Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
-uses("news","newstype", "membertype","attachment", "tag");
+uses("news","newstype", "membertype","attachment", "tag","typeoption");
 require(LIB_PATH .'time.class.php');
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require("session_cp.inc.php");
 $tag = new Tags();
 $page = new Pages();
 $attachment = new Attachment('pic');
+$typeoption = new Typeoption();
 $membertype = new Membertypes();
 $news = new Newses();
 $newstype = new Newstypes();
 $conditions = array();
 $fields = null;
 $tpl_file = "news";
+setvar("AskAction", $typeoption->get_cache_type("common_option"));
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
+	if (isset($_GET['action'])) {
+		$action = trim($_GET['action']);
+	}
 	if (!empty($_GET['id'])) {
 		$id = intval($_GET['id']);
 	}
 	if ($do == "search") {
-		if (isset($_GET['news']['keywords'])) $conditions[]= "News.keywords like '%".trim($_GET['news']['keywords'])."%'";
-		if (isset($_GET['news']['source'])) $conditions[]= "News.source like '%".trim($_GET['news']['source'])."%'";
-		if (isset($_GET['news']['q'])) $conditions[]= "News.title like '%".trim($_GET['q'])."%'";
+		if (isset($_GET['keywords'])) $conditions[]= "News.keywords like '%".trim($_GET['news']['keywords'])."%'";
+		if (isset($_GET['source'])) $conditions[]= "News.source like '%".trim($_GET['news']['source'])."%'";
+		if (isset($_GET['q'])) $conditions[]= "News.title like '%".trim($_GET['q'])."%'";
 		if (!empty($_GET['typeid'])) {
 			$conditions[]= "News.type_id=".$_GET['typeid'];
 		}
@@ -56,8 +54,8 @@ if (isset($_GET['do'])) {
 	}
 	if ($do == "edit") {
 		$news_info = null;
-		require(CACHE_PATH. "cache_area.php");
-		require(CACHE_PATH. "cache_industry.php");
+		include(CACHE_PATH. "cache_area.php");
+		include(CACHE_PATH. "cache_industry.php");
 		setvar("CacheAreas", $_PB_CACHE['area']);
 		setvar("CacheIndustries", $_PB_CACHE['industry']);		
 		$result = $membertype->findAll("id,name",null, $conditions, " id desc");
@@ -72,6 +70,13 @@ if (isset($_GET['do'])) {
 			if(($item_info['picture'])) $item_info['image'] = pb_get_attachmenturl($item_info['picture'], "../", 'small');
 			$tag->getTagsByIds($item_info['tag_ids'], true);
 			$item_info['tag'] = $tag->tag;
+		}
+		if ($action == "convert") {
+			if (!empty($_GET['companynewsid'])) {
+				$item_info['title'] = $pdb->GetOne("SELECT title FROM {$tb_prefix}companynewses WHERE id=".intval($_GET['companynewsid']));
+			}
+		}
+		if (!empty($item_info)) {
 			setvar("item",$item_info);
 		}
 		$tpl_file = "news.edit";
@@ -93,13 +98,23 @@ if (isset($_POST['del']) && is_array($_POST['id'])) {
 		flash();
 	}
 }
+
+if (isset($_POST['commend']) && is_array($_POST['id'])) {
+	$news->saveField("if_commend", 1, $_POST['id']);
+	flash("success");
+}
+
+if (isset($_POST['cancel_commend']) && is_array($_POST['id'])) {
+	$news->saveField("if_commend", 0, $_POST['id']);
+	flash("success");
+}
 if (isset($_POST['save']) && !empty($_POST['data']['news'])) {
 	if (isset($_POST['id'])) {
 		$id = intval($_POST['id']);
 	}
 	$attachment->if_orignal = false;
 	$attachment->if_watermark = false;
-	$attachment->if_thumb_middle = false;
+	$attachment->if_thumb_middle = true;
 	$vals = array();
 	$vals = $_POST['data']['news'];
 	if(!empty($_POST['require_membertype']) && !in_array(0, $_POST['require_membertype'])){
@@ -112,7 +127,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['news'])) {
 	if(!empty($id)){
 		$vals['modified'] = $time_stamp;
 		if (!empty($_FILES['pic']['name'])) {
-			$attachment->rename_file = "news-".$pdb->GetOne("SELECT created FROM {$tb_prefix}newses WHERE id={$id}");	
+			$attachment->rename_file = "news-".$id;	
 			$attachment->insert_new = false;
 			$attachment->upload_process();
 			$vals['picture'] = $attachment->file_full_url;
@@ -121,7 +136,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['news'])) {
 	}else{
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		if (!empty($_FILES['pic']['name'])) {
-			$attachment->rename_file = "news-".$time_stamp;	
+			$attachment->rename_file = "news-".($news->getMaxId()+1);	
 			$attachment->upload_process();
 			$vals['picture'] = $attachment->file_full_url;
 		}

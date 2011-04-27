@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: common.inc.php 462 2009-12-27 03:20:41Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1388 $
  */
 define('IN_PHPB2B', TRUE);
 define('PHPB2B_ROOT', substr(dirname(__FILE__), 0, -9));
@@ -25,15 +18,27 @@ define('DS', DIRECTORY_SEPARATOR);
 require(PHPB2B_ROOT. 'configs'.DS.'config.inc.php');
 
 /**
- * PHPB2B DEBUG LEVEL:
- * MYABE 0-5
+ * PHPB2B Debug Level
+ * Myabe 0-5
  */
 if(!isset($debug)) $debug = 0;
-require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.inc.php');
-require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'message.inc.php');
 require(PHPB2B_ROOT. 'libraries'.DS.'global.func.php');
 require(PHPB2B_ROOT. 'configs'.DS.'paths.php');
-include(CACHE_PATH. 'cache_setting.php');
+if (isset($_GET['app_lang']) && is_file(PHPB2B_ROOT.'languages'.DS.$_GET['app_lang'].DS."template.inc.php")) {
+	$app_lang = $_GET['app_lang'];
+	usetcookie("lang", $app_lang);
+}
+if (isset($_COOKIE[$cookiepre.'lang'])) {
+	$app_lang = $_COOKIE[$cookiepre.'lang'];
+}
+if(!isset($app_lang) || !file_exists(PHPB2B_ROOT.'languages'.DS.$app_lang.DS."template.inc.php")) $app_lang = "zh-cn";
+define('CACHE_PATH', PHPB2B_ROOT."data".DS."cache".DS.$app_lang.DS);
+require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'template.inc.php');
+require(PHPB2B_ROOT.'languages'.DS.$app_lang.DS.'message.inc.php');
+$msg = null;
+if (!defined("LOCALE_PATH")) {
+	define("LOCALE_PATH", APP_PATH.DS.'locale'.DS.$app_lang.DS);
+}
 $httpHost = pb_getenv('HTTP_HOST');
 if(!defined('URL')) {
 	if (!empty($absolute_uri)) {
@@ -53,30 +58,43 @@ $date_line = date("Y-m-d H:i:s", $time_stamp);
 $includes = array(
 	SOURCE_PATH. 'adodb'.DS.'adodb.inc.php',
 	PHPB2B_ROOT. 'libraries'.DS.'smarty.pb.class.php',
-	LIB_PATH. 'pb_object.php',
-	LIB_PATH. 'pb_model.php',
-	LIB_PATH. 'pb_controller.php',
-	LIB_PATH. 'pb_view.php',
+	LIB_PATH. 'core/object.php',
+	LIB_PATH. 'core/model.php',
+	LIB_PATH. 'core/controller.php',
+	LIB_PATH. 'core/view.php',
 );
 foreach ($includes as $inc) {
 	if (!file_exists($inc)) {
-		trigger_error(sprintf(L("file_not_exists"), $inc));
+		trigger_error(sprintf(L("file_not_exists", "msg", $inc)));
 	}else{
 		require($inc);
 	}
 }
-$pdb = &NewADOConnection($database);
+$pdb = ADONewConnection($database);
 $smarty = new MySmarty();
 $connected = $pdb->PConnect($dbhost,$dbuser,$dbpasswd,$dbname);
 if(!$connected or empty($connected)) {
 	$msg = L("db_conn_error", 'msg', $pdb->ErrorMsg());
 	$msg.= "<br />".L("db_conn_error_no", 'msg', $pdb->ErrorNo());
+	if (!file_exists(DATA_PATH. "install.lock")) {
+		$msg.="<br /><a href='install/install.php'>".L("please_reinstall_program", "msg")."</a>";
+	}
 	header_sent($msg);
 	exit;
 }
-if($dbcharset) {
+if($dbcharset && mysql_get_server_info() > '4.1') {
 	$pdb->Execute("SET NAMES '{$dbcharset}'");
 }
+if (!file_exists(CACHE_PATH. "cache_setting.php")) {
+	require_once(LIB_PATH. "cache.class.php");
+	$cache = new Caches();
+	if($cache->cacheAll()){
+		$msg.="<a href='index.php'>".L("cached_and_refresh")."</a>";
+		header_sent($msg);
+		exit;
+	}
+}
+$cachelost = (include CACHE_PATH. 'cache_setting.php') ? '' : 'settings';
 $phpb2b_auth_key = md5($_PB_CACHE['setting']['auth_key'].pb_getenv('HTTP_USER_AGENT'));
 $php_self = pb_getenv('PHP_SELF');
 $base_script = basename($php_self);
@@ -103,8 +121,14 @@ if ($pb_userinfo) {
 	$pb_user = pb_addslashes($pb_user);
 	uaAssign($pb_userinfo);
 }
-uaAssign(array('SiteUrl'=>URL, 'Charset'=>$charset));
+uaAssign(array('SiteUrl'=>URL, 'Charset'=>$charset, 'AppLanguage'=>$app_lang));
 uaAssign($_PB_CACHE['setting']);
+if(!MAGIC_QUOTES_GPC) {
+    $_GET = pb_addslashes($_GET);
+    $_POST = pb_addslashes($_POST);
+    $_COOKIE = pb_addslashes($_COOKIE);
+//    $_FILES = pb_addslashes($_FILES);
+}
 $pre_length = strlen($cookiepre);
 foreach($_COOKIE as $key => $val) {
 	if(substr($key, 0, $pre_length) == $cookiepre) {

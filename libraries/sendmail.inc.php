@@ -1,26 +1,21 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: sendmail.inc.php 462 2009-12-27 03:20:41Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
-function pb_sendmail($to_address, $to_name, $subject, $body, $redirect_url = null)
+function pb_sendmail($to_users = array(), $subject, $template = null, $body = null, $redirect_url = null)
 {
-    global $charset, $_PB_CACHE;
+    global $charset, $smarty, $theme_name, $_PB_CACHE;
     require_once(LIB_PATH. "phpmailer/class.phpmailer.php");
+    $content = null;
     $mail = new PHPMailer();
     $result = false;
+    $logdata['created'] = time();
     if (!empty($_PB_CACHE['setting']['mail'])) {
     	extract(unserialize($_PB_CACHE['setting']['mail']));
     }
@@ -28,7 +23,12 @@ function pb_sendmail($to_address, $to_name, $subject, $body, $redirect_url = nul
     	$mail->IsSMTP();
     	$mail->Host       = $smtp_server;
     	$mail->Port       = $smtp_port;
-    	if($smtp_auth) $mail->SMTPAuth = true;
+    	if($smtp_auth) {
+    		$mail->SMTPAuth = true;
+    	}
+    	if (!empty($auth_protocol)) {
+    		$mail->SMTPSecure = $auth_protocol;
+    	}
     	$mail->Username = $auth_username;
     	$mail->Password = $auth_password;
     }else{
@@ -41,10 +41,36 @@ function pb_sendmail($to_address, $to_name, $subject, $body, $redirect_url = nul
 	$mail->FromName = (empty($mail_fromwho))? $_PB_CACHE['setting']['site_name'] : $mail_fromwho;
 	$mail->Subject = $subject;
 	$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
-	$mail->MsgHTML($body);
-	$mail->AddAddress($to_address, $to_name);
-	$result = $mail->Send();
+	$tpl_file = $theme_name."/emails/".$template.$smarty->tpl_ext;
+	if (!empty($template) && $smarty->template_exists($tpl_file)) {
+		$content = $smarty->fetch($tpl_file);
+	}elseif (!empty($body)){
+		$content = $body;
+	}
+	$mail->MsgHTML($content);
+	if (!empty($to_users)) {
+		if (!is_array($to_users[0])) {
+			$mail->AddAddress($to_users[0], $to_users[1]);
+			$result = $mail->Send();
+		}elseif(is_array($to_users[0])) {
+			$mail->ClearAddresses();
+			foreach ($to_users as $key=>$val) {
+				$mail->AddAddress($val[0], $val[1]);
+				$result = $mail->Send();
+			}
+		}
+	}
 	if ($mail->error_count>0) {
+		if (class_exists("Logs")) {
+			$log = new Logs();
+		}else{
+		    uses("log");
+		    $log = new Logs();
+		}
+		$logdata['handle_type'] = "error";
+		$logdata['source_module'] = "sendmail";
+		$logdata['description'] = $mail->ErrorInfo;
+		$log->Add($logdata);
 		return false;
 	}
 	if(!empty($redirect_url)){

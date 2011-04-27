@@ -10,27 +10,27 @@ label.error {
     <div class="content">
         <div class="loading"><img src="<{$theme_img_path}>images/lhighs.gif" /><{$_your_ongoing_operations}><span><{$_pls_login}></span><{$_continue}></div>
         <div class="loadingcon">
-        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php" onsubmit="$('#btnLoginDiv').attr('disabled',true);">
+        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
         	<input type="hidden" name="action" value="logging">
 			<input type="hidden" name="formhash" value="<{$formhash}>">
 			<input type="hidden" name="forward" value="<{$smarty.get.forward}>" />
             <div class="loadingconleft">
                 <p><{$_member_login}></p>
+				<{if $LoginError}><{$LoginError}><{/if}>
 				<br />
                     <label class="loadingname">
                         <{$_user_name}>
                     </label>
                     <label>
                         <{if $pb_username!=""}>
-                        <input type="text" name="data[login_name]" id="LoginName" value="<{$pb_username}>">
+                        <input type="text" name="data[login_name]" id="LoginName" value="<{$pb_username|default:'`$_account_n_email_n_mobile`'}>">
                         <{else}>
-                        <input type="text" name="data[login_name]" id="LoginName" value="" tabindex="1">
+                        <input type="text" style="color: #CCCCCC;" name="data[login_name]" id="LoginName" value="<{$_account_n_email_n_mobile}>" tabindex="1">
                         <{/if}>
-						<{if $LoginError}><strong><{$LoginError}></strong><br /><{/if}>
                     </label>
                     <br clear="all" />
                     <label class="loadingname">
-                         <{$_password}>
+                    <{$_password}>
                     </label>
                     <label>
                         <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2">&nbsp;<a href="getpasswd.php"><{$_forget_password}></a>
@@ -65,7 +65,7 @@ label.error {
                     <li><a><img src="<{$theme_img_path}>images/logging_06.gif" alt="" /><p><b><{$_classifieds}></b><br /><{$_free_classifieds}></p></a></li>
                 </ul>
                 <div class="member_reg">
-                       <input type="button" value="<{$_register}>" class="loadfreeregister" onclick="redirect('member/');return false;"/>
+                       <input type="button" value="<{$_register}>" class="loadfreeregister" onclick="redirect('member.php');return false;"/>
                </div>
             </div>
         </form>
@@ -73,7 +73,17 @@ label.error {
     </div>
 </div>
 <script language="javascript" src="scripts/jquery/validate.js"></script>
-<script language="javascript">
-<{fetch file="scripts/logging.js"}>
+<script language="javascript" src="scripts/validate.js" charset="<{$Charset}>"></script>
+<script>
+$(document).ready(function(){
+	$("#LoginName").focus(function(){
+		if($("#LoginName").val()=='<{$_account_n_email_n_mobile}>'){
+			$("#LoginName").val('').css('color', '#000');
+		};
+	}).blur(function(){
+		if($("#LoginName").val()==''){
+		$("#LoginName").val("<{$_account_n_email_n_mobile}>").css("color","#ccc")};
+	});
+});
 </script>
 <{include file="`$ThemeName`/footer.html"}>

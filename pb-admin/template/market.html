@@ -1,18 +1,15 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 专业市场</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_pro_market}></p>
 </div>
 <div id="rightTop"> 
-    <h3>专业市场</h3> 
+    <h3><{$_pro_market}></h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="market.php">管理</a></li>
-        <li><a href="market.php?do=edit">添加/编辑</a></li>
-		<li><a href="markettype.php">类型</a></li>
+		<li><a class="btn1" href="market.php"><span><{$_management}></span></a></li>
+        <li><a href="market.php?do=edit"><{$_add_or_edit}></a></li>
+		<li><a href="markettype.php"><{$_types}></a></li>
+		<li><a href="quote.php">价格行情</a></li>
+		<li><a href="quotetype.php">行情分类</a></li>
     </ul>
 </div>
 <div class="mrightTop"> 
@@ -26,7 +23,7 @@ body {background: #fcfdff}
 						<select name="data[market][area_id2]" id="dataMarketAreaId2" class="level_2" style="width:120px;"></select>
 						<select name="data[market][area_id3]" id="dataMarketAreaId3" class="level_3" style="width:120px;"></select>
 				</span>
-                <input type="submit" name="search" id="Search" class="formbtn" value="查询" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="<{$_searching}>" /> 
             </div> 
         </form> 
     </div> 
@@ -34,41 +31,44 @@ body {background: #fcfdff}
 </div> 
 <div class="tdare">
   <form name="list_frm" id="ListFrm" action="" method="post">
-  <table width="100%" cellspacing="0" class="dataTable" summary="数据区">
-    <tbody>
-		<tr class="tatr1">
-		  <td class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="全选/全不选"></td>
-		  <td><label for="idAll">名称</label></td>
-		  <td><span>行业类别</span></td>
-		  <td>所在地区</td>
-		  <td><span>是否显示</span></td>
-		  <td class="handler">操作</td>
+  <table width="100%" cellspacing="0" class="dataTable" summary="<{$_data_zone}>">
+    <thead>
+		<tr>
+		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<{$_select_switch}>"></th>
+		  <th><label for="idAll"><{$_naming}></label></th>
+		  <th>行业类别</th>
+		  <th>所在地区</th>
+		  <th>是否显示</th>
+		  <th><{$_action}></th>
 		</tr>
+    </thead>
+    <tbody>
 		<{foreach from=$Items item=item}>
 		<tr class="tatr2">
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="<{$item.id}>" onclick="pbCheckItem(this,'idAll');" id="item_<{$item.id}>" title="<{$item.id}>"></td>
-		  <td><label for="item_<{$item.id}>"><{$item.name}></label></td>
+		  <td><label for="item_<{$item.id}>"><{$item.name}></label><{if $item.picture!=''}><span class="icon-pic"></span><{/if}><{if $item.if_commend==1}><span class="icon-commend"></span><{/if}></td>
 		  <td><{$item.industryname}></td>
 		  <td><{$item.areaname}></td>
 		  <td><{if $item.status==1}>显示<{else}>不显示<{/if}></td>
 		  <td class="handler">
           <ul id="handler_icon">
-              <li><a class="btn_delete" href="market.php?id=<{$item.id}>&do=del<{$addParams}>" title="删除">删除</a></li>
-              <li><a class="btn_edit" href="market.php?do=edit&id=<{$item.id}><{$addParams}>" title="编辑">编辑</a></li>
-              <li><a class="btn_browse" href="<{$SiteUrl}>market/detail.php?id=<{$item.id}>" target="_blank" title="预览">预览</a></li>
+              <li><a class="btn_delete" href="market.php?id=<{$item.id}>&do=del<{$addParams}>" title="<{$_delete}>"><{$_delete}></a></li>
+              <li><a class="btn_edit" href="market.php?do=edit&id=<{$item.id}><{$addParams}>" title="<{$_edit}>"><{$_edit}></a></li>
+              <li><a class="btn_browse" href="<{$SiteUrl}>market/detail.php?id=<{$item.id}>" target="_blank" title="<{$_preview}>"><{$_preview}></a></li>
            </ul> 
 		 </td>
 		</tr>
 		<{foreachelse}>
 		<tr class="no_data info">
-		  <td colspan="6">没有符合条件的记录</td>
+		  <td colspan="6"><{$_no_datas}></td>
 		</tr>
 		<{/foreach}>
     </tbody>
 	</table>
-	<div id="dataFuncs" title="操作区">
+	<div id="dataFuncs" title="<{$_action_zone}>">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="删除" class="formbtn batchButton"/>
+      <input type="submit" name="del" value="<{$_delete}>" class="formbtn batchButton"/>
+	  <input type="submit" name="recommend" value="<{$_commend}>市场" class="formbtn batchButton"/>
       <input type="submit" name="check" value="显示" class="formbtn batchButton"/>
       <input type="submit" name="uncheck" value="不显示" class="formbtn batchButton"/>
     </div>
@@ -79,7 +79,8 @@ body {background: #fcfdff}
 </div>
 <script>
 var cache_path = "../";
+var app_language = '<{$AppLanguage}>';
 </script>
-<script src="../scripts/multi_select.js"></script>
+<script src="../scripts/multi_select.js" charset="<{$Charset}>"></script>
 <script src="../scripts/script_area.js"></script>
 <{include file="footer.html"}>

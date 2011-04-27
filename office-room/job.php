@@ -1,27 +1,20 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: job.php 428 2009-12-26 13:45:57Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
 require(LIB_PATH .'time.class.php');
-uses("job");
+uses("job", "typeoption");
 check_permission("job");
-require(LIB_PATH. "typemodel.inc.php");
 $job = new Jobs();
+$typeoption = new Typeoption();
 $tpl_file = "job";
 if (empty($companyinfo)) {
 	flash("pls_complete_company_info", "company.php", 0);
@@ -35,15 +28,16 @@ if (isset($_GET['do'])) {
 		$job->del($id, "member_id=".$_SESSION['MemberID']);
 	}
 	if($do == "edit"){
-		setvar("Genders", get_cache_type('gender'));
-		setvar("Educations", get_cache_type('education'));
-		setvar("Salary", get_cache_type('salary'));
-		setvar("Worktype", get_cache_type('work_type'));
+		setvar("Genders", $typeoption->get_cache_type('gender'));
+		setvar("Educations", $typeoption->get_cache_type('education'));
+		setvar("Salary", $typeoption->get_cache_type('salary'));
+		setvar("Worktype", $typeoption->get_cache_type('work_type'));
 		if(!empty($id)){
 			$res = $job->read("*", $id, null, "Job.member_id=".$_SESSION['MemberID']);
 			if (empty($res)) {
 				flash("action_failed");
 			}
+			$res['expire_date'] = date("Y-m-d", $res['expire_time']);
 			setvar("item",$res);
 		}
 		$tpl_file = "job_edit";
@@ -89,8 +83,14 @@ if (!empty($_POST['job']) && $_POST['save']) {
 	}
 }
 $result = $job->findAll("*", null, "Job.member_id=".$_SESSION['MemberID'], "id DESC", 0, 10);
-setvar("Items",$result);
-setvar("Worktype",get_cache_type("work_type"));
-setvar("Salary",get_cache_type("salary"));
+if (!empty($result)) {
+	for ($i=0; $i<count($result); $i++){
+		$result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
+		$result[$i]['expire_date'] = date("Y-m-d", $result[$i]['expire_time']);
+	}
+	setvar("Items",$result);
+}
+setvar("Worktype", $typeoption->get_cache_type("work_type"));
+setvar("Salary", $typeoption->get_cache_type("salary"));
 template($tpl_file);
 ?>

@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: install.php 581 2009-12-28 13:20:17Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1387 $
  */
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
@@ -28,32 +21,32 @@ if (isset($_GET['act'])) {
 define('TIME', time());
 define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 define('PHPB2B_ROOT', substr(dirname(__FILE__), 0, -7));
-require '../phpb2b_version.php';
+define('JSMIN_AS_LIB', true); // prevents auto-run on include
+require '../data/phpb2b_version.php';
 require '../configs/config.inc.php';
 define('IN_PHPB2B',true);
 if (!defined('DIRECTORY_SEPARATOR')) {
 	define('DIRECTORY_SEPARATOR','/');
 }
 define('DS', DIRECTORY_SEPARATOR);
-if (!defined('CACHE_PATH')) {
-	define('CACHE_PATH', PHPB2B_ROOT."data".DS."cache".DS);
-}
 if(!defined('LIB_PATH')) define('LIB_PATH',PHPB2B_ROOT.'libraries'.DS);
 require '../libraries/global.func.php';
 require '../libraries/func.sql.php';
 require "../libraries/db_mysql.inc.php";
 require "../libraries/json_config.php";
-require "../libraries/pb_object.php";
+require "../libraries/core/object.php";
 require "../libraries/file.class.php";
+$app_lang = 'zh-cn';
 if (isset($_GET['app_lang'])) {
 	$_SESSION['lang'] = $_COOKIE['lang'] = $app_lang = $_GET['app_lang'];
 }
 if (isset($_SESSION['lang'])) {
 	$app_lang = $_SESSION['lang'];
 }
+if (!defined('CACHE_PATH')) {
+	define('CACHE_PATH', PHPB2B_ROOT."data".DS."cache".DS.$app_lang.DS);
+}
 require "../languages/".$app_lang."/template.install.inc.php";
-require("../libraries/chinese.class.php");
-$chinese = new Chinese($charset, "UTF-8");
 extract($arrTemplate);
 $db = new DB_Sql();
 $file_cls = new Files();
@@ -279,7 +272,7 @@ switch($step)
 			}
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('install_dateline', '".$time_stamp."')");
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('site_name', '$sitename')");
-			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('site_title', '".htmlspecialchars($sitetitle)." - Powered By PHPB2B"."')");
+			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('site_title', '".htmlspecialchars($sitetitle)." - Powered By ".$arrTemplate['_software_name']."')");
 	
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('backup_dir', '".$backupdir."')");
 			$db->query("REPLACE INTO {$tb_prefix}settings (variable, valued) VALUES ('site_url', '".$siteurl."')");
@@ -294,12 +287,20 @@ switch($step)
 			$cache = new Caches();
 			$pdb = &NewADOConnection($database);
 			$conn = $pdb->PConnect($dbhost,$dbuser,$dbpasswd,$dbname);
-			if($dbcharset) {
+			if($dbcharset && mysql_get_server_info() > '4.1') {
 				$pdb->Execute("SET NAMES '{$dbcharset}'");
 			}
 			$cache->writeCache("setting", "setting");
+			$cache->writeCache("setting1", "setting1");
 			$cache->writeCache("industry", "industry");
 			$cache->writeCache("area", "area");
+			$cache->writeCache("membergroup", "membergroup");
+			$cache->writeCache("userpage", "userpage");
+			$cache->writeCache("trusttype", "trusttype");
+			$cache->writeCache("form", "form");
+			$cache->updateTypevars();
+			$cache->updateTypes();
+			$cache->updateIndexCache();
 			header("Location:install.php?step={$step}&do=complete");
 		}
 		else
@@ -323,7 +324,7 @@ function config_edit($configs) {
 	$configfiles = file_get_contents($configfile);
 	$configfiles = trim($configfiles);
 	$configfiles = preg_replace("/[$]dbhost\s*\=\s*[\"'].*?[\"'];/is", "\$dbhost = '$dbhost';", $configfiles);
-	//$configfiles = preg_replace("/[$]app_lang\s*\=\s*[\"'].*?[\"'];/is", "\$app_lang = '$app_lang';", $configfiles);
+	$configfiles = preg_replace("/[$]app_lang\s*\=\s*[\"'].*?[\"'];/is", "\$app_lang = '$app_lang';", $configfiles);
 	$configfiles = preg_replace("/[$]dbuser\s*\=\s*[\"'].*?[\"'];/is", "\$dbuser = '$dbuser';", $configfiles);
 	$configfiles = preg_replace("/[$]dbpasswd\s*\=\s*[\"'].*?[\"'];/is", "\$dbpasswd = '$dbpasswd';", $configfiles);
 	$configfiles = preg_replace("/[$]dbname\s*\=\s*[\"'].*?[\"'];/is", "\$dbname = '$dbname';", $configfiles);

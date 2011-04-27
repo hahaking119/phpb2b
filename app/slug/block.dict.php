@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.dict.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 273 $
  */
 function smarty_block_dict($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -32,7 +25,7 @@ function smarty_block_dict($params, $content, &$smarty) {
 		foreach ($type as $val) {
 			switch ($val) {
 				case 'commend':
-					$conditions[] = "if_commend='1'";
+					$conditions[] = "if_commend>0";
 					break;
 				default:
 					break;
@@ -67,7 +60,7 @@ function smarty_block_dict($params, $content, &$smarty) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['name'] = utf_substr($result[$i]['word'], $params['titlelen']);
+	    		$result[$i]['name'] = mb_substr($result[$i]['word'], 0, $params['titlelen']);
 	    	}
 	    	$url = $dict_controller->rewrite($result[$i]['id'], $result[$i]['word']);
 			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[link:title]", "[link:url]"), array($result[$i]['name'], $result[$i]['word'], $result[$i]['id'], "<a title=\"".$result[$i]['word']."\" href=\"".$url."\" target=\"_blank\">".$result[$i]['name']."</a>", $url), $content);

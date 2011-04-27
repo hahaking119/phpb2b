@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: detail.php 553 2009-12-28 10:30:05Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 define('CURSCRIPT', 'detail');
 require("../libraries/common.inc.php");
@@ -21,23 +14,32 @@ require("../share.inc.php");
 include(CACHE_PATH. "cache_area.php");
 include(CACHE_PATH. "cache_industry.php");
 include(CACHE_PATH. "cache_setting1.php");
-require(LIB_PATH. "typemodel.inc.php");
 $positions = $titles = array();
-uses("trade","product","member","company","tradefield","form");
+uses("trade","product","member","company","tradefield","form","typeoption");
 $offer = new Tradefields();
 $company = new Companies();
 $product = new Products();
 $trade = new Trade();
 $trade_model = new Trades();
 $member = new Members();
+$typeoption = new Typeoption();
 $form = new Forms();
-setvar("Genders", get_cache_type('gender'));
-setvar("PhoneTypes", get_cache_type('phone_type'));
+setvar("Genders", $typeoption->get_cache_type('gender'));
+setvar("PhoneTypes", $typeoption->get_cache_type('phone_type'));
+$viewhelper->setTitle(L("offer", "tpl"));
+$viewhelper->setPosition(L("offer", "tpl"), "offer/");
+if (isset($_GET['title'])) {
+	$title = rawurldecode(trim($_GET['title']));
+	$res = $trade_model->findByTitle($title);
+	$id = $res['id'];
+}
 if (isset($_GET['id'])) {
 	$id = intval($_GET['id']);
+}
+if(!empty($id)){
 	$trade->setInfoById($id);
 	$info = $trade->info;
-	if (empty($info)) {
+	if (empty($info['id'])) {
 		flash("data_not_exists", '', 0);
 	}
 	$info['title'].=(($_PB_CACHE['setting1']['offer_expire_method']==1||$_PB_CACHE['setting1']['offer_expire_method']==3) && $info['expdate']<$time_stamp)?"[".L("has_expired", "tpl")."]":'';
@@ -103,9 +105,9 @@ if (!empty($info['company_id'])) {
 $viewhelper->setMetaDescription($info['content']);
 setvar("LoginCheck", $login_check);
 $info['title'] = strip_tags($info['title']);
-
 setvar("item",$info);
 $viewhelper->setTitle($info['title'], $info['picture']);
+$viewhelper->setPosition($info['title']);
 setvar("Areas", $_PB_CACHE['area']);
 setvar("Industry", $_PB_CACHE['industry']);
 setvar("forward", "offer/detail.php?id=".$id);

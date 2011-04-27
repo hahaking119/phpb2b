@@ -1,5 +1,8 @@
 <?php
-//menu
+/**
+ * The Name:简体中文
+ * Description:控制台菜单
+ */
 $arrTemplate['_homepage'] = "首页";
 $arrTemplate['_common_action'] = "常用操作";
 $arrTemplate['_welcome_page'] = "欢迎页面";
@@ -30,8 +33,11 @@ $arrTemplate['_pro_market'] = "专业市场";
 $arrTemplate['_job'] = "招聘信息";
 $arrTemplate['_fair'] = "展会信息";
 $arrTemplate['_industry_news'] = "行业资讯";
+$arrTemplate['_cp_standard'] = "标准法规";
+$arrTemplate['_standard'] = "标准法规";
 $arrTemplate['_tag_center'] = "标签库";
-$arrTemplate['_companynews'] = "企业新闻";
+$arrTemplate['_keyword_center'] = "信息关键字";
+$arrTemplate['_companynews'] = "企业动态";
 $arrTemplate['_industry_dict'] = "行业词典";
 $arrTemplate['_member_center'] = "用户中心";
 $arrTemplate['_membergroup'] = "会员组";
@@ -46,8 +52,10 @@ $arrTemplate['_adzone'] = "广告位";
 $arrTemplate['_service_manage'] = "服务管理";
 $arrTemplate['_order_center'] = "订单中心";
 $arrTemplate['_friendlink'] = "友情链接";
-$arrTemplate['_templet'] = "模板风格";
+$arrTemplate['_templet'] = "语言风格";
+$arrTemplate['_templet_language'] = "语言包";
 $arrTemplate['_company_templet'] = "企业模板";
+$arrTemplate['_system_templet'] = "整站模板";
 $arrTemplate['_nav'] = "导航栏";
 $arrTemplate['_system_tool'] = "系统工具";
 $arrTemplate['_cache'] = "缓存";
@@ -57,7 +65,10 @@ $arrTemplate['_passport'] = "通行证";
 $arrTemplate['_check_file'] = "文件校验";
 $arrTemplate['_payment_method'] = "支付方式";
 $arrTemplate['_extension'] = "扩展";
+$arrTemplate['_trusts'] = "诚信认证";
+$arrTemplate['_forms'] = "自定义表单";
 $arrTemplate['_help_file'] = "帮助文件";
 $arrTemplate['_options'] = "分类选项";
 $arrTemplate['_plugin'] = "插件";
+$arrTemplate['_management'] = "管理";
 ?>

@@ -11,7 +11,7 @@ body {background: #fcfdff}
     <h3>插件</h3> 
     <ul class="subnav">
 		<li><a href="plugin.php">管理</a></li>
-        <li><a class="btn4"><{$title}></a></li>
+        <li><a class="btn1"><span><{$title}></span></a></li>
     </ul>
 </div>
 <div class="info">
@@ -31,11 +31,11 @@ body {background: #fcfdff}
       <tr>
         <th class="paddingT15"> 播放器宽度：</th>
         <td class="paddingT15 wordSpacing5">          
-		<input class="infoTableInput2" name="pluginvar[width]" value="<{$width}>" /></td>
+		<input class="infoTableInput2" name="pluginvar[width]" value="<{$width|default:410}>" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> 播放器高度:</th>
-        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[height]" value="<{$height}>" /></td>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="pluginvar[height]" value="<{$height|default:190}>" /></td>
       </tr>
       <tr>
         <th class="paddingT15"> 播放器水印文字:</th>

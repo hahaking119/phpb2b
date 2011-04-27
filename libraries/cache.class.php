@@ -1,20 +1,16 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: cache.class.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
+if( !function_exists('json_encode') ) {
+    require(PHPB2B_ROOT. "libraries/json_config.php");
+}
 class Caches extends PbObject {
 	var $cache_name = null;
 	
@@ -30,29 +26,44 @@ class Caches extends PbObject {
 		if(isset($_PB_CACHE['setting']) && is_array($_PB_CACHE['setting'])) {
 			writeCache('setting', '', '$_PB_CACHE[\'setting\'] = '.evalArray($_PB_CACHE['setting']).";\n\n");
 		}
+	} 	
+	
+	function updateIndexCache()
+	{
+		global $pdb, $tb_prefix;
+		$pdb->setFetchMode(ADODB_FETCH_ASSOC);
+		$letters = range('a', 'z');
+		$return = array();
+		foreach ($letters as $val) {
+			$tmp_arr = $pdb->GetArray("SELECT id,name,picture FROM ".$tb_prefix."brands WHERE letter='".$val."' ORDER BY id DESC LIMIT 0,7");
+			if (!empty($tmp_arr)) {
+				$return[$val] = $tmp_arr;
+			}
+		}
+		$data = "\$_PB_CACHE['brand'] = ".$this->evalArray($return);
+		return $this->writeCache("brand", null, $data);
 	}
 	
-	function updateTypes($cache_name = '', $text_data)
+	function updateTypes($cache_name = '', $extra_data = '')
 	{
-		if (!empty($text_data)) {
-			$tmp_arr = explode("\r\n", $text_data);
-			array_filter($tmp_arr);
-			$data = "\$_PB_CACHE['".$cache_name."'] = ".$this->evalArray($tmp_arr).";\n\n";
-			return $this->writeCache($cache_name, '', $data);
-		}else {
-			return false;
+		global $pdb, $tb_prefix;
+		$datas = $tmp_arr = array();
+		$cache_data = null;
+		$cache_types = array("announcementtype", "areatype", "companytype", "expotype", "friendlinktype", "industrytype", "markettype", "membertype", "newstype", "tradetype", "productsort", "companynewstype", "albumtype","standardtype");
+		foreach ($cache_types as $table) {
+			$tmp_arr = $pdb->GetArray("SELECT id,name FROM ".$tb_prefix.$table."s");
+			if (!empty($tmp_arr)) {
+				foreach ($tmp_arr as $key=>$val) {
+					$datas[$val['id']] = $val['name'];
+				}
+				if ($table=="tradetype") {
+					$table = "offertype";
+				}
+				$cache_data.= "\$_PB_CACHE['".$table."'] = ".$this->evalArray($datas).";\n\n";
+				unset($datas, $tmp_arr);
+			}
 		}
-	}
-	
-	function updateAgreement($data)
-	{
-		global $_PB_CACHE;
-		if (!empty($data)) {
-			$op = str_replace(array("%site_name%","%site_url%"), array($_PB_CACHE['setting']['site_name'], $_PB_CACHE['setting']['site_url']), $data);
-			return file_put_contents(CACHE_PATH. "cache_agreement.php", $op);
-		}else{
-			return false;
-		}
+		return $this->writeCache('type', '', $cache_data);
 	}
 	
 	function updateTypevars()
@@ -77,9 +88,9 @@ class Caches extends PbObject {
 				$tmp_js = implode(",", $tmp_js_option);
 				$type_js_data.=$tmp_js."];\n";
 				$cachename = $val['type_name'];
-				$cur_data = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-				$this->writeCache($cachename, '', $cur_data, 'type_');
+				$cur_data.= "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
 			}
+			$this->writeCache('typeoption', '', $cur_data);
 			$type_js_data.="//-->";
 			include(LIB_PATH. "jsmin.class.php");
 			file_put_contents(CACHE_PATH. "type.js", $type_js_data);
@@ -122,7 +133,7 @@ class Caches extends PbObject {
 	}
 	
 	function writeCache($script, $cachenames = '', $cachedata = '', $prefix = 'cache_') {
-		global $phpb2b_auth_key;
+		global $phpb2b_auth_key, $app_lang;
 		$mod_label = "Created";
 		if (!empty($cachenames)) {
 			if(is_array($cachenames) && !$cachedata) {
@@ -133,7 +144,7 @@ class Caches extends PbObject {
 				$cachedata.= $this->getCacheArray($cachenames);
 			}
 		}
-		$dir = PHPB2B_ROOT.'data'.DS.'cache'.DS;
+		$dir = PHPB2B_ROOT.'data'.DS.'cache'.DS.$app_lang.DS;
 		if(!is_dir($dir)) {
 			pb_create_folder($dir);
 		}
@@ -168,6 +179,18 @@ class Caches extends PbObject {
 				}
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
 				break;
+			case 'trusttype':
+				$pdb->setFetchMode(ADODB_FETCH_ASSOC);
+				$conditions = "";
+				$sql = "SELECT * FROM {$tb_prefix}trusttypes ORDER BY display_order ASC,id DESC";
+				$result = $pdb->GetArray($sql);
+				foreach ($result as $key=>$val) {
+					$result[$key]['avatar'] = $val['image'];
+					unset($result[$key]['description'], $result[$key]['display_order'], $result[$key]['status'], $result[$key]['image']);
+					$data[$val['id']] = $result[$key];
+				}
+				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
+				break;
 			case 'setting':
 				$tmp_mail = array();
 				$table = 'setting';
@@ -179,6 +202,7 @@ class Caches extends PbObject {
 				}
 				//set sendmail
 				$tmp_mail['send_mail'] = $data['send_mail'];
+				$tmp_mail['auth_protocol'] = $data['auth_protocol'];
 				$tmp_mail['smtp_server'] = $data['smtp_server'];
 				$tmp_mail['smtp_port'] = $data['smtp_port'];
 				$tmp_mail['smtp_auth'] = $data['smtp_auth'];
@@ -248,17 +272,17 @@ class Caches extends PbObject {
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_areas).";\n\n";
 			break;
 			case 'industry':
-				$sql = "select name,id from {$tb_prefix}industries i where i.parent_id=0 ORDER by display_order asc";
+				$sql = "SELECT name,id,name AS title FROM {$tb_prefix}industries i WHERE i.parent_id=0 ORDER BY display_order ASC";
 				$top_levels = $sec_levels = $third_levels = $datas = $total_datas = array();
 				$level1 = $pdb->GetArray($sql);
 				$op = "<!--// Created ".date("M j, Y, G:i")." -->\n";
 				$op .= "var data_industry = { \n";
 				foreach($level1 as $key=>$val){
 					$top_levels[$val['id']] = $total_datas[1][$val['id']] = $val['name'];
-					$sql = "SELECT id,name,parent_id ,top_parentid FROM {$tb_prefix}industries t where available=1 AND level=2 AND parent_id=".$val['id']." ORDER by display_order asc";
+					$sql = "SELECT id,name,parent_id,top_parentid,name AS title FROM {$tb_prefix}industries t WHERE available=1 AND level=2 AND parent_id=".$val['id']." ORDER BY display_order ASC";
 					$sec_levels = $pdb->GetArray($sql);
 					foreach($sec_levels as $key2=>$val2){
-						$third_levels = $pdb->GetArray("SELECT id,name,parent_id,top_parentid FROM {$tb_prefix}industries t WHERE available=1 AND level=3 AND parent_id=".$val2['id']." ORDER by display_order asc");
+						$third_levels = $pdb->GetArray("SELECT id,name,parent_id,top_parentid,name AS title FROM {$tb_prefix}industries t WHERE available=1 AND level=3 AND parent_id=".$val2['id']." ORDER BY display_order ASC");
 						$datas[$val['id']]['sub'][$val2['id']] = $val2['name'];
 						$total_datas[2][$val2['id']] = $val2['name'];
 						foreach($third_levels as $key3=>$val3){
@@ -291,46 +315,58 @@ class Caches extends PbObject {
 				unset($op);
 				ksort($total_datas);
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_datas).";\n\n";
-			break;
-			case 'newstype':
-				$sql = "SELECT id,name FROM {$tb_prefix}newstypes nt ORDER BY nt.id DESC";
-				$newstype_result = $pdb->GetArray($sql);
-				if (!empty($newstype_result)) {
-					foreach ($newstype_result as $ntkey=>$ntval) {
-						$data[$ntval['id']] = $ntval['name'];
+				unset($top_levels,$sec_levels,$third_levels,$datas,$total_datas,$op);
+				//db cache.
+				$data = array();
+				$op = "<?php\n";
+				$op.="return ";
+				$tmp_level_top = $pdb->GetArray("SELECT id,name FROM ".$tb_prefix."industries WHERE parent_id=0 ORDER BY display_order ASC");
+				if (!empty($tmp_level_top)) {
+					foreach ($tmp_level_top as $tmp_val) {
+						$level_top[$tmp_val['id']] = $tmp_val['name'];
 					}
 				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-			break;
-			case 'expotype':
-				$sql = "SELECT id,name FROM {$tb_prefix}expotypes et ORDER BY et.id DESC";
-				$fairtype_result = $pdb->GetArray($sql);
-				if (!empty($fairtype_result)) {
-					foreach ($fairtype_result as $etkey=>$etval) {
-						$data[$etval['id']] = $etval['name'];
+				foreach ($level_top as $key1=>$val1) {
+					$data[$key1]['id'] = $key1;
+					$data[$key1]['name'] = $val1;
+					$url = $pdb->GetOne("SELECT url FROM ".$tb_prefix."industries WHERE id={$key1} ORDER BY display_order ASC");
+					if ($url) {
+						$data[$key1]['url'] = $url;
+					}else{
+						$data[$key1]['url'] = "product/list.php?industryid=".$key1;
+					}
+					$tmp_result1 = $pdb->GetArray("SELECT id,name,level FROM ".$tb_prefix."industries WHERE level=2 AND parent_id=".$key1." ORDER BY display_order ASC");
+					if (!empty($tmp_result1)) {
+						foreach ($tmp_result1 as $key2=>$val2) {
+							$data[$key1]['sub'][$key2]['id'] = $val2['id'];
+							$data[$key1]['sub'][$key2]['name'] = $val2['name'];
+							$url = $pdb->GetOne("SELECT url FROM ".$tb_prefix."industries WHERE id={$val2['id']}");
+							if ($url) {
+								$data[$key1]['sub'][$key2]['url'] = $url;
+							}else{
+								$data[$key1]['sub'][$key2]['url'] = "product/list.php?industryid=".$val2['id'];
+							}
+							$tmp_result2 = $pdb->GetArray("SELECT id,name,level FROM ".$tb_prefix."industries WHERE level=3 AND parent_id=".$val2['id']." ORDER BY display_order ASC");
+							if (!empty($tmp_result2)) {
+								foreach ($tmp_result2 as $key3=>$val3) {
+									$data[$key1]['sub'][$key2]['sub'][$key3]['id'] = $val3['id'];
+									$data[$key1]['sub'][$key2]['sub'][$key3]['name'] = $val3['name'];
+									$url = $pdb->GetOne("SELECT url FROM ".$tb_prefix."industries WHERE id={$val3['id']}");
+									if ($url) {
+										$data[$key1]['sub'][$key2]['sub'][$key3]['url'] = $url;
+									}else{
+										$data[$key1]['sub'][$key2]['sub'][$key3]['url'] = "product/list.php?industryid=".$val3['id'];
+									}
+								}
+							}
+						}
 					}
 				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-			break;
-			case 'companytype':
-				$sql = "SELECT id,name FROM {$tb_prefix}companytypes ct ORDER BY ct.id ASC";
-				$companytype_result = $pdb->GetArray($sql);
-				if (!empty($companytype_result)) {
-					foreach ($companytype_result as $ctkey=>$ctval) {
-						$data[$ctval['id']] = $ctval['name'];
-					}
-				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-			break;
-			case 'membertype':
-				$sql = "SELECT id,name FROM {$tb_prefix}membertypes ORDER BY id ASC";
-				$membertyptype_result = $pdb->GetArray($sql);
-				if (!empty($membertyptype_result)) {
-					foreach ($membertyptype_result as $mtkey=>$mtval) {
-						$data[$mtval['id']] = $mtval['name'];
-					}
-				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
+				$op.=$this->evalArray($data);
+				unset($data);
+				$op.="\n";
+				$op.="?>";
+				$fp = file_put_contents(CACHE_PATH. "industry.php", $op);
 			break;
 			case 'userpage':
 				$sql = "SELECT id,name,title,url,digest FROM {$tb_prefix}userpages ORDER BY display_order ASC,id ASC";
@@ -356,12 +392,17 @@ class Caches extends PbObject {
 				}
 				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
 			break;
-			case "offertype":
-				$sql = "SELECT * FROM {$tb_prefix}tradetypes ORDER BY display_order ASC";
-				$result = $pdb->GetArray($sql);
-				if (!empty($result)) {
-					foreach ($result as $key=>$val) {
-						$data[$val['id']] = $val['name'];
+			case 'form':
+				$form_result = $pdb->GetArray("SELECT * FROM {$tb_prefix}forms ORDER BY id ASC");
+				if (!empty($form_result)) {
+					foreach ($form_result as $val) {
+						$item_result = $pdb->GetArray("SELECT * FROM {$tb_prefix}formitems WHERE id IN (".$val['items'].") ORDER BY id ASC");
+						if (!empty($item_result)) {
+							foreach ($item_result as $val1) {
+								$data[$val['id']][$val1['id']]['id'] = $val1['identifier'];
+								$data[$val['id']][$val1['id']]['label'] = $val1['title'];
+							}
+						}
 					}
 					$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
 				}
@@ -418,30 +459,34 @@ class Caches extends PbObject {
 		return $curdata;
 	}
 	
-	function updateCache()
-	{
-		
-	}
-	
 	function convert2utf8($str, $force = false)
 	{
-		global $charset, $chinese;
+		global $charset;
 		if ($charset!="utf-8") {
 			if(is_array($str)){
 				return array_map(array('Caches','convert2utf8'), $str);
 			}else{
-				if (function_exists("mb_convert_encoding")) {
-					return mb_convert_encoding($str, "utf-8", $charset);
-				}elseif (function_exists("iconv")){
-					return iconv($charset, "utf-8", $str);
-				}else{
-					$str = $chinese->Convert($str);
-					return $str;
-				}
+				return iconv($charset, "utf-8", $str);
 			}
 		}else{
 			return $str;
 		}
+	}
+	
+	function cacheAll()
+	{
+		$this->updateIndexCache();
+		$this->updateTypes();
+		$this->writeCache("area", "area");
+		$this->updateTypevars();
+		$this->writeCache("industry", "industry");
+		$this->writeCache("setting", "setting");
+		$this->writeCache("setting1", "setting1");
+		$this->writeCache("userpage", "userpage");
+		$this->writeCache("trusttype", "trusttype");
+		$this->writeCache("membergroup", "membergroup");
+		$this->writeCache("form", "form");
+		return true;
 	}
 }
 ?>

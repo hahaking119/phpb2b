@@ -1,31 +1,28 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: news.php 428 2009-12-26 13:45:57Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
-uses("companynews");
+include(CACHE_PATH. "cache_type.php");
+uses("companynews", "typeoption");
 check_permission("companynews");
 $companynews = new Companynewses();
+$typeoption = new Typeoption();
 $tables = $companynews->getTable(true);
 $tpl_file = "news";
 $page = new Pages();
-if(isset($company_id))
+setvar("CompanynewsTypes", $_PB_CACHE['companynewstype']);
+if(isset($company_id)){
 $conditions = "company_id=".$company_id;
+}
 if (empty($companyinfo)) {
 	flash("pls_complete_company_info", "company.php", 0);
 }
@@ -37,7 +34,7 @@ if (isset($_GET['do'])) {
 	if ($do == "edit") {
 		$company->newCheckStatus($companyinfo['status']);
 		if(!empty($id)){
-			$res = $companynews->read("Companynews.id AS ID,title AS Title,content AS Content,created AS CreateDate",$id);
+			$res = $companynews->read("Companynews.id AS ID,title AS Title,content AS Content,type_id,created AS CreateDate",$id);
 			setvar("item",$res);
 			setvar("ShowCaption","none");
 		}
@@ -51,6 +48,7 @@ if (isset($_POST['save'])) {
 	$vals = null;
 	$vals['title'] = trim($_POST['title']);
 	$vals['content'] = trim($_POST['content']);
+	$vals['type_id'] =$_POST['type_id'];
 	$now_companynews_amount = $companynews->findCount(null, "created>".$today_start." AND member_id=".$_SESSION['MemberID']);
     if ($g['companynews_check']) {
         $vals['status'] = 0;
@@ -84,17 +82,13 @@ if (isset($_POST['del'])) {
 }
 $amount = $companynews->findCount(null, $conditions);
 $page->setPagenav($amount);
-$fields = "title as CompanynewsTitle,status,created as CompanynewsCreated,id as CompanynewsId";
-$res = $companynews->findAll($fields,null, $conditions,"id DESC",$page->firstcount,$page->displaypg);
-for($i=0;$i<count($res);$i++){
-
-if($res[$i]['status'] == 1){
-	$res[$i]['status'] = '正常';
-}else{
-	$res[$i]['status'] = '无效';
+$fields = "title as CompanynewsTitle,status,created,type_id,id as CompanynewsId";
+$result = $companynews->findAll($fields,null, $conditions,"id DESC",$page->firstcount,$page->displaypg);
+setvar("CheckStatus", $typeoption->get_cache_type("check_status"));
+for($i=0;$i<count($result);$i++){
+	$result[$i]['pubdate'] = date("Y-m-d", $result[$i]['created']);
 }
-}
-setvar("Companynewses",$res);
+setvar("Items", $result);
 setvar("ByPages",$page->pagenav);
 template($tpl_file);
 ?>

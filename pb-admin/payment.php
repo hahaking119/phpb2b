@@ -1,41 +1,29 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: payment.php 427 2009-12-26 13:45:47Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
-require(API_PATH. "payment.class.php");
+require(LIB_PATH. "payment.class.php");
 require(LIB_PATH. "file.class.php");
 require(LIB_PATH. "cache.class.php");
-uses("setting");
+uses("setting", "typeoption");
 $cache = new Caches();
+$typeoption = new Typeoption();
 $file = new Files();
 $payment = new Payments();
 $setting = new Settings();
 $tpl_file = "payment";
-require(LIB_PATH. "typemodel.inc.php");
-setvar("AskAction", get_cache_type("common_option"));
+setvar("AskAction", $typeoption->get_cache_type("common_option"));
 $result = $payment->getpayments();
 setvar("Items", $result);
 $item = $setting->getValues(1);
-if (isset($_POST['save_passport_rule'])) {
-	$cache->writeCache("setting1", "setting1");
-	$setting->replace($_POST['data']['setting1'], 1);
-	flash("success");
-}
 if (isset($_POST['save'])) {
 	$datas = $_POST['data']['payment'];
 	if (isset($_POST['id'])) {

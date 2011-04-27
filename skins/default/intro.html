@@ -1,4 +1,4 @@
-<{assign var="PageTitle" value="公司介绍"}>
+<{assign var="PageTitle" value="`$_space_intro`"}>
 <{assign var="cur" value="space_intro"}>
 <{include file="header.html"}>
 <div class="wrapper">
@@ -6,7 +6,7 @@
 	<div class="content">
 		<{include file="leftbar.html"}>
 			<div class="right_barintro">
-				<div class="pic"><img src="<{$COMPANY.logo}>" width="220" height="220" /><p><span>公司介绍</span><br /><br />    <{$COMPANY.description}></p>
+				<div class="pic"><img src="<{$COMPANY.logo}>" /><p><span><{$_space_intro}></span><br /><br />    <{$COMPANY.description}></p>
 		<div class="clear"></div></div>
 		<div class="text">
 			<ul>
@@ -20,7 +20,7 @@
 				<li><p><span>注 册 地：</span></p><p><{$COMPANY.reg_address}></p></li>
 			</ul>
 		</div>
-			</div>
-			<div class="clear"></div>
 		</div>
+		<div class="clear"></div>
+</div>
 <{include file="footer.html"}>

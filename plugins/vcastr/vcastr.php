@@ -1,32 +1,28 @@
 <?php
 /*
-Plugin Name: vcastr
-Plugin URI: 
-Description: 
-Version: 1.0
-Author: PHPB2B
-Author URI: http://www.phpb2b.com/
+The Name: 视频展播插件
+The URI: http://www.phpb2b.com/
+Description: 视频调用插件
+Version: 1.0.0
+Author: PB_TEAM
+Author URI: http://www.phpb2b.com
 */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 $pb_plugin_name = "vcastr";//必须的参数，即为文件夹的名称
- $arr = array();
- require(LIB_PATH.'data_xml.class.php');
- $file = PHPB2B_ROOT.'plugins/vcastr/video.xml';
- $xml = file_get_contents($file);
-  $xml_parser = new XML();
-    $data = $xml_parser->parse($xml);
-    $xml_parser->destruct();
-    foreach($data as $key=>$val){
-    	foreach($val as $key1=>$val2){
-    		foreach($val2 as $key3=>$val3){
-    			if($val3 != ''){
-    			$arr[$val3['ITEM_URL']] = $val3['ITEM_TITLE'];
-    			}
-    		}
-    	}
-    }
+require(LIB_PATH.'xml.class.php');
+$file = PHPB2B_ROOT.'plugins/vcastr/video.xml';
 if (defined("IN_PBADMIN")) {
-	$smarty->assign("data", $arr);
+	$xml = file_get_contents($file);
+	$data = XML_unserialize($xml);
+	$video_list = array();
+	if (!empty($data)) {
+		foreach ($data['vcastr']['item'] as $val) {
+			if (!empty($val)) {
+				$video_list[$val['item_url']] = $val['item_title'];
+			}
+		}
+	}
+	$smarty->assign("data", $video_list);
 }
 /**
  * 处理一些其他操作

@@ -2,7 +2,7 @@
 <{include file="`$ThemeName`/header.html"}>
   <div class="blank6"></div>
   <div class="container clearfix">
-    <div class="fullsrceen_ad"><{ads typeid=2}><a href="[link:url]">[field:src]</a><{/ads}></div>
+    <div class="fullsrceen_ad"><{ads typeid=2}><a href="[link:url]" rel="promotion">[field:src]</a><{/ads}></div>
     <div class="blank6"></div>
     <div class="offer_list">
       <div class="offer_list_top">
@@ -17,7 +17,7 @@
                   <h4><span id="currentDate"><{$_today_is}><{$smarty.now|date_format:"%Y-%m-%d"}></span></h4>
                 </div>
               <ul>
-			  <{offer row=11}>
+			  <{offer row=10}>
                 <li class="even">
                 <span class="even_width" ><a href="[link:title]" title="[field:title]">[field:title]</a></span>
                 <span class="even_padding" >[[field:typename]]</span>
@@ -31,9 +31,8 @@
         </div>
         <div class="offer_list_right clearfix">
         <div class="offer_list_top2">
-        <div class="ad_img"><img src="<{$theme_img_path}>images/phpbwb_athena.jpg" /></div>
-        <div class="blank5"></div>            
-              <div class="ad_text"><{ads typeid=4}><{/ads}></div>
+			<div><{ads typeid=3}>This text is replaced by the Flash movie.<{/ads}></div>
+			<div class="blank6"></div>            
         </div>
         <div class="offer_list_top3">
            <div class="title_bar_s1">
@@ -42,12 +41,12 @@
             </div>
 
           <div class="offer_list_top3_c">
-            <div class="offer_list_top3_c1">
+            <div class="offer_list_top3_c1 cursor-hand">
               <ul><{$_offer_introduction}></ul>
               <div class="clear"></div>
             </div>
             <div class="offer_list_top3_c2">
-              <h2><span><a href="member/" title="<{$_free_reg}>"><{$_free_reg}></a></span></h2>
+              <h2><span><a href="member.php" title="<{$_free_reg}>"><{$_free_reg}></a></span></h2>
               <{$_reg_and_upgrade_vip}>
               <{$_service_hotline}><span class="font14" ><{$service_tel}></span>
               </div>
@@ -104,7 +103,7 @@
                 <div class="co_assort fr" >
                   <div class="title_bar_s1" style="height:28px; overflow:hidden">
                     <span class="title_top_s1"><span></span></span>
-                    <h4><{$_industry_sort}></h4>
+                    <h4><span class="titlebg_l"></span><span class="titlebg_m title_mouse"><{$_industry_sort}></span><span class="titlebg_r"></span></h4>
                 </div>
             <div class="co_assort_c clearfix" >
                 <{foreach from=$IndustryList item=item0 key=key0 name=level_0}>

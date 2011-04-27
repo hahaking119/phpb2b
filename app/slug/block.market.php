@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.market.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1286 $
  */
 function smarty_block_market($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -35,13 +28,19 @@ function smarty_block_market($params, $content, &$smarty) {
 					$conditions[] = "picture!=''";
 					break;
 				case 'commend':
-					$conditions[] = "if_commend='1'";
+					$conditions[] = "if_commend>0";
 					break;
 				default:
 					break;
 			}
 		}
 	}	
+	if (isset($params['areaid'])) {
+		$conditions[] = "area_id1=".$params['areaid']." OR area_id2=".$params['areaid']." OR area_id3=".$params['areaid'];
+	}	
+	if (isset($params['industryid'])) {
+		$conditions[] = "industry_id1=".$params['industryid']." OR industry_id2=".$params['industryid']." OR industryid3=".$params['industryid'];
+	}
 	if (isset($params['id'])) {
 		$conditions[] = "id=".$params['id'];
 	}
@@ -60,7 +59,7 @@ function smarty_block_market($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$market->setLimitOffset($row, $col);
-	$sql = "SELECT id,name,name as fullname,picture FROM {$market->table_prefix}markets ".$market->getCondition()."{$orderby}".$market->getLimitOffset();
+	$sql = "SELECT id,name,name as fullname,content,picture FROM {$market->table_prefix}markets ".$market->getCondition()."{$orderby}".$market->getLimitOffset();
 	$result = $market->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {
@@ -68,9 +67,14 @@ function smarty_block_market($params, $content, &$smarty) {
 		for ($i=0; $i<$i_count; $i++){
 	    	$url = $market_controller->rewrite($result[$i]['id'], $result[$i]['name']);
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['name'] = utf_substr($result[$i]['name'], $params['titlelen']);
+	    		$result[$i]['name'] = mb_substr($result[$i]['name'], 0, $params['titlelen']);
+	    	}		
+	    	if (isset($params['infolen'])) {
+	    		$result[$i]['content'] = mb_substr($result[$i]['content'], 0, $params['infolen']);
 	    	}
-			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[link:title]", "[img:src]"), array($result[$i]['name'], $result[$i]['fullname'], $result[$i]['id'], $url, "attachment/".$result[$i]['picture'],), $content);
+	    	$image_type = isset($params['imagetype'])?trim($params['imagetype']):"middle";
+	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', $image_type):pb_get_attachmenturl($result[$i]['picture'], '', $image_type);
+			$return.= str_replace(array("[field:title]", "[field:fulltitle]", "[field:id]", "[link:title]", "[link:url]", "[img:src]", "[field:content]"), array($result[$i]['name'], $result[$i]['fullname'], $result[$i]['id'], $url, '<a href="'.$url.'" title="'.$result[$i]['fullname'].'">'.$result[$i]['name'].'</a>', $img, $result[$i]['content']), $content);
 		}
 	}
 	return $return;

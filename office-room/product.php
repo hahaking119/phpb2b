@@ -1,28 +1,23 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: product.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 1393 $
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
-uses("product","producttype","form","attachment","tag");
+uses("product","producttype","form","attachment","tag","brand","productcategory");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require(CACHE_PATH. 'cache_membergroup.php');
-require(CACHE_PATH. 'cache_productsort.php');
+require(CACHE_PATH. 'cache_type.php');
 check_permission("product");
+$productcategory = new Productcategories();
 $page = new Pages();
+$brand = new Brands();
 $tag = new Tags();
 $form = new Forms();
 $product = new Products();
@@ -31,6 +26,7 @@ $attachment = new Attachment('pic');
 $conditions[] = "member_id = ".$_SESSION['MemberID'];
 setvar("ProductSorts", $_PB_CACHE['productsort']);
 setvar("ProductTypes",$producttype->findAll('id,name', null, $conditions, "id DESC"));
+setvar("Productcategories", $productcategory->getTypeOptions());
 $tpl_file = "product";
 if (empty($companyinfo)) {
 	flash("pls_complete_company_info", "company.php", 0);
@@ -51,12 +47,14 @@ if (isset($_POST['save'])) {
 			$id = intval($_POST['id']);
 		}
     	if (!empty($_FILES['pic']['name'])) {
-    		$attachment->rename_file = $_SESSION['MemberID']."_".$id."_".$time_stamp;
+    		$attach_id = (empty($id))?"product-".$_SESSION['MemberID']."-".($product->getMaxId()+1):"product-".$_SESSION['MemberID']."-".$id;
+    		$attachment->rename_file = $attach_id;
 			$attachment->upload_process();    		
     	    $product->params['data']['product']['picture'] = $attachment->file_full_url;
     	}
     	$form_type_id = 2;
 		$product->params['data']['product']['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
+		$product->params['data']['product']['cache_companyname'] = $companyinfo['name'];
 		if (!empty($id)) {
 			$item_ids = $form->Add($id,$_POST['data']['formitem'], 1, $form_type_id);
 			$product->params['data']['product']['modified'] = $time_stamp;
@@ -74,7 +72,7 @@ if (isset($_POST['save'])) {
 			$product_id = $product->$new_id;
 			$item_ids = $form->Add($product_id, $_POST['data']['formitem'], 1, $form_type_id);
 			if($item_ids){
-				$pdb->Execute("UPDATE {$tb_prefix}products SET formattribute_ids='{$item_ids}' type_id='{$form_type_id}' WHERE id=".$product_id);
+				$pdb->Execute("UPDATE {$tb_prefix}products SET formattribute_ids='{$item_ids}' WHERE id=".$product_id);
 			}
 		}
 		if ($result) {
@@ -86,6 +84,7 @@ if (isset($_POST['save'])) {
 }
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
+	$action = trim($_GET['action']);
 	if (isset($_GET['id'])) {
 		$id = intval($_GET['id']);
 	}
@@ -95,6 +94,15 @@ if (isset($_GET['do'])) {
 			$company->checkStatus($company_id);
 			$company_info = $company->getInfoById($company_id);
 			setvar("CompanyInfo",$company_info);
+		}
+		$sql = "SELECT id,name FROM {$tb_prefix}brands WHERE member_id=".$_SESSION['MemberID'];
+		$user_brands = $pdb->GetArray($sql);
+		$tmp_arr = array();
+		if (!empty($user_brands)) {
+			foreach ($user_brands as $user_brand) {
+				$tmp_arr[$user_brand['id']] = $user_brand['name'];
+			}
+			setvar("UserBrands", $tmp_arr);
 		}
 		setvar("Forms", $form->getAttributes());
 		if (!empty($id)) {
@@ -121,6 +129,13 @@ if (isset($_GET['do'])) {
 		}
 		setvar("item",$productinfo);
 		$tpl_file = "product_edit";
+		template($tpl_file);
+		exit;
+	}
+	if ($do == "price") {
+		if($action == "edit"){
+			$tpl_file = "product.price";
+		}
 		template($tpl_file);
 		exit;
 	}

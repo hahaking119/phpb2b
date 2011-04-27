@@ -1,10 +1,7 @@
 <!--
 $(function(){
-    /* 初始化标签页 */
     initTopTab();
-    /* 设置工作区 */
     setWorkspace();
-    /* resize时重新设置工作区 */
     $(window).resize(setWorkspace);
 });
 function initTopTab(){
@@ -21,7 +18,6 @@ function initTopTab(){
         $('#nav').append(item);
     });
 
-    /* 切换到默认选项卡 */
     switchTab(currTab);
     openItem(firstOpen[1], firstOpen[0]);
     $('#iframe_refresh').click(function(){
@@ -36,8 +32,8 @@ function initTopTab(){
 }
 function switchTab(tabName){
     currTab = tabName;
-    pickTab();       //切换选项卡
-    loadSubmenu();   //加载子菜单
+    pickTab();
+    loadSubmenu();
 }
 function pickTab(){
     var id = '#tab_' + currTab;
@@ -49,11 +45,8 @@ function pickTab(){
 }
 function loadSubmenu(){
     var m = menu[currTab];
-    /* 子菜单标题 */
     $('#submenuTitle').text(m.subtext ? m.subtext : m.text);
-    /* 删除所有现有子菜单 */
     $('#submenu').find('dd').remove();
-    /* 将子菜单逐项添加到菜单中 */
     $.each(m.children, function(k, v){
         var p = v.parent ? v.parent : currTab;
         var item = $('<dd><a href="javascript:;" url="' + v.url + '" parent="' + p + '" id="item_' + k + '">' + v.text + '</a></dd>');
@@ -74,22 +67,17 @@ function openItem(itemIndex, tab){
     }else{
         var parent  = $(id).attr('parent');
     }
-    /* 若不在当前选项卡内 */
     if(parent != currTab){
-        /* 切换到指定选项卡 */
         switchTab(parent);
     }
-    /* 高亮当前项 */
     $('#submenu').find('a').each(function(){
         $(this).removeClass('selected');
     });
     $(id).addClass('selected');
 
-    /* 更新iframe的内容 */
     $('#workspace').show();
     $('#workspace').attr('src', $(id).attr('url'));
 }
-/* 设置工作区 */
 function setWorkspace(){
     var wWidth = $(window).width();
     var wHeight = $(window).height();

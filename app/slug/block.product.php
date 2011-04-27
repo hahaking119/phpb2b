@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.product.php 330 2010-02-09 07:50:47Z stevenchow811@163.com $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 578 $
  */
 function smarty_block_product($params, $content, &$smarty) {
 	if ($content === null) return;
@@ -36,7 +29,13 @@ function smarty_block_product($params, $content, &$smarty) {
 					$conditions[] = "p.picture!=''";
 					break;
 				case 'commend':
-					$conditions[] = "p.ifcommend='1'";
+					$conditions[] = "p.ifcommend>0";
+					break;
+				case 'brand':
+					$conditions[] = "p.brand_id>0";
+					break;
+				case 'hot':
+					$orderbys[] = "clicked DESC";
 					break;
 				default:
 					break;
@@ -57,6 +56,9 @@ function smarty_block_product($params, $content, &$smarty) {
 	}
 	if (isset($params['typeid'])) {
 		$conditions[] = "p.producttype_id=".$params['typeid'];
+	}
+	if (isset($params['brandid'])) {
+		$conditions[] = "p.brand_id=".$params['brandid'];
 	}	
 	if (!empty($params['industryid'])) {
 		$conditions[] = "p.industry_id1='".$params['industryid']."' OR p.industry_id2='".$params['industryid']."' OR p.industry_id3='".$params['industryid']."'";
@@ -65,9 +67,13 @@ function smarty_block_product($params, $content, &$smarty) {
 		$conditions[] = "p.area_id1='".$params['areaid']."' OR p.area_id2='".$params['areaid']."' OR p.area_id3='".$params['areaid']."'";
 	}
 	$orderby = null;
+	if (!empty($orderbys)) {
+		$orderby.=" ORDER BY ".implode(",", $orderbys);
+	}
 	if (isset($params['orderby'])) {
-		$orderby = " ORDER BY ".trim($params['orderby'])." ";
-	}else{
+		$orderby = " ORDER BY ".implode(",", array(trim($params['orderby']), $orderby))." ";
+	}
+	if(empty($orderby)){
 		$orderby = " ORDER BY id DESC ";
 	}
 	$product->setCondition($conditions);
@@ -79,7 +85,7 @@ function smarty_block_product($params, $content, &$smarty) {
 		$col = $params['col'];
 	}
 	$product->setLimitOffset($row, $col);
-	$sql = "SELECT p.id as productid,p.id,p.name as productname,p.name,price,picture,price,created,cache_companyname as companyname FROM {$product->table_prefix}products p ".$product->getCondition()."{$orderby}".$product->getLimitOffset();
+	$sql = "SELECT p.id as productid,p.id,p.name as productname,p.clicked AS hits,p.name,p.price,picture,created,cache_companyname as companyname FROM {$product->table_prefix}products p ".$product->getCondition()."{$orderby}".$product->getLimitOffset();
 	$result = $product->dbstuff->GetArray($sql);
 	$return = null;
 	if (!empty($result)) {
@@ -87,15 +93,10 @@ function smarty_block_product($params, $content, &$smarty) {
 		for ($i=0; $i<$i_count; $i++){
 			$url = $product_controller->rewrite($result[$i]['productid'], $result[$i]['productname']);
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['productname'] = utf_substr($result[$i]['productname'], $params['titlelen']);
-	    		$result[$i]['companyname'] = utf_substr($result[$i]['companyname'], $params['titlelen']);
+	    		$result[$i]['productname'] = mb_substr($result[$i]['productname'], 0, $params['titlelen']);
+	    		$result[$i]['companyname'] = mb_substr($result[$i]['companyname'], 0, $params['titlelen']);
 	    	}			
-			$return.= str_replace(array("[link:title]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:pubdate]", "[field:id]", "[img:thumb]", "[field:company]"), array($url, $result[$i]['productname'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['productname'], @date("m/d", $result[$i]['created']), $result[$i]['productid'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['companyname']), $content);
-			if (isset($params['col'])) {
-				if ($i%$params['col']==0) {
-					$return.="<br />";
-				}
-			}
+			$return.= str_replace(array("[link:title]", "[link:url]", "[field:title]", "[img:src]", "[field:fulltitle]", "[field:pubdate]", "[field:id]", "[img:thumb]", "[field:company]","[field:price]","[field:hits]"), array($url, '<a href="'.$url.'" title="'.$result[$i]['name'].'">'.$result[$i]['productname'].'</a>', $result[$i]['productname'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['productname'], @date("m/d", $result[$i]['created']), $result[$i]['productid'], "attachment/".$result[$i]['picture'].".small.jpg", $result[$i]['companyname'],$result[$i]['price'], number_format($result[$i]['hits'])), $content);
 		}
 	}
 	return $return;

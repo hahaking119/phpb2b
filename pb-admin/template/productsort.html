@@ -1,18 +1,16 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 产品中心</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_product_center}></p>
 </div>
 <div id="rightTop"> 
-    <h3>产品中心</h3> 
+    <h3><{$_product_center}></h3> 
     <ul class="subnav">
-		<li><a href="product.php">管理</a></li>
-        <li><a href="product.php?do=edit">添加/编辑</a></li>
-		<li><a class="btn1" href="productsort.php">分类</a></a></li>
+		<li><a href="product.php"><{$_management}></a></li>
+		<li><a class="btn1" href="productsort.php"><span>类型</span></a></a></li>
+		<li><a href="productcategory.php">产品种类</a></a></li>
+		<li><a href="brand.php">品牌</a></a></li>
+		<li><a href="brandtype.php">品牌分类</a></a></li>
+		<li><a href="price.php">报价</a></a></li>
     </ul>
 </div>
 <div class="info">
@@ -27,7 +25,7 @@ body {background: #fcfdff}
       <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" value="保存" />
+			<input class="formbtn" type="submit" value="<{$_save}>" />
 		</td>
 
       </tr>

@@ -1,17 +1,12 @@
 <{include file="header.html"}>
-<style type="text/css">
-<!--
-body {background: #fcfdff}
--->
-</style>
 <div id="currentPosition">
-	<p><{$_your_current_position}> 信息管理 &raquo; 招聘信息</p>
+	<p><{$_your_current_position}> <{$_trade_management}> &raquo; <{$_job}></p>
 </div>
 <div id="rightTop"> 
-    <h3>招聘信息</h3> 
+    <h3><{$_job}></h3> 
     <ul class="subnav">
-		<li><a href="job.php">管理</a></li>
-        <li><a class="btn1">查看</a></li>
+		<li><a href="job.php"><{$_management}></a></li>
+        <li><a class="btn1"><span><{$_cp_view}></span></a></li>
     </ul>
 </div>
 <div class="info">

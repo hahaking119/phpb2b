@@ -2,11 +2,11 @@
 <{include file="`$ThemeName`/header.html"}>
 <div class="wrapper">
 <div class="content">
-  <div class="tips"><span><{$position}></span><{$_reset_your_password}></div>
+  <div class="tips"><span><{$position}></span></div>
   <div class="base_title">
-        <h2><span class="title_name"><{$_reset_password}></span></h2>
-        </div>
-    <div class="quhuimima">
+        <h2><span class="corner_t_l"></span><span class="corner_t_m title_mouse"><{$_reset_password}></span><span class="corner_t_r"></span></h2> 
+   </div>
+   <div class="quhuimima">
 		<div class="remessagecon">
 		<form id="ResetFrm" name="reset_frm" method="post" action="getpasswd.php">
 		<input type="hidden" name="data[username]" value="<{$username}>" />
@@ -45,6 +45,9 @@ function check(){
 	if($("#password1").val()=="" || $("#password2").val()==""){
 		alert("<{$_enter_correct_password}>");
 		return false;
+	}else if($("#password1").val().length<6 ){
+	alert("<{$_enter_valid_password}>")
+	return false;
 	}else if($("#password1").val()!=$("#password2").val()){
 		alert("<{$_enter_password_different}>");
 		return false;

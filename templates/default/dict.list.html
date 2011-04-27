@@ -6,10 +6,10 @@
 	<div class="blank6"></div>  
 	<div class="content clearfix">
 	  <div class="main_left_w720">
-		 <div class="lemma_list_title">
-		 <h2><{$_search_result}></h2>
-		</div>
-	   <div class="lemma_list">
+	      <div class="base_title">
+		     <h2><span class="corner_t_l"></span><span class="corner_t_m title_mouse"><{$_search_result}></span><span class="corner_t_r"></span></h2>
+		 </div>
+	     <div class="lemma_list">
 		<table>
 		  <tr>
 			<th><{$_word_name}></th>
@@ -21,7 +21,7 @@
 			<td class="title"><a href="dict/detail.php?id=<{$item.id}>"><{$item.word}></a></td>
 			<td><a href="dict/detail.php?id=<{$item.id}>"><{$item.digest|strip_tags|truncate:100}></a></td>
 		  </tr>
-		 <tr><td colspan="2" class="height_1"> <hr /></td></tr>
+		 <tr><td colspan="2" class="height_1"> <hr class="hr_dashed" /></td></tr>
           <{/foreach}>
         
 		</table>

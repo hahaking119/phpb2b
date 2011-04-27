@@ -1,19 +1,12 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: common.inc.php 481 2009-12-28 01:05:06Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision$
  */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(PHPB2B_ROOT.'languages/'.$app_lang.'/'.'template.space.inc.php');
@@ -25,6 +18,9 @@ $membertype= new Membertypes();
 $company = new Companies();
 $templet = new Templets();
 $space_name = '';
+if (empty($theme_name)) {
+	include("share.inc.php");
+}
 $pdb->setFetchMode(ADODB_FETCH_ASSOC);
 $smarty->flash_layout = $theme_name."/flash";
 $smarty->assign("theme_img_path", "templates/".$theme_name."/");
@@ -78,6 +74,10 @@ if (isset($company->info['status']) && $company->info['status']===0) {
 }elseif (empty($company->info) || !$company->info) {
 	$smarty->flash('data_not_exists', null, 0);
 }
+if(!empty($company->info['created'])){
+	$time_tmp = $time_stamp-$company->info['created'];
+	$company->info['year_sep'] = $time_tmp = ceil($time_tmp/(3600*24*365));
+}
 if (empty($company->info['email'])) {
 	$company->info['email'] = $_PB_CACHE['setting']['service_email'];
 }
@@ -87,11 +87,13 @@ if (empty($company->info['picture'])) {
 	$company->info['logo'] = URL.$attachment_url.$company->info['picture'];
 }
 $pdb->setFetchMode(ADODB_FETCH_BOTH);
-//$company->info['fulltel'] = $company->info['telcode']."-".$company->info['telzone']."-".$company->info['tel'];
-//$company->info['fullfax'] = $company->info['faxcode']."-".$company->info['faxzone']."-".$company->info['fax'];
 $company->info['description'] = nl2br(strip_tags($company->info['description']));
-if(isset($member->info['templet_id'])){
-	$skin_path_info = $pdb->GetRow("SELECT name,directory FROM {$tb_prefix}templets WHERE type='user' AND status='1' AND id='".$member->info['templet_id']."'");
+$member_templet_id = $member->info['templet_id'];
+if (isset($_GET['force_templet_id'])) {
+	$member_templet_id = intval($_GET['force_templet_id']);
+}
+if(!empty($member_templet_id)){
+	$skin_path_info = $pdb->GetRow("SELECT name,directory FROM {$tb_prefix}templets WHERE type='user' AND status='1' AND id='".$member_templet_id."'");
 }
 if (empty($skin_path_info)) {
 	$skin_path_info = $pdb->GetRow("SELECT name,directory FROM {$tb_prefix}templets WHERE type='user' AND is_default='1'");
@@ -131,6 +133,7 @@ if (!empty($product_types)) {
 }
 setvar("ProductTypes",$product_types);
 $group_info = array();
+$group_info['year'] = $time_tmp;
 if (!empty($member->info['membergroup_id']['name'])) {
 	$group_info['name'] = $_PB_CACHE['membergroup'][$member->info['membergroup_id']]['name'];
 }else{

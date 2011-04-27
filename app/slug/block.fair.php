@@ -1,25 +1,18 @@
 <?php
 /**
- * NOTE   :  PHP versions 4 and 5
- *
- * PHPB2B :  An Opensource Business To Business E-Commerce Script (http://www.phpb2b.com/)
- * Copyright 2007-2009, Ualink E-Commerce Co,. Ltd.
- *
- * Licensed under The GPL License (http://www.opensource.org/licenses/gpl-license.php)
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * PHPB2B :  Opensource B2B Script (http://www.phpb2b.com/)
+ * Copyright (C) 2007-2010, Ualink. All Rights Reserved.
  * 
- * @copyright Copyright 2007-2009, Ualink E-Commerce Co,. Ltd. (http://phpb2b.com)
- * @since PHPB2B v 1.0.0
- * @link http://phpb2b.com
- * @package phpb2b
- * @version $Id: block.fair.php 1037 2010-02-26 02:53:29Z steven $
+ * Licensed under The Languages Packages Licenses.
+ * Support : phpb2b@hotmail.com
+ * 
+ * @version $Revision: 273 $
  */
 function smarty_block_fair($params, $content, &$smarty) {
 	if ($content === null) return;
 	global $rewrite_able;
 	$conditions = $orderby = array();
-	require(CACHE_PATH."cache_expotype.php");
+	require(CACHE_PATH."cache_type.php");
 	require(CACHE_PATH."cache_area.php");
 	if (class_exists("Expoes")) {
 		$fair = new Expoes();
@@ -42,7 +35,7 @@ function smarty_block_fair($params, $content, &$smarty) {
 					$conditions[] = "picture!=''";
 					break;
 				case 'commend':
-					$conditions[] = "if_commend='1'";
+					$conditions[] = "if_commend>0";
 					break;
 				case 'hot':
 					$orderby[] = "hits DESC";
@@ -82,22 +75,24 @@ function smarty_block_fair($params, $content, &$smarty) {
 	if (!empty($result)) {
 		$i_count = count($result);
 		for ($i=0; $i<$i_count; $i++){
+			$result[$i]['name'] = strip_tags($result[$i]['name']);
 			$style = $h3_style = $area_name = $link_title = null;
-			$url = $fair_controller->rewrite($result[$i]['id'], $result[$i]['title']);
-			$link_title = "<a href='".$url."'>".$result[$i]['name']."</a>";
 			if (isset($params['titlelen'])) {
-	    		$result[$i]['name'] = utf_substr($result[$i]['name'], $params['titlelen']);
+	    		$result[$i]['name'] = mb_substr($result[$i]['name'], 0, $params['titlelen']);
 	    	}
 	    	$result[$i]['description'] = strip_tags($result[$i]['description']);		
 	    	if (isset($params['infolen'])) {
-	    		$result[$i]['description'] = utf_substr($result[$i]['description'], $params['infolen']);
+	    		$result[$i]['description'] = mb_substr($result[$i]['description'], 0, $params['infolen']);
 	    	}
+			$url = $fair_controller->rewrite($result[$i]['id'], $result[$i]['title']);
+			$link_title = "<a href='".$url."'>".$result[$i]['name']."</a>";
 	    	if (!$result[$i]['begin_time']) {
 	    		$pubdate = L("invalid_datetime");
 	    	}else{
 	    		$pubdate = @date("Y-m-d", $result[$i]['begin_time']);
 	    	}
-	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', 'small'):pb_get_attachmenturl($result[$i]['picture'], '', 'small');
+	    	$image_type = isset($params['imagetype'])?trim($params['imagetype']):"small";
+	    	$img = (empty($result[$i]['picture']))?pb_get_attachmenturl('', '', $image_type):pb_get_attachmenturl($result[$i]['picture'], '', $image_type);
 	    	if (isset($params['magic']))  {
 	    		if ($i==0) {
 	    			if(!empty($result[$i]['picture'])){
@@ -110,7 +105,7 @@ function smarty_block_fair($params, $content, &$smarty) {
 			if (!empty($_PB_CACHE['area'][1][$result[$i]['area_id1']])) {
 				$area_name = $_PB_CACHE['area'][1][$result[$i]['area_id1']];
 			}
-			$return.= str_replace(array("[link:title]", "[field:title]", "[field:fulltitle]", "[field:id]", "[field:areaname]", "[field:areaid]", "[field:typename]", "[field:typeid]", "[field:pubdate]", "[field:content]","[field:style]", "[field:url]", "[img:src]"), array($url, $result[$i]['name'], $result[$i]['title'], $result[$i]['id'], $area_name, $result[$i]['area_id1'], $_PB_CACHE['expotype'][$result[$i]['expotype_id']], $result[$i]['expotype_id'], $pubdate, $result[$i]['description'],$style, $link_title, $img), $content);
+			$return.= str_replace(array("[link:title]", "[link:url]", "[field:title]", "[field:fulltitle]", "[field:id]", "[field:areaname]", "[field:areaid]", "[field:typename]", "[field:typeid]", "[field:pubdate]", "[field:content]","[field:style]", "[field:url]", "[img:src]"), array($url, '<a href="'.$url.'" title="'.$result[$i]['title'].'">'.$result[$i]['name'].'</a>', $result[$i]['name'], $result[$i]['title'], $result[$i]['id'], $area_name, $result[$i]['area_id1'], $_PB_CACHE['expotype'][$result[$i]['expotype_id']], $result[$i]['expotype_id'], $pubdate, $result[$i]['description'],$style, $link_title, $img), $content);
 		}
 	}
 	return $return;

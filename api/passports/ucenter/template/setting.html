@@ -4,11 +4,14 @@
 body {background: #fcfdff}
 -->
 </style>
+<div id="currentPosition">
+	<p><{$_your_current_position}> 全局 &raquo; 通行证 <{if $item.name}> &raquo; <{$item.name}><{/if}></p>
+</div>
 <div id="rightTop"> 
-    <p>通行证</p> 
+    <h3>通行证</h3> 
     <ul class="subnav">
-		<li><a class="btn1" href="passport.php">管理</a></li>
-        <li><span>设置<{$item.name}></span></li>
+		<li><a href="passport.php">管理</a></li>
+        <li><a class="btn1" href="#"><span>设置<{$item.name}></span></a></li>
     </ul>
 </div>
 <div class="info">
